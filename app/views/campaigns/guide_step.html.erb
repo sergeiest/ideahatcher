@@ -1,0 +1,66 @@
+<div class="navbar navbar-inverse">
+  <div class="navbar-inner">
+    <ul class="nav">
+      <li class="active"><a href="#">1. Guidelines</a></li>
+      <li><a >2. Basic</a></li>
+      <li><a >3. About company</a></li>
+      <li><a >4. Team</a></li>
+      <li><a >5. Account</a></li>
+      <li><a >6. Review</a></li>
+      <% if session[:startup_id] != nil %>
+      <li class="active" style="margin-left:100px">
+        <%= link_to :controller => "startups", :action => "show", :id => session[:startup_id] do %>
+            <%=  @startup.name %>
+        <% end %>
+      </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+<div class="sign-up">
+    <h4>Guidelines</h4>
+    <p>Capital Round is a crowdfunding platform for startups from Carnegie Mellon University.
+      This guidelines explains our focus. Companies violating these guidelines will not be able
+      to lunch a fund raising campaign on Capital Round.
+    </p>
+    <ol>
+      <li>
+        <h5>Company must be affiliated with CMU</h5>
+        <p>Capital Round provides the platform only for companies that have connection with Carnegie Mellon University.
+          This means that i) one of the founders attend(ed) CMU or ii) startup is based on CMU technology/research etc.</p>
+      </li>
+      <li>
+        <h5>Funding for campaigns only</h5>
+        <p>A campaign must have a clear goal. Company should have a long term strategy as well as a contingent plan
+          how to get to the next stage using the campaign.</p>
+      </li>
+      <li>
+        <h5>Prohibit use of content</h5>
+        <p>No campaigns to fund a scholarship, pay tuition, bills or expenses. There are some things that we just don't
+          allow on Capital Round.</p>
+      </li>
+    </ol>
+
+    <div class="highlighted-box">
+        <%= form_tag(:action => 'next_step', :multipart => true) do %>
+          <div style="float:left;"><%=  check_box_tag 'accept-check', 'yes', false, :onclick => 'changeStatus()'%></div>
+          <div style="float:right">
+          <button id="next-step" class="btn btn-warning" disabled>Next <span style="padding-left:20px"> > </span></button>
+          </div>
+          <p style="margin:0px 40px 0 40px;">I understand that in order to launch my campaign must meet the Campaign Guidelines
+            and I must meet eligibility requirements.</p>
+        <% end %>
+    </div>
+</div>
+
+<script  type="text/javascript">
+    function changeStatus() {
+        if (document.getElementById('accept-check').checked == true) {
+            document.getElementById('next-step').disabled = false;
+        }
+        else {
+            document.getElementById('next-step').disabled = true;
+        }
+    }
+</script>

@@ -1,0 +1,13 @@
+<%= link_to 'New Startup', new_startup_path %>
+<div style="clear:both"></div>
+
+		<% for startup in @startups %>
+    		<%= render :partial => startup %>
+   	     	<%= link_to 'Edit', edit_startup_path(startup) %> |
+   	     	<%= link_to 'Show', @startup %> |
+   	     	<%= link_to 'Add team member', :controller => 'companyteams', :action => 'new', :id => startup.id %> |
+   	     	<%= link_to 'Add news', :controller => 'companyupdates', :action => 'new', :id => startup.id %> |
+   	     	<%= link_to 'Add companydocuments', :controller => 'companydocuments', :action => 'new', :id => startup.id %> |
+   	     	<%= link_to 'Destroy', startup, method: :delete, data: { confirm: 'Are you sure?' } %>
+   	     	<div style="clear:both"></div>  
+		<% end %>

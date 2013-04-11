@@ -1,0 +1,27 @@
+<hr/>
+
+<div style="clear:both"></div>
+
+<div style="float:left" >
+  <% if employeefull.avatar? %>
+      <%= image_tag employeefull.avatar.url(:thumb), :class => "img-rounded-mid"  %>
+  <% else %>
+      <img src='/images/profile/Nophoto.png' class="img-rounded-mid"  />
+  <% end %>
+</div>
+
+<h3> <%= employeefull.firstname %> <%= employeefull.lastname %> - <%= employeefull.title %> </h3>
+
+<%= link_to 'Edit', edit_companyteam_path(employeefull) %> |
+<%= link_to 'Delete', employeefull, method: :delete, data: { confirm: 'Are you sure you want to delete this person from the team?' } %>
+
+<p> <%= employeefull.description %> </p>
+
+<div id="team-contacts">
+  <ul>
+    <li> Email: <a href="mailto:<%= employeefull.email %>"><%= employeefull.email %></a> </li>
+<!--    <li> Bio: <a href="<%= employeefull.linkedin %>">LinkedIn Profile</a></li> -->
+    <li> Phone: <%= employeefull.phone %> </li>
+    <li> Address: <%= employeefull.address %> </li>
+  </ul>
+</div>

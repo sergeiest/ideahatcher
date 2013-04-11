@@ -1,0 +1,61 @@
+<%= form_for(@campaign) do |f| %>
+
+
+    <% if @campaign.errors[:goal_sum].length > 0 %>
+        <div class="field">
+          <h4 style="color:red">Goal</h4>
+          <div class="input-prepend input-append" style="color:red">
+            <span class="add-on">$</span>
+            <%= f.text_field :goal_sum ,:style => "border-color:red" %>
+
+          </div>
+        </div>
+    <%else%>
+        <div class="field">
+          <h4>Goal</h4>
+          <div class="input-prepend input-append">
+            <span class="add-on">$</span>
+            <%= f.text_field :goal_sum%>
+
+          </div>
+        </div>
+    <%end%>
+    <br />
+    <% if @campaign.errors[:share].length > 0 %>
+        <div class="field">
+        <h4 style="color:red">Share of the company that you offer to raise money</h4>
+        <div class="input-prepend input-append" style="color:red">
+          <%= f.text_field :share, :style => "border-color:red" %>
+          <span class="add-on" style="color:red">%</span>
+        </div>
+        </div>
+    <%else%>
+        <h4>Share of the company that you offer to raise money</h4>
+        <div class="input-prepend input-append">
+          <%= f.text_field :share %>
+          <span class="add-on">%</span>
+        </div>
+    <%end%>
+    <br />
+    <% if @campaign.errors[:closing_date].length > 0 %>
+    <div class="field">
+      <h4 style="color:red">Closing date</h4>
+      <%= f.date_select :closing_date,:style => "border-color:red" %>
+    </div>
+        <%else%>
+        <div class="field">
+          <h4>Closing date</h4>
+          <%= f.date_select :closing_date %>
+        </div>
+     <%end%>
+
+    </br>
+
+    <%= link_to do %>
+        <button id="next-company" class="btn btn-primary">Save and Continue</button>
+    <% end %>
+    <%= link_to(:controller => 'startups', :action => 'show', :id => session[:startup_id]) do %>
+        <button type="button" class="btn">Cancel</button>
+    <% end %>
+<% end %>
+

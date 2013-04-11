@@ -1,0 +1,50 @@
+
+<%= form_for(@investor) do |f| %>
+    <div class="invest-field">
+        <h3>Invest: </h3>
+<% if @investor.errors[:sum].length > 0 %>
+        <div class="input-prepend input-append" style="display:inline;">
+            <span class="add-on" style="border-color:red">$</span>
+            <%= f.text_field :sum, :style => "border-color:red", :onkeyup => "readInvestment()"%>
+        </div>
+        <p style="margin:0px;color:red;" id="investment-error"> (between $25 and $2,000)</p>
+<%else%>
+        <div class="input-prepend input-append" style="display:inline;">
+          <span class="add-on">$</span>
+          <%= f.text_field :sum, :onkeyup => "readInvestment()"%>
+        </div>
+        <p style="margin:-10px 0 0 0;font-size:12px;" id="investment-error"> (between $25 and $2,000)</p>
+<%end%>
+    </div>
+
+    <div class="invest-field">
+      <h3 id="equity-heading" >Percent ownership:</h3>
+       <p style="margin:0px;" id="equity"> - % </p>
+    </div>
+    <div style="clear:both"></div>
+
+  <%= link_to do %>
+      <button id="next-company" class="btn btn-warning" style="margin:20px 0px 0 0;">Proceed <span style="padding-left:20px"> > </span></button>
+  <% end %>
+
+<% end %>
+
+<script language="javascript">
+    function readInvestment() {
+        var in_sum = parseFloat(document.getElementById('investor_sum').value);
+        if (in_sum >= 25 && in_sum <= 2000) {
+            var eq_sum = in_sum / <%= @startup.Campaign.valuation_sum %> * 100;
+            document.getElementById('investment-error').style.color = "black";
+            document.getElementById('equity').innerText = eq_sum.toFixed(4)+" %";
+//            document.getElementById('equity-heading').hidden = false;
+        }
+        else {
+            document.getElementById('equity').innerText = "- %";
+            document.getElementById('investment-error').style.color = "red";
+//            document.getElementById('equity-heading').hidden = true;
+        }
+    }
+</script>
+
+
+

@@ -1,0 +1,37 @@
+<%= form_for(@user) do |f| %>
+    <% if @user.errors.any? %>
+        <font color = 'red'>Please correct the following errors in your form</font>
+    <%end%>
+    <% if @user.errors[:firstname].length > 0 %>
+        <div class="field">
+          <font color = 'red'>First Name<br /></font>
+          <%= f.text_field :firstname, :style => "border-color:red" %>
+        </div>
+    <%else%>
+        <div class="field">
+          First Name<br />
+          <%= f.text_field :firstname %>
+        </div>
+    <%end%>
+    <% if @user.errors[:lastname].length > 0 %>
+        <div class="field">
+          <font color = 'red'>Last Name<br /></font>
+          <%= f.text_field :lastname, :style => "border-color:red"  %>
+        </div>
+    <%else%>
+        <div class="field">
+          Last Name<br />
+          <%= f.text_field :lastname %>
+        </div>
+    <%end%>
+
+    <div class="field">
+      CMU Affiliation<br />
+      <%= f.select("cmuaffiliation", options_from_collection_for_select(Univaffiliation.all, :title_name, :title_name, @user.cmuaffiliation)) %>
+    </div>
+
+    <%= link_to do %>
+        <button id="next-company" class="btn btn-primary">Save</button>
+    <% end %>
+
+<% end %>

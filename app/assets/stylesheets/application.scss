@@ -1,0 +1,418 @@
+
+.sign-up {
+
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+  width:600px;
+  margin:0 auto;
+
+  h4 {
+    font-weight:normal;
+    color:orange;
+  }
+
+  ol {
+    font-weight:bold;
+  }
+
+
+  p {
+    line-height:normal;
+    font-size:14px;
+    font-weight:normal;
+  }
+
+  .highlighted-list {
+    background-color: #ecf8ff;
+    margin:10px -20px 10px -60px;
+    padding:2px 35px;
+    color:#333333;
+
+
+    input {
+      width:530px;
+
+      .small-input {
+        width:200px;
+      }
+
+    }
+
+    .input-prepend {
+      input {
+        width:200px;
+      }
+    }
+
+
+
+    .text-here {
+      padding:0 20px;
+    }
+
+    textarea{
+      width:530px;
+      height:105px;
+    }
+
+  }
+}
+
+.highlighted-box {
+  background-color:#ecf8ff;
+  margin:0 -20px;
+  padding:20px;
+  color:#00008b;
+
+  form {
+    margin: 0 ;
+  }
+}
+
+.highlighted-company {
+  -webkit-border-radius: 5px;
+  border:1px #c8c8c8 solid;
+  background-color: white;
+  margin:10px 0px;
+  padding:5px 20px;
+
+  form {
+    margin: 0 ;
+    textarea {
+      width:600px;
+      height:140px;
+    }
+  }
+
+  p, b {
+    line-height:16px;
+    font-size:12px;
+  }
+  h5 {color:orange; }
+}
+
+.right-company{
+  float:right;
+  width:200px;
+}
+
+
+
+.campaign-info {
+  -webkit-border-radius: 5px;
+  border:1px #c8c8c8 solid;
+  background-color: white;
+  margin:0 0 10px 0;
+  padding:20px;
+  font-size:12px;
+  line-height:24px;
+
+}
+
+.highlighted-box-company {
+  margin:0 0 10px 0;
+  padding:0px;
+  color:#333333;
+  width:660px;
+
+  img {
+    padding:0;
+    margin:0;
+    width:660px;
+    height:330px;
+    -webkit-border-radius: 5px;
+    border:1px #c8c8c8 solid;
+    background-color: white;
+  }
+
+}
+
+.left-company {
+  width:660px;
+  float:left;
+}
+
+.box-company {
+  margin:0 0 10px 0;
+  padding:0px;
+  color:#333333;
+  width:600px;
+
+  img {padding:0 20px;}
+
+}
+
+
+div.teaser{
+  maring: 20px auto;
+  width: 900px;
+}
+
+.error-message {
+  color:red;
+  border-color:red;
+}
+
+
+#contacts-box {
+  clear:both;
+  border-top:1px #bebebe solid;
+  text-align:center;
+  width: 1105px;
+  margin: 0 auto;
+
+}
+
+
+
+.container {
+  margin:10px auto;
+  width: 940px;
+}
+
+
+h2.project{
+  font-size: 15px;
+  font-family: inherit;
+  font-weight: bold;
+  line-height: 20px;
+  color: #55A4F2;
+  text-rendering: optimizelegibility;
+  padding: 00px;
+  margin-top:0;
+  text-decoration: none;
+}
+
+
+.description {
+  height:85px;
+  color: #595959;
+  display: block;
+  font-size: 12px;
+  line-height: 16px;
+  padding-left: 0px;
+}
+
+
+.invest-field {
+  width:260px;
+  float:left;
+  padding-left:40px;
+  input {
+    width:100px;
+  }
+}
+
+
+//Home page
+.logo-img {
+  padding:10px 35px;
+  float:left;
+  img {height:30px;}
+}
+
+.background-img {
+  background:url('/images/Home_background.png') no-repeat center top;
+  background-size: 100% 600px;
+}
+
+.home-nav {
+  height: 55px;
+  background-color: #e3e3e3;
+
+  .login-nav {
+    form {
+      width:500px;
+      input { width:150px; height:16px;}
+    }
+    font-family: "Open Sans", Open Sans, sans-serif;
+    line-height:12px;
+    float:right;
+    margin:0;
+    font-size: 12px;
+    p {margin:2px}
+    .login-input {
+      float:left;
+      margin:5px 5px -5px 5px;
+    }
+  }
+
+  .user-nav {
+    font-family: "Open Sans", Open Sans, sans-serif;
+    line-height:12px;
+    float:right;
+    margin:-5px 100px 0 0;
+    font-size: 12px;
+    p {margin:2px}
+    .login-input {
+      float:left;
+      margin:5px 5px 0 5px;
+    }
+    a {}
+
+  }
+
+}
+
+
+.singup-right {
+  -webkit-border-radius: 5px;
+  background-color:white;
+  float:right;
+  margin:25px 0;
+  padding:10px 30px;
+  width:280px;
+  height:390px;
+  form {
+    margin:20px 30px 0 30px;
+    line-height:16px;
+    font-size: 12px;
+
+  }
+}
+
+.home-message{
+  -webkit-border-radius: 5px;
+  width:400px;
+  margin:50px;
+  padding:10px 30px;
+  background-color:#696969;
+  opacity:0.8;
+  h3 {
+    color:white;
+    text-shadow:  2px 2px black;
+  }
+  hr { box-shadow:  1px 1px black;}
+}
+
+.footer {
+  background-color:#e3e3e3;
+  font-size:12px;
+  color: #696969;
+  min-height: 50px;
+  padding-top:10px;
+  margin:0;
+  text-align: center;
+}
+
+.container-ideas {
+  background-color: #f3f3f3;
+  margin:0px auto;
+  padding:10px 0;
+  h3 {margin-top:0;}
+}
+
+// Ideas
+
+.idea {
+  -webkit-border-radius: 5px;
+  border:1px #c8c8c8 solid;
+  background-color: white;
+  margin:20px 0;
+  padding:10px 20px;
+  .idea-content {
+    width:660px;
+    .idea-text {min-height: 95px;}
+    .comment {
+      min-height: 15px;
+      .author {font-style:italic;text-align:right}
+    }
+    h5 {
+      color:orange;
+      margin:0px ;
+    }
+    p {
+      line-height: 16px;
+      font-size:12px;
+      color: #464646;
+      margin:0px ;
+    }
+    a {
+      line-height: 16px;
+      font-size:12px;
+      margin:0px ;
+    }
+    textarea {
+      width:650px;
+      height: 100px;
+      font-size:12px;
+      line-height: 16px;
+    }
+  }
+
+  .startup-content {
+    img {  -webkit-border-radius: 5px;}
+    padding-left:10px;
+    margin-left: 20px;
+    float:right;
+    border-left:2px white solid;
+    width:200px;
+    h5 {
+      margin:10px 0;
+      color: #464646;
+      line-height: 16px;
+      font-size:14px;
+      font-weight:normal;
+    }
+    p {
+      margin:0 0 0;
+      color: #464646;
+      line-height: 20px;
+      font-size:12px;
+    }
+    .check-img {
+      float:right;
+      height:30px;
+      margin-top:-5px;
+    }
+    tr {
+      vertical-align: top;
+      font-size:12px;
+      color:#464646;
+      height: 20px;
+      margin:0;
+      padding:0;
+      line-height: 20px;
+    }
+    td {
+      vertical-align: top;
+      font-size:12px;
+      color:#464646;
+      height: 20px;
+      margin:0;
+      padding:0;
+      line-height: 30px;
+    }
+    .td2 {
+      text-align: right;
+      vertical-align: top;
+      width:300px;
+      font-size:12px;
+      color:#464646;
+    }
+  }
+}
+
+// Startups
+
+.project-field{
+  float:left;
+  font-size: 13px;
+  -webkit-border-radius: 5px;
+  border:1px #c8c8c8 solid;
+  background-color: white;
+  padding:10px;
+  width: 230px;
+  margin:20px;
+  img {
+    margin:0 0 10px 0;
+    -webkit-border-radius: 5px;
+  }
+  button { width: 70px; margin:0 2px;}
+  h5, p, a {color: #595959;}
+}
+
+.check-table {
+  th {width: 600px; height: 30px; padding-top:20px;}
+  td { padding-top:20px;}
+}

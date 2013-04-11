@@ -1,0 +1,35 @@
+<% div_name='Idea' + idea.id.to_s() %>
+
+<%= link_to :controller => "ideas", :id => idea.startup_id do %>
+    <div id="<%= div_name %>" class="idea"
+                onMouseMove="MM_changeProp('<%= div_name %>','','backgroundColor','#ecf8ff','DIV')"
+                onMouseOut="MM_changeProp('<%= div_name %>','','backgroundColor','white','DIV')" >
+      <div class="startup-content">
+        <% startup = Startup.find(idea.startup_id) %>
+        <% if startup.avatar != nil %>
+            <%= image_tag startup.avatar.url(:teaser) %>
+        <% else %>
+            <img class="thumbnail1" src='/images/profile/Nologo.png'>
+        <% end %>
+        <h5><%= startup.name %></h5>
+      </div>
+
+      <div class="idea-content">
+        <div class="idea-text">
+          <h5>
+              <% if idea.title == nil || idea.title == ""  %>
+                Open discussion
+              <% else %>
+                <%=  idea.title %>
+              <% end %>
+            </h5>
+            <%= simple_format h idea.content.firstletters(500) %>
+        </div>
+        <hr />
+        <p style="color:#0088cc;">Click to get more info...</p>
+      </div>
+
+
+      <div style="clear:both"></div>
+    </div>
+<% end %>

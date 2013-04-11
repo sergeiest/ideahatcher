@@ -1,0 +1,40 @@
+<%= form_for(@companyupdate) do |f| %>
+
+<%
+   title_class = ""
+   content_class = ""
+   title_border = ""
+   content_border = ""
+    if @companyupdate.errors[:title].length > 0
+        title_class= "style='color:red'"
+        title_border = "border-color:red"
+    end
+    if @companyupdate.errors[:content].length > 0
+      content_class= "style='color:red'"
+      content_border = "border-color:red"
+    end
+%>
+
+
+  <table>
+    <tr>
+      <th <%= title_class %> >Title</th>
+      <th <%= content_class %> >Content</th>
+    </tr>
+    <tr>
+      <td><%= f.text_field :title, :class => "span3", :style => title_border %></td>
+      <td><%= f.text_field :content, :class => "span9", :style => content_border %></td>
+    </tr>
+  </table>
+
+    <%= link_to do %>
+        <button id="next-company" class="btn btn-primary">
+          <p>Save</p>
+        </button>
+    <% end %>
+
+    <%= link_to(:action => 'index') do %>
+        <button type="button" class="btn">Cancel</button>
+    <% end %>
+
+<% end %>

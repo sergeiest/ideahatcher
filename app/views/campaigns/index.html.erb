@@ -1,0 +1,31 @@
+<h1>Listing campaigns</h1>
+
+<table>
+  <tr>
+    <th>Startup</th>
+    <th>Goal sum</th>
+    <th>Raised sum</th>
+    <th>Closing date</th>
+    <th>Status</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @campaigns.each do |campaign| %>
+  <tr>
+    <td><%= campaign.startup_id %></td>
+    <td><%= campaign.goal_sum %></td>
+    <td><%= campaign.raised_sum %></td>
+    <td><%= campaign.closing_date %></td>
+    <td><%= campaign.status %></td>
+    <td><%= link_to 'Show', campaign %></td>
+    <td><%= link_to 'Edit', edit_campaign_path(campaign) %></td>
+    <td><%= link_to 'Destroy', campaign, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Campaign', new_campaign_path %>

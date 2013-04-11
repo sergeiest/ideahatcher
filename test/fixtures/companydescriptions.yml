@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  startup_id: 1
+  title: MyString
+  content: MyText
+  isopen: 1
+
+two:
+  startup_id: 1
+  title: MyString
+  content: MyText
+  isopen: 1

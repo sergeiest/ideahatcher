@@ -1,0 +1,8 @@
+<%= render 'usernav' %>
+
+<div class="container-ideas">
+  <div class="container">
+    <h3>Your detailed discussions <img src="/images/arrow.png" style="width: 20px"></h3>
+    <%= render :partial => "ideas/ideamore", :collection => @ideas %>
+  </div>
+</div>

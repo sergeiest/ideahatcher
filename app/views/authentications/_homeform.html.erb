@@ -1,0 +1,64 @@
+<%= form_tag(:action => 'create', :controller => 'authentications', :multipart => true) do %>
+
+    <% if @authentication.errors[:username].length > 0 %>
+        <p style="color:red">Email:</p>
+        <%=text_field :authentication,:username, :style => "border-color:red"  %>
+        <span style="font-size:12px;color:red"> <%= @authentication.errors[:username].to_s.split('"')[1] %></span>
+    <% else %>
+        Email:<br />
+        <%= text_field :authentication, :username %>
+    <% end %>
+
+    <% if @authentication.errors[:password].length > 0 %>
+        <p style="color:red">Password:</p>
+        <%=password_field :authentication,:password, :style => "border-color:red"  %>
+    <% else %>
+        <div class="field">
+          Password:<br />
+          <%= password_field :authentication, :password %>
+        </div>
+    <% end %>
+
+    <% if @authentication.errors[:password].length > 0 %>
+        <p style="color:red">Confirm password:</p> <%=password_field :ll, :password_confirmation, :style => "border-color:red"  %>
+    <% else %>
+        <div class="field">
+          Confirm password:<br />
+          <%= password_field :ll, :password_confirmation %>
+        </div>
+    <% end %>
+
+    <% if @user != nil%>
+        <% if @user.errors[:firstname].length > 0 %>
+            <p style="color:red">First name</p> <%=text_field :user,:firstname, :style => "border-color:red"  %>
+        <% else %>
+            <div class="field">
+              First name:<br />
+              <%= text_field :user, :firstname %>
+            </div>
+        <% end %>
+
+        <% if @user.errors[:lastname].length > 0 %>
+            <p style="color:red">Last name</p> <%=text_field :user,:lastname, :style => "border-color:red"  %>
+        <% else %>
+            <div class="field">
+              Last name:<br />
+              <%= text_field :user, :lastname %>
+            </div>
+        <% end %>
+
+    <%  else %>
+        <div class="field">
+          First Name:<br />
+          <%= text_field :user, :firstname %>
+        </div>
+        <div class="field">
+          Last Name:<br />
+          <%= text_field :user, :lastname %>
+        </div>
+    <% end %>
+
+    <%= submit_tag 'Create account',class: "btn btn-warning", style: "float:right;margin:20px -30px" %>
+    <!--<a href = "javascript:history.back()">Go back</a>-->
+
+<% end %>

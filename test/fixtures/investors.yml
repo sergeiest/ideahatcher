@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  startup_id: 1
+  user_id: 1
+  connection_type: 1
+  sum: 1
+
+two:
+  startup_id: 1
+  user_id: 1
+  connection_type: 1
+  sum: 1

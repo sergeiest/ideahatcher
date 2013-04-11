@@ -1,0 +1,33 @@
+<% div_name='investor' + people.firstname + people.lastname %>
+<div class="projectfield_no_campaign">
+  <%= link_to :controller => 'users', :id => people.id do %>
+      <div id="<%= div_name %>" class="project_no_campaign" onMouseMove="MM_changeProp('<%= div_name %>','','backgroundColor','#EBEBEB','DIV')" onMouseOut="MM_changeProp('<%= div_name %>','','backgroundColor','#FFFFFF','DIV')">
+<% if  people.avatar? %>
+        <img class="img-rounded-mid" src='<%= people.avatar.url(:thumb) %>' style="float:left;margin-right:10px;">
+<% else %>
+        <img class="img-rounded-mid" src='/images/profile/Nophoto.png' style="float:left;margin-right:10px;">
+<% end %>
+        <div id="description">
+          <h2 class="project"><%= people.firstname %>  <%= people.lastname %></h2>
+<% investor_num = people.Investor_startups.uniq.count %>
+<% if investor_num != 0 %>
+  <% if investor_num == 1 %>
+          <p>Invested in one comp.</p>
+  <% else %>
+          <p>Invested in <%= investor_num %> comp.</p>
+  <% end %>
+<% else %>
+          <p>Have not invested yet</p>
+<% end %>
+<% follower_num = people.Follower_startups.uniq.count %>
+<% if follower_num != 0 %>
+  <% if follower_num == 1 %>
+          <p>Following one comp.</p>
+  <% else %>
+          <p>Following <%= follower_num %> comp.</p>
+  <% end %>
+<% end %>
+        </div>
+      </div>
+  <% end %>
+</div>

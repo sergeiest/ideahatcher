@@ -1,0 +1,38 @@
+<%= render 'users/usernav' %>
+
+<div class="container-ideas">
+  <div class="container">
+    <div class="left-company">
+      <%= render 'info' %>
+      <div id="teaser-text">
+        <% if session[:id] != nil %>
+            <% for companydescription in @companydescriptions %>
+                <% if companydescription.allfield_id != 1 %>
+                  <div class="highlighted-company">
+                    <h5 style="color:orange"><%= Allfield.find(companydescription.allfield_id).field_name %>: <%= companydescription.field_status %></h5>
+                    <hr/>
+                    <p><%= simple_format h companydescription.content %></p>
+                  </div>
+                <% end %>
+            <% end %>
+        <% else %>
+            <% for companydescription in @companydescriptions %>
+                <% if Allfield.find(companydescription.allfield_id).view_flag == 1  %>
+                    <div class="highlighted-company">
+                      <h5 style="color:orange"><%= Allfield.find(companydescription.allfield_id).field_name %></h5>
+                      <hr/>
+                      <p><%= simple_format h companydescription.content %> </p>
+                    </div>
+                <% end %>
+            <% end %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="right-company">
+      <%= render 'actions' %>
+    </div>
+  </div>
+</div>
+
+

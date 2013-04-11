@@ -1,0 +1,8 @@
+<div class="left-company">
+  <%= render 'info' %>
+  <%= render :partial => 'investors/people', :collection => @startup.Investor_users %>
+</div>
+
+<div class="right-company">
+  <%= render 'actions' %>
+</div>

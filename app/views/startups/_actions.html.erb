@@ -1,0 +1,93 @@
+<div class="campaign-info" style="margin-top:60px">
+  <% campaign = @startup.Campaign %>
+  <% if campaign != nil and campaign.id != nil %>
+      <h5>Campaign goals</h5>
+      <% if campaign.status > 2 %>
+          <p> Goal: <%= number_to_currency(campaign.goal_sum, :precision => 0) %> </p>
+          <p> Valuation: <%= number_to_currency(campaign.valuation_sum, :precision => 0) %> </p>
+          <p> Raised: <%= number_to_currency(campaign.raised_sum , :precision => 0) %></p>
+          <div class="progress progress-primary" style="margin-bottom:10px;">
+            <% a= campaign.raised_sum * 100/ campaign.goal_sum %>
+            <div class="bar" style="width:<%= a %>% ;"></div>
+          </div>
+          <p> Closing date: <%= campaign.closing_date.strftime('%m/%d/%Y') %> </p>
+      <% else %>
+          <p> Goal: N/A </p>
+          <p> Valuation: N/A </p>
+          <p> Raised: N/A </p>
+          <p> Closing date: N/A </p>
+      <% end %>
+  <% else %>
+      <p> Goal: N/A </p>
+      <p> Valuation: N/A </p>
+      <p> Raised: N/A </p>
+      <p> Closing date: N/A </p>
+  <% end %>
+
+  <% case session[:connection_type] %>
+  <% when 2 then %>
+      <% if @startup.Campaign == nil %>
+          <%= link_to(:controller => 'campaigns', :action => 'guide_step') do %>
+              <button id="save-company" class="btn btn-warning" style="width:150px;">Start Campaign</button>
+          <% end %>
+      <% else %>
+          <% case @startup.Campaign.status %>
+          <% when 10 #1 %>
+              <p class="notice" style="color:red;">Campaign application is not finished.
+                <%= link_to 'Continue', :controller =>  'campaigns', :action => 'summary'%></p>
+          <% when 1, 2 %>
+              <p class="notice" style="color:green;">Your campaign is pending approval</p>
+          <% when 3 %>
+              <p class="notice" style="color:green;">Your campaign is running. </p>
+          <% else %>
+              <p class="notice" style="color:green;">Your do not have an active campaign</p>
+          <% end %>
+      <% end %>
+  <% when 1 then %>
+      <%= link_to(:controller => 'investors', :action => 'unfollowcompany') do %>
+          <button id="save-company" class="btn btn-warning" style="width:150px;">Unfollow company</button>
+      <% end %>
+  <% else %>
+      <%= link_to(:controller => 'authentications', :action => 'checklogin', :gotocontroller => 'investors', :gotoaction => 'followcompany') do %>
+          <button id="save-company" class="btn btn-warning" style="width:150px;">Follow company</button>
+      <% end %>
+      <% if @startup.Campaign != nil and @startup.Campaign.status == 3 %>
+          <hr/>
+          <%= link_to(:controller => 'authentications', :action => 'checklogin', :gotocontroller => 'investors', :gotoaction => 'new') do %>
+              <button id="save-company" class="btn btn-warning" style="width:150px;">Invest</button>
+          <% end %>
+      <% end %>
+  <% end %>
+</div>
+<div class="campaign-info">
+
+
+  <h5> Founders </h5>
+  <% if @startup_owners != nil %>
+    <ul class="nav nav-pills">
+      <%= render :partial => 'investors/person', :collection => @startup_owners %>
+    </ul>
+  <% else %>
+      <p>This company does not have owners </p>
+  <% end %>
+  <hr/>
+  <h5> Investors </h5>
+  <% if @startup_investors != nil %>
+    <ul class="nav nav-pills">
+      <%= render :partial => 'investors/person', :collection => @startup_investors %>
+    </ul>
+    <%= link_to 'More...', :controller => 'startups', :action => 'mentors' %>
+  <% else %>
+      <p>This company does not have investors </p>
+  <% end %>
+  <hr/>
+  <h5> Followers </h5>
+  <% if @startup_followers != nil %>
+    <ul class="nav nav-pills">
+      <%= render :partial => 'investors/person', :collection => @startup_followers %>
+    </ul>
+  <% else %>
+      <p>This company does not have followers </p>
+  <% end %>
+
+</div>

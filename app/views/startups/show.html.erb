@@ -1,0 +1,119 @@
+<%= render 'users/usernav' %>
+
+<div class="container-ideas">
+  <div class="container">
+    <div class="left-company">
+      <%= render 'info' %>
+
+      <div class="highlighted-company">
+        <h5>About company</h5>
+        <hr/>
+        <p><%= simple_format h @startup.pitch.firstletters(350) %></p>
+        <hr/>
+        <b>Product:
+            <% if @company_description_1 != nil %>
+                <%= @company_description_1.field_status %></b>
+            <% else %>
+                - no information - </b>
+            <% end %>
+            <% if @company_description_1 != nil %>
+                <p><%= @company_description_1.content %></p>
+            <% else %>
+                <p style="color:red">- no description - </p>
+            <% end %>
+        <hr/>
+        <b>Investment:
+            <% if @company_description_2 != nil %>
+                <%= @company_description_2.field_status %></b>
+            <% else %>
+                - no information - </b>
+            <% end %>
+            <% if @company_description_2 != nil %>
+                <p><%= @company_description_2.content %></p>
+            <% else %>
+                <p style="color:red">- no description - </p>
+            <% end %>
+        <hr/>
+        <b>Sales:
+            <% if @company_description_3 != nil %>
+                <%= @company_description_3.field_status %></b>
+            <% else %>
+                - no information - </b>
+            <% end %>
+        <% if @company_description_3 != nil %>
+            <p><%= @company_description_3.content %></p>
+        <% else %>
+            <p style="color:red">- no description - </p>
+        <% end %>
+      </div>
+
+
+      <div class="highlighted-company">
+        <h5>Team</h5>
+        <% @startup_teams.each do |startup_team|%>
+            <hr/>
+            <h5><%= startup_team.firstname %> <%= startup_team.lastname %> - <%= startup_team.title %></h5>
+            <table style="margin-left:30px;">
+              <tr>
+                <td style="width:150px;"><p>CMU affiliation:</p></td>
+                <td><p><%= startup_team.cmuaffiliation %></p></td>
+              </tr>
+              <% if startup_team.description and startup_team.description != "" %>
+                  <tr>
+                    <td style="width:150px;"><p>Description:</p></td>
+                    <td><p><%= startup_team.description %></p></td>
+                  </tr>
+              <% end %>
+            </table>
+        <% end %>
+      </div>
+
+      <div class="highlighted-company">
+        <h5>News</h5>
+        <div id="teaser-text">
+          <% if @startup_updates == nil || @startup_updates.count == 0  %>
+            <hr/>
+            <p>Company has not posted news so far... </p>
+          <% end %>
+          <%= render :partial => 'companyupdates/news', :collection => @startup_updates %>
+        </div>
+
+        <% if session[:connection_type]==2 %>
+          <%= form_for(@companyupdate) do |f| %>
+            <%
+               title_class = ""
+               content_class = ""
+               title_border = ""
+               content_border = ""
+               if @companyupdate.errors[:title].length > 0
+                 title_class= "style='color:red'"
+                 title_border = "border-color:red"
+               end
+               if @companyupdate.errors[:content].length > 0
+                 content_class= "style='color:red'"
+                 content_border = "border-color:red"
+               end
+            %>
+            <table>
+              <tr>
+                <th <%= title_class %> >Title</th>
+                <th <%= content_class %> >Content</th>
+              </tr>
+              <tr>
+                <td><%= f.text_field :title, :class => "span2", :style => title_border %></td>
+                <td><%= f.text_field :content, :class => "span6", :style => content_border %></td>
+              </tr>
+            </table>
+            <button id="next-company" class="btn btn-primary">Save</button>
+          <% end %>
+        <% end %>
+      </div>
+
+
+    </div>
+
+    <div class="right-company">
+      <%= render 'actions' %>
+    </div>
+  </div>
+ </div>

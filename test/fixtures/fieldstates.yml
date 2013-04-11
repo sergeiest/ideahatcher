@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  field_status: MyString
+  allfield_id: 
+
+two:
+  field_status: MyString
+  allfield_id: 

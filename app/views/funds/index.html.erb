@@ -1,0 +1,54 @@
+<h1> Welcome to the Approval view </h1>
+
+<table>
+  <tr>
+    <th>Startup</th>
+    <th>Link</th>
+    <th>Founder</th>
+    <th>CMU affiliation</th>
+    <th>Industry </th>
+    <th>City</th>
+    <th>Detailed info</th>
+    <th>Status</th>
+
+  </tr>
+
+<% i=1 %>
+<%  @startups.each do |startup| %>
+
+  <tr id='startup_<%= i %>' onMouseMove="MM_changeProp('startup_<%= i %>','','backgroundColor','#EBEBEB','tr')" onMouseOut="MM_changeProp('startup_<%= i %>','','backgroundColor','#FFFFFF','tr')">
+    <td><%= startup.name.firstletters(30) %></td>
+    <td class="table-center"><a href="http://<%= startup.link %>"> <%= startup.link %> </a></td>
+    <% user_id = startup.Owner_users.first.id %>
+    <% if user_id != nil %>
+    <td  class="table-center"><%= User.find(user_id).firstname %> <%= User.find(user_id).lastname %></td>
+    <% else %>
+    <td class="table-center">No founder...</td>
+    <% end %>
+    <td class="table-center"><%= User.find(user_id).cmuaffiliation.firstletters(10) %></td>
+    <td class="table-center">Web</td>
+    <td class="table-center">Pittsburgh, PA</td>
+    <td class="table-center">
+     <% campaign = startup.Campaign %>
+     <%   if campaign != nil %>
+     	<% if campaign.status == 2 %>
+          <%= link_to 'More...', :controller => 'funds', :action => 'approval', :startup_id => startup.id %>
+        <% end %>
+     <% end %>
+    </td>
+
+    <td class="table-center">
+     <%   if campaign != nil %>
+          <%= campaign.status %>
+     <% end %>
+    </td>
+  </tr>
+  <% i=i+1 %>
+  <% end %>
+</table>
+
+<br/>
+
+<h1>Recent news</h1>
+
+<%= render :partial => 'companyupdates/news', :collection => Companyupdate.find(:all, :limit => 10) %>

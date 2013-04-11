@@ -1,0 +1,112 @@
+<div class="navbar navbar-inverse" xmlns="http://www.w3.org/1999/html">
+  <div class="navbar-inner">
+    <ul class="nav">
+      <li class="active"><%= link_to :action => "guide_step" do %>0. Guidelines<%end%></li>
+      <li class="active"><a >1. Basic</a></li>
+      <li><a >2. About company</a></li>
+      <li><a >3. Team</a></li>
+      <li><a >4. Account</a></li>
+      <li><a >5. Review</a></li>
+      <% if session[:startup_id] != nil %>
+      <li class="active" style="margin-left:100px">
+        <%= link_to :controller => "startups", :action => "show",:id => session[:startup_id] do %>
+          <%=  @startup.name %>
+        <% end %>
+      </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+<div class="sign-up">
+
+  <h4>Basic information</h4>
+
+  <%= form_tag(:action => 'create_step', :multipart => true) do %>
+    <ol>
+      <div class="highlighted-list">
+        <li>
+        <% if @startup.errors[:name].length > 0 %>
+          <h5 class="error-message">Company name</h5>
+          <%= text_field(:startup,:name, :style => "border-color:red")%>
+        <% else %>
+          <h5>Company name</h5>
+          <%= text_field(:startup,:name)%>
+        <%end%>
+        </li>
+      </div>
+      <div class="highlighted-list">
+        <li>
+        <% if @startup.errors[:link].length > 0 %>
+          <h5 class="error-message">Link to your website</h5>
+          <%= text_field(:startup,:link, :style => "border-color:red")%>
+        <% else %>
+          <h5>Link to your website</h5>
+          <%= text_field(:startup,:link)%>
+        <%end%>
+        </li>
+      </div>
+      <div class="highlighted-list">
+        <li>
+          <h5>Short description</h5>
+          <%= text_area :startup,:pitch %>
+          <p>Here is you opportunity to sell your idea and attract investors</p>
+        </li>
+      </div>
+
+
+      <div class="highlighted-list">
+        <li>
+          <h5>Campaign goal</h5>
+        <% if @campaign == nil || (@campaign.id == nil)  %>
+          <label onclick="changeStatus()"><div style="display: inline;"><%= check_box :is, :campaign %></div>
+            <div style="margin:-18px 0 10px 30px" id="campaign-check-text">Start a fundraising campaign now (you can start it later)</div>
+          </label>
+          <% ss= "hidden" %>
+        <% else %>
+          <% ss = "" %>
+        <% end %>
+          <div id="campaign-div" <%= ss %> >
+              <hr style="margin-bottom:10px ;"/>
+            <% if @campaign != nil and (@campaign.errors[:goal_sum].length > 0 || @campaign.errors[:valuation_sum].length > 0)%>
+              <span class="input-prepend input-append" class="error-message">
+                <span class="add-on" style="border-color:red">$</span>
+                <%= text_field  :campaign, :goal_sum, :style => "border-color:red" %>
+              </span>
+            <% else %>
+              <span class="input-prepend input-append">
+                <span class="add-on">$</span>
+                <%= text_field  :campaign, :goal_sum%>
+              </span>
+            <% end %>
+              <span class="text-here">for</span>
+            <% if @campaign != nil and (@campaign.errors[:share].length > 0 || @campaign.errors[:valuation_sum].length > 0)%>
+              <span class="input-prepend input-append" class="error-message">
+                <%= text_field  :campaign,:share, :style => "border-color:red" %>
+                <span class="add-on" style="border-color:red">%</span>
+              </span>
+            <% else %>
+              <span class="input-prepend input-append">
+                <%= text_field  :campaign,:share %>
+                <span class="add-on">%</span>
+              </span>
+            <% end %>
+              <p>How much money you are planning to raise. The campaign will be run for two months</p>
+          </div>
+        </li>
+      </div>
+    </ol>
+    <button id="next-step" class="btn btn-warning" style="float:right">Next <span style="padding-left:20px"> > </span></button>
+  <% end %>
+</div>
+
+<script  type="text/javascript">
+    function changeStatus() {
+        if (document.getElementById('is_campaign').checked == true) {
+            document.getElementById('campaign-div').hidden = false;
+        }
+        else {
+            document.getElementById('campaign-div').hidden = true;
+        }
+    }
+</script>

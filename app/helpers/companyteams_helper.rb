@@ -1,0 +1,2 @@
+module CompanyteamsHelper
+end

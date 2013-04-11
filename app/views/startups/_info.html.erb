@@ -1,0 +1,100 @@
+<div class="highlighted-box-company">
+
+  <h2>
+    <%= @startup.name %>
+    <% if session[:connection_type]==2 %>
+        <%= link_to(:controller => "campaigns", :action => "basic_step" ) do %>
+            <button class="btn btn-small btn-primary">Update Info</button>
+        <% end %>
+    <% end %>
+  </h2>
+
+  <% if @startup.avatar? %>
+      <%= image_tag @startup.avatar.url(:large)%>
+  <% else %>
+      <img src='/images/profile/Nologo.png'/>
+  <% end %>
+
+
+</div>
+
+<div class="navbar navbar-inverse">
+  <div class="navbar-inner">
+<ul class="nav">
+
+  <% if params[:action] == 'show' %>
+      <li  class="active">
+  <% else %>
+      <li>
+  <% end %>
+  <%= link_to 'Summary', :controller => 'startups', :action => 'show', :id => session[:startup_id] %>
+  </li>
+
+  <% if session[:id] != nil and session[:id] != 0 and Investor.find_by_user_id_and_startup_id(session[:id],@startup.id) != nil %>
+      <!--<% if params[:action] == 'history_startup' and params[:controller] == 'investors' %>
+          <li  class="active">
+      <% else %>
+          <li>
+      <% end %>
+      <%= link_to 'Your transactions', :controller => 'investors', :action => 'history_startup'%>
+      </li> -->
+  <% end %>
+  <% if params[:action] == 'team' %>
+      <li  class="active">
+  <% else %>
+      <li>
+  <% end %>
+  <%= link_to 'Team', :controller => 'startups', :action => 'team' %>
+  </li>
+  <% if params[:action] == 'detailed' %>
+      <li  class="active">
+  <% else %>
+      <li>
+  <% end %>
+  <%= link_to 'Details', :controller =>  'startups' , :action => 'detailed' %>
+  </li>
+  <!--Investor
+  <% if params[:action] == 'mentors' %>
+      <li  class="active">
+  <% else %>
+      <li>
+  <% end %>
+  <%= link_to 'Investors', :controller => 'startups', :action => 'mentors' %>
+  </li> -->
+  <li style="border-left:1px #737373 solid;height:20px;margin: 10px 10px;">
+
+  </li>
+
+  <% campaign = @startup.Campaign %>
+  <% if campaign != nil and campaign.id != nil %>
+      <% if params[:action] == 'new' and params[:controller] == 'investors' %>
+          <li  class="active">
+      <% else %>
+          <li>
+      <% end %>
+      <%= link_to 'Invest', :controller => 'authentications', :action => 'checklogin', :gotocontroller => 'investors', :gotoaction => 'new' %>
+      </li>
+  <% end %>
+
+  <% if params[:controller] == 'ideas' %>
+      <li  class="active">
+  <% else %>
+      <li>
+  <% end %>
+  <%= link_to 'Workspace', :controller => 'ideas', :action => 'index', :id => @startup.id %>
+  </li>
+
+  <% if session[:id] != nil and session[:id] != 0  %>
+      <% if User.find(session[:id]).Funds.find_by_fund_id(1) != nil %>
+          <% if params[:action] == 'approval' %>
+              <li  class="active">
+          <% else %>
+              <li>
+          <% end %>
+          <%= link_to 'Approval', :controller => 'funds', :action => 'approval' %>
+          </li>
+      <% end %>
+  <% end %>
+</ul>
+</div>
+</div>

@@ -1,0 +1,37 @@
+<% div_name='project' + startup_no_campaign.id.to_s() %>
+<div class="project-field" id="<%= div_name %>"
+                            onMouseMove="MM_changeProp('<%= div_name %>','','backgroundColor','#ecf8ff','DIV')"
+                            onMouseOut="MM_changeProp('<%= div_name %>','','backgroundColor','#f4f4f4','DIV')">
+  <%= link_to (startup_no_campaign) do %>
+      <div id="<%= div_name %>" class="project" >
+        <% if startup_no_campaign.avatar != nil %>
+            <%= image_tag startup_no_campaign.avatar.url(:teaser), :style => "margin-bottom:10px;" %>
+        <% else %>
+            <img class="thumbnail1" src='/images/profile/Nologo.png' style="float:left;margin-right:10px;">
+        <% end %>
+        <div class="description">
+          <h2 class="project" ><%= startup_no_campaign.name %></h2>
+          <p><%= simple_format h startup_no_campaign.pitch.firstletters(120) %></p>
+        </div>
+        <hr/>
+        <div class="description-fields">
+          <ul class="media-list1">
+            <%for allfield in Allfield.find_all_by_view_flag(3)%>
+                <% a_field = startup_no_campaign.Companydescriptions.find_by_allfield_id(allfield) %>
+                <% if a_field != nil %>
+                    <li class="media1">
+                      <h5 class="pull-left"><%= a_field.field_status %></h5>
+                      <img src="/images/check.png" class="img-rounded-mini" style="float:right">
+                    </li>
+                <% end %>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+  <%end%>
+</div>
+
+
+
+
+

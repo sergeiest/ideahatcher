@@ -1,0 +1,10 @@
+<h2>Comming soon... Now the platform is under development.</h2>
+<%= flash[:notice] %>
+
+<%= form_tag :controller => 'authentications', :action => 'demo_login' do %>
+	<p>User Name:<br />
+	<%= text_field "user", "username" %></p>
+	<p>Password:<br />
+	<%= password_field "user", "password" %></p>
+	<%= submit_tag 'Login'%> 
+<% end %> 

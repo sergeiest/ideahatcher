@@ -1,0 +1,44 @@
+<%= form_for(@startup) do |f| %>
+
+<% if @startup.errors[:name].length > 0 %>
+    <h3 style="color:red">Company name*</h3>
+    <%= f.text_field :name, :style => "border-color:red"  %>
+<% else %>
+    <h3>Company name*</h3>
+    <%= f.text_field :name %>
+<% end %>
+
+    <br />
+
+<% if @startup.errors[:link].length > 0 %>
+    <h3 style="color:red">Link to your website</h3>
+    <%= f.text_field :link, :style => "border-color:red"  %>
+<% else %>
+    <h3>Link to your website</h3>
+    <%= f.text_field :link %>
+<% end %>
+
+  <br />
+
+  <div class="field">
+    <h3>Short description</h3>
+    <p>Please provide a short description of your company and its business. The best way 
+    		is to have 2-3 sentences describing what the company does and why your business is 
+    		interesting</p>
+    <%= f.text_area :pitch %>
+  </div>
+
+  </br>
+  <p>* - required fields </p>
+   
+  <%= link_to do %>
+  	<button id="next-company" class="btn btn-primary">
+    	<p>Save</p>
+  	</button>
+  <% end %>
+
+  <%= link_to(:controller => 'users', :action => 'index', :id => session[:id]) do %>
+    <button type="button" class="btn">Cancel</button>
+  <% end %>
+
+<% end %>

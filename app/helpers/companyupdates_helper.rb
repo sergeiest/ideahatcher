@@ -1,0 +1,2 @@
+module CompanyupdatesHelper
+end

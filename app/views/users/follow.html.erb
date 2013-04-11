@@ -1,0 +1,26 @@
+<%= render 'usernav' %>
+<div class="container-ideas">
+  <div class="container">
+
+    <% if session[:owner_type] == 1 %>
+    <h3>Companies you are following</h3>
+    <% else %>
+    <h3>Companies <%= @user.firstname %> is following</h3>
+    <% end %>
+    <% if @startups.length == 0 and @startups_no_capmaign.length == 0 %>
+        <% if params[:id]==session[:id].to_s() %>
+    <p>You do not have companies that you are following. You can add companies <%= link_to 'here', startups_path %></p>
+        <% else %>
+    <p>This person does not follow companies.</p>
+        <% end %>
+    <% end %>
+
+    <%= render :partial =>  "startups/startup", :collection => @startups %>
+    <div style="clear:both"></div>
+    <% if @startups_no_capmaign.length != 0 %>
+    <!--<h3 class="brand">Idle Campaigns</h3>-->
+    <hr/>
+    <%= render :partial => "startups/startup_no_campaign", :collection => @startups_no_capmaign %>
+    <% end %>
+  </div>
+</div>

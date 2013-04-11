@@ -1,0 +1,17 @@
+<div>
+    <div style="float:left" >
+
+      <% if employee.avatar? %>
+          <%= image_tag employee.avatar.url(:thumb), :class => "img-rounded-mid"  %>
+      <% else %>
+          <img src='/images/profile/Nophoto.png' class="img-rounded-mid"  />
+      <% end %>
+
+    </div>
+
+    <h4> <%= employee.firstname %> <%= employee.lastname %> - <%= employee.title %>  </h4>
+    <p> <%= employee.description %> </p>
+
+    <div style="clear:both"></div>
+
+</div>

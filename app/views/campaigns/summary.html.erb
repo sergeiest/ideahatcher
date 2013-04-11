@@ -1,0 +1,72 @@
+<div class="left-company">
+  <%= render 'startups/info' %>
+
+
+
+<% if @campaign != nil %>
+  <% case @campaign.status %>
+    <% when 1 %>
+<h3>Status: Campaign application is not finished</h3>
+<%= link_to edit_campaign_path(@campaign) do %>
+  <button id="save-company" class="btn btn-small btn-primary">Edit Campaign</button>
+<% end %>
+<%= link_to @campaign, method: :delete, data: { confirm: 'Are you sure you want to delete the Campaign?' } do %>
+  <button id="save-company" class="btn btn-small btn-primary">Delete Campaign</button>
+<% end %>
+    <% when 2 %>
+<h3>Status: Campaign is pending approval</h3>
+<%= link_to @campaign, method: :delete, data: { confirm: 'Are you sure you want to delete the Campaign?' } do %>
+    <button id="save-company" class="btn btn-small btn-primary">Delete Campaign</button>
+<% end %>
+<h5>You cannot update the campaign after it has been sent for approval</h5>
+    <% when 3 %>
+<h3>Status: Campaign is running, see the results <%= link_to 'here', :controller => 'investors', :action => 'history_startup'%></h3>
+<h5>You cannot update or delete the campaign after it has been approved</h5>
+    <% else %>
+<h3>Status: Campaign is not running... Contact us if you want to run a campaign</h3>
+  <% end %>
+
+<div style="float:right;width:400px;">
+  <% descriptions = @startup.Companydescriptions
+  @allfields.each do |all_field|
+    flag = 0
+    descriptions.each do |description|
+      if description.allfield_id == all_field.id %>
+  <h4><%= all_field.field_name %>: <%= description.field_status %></h4>
+  <p><%= description.content %></p>
+        <% flag =1
+      end
+    end
+    if flag == 0%>
+  <h4 style="color:red"><%= all_field.field_name %>: not specified</h4>
+    <% end
+  end %>
+</div>
+
+<p> Goal: <%= number_to_currency(@campaign.goal_sum, :precision => 0) %> </p>
+<p> Offered share: <%= number_to_percentage(@campaign.share, :precision => 2) %> </p>
+<p> Valuation: <%= number_to_currency(@campaign.valuation_sum, :precision => 0) %> </p>
+<p> Raised: <%= number_to_currency(@campaign.raised_sum , :precision => 0) %> </p>
+<p> Closing date: <%= @campaign.closing_date.strftime('%m/%d/%Y') %> </p>
+
+<div style="clear:both"></div>
+
+  <% case @campaign.status %>
+    <% when 1 %>
+<%= link_to(:controller => 'campaigns', :action => 'secondstep') do %>
+  <button class="btn btn-success">Finish and submit campaign</button>
+<% end %>
+    <% when 2 %>
+<%= link_to(:controller => 'campaigns', :action => 'submit_campaign') do %>
+  <button class="btn btn-success">Send campaign for approval</button>
+<% end %>
+  <% end %>
+
+<% end %>
+
+
+</div>
+
+<div class="right-company">
+  <%= render 'startups/actions' %>
+</div>

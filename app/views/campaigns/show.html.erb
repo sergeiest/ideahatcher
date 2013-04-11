@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Startup:</b>
+  <%= @campaign.startup_id %>
+</p>
+
+<p>
+  <b>Goal sum:</b>
+  <%= @campaign.goal_sum %>
+</p>
+
+<p>
+  <b>Raised sum:</b>
+  <%= @campaign.raised_sum %>
+</p>
+
+<p>
+  <b>Closing date:</b>
+  <%= @campaign.closing_date %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%= @campaign.status %>
+</p>
+
+
+<%= link_to 'Edit', edit_campaign_path(@campaign) %> |
+<%= link_to 'Back', campaigns_path %>

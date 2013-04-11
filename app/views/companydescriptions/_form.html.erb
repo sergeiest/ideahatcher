@@ -1,0 +1,16 @@
+<%= form_for(@companydescription) do |f| %>
+
+<% if @companydescription.errors[:allfield_id].length > 0 %>
+    <p style="color:red">You already have this description</p>
+<% end %>
+    <%= f.select("allfield_id", options_from_collection_for_select(Allfield.all, :id, :field_name, @companydescription.allfield_id ))  %>
+
+  <div class="field">
+    <p><%= f.label :content %></p>
+    <%= f.text_area :content %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit 'Save'%>
+  </div>
+<% end %>

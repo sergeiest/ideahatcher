@@ -1,0 +1,137 @@
+<%= render 'users/usernav' %>
+
+<div class="container-ideas">
+  <div class="container">
+    <div class="left-company">
+        <%= render 'startups/info' %>
+        <% previous_idea_id = nil
+        previous_id = nil
+        previous_idea_is_protected = nil
+        i=0
+        for idea in @ideas
+            if idea.idea_id == nil || idea.idea_id != previous_idea_id
+                if i==0
+                    i = 1
+                else %>
+                    <hr/>
+                    <% if @reader_type == 0 %>
+                        <%=  link_to "Login to add a comment", :controller => "authentications", :action => "checklogin",
+                                     :gotocontroller => "ideas", :gotoaction =>"index" %>
+                    <% else %>
+                        <a id="text_idea_<%= previous_idea_id %>" onclick="addForm(<%= previous_id %>, <%= previous_idea_id %>, <%= previous_idea_is_protected %> )">
+                          Click to add a comment
+                        </a>
+                    <% end %>
+                </div>
+                <% end %>
+                <% previous_idea_id = idea.id
+                previous_idea_is_protected = idea.is_protected %>
+                <div id="idea_<%= idea.id %>" class="highlighted-company">
+                    <% if idea.title == nil || idea.title == "" %>
+                        <h5>
+                          <span id="name_idea_<%= idea.id %>" style="color:orange">Open discussion</span>
+                        </h5>
+                    <% else %>
+                        <h5>
+                          <span id="name_idea_<%= idea.id %>" style="color:orange">
+                            <%= idea.title %>
+                          </span>
+                            <% if idea.is_protected == 1 %>
+                                <span style="margin-left:20px;color:black;font-weight:normal; font-size:12px">
+                                  Private, only mentors can see it
+                                </span>
+                            <% end %>
+                        </h5>
+                    <% end %>
+            <% end %>
+            <% previous_id = idea.id  %>
+            <hr/>
+            <%= simple_format h idea.content %>
+            <div style="font-style:italic;float:right">
+                <p><%= idea.first_name %> <%= idea.last_name %> on <%= idea.created_at.strftime('%m/%d/%Y') %></p>
+            </div>
+            <div style="clear:both"></div>
+        <% end %>
+
+        <% if i==1 %>
+            <hr/>
+            <% if @reader_type == 0 %>
+                <%=  link_to "Login to add a comment", :controller => "authentications", :action => "checklogin", :gotocontroller => "ideas", :gotoaction =>"index" %>
+            <% else %>
+                <a id="text_idea_<%= previous_idea_id %>" onclick="addForm(<%= idea.id %>, <%= previous_idea_id %>, <%= previous_idea_is_protected %>)">Click to add a comment</a>
+            <% end %>
+            </div>
+        <% end %>
+
+    <div id="idea_0" class="highlighted-company">
+        <h5 style="color:orange">Add an Idea or Question</h5>
+        <% if @reader_type == 0 %>
+            <%=  link_to "Login to add a comment", :controller => "authentications", :action => "checklogin",
+                                :gotocontroller => "ideas", :gotoaction =>"index", :id => params[:id] %>
+        <% else %>
+            <a id="text_idea_0" onclick="addForm(0,0,0)">Click here to add your idea...</a>
+        <% end %>
+    </div>
+
+        <div id="add_idea_form" hidden>
+            <%= form_for (@idea) do |f| %>
+                <div id="input_title">
+                  <p style="display: inline;">
+                    Topic: <%= f.text_field :title, :value => ""%>
+                    <% if @reader_type > 1 %>
+                      <span style="margin:0 10px 0 30px;">
+                        <%= f.check_box :is_protected, :checked => true %>
+                      </span>
+                      Make it private (only mentors can see it)
+                    <% else %>
+                      <%= f.hidden_field :is_protected, :value => 0 %>
+                    <% end %>
+                  </p>
+                </div>
+                <%= f.hidden_field :idea_id, :value => "" %>
+                <%= f.hidden_field :startup_id, :value => @startup.id %>
+                <%= f.text_area :content%>
+                <button class="btn btn-warning">Save <span style="padding-left:20px"> > </span></button>
+            <% end %>
+        </div>
+    </div>
+
+    <div class="right-company">
+        <%= render 'startups/actions' %>
+    </div>
+  </div>
+</div>
+
+
+
+
+<script  type="text/javascript">
+    function addForm(elementName, previousIdName, isProtected) {
+        var addName = "idea_" + previousIdName;
+        var textName = "text_idea_" + previousIdName;
+        var titleName = "name_idea_" + previousIdName;
+
+        var formNode = document.getElementById("add_idea_form");
+        var oldTextName = "text_" + formNode.parentNode.id;
+
+        if (document.getElementById(oldTextName) != null) {
+            document.getElementById(oldTextName).hidden = false;
+        }
+
+        if (elementName != 0) {
+            document.getElementById("idea_title").value = document.getElementById(titleName).innerText;
+            document.getElementById("idea_idea_id").value = previousIdName;
+            document.getElementById("input_title").hidden = true;
+        }   else {
+            document.getElementById("idea_title").value = "";
+            document.getElementById("idea_idea_id").value = "";
+            document.getElementById("input_title").hidden = false;
+        }
+        document.getElementById("idea_is_protected").checked = isProtected;
+        document.getElementById("idea_content").value = "";
+        document.getElementById(textName).hidden = true;
+        document.getElementById(addName).appendChild(formNode);
+        formNode.hidden = false;
+        document.getElementById("idea_content").focus();
+    }
+</script>

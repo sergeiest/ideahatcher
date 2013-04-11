@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head >
+  <Link rel="shortcut icon" href="/images/logo_icon.png">
+  <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+  <script src="/js/bootstrap-datepicker.js"></script>
+  <title>Capital Round</title>
+  <%= stylesheet_link_tag    "bootstrap", :media => "all" %>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+
+<script type="text/javascript">
+  $(function(){
+       $('.carousel').carousel();
+    });
+      $(function(){
+       $('#example').tooltip(options)
+    });
+  
+
+
+    function MM_changeProp(objId,x,theProp,theValue) { //v9.0
+      var obj = null; with (document){ if (getElementById)
+      obj = getElementById(objId); }
+      if (obj){
+      if (theValue == true || theValue == false)
+        eval("obj.style."+theProp+"="+theValue);
+      else eval("obj.style."+theProp+"='"+theValue+"'");
+      }
+    }
+</script>
+
+
+  <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-38158408-1']);
+      _gaq.push(['_setDomainName', 'capitalround.com']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+          var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+          ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
+  </script>
+
+  
+</head>
+<body >
+
+
+<div class="main-nav">
+  <%= link_to(:controller => "home") do  %>
+      <img src="/images/logo_capitalround.png" class="nav pull-left" style="padding-left:38px;height:35px">
+
+  <% end %>
+
+  <div class="login-nav">
+    <%= form_tag startups_search_startups_path, :class => 'form-search' do %>
+      <span class="input-append">
+        <input type="text" class="span2 search-query" style="height:16px; margin-top:4px">
+        <button class="btn btn-small" style="color: #f88a00; margin-top:4px">Search</button>
+      </span>
+    <% end %>
+  </div>
+  <div class="login-nav">
+<% if session[:id] == nil || session[:id] == 0 %>
+    <%= link_to 'Login', :controller => 'authentications', :action => 'login' %> |
+    <%= link_to 'Sign up', authentications_new_path %>
+<% else %>
+  <% user = User.find(session[:id])  %>
+    <%= link_to :controller => 'users', :id => session[:id] do %>
+      <%= user.firstname %> <%= user.lastname %>
+    <% end %> |
+    <%= link_to 'Logout', :controller => 'authentications', :action => 'logout' %>
+<% end %>
+  </div>
+  <div class="top-nav">
+    <ul>
+      <li><%= link_to "Invest", :controller => "startups" %></li>
+      <li> | </li>
+      <li><%= link_to 'Get funded', :controller => "authentications", :action => "checklogin", :gotocontroller => "campaigns", :gotoaction => "guide_step"%></li>
+      <li> | </li>
+      <li><%= link_to "How it works", home_contacts_path %></li>
+<% if session[:id] != nil and session[:id] != 0  %>
+   <% if User.find(session[:id]).Funds.find_by_fund_id(1) != nil %>
+      <li> | </li>
+      <li><%= link_to 'Approval view', :controller => 'funds', :action => 'index'%></li>
+   <% end %>
+<% end %>
+    </ul>
+  </div>
+</div>
+
+<div style="clear:both"></div>
+
+<div  class="container">
+
+    <%= yield %>
+
+</div>
+
+<div id="contacts-box">
+  <p>Copyright 2013 - Capital Round</p>
+</div>
+
+</body>
+</html>

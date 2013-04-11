@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head >
+  <Link rel="shortcut icon" href="/images/logo_icon.png">
+  <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+  <script src="/js/bootstrap-datepicker.js"></script>
+  <script src="/js/bootstrap-dropdown.js"></script>
+  <title>Capital Round</title>
+  <%= stylesheet_link_tag    "bootstrap", :media => "all" %>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+
+  <script type="text/javascript">
+      $(function(){
+          $('.carousel').carousel();
+      });
+      $(function(){
+          $('#example').tooltip(options)
+      });
+      function MM_changeProp(objId,x,theProp,theValue) { //v9.0
+          var obj = null; with (document){ if (getElementById)
+              obj = getElementById(objId); }
+          if (obj){
+              if (theValue == true || theValue == false)
+                  eval("obj.style."+theProp+"="+theValue);
+              else eval("obj.style."+theProp+"='"+theValue+"'");
+          }
+      }
+  </script>
+
+  <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-38158408-1']);
+      _gaq.push(['_setDomainName', 'capitalround.com']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+          var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+          ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
+  </script>
+
+
+</head>
+
+
+<body>
+
+<div class="home-nav">
+  <div class="logo-img">
+    <%= link_to(:controller => "home") do  %>
+        <img src="/images/logo_capitalround.png">
+    <% end %>
+  </div>
+
+  <% if session[:id] != nil and session[:id] != 0 %>
+    <% user = User.find(session[:id]) %>
+    <ul class="user-nav nav nav-pills">
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+            <% if user.avatar? %>
+              <%= image_tag user.avatar.url(:thumb), :class => "img-rounded-small" %>
+            <% else %>
+              <%= image_tag "/images/profile/Nophoto.png", :class => "img-rounded-small" %>
+            <% end %>
+            <%= user.firstname %> <%= user.lastname %>
+            <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu">
+            <% owner_number = user.Owners.count %>
+            <% if owner_number != 0 %>
+              <li role="presentation"><%= link_to user.Owner_startups[0].name, :controller => 'startups',
+                                           :action => 'show', :id => user.Owners[0].startup_id %></li>
+            <% else %>
+              <li role="presentation"><%= link_to "Start a company", :controller => 'campaigns',
+                                                  :action => 'guide_step' %></li>
+            <% end %>
+            <hr />
+            <li role="presentation"><%= link_to 'Update profile', :controller => 'users', :action => 'edit',
+                                                :id => user.id %></li>
+            <li role="presentation"><%= link_to 'Change password', :controller => 'users', :action => 'change_password',
+                                                :id => user.id %></li>
+            <hr />
+            <li role="presentation"><%= link_to 'Logout', :controller => 'authentications', :action => 'logout' %></li>
+        </ul>
+      </li>
+    </ul>
+  <% else %>
+    <div class="login-nav">
+        <%= form_tag(:action => 'process_login', :controller => 'authentications', :multipart => true) do %>
+            <div class="login-input">
+              <p>Login (email):</p>
+              <%= text_field "authentication", "username"%>
+            </div>
+            <div class="login-input">
+              <p>Password:</p>
+              <%= password_field "authentication", "password" %>
+            </div>
+            <%= submit_tag 'Login', class: "btn btn-small",
+                           style: "color: #f88a00;margin-top:21px;height:26px;width:80px;"%>
+        <% end %>
+    </div>
+  <% end %>
+</div>
+
+<div style="clear:both"></div>
+
+<%= yield %>
+
+
+<div class="footer">
+  <p>Copyright 2013 - Capital Round</p>
+</div>
+
+</body>
+</html>

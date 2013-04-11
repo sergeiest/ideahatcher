@@ -1,0 +1,18 @@
+
+/* -------- Global ----------- */
+
+body { background-color:#FFFFFF;  font-family:"Abadi MT Condensed Light" }
+
+/* -------- Headings -------- */
+
+h1 	{font-size:18px; font-weight:bold; border-bottom:1px #999 solid; margin-bottom:5px; color:#c60; font-family:"Abadi MT Condensed Light";}
+h2 	{font-size:16px; font-weight:bold; margin-bottom:15px; font-family:"Abadi MT Condensed Light";}
+p	{font-size:16px; font-family:"Abadi MT Condensed Light";}
+li	{font-size:16px; font-family:"Abadi MT Condensed Light";}
+
+a			{ text-decoration:none; }	
+a:link		{ color:#3875D7; }	
+a:visited	{ color:#3875D7; }	
+a:active	{ color:#C60; background-color:inherit;}	
+a:focus		{ color:#c60; background-color:inherit;}	
+a:hover		{ color:#c60; background-color:inherit;}	

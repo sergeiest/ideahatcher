@@ -1,0 +1,41 @@
+<% if session[:connection_type] == 2 and person.id != session[:id] %>
+    <li class="dropdown" style="width:160px;">
+      <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+        <% if person.avatar? %>
+            <%= image_tag person.avatar.url(:thumb), :class => "img-rounded-small" %>
+        <% else %>
+            <%= image_tag "/images/profile/Nophoto.png", :class => "img-rounded-small" %>
+        <% end %>
+        <%= person.firstname %>  <%= person.lastname %>
+        <% follower = Follower.find_by_user_id_and_startup_id(person.id,@startup.id) %>
+        <% if follower != nil and follower.status == 2 %>
+            <span style="font-size:10px">mentor</span>
+        <% end %>
+        <b class="caret"></b>
+      </a>
+      <ul class="dropdown-menu">
+        <li><%= link_to 'Go to profile', :controller => "users", :action => "index", :id => person.id %></li>
+        <% if follower != nil and follower.status == 1 %>
+          <li><%= link_to 'Invite to be a mentor', :controller => "investors", :action => "add_mentor", :mentor_id => person.id %></li>
+        <% else %>
+          <li><%= link_to 'Remove from mentors', :controller => "investors", :action => "delete_mentor", :mentor_id => person.id %></li>
+        <% end %>
+      </ul>
+    </li>
+<% else %>
+    <li class="dropdown" style="width:160px;">
+      <%= link_to :controller => "users", :action => "index", :id => person.id do %>
+          <% if person.avatar? %>
+              <%= image_tag person.avatar.url(:thumb), :class => "img-rounded-small" %>
+          <% else %>
+              <%= image_tag "/images/profile/Nophoto.png", :class => "img-rounded-small" %>
+          <% end %>
+          <%= person.firstname %>  <%= person.lastname %>
+          <% follower = Follower.find_by_user_id_and_startup_id(person.id,@startup.id) %>
+          <% if follower != nil and follower.status == 2 %>
+              <span style="font-size:10px">mentor</span>
+          <% end %>
+      <% end %>
+    </li>
+<% end %>
+

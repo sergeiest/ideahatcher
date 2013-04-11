@@ -1,0 +1,42 @@
+<div class="left-company">
+  <%= render 'startups/info' %>
+
+<table class="table table-hover">
+  <thead>
+      <tr>
+        <th>#</th>
+        <th>Date</th>
+        <th>Invested Sum</th>
+        <th>Owned equity</th>
+      </tr>
+  </thead>
+  <tbody>
+<% i=0 %>
+<% sum = 0 %>
+<% valuation = @startup.Campaign.valuation_sum %>
+<% for investor in @investors %>
+      <tr>
+        <td><%= i %></td>
+        <td><%= investor.created_at.strftime('%m/%d/%Y') %></td>
+        <td><%= investor.sum %></td>
+        <td><%= number_to_percentage((0.0 + investor.sum) / valuation *100, :precision => 3) %></td>
+      </tr>
+  <% i=i+1 %>
+  <% sum = sum+investor.sum %>
+<% end %>
+  </tbody>
+  <thead>
+    <tr>
+      <th>Total</th>
+      <th><%= i %> transactions</th>
+      <th><%= sum %></th>
+      <th><%= number_to_percentage((0.0 + sum)/ valuation*100, :precision => 3) %></th>
+    </tr>
+  </thead>
+</table>
+
+</div>
+
+<div class="right-company">
+  <%= render 'startups/actions' %>
+</div>

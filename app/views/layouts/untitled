@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<title>Electrical and Computer Engineering at Carnegie Mellon University - </title>
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<meta content="ECE is a department of the Carnegie Institute of Technology at Carnegie Mellon University." name="description">
+
+<link href="http://www.ece.cmu.edu/_core/img/favicon.ico" rel="shortcut icon">
+<link href="http://www.ece.cmu.edu/_core/img/apple-touch-icon.png" rel="apple-touch-icon">
+<link href="http://www.ece.cmu.edu/_core/img/apple-touch-icon-72x72.png" rel="apple-touch-icon" sizes="72x72">
+<link href="http://www.ece.cmu.edu/_core/img/apple-touch-icon-114x114.png" rel="apple-touch-icon" sizes="114x114"> 
+ 
+<meta author="web@ece.cmu.edu"><!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+<!--[if lt IE 9]>
+          <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+<!-- Le styles -->
+<link href="http://www.ece.cmu.edu/_core/css/bootstrap.css" rel="stylesheet">
+<link href="http://www.ece.cmu.edu/_core/css/bootstrap-responsive.css" rel="stylesheet">
+<link href="http://www.ece.cmu.edu/_core/css/specifics.css" rel="stylesheet">
+<link href="http://www.ece.cmu.edu/_core/css/specifics-mergelater.css" rel="stylesheet">
+<!-- test content -->
+<!-- <link href="/_core/css/specifics.css" rel="stylesheet"/>
+ Le fav and touch icons
+<link href="/_core/images/favicon.ico" rel="shortcut icon"/>
+<link href="/_core/images/apple-touch-icon.png" rel="apple-touch-icon"/>
+<link href="/_core/images/apple-touch-icon-72x72.png" rel="apple-touch-icon" sizes="72x72"/>
+<link href="/_core/images/apple-touch-icon-114x114.png" rel="apple-touch-icon" sizes="114x114"/> -->
+<script type="text/javascript" async="" src="./Electrical and Computer Engineering at Carnegie Mellon University -_files/ga.js"></script><script src="./Electrical and Computer Engineering at Carnegie Mellon University -_files/jquery.min.js"></script>
+<script src="./Electrical and Computer Engineering at Carnegie Mellon University -_files/bootstrap.js"></script>
+<script src="./Electrical and Computer Engineering at Carnegie Mellon University -_files/carousel.js"></script>
+<script src="./Electrical and Computer Engineering at Carnegie Mellon University -_files/rotate.js"></script>
+<!--[if lt IE 9]>
+<script src="/_core/js/respond.min.js"></script>
+<![endif]-->
+<script type="text/javascript">
+   var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-1348693-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+<script>function notifyScript() {     var evt = document.createEvent("Event");     evt.initEvent("notify", false, false);     if (document.getElementById("addthis-extension-script") == null) {        var d=document.createElement("div"); d.setAttribute("style", "display:none"); d.setAttribute("id", "addthis-extension-script");         if (window._ate)             d.textContent=_ate.pub();         else if(window.addthis_config && addthis_config.pubid)    d.textContent= addthis_config.pubid;        else if(window.addthis_config && addthis_config.username)    d.textContent= addthis_config.username;        else if(window.addthis_pub)    d.textContent= addthis_pub;        else             d.textContent="";         document.body.appendChild(d);     }    document.documentElement.dispatchEvent(evt); }notifyScript()</script></head><div class="primary-nav">
+<div class="container">
+<div class="row-fluid navbar">
+				
+<ul class="nav span12">
+<li class="visible-phone"><a class="span12" href="#" id="navcollapse" title="Show all navigation sections.">Sections...<img alt="Show all navigation sections." class="arrow-align" height="26" src="./Electrical and Computer Engineering at Carnegie Mellon University -_files/arrow.png" width="28"></a></li>
+<li class="hidden-phone"><a href="/" title="About CR">About CR</a></li>
+<li class="hidden-phone"><a href="/" title="Startups">Programs &amp; Admissions</a></li>
+<li class="hidden-phone"><a href="/" title="Investors">Research</a></li>
+
+<li class="hidden-phone"></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+<!-- content container -->
+<div id="content-wrap">
+
+<div class="container">
+<div class="row-fluid hero-unit">
+
+<div class="span8">
+<div class="carousel" id="myCarousel"><div class="carousel-inner"><div class="item"><a href="http://www.ece.cmu.edu/news/story/2012/10/ece-celebrates-partnership-with-portuguese-business-school.html"><img src="./Electrical and Computer Engineering at Carnegie Mellon University -_files/PortoDualDegree.jpg"><div class="carousel-caption"><h4>ECE Celebrates Partnership With Portuguese Business School</h4><p>The Department of Electrical and Computer Engineering and the University of Porto's Business School in Porto, Portugal, have embarked on a new double-degree graduate program in engineering and business this semester.</p></div></a></div><div class="item active"><a href="http://www.ece.cmu.edu/news/story/2012/09/ece_makes_major.html"><img src="./Electrical and Computer Engineering at Carnegie Mellon University -_files/feature-cyber-physical-systems-1440x851.jpg"><div class="carousel-caption"><h4>ECE Makes Major Advances in Cyber-Physical Systems</h4><p>Thanks to Carnegie Mellon researchers, the possibilities are endless.</p></div></a></div><div class="item"><a href="http://www.ece.cmu.edu/news/story/2012/07/ece_dssc_help.html"><img src="./Electrical and Computer Engineering at Carnegie Mellon University -_files/scouting-for-engineers_sm1.jpg"><div class="carousel-caption"><h4>ECE, DSSC Help CIT "Scout for Engineers"</h4><p>Scouting for Engineers brings hands-on experience with practical engineering problems to more than 40 Boys Scouts and Girls Scouts from across the Pittsburgh region.</p></div></a></div></div><a class="carousel-control left" data-slide="prev" href="http://www.ece.cmu.edu/index.html#myCarousel">‹</a><a class="carousel-control right" data-slide="next" href="http://www.ece.cmu.edu/index.html#myCarousel">›</a></div>
+</div>
+
+<div class="span4">
+<div class="admit-box margin">
+								<a href="http://www.ece.cmu.edu/about/index.html">
+<img alt="Learn about ECE." class="span12" src="./Electrical and Computer Engineering at Carnegie Mellon University -_files/learn3.jpg">
+<h4 class="box-caption">Learn about ECE <span class="carousel-control right">›</span></h4>
+</a>							</div>
+<div class="admit-box margin">
+								<a href="http://www.ece.cmu.edu/about/visitor.html">
+<img alt="Visit the Campus." class="span12" src="./Electrical and Computer Engineering at Carnegie Mellon University -_files/visit3.jpg">
+<h4 class="box-caption">Visit the Campus <span class="carousel-control right">›</span></h4>
+</a>							</div>
+<div class="admit-box margin">
+								<a href="http://www.ece.cmu.edu/programs-admissions/admissions/index.html">
+<img alt="Fall 2013 Admissions" class="span12" src="./Electrical and Computer Engineering at Carnegie Mellon University -_files/apply3.jpg">
+<h4 class="box-caption">Fall 2013 Admissions <span class="carousel-control right">›</span></h4>
+</a>							
+</div>
+<div class="admit-box">
+								<a href="http://www.ece.cmu.edu/news/calendar/index.html">
+<img alt="Apply online." src="./Electrical and Computer Engineering at Carnegie Mellon University -_files/events3.jpg">
+<h4 class="box-caption">Specials Events <span class="carousel-control right">›</span></h4>
+</a>							</div>
+</div>
+
+</div>
+</div>
+
+
+
+<div class="container sub">
+<div class="row-fluid">
+<script>
+ $(document).ready(function() {
+
+    $('.carousel').carousel({
+      interval: 3500
+    });
+ });
+</script>
+</div>
+
+<div class="row-fluid">
+
+<div class="span4 featurette news">
+<h3><a href="http://www.ece.cmu.edu/news/index.html">ECE Headlines</a></h3><ul><li><a href="http://www.ece.cmu.edu/news/story/2012/11/ceremony-marks-launch-of-joint-institute-of-engineering-.html"><span class="date_icon"><abbr class="month" title="November">Nov</abbr><span class="day">12</span><span class="year">2012</span></span>Ceremony Marks Launch of Joint Institute of Engineering </a></li><li><a href="http://www.ece.cmu.edu/news/story/2012/11/cmu-team-wins-best-foundational-advance-at-igem-jamboree-.html"><span class="date_icon"><abbr class="month" title="November">Nov</abbr><span class="day">5</span><span class="year">2012</span></span>CMU Team Wins Best Foundational Advance at iGEM Jamboree </a></li><li><a href="http://www.ece.cmu.edu/news/story/2012/10/peha-receives-prestigious-technical-publication-award.html"><span class="date_icon"><abbr class="month" title="November">Nov</abbr><span class="day">5</span><span class="year">2012</span></span>Peha Receives Prestigious Technical Publication Award</a></li></ul>
+<h3><a href="http://www.ece.cmu.edu/news/calendar/index.html">ECE Events</a></h3>
+<ul>
+
+      
+   <li><span class="date_icon">
+<abbr class="month" title="November">Nov</abbr> 
+<span class="day">15</span> 
+<span class="year">2012</span>  
+</span> 
+
+<a href="http://www.ece.cmu.edu/news/calendar/2012/11/15_eilyan_bitar_cornell.html">
+<b>ECE Seminar</b>: 
+  Eilyan Bitar, Cornell 
+   </a><br></li>
+       
+
+         
+   <li><span class="date_icon">
+<abbr class="month" title="November">Nov</abbr> 
+<span class="day">22</span> 
+<span class="year">2012</span>  
+</span> 
+
+<a href="http://www.ece.cmu.edu/news/calendar/2012/10/thanksgiving.html">
+ Thanksgiving
+  </a><br></li>
+   </ul>
+ 
+ 
+</div>
+
+<div class="span4 featurette spotlight">
+<h3><a href="http://www.ece.cmu.edu/prospective/graduate/application/">Fall 2013 Application</a></h3>
+<p><img alt="Apply for Fall 2013 admission to graduate school!" src="./Electrical and Computer Engineering at Carnegie Mellon University -_files/student-apply-now.jpg" style="float: right;">We are now <a href="http://www.ece.cmu.edu/prospective/graduate/application/">accepting graduate school applications for the <b>Fall 2013</b> semester</a>.&nbsp;If you have an old application you would like to use for Fall 2013 admissions or if you have questions about application for Spring 2014 admission, please send email to the <a href="mailto:apps@ece.cmu.edu"><span class="s1">ECE Graduate Office</span></a>.</p>
+<p><button class="btn-large btn-primary"><a href="http://www.ece.cmu.edu/prospective/graduate/application/"><i class="icon-circle-arrow-right icon-white home-button">&nbsp;</i>Apply online!</a></button></p>
+</div>
+
+<div class="span4 featurette portals">
+<h3><span class="verbose">Are you part of the ECE family?</span> <span class="short">ECE Portals</span></h3>
+<p>Information portals designed specifically for staff, faculty, students, and graduates. Check in with these sections of the website (or make them your start page) to stay up to date on all information relevant to your interests.</p>
+<ul>
+<li><a href="http://www.ece.cmu.edu/insider/grads/index.html"><button class="btn btn-block btn-danger"><i class="icon-circle-arrow-right icon-white">&nbsp;</i>Graduate Students</button></a></li>
+<li><a href="http://www.ece.cmu.edu/insider/undergrads/index.html"><button class="btn btn-block btn-danger"><i class="icon-circle-arrow-right icon-white">&nbsp;</i>Undergrads</button></a></li>
+<li><a href="http://www.ece.cmu.edu/alumni/index.html"><button class="btn btn-block btn-danger"><i class="icon-circle-arrow-right icon-white">&nbsp;</i>Alumni</button></a></li>
+<li><a href="http://www.ece.cmu.edu/insider/faculty-staff/index.html"><button class="btn btn-block btn-danger"><i class="icon-circle-arrow-right icon-white">&nbsp;</i>Faculty &amp; Staff</button></a></li>
+</ul>
+</div>
+
+</div> 
+<!--end first row-->
+
+
+
+</div>
+
+
+</div>    
+<!-- end content container -->
+<footer>
+<div class="container">
+<div class="row-fluid">
+<div class="span4" id="search">
+<form action="http://www.ece.cmu.edu/search" method="get">
+<p>
+						<input name="q" placeholder="Search" type="search">
+						<input class="submit" type="submit" value="submit">
+					</p>
+</form>
+<p class="clear"> 2012 © <abbr title="Carnegie Mellon University">CMU</abbr> Electrical &amp; Computer Engineering</p>
+</div>
+<div class="span4 contact">
+					<address>
+						5000 Forbes Ave. Pittsburgh, PA 15213-3890 USA<br>
+						Phone: 412-268-7400 Fax: 412-268-2860
+					</address>
+<p><a href="mailto:web@ece.cmu.edu?Subject=[ECE]%20Footer">Email the web team</a></p>
+<p><img alt="Electrical and Computer Engineering at Carnegie Mellon University" class="hidden-phone" id="easter" src="./Electrical and Computer Engineering at Carnegie Mellon University -_files/ece_logo_small.png"></p>
+</div>
+<div class="social-media span4">
+<p><a href="http://cmu.edu/"><img alt="Electrical and Computer Engineer is a school of College of Engineering at Carnegie Mellon University" src="./Electrical and Computer Engineering at Carnegie Mellon University -_files/cmu-logo-white.png"></a></p>
+<p>&nbsp;</p>
+</div>
+</div>
+</div>
+<!--/.fluid-container-->
+	</footer>
+<script>
+ $(document).ready(function() {
+  var status = 0;
+  $("#navcollapse").click(function() {
+    if(status==1){
+      $("#navcollapse img").rotate(0);
+      $(".primary-nav li.hidden-phone").removeClass("available");
+      $(".sub-primary-nav").show();
+      status=0;
+    }else{
+      $("#navcollapse img").rotate(90);
+      $(".primary-nav li.hidden-phone").addClass("available");
+      $(".sub-primary-nav").hide();
+      status=1;
+    }
+  });
+ });
+</script>
+
+<div style="display:none" id="addthis-extension-script"></div></body></html>

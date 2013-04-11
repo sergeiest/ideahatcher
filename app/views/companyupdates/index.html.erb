@@ -1,0 +1,17 @@
+<% @startup = Startup.find(session[:startup_id])
+   @companyupdates = @startup.Companyupdates         %>
+
+<%= render :partial => "startups/teaser" %>
+<%= render :partial => 'startups/startupnav' %>
+
+<h3>Company news</h3>
+
+
+<%= render :partial => 'news', :collection => @companyupdates %>
+
+<hr/>
+
+<h3>Add news</h3>
+<p>After you save the news, you cannot delete or edit news. See corporate policy </p>
+
+<%= render 'form' %>

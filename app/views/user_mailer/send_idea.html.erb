@@ -1,0 +1,14 @@
+<p>Hello <%= @name %>,</p>
+
+<p>You got a message from <%= @idea.first_name %> <%= @idea.last_name %> on Capital Round Workspace:</p>
+
+<hr/>
+
+<h4><%=  @idea.title %></h4>
+
+<%= @idea.content %>
+
+<hr/>
+
+<p>You can access this message on your Workspace:
+<a href='http:/demo.capitalround.com/ideas?id=<%=@idea.startup_id%>'> link </a></p>

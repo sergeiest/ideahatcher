@@ -1,0 +1,12 @@
+<div id="notice" style="font-size:16px">
+  Please login to proceed
+</div>
+
+<%= form_tag :action => 'process_login' do %>
+	<p>User Name:<br />
+	<%= text_field "user", "username" %></p>
+	<p>Password:<br />
+	<%= password_field "user", "password" %></p>
+	<%= submit_tag 'Login'%> 
+	<a href = "javascript:history.back()">Go back</a>
+<% end %> 

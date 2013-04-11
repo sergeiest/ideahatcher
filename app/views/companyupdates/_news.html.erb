@@ -1,0 +1,10 @@
+<div>
+    <p>
+      <b>
+        <%= news.newsdate.strftime '%m/%d/%Y' %>
+        - <%= Startup.find(news.startup_id).name %>
+        - <%= news.title %>
+      </b>
+      - <%= news.content %>
+    </p>
+</div>

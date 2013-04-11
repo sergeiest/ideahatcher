@@ -1,0 +1,126 @@
+<% div_name='project' + startup.id.to_s() %>
+
+<div id="<%= div_name %>" class="project-field"
+                onMouseMove="MM_changeProp('<%= div_name %>','','backgroundColor','#ecf8ff','DIV')"
+                onMouseOut="MM_changeProp('<%= div_name %>','','backgroundColor','white','DIV')">
+    <%= link_to (startup) do %>
+        <% if startup.avatar != nil %>
+            <%= image_tag startup.avatar.url(:teaser) %>
+        <% else %>
+            <img class="thumbnail1" src='/images/profile/Nologo.png' style="float:left;margin-right:10px;">
+        <% end %>
+        <div class="description">
+            <h2 class="project" ><%= startup.name %></h2>
+            <p><%= simple_format h startup.pitch.firstletters(120) %></p>
+        </div>
+        <% if startup.Campaign !=nil && startup.Campaign.status == 3 %>
+            <hr/>
+            <div class="description-fields">
+                <ul class="media-list1">
+                    <%for allfield in Allfield.find_all_by_view_flag(3)%>
+                        <% a_field = startup.Companydescriptions.find_by_allfield_id(allfield) %>
+                        <% if a_field != nil %>
+                           <li class="media1">
+                                <h5 class="pull-left"><%= a_field.field_status %></h5>
+                                <img src="/images/check.png" class="img-rounded-mini" style="float:right">
+                            </li>
+                        <% end %>
+                    <% end %>
+                </ul>
+                <hr/>
+                <table>
+                    <tr>
+                        <td >Goal: </td>
+                        <td class="td1"><span class="label label-warning"><%= number_to_currency(startup.Campaign.goal_sum, :precision => 0) %> </span></td>
+                    </tr>
+                    <tr >
+                        <td >Share:</td>
+                        <td class="td1"><b><%= number_to_percentage(startup.Campaign.share, :precision => 1) %></b></td>
+                    </tr>
+                </table>
+                <div class="progress progress-primary">
+                    <% a= startup.Campaign.raised_sum * 100/ startup.Campaign.goal_sum %>
+                    <div class="bar" style="width:<%= a %>% ;"></div>
+                </div>
+            </div>
+        <% end %>
+        <hr/>
+        <button class="btn btn-mini" type="button" id="like_<%= div_name%>"
+                        onclick="changeStatusLike('like_<%= div_name%>', '<%= div_name%>')">Like</button>
+        <button class="btn btn-mini" type="button" id="not_clear_<%= div_name%>"
+                        onclick="changeStatusLike('not_clear_<%= div_name%>','<%= div_name%>')">Didn't get it</button>
+        <button class="btn btn-mini" type="button" id="dislike_<%= div_name%>"
+                        onclick="changeStatusLike('dislike_<%= div_name%>','<%= div_name%>')">No interest</button>
+    <%end%>
+</div>
+
+
+
+<div id="modal_like_<%= div_name%>" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header" style="background-color:grey; color:white">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h4>Please rate each aspect of the business</h4>
+  </div>
+  <div class="modal-body">
+      <% company_descriptions = startup.Companydescriptions.all %>
+      <% company_descriptions.each do |description| %>
+          <b><%= Allfield.find(description.allfield_id).field_name %>: <%= description.field_status %></b>
+          <select class="span1" style="font-size: 12px; display:inline; float:right; height:30px">
+              <option value="0">--</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option >
+          </select>
+          <% if description != nil %>
+            <p><%= description.content %></p>
+          <% else %>
+            <p style="color:red">- no description - </p>
+          <% end %>
+          <hr/>
+      <% end %>
+  </div>
+  <div class="modal-footer">
+      <button class="btn" data-dismiss="modal" style="color:orange">Submit</button>
+  </div>
+</div>
+
+
+<div id="modal_not_clear_<%= div_name%>" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header" style="background-color:grey; color:white">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h4>Please select what is not clear about this company</h4>
+  </div>
+  <div class="modal-body">
+    <table class="table table-hover check-table">
+      <tr id="problem_customer_<%= div_name %>" onclick="checkProblem('customer_<%= div_name %>')">
+        <th>Problem / Customers / Market</th>
+        <td><input id="check_customer_<%= div_name %>" type="checkbox" value="1" /></td>
+      </tr>
+      <tr id="problem_product_<%= div_name %>" onclick="checkProblem('product_<%= div_name %>')">
+        <th>Solution / Product</th>
+        <td><input id="check_product_<%= div_name %>" type="checkbox" value="1" /></td>
+      </tr>
+      <tr id="problem_revenue_<%= div_name %>" onclick="checkProblem('revenue_<%= div_name %>')">
+        <th>Revenue model</th>
+        <td><input id="check_revenue_<%= div_name %>" type="checkbox" value="1" /></td>
+      </tr>
+      <tr id="problem_marketing_<%= div_name %>" onclick="checkProblem('marketing_<%= div_name %>')">
+        <th>Marketing / Entering strategy</th>
+        <td><input id="check_marketing_<%= div_name %>" type="checkbox" value="1" /></td>
+      </tr>
+      <tr id="problem_competition_<%= div_name %>" onclick="checkProblem('competition_<%= div_name %>')">
+        <th>Competition / Positioning</th>
+        <td><input id="check_competition_<%= div_name %>" type="checkbox" value="1" /></td>
+      </tr>
+    </table>
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" style="color:orange">Submit</button>
+  </div>
+</div>
+
+
+
+
