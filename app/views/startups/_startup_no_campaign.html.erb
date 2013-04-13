@@ -28,6 +28,33 @@
           </ul>
         </div>
       </div>
+
+      <hr/>
+      <%= form_tag({:action => "vote_like", :controller => 'startups', :id => startup_no_campaign.id},
+                   :remote => true, multipart: true) do %>
+          <%= hidden_field_tag :id, startup_no_campaign.id %>
+          <%= hidden_field_tag :type, 'like' %>
+          <%= submit_tag  'Like',
+                          :class => "btn btn-mini",
+                          :id => 'like_' + div_name %>
+      <% end %>
+      <%= form_tag({:action => "vote_not_clear", :controller => 'startups', :id => startup_no_campaign.id},
+                   :remote => true, multipart: true) do %>
+          <%= hidden_field_tag :id, startup_no_campaign.id %>
+          <%= hidden_field_tag :type, 'not_clear' %>
+          <%= submit_tag  "Didn't get it",
+                          :class => "btn btn-mini",
+                          :id => 'not_clear_' + div_name %>
+      <% end %>
+      <%= form_tag({:action => "vote_dislike", :controller => 'startups', :id => startup_no_campaign.id},
+                   :remote => true, multipart: true) do %>
+          <%= hidden_field_tag :id, startup_no_campaign.id %>
+          <%= hidden_field_tag :type, 'dislike' %>
+          <%= submit_tag  "Dislike",
+                          :class => "btn btn-mini",
+                          :id => 'dislike_' + div_name %>
+      <% end %>
+
   <%end%>
 </div>
 
