@@ -93,6 +93,9 @@ Webapp::Application.routes.draw do
   get "startups/show"
   get "startups/update"
   post "startups/search_startups"
+  post "startups/vote_like"
+  post "startups/vote_not_clear"
+  post "startups/vote_dislike"
   resources :startups
   
   resources :peoples

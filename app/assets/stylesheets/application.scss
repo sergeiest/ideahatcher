@@ -408,7 +408,7 @@ h2.project{
     margin:0 0 10px 0;
     -webkit-border-radius: 5px;
   }
-  button { width: 70px; margin:0 2px;}
+  input { width: 70px; margin:0 3px; float: left;}
   h5, p, a {color: #595959;}
 }
 
@@ -416,3 +416,57 @@ h2.project{
   th {width: 600px; height: 30px; padding-top:20px;}
   td { padding-top:20px;}
 }
+
+.vote_modal {
+  .modal-header {
+  background-color:grey; color:white;
+  }
+  button {
+    color:orange;
+  }
+  p {
+    line-height: 16px;
+    font-size:12px;
+    margin:0px ;
+  }
+  .slider-bar {
+    width:200px;
+    min-height: 50px;
+    float:right;
+    padding: 0;
+    margin-top:0px;
+    margin-left:20px;
+    display:inline;
+    color: orange;
+
+
+    .progress-slider{
+      padding: 0;
+      margin:3px 10px;
+      cursor:pointer;
+    }
+
+    .bar{
+      width:0%;
+      cursor:pointer;
+    }
+
+    .slider-start{
+      float:left;
+      margin-top:0px;
+
+    }
+    .slider-info{
+      margin-top:0px;
+      color:#1e90ff;
+    }
+    .slider-end{
+      float:right;
+      margin-top:0px;
+    }
+
+
+  }
+}
+
+

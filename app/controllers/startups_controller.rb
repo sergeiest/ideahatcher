@@ -174,5 +174,25 @@ class StartupsController < ApplicationController
     redirect_to :action => "index"
   end
 
+  def vote_like
+    startup = Startup.find(params[:id])
+    @company_descriptions = startup.Companydescriptions
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def vote_not_clear
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def vote_dislike
+    respond_to do |format|
+      format.js
+    end
+  end
+
 
 end

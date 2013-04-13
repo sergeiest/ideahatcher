@@ -42,23 +42,7 @@ function showHidden(elementName) {
 }
 
 
-function changeStatusLike(elementId,divName) {
-    document.getElementById('like_'+ divName).disabled = false;
-    document.getElementById('not_clear_'+ divName).disabled = false;
-    document.getElementById('dislike_'+ divName).disabled = false;
-    document.getElementById('like_'+ divName).className = "btn btn-mini";
-    document.getElementById('not_clear_'+ divName).className = "btn btn-mini";
-    document.getElementById('dislike_'+ divName).className = "btn btn-mini";
 
-    document.getElementById(elementId).disabled = true;
-    document.getElementById(elementId).className = "btn btn-mini btn-primary";
-
-    this.event.returnValue = false;
-    if (elementId.lastIndexOf('dislike_', 0)) {
-        $('#modal_'+ elementId).modal('show');
-    }
-
-}
 
 function checkProblem(elementName) {
     if (document.getElementById('check_'+ elementName).checked == true) {
@@ -67,5 +51,38 @@ function checkProblem(elementName) {
     } else {
         document.getElementById('check_'+ elementName).checked = true;
         document.getElementById('problem_'+ elementName).style.background = '#ecf8ff';
+    }
+}
+
+
+function startSlide(barId){
+    var bar = document.getElementById('bar_'+barId);
+    var slider = document.getElementById('slider_'+barId);
+    var info = document.getElementById('info_'+barId);
+    var modal = document.getElementById('modal_like');
+    var set_perc = ((((event.clientX - bar.offsetLeft - modal.offsetLeft) / bar.offsetWidth)).toFixed(2));
+    slider.style.width = (set_perc * 100) + '%';
+    }
+
+
+function stopSlide(barId){
+    var bar = document.getElementById('bar_'+ barId);
+    var slider = document.getElementById('slider_'+ barId);
+    var info = document.getElementById('info_'+ barId);
+    var modal = document.getElementById('modal_like');
+    var set_perc = ((((event.clientX - bar.offsetLeft - modal.offsetLeft) / bar.offsetWidth)).toFixed(2));
+    slider.style.width = (set_perc * 100) + '%';
+    info.style.marginLeft = set_perc * 180 + 'px';
+    info.innerText = Math.round(set_perc * 5)/1 ;
+    }
+
+
+function MM_changeProp(objId,x,theProp,theValue) { //v9.0
+    var obj = null; with (document){ if (getElementById)
+        obj = getElementById(objId); }
+    if (obj){
+        if (theValue == true || theValue == false)
+            eval("obj.style."+theProp+"="+theValue);
+        else eval("obj.style."+theProp+"='"+theValue+"'");
     }
 }
