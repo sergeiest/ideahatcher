@@ -34,6 +34,11 @@ class String
       self
     end
   end
+
+  def escape_characters_in_string()
+    pattern = /(\'|\"|\.|\*|\/|\-|\\)/
+    string.gsub(pattern, '\\\0')
+  end
   
 end
 

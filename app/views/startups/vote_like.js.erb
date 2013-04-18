@@ -41,12 +41,14 @@ modalBody.innerHTML = "";
 
     newContent = document.createElement("div");
     <% content_string = ""
-    description.content.split("\n").each do |text_string|
-       content_string = content_string + " " + text_string
+    description.content.gsub(/\r\n?/, '\n').split("\n").each do |text_string|
+       content_string = content_string + text_string + " "
     end %>
+
 
     newContent.innerHTML =  "<h5><%=description.field_status%></h5>" +
                             "<p><%= content_string.html_safe %></p>" +
+                            "<a href='/ideas/idea_test?id=4'>Learn more / add idea / provide feedback</a>" +
                             "<div style='clear:both'></div><hr/>";
 
     newDiv.appendChild(newContent);

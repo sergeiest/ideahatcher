@@ -1,0 +1,119 @@
+<%= render 'users/usernav' %>
+
+<div class="container-ideas">
+  <div class="container">
+    <div class="left-company">
+      <%= render 'startups/info' %>
+        <% idea = @ideas[0] %>
+        <div id="idea_<%= idea.id %>" class="highlighted-company">
+            <% if idea.title == nil || idea.title == "" %>
+                <h5>
+                  <span id="name_idea_<%= idea.id %>" style="color:orange">Open discussion</span>
+                  <% topic = "Open discussion" %>
+                </h5>
+            <% else %>
+                <h5>
+                  <span id="name_idea_<%= idea.id %>" style="color:orange"><%= idea.title %></span>
+                  <% topic = idea.title %>
+                </h5>
+            <% end %>
+
+            <hr/>
+
+            <div class="idea-test">
+              <div class="left-side">
+                <div class="idea-statement">
+                  We offer a fun way for employees to stay on task at work. Using gamification best practices,
+                  we reward players for staying on task and taking appropriate breaks.
+                </div>
+                <input class="btn btn-mini" id="like_new" type="submit" value="I like this more" onclick="changeButton(0)"/>
+              </div>
+
+              <div class="my_corner">
+              </div>
+              <script>
+                  $('.my_corner').prepend('<div class="tr"></div>')
+                          .prepend('<div class="tl"></div>')
+                          .prepend('<div class="br"></div>')
+                          .prepend('<div class="bl"></div>');
+              </script>
+
+              <div class="idea-statement">
+                  <div class="idea-statement">
+                    <div class="idea-statement">
+                      We offer a fun way for employees to stay on task at work. Using gamification best practices,
+                      we reward players for staying on task and taking appropriate breaks.
+                    </div>
+                  </div>
+              </div>
+
+              <input class="btn btn-mini" id="like_old" type="submit" value="I like this more" onclick="changeButton(1)" />
+
+
+              <hr/>
+              <script>
+                function changeButton(isNew){
+                    if (isNew == 0){
+                        document.getElementById('like_old').disabled = false;
+                        document.getElementById('like_new').disabled = true;
+                        document.getElementById('like_old').className = "btn btn-mini";
+                        document.getElementById('like_new').className = "btn btn-mini btn-primary";
+                    } else {
+                        document.getElementById('like_new').disabled = false;
+                        document.getElementById('like_old').disabled = true;
+                        document.getElementById('like_new').className = "btn btn-mini";
+                        document.getElementById('like_old').className = "btn btn-mini btn-primary";
+                    }
+                }
+              </script>
+
+            </div>
+
+          <% for idea in @ideas %>
+
+            <%= simple_format h idea.content %>
+            <div class="author">
+                <p><%= idea.first_name %> <%= idea.last_name %> on <%= idea.created_at.strftime('%m/%d/%Y') %></p>
+            </div>
+            <div style="clear:both"></div>
+            <hr/>
+          <% end %>
+          <div id="following_Idea<%= @ideas[0].idea_id %>"></div>
+          <% if @reader_type == 0 %>
+              <%=  link_to "Login to add a comment", :controller => "authentications", :action => "checklogin", :gotocontroller => "ideas", :gotoaction =>"index" %>
+          <% else %>
+              <a id="text_idea" onclick="addForm()">Click to add a comment</a>
+          <% end %>
+
+          <div id="add_idea_form" hidden>
+            <%= form_for @idea, :remote => true do |f| %>
+                <%= f.hidden_field :title, :value => @ideas[0].title %>
+                <%= f.hidden_field :is_protected, :value => 0 %>
+                <%= f.hidden_field :idea_id, :value => @ideas[0].idea_id %>
+                <%= f.hidden_field :startup_id, :value => @startup.id %>
+                <%= f.text_area :content%>
+                <button class="btn btn-warning">Save <span style="padding-left:20px"> > </span></button>
+            <% end %>
+          </div>
+
+        </div>
+
+    </div>
+
+  <div class="right-company">
+    <%= render 'startups/actions' %>
+  </div>
+</div>
+</div>
+
+
+
+
+<script  type="text/javascript">
+    function addForm() {
+        document.getElementById("add_idea_form").hidden = false;
+        document.getElementById("text_idea").hidden = true;
+    }
+</script>
+
+

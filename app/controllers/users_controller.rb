@@ -32,11 +32,8 @@ class UsersController < ApplicationController
   def ideas
     @user = User.find(params[:id])  if params[:id] and params[:id]!=0
     @ideas = Idea.where(:is_protected => 0)
-    @ideas.sort! { |a, b| [a['title'], a['created_at']] <=> [b['title'], b['created_at']] }
     @ideas.uniq! {|a| a.idea_id}
-
-
-
+    @ideas.sort! { |a, b| [a['title'], a['created_at']] <=> [b['title'], b['created_at']] }
   end
 
   def ideas_more

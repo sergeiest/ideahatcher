@@ -84,7 +84,7 @@
     }
   }
 
-  p, b {
+  p, b, a {
     line-height:16px;
     font-size:12px;
   }
@@ -393,6 +393,8 @@ h2.project{
   }
 }
 
+.author {font-style:italic;text-align:right}
+
 // Startups
 
 .project-field{
@@ -424,7 +426,7 @@ h2.project{
   button {
     color:orange;
   }
-  p {
+  p, a {
     line-height: 16px;
     font-size:12px;
     margin:0px ;
@@ -469,4 +471,70 @@ h2.project{
   }
 }
 
+
+.idea-test{
+  padding-top:50px;
+  input{
+    margin-left:0px;
+    width:300px;
+  }
+
+  .idea-statement{
+    background-color:#b0c4de;
+    padding:10px;
+    -webkit-border-radius: 5px;
+    line-height: 20px;
+    font-size:12px;
+    width:250px;
+    border:3px white solid;
+    color:white;
+    height: 80px;
+    margin-top:-25px;
+
+  }
+
+  .left-side{
+   float: right;
+   margin-top:-25px;
+   input{
+     margin-top:32px;
+     margin-left:0px;
+     width:270px;
+   }
+  }
+
+  .my_corner {
+    position: relative;
+    margin:-40px 7px;
+    width: 0px;
+    height: 70px;
+    padding: 10px;
+    background-color: #ffd486;
+    float: right;
+  }
+
+  .my_corner .tl, .my_corner .tr,
+  .my_corner .bl, .my_corner .br {
+    width: 0;
+    height: 0;
+    position: absolute;
+  }
+
+
+  .my_corner .tr {
+    top: 0;
+    right: 0;
+    border-top: 50px solid white;
+    border-left: 20px solid transparent;
+  }
+
+  .my_corner .br {
+    bottom: 0;
+    right: 0;
+    border-bottom: 50px solid white;
+    border-left: 20px solid transparent;
+  }
+
+
+}
 

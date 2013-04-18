@@ -1,6 +1,4 @@
 class IdeasController < ApplicationController
-  # GET /ideas
-  # GET /ideas.json
 
   layout 'main'
 
@@ -58,8 +56,6 @@ class IdeasController < ApplicationController
   end
 
 
-  # POST /ideas
-  # POST /ideas.json
   def create
 
     idea = Idea.new(params[:idea])
@@ -75,7 +71,6 @@ class IdeasController < ApplicationController
     idea.last_name = user.lastname
     idea.first_name = user.firstname
     idea.user_id = user.id
-    idea.content = idea.content
 
 
     respond_to do |format|
@@ -84,9 +79,14 @@ class IdeasController < ApplicationController
           idea.idea_id = idea.id
           idea.update_attributes :idea_id => idea.id
         end
-        email_idea(idea)
+        #Do not sent email!!!
+        #email_idea(idea)
         format.html { redirect_to action: "index", id: idea.startup_id}
         format.json { head :no_content }
+        @ideas = Array.new
+        @ideas[0] = idea
+        params[:id] = idea.idea_id
+        format.js {render "show_idea"}
       else
         format.html { render action: "index", id: idea.startup_id }
         format.json { render json: idea.errors, status: :unprocessable_entity }
@@ -120,6 +120,54 @@ class IdeasController < ApplicationController
     end
   end
 
+  def show_idea
+    @ideas = Idea.where(:idea_id => params[:idea_id])
+    @ideas.sort! { |a, b| [a['created_at']] <=> [b['created_at']] }
+    # Delete id = params[:id]!!!
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def idea_test
+    @user = User.find(session[:id]) if session[:id] and session[:id] != 0
+    session[:startup_id]= params[:id]
+    @startup = Startup.find(params[:id])
+    @startup_investors = @startup.Investor_users.all.uniq
+    @startup_followers = @startup.Follower_users.all.uniq
+    @startup_owners = @startup.Owner_users.all.uniq
+
+    if session[:id] == nil || session[:id]== 0
+      @reader_type = 0
+    else
+      if @startup_owners.first.id == session[:id]
+        @reader_type = 3
+      else
+        if !@startup_followers.detect{|w| w.id == session[:id]}
+          @reader_type = 2
+        else
+          @reader_type = 1
+        end
+      end
+    end
+
+
+    @ideas = @startup.Ideas.all
+
+    @ideas.sort! { |a, b| [a['title'], a['created_at']] <=> [b['title'], b['created_at']] }
+
+    @idea = Idea.new
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @ideas }
+    end
+
+  end
+
+  def hide_idea
+
+  end
 
 
 end

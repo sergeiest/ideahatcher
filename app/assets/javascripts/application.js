@@ -15,29 +15,44 @@
 //= require_tree .
 
 
-function showHidden(elementName) {
+function showHiddenIdeas(elementName) {
 
     var elementName_1 = elementName + "_1";
-    var elementName_2 = elementName + "_2";
-    var elementName_3 = elementName + "_3";
+    var elementName_2 = elementName + "_info";
+    var elementName_3 = "following_"+ elementName;
     var invertElementName_1 = elementName + "_invert_1";
-    var invertElementName_2 = elementName + "_invert_2";
-    var invertElementName_3 = elementName + "_invert_3";
 
     if (document.getElementById(elementName_1).hidden == true) {
         document.getElementById(elementName_1).hidden = false;
         document.getElementById(invertElementName_1).hidden = true;
         document.getElementById(elementName_2).hidden = false;
         document.getElementById(elementName_3).hidden = false;
-        document.getElementById(invertElementName_2).hidden = true;
-        document.getElementById(invertElementName_3).hidden = true;
+
     } else {
         document.getElementById(elementName_1).hidden = true;
         document.getElementById(invertElementName_1).hidden = false;
         document.getElementById(elementName_2).hidden = true;
         document.getElementById(elementName_3).hidden = true;
-        document.getElementById(invertElementName_2).hidden = false;
-        document.getElementById(invertElementName_3).hidden = false;
+    }
+}
+
+
+function showHiddenForm(elementName) {
+
+    var elementName_1 = elementName + "_1";
+    var elementName_form = elementName + "_form";
+
+    var invertElementName_1 = elementName + "_invert_1";
+
+    if (document.getElementById(elementName_1).hidden == true) {
+        document.getElementById(elementName_1).hidden = false;
+        document.getElementById(invertElementName_1).hidden = true;
+        document.getElementById(elementName_form).hidden = false;
+    } else {
+        document.getElementById(elementName_1).hidden = true;
+        document.getElementById(invertElementName_1).hidden = false;
+        document.getElementById(elementName_form).hidden = true;
+        document.getElementById(elementName_form).getElementsByTagName('textarea')[0].value = "";
     }
 }
 

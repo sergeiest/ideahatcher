@@ -4,16 +4,21 @@
   <div class="container">
     <div class="left-company">
         <%= render 'startups/info' %>
+
         <% previous_idea_id = nil
         previous_id = nil
         previous_idea_is_protected = nil
         i=0
+
+
+
         for idea in @ideas
             if idea.idea_id == nil || idea.idea_id != previous_idea_id
                 if i==0
                     i = 1
                 else %>
                     <hr/>
+                    <div id="following_Idea<%= previous_idea_id %>"></div>
                     <% if @reader_type == 0 %>
                         <%=  link_to "Login to add a comment", :controller => "authentications", :action => "checklogin",
                                      :gotocontroller => "ideas", :gotoaction =>"index" %>
@@ -47,14 +52,17 @@
             <% previous_id = idea.id  %>
             <hr/>
             <%= simple_format h idea.content %>
-            <div style="font-style:italic;float:right">
+            <div class="author">
                 <p><%= idea.first_name %> <%= idea.last_name %> on <%= idea.created_at.strftime('%m/%d/%Y') %></p>
             </div>
             <div style="clear:both"></div>
+
         <% end %>
+
 
         <% if i==1 %>
             <hr/>
+            <div id="following_Idea<%= previous_idea_id %>"></div>
             <% if @reader_type == 0 %>
                 <%=  link_to "Login to add a comment", :controller => "authentications", :action => "checklogin", :gotocontroller => "ideas", :gotoaction =>"index" %>
             <% else %>
@@ -74,7 +82,7 @@
     </div>
 
         <div id="add_idea_form" hidden>
-            <%= form_for (@idea) do |f| %>
+            <%= form_for @idea, :remote => true do |f| %>
                 <div id="input_title">
                   <p style="display: inline;">
                     Topic: <%= f.text_field :title, :value => ""%>

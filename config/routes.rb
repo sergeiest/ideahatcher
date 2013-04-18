@@ -1,5 +1,7 @@
 Webapp::Application.routes.draw do
 
+  get "ideas/show_idea"
+  get "ideas/idea_test"
   resources :ideas
 
 
