@@ -98,6 +98,8 @@ Webapp::Application.routes.draw do
   post "startups/vote_like"
   post "startups/vote_not_clear"
   post "startups/vote_dislike"
+  get "startups/vote_lightning"
+  get "startups/vote_next"
   resources :startups
   
   resources :peoples

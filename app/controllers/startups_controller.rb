@@ -6,6 +6,8 @@ class StartupsController < ApplicationController
     case params[:action]
       when 'index', 'show', 'team', 'detailed'
         "main"
+      when 'vote_lightning'
+        "lightning"
       else
         "application"
     end
@@ -193,6 +195,26 @@ class StartupsController < ApplicationController
       format.js
     end
   end
+
+
+  def vote_lightning
+    @startup = Startup.find(params[:id])
+    @startup_teams = @startup.Companyteams
+    @company_descriptions = @startup.Companydescriptions
+
+  end
+
+  def vote_next
+    id = params[:id]
+    if !id || id == 0
+      startups = Startup.all
+    else
+      startups = Startup.where('id != ?', id)
+    end
+    id = startups[rand(startups.length)] if startups.length > 0
+    redirect_to :action => "vote_lightning", :id => id
+  end
+
 
 
 end

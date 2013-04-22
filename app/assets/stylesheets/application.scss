@@ -1,8 +1,7 @@
+// Old
 
 .sign-up {
-
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-
   width:600px;
   margin:0 auto;
 
@@ -58,6 +57,9 @@
   }
 }
 
+
+// Company page
+
 .highlighted-box {
   background-color:#ecf8ff;
   margin:0 -20px;
@@ -96,8 +98,6 @@
   width:200px;
 }
 
-
-
 .campaign-info {
   -webkit-border-radius: 5px;
   border:1px #c8c8c8 solid;
@@ -124,6 +124,21 @@
     border:1px #c8c8c8 solid;
     background-color: white;
   }
+
+  .company-name {
+    background-color:white;
+    color:orange;
+    text-align:right;
+    padding:5px 20px;
+    float:right;
+    position: relative;
+    top: -80px;
+    right: -1px;
+    -webkit-border-radius: 5px 0 0 5px;
+    min-width:300px;
+    margin-bottom: -60px;
+  }
+
 
 }
 
@@ -153,6 +168,7 @@ div.teaser{
   border-color:red;
 }
 
+// Layout
 
 #contacts-box {
   clear:both;
@@ -163,13 +179,12 @@ div.teaser{
 
 }
 
-
-
 .container {
   margin:10px auto;
   width: 940px;
 }
 
+// Other
 
 h2.project{
   font-size: 15px;
@@ -215,6 +230,7 @@ h2.project{
   background:url('/images/Home_background.png') no-repeat center top;
   background-size: 100% 600px;
 }
+
 
 .home-nav {
   height: 55px;
@@ -302,7 +318,7 @@ h2.project{
   h3 {margin-top:0;}
 }
 
-// Ideas
+// Ideas Page
 
 .idea {
   -webkit-border-radius: 5px;
@@ -395,7 +411,7 @@ h2.project{
 
 .author {font-style:italic;text-align:right}
 
-// Startups
+// Startups Main Page
 
 .project-field{
   float:left;
@@ -471,7 +487,6 @@ h2.project{
   }
 }
 
-
 .idea-test{
   padding-top:50px;
   input{
@@ -538,3 +553,184 @@ h2.project{
 
 }
 
+
+// Lightning Vote Page
+
+.background-lightning {
+  background-color: #e4d5c0;
+}
+
+.lightning-left {
+  height:100%;
+  width:50%;
+  float:left;
+}
+
+.lightning-right {
+  height:100%;
+  width:50%;
+  float:right;
+
+  .next-link {
+    background-color:white;
+    color:orange;
+    text-align:right;
+    padding:5px 20px;
+    -webkit-border-radius: 5px 0 0 5px;
+    min-width:12%;
+    border:1px #c8c8c8 solid;
+    border-right:0px #c8c8c8 solid;
+    cursor:pointer;
+
+    position:absolute;
+    bottom:20px;
+    right:0;
+
+
+  }
+}
+
+.lightning-company-pic {
+  width:100%;
+  height: calc(50% - 0px);
+  background-color: white;
+
+  img {
+    width:100%;
+    padding:0;
+    margin:0;
+    background-color: white;
+  }
+
+  .company-name {
+    background-color:white;
+    color:orange;
+    text-align:right;
+    padding:5px 20px;
+    float:right;
+    position: relative;
+    top: -80px;
+    -webkit-border-radius: 5px 0 0 5px;
+    min-width:25%;
+    border:1px #c8c8c8 solid;
+    border-right:0px #c8c8c8 solid;
+  }
+}
+
+.lightning-description {
+  width:100%;
+  -webkit-border-radius: 0px;
+  height: calc(50% - 1px);
+  color:black;
+  background-color: white;
+  height: 50%;
+  .content-text {
+    padding:20px 20px 0 20px;
+    min-height: 50%;
+    border-bottom:1px #c8c8c8 solid;
+    border-top:1px #c8c8c8 solid;
+    min-height:80px;
+    background-color: #f4f4f4;
+
+  }
+}
+
+.employee-short {
+  -webkit-border-radius: 5px;
+  border:0px #c8c8c8 solid;
+  background-color: white;
+  margin:10px 10px 0 10px;
+  padding:0px 0px;
+  float:left;
+  width: 100px;
+
+  h5 {
+    color:orange;
+    margin:5px 0 0 0;
+    text-align: center;
+
+    line-height:16px;
+    font-size:12px;
+  }
+  p{
+    line-height:16px;
+    font-size:12px;
+    text-align: center;
+    margin:5px 0 0 0;
+    padding:0;
+    min-height: 0px;
+    border-bottom:0px #c8c8c8 solid;
+
+  }
+  img {
+    margin: 0 0 0 17px;
+    padding:0;
+  }
+}
+
+.lightning-box {
+  width: calc(100%-20px);
+  margin:10px;
+  background-color: white;
+  -webkit-border-radius: 5px;
+  border:1px #c8c8c8 solid;
+  b, p {
+    line-height:16px;
+    padding:10px;
+    font-size:16px;
+
+  }
+  p, a {
+    padding:10px 10px 0 10px;
+    width: 60%;
+    font-size:12px;
+  }
+
+  p {
+    min-height:40px ;
+  }
+
+  .slider-bar {
+    width:200px;
+    min-height: 50px;
+    float:right;
+    padding: 0;
+    margin:0px 20px 0 20px;
+    display:inline;
+    color: orange;
+    p {
+      min-height:00px ;
+      width: inherit;
+    }
+
+
+
+    .progress-slider{
+      padding: 0;
+      margin:3px 10px;
+      cursor:pointer;
+    }
+
+    .bar{
+      width:0%;
+      cursor:pointer;
+    }
+
+    .slider-start{
+      float:left;
+      margin-top:0px;
+
+    }
+    .slider-info{
+      margin-top:0px;
+      color:#1e90ff;
+    }
+    .slider-end{
+      float:right;
+      margin-top:0px;
+    }
+  }
+
+}
+
+html,body{ height:100%;}

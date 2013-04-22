@@ -1,6 +1,11 @@
 <div class="highlighted-box-company">
 
-  <h2>
+  <% if @startup.avatar? %>
+      <%= image_tag @startup.avatar.url(:large)%>
+  <% else %>
+      <img src='/images/profile/Nologo.png'/>
+  <% end %>
+  <h2 class="company-name">
     <%= @startup.name %>
     <% if session[:connection_type]==2 %>
         <%= link_to(:controller => "campaigns", :action => "basic_step" ) do %>
@@ -8,12 +13,7 @@
         <% end %>
     <% end %>
   </h2>
-
-  <% if @startup.avatar? %>
-      <%= image_tag @startup.avatar.url(:large)%>
-  <% else %>
-      <img src='/images/profile/Nologo.png'/>
-  <% end %>
+  <div style="clear:both"></div>
 
 
 </div>

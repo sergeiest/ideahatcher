@@ -1,0 +1,59 @@
+<div class="lightning-left">
+    <div class="lightning-company-pic">
+
+      <% if @startup.avatar? %>
+          <%= image_tag @startup.avatar.url(:large)%>
+      <% else %>
+          <img src='/images/profile/Nologo.png'/>
+      <% end %>
+      <h2 class="company-name">
+        <%= @startup.name %>
+        <% if session[:connection_type]==2 %>
+            <%= link_to(:controller => "campaigns", :action => "basic_step" ) do %>
+                <button class="btn btn-small btn-primary">Update Info</button>
+            <% end %>
+        <% end %>
+      </h2>
+      <div style="clear:both"></div>
+    </div>
+
+    <div class="lightning-description">
+      <div class="content-text">
+        <%= simple_format h @startup.pitch.firstletters(350) %>
+      </div>
+      <%= render :partial => 'companyteams/employee_short', :collection => @startup_teams %>
+    </div>
+</div>
+<div class="lightning-right">
+  <% @company_descriptions.each do |description| %>
+    <div class="lightning-box">
+      <b><%= Allfield.find(description.allfield_id).field_name%></b>
+      <hr/>
+
+
+      <div class="slider-bar" onmousedown=stopSlide('<%=description.id%>')
+                                onmouseup=startSlide('<%=description.id%>')>
+          <p>Rate (click on the scale below): </p>
+          <div id="bar_<%=description.id%>" class="progress progress-primary progress-slider">
+            <div id='slider_<%=description.id%>' class='bar'></div>
+          </div>
+          <div>
+            <p><span class='slider-start'>0</span>
+                    <span class='slider-info' id='info_<%=description.id%>'></span>
+                    <span class='slider-end'>5</span></p>
+          </div>
+      </div>
+      <%= simple_format h description.content %>
+      <a href='/ideas/idea_test?id=7'>Learn more / add suggestion / provide feedback</a>
+    </div>
+  <% end %>
+
+  <%= link_to :action => "vote_next", :id => params[:id] do %>
+      <h3 class="next-link" id="next-link"
+          onMouseMove="MM_changeProp('next-link','','backgroundColor','#ecf8ff','DIV')"
+          onMouseOut="MM_changeProp('next-link','','backgroundColor','white','DIV')">
+        Next startup >
+      </h3>
+  <% end %>
+
+</div>
