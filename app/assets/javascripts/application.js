@@ -69,6 +69,27 @@ function checkProblem(elementName) {
     }
 }
 
+function startSlideLightning(barId){
+    var bar = document.getElementById('bar_'+barId);
+    var slider = document.getElementById('slider_'+barId);
+    var info = document.getElementById('info_'+barId);
+    var set_perc = ((((event.clientX - bar.offsetLeft ) / bar.offsetWidth)).toFixed(2));
+    slider.style.width = (set_perc * 100) + '%';
+
+}
+
+
+function stopSlideLightning(barId){
+    var bar = document.getElementById('bar_'+ barId);
+    var slider = document.getElementById('slider_'+ barId);
+    var info = document.getElementById('info_'+ barId);
+    var set_perc = ((((event.clientX - bar.offsetLeft ) / bar.offsetWidth)).toFixed(2));
+    slider.style.width = (set_perc * 100) + '%';
+    info.style.marginLeft = set_perc * 155 + 'px';
+    info.innerText = Math.round(set_perc * 5)/1 ;
+    document.getElementById('form_'+ barId).querySelector("#vote_score").value = Math.round(set_perc * 5)/1 ;
+    $('#button_'+ barId).click();
+}
 
 function startSlide(barId){
     var bar = document.getElementById('bar_'+barId);

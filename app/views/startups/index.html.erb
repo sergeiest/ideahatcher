@@ -2,13 +2,18 @@
 
 <div class="container-ideas">
   <div class="container">
-    <%= render :partial =>  "startup", :collection => @startups %>
+    <%= link_to :action => "vote_next" do %>
+        <h5 class="side-link" id="next-link"
+            onMouseMove="MM_changeProp('next-link','','backgroundColor','lightgrey','DIV')"
+            onMouseOut="MM_changeProp('next-link','','backgroundColor','white','DIV')">
+          Lightning mode
+        </h5>
+    <% end %>
 
+    <%= render :partial =>  "startup", :collection => @startups %>
     <div style="clear:both"></div>
 
     <div class="container">
-      <!--<h1 class="brand">Idle Campaigns</h1>-->
-      <!--<hr/>-->
       <%= render :partial => "startup_no_campaign", :collection => @startups_no_capmaign %>
     </div>
   </div>
@@ -20,9 +25,6 @@
     <h4>Please rate each aspect of the business</h4>
   </div>
   <div id="modal-body-like" class="modal-body">
-    <h5>a</h5>
-    <p>b</p>
-    <p>c</p>
   </div>
   <div class="modal-footer">
     <button class="btn" data-dismiss="modal" >Continue</button>

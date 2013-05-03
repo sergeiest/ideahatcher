@@ -146,10 +146,13 @@ class StartupsController < ApplicationController
   def detailed
     @user = User.find(session[:id])   if session[:id] and session[:id] != 0
     @startup = Startup.find(session[:startup_id])
-    @companydescriptions = @startup.Companydescriptions
+    @companydescriptions = @startup.Companydescriptions.where("status = ?",1)
     @startup_investors = @startup.Investor_users.all.uniq
     @startup_followers = @startup.Follower_users.all.uniq
     @startup_owners = @startup.Owner_users.all.uniq
+
+
+
   end
   
   def mentors
@@ -198,9 +201,16 @@ class StartupsController < ApplicationController
 
 
   def vote_lightning
+
+    if !params[:id] || params[:id] == 0
+      startups = Startup.all
+      params[:id] = startups[rand(startups.length)].id
+    end
+
     @startup = Startup.find(params[:id])
     @startup_teams = @startup.Companyteams
     @company_descriptions = @startup.Companydescriptions
+
 
   end
 
@@ -211,7 +221,7 @@ class StartupsController < ApplicationController
     else
       startups = Startup.where('id != ?', id)
     end
-    id = startups[rand(startups.length)] if startups.length > 0
+    id = startups[rand(startups.length)].id if startups.length > 0
     redirect_to :action => "vote_lightning", :id => id
   end
 

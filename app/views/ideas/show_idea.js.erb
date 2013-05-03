@@ -2,10 +2,11 @@ var ideaDiv = document.getElementById('following_Idea<%= params[:id]%>');
 
 <% @ideas.each do |idea| %>
     <% idea.content.gsub(/\r\n?/, '\n').split("\n").each do |text_string| %>
-        var newP = document.createElement("p");
-        newP.innerText = '<%= text_string.html_safe() %>';
+        var newP = document.createElement("div");
+        newP.innerHTML = '<%= simple_format h idea.content.gsub(/\r\n?/, '\n') %>';
         ideaDiv.appendChild(newP);
     <% end %>
+
     var newAuthor = document.createElement("p");
 
     newAuthor.className = "author";

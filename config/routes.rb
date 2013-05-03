@@ -1,5 +1,11 @@
 Webapp::Application.routes.draw do
 
+  get "votes/vote_description"
+  post "votes/vote_description"
+  get "votes/show_votes"
+  resources :votes
+
+
   get "ideas/show_idea"
   get "ideas/idea_test"
   resources :ideas
@@ -43,7 +49,7 @@ Webapp::Application.routes.draw do
 
   resources :companyteams
 
-
+  post "companydescriptions/new_suggestion"
   resources :companydescriptions
 
   get "funds/approval"

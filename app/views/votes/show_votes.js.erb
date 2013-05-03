@@ -1,0 +1,19 @@
+
+// Create and populate the data table.
+var data = google.visualization.arrayToDataTable([
+    ['Vote', 'Number of votes'],
+    ['0',  <%= @votes.count { |x| x.score == 0 }%>],
+    ['1',  <%= @votes.count { |x| x.score == 1 }%>],
+    ['2',  <%= @votes.count { |x| x.score == 2 }%>],
+    ['3',  <%= @votes.count { |x| x.score == 3 }%>],
+    ['4',  <%= @votes.count { |x| x.score == 4 }%>],
+    ['5',  <%= @votes.count { |x| x.score == 5 }%>]
+]);
+
+// Create and draw the visualization.
+new google.visualization.ColumnChart(document.getElementById('visualization_<%= params[:description_id] %>')).
+    draw(data,
+            {title:"Distribution of votes for this aspect",
+                width:600, height:200
+            }
+);

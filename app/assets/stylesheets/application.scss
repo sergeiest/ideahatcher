@@ -557,13 +557,15 @@ h2.project{
 // Lightning Vote Page
 
 .background-lightning {
-  background-color: #e4d5c0;
+  background-color: #f5fff8;
 }
 
 .lightning-left {
   height:100%;
-  width:50%;
+  width: calc(50% - 1px);
   float:left;
+  border-right:1px #c8c8c8 solid;
+
 }
 
 .lightning-right {
@@ -577,16 +579,31 @@ h2.project{
     text-align:right;
     padding:5px 20px;
     -webkit-border-radius: 5px 0 0 5px;
-    min-width:12%;
+    width:10%;
     border:1px #c8c8c8 solid;
     border-right:0px #c8c8c8 solid;
     cursor:pointer;
 
     position:absolute;
-    bottom:20px;
+    bottom:50px;
     right:0;
+  }
 
 
+  .exit-link {
+    background-color:white;
+    color:grey;
+    text-align:right;
+    padding:5px 20px;
+    -webkit-border-radius: 5px 0 0 5px;
+    width:10%;
+    border:1px #c8c8c8 solid;
+    border-right:0px #c8c8c8 solid;
+    cursor:pointer;
+
+    position:absolute;
+    bottom:10px;
+    right:0;
   }
 }
 
@@ -604,7 +621,7 @@ h2.project{
 
   .company-name {
     background-color:white;
-    color:orange;
+    color:#61b400;
     text-align:right;
     padding:5px 20px;
     float:right;
@@ -645,7 +662,7 @@ h2.project{
   width: 100px;
 
   h5 {
-    color:orange;
+    color: #61b400;
     margin:5px 0 0 0;
     text-align: center;
 
@@ -687,7 +704,7 @@ h2.project{
   }
 
   p {
-    min-height:40px ;
+    min-height:90px ;
   }
 
   .slider-bar {
@@ -701,13 +718,19 @@ h2.project{
     p {
       min-height:00px ;
       width: inherit;
+      margin:0;
     }
 
+    a {
+      padding:0px;
+      margin:0;
+      width:inherit;
+    }
 
 
     .progress-slider{
       padding: 0;
-      margin:3px 10px;
+      margin:3px 20px;
       cursor:pointer;
     }
 
@@ -722,14 +745,34 @@ h2.project{
 
     }
     .slider-info{
-      margin-top:0px;
+      margin:0px;
+      padding:0;
       color:#1e90ff;
+      line-height: 10px;
     }
     .slider-end{
       float:right;
       margin-top:0px;
     }
   }
+
+}
+
+.side-link{
+
+  background-color:white;
+  color:orange;
+  text-align:left;
+  margin-top:20px;
+  padding:5px 20px;
+  -webkit-border-radius: 0 5px 5px 0;
+  min-width:8%;
+  border:1px #c8c8c8 solid;
+  border-left:0px #c8c8c8 solid;
+  cursor:pointer;
+
+  position:fixed;
+  left:0;
 
 }
 

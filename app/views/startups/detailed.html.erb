@@ -5,17 +5,37 @@
     <div class="left-company">
       <%= render 'info' %>
       <div id="teaser-text">
+
         <% if session[:id] != nil %>
+
             <% for companydescription in @companydescriptions %>
                 <% if companydescription.allfield_id != 1 %>
-                  <div class="highlighted-company">
+                  <div class="highlighted-company" id="div_<%= companydescription.id%>">
                     <h5 style="color:orange"><%= Allfield.find(companydescription.allfield_id).field_name %>: <%= companydescription.field_status %></h5>
                     <hr/>
-                    <p><%= simple_format h companydescription.content %></p>
+                    <%= simple_format companydescription.content, :id => "p_"+ companydescription.id.to_s() %>
+                    <% if @startup_owners.include? @user %>
+                        <%= link_to 'Show/update votes', {:action => 'show_votes', :controller => 'votes',
+                                    :description_id => companydescription.id},
+                                    :id => "chart_link",
+                                    :remote => true %>
+                        <a onclick="showForm(<%= companydescription.id%>)" id="form_link">Update description</a>
+                        <%= form_tag({:action => "new_suggestion", :controller => "companydescriptions"},
+                                     :multipart => true,
+                                     :remote => true) do %>
+                            <%= hidden_field :companydescription, :companydescription_id, :value => companydescription.id %>
+                            <%= text_area :companydescription, :content%>
+                            <%= submit_tag 'Save', class: "btn btn-small",
+                                           style: "color: #f88a00;margin-top:0px;height:26px;width:80px;"%>
+                        <% end %>
+                        <div id="visualization_<%= companydescription.id%>"></div>
+                    <% end %>
                   </div>
                 <% end %>
             <% end %>
+
         <% else %>
+
             <% for companydescription in @companydescriptions %>
                 <% if Allfield.find(companydescription.allfield_id).view_flag == 1  %>
                     <div class="highlighted-company">
@@ -25,7 +45,9 @@
                     </div>
                 <% end %>
             <% end %>
+
         <% end %>
+
       </div>
     </div>
 
@@ -36,3 +58,22 @@
 </div>
 
 
+<script type="text/javascript" src="http://www.google.com/jsapi"></script>
+<script type="text/javascript">
+    google.load('visualization', '1', {packages: ['corechart']});
+</script>
+
+<script>
+function showForm(id){
+    var mainP = document.getElementById("p_6");
+    mainP.innerHTML = "<p>fgdfgdfgd</p>";
+    mainP.id = "p_54";
+
+    var mainDiv = mainP.parentElement
+    mainP.id = "p_54";
+
+
+    mainDiv.querySelector("form").hidden = true;
+
+}
+</script>

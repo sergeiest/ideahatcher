@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130127192128) do
+ActiveRecord::Schema.define(:version => 20130422223437) do
 
   create_table "allfields", :force => true do |t|
     t.string   "field_name"
@@ -53,8 +53,10 @@ ActiveRecord::Schema.define(:version => 20130127192128) do
     t.integer  "allfield_id"
     t.integer  "approval_status"
     t.string   "field_status"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
+    t.integer  "companydescription_id"
+    t.integer  "status"
   end
 
   create_table "companyteams", :force => true do |t|
@@ -170,6 +172,14 @@ ActiveRecord::Schema.define(:version => 20130127192128) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+  end
+
+  create_table "votes", :force => true do |t|
+    t.integer  "companydescription_id"
+    t.integer  "user_id"
+    t.integer  "score"
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
   end
 
 end

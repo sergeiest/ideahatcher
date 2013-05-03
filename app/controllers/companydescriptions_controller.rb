@@ -1,23 +1,5 @@
 class CompanydescriptionsController < ApplicationController
-  # GET /companydescriptions
-  # GET /companydescriptions.json
-  def index
-    @startup = Startup.find(session[:startup_id])
-    @companydescriptions = @startup.Companydescriptions
 
-  end
-
-  # GET /companydescriptions/1
-  # GET /companydescriptions/1.json
-  def show
-    @companydescription = Companydescription.find(params[:id])
-    @allfield = @companydescription.Allfield
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @companydescription }
-    end
-  end
 
   # GET /companydescriptions/new
   # GET /companydescriptions/new.json
@@ -36,6 +18,29 @@ class CompanydescriptionsController < ApplicationController
     @companydescription = Companydescription.find(params[:id])
   end
 
+  def new_suggestion
+
+    old_description = Companydescription.find(params[:companydescription][:companydescription_id])
+    @description = Companydescription.new(params[:companydescription])
+    @description.startup_id = old_description.startup_id
+    @description.allfield_id = old_description.allfield_id
+    @description.status = 1
+
+    respond_to do |format|
+      if @description.save
+        old_description.update_attribute(:status, 0)
+        format.html { redirect_to controller: "campaigns" }
+        format.json { head :no_content }
+        format.js
+      else
+        format.html { redirect_to controller: "campaigns"}
+        format.json { render json: @companydescription.errors, status: :unprocessable_entity }
+        format.js
+      end
+    end
+
+  end
+
   # POST /companydescriptions
   # POST /companydescriptions.json
   def create
@@ -43,6 +48,7 @@ class CompanydescriptionsController < ApplicationController
     @companydescription = Companydescription.new(params[:companydescription])
     @companydescription.startup_id = session[:startup_id]
     @companydescription.approval_status = 1
+    @companydescription.status = 1
 
 
     case params[:route]
@@ -121,4 +127,5 @@ class CompanydescriptionsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
 end

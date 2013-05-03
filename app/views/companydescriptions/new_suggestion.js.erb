@@ -1,0 +1,19 @@
+var mainP = document.getElementById("p_<%= @description.companydescription_id %>");
+mainP.setAttribute("id", "p_<%= @description.id %>");
+
+var mainDiv = mainP.parentElement
+mainDiv.setAttribute("id", "div_<%= @description.id %>");
+
+//mainDiv.querySelector("form").hidden = true;
+mainDiv.querySelector("#companydescription_companydescription_id").value = <%= @description.id %>;
+mainDiv.querySelector("#visualization_<%= @description.companydescription_id %>").setAttribute("id", "visualization_<%= @description.id %>");
+mainDiv.querySelector("#chart_link").href = "/votes/show_votes?description_id=<%= @description.id %>";
+mainDiv.querySelector("#form_link").onclick = function() {showForm(<%= @description.id %>)};
+
+
+mainP.innerHTML="";
+<% @description.content.gsub(/\r\n?/, '\n').split("\n").each do |text_string| %>
+    var newP = document.createElement("p");
+    newP.innerHTML = '<%= simple_format text_string %>';
+    mainP.appendChild(newP);
+<% end %>
