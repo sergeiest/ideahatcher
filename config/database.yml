@@ -17,17 +17,25 @@ development:
   username: root
   password: anna
   socket: /tmp/mysql.sock
+#  adapter: postgresql
+#  encoding: utf8
+#  reconnect: false
+#  database: d994c293hj0hit
+#  pool: 5
+#  username: ubhnshmsafiyek
+#  password: TNsRZQw3i3ZfLQ1b5qs3mFi2f4
+#  host: ec2-107-21-106-52.compute-1.amazonaws.com
 
 
 production:
   adapter: postgresql
   encoding: utf8
   reconnect: false
-  database: d8on45uvmveak0
+  database: d994c293hj0hit
   pool: 5
-  username: ydsvsvpvbzhvvl
-  password: miw5-U-Lm8B9o2OspYf9Wc9l0K
-  host: ec2-54-243-224-88.compute-1.amazonaws.com
+  username: ubhnshmsafiyek
+  password: TNsRZQw3i3ZfLQ1b5qs3mFi2f4
+  host: ec2-107-21-106-52.compute-1.amazonaws.com
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
