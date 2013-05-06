@@ -26,10 +26,10 @@
 </div>
 
 <div class="hatcher-container">
-  <% i=0 %>
-  <% @startups.each do |startup| %>
     <%= render :partial =>  'startups/lightning_company',
-               :locals => {:startup => startup, :class_name => "class"+i.to_s()} %>
-    <% i += 1 %>
-  <% end %>
+                    :locals => {:startup => @startups[0], :class_name => "class0"} %>
+    <%= render :partial =>  'startups/lightning_company',
+                    :locals => {:startup => @startups[1], :class_name => "class1"} %>
+    <%= render :partial =>  'startups/lightning_company',
+                 :locals => {:startup => @startups[2], :class_name => "class2"} %>
 </div>
