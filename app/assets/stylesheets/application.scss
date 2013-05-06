@@ -447,81 +447,8 @@ h2.project{
 
 .author {font-style:italic;text-align:right}
 
-// ----------------- Startups Main Page -------------------------------
+// ----------------- A/B testing -------------------------------
 
-.project-field{
-  float:left;
-  font-size: 13px;
-  -webkit-border-radius: 5px;
-  border:1px #c8c8c8 solid;
-  background-color: white;
-  padding:10px;
-  width: 230px;
-  margin:20px;
-  img {
-    margin:0 0 10px 0;
-    -webkit-border-radius: 5px;
-  }
-  input { width: 70px; margin:0 3px; float: left;}
-  h5, p, a {color: #595959;}
-}
-
-.check-table {
-  th {width: 600px; height: 30px; padding-top:20px;}
-  td { padding-top:20px;}
-}
-
-.vote_modal {
-  .modal-header {
-  background-color:grey; color:white;
-  }
-  button {
-    color:orange;
-  }
-  p, a {
-    line-height: 16px;
-    font-size:12px;
-    margin:0px ;
-  }
-  .slider-bar {
-    width:200px;
-    min-height: 50px;
-    float:right;
-    padding: 0;
-    margin-top:0px;
-    margin-left:20px;
-    display:inline;
-    color: orange;
-
-
-    .progress-slider{
-      padding: 0;
-      margin:3px 10px;
-      cursor:pointer;
-    }
-
-    .bar{
-      width:0%;
-      cursor:pointer;
-    }
-
-    .slider-start{
-      float:left;
-      margin-top:0px;
-
-    }
-    .slider-info{
-      margin-top:0px;
-      color:#1e90ff;
-    }
-    .slider-end{
-      float:right;
-      margin-top:0px;
-    }
-
-
-  }
-}
 
 .idea-test{
   padding-top:50px;
@@ -667,6 +594,60 @@ h2.project{
 
 }
 
+// ------------------------- Startup Index -----------------------
+
+.startup-holder {
+  height: 370px;
+}
+
+
+.startup-frame{
+  float:left;
+  border:2px #c8c8c8 solid;
+  background-color: white;
+  font-family: "Open Sans", Open Sans, sans-serif;
+  padding:10px;
+  width: 180px;
+  margin:20px;
+  img {
+    margin:0 0 10px 0;
+    -webkit-border-radius: 0px;
+    border:1px #c8c8c8 solid;
+  }
+  h2 {
+      font-size: 15px;
+      font-weight: bold;
+      line-height: 20px;
+      text-align: center;
+      color:black;
+      text-rendering: optimizelegibility;
+      padding-bottom:5px;
+      padding-top:0px;
+      margin-top:0;
+      text-decoration: none;
+      border-bottom:2px #07b5b5 solid;
+  }
+  input { width: 70px; margin:0 3px; float: left;}
+  p {
+    color: black;
+    font-size: 12px;
+    line-height: 16px;
+  }
+  .p-content{
+    height: 100px;
+  }
+  .hashtag {
+    color: #acacac;
+  }
+  .vote-stat {
+    background-color:#07b5b5;
+    color:white;
+    text-align: center;
+    height: 20px;
+    margin:0 -10px -10px -10px;
+    padding-top:4px;
+  }
+}
 
 // ------------------------- Lightning Vote Page -----------------------
 
@@ -811,6 +792,7 @@ h2.project{
   margin:20px 20px 20px 0px;
   img {
     margin:0 0 20px 8px;
+    width: 100px;
     cursor: pointer;
   }
   input {
@@ -906,6 +888,20 @@ html,body{ height:100%;}
   margin:0px 0 0px 155px;
   padding:20px;
   position: relative;
+  font-family: "Open Sans", Open Sans, sans-serif;
+
+  .more-startups {
+    color: #07b5b5;
+    float:right;
+    font-size:12px;
+    margin:20px 60px;
+  }
+
+  h1 {
+    color:orange;
+    font-size:28px;
+    font-weight: normal;
+  }
 
 }
 

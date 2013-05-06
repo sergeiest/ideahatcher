@@ -4,9 +4,9 @@ class StartupsController < ApplicationController
 
   def layout_by_resource
     case params[:action]
-      when 'index', 'show', 'team', 'detailed'
+      when  'show', 'team', 'detailed'
         "main"
-      when 'vote_lightning'
+      when 'index', 'vote_lightning'
         "hatcher"
       else
         "application"

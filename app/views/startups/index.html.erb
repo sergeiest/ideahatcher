@@ -1,21 +1,46 @@
-<%= render 'users/usernav' %>
-
-<div class="container-ideas">
-  <div class="container">
-    <%= link_to :action => "vote_next" do %>
-        <h5 class="side-link" id="next-link"
-            onMouseMove="MM_changeProp('next-link','','backgroundColor','lightgrey','DIV')"
-            onMouseOut="MM_changeProp('next-link','','backgroundColor','white','DIV')">
-          Lightning mode
-        </h5>
-    <% end %>
-
-    <%= render :partial =>  "startup", :collection => @startups %>
-    <div style="clear:both"></div>
-
-    <div class="container">
-      <%= render :partial => "startup_no_campaign", :collection => @startups_no_capmaign %>
-    </div>
-  </div>
+<div class="left-nav">
+  <%= link_to :controller => "startups", :action => "vote_lightning" do %>
+      <img src="/images/lightning_off.png">
+  <% end %>
+  <%= form_tag(:action => "search_startups", :remote => true) do %>
+      <%= text_field_tag :string, "search", :onclick => "clearInput(this)" %>
+      <%= submit_tag "Submit", :hidden => true %>
+  <% end %>
+  <ul>
+    <li class="cat-name">Categories</li>
+    <li>Advertising</li>
+    <li>Audio + Media</li>
+    <li>Education</li>
+    <li>Enterprise Service</li>
+    <li>Finance</li>
+    <li>Gaming</li>
+    <li>Social Media</li>
+  </ul>
+  <ul>
+    <li class="cat-name">Location / Origin</li>
+    <li>CMU</li>
+    <li>Pittsburgh</li>
+    <li>Bay Area</li>
+    <li>Stanford</li>
+    <li>New York</li>
+    <li>Boston</li>
+  </ul>
 </div>
+
+
+<div class="hatcher-container">
+  <%= link_to "See all New Ideas >", {:controller => "startups"}, :class => "more-startups"%>
+  <h1 class="page-title">New Ideas</h1>
+  <%= render :partial =>  "startup", :collection => @startups[0..3] %>
+  <div class="startup-holder"></div>
+  <hr/>
+  <%= link_to "See all Popular Ideas >", {:controller => "startups"}, :class => "more-startups"%>
+  <h1 class="page-title">Popular Ideas</h1>
+  <%= render :partial =>  "startup", :collection => @startups[4..7] %>
+</div>
+
+<div class="clear-both"></div>
+
+
+
 

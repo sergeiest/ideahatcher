@@ -1,74 +1,19 @@
 <% div_name='project' + startup.id.to_s() %>
 
-<div id="<%= div_name %>" class="project-field"
+<div id="<%= div_name %>" class="startup-frame"
      onMouseMove="MM_changeProp('<%= div_name %>','','backgroundColor','#ecf8ff','DIV')"
      onMouseOut="MM_changeProp('<%= div_name %>','','backgroundColor','white','DIV')">
   <%= link_to (startup) do %>
+      <h2><%= startup.name %></h2>
+
       <% if startup.avatar != nil %>
           <%= image_tag startup.avatar.url(:teaser) %>
       <% else %>
           <img class="thumbnail1" src='/images/profile/Nologo.png' style="float:left;margin-right:10px;">
       <% end %>
-      <div class="description">
-        <h2 class="project" ><%= startup.name %></h2>
-        <p><%= simple_format h startup.pitch.firstletters(120) %></p>
-      </div>
-      <% if startup.Campaign !=nil && startup.Campaign.status == 3 %>
-          <hr/>
-          <div class="description-fields">
-            <ul class="media-list1">
-              <%for allfield in Allfield.find_all_by_view_flag(3)%>
-                  <% a_field = startup.Companydescriptions.find_by_allfield_id(allfield) %>
-                  <% if a_field != nil %>
-                      <li class="media1">
-                        <h5 class="pull-left"><%= a_field.field_status %></h5>
-                        <img src="/images/check.png" class="img-rounded-mini" style="float:right">
-                      </li>
-                  <% end %>
-              <% end %>
-            </ul>
-            <hr/>
-            <table>
-              <tr>
-                <td >Goal: </td>
-                <td class="td1"><span class="label label-warning"><%= number_to_currency(startup.Campaign.goal_sum, :precision => 0) %> </span></td>
-              </tr>
-              <tr >
-                <td >Share:</td>
-                <td class="td1"><b><%= number_to_percentage(startup.Campaign.share, :precision => 1) %></b></td>
-              </tr>
-            </table>
-            <div class="progress progress-primary">
-              <% a= startup.Campaign.raised_sum * 100/ startup.Campaign.goal_sum %>
-              <div class="bar" style="width:<%= a %>% ;"></div>
-            </div>
-          </div>
-      <% end %>
-      <hr/>
-      <%= form_tag({:action => "vote_like", :controller => 'startups', :id => startup.id},
-                   :remote => true, :multipart => true) do %>
-          <%= hidden_field_tag :id, startup.id %>
-          <%= hidden_field_tag :type, 'like' %>
-          <%= submit_tag  'Like',
-                          :class => "btn btn-mini",
-                          :id => 'like_' + div_name %>
-      <% end %>
-      <%= form_tag({:action => "vote_not_clear", :controller => 'startups', :id => startup.id},
-                   :remote => true, :multipart => true) do %>
-          <%= hidden_field_tag :id, startup.id %>
-          <%= hidden_field_tag :type, 'not_clear' %>
-          <%= submit_tag  "Didn't get it",
-                          :class => "btn btn-mini",
-                          :id => 'not_clear_' + div_name %>
-      <% end %>
-      <%= form_tag({:action => "vote_dislike", :controller => 'startups', :id => startup.id},
-                   :remote => true, :multipart => true) do %>
-          <%= hidden_field_tag :id, startup.id %>
-          <%= hidden_field_tag :type, 'dislike' %>
-          <%= submit_tag  "Dislike",
-                          :class => "btn btn-mini",
-                          :id => 'dislike_' + div_name %>
-      <% end %>
+      <p><%= simple_format startup.pitch.firstletters(120), :class => "p-content" %></p>
+      <p class="hashtag">#design, #data, #cmu</p>
+      <p class="vote-stat"><%= rand(150) %> people voted</p>
   <%end%>
 </div>
 

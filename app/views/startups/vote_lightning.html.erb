@@ -1,5 +1,7 @@
 <div class="left-nav">
-  <img src="/images/lightning_on.png">
+  <%= link_to :controller => "startups" do %>
+      <img src="/images/lightning_on.png">
+  <% end %>
   <%= form_tag(:action => "search_startups", :remote => true) do %>
       <%= text_field_tag :string, "search", :onclick => "clearInput(this)" %>
       <%= submit_tag "Submit", :hidden => true %>

@@ -25,12 +25,16 @@
               <%= hidden_field :vote, :score, :value => 3 %>
               <%= submit_tag 'dfsd', :id => "button_"+ description.id.to_s(), :hidden => 'true' %>
             <% end %>
-          <% end %>
-          <div id="bar_<%=description.id%>" class="progress progress-primary progress-slider"
-               onmousedown="stopSlideLightning('<%=description.id%>')"
-               onmouseup="startSlideLightning('<%=description.id%>')">
-            <div id='slider_<%=description.id%>' class='bar'></div>
-          </div>
+                <div id="bar_<%=description.id%>" class="progress progress-primary progress-slider"
+                   onmousedown="stopSlideLightning('<%=description.id%>')"
+                   onmouseup="startSlideLightning('<%=description.id%>')">
+                  <div id='slider_<%=description.id%>' class='bar'></div>
+                </div>
+            <% else %>
+              <div id="bar_<%=description.id%>" class="progress progress-primary progress-slider">
+                <div id='slider_<%=description.id%>' class='bar'></div>
+              </div>
+            <% end %>
           <div>
             <p><span class='slider-start'>0</span>
               <span class='slider-info' id='info_<%=description.id%>'></span>
