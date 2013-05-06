@@ -10,6 +10,7 @@
   <%= stylesheet_link_tag    "application", :media => "all" %>
 
   <%= javascript_include_tag "application" %>
+  <%= javascript_include_tag "bootstrap-modal" %>
   <%= csrf_meta_tags %>
 
 
@@ -77,7 +78,7 @@
       </li>
     </ul>
   <% else %>
-    <div class="login-nav">
+    <div id="login-nav" class="login-nav">
         <%= form_tag(:action => 'process_login', :controller => 'authentications', :multipart => true) do %>
             <div class="login-input">
               <p>Login (email):</p>
@@ -101,6 +102,25 @@
 
 <div class="footer">
   <p>Copyright 2013 - Capital Round</p>
+</div>
+
+
+<div id="login_modal" class="modal hide fade login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">First let everyone know who you are:</h3>
+  </div>
+  <div class="modal-body">
+    <div class="modal-left">
+      <%= render 'authentications/clean_login_form' %>
+    </div>
+    <div class="modal-right">
+      <%= render 'authentications/clean_join_form' %>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+  </div>
 </div>
 
 </body>

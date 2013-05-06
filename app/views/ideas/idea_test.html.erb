@@ -4,6 +4,9 @@
   <div class="container">
     <div class="left-company">
       <%= render 'startups/info' %>
+
+        <button onclick=showLoginForm()>Login</button>
+
         <% idea = @ideas[0] %>
         <div id="idea_<%= idea.id %>" class="highlighted-company">
             <% if idea.title == nil || idea.title == "" %>

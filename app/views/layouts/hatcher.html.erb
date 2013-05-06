@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head >
+  <Link rel="shortcut icon" href="/images/logo_icon.png">
+  <!--<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>-->
+  <!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>-->
+  <!--<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>-->
+
+
+  <title>ideaHatcher</title>
+  <%= stylesheet_link_tag    "bootstrap", :media => "all" %>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+
+
+  <%= javascript_include_tag "application" %>
+
+
+  <%= csrf_meta_tags %>
+
+  <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-38158408-1']);
+      _gaq.push(['_setDomainName', 'capitalround.com']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+          var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+          ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
+  </script>
+
+</head>
+
+
+<body class="background-lightning">
+
+<div class="hatcher-nav">
+  <div class="logo-img">
+    <%= link_to(:controller => "home") do  %>
+        <img src="/images/ideahatcher_logo.png">
+    <% end %>
+  </div>
+
+  <% if session[:id] != nil and session[:id] != 0 %>
+      <% user = User.find(session[:id]) %>
+      <ul class="user-nav nav nav-pills">
+        <li class="dropdown">
+          <%= link_to "Vote", :action => "vote_lightning", :controller => "startups" %>
+        </li>
+        <li  class="dropdown">
+          <%= link_to "Feedback", :action => "vote_lightning", :controller => "startups" %>
+        </li>
+        <li  class="dropdown">
+          <%= link_to "My hatch", :action => "vote_lightning", :controller => "startups" %>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+            <% if user.avatar? %>
+                <%= image_tag user.avatar.url(:thumb), :class => "img-rounded-small" %>
+            <% else %>
+                <%= image_tag "/images/profile/Nophoto.png", :class => "img-rounded-small" %>
+            <% end %>
+            <b class="caret"></b>
+          </a>
+          <ul class="dropdown-menu">
+            <% owner_number = user.Owners.count %>
+            <% if owner_number != 0 %>
+                <li role="presentation"><%= link_to user.Owner_startups[0].name, :controller => 'startups',
+                                                    :action => 'show', :id => user.Owners[0].startup_id %></li>
+            <% else %>
+                <li role="presentation"><%= link_to "Start a company", :controller => 'campaigns',
+                                                    :action => 'guide_step' %></li>
+            <% end %>
+            <hr />
+            <li role="presentation"><%= link_to 'Update profile', :controller => 'users', :action => 'edit',
+                                                :id => user.id %></li>
+            <li role="presentation"><%= link_to 'Change password', :controller => 'users', :action => 'change_password',
+                                                :id => user.id %></li>
+            <hr />
+            <li role="presentation"><%= link_to 'Logout', :controller => 'authentications', :action => 'logout' %></li>
+          </ul>
+        </li>
+      </ul>
+  <% else %>
+      <div id="login-nav" class="login-nav">
+        <%= form_tag(:action => 'process_login', :controller => 'authentications', :multipart => true) do %>
+            <div class="login-input">
+              <%= text_field "authentication", "username", :value => "Login (email):",
+                             :onclick => "clearInput(this)"%>
+            </div>
+            <div class="login-input">
+              <%= password_field "authentication", "password", :value => "password",
+                             :onclick => "clearInput(this)"%>
+            </div>
+            <%= submit_tag 'Login', class: "btn btn-small",
+                           style: "margin-top:5px;height:26px;width:80px;"%>
+        <% end %>
+      </div>
+  <% end %>
+</div>
+
+<div style="clear:both"></div>
+
+
+<div class="container">
+<%= yield %>
+</div>
+
+
+<div class="footer">
+  <p>Copyright 2013 - ideaHatcher</p>
+</div>
+
+
+<div id="login_modal" class="modal hide fade login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">First let everyone know who you are:</h3>
+  </div>
+  <div class="modal-body">
+    <div class="modal-left">
+      <%= render 'authentications/clean_login_form' %>
+    </div>
+    <div class="modal-right">
+      <%= render 'authentications/clean_join_form' %>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+  </div>
+</div>
+
+
+</body>
+</html>

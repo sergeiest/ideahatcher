@@ -1,0 +1,21 @@
+<%= form_tag(:action => 'create', :controller => 'authentications', :multipart => true) do %>
+    <h4>Sign up and get started:</h4>
+
+    <p>Email:<br />
+    <%= text_field :authentication, :username %></p>
+
+    <p>Password:<br />
+    <%= password_field :authentication, :password %></p>
+
+    <p>Confirm password:<br />
+    <%= password_field :ll, :password_confirmation %></p>
+
+    <p>First name:<br />
+    <%= text_field :user, :firstname %></p>
+
+    <p>Last name:<br />
+    <%= text_field :user, :lastname %></p>
+
+    <%= submit_tag 'Create account',class: "btn btn-warning"%>
+
+<% end %>

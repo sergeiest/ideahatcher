@@ -1,0 +1,15 @@
+<%= form_tag({:controller => 'authentications', :action => 'remote_login'},
+             :multipart => true,
+             :remote => true) do %>
+    <h4>Login:</h4>
+
+    <p>Email:<br />
+      <%= text_field "authentication", "username" %></p>
+
+    <p>Password:<br />
+      <%= password_field "authentication", "password" %></p>
+    <p><%= link_to "Forgot password?", :action => "forgot_password", :controller => 'authentications'%></p>
+
+    <%= submit_tag 'Login', class: "btn btn-warning"%>
+
+<% end %>

@@ -1,4 +1,4 @@
-// Old
+// ------------------------------- Old -------------------------
 
 .sign-up {
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -58,7 +58,7 @@
 }
 
 
-// Company page
+// ----------------------------- Company page --------------------------
 
 .highlighted-box {
   background-color:#ecf8ff;
@@ -168,7 +168,7 @@ div.teaser{
   border-color:red;
 }
 
-// Layout
+// ------------------------- Layout ---------------------------------------
 
 #contacts-box {
   clear:both;
@@ -184,7 +184,40 @@ div.teaser{
   width: 940px;
 }
 
-// Other
+.login-modal {
+  width: 700px;
+  margin-left:-350px;
+  .modal-left{
+    float:left;
+    width:320px;
+    border-right:1px #bebebe solid;
+    margin-top:40px;
+    padding:40px 0;
+  }
+  .modal-right{
+    float:right;
+    width:340px;
+    border-left:0px #bebebe solid;
+  }
+  form {
+    margin-left:20px;
+    input{
+      maring:0;
+    }
+    p {
+      font-size: 12px;
+      line-height: 16px;
+      margin:0 0 0 20px;
+    }
+    .btn {
+      margin:10px 40px 0 0;
+      float:right;
+    }
+  }
+}
+
+
+// ------------------------------ Other ------------------------------------
 
 h2.project{
   font-size: 15px;
@@ -219,12 +252,9 @@ h2.project{
 }
 
 
-//Home page
-.logo-img {
-  padding:10px 35px;
-  float:left;
-  img {height:30px;}
-}
+// -------------------------- Home page ---------------------------
+
+
 
 .background-img {
   background:url('/images/Home_background.png') no-repeat center top;
@@ -235,6 +265,12 @@ h2.project{
 .home-nav {
   height: 55px;
   background-color: #e3e3e3;
+
+  .logo-img {
+    padding:10px 35px;
+    float:left;
+    img {height:30px;}
+  }
 
   .login-nav {
     form {
@@ -318,7 +354,7 @@ h2.project{
   h3 {margin-top:0;}
 }
 
-// Ideas Page
+// ----------------------------- Ideas Page ----------------------------
 
 .idea {
   -webkit-border-radius: 5px;
@@ -411,7 +447,7 @@ h2.project{
 
 .author {font-style:italic;text-align:right}
 
-// Startups Main Page
+// ----------------- Startups Main Page -------------------------------
 
 .project-field{
   float:left;
@@ -554,7 +590,196 @@ h2.project{
 }
 
 
-// Lightning Vote Page
+.ab-test{
+  padding:0px;
+
+
+  input{
+    margin-left:0px;
+    width:300px;
+  }
+
+  .idea-statement{
+    background-color:#b0c4de;
+    padding:10px;
+    -webkit-border-radius: 5px;
+    line-height: 20px;
+    font-size:12px;
+    width:230px;
+    border:3px white solid;
+    color:white;
+    height: 100px;
+    float:left;
+    textarea {
+      width:225px;
+      height:100px;
+      margin:-5px 0 5px -5px;
+      line-height: 18px;
+      font-size:12px;
+    }
+    .btn-primary {
+      position: relative;
+      bottom:0px;
+      float: right;
+      width:80px;
+      -webkit-border-radius:  0 0 5px 5px;
+      border:0px white solid;
+    }
+    .edit-text {
+      -webkit-border-radius:  5px;
+
+    }
+  }
+
+  .my_corner {
+    position: relative;
+    margin:20px 7px;
+    width: 0px;
+    height: 70px;
+    padding: 10px;
+    background-color: #ffd486;
+    float: left;
+  }
+
+  .my_corner .tl, .my_corner .tr,
+  .my_corner .bl, .my_corner .br {
+    width: 0;
+    height: 0;
+    position: absolute;
+  }
+
+
+  .my_corner .tr {
+    top: 0;
+    right: 0;
+    border-top: 50px solid white;
+    border-left: 20px solid transparent;
+  }
+
+  .my_corner .br {
+    bottom: 0;
+    right: 0;
+    border-bottom: 50px solid white;
+    border-left: 20px solid transparent;
+  }
+
+
+
+}
+
+
+// ------------------------- Lightning Vote Page -----------------------
+
+.vote-frame {
+  border:2px #c8c8c8 solid;
+  background-color: white;
+  font-family: "Open Sans", Open Sans, sans-serif;
+  width: 600px;
+  .vote-name {
+    margin:20px 25px 0px 25px;
+    padding-bottom:10px;
+    text-align: center;
+    border-bottom:2px #07b5b5 solid;
+  }
+  .vote-summary {
+    line-height: 16px;
+    font-size: 12px;
+    margin: 5px 25px;
+  }
+  .vote-img img {
+    height: 100px;
+    width: 550px;
+    margin: 0px 25px;
+    border:1px #c8c8c8 solid;
+  }
+
+  .vote-box {
+    margin:10px 25px;
+    border-bottom:1px #07b5b5 solid;
+    b {
+      line-height:16px;
+      padding:0px;
+      font-size:14px;
+      color:#07b5b5;
+    }
+
+    p, a {
+      padding:0;
+      width: 60%;
+      font-size:11px;
+      line-height:14px;
+    }
+
+    p {
+      min-height:90px ;
+    }
+
+    .slider-bar {
+      width:180px;
+      min-height: 50px;
+      float:right;
+      padding: 0;
+      margin:10px 0px 0 20px;
+      display:inline;
+      color:#07b5b5;
+      p {
+        min-height:00px ;
+        width: inherit;
+        margin:0;
+      }
+
+      a {
+        padding:0px;
+        margin:0 0 0 100px;
+        width:inherit;
+        color:#07b5b5;
+
+      }
+
+      .progress-slider{
+        padding: 0;
+        margin:3px 10px 3px 10px;
+        cursor:pointer;
+      }
+
+      .bar{
+        width:0%;
+        cursor:pointer;
+        background-color: orange;
+        background-image: linear-gradient(orange, #e99600);;
+      }
+
+      .slider-start{
+        float:left;
+        margin:0px;
+        padding:0;
+
+
+      }
+      .slider-info{
+        margin:0px;
+        padding:0;
+        color:orange;
+        line-height: 10px;
+      }
+      .slider-end{
+        float:right;
+        margin:0px 0 40px 0 ;
+      }
+    }
+
+    .vote-btn {
+      float:right;
+    }
+
+
+  }
+
+
+}
+
+
+// ----- old ----- old ----- old -----
 
 .background-lightning {
   background-color: #f5fff8;
@@ -777,3 +1002,71 @@ h2.project{
 }
 
 html,body{ height:100%;}
+
+// ----------------------- General ---------------------
+
+.clear-both {
+  clear:both;
+}
+
+
+// -------------------------- ideaHatcher layout ---------------------------
+
+.hatcher-nav {
+  height: 40px;
+  background-color: #07b5b5;
+
+  .logo-img {
+    padding:2px 35px;
+    float:left;
+    img {height:35px;}
+  }
+
+  .login-nav {
+    form {
+      width:500px;
+      input { width:150px; height:16px;}
+    }
+    font-family: "Open Sans", Open Sans, sans-serif;
+    line-height:12px;
+    float:right;
+    margin:0;
+    font-size: 12px;
+    p {
+      margin:2px;
+      color:white;
+    }
+    .login-input {
+      float:left;
+      margin:5px 5px -5px 5px;
+    }
+  }
+
+  .user-nav {
+    font-family: "Open Sans", Open Sans, sans-serif;
+    line-height:12px;
+    float:right;
+    margin:-5px 20px 0 0;
+    font-size: 12px;
+
+    p {margin:2px}
+    .login-input {
+      float:left;
+      margin:5px 5px 0 5px;
+      color: #c2c2c2;
+    }
+    a {
+      height: 12px;
+      color:white;
+    }
+
+    img {
+      margin-top:-7px;
+      padding:0;
+      height: 25px;
+    }
+
+  }
+
+}
+

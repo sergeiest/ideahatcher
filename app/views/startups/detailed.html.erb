@@ -4,38 +4,90 @@
   <div class="container">
     <div class="left-company">
       <%= render 'info' %>
+
       <div id="teaser-text">
 
         <% if session[:id] != nil %>
-
             <% for companydescription in @companydescriptions %>
+
                 <% if companydescription.allfield_id != 1 %>
                   <div class="highlighted-company" id="div_<%= companydescription.id%>">
-                    <h5 style="color:orange"><%= Allfield.find(companydescription.allfield_id).field_name %>: <%= companydescription.field_status %></h5>
+                    <h5 style="color:orange"><%= Allfield.find(companydescription.allfield_id).field_name %>:
+                      <%= companydescription.field_status %>
+                      <button class="btn btn-mini btn-primary edit-text" onclick=editDescription(this)>Edit</button>
+                    </h5>
                     <hr/>
-                    <%= simple_format companydescription.content, :id => "p_"+ companydescription.id.to_s() %>
+
+                    <% if companydescription.companydescription_id %>
+
+                        <div class="ab-test">
+                          <div class="my_corner previous-test"></div>
+                          <div class="idea-statement current-test">
+                            <%= simple_format Companydescription.find(companydescription.companydescription_id).content,
+                                                                      :id => "p_"+ companydescription.id.to_s() %>
+                          </div>
+
+                          <div class="my_corner next-test"></div>
+                          <div class="idea-statement next-test">
+                            <%= simple_format companydescription.content,
+                                              :id => "p_"+ companydescription.id.to_s() %>
+                            <%= form_tag({:action => "new_suggestion", :controller => "companydescriptions"},
+                                         :multipart => true,
+                                         :hidden => true,
+                                         :class => "next-test",
+                                         :remote => true) do %>
+                                <%= hidden_field :companydescription, :companydescription_id, :value => companydescription.id %>
+                                <%= text_area :companydescription, :content%>
+                                <%= submit_tag 'Save', class: "btn btn-mini btn-primary"%>
+                            <% end %>
+                          </div>
+                          <div class="my_corner " hidden></div>
+                          <div class="clear-both"></div>
+                        </div>
+
+                    <% else %>
+
+                        <div class="ab-test">
+                          <div class="my_corner previous-test"></div>
+                          <div class="idea-statement current-test">
+                            <%= simple_format companydescription.content %>
+                          </div>
+
+                          <div class="my_corner next-test" hidden></div>
+                          <div class="idea-statement next-test" hidden>
+                            <%= form_tag({:action => "new_suggestion", :controller => "companydescriptions"},
+                                         :multipart => true,
+                                         :hidden => true,
+                                         :class => "next-test",
+                                         :remote => true) do %>
+                                <%= hidden_field :companydescription, :companydescription_id, :value => companydescription.id %>
+                                <%= text_area :companydescription, :content%>
+                                <%= submit_tag 'Save', class: "btn btn-mini btn-primary"%>
+                            <% end %>
+                          </div>
+                          <div class="my_corner" hidden></div>
+                          <div class="clear-both"></div>
+                        </div>
+
+
+                    <% end %>
+
+
+
+
                     <% if @startup_owners.include? @user %>
                         <%= link_to 'Show/update votes', {:action => 'show_votes', :controller => 'votes',
                                     :description_id => companydescription.id},
                                     :id => "chart_link",
                                     :remote => true %>
-                        <a onclick="showForm(<%= companydescription.id%>)" id="form_link">Update description</a>
-                        <%= form_tag({:action => "new_suggestion", :controller => "companydescriptions"},
-                                     :multipart => true,
-                                     :remote => true) do %>
-                            <%= hidden_field :companydescription, :companydescription_id, :value => companydescription.id %>
-                            <%= text_area :companydescription, :content%>
-                            <%= submit_tag 'Save', class: "btn btn-small",
-                                           style: "color: #f88a00;margin-top:0px;height:26px;width:80px;"%>
-                        <% end %>
                         <div id="visualization_<%= companydescription.id%>"></div>
                     <% end %>
                   </div>
                 <% end %>
+
+
             <% end %>
-
         <% else %>
-
             <% for companydescription in @companydescriptions %>
                 <% if Allfield.find(companydescription.allfield_id).view_flag == 1  %>
                     <div class="highlighted-company">
@@ -45,7 +97,6 @@
                     </div>
                 <% end %>
             <% end %>
-
         <% end %>
 
       </div>
@@ -63,17 +114,27 @@
     google.load('visualization', '1', {packages: ['corechart']});
 </script>
 
+
 <script>
-function showForm(id){
-    var mainP = document.getElementById("p_6");
-    mainP.innerHTML = "<p>fgdfgdfgd</p>";
-    mainP.id = "p_54";
+    $('.my_corner').prepend('<div class="tr"></div>')
+            .prepend('<div class="tl"></div>')
+            .prepend('<div class="br"></div>')
+            .prepend('<div class="bl"></div>');
+</script>
 
-    var mainDiv = mainP.parentElement
-    mainP.id = "p_54";
+<script>
+function editDescription(elementNode){
+    var descriptionDiv = elementNode.parentNode.parentNode.getElementsByClassName('ab-test')[0];
 
+    var nextElements = descriptionDiv.getElementsByClassName('next-test');
 
-    mainDiv.querySelector("form").hidden = true;
+    for (var i = 0; i < nextElements.length; i++) {
+        nextElements[i].hidden = false;
+        if (nextElements[i].getElementsByTagName('p').length > 0){
+            nextElements[i].getElementsByTagName('p')[0].hidden = true;
+        }
+    }
+
 
 }
 </script>

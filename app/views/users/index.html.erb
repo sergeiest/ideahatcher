@@ -8,12 +8,12 @@
 
 <% end %>
 <p id="notice"><%= @shortnotice %></p>
-<h3 style="color:#6f6f6f">News Feed</h3>
+<h3 style="color:#6f6f6f">Notifications</h3>
 <% if @user_updates != nil %>
 <%= render :partial => 'companyupdates/news', :collection => @user_updates %>
 <% else %>
     <% if session[:owner_type]==1 %>
-<p>To have updates in your news feed follow/invest in <%= link_to 'startups in our platform', startups_path %>.</p>
+<p>You have no notifications so far. To have updates in your news feed follow/invest in <%= link_to 'startups in our platform', startups_path %>.</p>
     <% else %>
 <p>This person does not have news to display</p>
     <% end %>

@@ -7,7 +7,7 @@ class StartupsController < ApplicationController
       when 'index', 'show', 'team', 'detailed'
         "main"
       when 'vote_lightning'
-        "lightning"
+        "hatcher"
       else
         "application"
     end
@@ -150,9 +150,6 @@ class StartupsController < ApplicationController
     @startup_investors = @startup.Investor_users.all.uniq
     @startup_followers = @startup.Follower_users.all.uniq
     @startup_owners = @startup.Owner_users.all.uniq
-
-
-
   end
   
   def mentors

@@ -1,0 +1,50 @@
+<div class="vote-frame">
+  <h2 class="vote-name">
+    <%= lightning_company.name %>
+  </h2>
+  <%= simple_format lightning_company.pitch.firstletters(350), :class => "vote-summary" %>
+  <div class="vote-img">
+    <% if lightning_company.avatar? %>
+        <%= image_tag lightning_company.avatar.url(:large)%>
+    <% else %>
+        <img src='/images/profile/Nologo.png'/>
+    <% end %>
+  </div>
+
+  <% company_descriptions=lightning_company.Companydescriptions %>
+  <% company_descriptions.each do |description| %>
+    <div class="vote-box">
+        <div class="slider-bar" >
+          <p style="margin-bottom:10px;">Rate (click on the scale below): </p>
+          <%= form_tag({:action => 'vote_description', :controller => 'votes'},
+                       :multipart => true,
+                       :id => "form_"+ description.id.to_s() ,
+                       :remote => true) do %>
+              <%= hidden_field :vote, :description_id, :value => description.id %>
+              <%= hidden_field :vote, :score, :value => 3 %>
+              <%= submit_tag 'dfsd', :id => "button_"+ description.id.to_s(), :hidden => 'true' %>
+          <% end %>
+          <div id="bar_<%=description.id%>" class="progress progress-primary progress-slider"
+               onmousedown="stopSlideLightning('<%=description.id%>')"
+               onmouseup="startSlideLightning('<%=description.id%>')">
+            <div id='slider_<%=description.id%>' class='bar'></div>
+          </div>
+          <div>
+            <p><span class='slider-start'>0</span>
+              <span class='slider-info' id='info_<%=description.id%>'></span>
+              <span class='slider-end'>5</span></p>
+          </div>
+          <div style="clear:both"></div>
+          <a href='/ideas/idea_test?id=7'>Add suggestion</a>
+        </div>
+        <b><%= Allfield.find(description.allfield_id).field_name%></b>
+        <%= simple_format h description.content.firstletters(400) %>
+      </div>
+  <% end %>
+
+  <%= link_to :action => "vote_next", :id => params[:id] do %>
+      <button class="btn btn-warning" style="float:right;margin:0 25px 10px 25px;">Submit</button>
+  <% end %>
+  <div class="clear-both"></div>
+
+</div>

@@ -32,6 +32,7 @@ Webapp::Application.routes.draw do
 
 
   get "authentications/login"
+  post "authentications/remote_login"
   post "authentications/create"
   get "authentications/wrong_link"
   get "authentications/forgot_password"

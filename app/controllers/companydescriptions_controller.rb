@@ -24,6 +24,7 @@ class CompanydescriptionsController < ApplicationController
     @description = Companydescription.new(params[:companydescription])
     @description.startup_id = old_description.startup_id
     @description.allfield_id = old_description.allfield_id
+    @description.field_status = old_description.field_status
     @description.status = 1
 
     respond_to do |format|

@@ -122,3 +122,12 @@ function MM_changeProp(objId,x,theProp,theValue) { //v9.0
         else eval("obj.style."+theProp+"='"+theValue+"'");
     }
 }
+
+function showLoginForm() {
+    $('#login_modal').modal('show');
+}
+
+function clearInput (elementNode) {
+    elementNode.value = "";
+    elementNode.onclick ="";
+}

@@ -196,4 +196,22 @@ class AuthenticationsController < ApplicationController
     end
 
   end
+
+
+  def remote_login
+    if authentication = Authentication.authenticate(params[:authentication])
+      session[:id]=authentication.User.id
+      @user = User.find(session[:id])
+      respond_to do |format|
+        format.js
+      end
+    else
+      flash[:error] = 'Invalid email/password combination'
+      respond_to do |format|
+        format.html { render params.merge(:action => 'login') }
+      end
+    end
+
+  end
+
 end

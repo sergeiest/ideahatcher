@@ -1,0 +1,44 @@
+var newUl = document.createElement("ul");
+newUl.className = "user-nav nav nav-pills";
+
+var newLi = document.createElement("ul");
+newLi.className = "dropdown"
+
+<% if @user.avatar? %>
+    newLi.innerHTML = "<a class='dropdown-toggle' data-toggle='dropdown' href='#'>" +
+                        '<%= image_tag @user.avatar.url(:thumb), :class => "img-rounded-small" %>' +
+                        "<%= @user.firstname %> <%= @user.lastname %>" +
+                        "<b class='caret'></b></a>";
+<% else %>
+    newLi.innerHTML = "<a class='dropdown-toggle' data-toggle='dropdown' href='#'>" +
+                        '<%= image_tag '/images/profile/Nophoto.png', :class => 'img-rounded-small' %>' +
+                        "<%= @user.firstname %> <%= @user.lastname %>" +
+                        "<b class='caret'></b></a>";
+<% end %>
+
+var newMenu = document.createElement("ul");
+newMenu.className = "dropdown-menu";
+<% owner_number = @user.Owners.count %>
+<% if owner_number != 0 %>
+
+<% else %>
+
+<% end %>
+
+newMenu.innerHTML = '<hr />' +
+        '<li role="presentation"><%= link_to 'Update profile', :controller => 'users', :action => 'edit',
+                                                :id => @user.id %></li>' +
+        '<li role="presentation"><%= link_to 'Change password', :controller => 'users', :action => 'change_password',
+                                                :id => @user.id %></li>' +
+        '<hr />' +
+        '<li role="presentation"><%= link_to 'Logout', :controller => 'authentications', :action => 'logout' %></li>';
+
+newLi.appendChild(newMenu);
+newUl.appendChild(newLi);
+
+var loginNav = document.getElementById("login-nav");
+loginNav.parentNode.replaceChild(newUl, loginNav);
+
+
+
+$('#login_modal').modal('hide');
