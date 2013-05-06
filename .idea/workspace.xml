@@ -66,10 +66,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="_lightning_company.html.erb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="_lightning_company.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/startups/_lightning_company.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="49" selection-start="149" selection-end="149" vertical-scroll-proportion="0.11299435">
+            <state line="31" column="61" selection-start="1472" selection-end="1472" vertical-scroll-proportion="-19.375">
               <folding>
                 <element signature="n#style#0;n#p#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#2;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
@@ -80,10 +80,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="application.js" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="application.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/assets/javascripts/application.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="131" column="28" selection-start="5079" selection-end="5079" vertical-scroll-proportion="0.0">
+            <state line="87" column="41" selection-start="3450" selection-end="3450" vertical-scroll-proportion="0.5701107">
               <folding />
             </state>
           </provider>
@@ -119,7 +119,6 @@
         <option value="$PROJECT_DIR$/app/views/authentications/remote_login.js.erb" />
         <option value="$PROJECT_DIR$/app/controllers/companydescriptions_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/startups/detailed.html.erb" />
-        <option value="$PROJECT_DIR$/app/assets/javascripts/application.js" />
         <option value="$PROJECT_DIR$/app/views/layouts/hatcher.html.erb" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/application.scss" />
         <option value="$PROJECT_DIR$/app/controllers/startups_controller.rb" />
@@ -127,6 +126,7 @@
         <option value="$PROJECT_DIR$/app/views/layouts/home.html.erb" />
         <option value="$PROJECT_DIR$/app/views/startups/vote_lightning.html.erb" />
         <option value="$PROJECT_DIR$/app/views/startups/_lightning_company.html.erb" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/application.js" />
       </list>
     </option>
   </component>
@@ -942,13 +942,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/application.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="131" column="28" selection-start="5079" selection-end="5079" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/startups/index.html.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="12" column="62" selection-start="473" selection-end="473" vertical-scroll-proportion="-7.5">
@@ -1009,13 +1002,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/startups/_lightning_company.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="49" selection-start="149" selection-end="149" vertical-scroll-proportion="0.11299435">
+        <state line="31" column="61" selection-start="1472" selection-end="1472" vertical-scroll-proportion="-19.375">
           <folding>
             <element signature="n#style#0;n#p#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#2;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#2;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#button#0;n#div#0;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/application.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="87" column="41" selection-start="3450" selection-end="3450" vertical-scroll-proportion="0.5701107">
+          <folding />
         </state>
       </provider>
     </entry>
