@@ -113,10 +113,11 @@ Webapp::Application.routes.draw do
   
   get "home/contacts"
   get "home/noaccess"
+  get "home/colorful"
   resources :home
 
 
-  root :to => 'home#index'
+  root :to => 'home#colorful'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -251,8 +251,64 @@ h2.project{
   }
 }
 
+// -------------------------- Home page (new) ---------------------------
 
-// -------------------------- Home page ---------------------------
+.demo-startup {
+  background-repeat:no-repeat;
+  background-position:center;
+  width:20%;
+  height: 250px;
+  margin:0;
+  margin-top: -1px;
+  float:left;
+  font-family: "Open Sans", Open Sans, sans-serif;
+
+  padding:0;
+  .demo-grad {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    top:0;
+    left:0;
+    z-index:1;
+    background-image: -webkit-gradient(
+      linear,
+      right top,
+      left bottom,
+      color-stop(0.17, white),
+      color-stop(0.59, #07b5b5)
+    );
+    opacity:0.40;
+    filter:alpha(opacity=40);
+
+  }
+  .demo-text {
+    position: relative;
+
+    width: 100%;
+    top:-125px;
+    left:0;
+    z-index:2;
+    h2{
+      padding:0% 5%;
+      margin:0;
+      color:white;
+      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+      font-size:22px;
+    }
+    p {
+      margin:0;
+      padding:0 5%;
+      color:white;
+      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+      font-size:12px;
+      line-height: 16px;
+    }
+  }
+}
+
+
+// -------------------------- Home page (old) ---------------------------
 
 
 

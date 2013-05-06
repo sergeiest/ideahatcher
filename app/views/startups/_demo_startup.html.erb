@@ -1,0 +1,20 @@
+<% div_name='project' + demo_startup.id.to_s() %>
+
+<div id="<%= div_name %>" class="demo-startup"
+     style="background-image:url('<%= demo_startup.avatar.url(:large) %>');"
+     onmousemove="highlightFrame(this)"
+     onmouseout="whiteFrame(this)">
+  <%= link_to (demo_startup) do %>
+    <div class="demo-grad" style="background-image: -webkit-gradient(
+                                    linear, right top, left bottom,
+                                    color-stop(0.17, white),
+                                    color-stop(0.59, rgb(<%=rand(255)%>,<%=rand(255)%>,<%=rand(255)%>)));"
+                            >
+    </div>
+    <div class="demo-text"><a>
+      <h2><%= demo_startup.name %></h2>
+      <p><%= simple_format demo_startup.pitch.firstletters(120), :class => "p-content" %></p>
+    </a></div>
+  <% end %>
+</div>
+

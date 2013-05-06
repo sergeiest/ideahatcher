@@ -3,12 +3,16 @@ class HomeController < ApplicationController
   layout :layout_by_resource
 
   def layout_by_resource
-    if params[:action] == 'index'
-      "home"
-    else
-      "application"
+    case params[:action]
+      when 'index'
+        "home"
+      when 'colorful'
+        "hatcher"
+      else
+        "application"
     end
   end
+
 
   before_filter do
     if params[:action] == "index" and (session[:id] != nil and session[:id] != 0)
@@ -43,7 +47,17 @@ class HomeController < ApplicationController
 	def contacts
   
 	end
-	
+
+  def colorful
+    startups = Startup.all[0..3]
+    s1 = startups
+    s2 = startups
+    s3 = startups
+    s4 = startups
+    s5 = startups
+    @startups = s1.concat(s2.concat(s3).concat(s4.concat(s5)))[0..19]
+
+  end
 	
 	
 end

@@ -131,3 +131,15 @@ function clearInput (elementNode) {
     elementNode.value = "";
     elementNode.onclick ="";
 }
+
+function highlightFrame (elementNode) {
+    elementNode.getElementsByClassName('demo-grad')[0].style.opacity = 0;
+}
+
+function whiteFrame (elementNode) {
+    elementNode.getElementsByClassName('demo-grad')[0].style.opacity = 0.4;
+}
+
+function changeGrad (elementNode) {
+    elementNode.style.backgroundImage = "-webkit-gradient(linear, right top, left bottom, color-stop(0.17, white), color-stop(0.59, red))";
+}
