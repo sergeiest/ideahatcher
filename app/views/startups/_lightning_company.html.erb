@@ -2,7 +2,7 @@
   <h2 class="vote-name">
     <%= startup.name %>
   </h2>
-  <%= simple_format startup.pitch.firstletters(100), :class => "vote-summary" %>
+  <%= simple_format startup.pitch.firstletters(85), :class => "vote-summary" %>
   <div class="vote-img">
     <% if startup.avatar? %>
         <%= image_tag startup.avatar.url(:large)%>
