@@ -1,28 +1,30 @@
-<div class="vote-frame">
+<div class="vote-frame <%= class_name %>">
   <h2 class="vote-name">
-    <%= lightning_company.name %>
+    <%= startup.name %>
   </h2>
-  <%= simple_format lightning_company.pitch.firstletters(350), :class => "vote-summary" %>
+  <%= simple_format startup.pitch.firstletters(350), :class => "vote-summary" %>
   <div class="vote-img">
-    <% if lightning_company.avatar? %>
-        <%= image_tag lightning_company.avatar.url(:large)%>
+    <% if startup.avatar? %>
+        <%= image_tag startup.avatar.url(:large)%>
     <% else %>
         <img src='/images/profile/Nologo.png'/>
     <% end %>
   </div>
 
-  <% company_descriptions=lightning_company.Companydescriptions %>
+  <% company_descriptions=startup.Companydescriptions %>
   <% company_descriptions.each do |description| %>
     <div class="vote-box">
         <div class="slider-bar" >
-          <p style="margin-bottom:10px;">Rate (click on the scale below): </p>
-          <%= form_tag({:action => 'vote_description', :controller => 'votes'},
+          <p style="margin-bottom:10px;">Rate (click on the scale): </p>
+          <% if class_name == "class1" %>
+            <%= form_tag({:action => 'vote_description', :controller => 'votes'},
                        :multipart => true,
                        :id => "form_"+ description.id.to_s() ,
                        :remote => true) do %>
               <%= hidden_field :vote, :description_id, :value => description.id %>
               <%= hidden_field :vote, :score, :value => 3 %>
               <%= submit_tag 'dfsd', :id => "button_"+ description.id.to_s(), :hidden => 'true' %>
+            <% end %>
           <% end %>
           <div id="bar_<%=description.id%>" class="progress progress-primary progress-slider"
                onmousedown="stopSlideLightning('<%=description.id%>')"
@@ -38,13 +40,21 @@
           <a href='/ideas/idea_test?id=7'>Add suggestion</a>
         </div>
         <b><%= Allfield.find(description.allfield_id).field_name%></b>
-        <%= simple_format h description.content.firstletters(400) %>
+
+        <% if class_name == "class1" %>
+            <%= simple_format description.content.firstletters(400), :class => "description-p" %>
+        <% else %>
+          <%= simple_format description.content.firstletters(300), :class => "description-p" %>
+        <% end %>
       </div>
+      <div style="clear:right"></div>
   <% end %>
 
-  <%= link_to :action => "vote_next", :id => params[:id] do %>
-      <button class="btn btn-warning" style="float:right;margin:0 25px 10px 25px;">Submit</button>
+  <% if class_name == "class1" %>
+      <%= link_to :action => "vote_next", :id0 => params[:id1], :id1 => params[:id2]  do %>
+          <button class="btn btn-warning" style="float:right;margin:10px 5% 0 5%;">Submit</button>
+      <% end %>
   <% end %>
-  <div class="clear-both"></div>
+
 
 </div>

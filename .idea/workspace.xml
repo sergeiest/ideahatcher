@@ -22,7 +22,7 @@
       <file leaf-file-name="hatcher.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/layouts/hatcher.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="97" column="12" selection-start="4129" selection-end="4129" vertical-scroll-proportion="-3.125">
+            <state line="42" column="48" selection-start="1374" selection-end="1414" vertical-scroll-proportion="-8.125">
               <folding>
                 <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
@@ -33,7 +33,7 @@
       <file leaf-file-name="vote_lightning.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/startups/vote_lightning.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="1" column="93" selection-start="94" selection-end="94" vertical-scroll-proportion="-0.625">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
               <folding />
             </state>
           </provider>
@@ -48,10 +48,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="startups_controller.rb" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="startups_controller.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/controllers/startups_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="199" column="6" selection-start="5007" selection-end="5007" vertical-scroll-proportion="0.0">
+            <state line="206" column="4" selection-start="5297" selection-end="5297" vertical-scroll-proportion="0.7785978">
               <folding />
             </state>
           </provider>
@@ -69,10 +69,12 @@
       <file leaf-file-name="_lightning_company.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/startups/_lightning_company.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="45" column="71" selection-start="2100" selection-end="2100" vertical-scroll-proportion="-15.875">
+            <state line="46" column="62" selection-start="2119" selection-end="2119" vertical-scroll-proportion="-13.375">
               <folding>
                 <element signature="n#style#0;n#p#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#2;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#2;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#button#0;n#div#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -87,10 +89,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="application.scss" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="application.scss" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/application.scss">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="748" column="0" selection-start="11876" selection-end="11876" vertical-scroll-proportion="0.7297297">
+            <state line="692" column="10" selection-start="10839" selection-end="10839" vertical-scroll-proportion="-14.576923">
               <folding />
             </state>
           </provider>
@@ -119,12 +121,12 @@
         <option value="$PROJECT_DIR$/app/views/authentications/remote_login.js.erb" />
         <option value="$PROJECT_DIR$/app/controllers/companydescriptions_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/startups/detailed.html.erb" />
-        <option value="$PROJECT_DIR$/app/controllers/startups_controller.rb" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/application.js" />
         <option value="$PROJECT_DIR$/app/views/layouts/hatcher.html.erb" />
         <option value="$PROJECT_DIR$/app/views/startups/vote_lightning.html.erb" />
         <option value="$PROJECT_DIR$/app/views/startups/_lightning_company.html.erb" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/application.scss" />
+        <option value="$PROJECT_DIR$/app/controllers/startups_controller.rb" />
       </list>
     </option>
   </component>
@@ -952,39 +954,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/startups_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="199" column="6" selection-start="5007" selection-end="5007" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/layouts/hatcher.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="97" column="12" selection-start="4129" selection-end="4129" vertical-scroll-proportion="-3.125">
-          <folding>
-            <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/startups/team.html.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/startups/index.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="62" selection-start="473" selection-end="473" vertical-scroll-proportion="-7.5">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/startups/vote_lightning.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="93" selection-start="94" selection-end="94" vertical-scroll-proportion="-0.625">
           <folding />
         </state>
       </provider>
@@ -996,19 +968,51 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/startups/index.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="62" selection-start="473" selection-end="473" vertical-scroll-proportion="-7.5">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/layouts/hatcher.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="42" column="48" selection-start="1374" selection-end="1414" vertical-scroll-proportion="-8.125">
+          <folding>
+            <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/startups/vote_lightning.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/startups/_lightning_company.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="45" column="71" selection-start="2100" selection-end="2100" vertical-scroll-proportion="-15.875">
+        <state line="46" column="62" selection-start="2119" selection-end="2119" vertical-scroll-proportion="-13.375">
           <folding>
             <element signature="n#style#0;n#p#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#2;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#0;n#div#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/application.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="748" column="0" selection-start="11876" selection-end="11876" vertical-scroll-proportion="0.7297297">
+        <state line="692" column="10" selection-start="10839" selection-end="10839" vertical-scroll-proportion="-14.576923">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/startups_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="206" column="4" selection-start="5297" selection-end="5297" vertical-scroll-proportion="0.7785978">
           <folding />
         </state>
       </provider>

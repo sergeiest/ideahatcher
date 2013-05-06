@@ -199,27 +199,41 @@ class StartupsController < ApplicationController
 
   def vote_lightning
 
-    if !params[:id] || params[:id] == 0
-      startups = Startup.all
-      params[:id] = startups[rand(startups.length)].id
+    if !params[:id0] || params[:id0] == 0 || !params[:id1] || params[:id1] == 0 || !params[:id2] || params[:id2] == 0
+      redirect_to :action => "vote_next", :id0 => params[:id0], :id1 => params[:id1],:id2 => params[:id2] and return
     end
 
-    @startup = Startup.find(params[:id])
-    @startup_teams = @startup.Companyteams
-    @company_descriptions = @startup.Companydescriptions
+    @startups = Array.new
+    @startups[0]=Startup.find(params[:id0])
+    @startups[1]=Startup.find(params[:id1])
+    @startups[2]=Startup.find(params[:id2])
+
 
 
   end
 
   def vote_next
-    id = params[:id]
-    if !id || id == 0
-      startups = Startup.all
-    else
-      startups = Startup.where('id != ?', id)
+
+    if !params[:id0] || params[:id0] == 0 || !params[:id1] || params[:id1] == 0 || !params[:id2] || params[:id2] == 0
+      not_used_startups = Startup.all
     end
-    id = startups[rand(startups.length)].id if startups.length > 0
-    redirect_to :action => "vote_lightning", :id => id
+
+    a = Array.new
+    if !params[:id0] || params[:id0] == 0
+      a[0] =  rand(not_used_startups.length)
+      params[:id0] = not_used_startups[a[0]].id
+    end
+
+    if !params[:id1] || params[:id1] == 0
+      a[1] =  rand(not_used_startups.length)
+      params[:id1] = not_used_startups[a[1]].id
+    end
+    if !params[:id2] || params[:id2] == 0
+      a[2] =  rand(not_used_startups.length)
+      params[:id2] = not_used_startups[a[2]].id
+    end
+
+    redirect_to :action => "vote_lightning", :id0 => params[:id0], :id1 => params[:id1],:id2 => params[:id2]
   end
 
 

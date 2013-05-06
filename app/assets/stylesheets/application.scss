@@ -670,31 +670,56 @@ h2.project{
 
 // ------------------------- Lightning Vote Page -----------------------
 
+.class0 {
+  width: 560px; height: 540px;
+  position: absolute;
+  top: 40px;
+  left: 80px;
+  z-index:0;
+}
+.class1 {
+  width: 600px; height: 580px;
+  position: relative;
+  top: 0px;
+  left: 170px;
+  z-index:2;
+
+}
+.class2 {
+  width: 560px; height: 540px;
+  margin: 20px 0 0 0;
+  position: absolute;
+  top: 20px;
+  left: 340px;
+  z-index:1;
+}
+
 .vote-frame {
   border:2px #c8c8c8 solid;
   background-color: white;
   font-family: "Open Sans", Open Sans, sans-serif;
-  width: 600px;
+
   .vote-name {
-    margin:20px 25px 0px 25px;
-    padding-bottom:10px;
+    margin:1% 5% 0px 5%;
+    padding-bottom:1%;
+    font-size: 28px;
     text-align: center;
     border-bottom:2px #07b5b5 solid;
   }
   .vote-summary {
     line-height: 16px;
     font-size: 12px;
-    margin: 5px 25px;
+    margin: 2% 5%;
   }
   .vote-img img {
-    height: 100px;
-    width: 550px;
-    margin: 0px 25px;
+    height: 10%;
+    width: 90%;
+    margin: 0px 5%;
     border:1px #c8c8c8 solid;
   }
 
   .vote-box {
-    margin:10px 25px;
+    margin: 1% 5%;
     border-bottom:1px #07b5b5 solid;
     b {
       line-height:16px;
@@ -705,40 +730,39 @@ h2.project{
 
     p, a {
       padding:0;
-      width: 60%;
+      width: 75%;
       font-size:11px;
       line-height:14px;
     }
 
-    p {
-      min-height:90px ;
+    .description-p {
+      height:70px;
     }
 
     .slider-bar {
-      width:180px;
-      min-height: 50px;
+      width:25%;
       float:right;
       padding: 0;
-      margin:10px 0px 0 20px;
+      margin:2% 0px 0 5%;
       display:inline;
       color:#07b5b5;
       p {
         min-height:00px ;
-        width: inherit;
+        width: 100%;
         margin:0;
       }
 
       a {
         padding:0px;
-        margin:0 0 0 100px;
-        width:inherit;
         color:#07b5b5;
+        float:right;
+        text-align: right;
 
       }
 
       .progress-slider{
         padding: 0;
-        margin:3px 10px 3px 10px;
+        margin:0% 3% 1% 3%;
         cursor:pointer;
       }
 
@@ -764,12 +788,13 @@ h2.project{
       }
       .slider-end{
         float:right;
-        margin:0px 0 40px 0 ;
+        margin:0px 0 20% 0 ;
       }
     }
 
     .vote-btn {
       float:right;
+
     }
 
 
@@ -778,236 +803,43 @@ h2.project{
 
 }
 
-
-// ----- old ----- old ----- old -----
-
-.background-lightning {
-  background-color: #f5fff8;
-}
-
-.lightning-left {
-  height:100%;
-  width: calc(50% - 1px);
+.left-nav {
   float:left;
-  border-right:1px #c8c8c8 solid;
-
-}
-
-.lightning-right {
-  height:100%;
-  width:50%;
-  float:right;
-
-  .next-link {
-    background-color:white;
-    color:orange;
-    text-align:right;
-    padding:5px 20px;
-    -webkit-border-radius: 5px 0 0 5px;
-    width:10%;
-    border:1px #c8c8c8 solid;
-    border-right:0px #c8c8c8 solid;
-    cursor:pointer;
-
-    position:absolute;
-    bottom:50px;
-    right:0;
-  }
-
-
-  .exit-link {
-    background-color:white;
-    color:grey;
-    text-align:right;
-    padding:5px 20px;
-    -webkit-border-radius: 5px 0 0 5px;
-    width:10%;
-    border:1px #c8c8c8 solid;
-    border-right:0px #c8c8c8 solid;
-    cursor:pointer;
-
-    position:absolute;
-    bottom:10px;
-    right:0;
-  }
-}
-
-.lightning-company-pic {
-  width:100%;
-  height: calc(50% - 0px);
-  background-color: white;
-
+  min-height: calc(100%-60px);
+  border-right: 1px solid grey;
+  padding: 40px 20px;
+  margin:20px 20px 20px 0px;
   img {
-    width:100%;
-    padding:0;
+    margin:0 0 20px 8px;
+    cursor: pointer;
+  }
+  input {
+    width:100px;
+    font-size: 12px;
+    height: 16px;
+  }
+  ul {
+    list-style-type: none;
     margin:0;
-    background-color: white;
-  }
-
-  .company-name {
-    background-color:white;
-    color:#61b400;
-    text-align:right;
-    padding:5px 20px;
-    float:right;
-    position: relative;
-    top: -80px;
-    -webkit-border-radius: 5px 0 0 5px;
-    min-width:25%;
-    border:1px #c8c8c8 solid;
-    border-right:0px #c8c8c8 solid;
-  }
-}
-
-.lightning-description {
-  width:100%;
-  -webkit-border-radius: 0px;
-  height: calc(50% - 1px);
-  color:black;
-  background-color: white;
-  height: 50%;
-  .content-text {
-    padding:20px 20px 0 20px;
-    min-height: 50%;
-    border-bottom:1px #c8c8c8 solid;
-    border-top:1px #c8c8c8 solid;
-    min-height:80px;
-    background-color: #f4f4f4;
-
-  }
-}
-
-.employee-short {
-  -webkit-border-radius: 5px;
-  border:0px #c8c8c8 solid;
-  background-color: white;
-  margin:10px 10px 0 10px;
-  padding:0px 0px;
-  float:left;
-  width: 100px;
-
-  h5 {
-    color: #61b400;
-    margin:5px 0 0 0;
-    text-align: center;
-
-    line-height:16px;
-    font-size:12px;
-  }
-  p{
-    line-height:16px;
-    font-size:12px;
-    text-align: center;
-    margin:5px 0 0 0;
-    padding:0;
-    min-height: 0px;
-    border-bottom:0px #c8c8c8 solid;
-
-  }
-  img {
-    margin: 0 0 0 17px;
-    padding:0;
-  }
-}
-
-.lightning-box {
-  width: calc(100%-20px);
-  margin:10px;
-  background-color: white;
-  -webkit-border-radius: 5px;
-  border:1px #c8c8c8 solid;
-  b, p {
-    line-height:16px;
-    padding:10px;
-    font-size:16px;
-
-  }
-  p, a {
-    padding:10px 10px 0 10px;
-    width: 60%;
-    font-size:12px;
-  }
-
-  p {
-    min-height:90px ;
-  }
-
-  .slider-bar {
-    width:200px;
-    min-height: 50px;
-    float:right;
-    padding: 0;
-    margin:0px 20px 0 20px;
-    display:inline;
-    color: orange;
-    p {
-      min-height:00px ;
-      width: inherit;
-      margin:0;
+    font-size: 12px;
+    .cat-name {
+      color: orange;
+      margin-top:20px;
     }
 
-    a {
-      padding:0px;
-      margin:0;
-      width:inherit;
-    }
-
-
-    .progress-slider{
-      padding: 0;
-      margin:3px 20px;
-      cursor:pointer;
-    }
-
-    .bar{
-      width:0%;
-      cursor:pointer;
-    }
-
-    .slider-start{
-      float:left;
-      margin-top:0px;
-
-    }
-    .slider-info{
-      margin:0px;
-      padding:0;
-      color:#1e90ff;
-      line-height: 10px;
-    }
-    .slider-end{
-      float:right;
-      margin-top:0px;
-    }
   }
 
 }
 
-.side-link{
-
-  background-color:white;
-  color:orange;
-  text-align:left;
-  margin-top:20px;
-  padding:5px 20px;
-  -webkit-border-radius: 0 5px 5px 0;
-  min-width:8%;
-  border:1px #c8c8c8 solid;
-  border-left:0px #c8c8c8 solid;
-  cursor:pointer;
-
-  position:fixed;
-  left:0;
-
-}
-
-html,body{ height:100%;}
 
 // ----------------------- General ---------------------
 
 .clear-both {
   clear:both;
 }
+
+html,body{ height:100%;}
+
 
 
 // -------------------------- ideaHatcher layout ---------------------------
@@ -1067,6 +899,13 @@ html,body{ height:100%;}
     }
 
   }
+
+}
+
+.hatcher-container {
+  margin:0px 0 0px 155px;
+  padding:20px;
+  position: relative;
 
 }
 

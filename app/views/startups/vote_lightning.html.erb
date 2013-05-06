@@ -1,2 +1,35 @@
+<div class="left-nav">
+  <img src="/images/lightning_on.png">
+  <%= form_tag(:action => "search_startups", :remote => true) do %>
+      <%= text_field_tag :string, "search", :onclick => "clearInput(this)" %>
+      <%= submit_tag "Submit", :hidden => true %>
+  <% end %>
+  <ul>
+    <li class="cat-name">Categories</li>
+    <li>Advertising</li>
+    <li>Audio + Media</li>
+    <li>Education</li>
+    <li>Enterprise Service</li>
+    <li>Finance</li>
+    <li>Gaming</li>
+    <li>Social Media</li>
+  </ul>
+  <ul>
+    <li class="cat-name">Location / Origin</li>
+    <li>CMU</li>
+    <li>Pittsburgh</li>
+    <li>Bay Area</li>
+    <li>Stanford</li>
+    <li>New York</li>
+    <li>Boston</li>
+  </ul>
+</div>
 
-<%= render :partial =>  'startups/lightning_company', :collection => Startup.where("id = ?", @startup.id).all %>
+<div class="hatcher-container">
+  <% i=0 %>
+  <% @startups.each do |startup| %>
+    <%= render :partial =>  'startups/lightning_company',
+               :locals => {:startup => startup, :class_name => "class"+i.to_s()} %>
+    <% i += 1 %>
+  <% end %>
+</div>
