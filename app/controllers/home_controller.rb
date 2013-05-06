@@ -49,13 +49,13 @@ class HomeController < ApplicationController
 	end
 
   def colorful
-    startups = Startup.all[0..3]
+    startups = Startup.all
     s1 = startups
     s2 = startups
     s3 = startups
     s4 = startups
     s5 = startups
-    @startups = s1.concat(s2.concat(s3).concat(s4.concat(s5)))[0..19]
+    @startups = s1.concat(s2.concat(s3).concat(s4.concat(s5)))[0..39]
 
   end
 	
