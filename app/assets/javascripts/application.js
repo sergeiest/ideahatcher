@@ -137,7 +137,7 @@ function highlightFrame (elementNode) {
 }
 
 function whiteFrame (elementNode) {
-    elementNode.getElementsByClassName('demo-grad')[0].style.opacity = 0.4;
+    elementNode.getElementsByClassName('demo-grad')[0].style.opacity = 1;
 }
 
 function changeGrad (elementNode) {

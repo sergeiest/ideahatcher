@@ -4,9 +4,9 @@ class StartupsController < ApplicationController
 
   def layout_by_resource
     case params[:action]
-      when  'show', 'team', 'detailed'
+      when   'team', 'detailed'
         "main"
-      when 'index', 'vote_lightning'
+      when 'index', 'vote_lightning', 'show'
         "hatcher"
       else
         "application"
@@ -85,16 +85,10 @@ class StartupsController < ApplicationController
     @campaign = @startup.Campaign
 
     i=0
+    @company_descriptions = Array.new
     for allfield in Allfield.find_all_by_view_flag(3)
-      i = i +1
-      case i
-        when 1
-          @company_description_1 = @startup.Companydescriptions.find_by_allfield_id(allfield.id)
-        when 2
-          @company_description_2 = @startup.Companydescriptions.find_by_allfield_id(allfield.id)
-        when 3
-          @company_description_3 = @startup.Companydescriptions.find_by_allfield_id(allfield.id)
-      end
+      @company_descriptions[i] = @startup.Companydescriptions.where("allfield_id =? AND status =?", allfield.id, 1)[0]
+      i = i +1 if @company_descriptions[i]
     end
 
 

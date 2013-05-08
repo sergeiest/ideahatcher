@@ -59,9 +59,9 @@
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">
             <% if user.avatar? %>
-                <%= image_tag user.avatar.url(:thumb), :class => "img-rounded-small" %>
+                <%= image_tag user.avatar.url(:square) %>
             <% else %>
-                <%= image_tag "/images/profile/Nophoto.png", :class => "img-rounded-small" %>
+                <%= image_tag "/images/profile/Nophoto.png" %>
             <% end %>
             <b class="caret"></b>
           </a>

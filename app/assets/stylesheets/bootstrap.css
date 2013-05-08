@@ -168,7 +168,6 @@ textarea {
 
 body {
   margin: 0;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 15px;
   line-height: 35px;
   color: #333333;
@@ -617,6 +616,8 @@ body {
 
 p {
   margin: 0 0 10px;
+  font-size: 16px;
+  line-height: 18px;
 }
 
 .lead {
@@ -743,7 +744,7 @@ h4 {
 }
 
 h5 {
-  font-size: 14px;
+  font-size: 18px;
 }
 
 h6 {
@@ -6047,7 +6048,6 @@ div.teaser-user{
     clear: both;
     color: #2f71b8;
     display: block;
-    font-family: 'Open Sans', 'Open Sans', 'Open Sans', FreeSans, sans-serif;
     font-size: 13px;
     font-style: normal;
     font-variant: normal;
