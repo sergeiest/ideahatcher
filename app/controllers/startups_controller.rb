@@ -4,9 +4,9 @@ class StartupsController < ApplicationController
 
   def layout_by_resource
     case params[:action]
-      when   'team', 'detailed'
+      when    'detailed'
         "main"
-      when 'index', 'vote_lightning', 'show'
+      when 'index', 'vote_lightning', 'show', 'team'
         "hatcher"
       else
         "application"
@@ -54,12 +54,10 @@ class StartupsController < ApplicationController
 
   def show
     @startup = Startup.find(params[:id])
-    @startup_investors = @startup.Investor_users.all.uniq
     @startup_followers = @startup.Follower_users.all.uniq
     @startup_owners = @startup.Owner_users.all.uniq
     @allfield = Allfield.find_by_view_flag(1)
     @startup_description = @startup.Companydescriptions.find_by_allfield_id(@allfield.id)
-    @startup_teams = @startup.Companyteams
     @startup_updates = @startup.Companyupdates
     @companyupdate = Companyupdate.new
 
@@ -155,12 +153,9 @@ class StartupsController < ApplicationController
   end
   
   def team
-    @user = User.find(session[:id])   if session[:id] and session[:id] != 0
-    @startup = Startup.find(session[:startup_id])
-    @startup_teams = @startup.Companyteams
-    @startup_investors = @startup.Investor_users.all.uniq
-    @startup_followers = @startup.Follower_users.all.uniq
-    @startup_owners = @startup.Owner_users.all.uniq
+    startup = Startup.find(session[:startup_id])
+    @startup_owners = startup.Owner_users.all.uniq
+    @people = User.all[0..20]
   end
 
   def documents

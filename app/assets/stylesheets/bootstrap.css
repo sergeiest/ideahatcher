@@ -744,7 +744,7 @@ h4 {
 }
 
 h5 {
-  font-size: 18px;
+  font-size: 16px;
 }
 
 h6 {
@@ -2802,6 +2802,10 @@ table th[class*="span"],
   margin:0;
   padding:0;
   vertical-align: top;
+    border-top: 4px solid #000000;
+    border-right: 4px solid transparent;
+    border-left: 4px solid transparent;
+    content: "";
 }
 
 .dropdown {
@@ -3951,13 +3955,13 @@ input[type="submit"].btn.btn-mini {
 }
 
 .nav-pills > li > a {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  margin-top: 2px;
-  margin-bottom: 2px;
-  -webkit-border-radius: 5px;
-     -moz-border-radius: 5px;
-          border-radius: 5px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  -webkit-border-radius: 0px;
+     -moz-border-radius: 0px;
+          border-radius: 0px;
 }
 
 .nav-pills > .active > a,
@@ -4023,15 +4027,16 @@ input[type="submit"].btn.btn-mini {
 }
 
 .nav-pills .dropdown-menu {
-  -webkit-border-radius: 6px;
-     -moz-border-radius: 6px;
-          border-radius: 6px;
+  -webkit-border-radius: 0px;
+     -moz-border-radius: 0px;
+          border-radius: 0px;
+  margin-left:-100px;
 }
 
 .nav .dropdown-toggle .caret {
   margin-top: 6px;
-  border-top-color: #0088cc;
-  border-bottom-color: #0088cc;
+  border-top-color: white;
+  border-bottom-color: white;
 }
 
 .nav .dropdown-toggle:hover .caret {

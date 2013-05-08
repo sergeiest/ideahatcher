@@ -39,7 +39,7 @@
 
 <div class="hatcher-nav">
   <div class="logo-img">
-    <%= link_to(:controller => "home") do  %>
+    <%= link_to(:controller => "home", :action => "colorful") do  %>
         <img src="/images/ideahatcher_logo.png">
     <% end %>
   </div>
@@ -47,17 +47,17 @@
   <% if session[:id] != nil and session[:id] != 0 %>
       <% user = User.find(session[:id]) %>
       <ul class="user-nav nav nav-pills">
-        <li class="dropdown">
+        <li class="dropdown custom-dropdown">
           <%= link_to "Vote", :action => "vote_lightning", :controller => "startups" %>
         </li>
-        <li  class="dropdown">
+        <li  class="dropdown custom-dropdown">
           <%= link_to "Feedback", :action => "vote_lightning", :controller => "startups" %>
         </li>
-        <li  class="dropdown">
+        <li  class="dropdown custom-dropdown">
           <%= link_to "My hatch", :action => "vote_lightning", :controller => "startups" %>
         </li>
         <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="height: 12px;">
             <% if user.avatar? %>
                 <%= image_tag user.avatar.url(:square) %>
             <% else %>
@@ -86,7 +86,8 @@
       </ul>
   <% else %>
       <div id="login-nav" class="login-nav">
-        <%= form_tag(:action => 'process_login', :controller => 'authentications', :multipart => true) do %>
+        <%= form_tag({:action => 'remote_login', :controller => 'authentications'},
+                     :multipart => true, :remote => true) do %>
             <div class="login-input">
               <%= text_field "authentication", "username", :value => "Login (email):",
                              :onclick => "clearInput(this)"%>
@@ -112,7 +113,8 @@
 </div>
 
 
-<div id="login_modal" class="modal hide fade login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div id="login_modal" class="modal hide fade login-modal"
+                        tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
     <h3 id="myModalLabel">First let everyone know who you are:</h3>

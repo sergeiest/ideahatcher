@@ -198,6 +198,23 @@ class InvestorsController < ApplicationController
     @users = User.all
   end
 
+  def search_people
+    if !params[:string] || params[:string] == ""
+      @people = User.all[0..20]
+    else
+      s = params[:string].split(" ")
+
+      people = User.where("firstname LIKE ? and lastname LIKE ?","%"+ s[0].to_s()+"%","%"+ s[1].to_s()+"%").all[0..20]
+      people.concat(User.where("firstname LIKE ? and lastname LIKE ?","%"+ s[1].to_s()+"%","%"+ s[0].to_s()+"%").all[0..20])
+      @people = people.uniq[0..20]
+
+    end
+
+    respond_to do |format|
+      format.js
+    end
+  end
+
 end
   
 

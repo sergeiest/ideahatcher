@@ -570,12 +570,32 @@ h2.project{
   padding:10px;
   .company-left {
     float:left;
+    padding-left: 20px;
     .company-box {
       width: 600px;
+      .person-info {
+        float:left;
+        margin: 10px 0;
+      }
+
       h5, a {
         color:#07b5b5;
       }
-      border-bottom:1px #07b5b5 solid;
+
+    }
+    //.company-nav {
+    //  height: 16px;
+    //
+    //  margin:0;
+    //}
+    .company-content {
+      //padding: 20px;
+      //border:1px #c8c8c8 solid;
+      //border-top:0px;
+      .company-box {
+        border-bottom:1px #07b5b5 solid;
+        //width: 556px;
+      }
     }
     .main-logo {
       height: 300px;
@@ -589,7 +609,7 @@ h2.project{
       opacity:0.90;
       filter:alpha(opacity=90);
       padding:5px 20px;
-      margin-right: -2px;
+      margin-right: -0px;
       margin-top:-100px;
     }
 
@@ -762,7 +782,7 @@ h2.project{
 
 }
 
-// ------------------------- Startup Index -----------------------
+// ------------------------- Startup Page -----------------------
 
 .startup-holder {
   height: 370px;
@@ -782,7 +802,7 @@ h2.project{
     border:1px #c8c8c8 solid;
   }
   h2 {
-      font-size: 15px;
+      font-size: 20px;
       font-weight: bold;
       line-height: 20px;
       text-align: center;
@@ -797,7 +817,7 @@ h2.project{
   input { width: 70px; margin:0 3px; float: left;}
   p {
     color: black;
-    font-size: 12px;
+
     line-height: 16px;
   }
   .p-content{
@@ -1008,22 +1028,17 @@ h2.project{
     .login-input {
       float:left;
       margin:5px 5px -5px 5px;
+      color: #c2c2c2;
     }
   }
 
   .user-nav {
     line-height:12px;
     float:right;
-    margin:-5px 20px 0 0;
+    margin:-10px 20px 0 0;
     font-size: 16px;
 
-    p {margin:2px}
-    .login-input {
-      float:left;
-      margin:5px 5px 0 5px;
-      color: #c2c2c2;
-    }
-    a {
+    .custom-dropdown a {
       height: 12px;
       color:white;
     }
@@ -1062,7 +1077,10 @@ h2.project{
 
 // ---------------------------- People --------------------
 
+
+
 .person-info {
+  width: 200px;
   img {
     height: 40px;
     width: 40px;

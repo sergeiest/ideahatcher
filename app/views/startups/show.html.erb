@@ -48,29 +48,30 @@
             </h2>
           <div style="clear:both"></div>
         </div>
-        <div class="company-box">
-          <p><%= simple_format h @startup.pitch.firstletters(350) %></p>
-        </div>
-        <% @company_descriptions.each do |description| %>
+
+        <div class="company-content">
+            <div class="company-box">
+              <p><%= simple_format h @startup.pitch.firstletters(350) %></p>
+            </div>
+            <% @company_descriptions.each do |description| %>
+              <div class="company-box">
+                  <h5><%= Allfield.find(description.allfield_id).field_name %>:
+                    <% if description != nil %>
+                        <%= description.field_status %></h5>
+                    <% else %>
+                        - no information - </h5>
+                    <% end %>
+                  <% if description != nil %>
+                        <p><%= description.content %></p>
+                  <% else %>
+                        <p style="color:red">- no description - </p>
+                  <% end %>
+              </div>
+            <% end %>
           <div class="company-box">
-              <h5><%= Allfield.find(description.allfield_id).field_name %>:
-                <% if description != nil %>
-                    <%= description.field_status %></h5>
-                <% else %>
-                    - no information - </h5>
-                <% end %>
-              <% if description != nil %>
-                    <p><%= description.content %></p>
-              <% else %>
-                    <p style="color:red">- no description - </p>
-              <% end %>
-          </div>
-        <% end %>
-        <div class="company-box">
             <h5>News</h5>
             <div id="teaser-text">
               <% if @startup_updates == nil || @startup_updates.count == 0  %>
-                  <hr/>
                   <p>Company has not posted news so far... </p>
               <% end %>
               <%= render :partial => 'companyupdates/news', :collection => @startup_updates %>
@@ -107,6 +108,7 @@
             <% end %>
 
           </div>
+        </div>
       </div>
       <div class="company-right">
         <%= link_to 'Follow',
@@ -115,7 +117,11 @@
                     :class => 'btn btn-warning' %>
         <div class="company-info">
           <h4>Team</h4>
-          <%= render :partial => 'investors/person', :collection => @startup_owners %>
+          <%= render :partial => 'investors/person', :collection => @startup_owners, :local => {:owner => 1} %>
+          <% if session[:connection_type]==2 %>
+            <%= link_to 'Add more people >', {:controller => "startups", :action => "team", :id => params[:id]},
+                                        :class => "bottom-link" %>
+          <% end %>
         </div>
         <div class="company-info">
           <h4>Followers</h4>

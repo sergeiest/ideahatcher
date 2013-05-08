@@ -1,18 +1,35 @@
 var newUl = document.createElement("ul");
 newUl.className = "user-nav nav nav-pills";
 
-var newLi = document.createElement("ul");
+
+var liVote = document.createElement("li");
+liVote.className = "dropdown custom-dropdown"
+liVote.innerHTML = '<%= link_to "Vote", :action => "vote_lightning", :controller => "startups" %>';
+newUl.appendChild(liVote);
+
+
+var liFeedback = document.createElement("li");
+liFeedback.className = "dropdown custom-dropdown"
+liFeedback.innerHTML = '<%= link_to "Feedback", :action => "vote_lightning", :controller => "startups" %>';
+newUl.appendChild(liFeedback);
+
+
+var liHatch = document.createElement("li");
+liHatch.className = "dropdown custom-dropdown"
+liHatch.innerHTML = '<%= link_to "My hatch", :action => "vote_lightning", :controller => "startups" %>';
+newUl.appendChild(liHatch);
+
+
+var newLi = document.createElement("li");
 newLi.className = "dropdown"
 
 <% if @user.avatar? %>
-    newLi.innerHTML = "<a class='dropdown-toggle' data-toggle='dropdown' href='#'>" +
+    newLi.innerHTML = "<a class='dropdown-toggle' data-toggle='dropdown' href='#'  style='height: 12px;'>" +
                         '<%= image_tag @user.avatar.url(:thumb), :class => "img-rounded-small" %>' +
-                        "<%= @user.firstname %> <%= @user.lastname %>" +
                         "<b class='caret'></b></a>";
 <% else %>
-    newLi.innerHTML = "<a class='dropdown-toggle' data-toggle='dropdown' href='#'>" +
+    newLi.innerHTML = "<a class='dropdown-toggle' data-toggle='dropdown' href='#'  style='height: 12px;'>" +
                         '<%= image_tag '/images/profile/Nophoto.png', :class => 'img-rounded-small' %>' +
-                        "<%= @user.firstname %> <%= @user.lastname %>" +
                         "<b class='caret'></b></a>";
 <% end %>
 
@@ -42,3 +59,4 @@ loginNav.parentNode.replaceChild(newUl, loginNav);
 
 
 $('#login_modal').modal('hide');
+

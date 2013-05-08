@@ -5,6 +5,10 @@
             <%= image_tag "/images/profile/Nophoto.png" %>
         <% end %>
         <h5><%= person.firstname %>  <%= person.lastname %></h5>
-        <p>Founder</p>
+        <% if params[:owner] %>
+            <p>Founder</p>
+        <% else %>
+            <p>Follower </p>
+        <% end %>
 <% end %>
 

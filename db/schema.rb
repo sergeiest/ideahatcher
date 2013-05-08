@@ -136,8 +136,9 @@ ActiveRecord::Schema.define(:version => 20130422223437) do
     t.integer  "startup_id"
     t.integer  "user_id"
     t.integer  "status"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",               :null => false
+    t.datetime "updated_at",               :null => false
+    t.string   "role",       :limit => 45
   end
 
   create_table "startups", :force => true do |t|

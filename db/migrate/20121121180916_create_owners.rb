@@ -4,6 +4,7 @@ class CreateOwners < ActiveRecord::Migration
       t.integer  :startup_id
       t.integer  :user_id
       t.integer  :status
+      t.string   :role
 
 
       t.timestamps
