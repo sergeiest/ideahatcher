@@ -204,8 +204,8 @@ class InvestorsController < ApplicationController
     else
       s = params[:string].split(" ")
 
-      people = User.where("firstname LIKE ? and lastname LIKE ?","%"+ s[0].to_s()+"%","%"+ s[1].to_s()+"%").all[0..20]
-      people.concat(User.where("firstname LIKE ? and lastname LIKE ?","%"+ s[1].to_s()+"%","%"+ s[0].to_s()+"%").all[0..20])
+      people = User.where("(UPPER(firstname) LIKE UPPER(?) and UPPER(firstname) LIKE UPPER(?)) or (UPPER(firstname) LIKE UPPER(?) and UPPER(firstname) LIKE UPPER(?))",
+                          "%"+ s[0].to_s()+"%", "%"+ s[1].to_s()+"%", "%"+ s[1].to_s()+"%", "%"+ s[0].to_s()+"%").all[0..20]
       @people = people.uniq[0..20]
 
     end

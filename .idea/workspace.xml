@@ -86,10 +86,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="investors_controller.rb" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="investors_controller.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/controllers/investors_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="208" column="33" selection-start="6106" selection-end="6106" vertical-scroll-proportion="0.0">
+            <state line="206" column="156" selection-start="5985" selection-end="5985" vertical-scroll-proportion="0.42196533">
               <folding />
             </state>
           </provider>
@@ -104,10 +104,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="search_people.js.erb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="search_people.js.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/investors/search_people.js.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="3" column="38" selection-start="119" selection-end="119" vertical-scroll-proportion="0.08858268">
+            <state line="3" column="38" selection-start="119" selection-end="119" vertical-scroll-proportion="-1.875">
               <folding />
             </state>
           </provider>
@@ -140,8 +140,8 @@
         <option value="$PROJECT_DIR$/config/routes.rb" />
         <option value="$PROJECT_DIR$/app/views/startups/team.html.erb" />
         <option value="$PROJECT_DIR$/app/views/investors/_people.html.erb" />
-        <option value="$PROJECT_DIR$/app/controllers/investors_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/investors/search_people.js.erb" />
+        <option value="$PROJECT_DIR$/app/controllers/investors_controller.rb" />
       </list>
     </option>
   </component>
@@ -965,13 +965,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/startups_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="167" column="0" selection-start="4195" selection-end="4195" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/startups/vote_like.js.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="43" column="55" selection-start="1899" selection-end="1911" vertical-scroll-proportion="-12.5">
@@ -995,16 +988,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/investors_controller.rb">
+    <entry file="file://$PROJECT_DIR$/app/views/investors/search_people.js.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="208" column="33" selection-start="6106" selection-end="6106" vertical-scroll-proportion="0.0">
+        <state line="3" column="38" selection-start="119" selection-end="119" vertical-scroll-proportion="-1.875">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/investors/search_people.js.erb">
+    <entry file="file://$PROJECT_DIR$/app/controllers/startups_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="38" selection-start="119" selection-end="119" vertical-scroll-proportion="0.08858268">
+        <state line="167" column="0" selection-start="4195" selection-end="4195" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/investors_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="206" column="156" selection-start="5985" selection-end="5985" vertical-scroll-proportion="0.42196533">
           <folding />
         </state>
       </provider>
