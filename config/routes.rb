@@ -73,6 +73,7 @@ Webapp::Application.routes.draw do
   get "investors/newstartup"
   get "investors/history_startup"
   post "investors/search_people"
+  post "investors/add_founder"
   resources :investors
 
   get "users/login"

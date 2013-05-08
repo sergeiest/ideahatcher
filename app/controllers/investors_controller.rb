@@ -203,16 +203,56 @@ class InvestorsController < ApplicationController
       @people = User.all[0..20]
     else
       s = params[:string].split(" ")
-
-      people = User.where("(UPPER(firstname) LIKE UPPER(?) and UPPER(firstname) LIKE UPPER(?)) or (UPPER(firstname) LIKE UPPER(?) and UPPER(firstname) LIKE UPPER(?))",
+      @people = User.where("(UPPER(firstname) LIKE UPPER(?) and UPPER(lastname) LIKE UPPER(?)) or (UPPER(firstname) LIKE UPPER(?) and UPPER(lastname) LIKE UPPER(?))",
                           "%"+ s[0].to_s()+"%", "%"+ s[1].to_s()+"%", "%"+ s[1].to_s()+"%", "%"+ s[0].to_s()+"%").all[0..20]
-      @people = people.uniq[0..20]
+
 
     end
 
     respond_to do |format|
       format.js
     end
+  end
+
+  def add_founder
+
+    i=0
+    s = Array.new
+
+    if !params[:founder1].nil?
+     s[i]= params[:founder1]
+     i=i+1
+    end
+    if !params[:founder2].nil?
+      s[i]= params[:founder2]
+      i=i+1
+    end
+    if !params[:founder3].nil?
+      s[i]= params[:founder3]
+      i=i+1
+    end
+
+    flag = 0
+    s.each do |founder_id|
+      if founder_id!= "0" and Owner.find_by_user_id_and_startup_id(founder_id, session[:startup_id]).nil? and !User.find(founder_id).nil?
+        owner = Owner.new
+        owner.startup_id = session[:startup_id]
+        owner.user_id = founder_id
+        owner.status = 1
+        if !owner.save
+          flag =1
+        end
+      end
+    end
+
+    respond_to do |format|
+      if flag == 0
+        format.js
+      else
+        format.js { render :partial => "search_people" }
+      end
+    end
+
   end
 
 end

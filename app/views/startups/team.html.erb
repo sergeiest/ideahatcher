@@ -32,14 +32,32 @@
   <div class="company-main">
     <div class="company-left">
       <div class="company-box">
+        <h4>Add founders to your team by selecting them (up to 3 at a time):</h4>
         <%= form_tag({:action => "search_people", :controller => "investors"},
                      :remote => true) do %>
             <%= text_field_tag :string, "search", :onclick => "clearInput(this)", :onkeyup => "submitForm(this)" %>
             <%= submit_tag "submit", :id => "people-search-form", :hidden => "true" %>
         <% end %>
       </div>
+      <%= form_tag({:action => "add_founder", :controller => "investors"},
+                   :remote => true) do %>
+        <%= hidden_field_tag :founder1, 0 %>
+        <%= hidden_field_tag :founder2, 0 %>
+        <%= hidden_field_tag :founder3, 0 %>
+        <%= submit_tag "Add selected", :class => "btn btn-warning" %>
+      <% end %>
       <div id="search-results" class="company-box">
-        <%= render :partial => 'investors/people', :collection => @people %>
+        <% @people.each do |person| %>
+            <div class="person-info" onclick="addPerson(this,<%= person.id %>)">
+              <% if  person.avatar? %>
+                  <img src='<%= person.avatar.url(:square) %>' >
+              <% else %>
+                  <img src='/images/profile/Nophoto.png'>
+              <% end %>
+              <h5><%= person.firstname %>  <%= person.lastname %></h5>
+              <div class="clear-both"></div>
+            </div>
+         <% end %>
       </div>
     </div>
 
@@ -64,6 +82,39 @@
   function submitForm (formName) {
       $('#people-search-form').click();
   }
+  function addPerson (elementNode, id) {
+      var founder1 = document.getElementById("founder1");
+      var founder2 = document.getElementById("founder2");
+      var founder3 = document.getElementById("founder3");
+
+      if (id == founder1.value || id == founder2.value || id == founder3.value ) {
+          elementNode.style.background = "white";
+          if (founder1.value == id) { founder1.value=0; }
+          if (founder2.value == id) { founder2.value=0; }
+          if (founder3.value == id) { founder3.value=0; }
+      } else {
+          flag = 0;
+          if (founder1.value == 0) {
+              founder1.value=id;
+              flag=1;
+          } else {
+              if (founder2.value == 0) {
+                  founder2.value=id;
+                  flag=1;
+              } else {
+                  if (founder3.value == 0) {
+                      founder3.value=id;
+                      flag=1;
+                  }
+              }
+          }
+          if (flag == 1) {
+            elementNode.style.background = "rgb(190, 250, 255)";
+          }
+      }
+  }
+
+
 </script>
 
 

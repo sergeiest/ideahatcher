@@ -22,16 +22,16 @@
       <file leaf-file-name="team.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/startups/team.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="45" column="103" selection-start="1426" selection-end="1426" vertical-scroll-proportion="-15.833333">
+            <state line="42" column="34" selection-start="1463" selection-end="1463" vertical-scroll-proportion="-8.333333">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="_form.html.erb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/investors/_form.html.erb">
+      <file leaf-file-name="routes.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/config/routes.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="41" selection-start="636" selection-end="644" vertical-scroll-proportion="-1.88">
+            <state line="75" column="29" selection-start="1844" selection-end="1844" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -46,13 +46,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="vote_like.js.erb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/startups/vote_like.js.erb">
+      <file leaf-file-name="investors_controller.rb" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/controllers/investors_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="43" column="55" selection-start="1899" selection-end="1911" vertical-scroll-proportion="-12.5">
-              <folding>
-                <marker date="1366319531000" expanded="false" signature="2298:2308" placeholder="..." />
-              </folding>
+            <state line="236" column="137" selection-start="6654" selection-end="6654" vertical-scroll-proportion="0.7781885">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -77,19 +75,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="_person.html.erb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/investors/_person.html.erb">
+      <file leaf-file-name="search_people.js.erb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/investors/search_people.js.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="1" column="8" selection-start="102" selection-end="277" vertical-scroll-proportion="-0.625">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="investors_controller.rb" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/controllers/investors_controller.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="206" column="156" selection-start="5985" selection-end="5985" vertical-scroll-proportion="0.42196533">
+            <state line="3" column="38" selection-start="119" selection-end="119" vertical-scroll-proportion="-1.875">
               <folding />
             </state>
           </provider>
@@ -98,16 +87,7 @@
       <file leaf-file-name="_people.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/investors/_people.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="47" selection-start="229" selection-end="229" vertical-scroll-proportion="-3.75">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="search_people.js.erb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/investors/search_people.js.erb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="3" column="38" selection-start="119" selection-end="119" vertical-scroll-proportion="-1.875">
+            <state line="3" column="2" selection-start="125" selection-end="423" vertical-scroll-proportion="-1.875">
               <folding />
             </state>
           </provider>
@@ -126,7 +106,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/vendor/assets/fonts/miso_regular_macroman/stylesheet.css" />
         <option value="$PROJECT_DIR$/config/application.rb" />
         <option value="$PROJECT_DIR$/app/views/authentications/remote_login.js.erb" />
         <option value="$PROJECT_DIR$/app/views/layouts/hatcher.html.erb" />
@@ -137,10 +116,11 @@
         <option value="$PROJECT_DIR$/app/views/startups/show.html.erb" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/application.scss" />
         <option value="$PROJECT_DIR$/app/controllers/startups_controller.rb" />
-        <option value="$PROJECT_DIR$/config/routes.rb" />
-        <option value="$PROJECT_DIR$/app/views/startups/team.html.erb" />
-        <option value="$PROJECT_DIR$/app/views/investors/_people.html.erb" />
         <option value="$PROJECT_DIR$/app/views/investors/search_people.js.erb" />
+        <option value="$PROJECT_DIR$/config/routes.rb" />
+        <option value="$PROJECT_DIR$/app/views/investors/_people.html.erb" />
+        <option value="$PROJECT_DIR$/app/views/startups/team.html.erb" />
+        <option value="$PROJECT_DIR$/app/views/investors/add_founder.js.erb" />
         <option value="$PROJECT_DIR$/app/controllers/investors_controller.rb" />
       </list>
     </option>
@@ -893,41 +873,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/config/routes.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="74" column="31" selection-start="1813" selection-end="1813" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/startups/mentors.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/startups/editcapital.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/startups/_formcapital.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/campaigns/basic_step.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="103" column="25" selection-start="4018" selection-end="4030" vertical-scroll-proportion="1.1515151">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/investors/_form.html.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="13" column="41" selection-start="636" selection-end="644" vertical-scroll-proportion="-1.88">
@@ -942,9 +887,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/application.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="577" column="24" selection-start="9799" selection-end="9799" vertical-scroll-proportion="-11.076923">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/routes.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="75" column="29" selection-start="1844" selection-end="1844" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/investors/_person.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="8" selection-start="102" selection-end="277" vertical-scroll-proportion="-0.625">
+        <state line="1" column="8" selection-start="102" selection-end="277" vertical-scroll-proportion="0.028301887">
           <folding />
         </state>
       </provider>
@@ -958,39 +917,32 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/startups/team.html.erb">
+    <entry file="file://$PROJECT_DIR$/app/views/investors/_people.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="45" column="103" selection-start="1426" selection-end="1426" vertical-scroll-proportion="-15.833333">
+        <state line="3" column="2" selection-start="125" selection-end="423" vertical-scroll-proportion="-1.875">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/startups/vote_like.js.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="43" column="55" selection-start="1899" selection-end="1911" vertical-scroll-proportion="-12.5">
+        <state line="47" column="69" selection-start="2005" selection-end="2005" vertical-scroll-proportion="1.3301886">
           <folding>
-            <marker date="1366319531000" expanded="false" signature="2298:2308" placeholder="..." />
+            <marker date="1366319531000" expanded="false" signature="-1:-1" placeholder="..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/investors/_people.html.erb">
+    <entry file="file://$PROJECT_DIR$/app/views/campaigns/basic_step.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="47" selection-start="229" selection-end="229" vertical-scroll-proportion="-3.75">
+        <state line="15" column="75" selection-start="670" selection-end="670" vertical-scroll-proportion="0.4352031">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/application.scss">
+    <entry file="file://$PROJECT_DIR$/app/views/startups/vote_lightning.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="577" column="24" selection-start="9799" selection-end="9799" vertical-scroll-proportion="-11.076923">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/investors/search_people.js.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="38" selection-start="119" selection-end="119" vertical-scroll-proportion="-1.875">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.16981132">
           <folding />
         </state>
       </provider>
@@ -1002,9 +954,37 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/startups/_lightning_company.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.5377358">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/investors/search_people.js.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="38" selection-start="119" selection-end="119" vertical-scroll-proportion="-1.875">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/startups/team.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="42" column="34" selection-start="1463" selection-end="1463" vertical-scroll-proportion="-8.333333">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/investors/add_founder.js.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/investors_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="206" column="156" selection-start="5985" selection-end="5985" vertical-scroll-proportion="0.42196533">
+        <state line="236" column="137" selection-start="6654" selection-end="6654" vertical-scroll-proportion="0.7781885">
           <folding />
         </state>
       </provider>
