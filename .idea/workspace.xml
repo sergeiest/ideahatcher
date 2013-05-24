@@ -19,10 +19,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="idea_test.html.erb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="idea_test.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/ideas/idea_test.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="149" column="8" selection-start="6288" selection-end="6288" vertical-scroll-proportion="0.9136276">
+            <state line="149" column="8" selection-start="6288" selection-end="6288" vertical-scroll-proportion="5.1666665">
               <folding>
                 <element signature="n#style#0;n#h2#0;n#div#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
@@ -31,6 +31,24 @@
                 <element signature="n#style#0;n#div#2;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#span#0;n#button#0;n#div#4;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Gemfile" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Gemfile">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="53" column="10" selection-start="975" selection-end="975" vertical-scroll-proportion="0.78494626">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Gemfile.lock" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Gemfile.lock">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -89,8 +107,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/views/startups/show.html.erb" />
-        <option value="$PROJECT_DIR$/app/controllers/startups_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/investors/search_people.js.erb" />
         <option value="$PROJECT_DIR$/config/routes.rb" />
         <option value="$PROJECT_DIR$/app/views/investors/_people.html.erb" />
@@ -105,6 +121,8 @@
         <option value="$PROJECT_DIR$/app/controllers/ideas_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/startups/_lightning_company.html.erb" />
         <option value="$PROJECT_DIR$/app/views/ideas/idea_test.html.erb" />
+        <option value="$PROJECT_DIR$/Gemfile.lock" />
+        <option value="$PROJECT_DIR$/Gemfile" />
       </list>
     </option>
   </component>
@@ -812,23 +830,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/views/authentications/remote_login.js.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="46" column="24" selection-start="1642" selection-end="1642" vertical-scroll-proportion="1.2410072">
-          <folding>
-            <marker date="1369365012000" expanded="false" signature="-1:-1" placeholder="..." />
-            <marker date="1369365012000" expanded="false" signature="-1:-1" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/authentications_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="200" column="0" selection-start="6606" selection-end="6606" vertical-scroll-proportion="5.291005">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/layouts/hatcher.html.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="77" column="106" selection-start="3125" selection-end="3125" vertical-scroll-proportion="0.3038674">
@@ -929,7 +930,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/ideas/idea_test.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="149" column="8" selection-start="6288" selection-end="6288" vertical-scroll-proportion="0.9136276">
+        <state line="149" column="8" selection-start="6288" selection-end="6288" vertical-scroll-proportion="5.1666665">
           <folding>
             <element signature="n#style#0;n#h2#0;n#div#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
@@ -938,6 +939,20 @@
             <element signature="n#style#0;n#div#2;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
             <element signature="n#style#0;n#span#0;n#button#0;n#div#4;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Gemfile.lock">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Gemfile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="53" column="10" selection-start="975" selection-end="975" vertical-scroll-proportion="0.78494626">
+          <folding />
         </state>
       </provider>
     </entry>

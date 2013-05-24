@@ -5,7 +5,6 @@ gem 'rails', '3.2.11'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'pg'
 gem 'carrierwave'
 
 
@@ -25,8 +24,8 @@ end
  
 gem 'jquery-rails'
 
-gem 'cocaine','0.3.2'
-gem 'paperclip'
+gem 'cocaine',  '~> 0.5.0'
+gem 'paperclip', '~> 3.4.2'
 gem 'aws-sdk'
 
 gem 'carrierwave'
@@ -46,8 +45,11 @@ gem 'carrierwave'
 # To use debugger
 # gem 'debugger'
 
-
-group :development, :test do
+group :production do
   gem 'mysql2'
 
+end
+
+group :development, :test do
+  gem 'pg'
 end
