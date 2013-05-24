@@ -46,10 +46,11 @@ gem 'carrierwave'
 # gem 'debugger'
 
 group :production do
-  gem 'mysql2'
+
+  gem 'pg'
 
 end
 
 group :development, :test do
-  gem 'pg'
+  gem 'mysql2'
 end
