@@ -2,6 +2,17 @@ class CampaignsController < ApplicationController
   # GET /campaigns
   # GET /campaigns.json
 
+  layout :layout_by_resource
+
+  def layout_by_resource
+    case params[:action]
+      when    'detailed'
+        "main"
+      else
+        "hatcher"
+    end
+  end
+
   before_filter do
     wrong_link = 0
     if session[:id] == nil || session[:id] == 0

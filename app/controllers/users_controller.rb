@@ -1,7 +1,15 @@
 class UsersController < ApplicationController
 
+  layout :layout_by_resource
 
-  layout "main"
+  def layout_by_resource
+    case params[:action]
+      when 'index', 'edit', 'change_password'
+        "hatcher"
+      else
+        "main"
+    end
+  end
 
   def index
     @user = User.find(params[:id])

@@ -42,13 +42,24 @@ newMenu.className = "dropdown-menu";
 
 <% end %>
 
-newMenu.innerHTML = '<hr />' +
+
+<% if owner_number != 0 %>
+    newMenu.innerHTML =  '<li role="presentation"><%= link_to(@user.Owner_startups[0].name, :controller => "startups",
+                                                :action => "show", :id => @user.Owners[0].startup_id) %></li> <hr />' +
         '<li role="presentation"><%= link_to 'Update profile', :controller => 'users', :action => 'edit',
                                                 :id => @user.id %></li>' +
         '<li role="presentation"><%= link_to 'Change password', :controller => 'users', :action => 'change_password',
                                                 :id => @user.id %></li>' +
         '<hr />' +
         '<li role="presentation"><%= link_to 'Logout', :controller => 'authentications', :action => 'logout' %></li>';
+<% else %>
+    newMenu.innerHTML =  '<li role="presentation"><%= link_to 'Update profile', :controller => 'users', :action => 'edit',
+                                                :id => @user.id %></li>' +
+        '<li role="presentation"><%= link_to 'Change password', :controller => 'users', :action => 'change_password',
+                                                :id => @user.id %></li>' +
+        '<hr />' +
+        '<li role="presentation"><%= link_to 'Logout', :controller => 'authentications', :action => 'logout' %></li>';
+<% end %>
 
 newLi.appendChild(newMenu);
 newUl.appendChild(newLi);

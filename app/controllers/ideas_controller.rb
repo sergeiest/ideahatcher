@@ -1,6 +1,15 @@
 class IdeasController < ApplicationController
 
-  layout 'main'
+  layout :layout_by_resource
+
+  def layout_by_resource
+    case params[:action]
+      when    'detailed'
+        "main"
+      else
+        "hatcher"
+    end
+  end
 
   before_filter do
     wrong_link = 0

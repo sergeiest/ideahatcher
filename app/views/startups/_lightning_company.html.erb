@@ -41,14 +41,14 @@
               <span class='slider-end'>5</span></p>
           </div>
           <div style="clear:both"></div>
-          <a href='/ideas/idea_test?id=7'>Add suggestion</a>
+          <%= link_to 'Add suggestion', :controller => "ideas", :action => "idea_test", :id => params[:id1] %>
         </div>
         <b><%= Allfield.find(description.allfield_id).field_name%></b>
 
         <% if class_name == "class1" %>
             <%= simple_format description.content.firstletters(400), :class => "description-p" %>
         <% else %>
-          <%= simple_format description.content.firstletters(300), :class => "description-p" %>
+            <%= simple_format description.content.firstletters(300), :class => "description-p" %>
         <% end %>
       </div>
       <div style="clear:right"></div>

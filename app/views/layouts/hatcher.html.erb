@@ -75,6 +75,8 @@
                                                     :action => 'guide_step' %></li>
             <% end %>
             <hr />
+            <li role="presentation"><%= link_to 'Notifications', :controller => 'users', :action => 'index',
+                                                :id => user.id %></li>
             <li role="presentation"><%= link_to 'Update profile', :controller => 'users', :action => 'edit',
                                                 :id => user.id %></li>
             <li role="presentation"><%= link_to 'Change password', :controller => 'users', :action => 'change_password',
