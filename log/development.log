@@ -133,3 +133,72 @@ Served asset /bootstrap.css - 304 Not Modified (0ms)
 
 Started GET "/assets/application.js" for 127.0.0.1 at 2013-05-28 12:19:50 -0700
 Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-05-28 12:22:15 -0700
+Processing by HomeController#colorful as HTML
+  [1m[36mStartup Load (0.9ms)[0m  [1mSELECT `startups`.* FROM `startups` [0m
+  Rendered startups/_demo_startup.html.erb (47.1ms)
+  Rendered authentications/_clean_join_form.html.erb (1.4ms)
+  Rendered home/colorful.html.erb within layouts/hatcher (50.7ms)
+  Rendered authentications/_clean_login_form.html.erb (8.4ms)
+  Rendered authentications/_clean_join_form.html.erb (1.5ms)
+Completed 200 OK in 73ms (Views: 67.7ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/assets/bootstrap.css" for 127.0.0.1 at 2013-05-28 12:22:15 -0700
+Served asset /bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2013-05-28 12:22:15 -0700
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2013-05-28 12:22:15 -0700
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/miso_regular_macroman/miso-regular-webfont.woff" for 127.0.0.1 at 2013-05-28 12:22:16 -0700
+Served asset /miso_regular_macroman/miso-regular-webfont.woff - 304 Not Modified (0ms)
+
+
+Started GET "/assets/miso_bold_macroman/miso-bold-webfont.woff" for 127.0.0.1 at 2013-05-28 12:22:16 -0700
+Served asset /miso_bold_macroman/miso-bold-webfont.woff - 304 Not Modified (0ms)
+
+
+Started GET "/startups/9" for 127.0.0.1 at 2013-05-28 12:22:17 -0700
+Processing by StartupsController#show as HTML
+  Parameters: {"id"=>"9"}
+  [1m[35mStartup Load (0.5ms)[0m  SELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 9 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 9 LIMIT 1[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT `users`.* FROM `users` INNER JOIN `followers` ON `users`.`id` = `followers`.`user_id` WHERE `followers`.`startup_id` = 9
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT `users`.* FROM `users` INNER JOIN `owners` ON `users`.`id` = `owners`.`user_id` WHERE `owners`.`startup_id` = 9[0m
+  [1m[35mAllfield Load (0.3ms)[0m  SELECT `allfields`.* FROM `allfields` WHERE `allfields`.`view_flag` = 3
+  [1m[36mCompanydescription Load (0.4ms)[0m  [1mSELECT `companydescriptions`.* FROM `companydescriptions` WHERE `companydescriptions`.`startup_id` = 9 AND (allfield_id =2 AND status =1)[0m
+  [1m[35mCompanydescription Load (0.6ms)[0m  SELECT `companydescriptions`.* FROM `companydescriptions` WHERE `companydescriptions`.`startup_id` = 9 AND (allfield_id =3 AND status =1)
+  [1m[36mCompanydescription Load (0.4ms)[0m  [1mSELECT `companydescriptions`.* FROM `companydescriptions` WHERE `companydescriptions`.`startup_id` = 9 AND (allfield_id =4 AND status =1)[0m
+  Rendered startups/_nav.html.erb (1.3ms)
+  [1m[35mAllfield Load (0.3ms)[0m  SELECT `allfields`.* FROM `allfields` WHERE `allfields`.`id` = 2 LIMIT 1
+  [1m[36mAllfield Load (0.3ms)[0m  [1mSELECT `allfields`.* FROM `allfields` WHERE `allfields`.`id` = 3 LIMIT 1[0m
+  [1m[35mAllfield Load (0.3ms)[0m  SELECT `allfields`.* FROM `allfields` WHERE `allfields`.`id` = 4 LIMIT 1
+  [1m[36mCompanyupdate Load (0.3ms)[0m  [1mSELECT `companyupdates`.* FROM `companyupdates` WHERE `companyupdates`.`startup_id` = 9[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM `companyupdates` WHERE `companyupdates`.`startup_id` = 9
+  Rendered companyupdates/_news.html.erb (0.0ms)
+  Rendered investors/_person.html.erb (0.5ms)
+  Rendered investors/_person.html.erb (1.3ms)
+  Rendered startups/show.html.erb within layouts/hatcher (17.2ms)
+  Rendered authentications/_clean_login_form.html.erb (1.0ms)
+  Rendered authentications/_clean_join_form.html.erb (1.2ms)
+Completed 200 OK in 40ms (Views: 24.2ms | ActiveRecord: 4.3ms)
+
+
+Started GET "/assets/bootstrap.css" for 127.0.0.1 at 2013-05-28 12:22:17 -0700
+Served asset /bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2013-05-28 12:22:17 -0700
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2013-05-28 12:22:17 -0700
+Served asset /application.js - 304 Not Modified (0ms)
