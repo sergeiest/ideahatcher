@@ -63,7 +63,7 @@ class StartupsController < ApplicationController
   end
 
   def show
-    @user = User.find(session[:id])
+    @user = User.find(session[:id]) if session[:id] and session[:id] != 0
     @startup = Startup.find(params[:id])
     @startup_followers = @startup.Follower_users.all.uniq
     @startup_owners = @startup.Owner_users.all.uniq

@@ -1,0 +1,135 @@
+
+
+Started GET "/" for 127.0.0.1 at 2013-05-28 12:17:26 -0700
+Connecting to database specified by database.yml
+Processing by HomeController#colorful as HTML
+  [1m[36mStartup Load (0.3ms)[0m  [1mSELECT `startups`.* FROM `startups` [0m
+  Rendered startups/_demo_startup.html.erb (73.2ms)
+  Rendered authentications/_clean_join_form.html.erb (5.3ms)
+  Rendered home/colorful.html.erb within layouts/hatcher (122.2ms)
+  [1m[35mUser Load (0.7ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM `owners` WHERE `owners`.`user_id` = 1[0m
+  [1m[35mOwner Load (0.3ms)[0m  SELECT `owners`.* FROM `owners` WHERE `owners`.`user_id` = 1
+  [1m[36mStartup Load (0.5ms)[0m  [1mSELECT `startups`.* FROM `startups` INNER JOIN `owners` ON `startups`.`id` = `owners`.`startup_id` WHERE `owners`.`user_id` = 1[0m
+  Rendered authentications/_clean_login_form.html.erb (2.6ms)
+  Rendered authentications/_clean_join_form.html.erb (1.2ms)
+Completed 200 OK in 682ms (Views: 486.9ms | ActiveRecord: 12.7ms)
+
+
+Started GET "/assets/bootstrap.css" for 127.0.0.1 at 2013-05-28 12:17:28 -0700
+Served asset /bootstrap.css - 304 Not Modified (60ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2013-05-28 12:17:28 -0700
+Served asset /application.css - 200 OK (8ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2013-05-28 12:17:28 -0700
+Served asset /application.js - 304 Not Modified (37ms)
+
+
+Started GET "/assets/miso_bold_macroman/miso-bold-webfont.woff" for 127.0.0.1 at 2013-05-28 12:17:29 -0700
+Served asset /miso_bold_macroman/miso-bold-webfont.woff - 304 Not Modified (30ms)
+
+
+Started GET "/assets/miso_regular_macroman/miso-regular-webfont.woff" for 127.0.0.1 at 2013-05-28 12:17:29 -0700
+Served asset /miso_regular_macroman/miso-regular-webfont.woff - 304 Not Modified (21ms)
+
+
+Started GET "/startups/9" for 127.0.0.1 at 2013-05-28 12:17:32 -0700
+Processing by StartupsController#show as HTML
+  Parameters: {"id"=>"9"}
+  [1m[35mStartup Load (0.4ms)[0m  SELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 9 LIMIT 1
+  [1m[36mOwner Load (0.3ms)[0m  [1mSELECT `owners`.* FROM `owners` WHERE (startup_id = '9' AND user_id = 1)[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 9 LIMIT 1[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT `users`.* FROM `users` INNER JOIN `followers` ON `users`.`id` = `followers`.`user_id` WHERE `followers`.`startup_id` = 9
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT `users`.* FROM `users` INNER JOIN `owners` ON `users`.`id` = `owners`.`user_id` WHERE `owners`.`startup_id` = 9[0m
+  [1m[35mAllfield Load (0.4ms)[0m  SELECT `allfields`.* FROM `allfields` WHERE `allfields`.`view_flag` = 3
+  [1m[36mCompanydescription Load (0.3ms)[0m  [1mSELECT `companydescriptions`.* FROM `companydescriptions` WHERE `companydescriptions`.`startup_id` = 9 AND (allfield_id =2 AND status =1)[0m
+  [1m[35mCompanydescription Load (0.4ms)[0m  SELECT `companydescriptions`.* FROM `companydescriptions` WHERE `companydescriptions`.`startup_id` = 9 AND (allfield_id =3 AND status =1)
+  [1m[36mCompanydescription Load (0.3ms)[0m  [1mSELECT `companydescriptions`.* FROM `companydescriptions` WHERE `companydescriptions`.`startup_id` = 9 AND (allfield_id =4 AND status =1)[0m
+  Rendered startups/_nav.html.erb (2.7ms)
+  [1m[35mAllfield Load (0.4ms)[0m  SELECT `allfields`.* FROM `allfields` WHERE `allfields`.`id` = 2 LIMIT 1
+  [1m[36mAllfield Load (0.3ms)[0m  [1mSELECT `allfields`.* FROM `allfields` WHERE `allfields`.`id` = 3 LIMIT 1[0m
+  [1m[35mAllfield Load (0.2ms)[0m  SELECT `allfields`.* FROM `allfields` WHERE `allfields`.`id` = 4 LIMIT 1
+  [1m[36mCompanyupdate Load (0.3ms)[0m  [1mSELECT `companyupdates`.* FROM `companyupdates` WHERE `companyupdates`.`startup_id` = 9[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM `companyupdates` WHERE `companyupdates`.`startup_id` = 9
+  Rendered companyupdates/_news.html.erb (0.0ms)
+  Rendered investors/_person.html.erb (1.3ms)
+  Rendered investors/_person.html.erb (0.9ms)
+  Rendered startups/show.html.erb within layouts/hatcher (19.5ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `owners` WHERE `owners`.`user_id` = 1
+  [1m[36mOwner Load (0.3ms)[0m  [1mSELECT `owners`.* FROM `owners` WHERE `owners`.`user_id` = 1[0m
+  [1m[35mStartup Load (0.4ms)[0m  SELECT `startups`.* FROM `startups` INNER JOIN `owners` ON `startups`.`id` = `owners`.`startup_id` WHERE `owners`.`user_id` = 1
+  Rendered authentications/_clean_login_form.html.erb (1.3ms)
+  Rendered authentications/_clean_join_form.html.erb (1.4ms)
+Completed 200 OK in 241ms (Views: 34.5ms | ActiveRecord: 60.2ms)
+
+
+Started GET "/assets/bootstrap.css" for 127.0.0.1 at 2013-05-28 12:17:32 -0700
+Served asset /bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2013-05-28 12:17:32 -0700
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/authentications/logout" for 127.0.0.1 at 2013-05-28 12:19:47 -0700
+Processing by AuthenticationsController#logout as HTML
+Redirected to http://localhost:3000/home
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/home" for 127.0.0.1 at 2013-05-28 12:19:47 -0700
+Processing by HomeController#colorful as HTML
+  [1m[36mStartup Load (0.3ms)[0m  [1mSELECT `startups`.* FROM `startups` [0m
+  Rendered startups/_demo_startup.html.erb (32.8ms)
+  Rendered authentications/_clean_join_form.html.erb (4.3ms)
+  Rendered home/colorful.html.erb within layouts/hatcher (39.5ms)
+  Rendered authentications/_clean_login_form.html.erb (1.3ms)
+  Rendered authentications/_clean_join_form.html.erb (1.1ms)
+Completed 200 OK in 187ms (Views: 52.7ms | ActiveRecord: 3.4ms)
+
+
+Started GET "/assets/bootstrap.css" for 127.0.0.1 at 2013-05-28 12:19:47 -0700
+Served asset /bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2013-05-28 12:19:47 -0700
+Served asset /application.js - 304 Not Modified (2ms)
+
+
+Started GET "/startups/9" for 127.0.0.1 at 2013-05-28 12:19:49 -0700
+Processing by StartupsController#show as HTML
+  Parameters: {"id"=>"9"}
+  [1m[35mStartup Load (0.4ms)[0m  SELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 9 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 9 LIMIT 1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT `users`.* FROM `users` INNER JOIN `followers` ON `users`.`id` = `followers`.`user_id` WHERE `followers`.`startup_id` = 9
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT `users`.* FROM `users` INNER JOIN `owners` ON `users`.`id` = `owners`.`user_id` WHERE `owners`.`startup_id` = 9[0m
+  [1m[35mAllfield Load (0.3ms)[0m  SELECT `allfields`.* FROM `allfields` WHERE `allfields`.`view_flag` = 3
+  [1m[36mCompanydescription Load (0.3ms)[0m  [1mSELECT `companydescriptions`.* FROM `companydescriptions` WHERE `companydescriptions`.`startup_id` = 9 AND (allfield_id =2 AND status =1)[0m
+  [1m[35mCompanydescription Load (0.4ms)[0m  SELECT `companydescriptions`.* FROM `companydescriptions` WHERE `companydescriptions`.`startup_id` = 9 AND (allfield_id =3 AND status =1)
+  [1m[36mCompanydescription Load (0.3ms)[0m  [1mSELECT `companydescriptions`.* FROM `companydescriptions` WHERE `companydescriptions`.`startup_id` = 9 AND (allfield_id =4 AND status =1)[0m
+  Rendered startups/_nav.html.erb (1.2ms)
+  [1m[35mAllfield Load (0.4ms)[0m  SELECT `allfields`.* FROM `allfields` WHERE `allfields`.`id` = 2 LIMIT 1
+  [1m[36mAllfield Load (0.2ms)[0m  [1mSELECT `allfields`.* FROM `allfields` WHERE `allfields`.`id` = 3 LIMIT 1[0m
+  [1m[35mAllfield Load (0.2ms)[0m  SELECT `allfields`.* FROM `allfields` WHERE `allfields`.`id` = 4 LIMIT 1
+  [1m[36mCompanyupdate Load (0.3ms)[0m  [1mSELECT `companyupdates`.* FROM `companyupdates` WHERE `companyupdates`.`startup_id` = 9[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `companyupdates` WHERE `companyupdates`.`startup_id` = 9
+  Rendered companyupdates/_news.html.erb (0.0ms)
+  Rendered investors/_person.html.erb (0.5ms)
+  Rendered investors/_person.html.erb (0.9ms)
+  Rendered startups/show.html.erb within layouts/hatcher (14.2ms)
+  Rendered authentications/_clean_login_form.html.erb (1.1ms)
+  Rendered authentications/_clean_join_form.html.erb (1.2ms)
+Completed 200 OK in 254ms (Views: 22.0ms | ActiveRecord: 24.8ms)
+
+
+Started GET "/assets/bootstrap.css" for 127.0.0.1 at 2013-05-28 12:19:50 -0700
+Served asset /bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2013-05-28 12:19:50 -0700
+Served asset /application.js - 304 Not Modified (0ms)
