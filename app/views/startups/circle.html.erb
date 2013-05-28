@@ -1,0 +1,38 @@
+<%= render "startups/nav" %>
+
+
+<div class="hatcher-container">
+  <div class="company-main">
+    <div class="company-left">
+      <div class="company-content">
+        <div class="company-box">
+          <h5>Hashtags</h5>
+          <p>This is a simple way to let people know what your idea is about</p>
+          <%= form_tag({:action => "add_tag", :controller => "tags"}, :remote => true, :class => "hashtag_form") do %>
+            <%= text_field_tag :tag_name %>
+            <%= submit_tag "Add", :class => "btn btn-small" %>
+          <% end %>
+          <%= form_tag({:action => "delete_tag", :controller => "tags"}, :remote => true, :hidden => "true") do %>
+            <%= hidden_field_tag :tag_id, 0 %>
+            <%= submit_tag "delete", :id => "delete_this_tag" %>
+          <% end %>
+          <hr/>
+          <div id="hashtags">
+            <% @tags.each do |tag| %>
+              <div class="hashtag">#<%= tag.name %><span class="delete-tag" onclick="deleteTag(<%= tag.id %>, this)">x</span></div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="clear-both"></div>
+  </div>
+</div>
+
+<script>
+    function deleteTag(id, element){
+        document.getElementById("tag_id").value = id;
+        element.hidden = true;
+        document.getElementById("delete_this_tag").click();
+    }
+</script>

@@ -11,7 +11,8 @@
     <% end %>
   </div>
 
-  <% company_descriptions=startup.Companydescriptions %>
+  <% company_descriptions=startup.Companydescriptions[0..2] %>
+
   <% company_descriptions.each do |description| %>
     <div class="vote-box">
         <div class="slider-bar" >
@@ -30,28 +31,29 @@
                    onmouseup="startSlideLightning('<%=description.id%>')">
                   <div id='slider_<%=description.id%>' class='bar'></div>
                 </div>
-            <% else %>
-              <div id="bar_<%=description.id%>" class="progress progress-primary progress-slider">
-                <div id='slider_<%=description.id%>' class='bar'></div>
-              </div>
-            <% end %>
+          <% else %>
+            <div id="bar_<%=description.id%>" class="progress progress-primary progress-slider">
+              <div id='slider_<%=description.id%>' class='bar'></div>
+            </div>
+          <% end %>
           <div>
-            <p><span class='slider-start'>0</span>
+            <p>
+              <span class='slider-start'>0</span>
               <span class='slider-info' id='info_<%=description.id%>'></span>
-              <span class='slider-end'>5</span></p>
+              <span class='slider-end'>5</span>
+            </p>
           </div>
           <div style="clear:both"></div>
           <%= link_to 'Add suggestion', :controller => "ideas", :action => "idea_test", :id => params[:id1] %>
         </div>
         <b><%= Allfield.find(description.allfield_id).field_name%></b>
-
         <% if class_name == "class1" %>
             <%= simple_format description.content.firstletters(400), :class => "description-p" %>
         <% else %>
             <%= simple_format description.content.firstletters(300), :class => "description-p" %>
         <% end %>
-      </div>
-      <div style="clear:right"></div>
+    </div>
+    <div style="clear:right"></div>
   <% end %>
 
   <% if class_name == "class1" %>
@@ -59,6 +61,4 @@
           <button class="btn btn-warning" style="float:right;margin:10px 5% 0 5%;">Submit</button>
       <% end %>
   <% end %>
-
-
 </div>

@@ -22,7 +22,6 @@ class InvestorsController < ApplicationController
   # GET /investors/1.json
   def show
     @investor = Investor.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @investor }
@@ -200,11 +199,11 @@ class InvestorsController < ApplicationController
 
   def search_people
     if !params[:string] || params[:string] == ""
-      @people = User.all[0..20]
+      @people = User.all[0..5]
     else
       s = params[:string].split(" ")
       @people = User.where("(UPPER(firstname) LIKE UPPER(?) and UPPER(lastname) LIKE UPPER(?)) or (UPPER(firstname) LIKE UPPER(?) and UPPER(lastname) LIKE UPPER(?))",
-                          "%"+ s[0].to_s()+"%", "%"+ s[1].to_s()+"%", "%"+ s[1].to_s()+"%", "%"+ s[0].to_s()+"%").all[0..20]
+                          "%"+ s[0].to_s()+"%", "%"+ s[1].to_s()+"%", "%"+ s[1].to_s()+"%", "%"+ s[0].to_s()+"%").all[0..5]
 
 
     end
@@ -216,44 +215,103 @@ class InvestorsController < ApplicationController
 
   def add_founder
 
-    i=0
-    s = Array.new
-
-    if !params[:founder1].nil?
-     s[i]= params[:founder1]
-     i=i+1
-    end
-    if !params[:founder2].nil?
-      s[i]= params[:founder2]
-      i=i+1
-    end
-    if !params[:founder3].nil?
-      s[i]= params[:founder3]
-      i=i+1
+    if !params[:founder_id] || params[:founder_id] == 0
+     return
     end
 
-    flag = 0
-    s.each do |founder_id|
-      if founder_id!= "0" and Owner.find_by_user_id_and_startup_id(founder_id, session[:startup_id]).nil? and !User.find(founder_id).nil?
-        owner = Owner.new
-        owner.startup_id = session[:startup_id]
-        owner.user_id = founder_id
-        owner.status = 1
-        if !owner.save
-          flag =1
-        end
+    if User.find(params[:founder_id]) and !Owner.find_by_user_id_and_startup_id(params[:founder_id], session[:startup_id])
+      owner = Owner.new
+      owner.startup_id = session[:startup_id]
+      owner.user_id = params[:founder_id]
+      owner.status = 2
+      owner.save
+
+
+      notifications = Notification.where("event_id = ? AND user_id = ? AND status > ? AND (event_type =? OR event_type =?)",
+                                         session[:startup_id], params[:founder_id], 0, 1, 2).all
+
+      notifications.each do |notification|
+        notification.update_attribute(:status, 0)
       end
+
+      notification  = Notification.new
+      notification.event_id = session[:startup_id]
+      notification.user_id = params[:founder_id]
+      notification.status = 1
+      notification.event_type = 1
+      notification.save
     end
 
     respond_to do |format|
-      if flag == 0
+        startup = Startup.find(session[:startup_id])
+        @people = startup.Owner_users
+        format.js
+    end
+
+  end
+
+  def remove_founder
+
+    owner = Owner.find_by_user_id_and_startup_id(params[:founder_id], session[:startup_id])
+
+    if !owner
+      return
+    end
+
+
+    respond_to do |format|
+      if owner.status == 1
         format.js
       else
-        format.js { render :partial => "search_people" }
+
+        notifications = Notification.where("event_id = ? AND user_id = ? AND status > ? AND (event_type =? OR event_type =?)",
+                                           session[:startup_id], params[:founder_id], 0, 1, 2).all
+
+        notifications.each do |notification|
+          notification.update_attribute(:status, 0)
+        end
+
+        notification = Notification.new
+        notification.event_id = session[:startup_id]
+        notification.user_id = params[:founder_id]
+        notification.status = 1
+        notification.event_type = 2
+        notification.save
+
+        owner.destroy
+        startup = Startup.find(session[:startup_id])
+        @people = startup.Owner_users
+        format.js {render "add_founder"}
       end
     end
 
   end
+
+  def confirm_founder
+
+    owner = Owner.where("startup_id = ? AND user_id = ?", params[:startup_id], session[:id]).first
+
+    if !owner
+      return
+    end
+
+    if owner.status == 2
+      owner.update_attribute(:status, 3)
+
+      notifications = Notification.where("event_id = ? AND user_id = ? AND status > ? AND event_type =?",
+                                         params[:startup_id], session[:id], 0, 1).all
+      notifications.each do |notification|
+        notification.update_attribute(:status, 0)
+      end
+      respond_to do |format|
+        format.js
+      end
+    else
+
+    end
+
+  end
+
 
 end
   

@@ -86,6 +86,7 @@ body {
 
 
 
+
     .text-here {
       padding:0 20px;
     }
@@ -94,7 +95,51 @@ body {
       width:530px;
       height:105px;
     }
+    .hashtag_form {
+      input {width: 200px; margin:0;}
 
+    }
+
+    [type=radio] {width:20px;margin:10px;}
+
+    .hashtag {
+      display:inline;
+      margin: 0 5px;
+      padding:4px;
+      background-color: white;
+      border:1px #c8c8c8 solid;
+      line-height: 32px;
+      .delete-tag {
+        background-color: #e5e5e5;
+        margin:0 0 0 4px;
+        padding:2px 6px;
+        font-size:16px;
+        line-height: 12px;
+        font-weight: normal;
+        cursor:pointer;
+
+
+      }
+    .add-people {
+     img {height: 10px;}
+    }
+
+    }
+
+    .people-to-add {
+      width: 180px;
+      float:left;
+
+    }
+    .people-added {
+      border-left:2px #c8c8c8 solid;
+      float:right;
+      padding-left: 20px;
+
+      width: 360px;
+
+
+    }
   }
 }
 
@@ -306,6 +351,9 @@ h2.project{
   padding:0px 0px;
   width:280px;
   height:440px;
+
+
+
   form {
     h4 {border-bottom:2px #07b5b5 solid;padding-bottom: 10px;}
     margin:20px 30px 0 30px;
@@ -607,11 +655,35 @@ h2.project{
       float:right;
       background-color: #eeeeee;
       color:black;
-      opacity:0.90;
-      filter:alpha(opacity=90);
+      opacity:0.40;
+      filter:alpha(opacity=40);
       padding:5px 20px;
       margin-right: -0px;
       margin-top:-100px;
+    }
+
+    .hashtag_form {
+      input { margin:0;}
+
+    }
+
+
+    .hashtag {
+      display:inline;
+      margin: 0 5px;
+      padding:4px;
+      background-color: white;
+      border:1px #c8c8c8 solid;
+      line-height: 32px;
+      .delete-tag {
+        background-color: #e5e5e5;
+        margin:0 0 0 4px;
+        padding:2px 6px;
+        font-size:16px;
+        line-height: 12px;
+        font-weight: normal;
+        cursor:pointer;
+      }
     }
 
   }
@@ -796,7 +868,7 @@ h2.project{
   background-color: white;
   padding:10px;
   width: 180px;
-  margin:20px;
+  margin:0 10px;
   img {
     margin:0 0 10px 0;
     -webkit-border-radius: 0px;
@@ -840,14 +912,14 @@ h2.project{
 // ------------------------- Lightning Vote Page -----------------------
 
 .class0 {
-  width: 560px; height: 540px;
+  width: 560px; height: 760px;
   position: absolute;
   top: 40px;
   left: 80px;
   z-index:0;
 }
 .class1 {
-  width: 600px; height: 580px;
+  width: 600px; height: 800px;
   position: relative;
   top: 0px;
   left: 170px;
@@ -855,7 +927,7 @@ h2.project{
 
 }
 .class2 {
-  width: 560px; height: 540px;
+  width: 560px; height: 760px;
   margin: 20px 0 0 0;
   position: absolute;
   top: 20px;
@@ -866,6 +938,7 @@ h2.project{
 .vote-frame {
   border:2px #c8c8c8 solid;
   background-color: white;
+
 
   .vote-name {
     margin:1% 5% 0px 5%;
@@ -1007,6 +1080,7 @@ h2.project{
   height: 40px;
   background-color: #07b5b5;
 
+
   .logo-img {
     padding:2px 35px;
     float:left;
@@ -1038,6 +1112,29 @@ h2.project{
     float:right;
     margin:-10px 20px 0 0;
     font-size: 16px;
+
+    .dropdown-toggle .notifications {
+      -webkit-border-radius: 10px;
+      margin:-30px -20px 30px 20px;
+      border:0px white solid;
+      width:15px;
+      height:13px;
+      padding:1px 0;
+      font-size:10px;
+      text-align: center;
+      background-color: red;
+      color: white;
+    }
+
+    .dropdown-menu .notifications {
+      -webkit-border-radius: 10px;
+      margin:-30px -20px 30px 20px;
+      padding:2px 15px;
+      font-weight: normal;
+      text-align: center;
+      background-color: grey;
+      color: white;
+    }
 
     .custom-dropdown a {
       height: 12px;
@@ -1080,23 +1177,45 @@ h2.project{
 
 
 
-.person-info {
-  width: 200px;
-  img {
-    height: 40px;
-    width: 40px;
+  .person-info {
+     width: 200px;
+     cursor:pointer;
+     img {
+       height: 40px;
+       width: 40px;
+       float:left;
+       margin-right: 20px;
+     }
+     h5{
+       height: 10px;
+       padding-top: 0px;
+       color: #07b5b5;
+     }
+     p{
+       height: 20px;
+       padding-top: 0px;
+       color: black;
+     }
+   }
+
+
+.highlighted-list {
+  .person-info {
+    width: 180px;
+    margin:15px 0;
     float:left;
-    margin-right: 20px;
-  }
-  h5{
-    height: 10px;
-    padding-top: 0px;
-    color: #07b5b5;
-  }
-  p{
-    height: 20px;
-    padding-top: 0px;
-    color: black;
+    img {
+      height: 20px;
+      width: 20px;
+      float:left;
+      margin-right: 10px;
+    }
+    h5{
+      margin:0;
+      padding-top: 0px;
+      font-size:12px;
+      color: black;
+    }
+
   }
 }
-

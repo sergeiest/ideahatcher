@@ -6,8 +6,8 @@ class CampaignsController < ApplicationController
 
   def layout_by_resource
     case params[:action]
-      when    'detailed'
-        "main"
+      when 'index'
+        "hatcher"
       else
         "hatcher"
     end
@@ -24,7 +24,7 @@ class CampaignsController < ApplicationController
             wrong_link = 1
           end
         when "about_step", "description_step", "team_step", "team_save_step", "review_step", "upload_logo", "update",
-                      "destroy", "publish_step"
+                      "destroy", "publish_step", "circles_step"
           user = User.find(session[:id])
           session[:startup_id] = user.Owner_startups.first.id
         when "next_step"
@@ -46,7 +46,6 @@ class CampaignsController < ApplicationController
     end
   end
 
-
   def index
     @campaigns = Campaign.all
     respond_to do |format|
@@ -54,9 +53,6 @@ class CampaignsController < ApplicationController
       format.json { render json: @campaigns }
     end
   end
-
-
-  #Sign up steps
 
   def guide_step
     if session[:id] != nil and session[:id] != 0
@@ -243,93 +239,18 @@ class CampaignsController < ApplicationController
 
     respond_to do |format|
       if no_errors == 1
-        format.html { redirect_to action: 'team_step'}
+        format.html { redirect_to action: 'circles_step'}
       else
         format.html { render action: 'about_step'}
       end
     end
   end
 
-  def team_step
+  def circles_step
     @startup =Startup.find(session[:startup_id])
-
-    # Works only for 4 fields!
-
-    @company_team_1 = @startup.Companyteams[0]
-    if @company_team_1 == nil
-      @company_team_1 = Companyteam.new
-    end
-    @company_team_2 = @startup.Companyteams[1]
-    if @company_team_2 == nil
-      @company_team_2 = Companyteam.new
-    end
-    @company_team_3 = @startup.Companyteams[2]
-    if @company_team_3 == nil
-      @company_team_3 = Companyteam.new
-    end
-  end
-
-  def team_save_step
-
-    #Works only for 4 fields!
-
-    startup =Startup.find(session[:startup_id])
-
-    no_errors = 1
-
-    if params[:company_team_1][:id] != ""
-      company_team_1 = startup.Companyteams.find(params[:company_team_1][:id])
-    end
-    if company_team_1 == nil
-      company_team_1 = Companyteam.new(params[:company_team_1])
-      company_team_1.startup_id = session[:startup_id]
-      no_errors = 0 if !company_team_1.save
-    else
-      no_errors = 0 if !company_team_1.update_attributes(params[:company_team_1])
-    end
-
-    if params[:add_team][:team_2] == "1"
-      if params[:company_team_2][:id] != ""
-        company_team_2 = startup.Companyteams.find(params[:company_team_2][:id])
-      end
-      if company_team_2 == nil
-        company_team_2 = Companyteam.new(params[:company_team_2])
-        company_team_2.startup_id = session[:startup_id]
-        no_errors = 0 if !company_team_2.save
-      else
-        no_errors = 0 if !company_team_2.update_attributes(params[:company_team_2])
-      end
-    else
-      if params[:company_team_2][:id] != "" and company_team_2 = startup.Companyteams.find(params[:company_team_2][:id])
-         no_errors = 0 if !company_team_2.destroy
-      end
-    end
-
-    if params[:add_team][:team_3] == "1"
-      if params[:company_team_3][:id] != ""
-        company_team_3 = startup.Companyteams.find(params[:company_team_3][:id])
-      end
-      if company_team_3 == nil
-        company_team_3 = Companyteam.new(params[:company_team_3])
-        company_team_3.startup_id = session[:startup_id]
-        no_errors = 0 if !company_team_3.save
-      else
-        no_errors = 0 if !company_team_3.update_attributes(params[:company_team_3])
-      end
-    else
-      if params[:company_team_3][:id] != "" and company_team_3 = startup.Companyteams.find(params[:company_team_3][:id])
-        no_errors = 0 if !company_team_3.destroy
-      end
-    end
-
-
-    respond_to do |format|
-      if no_errors == 1
-        format.html { redirect_to action: 'review_step'}
-      else
-        format.html { render action: 'about_step'}
-      end
-    end
+    @tags = @startup.Tags
+    @people = User.all[0..5]
+    @circles = User.all[0..9]
   end
 
   def review_step
@@ -372,7 +293,6 @@ class CampaignsController < ApplicationController
     end
   end
 
-
   def upload_logo
     @startup = Startup.find(session[:startup_id])
     respond_to do |format|
@@ -386,77 +306,10 @@ class CampaignsController < ApplicationController
     end
   end
 
-
-
-
   def summary
     @startup =Startup.find(session[:startup_id])
     @campaign = @startup.Campaign
     @allfields = Allfield.find_all_by_view_flag(3)
-  end
-
-  def submit_campaign
-    startup =Startup.find(session[:startup_id])
-    campaign = startup.Campaign
-
-    i=0
-    for allfield in Allfield.find_all_by_view_flag(3)
-      if startup.Companydescriptions.find_by_allfield_id(allfield.id) == nil
-        i=1
-      end
-    end
-
-
-    if i=0
-      campaign.update_attributes(:status => 2)
-    else
-      flash[:error] = "Not all descriptions are provided"
-    end
-    redirect_to  :action =>'summary'
-
-  end
-
-  # PUT /campaigns/1
-  # PUT /campaigns/1.json
-  def update
-    startup =Startup.find(session[:startup_id])
-    @campaign =   startup.Campaign
-
-    respond_to do |format|
-      if params[:route] == "funds"
-        @campaign.status = 3
-
-        @campaign.update_attributes(params[:campaign])
-        format.html { redirect_to controller: 'funds', action: 'approval'}
-
-      else
-        if @campaign.update_attributes(params[:campaign])
-          format.html { redirect_to  :action =>'secondstep' }
-        else
-          format.html { render action: "edit" }
-          format.json { render json: @campaign.errors, status: :unprocessable_entity }
-        end
-      end
-    end
-  end
-
-  # DELETE /campaigns/1
-  # DELETE /campaigns/1.json
-  def destroy
-    startup =Startup.find(session[:startup_id])
-    @campaign = startup.Campaign
-    @campaign.destroy
-
-    respond_to do |format|
-      format.html { redirect_to :controller => 'startups', :id => session[:startup_id] }
-      format.json { head :no_content }
-    end
-  end
-
-  def get_valuation (goal_sum, share)
-    if !share and share.to_i > 0
-      return goal_sum / share * 100
-    end
   end
 
 end

@@ -143,3 +143,12 @@ function whiteFrame (elementNode) {
 function changeGrad (elementNode) {
     elementNode.style.backgroundImage = "-webkit-gradient(linear, right top, left bottom, color-stop(0.17, white), color-stop(0.59, red))";
 }
+
+function submitForm (formElement) {
+    notes = formElement.children;
+    for (var i = 0; i < notes.length; i++) {
+        if (notes[i].getAttribute('name') == 'commit') {
+            notes[i].click();
+        }
+    }
+}

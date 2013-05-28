@@ -5,7 +5,7 @@
       <li class="active"><%= link_to :action => "basic_step" do %>1. Basic<%end%></li>
       <li class="active"><a >2. About company</a></li>
       <li><a >3. Team</a></li>
-      <li><a >4. Account</a></li>
+      <li><a >4. Publish</a></li>
       <li><a >5. Review</a></li>
       <li class="active" style="margin-left:100px">
         <%= link_to :controller => "startups", :action => "show", :id => session[:startup_id] do %>
@@ -50,6 +50,16 @@
           <%= hidden_field :companydescriptions2, :allfield_id, :value => allfield.id %>
           <%= text_area :companydescriptions2,:content %> </p>
           <p>Specify if you raised capital</p>
+        </li>
+      </div>
+      <div class="highlighted-list">
+        <li>
+          <% allfield =  Allfield.find(@companydescriptions3.allfield_id)   %>
+          <h5><%= allfield.field_name   %></h5>
+          <%= select(:companydescriptions3, :field_status, options_from_collection_for_select(allfield.Fieldstates, :field_status, :field_status, @companydescriptions3.field_status)) %>
+          <%= hidden_field :companydescriptions3, :allfield_id, :value => allfield.id %>
+          <%= text_area :companydescriptions3,:content %> </p>
+          <p>Describe your customers and sales and specify your revenue stage</p>
         </li>
       </div>
       <div class="highlighted-list">

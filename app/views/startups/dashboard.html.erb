@@ -1,0 +1,106 @@
+<%= render "startups/nav" %>
+
+
+<div class="hatcher-container">
+  <div class="company-main">
+    <div class="company-left">
+      <div class="company-content">
+        <% @descriptions.each do |description| %>
+            <div class="company-box" id="div_<%= description.id%>">
+              <h5><%= Allfield.find(description.allfield_id).field_name %>:
+                    <%= description.field_status %>
+                    <button class="btn btn-mini btn-primary edit-text" onclick=editDescription(this)>Edit</button>
+              </h5>
+              <hr/>
+              <% if description.companydescription_id %>
+                <div class="ab-test">
+                    <div class="my_corner previous-test"></div>
+                    <div class="idea-statement current-test">
+                        <%= simple_format Companydescription.find(description.companydescription_id).content,
+                                            :id => "p_"+ description.id.to_s() %>
+                    </div>
+
+                    <div class="my_corner next-test"></div>
+                    <div class="idea-statement next-test">
+                        <%= simple_format description.content,
+                                            :id => "p_"+ description.id.to_s() %>
+                        <%= form_tag({:action => "new_suggestion", :controller => "companydescriptions"},
+                                       :multipart => true,
+                                       :hidden => true,
+                                       :class => "next-test",
+                                       :remote => true) do %>
+                            <%= hidden_field :companydescription, :companydescription_id, :value => description.id %>
+                            <%= text_area :companydescription, :content%>
+                            <%= submit_tag 'Save', class: "btn btn-mini btn-primary"%>
+                        <% end %>
+                    </div>
+                    <div class="my_corner " hidden></div>
+                    <div class="clear-both"></div>
+                </div>
+              <% else %>
+                <div class="ab-test">
+                    <div class="my_corner previous-test"></div>
+                    <div class="idea-statement current-test">
+                        <%= simple_format description.content %>
+                    </div>
+                    <div class="my_corner next-test" hidden></div>
+                    <div class="idea-statement next-test" hidden>
+                        <%= form_tag({:action => "new_suggestion", :controller => "companydescriptions"},
+                                       :multipart => true,
+                                       :hidden => true,
+                                       :class => "next-test",
+                                       :remote => true) do %>
+                            <%= hidden_field :companydescription, :companydescription_id, :value => description.id %>
+                            <%= text_area :companydescription, :content%>
+                            <%= submit_tag 'Save', class: "btn btn-mini btn-primary"%>
+                        <% end %>
+                    </div>
+                    <div class="my_corner" hidden></div>
+                    <div class="clear-both"></div>
+                </div>
+              <% end %>
+
+              <%= link_to 'Show/update votes', {:action => 'show_votes', :controller => 'votes',
+                                                            :description_id => description.id},
+                                      :id => "chart_link",
+                                      :remote => true %>
+              <div id="visualization_<%= description.id%>"></div>
+            </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="clear-both"></div>
+  </div>
+</div>
+
+
+
+<script type="text/javascript" src="http://www.google.com/jsapi"></script>
+<script type="text/javascript">
+    google.load('visualization', '1', {packages: ['corechart']});
+</script>
+
+
+<script>
+    $('.my_corner').prepend('<div class="tr"></div>')
+            .prepend('<div class="tl"></div>')
+            .prepend('<div class="br"></div>')
+            .prepend('<div class="bl"></div>');
+</script>
+
+<script>
+    function editDescription(elementNode){
+        var descriptionDiv = elementNode.parentNode.parentNode.getElementsByClassName('ab-test')[0];
+
+        var nextElements = descriptionDiv.getElementsByClassName('next-test');
+
+        for (var i = 0; i < nextElements.length; i++) {
+            nextElements[i].hidden = false;
+            if (nextElements[i].getElementsByTagName('p').length > 0){
+                nextElements[i].getElementsByTagName('p')[0].hidden = true;
+            }
+        }
+
+
+    }
+</script>

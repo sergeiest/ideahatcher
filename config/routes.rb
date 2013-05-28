@@ -1,5 +1,21 @@
 Webapp::Application.routes.draw do
 
+  resources :notifications
+
+
+  post "circles/add_circle"
+  post "circles/add_person"
+  post "circles/remove_person"
+
+
+  post "tags/add_tag"
+  post "tags/delete_tag"
+  resources :tags
+
+
+  resources :locations
+
+
   get "votes/vote_description"
   post "votes/vote_description"
   get "votes/show_votes"
@@ -28,8 +44,8 @@ Webapp::Application.routes.draw do
   post "campaigns/team_save_step"
   post "campaigns/upload_logo"
   post "campaigns/publish_step"
+  get "campaigns/circles_step"
   resources :campaigns
-
 
   get "authentications/login"
   post "authentications/remote_login"
@@ -51,6 +67,7 @@ Webapp::Application.routes.draw do
   resources :companyteams
 
   post "companydescriptions/new_suggestion"
+  post "companydescriptions/update_description"
   resources :companydescriptions
 
   get "funds/approval"
@@ -74,6 +91,8 @@ Webapp::Application.routes.draw do
   get "investors/history_startup"
   post "investors/search_people"
   post "investors/add_founder"
+  post "investors/remove_founder"
+  get "investors/confirm_founder"
   resources :investors
 
   get "users/login"
@@ -109,6 +128,8 @@ Webapp::Application.routes.draw do
   post "startups/vote_dislike"
   get "startups/vote_lightning"
   get "startups/vote_next"
+  get "startups/circle"
+  get "startups/dashboard"
   resources :startups
   
   resources :peoples
@@ -116,10 +137,12 @@ Webapp::Application.routes.draw do
   get "home/contacts"
   get "home/noaccess"
   get "home/colorful"
+  get "home" => 'home#colorful'
   resources :home
 
 
   root :to => 'home#colorful'
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

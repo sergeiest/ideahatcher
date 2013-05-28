@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>User:</b>
+  <%= @notification.user_id %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%= @notification.status %>
+</p>
+
+<p>
+  <b>Event type:</b>
+  <%= @notification.event_type %>
+</p>
+
+<p>
+  <b>Event:</b>
+  <%= @notification.event_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_notification_path(@notification) %> |
+<%= link_to 'Back', notifications_path %>

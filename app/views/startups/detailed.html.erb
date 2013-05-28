@@ -1,140 +1,34 @@
-<%= render 'users/usernav' %>
-
-<div class="container-ideas">
-  <div class="container">
-    <div class="left-company">
-      <%= render 'info' %>
-
-      <div id="teaser-text">
-
-        <% if session[:id] != nil %>
-            <% for companydescription in @companydescriptions %>
-
-                <% if companydescription.allfield_id != 1 %>
-                  <div class="highlighted-company" id="div_<%= companydescription.id%>">
-                    <h5 style="color:orange"><%= Allfield.find(companydescription.allfield_id).field_name %>:
-                      <%= companydescription.field_status %>
-                      <button class="btn btn-mini btn-primary edit-text" onclick=editDescription(this)>Edit</button>
-                    </h5>
-                    <hr/>
-
-                    <% if companydescription.companydescription_id %>
-
-                        <div class="ab-test">
-                          <div class="my_corner previous-test"></div>
-                          <div class="idea-statement current-test">
-                            <%= simple_format Companydescription.find(companydescription.companydescription_id).content,
-                                                                      :id => "p_"+ companydescription.id.to_s() %>
-                          </div>
-
-                          <div class="my_corner next-test"></div>
-                          <div class="idea-statement next-test">
-                            <%= simple_format companydescription.content,
-                                              :id => "p_"+ companydescription.id.to_s() %>
-                            <%= form_tag({:action => "new_suggestion", :controller => "companydescriptions"},
-                                         :multipart => true,
-                                         :hidden => true,
-                                         :class => "next-test",
-                                         :remote => true) do %>
-                                <%= hidden_field :companydescription, :companydescription_id, :value => companydescription.id %>
-                                <%= text_area :companydescription, :content%>
-                                <%= submit_tag 'Save', class: "btn btn-mini btn-primary"%>
-                            <% end %>
-                          </div>
-                          <div class="my_corner " hidden></div>
-                          <div class="clear-both"></div>
-                        </div>
-
-                    <% else %>
-
-                        <div class="ab-test">
-                          <div class="my_corner previous-test"></div>
-                          <div class="idea-statement current-test">
-                            <%= simple_format companydescription.content %>
-                          </div>
-
-                          <div class="my_corner next-test" hidden></div>
-                          <div class="idea-statement next-test" hidden>
-                            <%= form_tag({:action => "new_suggestion", :controller => "companydescriptions"},
-                                         :multipart => true,
-                                         :hidden => true,
-                                         :class => "next-test",
-                                         :remote => true) do %>
-                                <%= hidden_field :companydescription, :companydescription_id, :value => companydescription.id %>
-                                <%= text_area :companydescription, :content%>
-                                <%= submit_tag 'Save', class: "btn btn-mini btn-primary"%>
-                            <% end %>
-                          </div>
-                          <div class="my_corner" hidden></div>
-                          <div class="clear-both"></div>
-                        </div>
+<%= render "startups/nav" %>
 
 
-                    <% end %>
-
-
-
-
-                    <% if @startup_owners.include? @user %>
-                        <%= link_to 'Show/update votes', {:action => 'show_votes', :controller => 'votes',
-                                    :description_id => companydescription.id},
-                                    :id => "chart_link",
-                                    :remote => true %>
-                        <div id="visualization_<%= companydescription.id%>"></div>
-                    <% end %>
-                  </div>
-                <% end %>
-
-
-            <% end %>
-        <% else %>
-            <% for companydescription in @companydescriptions %>
-                <% if Allfield.find(companydescription.allfield_id).view_flag == 1  %>
-                    <div class="highlighted-company">
-                      <h5 style="color:orange"><%= Allfield.find(companydescription.allfield_id).field_name %></h5>
-                      <hr/>
-                      <p><%= simple_format h companydescription.content %> </p>
-                    </div>
-                <% end %>
-            <% end %>
-        <% end %>
-
+<div class="hatcher-container">
+  <div class="company-main">
+    <div class="company-left">
+      <div class="company-content">
+      <% @descriptions.each do |description| %>
+        <div class="company-box">
+          <%= form_tag({:action => 'update_description', :controller => "companydescriptions"},
+                       :multipart => true,
+                       :remote => true) do %>
+            <% allfield =  Allfield.find(description.allfield_id)   %>
+            <h5><%= allfield.field_name   %></h5>
+            <%= select(:description, :field_status, options_from_collection_for_select(allfield.Fieldstates, :field_status, :field_status, description.field_status)) %>
+            <%= hidden_field :description, :allfield_id, :value => allfield.id %>
+            <%= hidden_field :description, :id, :value => description.id %>
+            <%= text_area :description, :content, :value => description.content %>
+            <p>Describe your product and specify your product stage</p>
+            <%= submit_tag "Save", :class => "btn btn-small" %>
+          <% end %>
+        </div>
+      <% end %>
       </div>
     </div>
 
-    <div class="right-company">
-      <%= render 'actions' %>
-    </div>
+
+
+    <div class="clear-both"></div>
   </div>
 </div>
 
 
-<script type="text/javascript" src="http://www.google.com/jsapi"></script>
-<script type="text/javascript">
-    google.load('visualization', '1', {packages: ['corechart']});
-</script>
 
-
-<script>
-    $('.my_corner').prepend('<div class="tr"></div>')
-            .prepend('<div class="tl"></div>')
-            .prepend('<div class="br"></div>')
-            .prepend('<div class="bl"></div>');
-</script>
-
-<script>
-function editDescription(elementNode){
-    var descriptionDiv = elementNode.parentNode.parentNode.getElementsByClassName('ab-test')[0];
-
-    var nextElements = descriptionDiv.getElementsByClassName('next-test');
-
-    for (var i = 0; i < nextElements.length; i++) {
-        nextElements[i].hidden = false;
-        if (nextElements[i].getElementsByTagName('p').length > 0){
-            nextElements[i].getElementsByTagName('p')[0].hidden = true;
-        }
-    }
-
-
-}
-</script>

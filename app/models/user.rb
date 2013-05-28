@@ -8,10 +8,13 @@ class User < ActiveRecord::Base
   has_many :Investors
   has_many :Owners
   has_many :Followers
+  has_many :Circles
+  has_many :Notifications
   
   has_many :Investor_startups, :through => :Investors, :source => :startup
   has_many :Owner_startups, :through => :Owners, :source => :startup
   has_many :Follower_startups, :through => :Followers, :source => :startup
+  has_many :Circle_startups, :through => :Circles, :source => :startup
 
   has_many :Funds
   has_many :Ideas

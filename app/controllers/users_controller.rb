@@ -14,13 +14,19 @@ class UsersController < ApplicationController
   def index
     @user = User.find(params[:id])
     @user_startups = (@user.Owner_startups + @user.Investor_startups + @user.Follower_startups).uniq
-    for startup in @user_startups
+
+    @notifications = @user.Notifications.where("status = 1")
+    #@notifications.uniq! {|a| a.event_type and a.event_id}
+    @notifications.sort! {|y, x| x["created_at"] <=> y["created_at"]}
+
+    @user_startups.each do |startup|
       if @user_updates == nil
-        @user_updates = startup.Companyupdates
+          @user_updates = startup.Companyupdates
       else
         @user_updates = @user_updates + startup.Companyupdates
       end
     end
+
     if @user_updates != nil
       @user_updates.sort! { |y, x| x["newsdate"] <=> y["newsdate"] }
     end

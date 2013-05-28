@@ -1,0 +1,4 @@
+var elNode = document.getElementById("notification<%= params[:notification_id]%>");
+var newP = document.createElement("span")
+newP.innerHTML = "You've confirmed your participation in the team";
+elNode.parentNode.replaceChild(newP, elNode);

@@ -7,6 +7,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string   :cmuaffiliation
       t.integer  :authentication_id
       t.string   :avatar
+      t.integer  :notification_num
 
       t.timestamps
     end

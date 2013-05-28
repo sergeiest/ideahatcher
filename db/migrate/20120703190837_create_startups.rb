@@ -5,7 +5,7 @@ class CreateStartups < ActiveRecord::Migration
       t.string   :link
       t.string   :name
       t.text     :pitch
-      t.integer   :status
+      t.integer  :status
       t.string   :avatar
 
 	    t.timestamps

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130422223437) do
+ActiveRecord::Schema.define(:version => 20130526210811) do
 
   create_table "allfields", :force => true do |t|
     t.string   "field_name"
@@ -47,6 +47,14 @@ ActiveRecord::Schema.define(:version => 20130422223437) do
     t.datetime "updated_at",    :null => false
   end
 
+  create_table "circles", :force => true do |t|
+    t.integer  "startup_id"
+    t.integer  "user_id"
+    t.integer  "status"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "companydescriptions", :force => true do |t|
     t.integer  "startup_id"
     t.text     "content"
@@ -57,27 +65,6 @@ ActiveRecord::Schema.define(:version => 20130422223437) do
     t.datetime "updated_at",            :null => false
     t.integer  "companydescription_id"
     t.integer  "status"
-  end
-
-  create_table "companyteams", :force => true do |t|
-    t.integer  "startup_id"
-    t.string   "firstname"
-    t.string   "lastname"
-    t.string   "title"
-    t.text     "description"
-    t.string   "linkedin"
-    t.string   "cmuaffiliation"
-    t.string   "email"
-    t.string   "phone"
-    t.string   "address"
-    t.integer  "picture_id"
-    t.string   "avatar"
-    t.datetime "created_at",          :null => false
-    t.datetime "updated_at",          :null => false
-    t.string   "avatar_file_name"
-    t.string   "avatar_content_type"
-    t.integer  "avatar_file_size"
-    t.datetime "avatar_updated_at"
   end
 
   create_table "companyupdates", :force => true do |t|
@@ -132,6 +119,22 @@ ActiveRecord::Schema.define(:version => 20130422223437) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "locations", :force => true do |t|
+    t.string   "name"
+    t.integer  "status"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "notifications", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "status"
+    t.integer  "event_type"
+    t.integer  "event_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "owners", :force => true do |t|
     t.integer  "startup_id"
     t.integer  "user_id"
@@ -155,6 +158,13 @@ ActiveRecord::Schema.define(:version => 20130422223437) do
     t.datetime "avatar_updated_at"
   end
 
+  create_table "tags", :force => true do |t|
+    t.string   "name"
+    t.integer  "startup_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "univaffiliations", :force => true do |t|
     t.string   "title_name"
     t.datetime "created_at", :null => false
@@ -173,6 +183,7 @@ ActiveRecord::Schema.define(:version => 20130422223437) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.integer  "notification_num"
   end
 
   create_table "votes", :force => true do |t|

@@ -1,14 +1,17 @@
-<%= link_to({:controller => "investors", :action => "people"}, :class => "person-info") do %>
-        <% if person.avatar? %>
-            <%= image_tag person.avatar.url(:square) %>
+<div class = "person-info">
+    <% if person.avatar? %>
+        <%= image_tag person.avatar.url(:square) %>
+    <% else %>
+        <%= image_tag "/images/profile/Nophoto.png" %>
+    <% end %>
+    <h5><%= person.firstname %>  <%= person.lastname %></h5>
+    <% case status %>
+        <% when 1 %>
+          <p>Founder</p>
+        <% when 2 %>
+          <p>Awaiting conformation</p>
         <% else %>
-            <%= image_tag "/images/profile/Nophoto.png" %>
-        <% end %>
-        <h5><%= person.firstname %>  <%= person.lastname %></h5>
-        <% if params[:owner] %>
-            <p>Founder</p>
-        <% else %>
-            <p>Follower </p>
-        <% end %>
-<% end %>
+          <p>Follower</p>
+    <% end %>
+</div>
 

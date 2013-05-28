@@ -115,6 +115,14 @@ class CompanydescriptionsController < ApplicationController
     end
   end
 
+  def update_description
+    @companydescription = Companydescription.find(params[:description][:id])
+    @companydescription.update_attributes(params[:description])
+    respond_to do |format|
+      format.js
+    end
+  end
+
 
   # DELETE /companydescriptions/1
   # DELETE /companydescriptions/1.json

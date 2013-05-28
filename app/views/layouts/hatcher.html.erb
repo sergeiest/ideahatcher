@@ -46,15 +46,24 @@
 
   <% if session[:id] != nil and session[:id] != 0 %>
       <% user = User.find(session[:id]) %>
+      <% owner_number = user.Owners.count %>
       <ul class="user-nav nav nav-pills">
         <li class="dropdown custom-dropdown">
           <%= link_to "Vote", :action => "vote_lightning", :controller => "startups" %>
         </li>
         <li  class="dropdown custom-dropdown">
-          <%= link_to "Feedback", :action => "vote_lightning", :controller => "startups" %>
+          <% if owner_number != 0 %>
+              <%= link_to "Feedback", :controller => 'startups', :action => 'dashboard', :id => user.Owners[0].startup_id  %>
+          <% else %>
+              <%= link_to "Feedback", :controller => 'campaigns', :action => 'guide_step'  %>
+          <% end %>
         </li>
         <li  class="dropdown custom-dropdown">
-          <%= link_to "My hatch", :action => "vote_lightning", :controller => "startups" %>
+          <% if owner_number != 0 %>
+            <%= link_to "My hatch", :controller => 'startups', :action => 'show', :id => user.Owners[0].startup_id  %>
+          <% else %>
+            <%= link_to "My hatch", :controller => 'campaigns', :action => 'guide_step'  %>
+          <% end %>
         </li>
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="height: 12px;">
@@ -64,9 +73,11 @@
                 <%= image_tag "/images/profile/Nophoto.png" %>
             <% end %>
             <b class="caret"></b>
+            <% if user.notification_num and user.notification_num >0 %>
+                <div class ="notifications"><%= user.notification_num %></div>
+            <% end %>
           </a>
           <ul class="dropdown-menu">
-            <% owner_number = user.Owners.count %>
             <% if owner_number != 0 %>
                 <li role="presentation"><%= link_to user.Owner_startups[0].name, :controller => 'startups',
                                                     :action => 'show', :id => user.Owners[0].startup_id %></li>
@@ -75,8 +86,12 @@
                                                     :action => 'guide_step' %></li>
             <% end %>
             <hr />
-            <li role="presentation"><%= link_to 'Notifications', :controller => 'users', :action => 'index',
-                                                :id => user.id %></li>
+            <li role="presentation">
+              <%= link_to :controller => 'users', :action => 'index',
+                                                  :id => user.id  do%>
+                 Notifications <span class ="notifications"><%= user.notification_num %></span>
+              <%end%>
+            </li>
             <li role="presentation"><%= link_to 'Update profile', :controller => 'users', :action => 'edit',
                                                 :id => user.id %></li>
             <li role="presentation"><%= link_to 'Change password', :controller => 'users', :action => 'change_password',

@@ -9,14 +9,17 @@ class Startup < ActiveRecord::Base
   has_many :Companyteams
   has_many :Companydocuments
   has_many :Ideas
+  has_many :Tags
 
   has_many :Investors
   has_many :Owners
   has_many :Followers
+  has_many :Circles
 
   has_many :Investor_users, :through => :Investors, :source => :user
   has_many :Owner_users, :through => :Owners, :source => :user
   has_many :Follower_users, :through => :Followers, :source => :user
+  has_many :Circle_users, :through => :Circles, :source => :user
 
   has_one :Campaign
 

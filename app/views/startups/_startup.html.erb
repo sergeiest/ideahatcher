@@ -12,7 +12,15 @@
           <img class="thumbnail1" src='/images/profile/Nologo.png' style="float:left;margin-right:10px;">
       <% end %>
       <p><%= simple_format startup.pitch.firstletters(120), :class => "p-content" %></p>
-      <p class="hashtag">#design, #data, #cmu</p>
+      <p class="hashtag">
+        <% tags = startup.Tags %>
+        <% i=0 %>
+        <% tags.each do |tag| %>
+            #<%= tag.name %><%= "," if tags.length != i + 1 %>
+            <% i += 1 %>
+        <% end %>
+        <%= "no hashtags" if tags.length == 0 %>
+      </p>
       <p class="vote-stat"><%= rand(150) %> people voted</p>
   <%end%>
 </div>
