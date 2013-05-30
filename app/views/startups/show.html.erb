@@ -10,8 +10,7 @@
             <% else %>
                 <img src='/images/profile/Nologo.png' class = "main-logo">
             <% end %>
-            <h2 class="main-name"
-                style = "background-color:black;color:white;">
+            <h2 class="main-name">
               <%= @startup.name %>
               <% if session[:connection_type]==2 %>
                   <%= link_to(:controller => "campaigns", :action => "basic_step" ) do %>

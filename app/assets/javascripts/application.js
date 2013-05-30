@@ -134,10 +134,16 @@ function clearInput (elementNode) {
 
 function highlightFrame (elementNode) {
     elementNode.getElementsByClassName('demo-grad')[0].style.opacity = 0;
+    elementNode.getElementsByClassName('demo-text')[0].style.opacity = 0.7;
+    elementNode.getElementsByClassName('demo-text')[0].style.backgroundColor = "#333333";
+
 }
 
+
 function whiteFrame (elementNode) {
-    elementNode.getElementsByClassName('demo-grad')[0].style.opacity = 1;
+    elementNode.getElementsByClassName('demo-grad')[0].style.opacity = 0.6;
+    elementNode.getElementsByClassName('demo-text')[0].style.opacity = 1;
+    elementNode.getElementsByClassName('demo-text')[0].style.backgroundColor = "inherit";
 }
 
 function changeGrad (elementNode) {

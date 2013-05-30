@@ -7,28 +7,28 @@
         <li class="cat-name">Manage your hatch</li>
         <% case params[:action] %>
             <% when "team" %>
-                <li>Add/manage Team <span style="margin-left:20px">-></span> </li>
-                <li><%= link_to 'Update description', {:controller => "startups", :action => "detailed", :id => @startup.id}%></li>
+                <li>Add Team <span style="margin-left:20px">-></span> </li>
+                <li><%= link_to 'Update', {:controller => "startups", :action => "detailed", :id => @startup.id}%></li>
                 <li><%= link_to 'Dashboard', {:controller => "startups", :action => "dashboard", :id => @startup.id}%></li>
                 <li><%= link_to 'Publish', {:controller => "startups", :action => "circle", :id => @startup.id}%></li>
             <% when "detailed" %>
-                <li><%= link_to 'Add/manage Team', {:controller => "startups", :action => "team", :id => @startup.id}%></li>
-                <li>Update description <span style="margin-left:20px">-></span></li>
+                <li><%= link_to 'Add Team', {:controller => "startups", :action => "team", :id => @startup.id}%></li>
+                <li>Update <span style="margin-left:20px">-></span></li>
                 <li><%= link_to 'Dashboard', {:controller => "startups", :action => "dashboard", :id => @startup.id}%></li>
                 <li><%= link_to 'Publish', {:controller => "startups", :action => "circle", :id => @startup.id}%></li>
             <% when "circle" %>
-                <li><%= link_to 'Add/manage Team', {:controller => "startups", :action => "team", :id => @startup.id}%></li>
-                <li><%= link_to 'Update description', {:controller => "startups", :action => "detailed", :id => @startup.id}%></li>
+                <li><%= link_to 'Add team', {:controller => "startups", :action => "team", :id => @startup.id}%></li>
+                <li><%= link_to 'Update', {:controller => "startups", :action => "detailed", :id => @startup.id}%></li>
                 <li><%= link_to 'Dashboard', {:controller => "startups", :action => "dashboard", :id => @startup.id}%></li>
                 <li>Publish <span style="margin-left:20px">-></span></li>
             <% when "dashboard" %>
-                <li><%= link_to 'Add/manage Team', {:controller => "startups", :action => "team", :id => @startup.id}%></li>
-                <li><%= link_to 'Update description', {:controller => "startups", :action => "detailed", :id => @startup.id}%></li>
+                <li><%= link_to 'Add Team', {:controller => "startups", :action => "team", :id => @startup.id}%></li>
+                <li><%= link_to 'Update', {:controller => "startups", :action => "detailed", :id => @startup.id}%></li>
                 <li>Dashboard <span style="margin-left:20px">-></span></li>
                 <li><%= link_to 'Publish', {:controller => "startups", :action => "circle", :id => @startup.id}%></li>
             <% else %>
-                <li><%= link_to 'Add/manage Team', {:controller => "startups", :action => "team", :id => @startup.id}%></li>
-                <li><%= link_to 'Update description', {:controller => "startups", :action => "detailed", :id => @startup.id}%></li>
+                <li><%= link_to 'Add Team', {:controller => "startups", :action => "team", :id => @startup.id}%></li>
+                <li><%= link_to 'Update', {:controller => "startups", :action => "detailed", :id => @startup.id}%></li>
                 <li><%= link_to 'Dashboard', {:controller => "startups", :action => "dashboard", :id => @startup.id}%></li>
                 <li><%= link_to 'Publish', {:controller => "startups", :action => "circle", :id => @startup.id}%></li>
         <% end %>

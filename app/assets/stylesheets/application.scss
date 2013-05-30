@@ -372,8 +372,8 @@ h2.project{
   margin:0;
   margin-top: -1px;
   float:left;
-
   padding:0;
+
   .demo-grad {
     position: relative;
     height: 100%;
@@ -381,23 +381,19 @@ h2.project{
     top:0;
     left:0;
     z-index:1;
-    background-image: -webkit-gradient(
-      linear,
-      right top,
-      left bottom,
-      color-stop(0.17, white),
-      color-stop(0.59, #07b5b5)
-    );
-    opacity:0.90;
+
+    opacity:0.60;
     filter:alpha(opacity=90);
 
   }
   .demo-text {
     position: relative;
+    cursor: pointer;
 
-    width: 100%;
+    width: 90%;
+    height:40%;
     top:-125px;
-    left:0;
+    left:10%;
     z-index:2;
     h2{
       padding:0% 5%;
@@ -505,9 +501,9 @@ h2.project{
   background-color:#e3e3e3;
   font-size:12px;
   color: #696969;
-  min-height: 50px;
-  padding-top:10px;
-  margin:0;
+  min-height: 40px;
+  padding:20px;
+  margin:0px 0;
   text-align: center;
 }
 
@@ -614,14 +610,15 @@ h2.project{
 // ----------------- Company page (new) -----------------------
 
 .company-main {
-  border:2px #c8c8c8 solid;
+  border:0px #c8c8c8 solid;
   margin:0 10px;
   padding:10px;
   .company-left {
     float:left;
-    padding-left: 20px;
+    padding-left: 10px;
+    width: 80%;
     .company-box {
-      width: 600px;
+      width: 100%;
       .person-info {
         float:left;
         margin: 10px 0;
@@ -647,16 +644,16 @@ h2.project{
       }
     }
     .main-logo {
-      height: 300px;
-      width: 600px;
+
+      width:100%;
       border:0px #07b5b5 solid;
     }
     .main-name {
       float:right;
-      background-color: #eeeeee;
-      color:black;
-      opacity:0.40;
-      filter:alpha(opacity=40);
+      background-color: #333333;
+      color:white;
+      opacity:0.70;
+      filter:alpha(opacity=70);
       padding:5px 20px;
       margin-right: -0px;
       margin-top:-100px;
@@ -688,10 +685,10 @@ h2.project{
 
   }
   .company-right {
-    margin-left:660px;
-    width: 250px;
+    margin-left:calc(80% + 80px);
+    width: 200px;
     .btn-warning {
-      margin-left: 60px;
+      margin-left: 40px;
       width: 100px;
       font-size: 20px;
     }
@@ -700,7 +697,7 @@ h2.project{
       padding:0 10px;
       border:2px #c8c8c8 solid;
       .bottom-link {
-        margin-left: 130px;
+        margin-left: 00px;
       }
     }
 
@@ -920,8 +917,8 @@ h2.project{
 }
 .class1 {
   width: 600px; height: 800px;
-  position: relative;
-  top: 0px;
+  position: absolute;
+  top: 20px;
   left: 170px;
   z-index:2;
 
@@ -1047,6 +1044,7 @@ h2.project{
 .left-nav {
   float:left;
   min-height: calc(100%-60px);
+  width: 100px;
   border-right: 1px solid grey;
   padding: 40px 20px;
   margin:20px 20px 20px 0px;
@@ -1152,10 +1150,10 @@ h2.project{
 }
 
 .hatcher-container {
-  margin:0px 0 0px 155px;
-  padding:20px;
+  margin:0px 0 0px 105px;
+  padding:20px 20% 0 0;
   position: relative;
-  min-width: 1000px;
+  min-width:600px;
 
   .more-startups {
     color: #07b5b5;

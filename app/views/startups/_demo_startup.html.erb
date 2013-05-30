@@ -38,7 +38,9 @@
            end
        end
     %>
-    <div class="demo-grad" style="background: linear-gradient(to top right, rgba(<%=c1%>,<%=c2%>,<%=c3%>, 1),  rgba(0, 0, 0, 0));">
+    <div class="demo-grad"
+            style="background: -webkit-linear-gradient(bottom left, rgba(<%=c1%>,<%=c2%>,<%=c3%>, 1),  rgba(0, 0, 0, 0));
+                    background: -moz-linear-gradient(to top right, rgba(<%=c1%>,<%=c2%>,<%=c3%>, 1), white);">
     </div>
     <div class="demo-text"><%= link_to (demo_startup) do %>
       <h2><%= demo_startup.name %></h2>

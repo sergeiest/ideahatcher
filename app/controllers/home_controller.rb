@@ -49,7 +49,7 @@ class HomeController < ApplicationController
 	end
 
   def colorful
-    startups = Startup.all
+    startups = Startup.where("status >2").all
     s1 = startups
     s2 = startups
     s3 = startups
