@@ -44,6 +44,7 @@ Webapp::Application.routes.draw do
   post "campaigns/team_save_step"
   post "campaigns/upload_logo"
   post "campaigns/publish_step"
+  post "campaigns/update_description"
   get "campaigns/circles_step"
   resources :campaigns
 
@@ -130,6 +131,7 @@ Webapp::Application.routes.draw do
   get "startups/vote_next"
   get "startups/circle"
   get "startups/dashboard"
+  get "startups/ab_testing"
   resources :startups
   
   resources :peoples

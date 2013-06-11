@@ -16,65 +16,62 @@
   </div>
 </div>
 
+<div class="hatcher-container">
+  <div class="company-main">
+    <div class="company-left">
+      <div class="company-box"> <h5>About company</h5></div>
 
-<div class="sign-up">
-  <h4>About company</h4>
-  <%= form_tag(:action => 'description_step', :multipart => true) do %>
-    <ol>
-      <div class="highlighted-list">
-        <li>
-          <h5>Company/campaign image  <a href="#uploadPhoto" role="button" class="btn btn-mini" data-toggle="modal">Update Photo</a></h5>
-          <% if @startup.errors[:avatar].length > 0 %>
-              <p style="color:red">Photo was not upload, probably wrong file format. Please try again</p>
-          <% end %>
-          <% if @startup.avatar? %>
-              <%= image_tag @startup.avatar.url(:large), :style=>"margin-bottom:20px " %>
-          <% end %>
-        </li>
-      </div>
-      <div class="highlighted-list">
-        <li>
-          <% allfield =  Allfield.find(@companydescriptions1.allfield_id)   %>
-          <h5><%= allfield.field_name   %></h5>
-          <%= select(:companydescriptions1, :field_status, options_from_collection_for_select(allfield.Fieldstates, :field_status, :field_status, @companydescriptions1.field_status)) %>
-          <%= hidden_field :companydescriptions1, :allfield_id, :value => allfield.id %>
-          <%= text_area :companydescriptions1, :content %>
-          <p>Describe your product and specify your product stage</p>
-        </li>
-      </div>
-      <div class="highlighted-list">
-        <li>
-          <% allfield =  Allfield.find(@companydescriptions2.allfield_id)   %>
-          <h5><%= allfield.field_name   %></h5>
-          <%= select(:companydescriptions2, :field_status, options_from_collection_for_select(allfield.Fieldstates, :field_status, :field_status, @companydescriptions2.field_status)) %>
-          <%= hidden_field :companydescriptions2, :allfield_id, :value => allfield.id %>
-          <%= text_area :companydescriptions2,:content %> </p>
-          <p>Specify if you raised capital</p>
-        </li>
-      </div>
-      <div class="highlighted-list">
-        <li>
-          <% allfield =  Allfield.find(@companydescriptions3.allfield_id)   %>
-          <h5><%= allfield.field_name   %></h5>
-          <%= select(:companydescriptions3, :field_status, options_from_collection_for_select(allfield.Fieldstates, :field_status, :field_status, @companydescriptions3.field_status)) %>
-          <%= hidden_field :companydescriptions3, :allfield_id, :value => allfield.id %>
-          <%= text_area :companydescriptions3,:content %> </p>
-          <p>Describe your customers and sales and specify your revenue stage</p>
-        </li>
-      </div>
-      <div class="highlighted-list">
-        <li>
-          <% allfield =  Allfield.find(@companydescriptions3.allfield_id)   %>
-          <h5><%= allfield.field_name   %></h5>
-          <%= select(:companydescriptions3, :field_status, options_from_collection_for_select(allfield.Fieldstates, :field_status, :field_status, @companydescriptions3.field_status)) %>
-          <%= hidden_field :companydescriptions3, :allfield_id, :value => allfield.id %>
-          <%= text_area :companydescriptions3,:content %> </p>
-          <p>Describe your customers and sales and specify your revenue stage</p>
-        </li>
-      </div>
-    </ol>
-    <button id="next-step" class="btn btn-warning" style="float:right">Next <span style="padding-left:20px"> > </span></button>
-  <% end %>
+      <%= form_tag(:action => 'description_step', :multipart => true) do %>
+        <ol>
+          <div class="company-box">
+            <li>
+              <h4>Company/campaign image  <a href="#uploadPhoto" role="button" class="btn btn-mini" data-toggle="modal">Update Photo</a></h4>
+              <% if @startup.errors[:avatar].length > 0 %>
+                  <p style="color:red">Photo was not upload, probably wrong file format. Please try again</p>
+              <% end %>
+              <% if @startup.avatar? %>
+                  <%= image_tag @startup.avatar.url(:large), :style=>"margin-bottom:20px " %>
+              <% end %>
+            </li>
+          </div>
+          <div class="company-box">
+            <li>
+              <% allfield =  Allfield.find(@companydescriptions1.allfield_id)   %>
+              <h4><%= allfield.field_name   %></h4>
+              <%= hidden_field :companydescriptions1, :field_status, :value => allfield.field_name %>
+              <%= hidden_field :companydescriptions1, :allfield_id, :value => allfield.id %>
+              <p>Describe your product and specify your product stage</p>
+              <%= text_area :companydescriptions1, :content %>
+            </li>
+          </div>
+          <div class="company-box">
+            <li>
+              <% allfield =  Allfield.find(@companydescriptions2.allfield_id)   %>
+              <h4><%= allfield.field_name   %></h4>
+
+              <%= hidden_field :companydescriptions2, :field_status, :value => allfield.field_name %>
+              <%= hidden_field :companydescriptions2, :allfield_id, :value => allfield.id %>
+              <p>Specify if you raised capital</p>
+              <%= text_area :companydescriptions2,:content %> </p>
+            </li>
+          </div>
+          <div class="company-box">
+            <li>
+              <% allfield =  Allfield.find(@companydescriptions3.allfield_id)   %>
+              <h4><%= allfield.field_name   %></h4>
+              <%= hidden_field :companydescriptions3, :field_status, :value => allfield.field_name %>
+              <%= hidden_field :companydescriptions3, :allfield_id, :value => allfield.id %>
+              <p>Describe your customers and sales and specify your revenue stage</p>
+              <%= text_area :companydescriptions3,:content %> </p>
+            </li>
+          </div>
+        </ol>
+        <button id="next-step" class="btn btn-warning" style="float:right">Next <span style="padding-left:20px"> > </span></button>
+      <% end %>
+
+    </div>
+    <div class="clear-both"></div>
+  </div>
 </div>
 
 <div id="uploadPhoto" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -82,9 +79,11 @@
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
     <h3 id="myModalLabel">Upload photo or logo</h3>
   </div>
-  <%= form_for(@startup) do |f| %>
+  <%= form_tag({:controller => "campaigns", :action => "upload_logo"},
+               :multipart => true,
+               :remote => true) do %>
       <div class="modal-body">
-        <%= f.file_field :avatar, :onchange => "checkFile()"%>
+        <%= file_field_tag :avatar, :onchange => "checkFile(this)"%>
         <p id="photo_error" style="color:red"></p>
       </div>
       <div class="modal-footer">
@@ -94,10 +93,9 @@
   <% end %>
 </div>
 
-
 <script language="javascript">
-    function checkFile(){
-        var fileInput = document.getElementById('startup_avatar');
+    function checkFile(elementNode){
+        var fileInput = elementNode;
         var fileName = fileInput.value;
         var ext = fileName.substring(fileName.lastIndexOf('.') + 1);
         if(ext == "gif" || ext == "GIF" || ext == "JPEG" || ext == "jpeg" || ext == "jpg" || ext == "JPG" || ext == "png" || ext == "PNG") {

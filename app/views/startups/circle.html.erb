@@ -5,15 +5,18 @@
   <div class="company-main">
     <div class="company-left">
       <div class="company-content">
+
         <div class="company-box">
           <h5>Hashtags</h5>
           <p>This is a simple way to let people know what your idea is about</p>
           <%= form_tag({:action => "add_tag", :controller => "tags"}, :remote => true, :class => "hashtag_form") do %>
             <%= text_field_tag :tag_name %>
+            <%= hidden_field_tag :id, @startup.id %>
             <%= submit_tag "Add", :class => "btn btn-small" %>
           <% end %>
           <%= form_tag({:action => "delete_tag", :controller => "tags"}, :remote => true, :hidden => "true") do %>
             <%= hidden_field_tag :tag_id, 0 %>
+            <%= hidden_field_tag :id, @startup.id %>
             <%= submit_tag "delete", :id => "delete_this_tag" %>
           <% end %>
           <hr/>
@@ -24,6 +27,72 @@
           </div>
         </div>
       </div>
+
+
+      <div class="company-box add-people">
+          <h5>Who do you want to share your idea with?</h5>
+          <p>Select people that you want to invite to your idea. The more the better advice:</p>
+          <%= form_tag({:action => "add_circle", :controller => "circles"},
+                       :remote => 'true',
+                       :onclick => 'submitForm(this)') do%>
+              <p><%= radio_button_tag :circle_status, 0, 1%>Do not share yet (you can share it late)</p>
+              <p><%= radio_button_tag :circle_status, 1%>Select people yourself</p>
+              <p><%= radio_button_tag :circle_status, 2%>Invite 20 random people</p>
+              <p><%= radio_button_tag :circle_status, 3%>Share the idea with everyone</p>
+              <%= submit_tag "submit", :hidden => "true" %>
+          <% end %>
+          <div id="manual-selection" hidden>
+            <hr/>
+            <%= form_tag({:action => "search_people", :controller => "investors"},
+                         :remote => true) do %>
+                <%= text_field_tag :string, "search", :onclick => "clearInput(this)", :onkeyup => "submitForm(this.parentNode)" %>
+                <%= submit_tag "submit", :hidden => "true" %>
+            <% end %>
+            <%= form_tag({:action => "add_person", :controller => "circles"},
+                         :remote => true,
+                         :hidden => true,
+                         :id => "add_person") do %>
+                <%= hidden_field_tag :user_id, 0 %>
+                <%= submit_tag "submit", :hidden => "true" %>
+            <% end %>
+            <%= form_tag({:action => "remove_person", :controller => "circles"},
+                         :remote => true,
+                         :hidden => true,
+                         :id => "remove_person") do %>
+                <%= hidden_field_tag :user_id, 0 %>
+                <%= submit_tag "submit", :hidden => "true" %>
+            <% end %>
+            <div id="search-results" class="people-to-add">
+              <% @people.each do |person| %>
+                  <div class="person-circle" onclick="addPerson(this,<%= person.id %>)">
+                    <% if  person.avatar? %>
+                        <img src='<%= person.avatar.url(:square) %>' >
+                    <% else %>
+                        <img src='/images/profile/Nophoto.png'>
+                    <% end %>
+                    <h5><%= person.firstname %>  <%= person.lastname %></h5>
+                    <div class="clear-both"></div>
+                  </div>
+              <% end %>
+            </div>
+            <div id="current-circle" class="people-added">
+              <h4>People you have added:</h4>
+              <% @circles.each do |person| %>
+                  <div class="person-circle"  onclick="removePerson(this,<%= person.id %>)">
+                    <% if  person.avatar? %>
+                        <img src='<%= person.avatar.url(:square) %>' >
+                    <% else %>
+                        <img src='/images/profile/Nophoto.png'>
+                    <% end %>
+                    <h5><%= person.firstname %>  <%= person.lastname %></h5>
+                  </div>
+              <% end %>
+            </div>
+
+            <div class="clear-both"></div>
+          </div>
+      </div>
+
     </div>
     <div class="clear-both"></div>
   </div>

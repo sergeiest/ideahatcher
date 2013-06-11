@@ -1,0 +1,116 @@
+<%= render "startups/nav" %>
+
+<div class="hatcher-container">
+  <div class="company-main">
+    <div class="company-left">
+      <div class="company-content">
+        <% @company_descriptions.each do |description| %>
+            <div class="company-box">
+                <h5><%= Allfield.find(description.allfield_id).field_name %>:
+                <% if description != nil %>
+                    <%= description.field_status %></h5>
+                <% else %>
+                    - no information - </h5>
+                <% end %>
+                <% if description.companydescription_id %>
+                    <div class="ab-test">
+                        <% old_description = Companydescription.find(description.companydescription_id) %>
+                        <div class="my_corner previous-test"></div>
+                        <div class="idea-statement current-test">
+                            <%= simple_format Companydescription.find(description.companydescription_id).content,
+                                            :id => "p_old_"+ description.id.to_s() %>
+                        </div>
+                        <div class="my_corner next-test"></div>
+                        <div class="idea-statement next-test">
+                            <%= simple_format description.content, :id => "p_new_"+ description.id.to_s() %>
+                        </div>
+                        <div class="my_corner " hidden></div>
+                        <div class="clear-both"></div>
+                      <input class="btn btn-mini" name="like_old" type="submit" value="I like this more" onclick="changeButton(this)"/>
+                      <input class="btn btn-mini" name="like_new" type="submit" value="I like this more" onclick="changeButton(this)"/>
+                    </div>
+                <% else %>
+                    <div class="ab-test">
+                        <div class="my_corner previous-test"></div>
+                        <div class="idea-statement current-test">
+                            <%= simple_format description.content %>
+                        </div>
+                        <div class="clear-both"></div>
+                      </div>
+                <% end %>
+
+                <a onclick="showIdeas(this)" style="cursor:pointer; font-size:12px;">
+                    Show/add comments
+                    <span class="caret" style="color:#07b5b5;margin:17px 0 0 2px;"></span>
+                </a>
+                <div name="ideas" hidden id="following_Idea<%= description.id %>">
+                    <% @ideas.select{|a| a.companydescription_id == description.id }.each do |idea| %>
+                        <%= simple_format idea.content %>
+                        <div class="author">
+                            <p><%= idea.first_name %> <%= idea.last_name %> on <%= idea.created_at.strftime('%m/%d/%Y') %></p>
+                        </div>
+                        <hr/>
+                    <% end %>
+                    <%= form_tag({:controller => "ideas", :action => "create"},
+                                    :remote => true) do %>
+                        <%= hidden_field :idea, :title, :value => description.field_status %>
+                        <%= hidden_field :idea, :is_protected, :value => 0 %>
+                        <%= hidden_field :idea, :idea_id, :value => "" %>
+                        <%= hidden_field :idea, :startup_id, :value => @startup.id %>
+                        <%= hidden_field :idea, :companydescription_id, :value => description.id %>
+                        <%= text_area :idea, :content%>
+                        <button class="btn btn-warning">Save</button>
+                    <% end %>
+                </div>
+            </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="company-right">
+    </div>
+    <div class="clear-both"></div>
+  </div>
+</div>
+
+
+
+<script>
+
+    $('.my_corner').prepend('<div class="tr"></div>')
+            .prepend('<div class="tl"></div>')
+            .prepend('<div class="br"></div>')
+            .prepend('<div class="bl"></div>');
+
+    function changeButton(elementNode){
+        elementNode.disabled = true;
+        elementNode.className = "btn btn-mini btn-primary";
+        if (elementNode.name == "like_new") {
+            sName = "like_old";
+        } else {
+            sName = "like_new";
+        }
+        notes = elementNode.parentNode.children;
+        for (var i = 0; i < notes.length; i++) {
+            if (notes[i].getAttribute('name') == sName) {
+                notes[i].disabled = false;
+                notes[i].className = "btn btn-mini";
+            }
+        }
+    }
+
+    function showIdeas(elementNode) {
+        notes = elementNode.parentNode.children;
+        for (var i = 0; i < notes.length; i++) {
+            if (notes[i].getAttribute('name') == "ideas") {
+                ideasDiv = notes[i];
+            }
+        }
+        if (ideasDiv.hidden == true) {
+            elementNode.innerText = "Hide comments";
+            ideasDiv.hidden = false;
+        } else {
+            elementNode.innerText = "Show/add comments";
+            ideasDiv.hidden = true;
+        }
+    }
+</script>

@@ -56,9 +56,9 @@
         </li>
         <li  class="dropdown custom-dropdown">
           <% if owner_number != 0 %>
-            <%= link_to "My hatch", :controller => 'startups', :action => 'show', :id => user.Owners[0].startup_id  %>
+            <%= link_to "My idea", :controller => 'startups', :action => 'show', :id => user.Owners[0].startup_id  %>
           <% else %>
-            <%= link_to "My hatch", :controller => 'campaigns', :action => 'guide_step'  %>
+            <%= link_to "My idea", :controller => 'campaigns', :action => 'guide_step'  %>
           <% end %>
         </li>
         <li class="dropdown">

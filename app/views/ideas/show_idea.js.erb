@@ -1,10 +1,11 @@
 var ideaDiv = document.getElementById('following_Idea<%= params[:id]%>');
+var formNode = ideaDiv.getElementsByTagName("form")[0];
 
 <% @ideas.each do |idea| %>
     <% idea.content.gsub(/\r\n?/, '\n').split("\n").each do |text_string| %>
         var newP = document.createElement("div");
         newP.innerHTML = '<%= simple_format h idea.content.gsub(/\r\n?/, '\n') %>';
-        ideaDiv.appendChild(newP);
+        ideaDiv.insertBefore(newP, formNode);
     <% end %>
 
     var newAuthor = document.createElement("p");
@@ -12,19 +13,11 @@ var ideaDiv = document.getElementById('following_Idea<%= params[:id]%>');
     newAuthor.className = "author";
     newAuthor.innerHTML = "<%= idea.first_name %> <%= idea.last_name %> on " +
                         "<%= idea.created_at.strftime('%m/%d/%Y') %>";
-    ideaDiv.appendChild(newAuthor);
+    ideaDiv.insertBefore(newAuthor, formNode);
 
-    ideaDiv.appendChild(document.createElement("hr"));
+    ideaDiv.insertBefore(document.createElement("hr"), formNode);
 <% end %>
 
+formNode.getElementsByTagName("textarea")[0].value="";
 
-<% if params[:action] == 'show_idea'%>
-    document.getElementById('show_link_Idea<%= params[:id]%>').hidden = true;
-    showHiddenIdeas('Idea<%= params[:id] %>');
-<% else %>
-    document.getElementById('show_link_Idea<%= params[:id]%>').hidden = true;
-    document.getElementById('Idea<%= params[:id] %>_1').hidden = true;
-    showHiddenIdeas('Idea<%= params[:id] %>');
-    showHiddenForm('Idea<%= params[:id] %>_comment');
-<% end %>
 

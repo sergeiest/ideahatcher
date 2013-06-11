@@ -4,13 +4,14 @@
      onMouseMove="MM_changeProp('<%= div_name %>','','backgroundColor','#ecf8ff','DIV')"
      onMouseOut="MM_changeProp('<%= div_name %>','','backgroundColor','white','DIV')">
   <%= link_to (startup) do %>
+      <% if startup.avatar != nil %>
+          <%= image_tag startup.avatar.url(:large) %>
+      <% else %>
+          <img src='/images/profile/Nologo.png'>
+      <% end %>
       <h2><%= startup.name %></h2>
 
-      <% if startup.avatar != nil %>
-          <%= image_tag startup.avatar.url(:teaser) %>
-      <% else %>
-          <img class="thumbnail1" src='/images/profile/Nologo.png' style="float:left;margin-right:10px;">
-      <% end %>
+
       <p><%= simple_format startup.pitch.firstletters(120), :class => "p-content" %></p>
       <p class="hashtag">
         <% tags = startup.Tags %>

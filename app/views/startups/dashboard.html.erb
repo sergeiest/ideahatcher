@@ -7,23 +7,20 @@
       <div class="company-content">
         <% @descriptions.each do |description| %>
             <div class="company-box" id="div_<%= description.id%>">
-              <h5><%= Allfield.find(description.allfield_id).field_name %>:
-                    <%= description.field_status %>
-                    <button class="btn btn-mini btn-primary edit-text" onclick=editDescription(this)>Edit</button>
-              </h5>
-              <hr/>
+              <h5><%= description.field_status %></h5>
               <% if description.companydescription_id %>
                 <div class="ab-test">
                     <div class="my_corner previous-test"></div>
                     <div class="idea-statement current-test">
                         <%= simple_format Companydescription.find(description.companydescription_id).content,
-                                            :id => "p_"+ description.id.to_s() %>
+                                          :class => "p_old" %>
                     </div>
+                    <button class="btn btn-mini btn-primary edit-text" onclick=editDescription(this)>Edit</button>
 
                     <div class="my_corner next-test"></div>
                     <div class="idea-statement next-test">
                         <%= simple_format description.content,
-                                            :id => "p_"+ description.id.to_s() %>
+                                            :class => "p_new" %>
                         <%= form_tag({:action => "new_suggestion", :controller => "companydescriptions"},
                                        :multipart => true,
                                        :hidden => true,
@@ -43,7 +40,8 @@
                     <div class="idea-statement current-test">
                         <%= simple_format description.content %>
                     </div>
-                    <div class="my_corner next-test" hidden></div>
+                  <button class="btn btn-mini btn-primary edit-text" onclick=editDescription(this)>Edit</button>
+                  <div class="my_corner next-test" hidden></div>
                     <div class="idea-statement next-test" hidden>
                         <%= form_tag({:action => "new_suggestion", :controller => "companydescriptions"},
                                        :multipart => true,
@@ -60,11 +58,38 @@
                 </div>
               <% end %>
 
-              <%= link_to 'Show/update votes', {:action => 'show_votes', :controller => 'votes',
+              <%= link_to({:action => 'show_votes', :controller => 'votes',
                                                             :description_id => description.id},
                                       :id => "chart_link",
-                                      :remote => true %>
+                                      :remote => true,
+                                      :style => "cursor:pointer; font-size:12px;") do %>
+                Show/update votes
+                <span class="caret" style="color:#07b5b5;margin:17px 0 0 2px;"></span>
+              <% end %> |
+              <a onclick="showIdeas(this)" style="cursor:pointer; font-size:12px;">
+                Show/add comments
+                <span class="caret" style="color:#07b5b5;margin:17px 0 0 2px;"></span>
+              </a>
               <div id="visualization_<%= description.id%>"></div>
+              <div name="ideas" hidden id="following_Idea<%= description.id %>">
+                <% @ideas.select{|a| a.companydescription_id == description.id }.each do |idea| %>
+                    <%= simple_format idea.content %>
+                    <div class="author">
+                      <p><%= idea.first_name %> <%= idea.last_name %> on <%= idea.created_at.strftime('%m/%d/%Y') %></p>
+                    </div>
+                    <hr/>
+                <% end %>
+                <%= form_tag({:controller => "ideas", :action => "create"},
+                             :remote => true) do %>
+                    <%= hidden_field :idea, :title, :value => description.field_status %>
+                    <%= hidden_field :idea, :is_protected, :value => 0 %>
+                    <%= hidden_field :idea, :idea_id, :value => "" %>
+                    <%= hidden_field :idea, :startup_id, :value => @startup.id %>
+                    <%= hidden_field :idea, :companydescription_id, :value => description.id %>
+                    <%= text_area :idea, :content%>
+                    <button class="btn btn-warning">Save</button>
+                <% end %>
+              </div>
             </div>
         <% end %>
       </div>
@@ -90,9 +115,15 @@
 
 <script>
     function editDescription(elementNode){
-        var descriptionDiv = elementNode.parentNode.parentNode.getElementsByClassName('ab-test')[0];
+
+        var descriptionDiv = elementNode.parentNode.parentNode;
 
         var nextElements = descriptionDiv.getElementsByClassName('next-test');
+
+        var oldContent = descriptionDiv.getElementsByClassName('p_old')[0];
+        var newContent = descriptionDiv.getElementsByClassName('p_new')[0];
+
+        oldContent.innerHTML = newContent.innerHTML;
 
         for (var i = 0; i < nextElements.length; i++) {
             nextElements[i].hidden = false;
@@ -101,6 +132,26 @@
             }
         }
 
+        elementNode.hidden = true;
+
 
     }
+
+
+    function showIdeas(elementNode) {
+        notes = elementNode.parentNode.children;
+        for (var i = 0; i < notes.length; i++) {
+            if (notes[i].getAttribute('name') == "ideas") {
+                ideasDiv = notes[i];
+            }
+        }
+        if (ideasDiv.hidden == true) {
+            elementNode.innerText = "Hide comments";
+            ideasDiv.hidden = false;
+        } else {
+            elementNode.innerText = "Show/add comments";
+            ideasDiv.hidden = true;
+        }
+    }
+
 </script>

@@ -26,9 +26,8 @@ class IdeasController < ApplicationController
 
   def index
     @user = User.find(session[:id]) if session[:id] and session[:id] != 0
-    session[:startup_id]= params[:id]
+    session[:startup_id] = params[:id]
     @startup = Startup.find(params[:id])
-    @startup_investors = @startup.Investor_users.all.uniq
     @startup_followers = @startup.Follower_users.all.uniq
     @startup_owners = @startup.Owner_users.all.uniq
 
@@ -69,13 +68,22 @@ class IdeasController < ApplicationController
 
     idea = Idea.new(params[:idea])
 
+
     if params[:idea][:content] == ""
       flash[:error] = "No message"
-      redirect_to :action => "index", :id => idea.startup_id
+      return
+    end
+
+
+    if !session[:id] or session[:id] == 0
+      flash[:error] = "PLease login first"
       return
     end
 
     user = User.find(session[:id])
+
+    return if !user
+
 
     idea.last_name = user.lastname
     idea.first_name = user.firstname
@@ -84,17 +92,16 @@ class IdeasController < ApplicationController
 
     respond_to do |format|
       if idea.save
-        if idea.idea_id == nil
+        if !idea.idea_id
           idea.idea_id = idea.id
           idea.update_attributes :idea_id => idea.id
         end
-        #Do not sent email!!!
+        #Do not sent an email!!!
         #email_idea(idea)
         format.html { redirect_to action: "index", id: idea.startup_id}
-        format.json { head :no_content }
         @ideas = Array.new
         @ideas[0] = idea
-        params[:id] = idea.idea_id
+        params[:id] = idea.companydescription_id
         format.js {render "show_idea"}
       else
         format.html { render action: "index", id: idea.startup_id }
@@ -102,6 +109,8 @@ class IdeasController < ApplicationController
       end
     end
   end
+
+
 
   def email_idea(idea)
     users = Array.new
@@ -130,7 +139,7 @@ class IdeasController < ApplicationController
   end
 
   def show_idea
-    @ideas = Idea.where(:idea_id => params[:idea_id])
+    @ideas = Idea.where(:companydescription_id => params[:id])
     @ideas.sort! { |a, b| [a['created_at']] <=> [b['created_at']] }
     # Delete id = params[:id]!!!
     respond_to do |format|

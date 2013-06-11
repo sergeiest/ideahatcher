@@ -5,4 +5,6 @@ class Companydescription < ActiveRecord::Base
   belongs_to :Startup
   belongs_to :Allfield
   has_many :Votes
+  has_many :Ideas
+
 end

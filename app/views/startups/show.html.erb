@@ -12,11 +12,6 @@
             <% end %>
             <h2 class="main-name">
               <%= @startup.name %>
-              <% if session[:connection_type]==2 %>
-                  <%= link_to(:controller => "campaigns", :action => "basic_step" ) do %>
-                      <button class="btn btn-small btn-primary">Update Info</button>
-                  <% end %>
-              <% end %>
             </h2>
           <div style="clear:both"></div>
         </div>

@@ -31,12 +31,13 @@
 <div class="hatcher-container">
   <%= link_to "See all New Ideas >", {:controller => "startups"}, :class => "more-startups"%>
   <h1 class="page-title">New Ideas</h1>
-  <%= render :partial =>  "startup", :collection => @startups[0..3] %>
+  <%= render :partial =>  "startup", :collection => @startups[0..2] %>
   <div class="startup-holder"></div>
   <hr/>
   <%= link_to "See all Popular Ideas >", {:controller => "startups"}, :class => "more-startups"%>
   <h1 class="page-title">Popular Ideas</h1>
-  <%= render :partial =>  "startup", :collection => @startups[4..7] %>
+  <%= render :partial =>  "startup", :collection => @startups[4..6] %>
+  <div class="startup-holder"></div>
 </div>
 
 <div class="clear-both"></div>

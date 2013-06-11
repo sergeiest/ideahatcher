@@ -4,7 +4,7 @@ class StartupsController < ApplicationController
 
   def layout_by_resource
     case params[:action]
-      when 'index', 'vote_lightning', 'show', 'team', 'detailed', 'circle', 'dashboard'
+      when 'index', 'vote_lightning', 'show', 'team', 'detailed', 'circle', 'dashboard', "ab_testing"
         "hatcher"
       else
         "demo"
@@ -21,11 +21,12 @@ class StartupsController < ApplicationController
           user = User.find(session[:id])
           if params[:id] and Owner.where("startup_id = ? AND user_id = ?", params[:id], session[:id]).length > 0
             session[:startup_id] = params[:id]
+            session[:connection_type] = 2
           else
             wrong_link = 1
           end
         end
-      when "show"
+      when "show", "ab_testing"
         if params[:id] and Startup.find(params[:id])
           session[:startup_id] = params[:id]
           if session[:id] != 0 and session[:id] != nil
@@ -70,12 +71,7 @@ class StartupsController < ApplicationController
     @startup_updates = @startup.Companyupdates
     @companyupdate = Companyupdate.new
 
-    i=0
-    @company_descriptions = Array.new
-    for allfield in Allfield.find_all_by_view_flag(3)
-      @company_descriptions[i] = @startup.Companydescriptions.where("allfield_id =? AND status =?", allfield.id, 1)[0]
-      i = i + 1 if @company_descriptions[i]
-    end
+    @company_descriptions = @startup.Companydescriptions.where("status =?", 1)
 
     respond_to do |format|
       format.html # show.html.erb
@@ -87,12 +83,15 @@ class StartupsController < ApplicationController
   def circle
     @startup = Startup.find(session[:startup_id])
     @tags = @startup.Tags
+    @people = User.all[0..5]
+    @circles = User.all[0..9]
   end
 
   def dashboard
     @user = User.find(session[:id])   if session[:id] and session[:id] != 0
     @startup = Startup.find(params[:id])
     @descriptions = @startup.Companydescriptions.where("status = ?",1)
+    @ideas = @startup.Ideas
 
   end
   
@@ -108,6 +107,23 @@ class StartupsController < ApplicationController
     @people = User.all[0..20]
   end
 
+  def ab_testing
+    @user = User.find(session[:id]) if session[:id] and session[:id] != 0
+    @startup = Startup.find(params[:id])
+
+    i=0
+    @company_descriptions = @startup.Companydescriptions.where("status =?", 1)
+
+    @ideas = @startup.Ideas
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @startup }
+    end
+
+
+  end
+
   def search_startups
     redirect_to :action => "index"
   end
@@ -116,6 +132,10 @@ class StartupsController < ApplicationController
 
     if !params[:id0] || params[:id0] == 0 || !params[:id1] || params[:id1] == 0 || !params[:id2] || params[:id2] == 0
       redirect_to :action => "vote_next", :id0 => params[:id0], :id1 => params[:id1],:id2 => params[:id2] and return
+    else
+      if params[:id0] == params[:id1] || params[:id1] == params[:id2] || params[:id2] == params[:id0]
+        redirect_to :action => "vote_next", :id0 => params[:id0], :id1 => params[:id1],:id2 => params[:id2] and return
+      end
     end
 
     @startups = Array.new
@@ -127,28 +147,50 @@ class StartupsController < ApplicationController
 
   def vote_next
 
-    if !params[:id0] || params[:id0] == 0 || !params[:id1] || params[:id1] == 0 || !params[:id2] || params[:id2] == 0
-      not_used_startups = Startup.all
+    not_used_startups = Startup.all
+
+
+    if params[:id0] || not_used_startups.select{|a| a.id == params[:id0].to_i()}.length > 0
+      not_used_startups = not_used_startups.select{|a| a.id != params[:id0].to_i()}
+    else
+      params[:id0] = nil
     end
+
+    if params[:id1] || not_used_startups.select{|a| a.id == params[:id1].to_i()}.length > 0
+      not_used_startups = not_used_startups.select{|a| a.id != params[:id1].to_i()}
+    else
+      params[:id1] = nil
+    end
+
+    if params[:id2] || not_used_startups.select{|a| a.id == params[:id2].to_i()}.length > 0
+      not_used_startups = not_used_startups.select{|a| a.id != params[:id2].to_i()}
+    else
+      params[:id1] = nil
+    end
+
+    ids = not_used_startups.sample(3)
 
     a = Array.new
-    if !params[:id0] || params[:id0] == 0
-      a[0] =  rand(not_used_startups.length)
-      params[:id0] = not_used_startups[a[0]].id
+    if !params[:id0]
+      a[0] = ids[0].id
+    else
+      a[0] = params[:id0]
     end
 
-    if !params[:id1] || params[:id1] == 0
-      a[1] =  rand(not_used_startups.length)
-      params[:id1] = not_used_startups[a[1]].id
-    end
-    if !params[:id2] || params[:id2] == 0
-      a[2] =  rand(not_used_startups.length)
-      params[:id2] = not_used_startups[a[2]].id
+    if !params[:id1]
+      a[1] = ids[1].id
+    else
+      a[1] = params[:id1]
     end
 
-    redirect_to :action => "vote_lightning", :id0 => params[:id0], :id1 => params[:id1],:id2 => params[:id2]
+    if !params[:id2]
+      a[2] = ids[2].id
+    else
+      a[2] = params[:id2]
+    end
+    
+    redirect_to :action => "vote_lightning", :id0 => a[0], :id1 => a[1],:id2 => a[2]
   end
-
 
 
 end

@@ -18,40 +18,54 @@
   </div>
 </div>
 
-<div class="sign-up">
-    <h4>Guidelines</h4>
-    <p>Capital Round is a crowdfunding platform for startups from Carnegie Mellon University.
-      This guidelines explains our focus. Companies violating these guidelines will not be able
-      to lunch a fund raising campaign on Capital Round.
-    </p>
-    <ol>
-      <li>
-        <h5>Company must be affiliated with CMU</h5>
-        <p>Capital Round provides the platform only for companies that have connection with Carnegie Mellon University.
-          This means that i) one of the founders attend(ed) CMU or ii) startup is based on CMU technology/research etc.</p>
-      </li>
-      <li>
-        <h5>Funding for campaigns only</h5>
-        <p>A campaign must have a clear goal. Company should have a long term strategy as well as a contingent plan
-          how to get to the next stage using the campaign.</p>
-      </li>
-      <li>
-        <h5>Prohibit use of content</h5>
-        <p>No campaigns to fund a scholarship, pay tuition, bills or expenses. There are some things that we just don't
-          allow on Capital Round.</p>
-      </li>
-    </ol>
+<div class="hatcher-container">
+  <div class="company-main">
+    <div class="company-left">
+        <div class="company-box">
+            <h5>Guidelines</h5>
+            <p>ideaHatcher is a online incubator. Here you can share your ideas with the community, get feedback and advice on
+              how build a successful business from them!
+              This guidelines explains our focus. Companies violating these guidelines will not be able
+              to use ideaHatcher.
+            </p>
+            <ol>
+              <li>
+                <h4>The idea must be originated by you</h4>
+                <p>
+                  ideaHatcher provides the platform only for those who own the ideas. We want to help you succeed as
+                  entrepreneurs, create new businesses and solve real world problems. If you are using a third party
+                  technology/research make sure to mention that.
+                </p>
+              </li>
+              <li>
+                <h4>You are in control who have access to your idea</h4>
+                <p>
+                  You can limit the access to your idea to certain circle of people and to make it public. Remember, the more
+                  your share the more feedback and advice you get.
+                </p>
+              </li>
+              <li>
+                <h4>Prohibit use of content</h4>
+                <p>
+                  No campaigns to fund a scholarship, pay tuition, bills or expenses. There are some things that we just don't
+                  allow on ideaHatcher.
+                </p>
+              </li>
+            </ol>
 
-    <div class="highlighted-box">
-        <%= form_tag(:action => 'next_step', :multipart => true) do %>
-          <div style="float:left;"><%=  check_box_tag 'accept-check', 'yes', false, :onclick => 'changeStatus()'%></div>
-          <div style="float:right">
-          <button id="next-step" class="btn btn-warning" disabled>Next <span style="padding-left:20px"> > </span></button>
-          </div>
-          <p style="margin:0px 40px 0 40px;">I understand that in order to launch my campaign must meet the Campaign Guidelines
-            and I must meet eligibility requirements.</p>
-        <% end %>
+            <div class="check-box">
+                <%= form_tag(:action => 'next_step', :multipart => true) do %>
+                  <div style="float:left;"><%=  check_box_tag 'accept-check', 'yes', false, :onclick => 'changeStatus()'%></div>
+                  <div style="float:right">
+                  <button id="next-step" class="btn btn-warning" disabled>Next <span style="padding-left:20px"> > </span></button>
+                  </div>
+                  <p style="padding:10px 40px 0 40px;">I understand that in order to use ideaHatcher I must meet this Guidelines.</p>
+                <% end %>
+            </div>
+        </div>
     </div>
+    <div class="clear-both"></div>
+  </div>
 </div>
 
 <script  type="text/javascript">

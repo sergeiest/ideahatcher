@@ -8,7 +8,15 @@ class TagsController < ApplicationController
       case params[:action]
         when "add_tag", "delete_tag"
           user = User.find(session[:id])
-          session[:startup_id] = user.Owner_startups.first.id
+          if !user
+            wrong_link = 1
+          else
+            if params[:id] and Owner.where("user_id = ? AND startup_id = ?", session[:id], params[:id]).length == 1
+              session[:startup_id] = params[:id]
+            else
+              wrong_link = 1
+            end
+          end
         else
           wrong_link = 1
       end
@@ -51,16 +59,4 @@ class TagsController < ApplicationController
     end
   end
 
-
-  # DELETE /tags/1
-  # DELETE /tags/1.json
-  def destroy
-    @tag = Tag.find(params[:id])
-    @tag.destroy
-
-    respond_to do |format|
-      format.html { redirect_to tags_url }
-      format.json { head :no_content }
-    end
-  end
 end

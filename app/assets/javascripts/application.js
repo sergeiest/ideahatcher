@@ -73,7 +73,7 @@ function startSlideLightning(barId){
     var bar = document.getElementById('bar_'+barId);
     var slider = document.getElementById('slider_'+barId);
     var info = document.getElementById('info_'+barId);
-    var set_perc = ((((event.clientX - bar.offsetLeft -342) / bar.offsetWidth)).toFixed(2));
+    var set_perc = ((((event.clientX - bar.offsetLeft -280) / bar.offsetWidth)).toFixed(2));
     slider.style.width = (set_perc * 100) + '%';
 
 }
@@ -83,9 +83,9 @@ function stopSlideLightning(barId){
     var bar = document.getElementById('bar_'+ barId);
     var slider = document.getElementById('slider_'+ barId);
     var info = document.getElementById('info_'+ barId);
-    var set_perc = ((((event.clientX - bar.offsetLeft -342) / bar.offsetWidth)).toFixed(2));
+    var set_perc = ((((event.clientX - bar.offsetLeft -280) / bar.offsetWidth)).toFixed(2));
     slider.style.width = (set_perc * 100) + '%';
-    info.style.marginLeft = set_perc * 110 + 'px';
+    info.style.marginLeft = set_perc * 135 + 'px';
     info.innerText = Math.round(set_perc * 5)/1 ;
     document.getElementById('form_'+ barId).querySelector("#vote_score").value = Math.round(set_perc * 5)/1 ;
     $('#button_'+ barId).click();
@@ -134,7 +134,7 @@ function clearInput (elementNode) {
 
 function highlightFrame (elementNode) {
     elementNode.getElementsByClassName('demo-grad')[0].style.opacity = 0;
-    elementNode.getElementsByClassName('demo-text')[0].style.opacity = 0.7;
+    elementNode.getElementsByClassName('demo-text')[0].style.opacity = 0.9;
     elementNode.getElementsByClassName('demo-text')[0].style.backgroundColor = "#333333";
 
 }

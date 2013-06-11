@@ -1,21 +1,21 @@
 document.getElementById("manual-selection").hidden=false;
 
 var mainDiv = document.getElementById("current-circle");
-mainDiv.innerHTML ="<h5>People you have added:</h5>";
+mainDiv.innerHTML ="<h4>People you have added:</h4>";
 
 <% if !@people || @people.length == 0 %>
-mainDiv.innerHTML ="<h5>You have not added anyone yet</h5>";
+mainDiv.innerHTML ="<h4>You have not added anyone yet</h4>";
 <% end %>
 
 <% @people.each do |person| %>
 var newA = document.createElement("a");
 <% if person.avatar? %>
-newA.innerHTML = '<div class="person-info"  onclick="removePerson(this,<%= person.id %>)">'+
+newA.innerHTML = '<div class="person-circle"  onclick="removePerson(this,<%= person.id %>)">'+
         '<%= image_tag person.avatar.url(:square) %>'+
         '<h5><%= person.firstname%> <%=person.lastname%></h5>'+
         '<div class="clear-both"></div></div>';
 <% else %>
-newA.innerHTML = '<div class="person-info" onclick="removePerson(this,<%= person.id %>)">'+
+newA.innerHTML = '<div class="person-circle" onclick="removePerson(this,<%= person.id %>)">'+
         '<%= image_tag "/images/profile/Nophoto.png" %>'+
         '<h5><%= person.firstname%> <%=person.lastname%></h5>'+
         '<div class="clear-both"></div></div>';

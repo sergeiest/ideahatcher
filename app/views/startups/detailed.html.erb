@@ -5,22 +5,27 @@
   <div class="company-main">
     <div class="company-left">
       <div class="company-content">
-      <% @descriptions.each do |description| %>
         <div class="company-box">
-          <%= form_tag({:action => 'update_description', :controller => "companydescriptions"},
-                       :multipart => true,
-                       :remote => true) do %>
-            <% allfield =  Allfield.find(description.allfield_id)   %>
-            <h5><%= allfield.field_name   %></h5>
-            <%= select(:description, :field_status, options_from_collection_for_select(allfield.Fieldstates, :field_status, :field_status, description.field_status)) %>
-            <%= hidden_field :description, :allfield_id, :value => allfield.id %>
-            <%= hidden_field :description, :id, :value => description.id %>
-            <%= text_area :description, :content, :value => description.content %>
-            <p>Describe your product and specify your product stage</p>
-            <%= submit_tag "Save", :class => "btn btn-small" %>
-          <% end %>
+            <h5>Edit picture</h5>
+            <% if @startup.errors[:avatar].length > 0 %>
+                <p style="color:red">Photo was not upload, probably wrong file format. Please try again</p>
+            <% end %>
+            <% if @startup.avatar? %>
+                <%= image_tag @startup.avatar.url(:large), :class=>"main-logo" %>
+            <% else %>
+              <img src='/images/profile/Nologo.png' class = "main-logo">
+            <% end %>
+            <a href="#uploadPhoto" role="button" class="btn btn-mini" data-toggle="modal">Update new</a>
         </div>
-      <% end %>
+        <div class="company-box">
+            <h5>Edit description</h5>
+            <%= form_tag({:action => 'update_description', :controller => "campaigns"},
+                       :remote => true) do %>
+              <%= text_area_tag :pitch, @startup.pitch %>
+              <p>One sentence description of what your idea does</p>
+              <%= submit_tag "Save", :class => "btn btn-small" %>
+            <% end %>
+        </div>
       </div>
     </div>
 
@@ -30,5 +35,44 @@
   </div>
 </div>
 
+
+
+<div id="uploadPhoto" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">Upload photo or logo</h3>
+  </div>
+  <%= form_tag({:controller => "campaigns", :action => "upload_logo"},
+            :multipart => true,
+            :remote => true) do %>
+      <div class="modal-body">
+        <%= file_field_tag :avatar, :onchange => "checkFile(this)"%>
+        <p id="photo_error" style="color:red"></p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+        <button class="btn btn-primary"  id="photo_upload" disabled>Upload photo</button>
+      </div>
+  <% end %>
+</div>
+
+
+<script language="javascript">
+    function checkFile(elementNode){
+        var fileInput = elementNode;
+        var fileName = fileInput.value;
+        var ext = fileName.substring(fileName.lastIndexOf('.') + 1);
+        if(ext == "gif" || ext == "GIF" || ext == "JPEG" || ext == "jpeg" || ext == "jpg" || ext == "JPG" || ext == "png" || ext == "PNG") {
+            document.getElementById('photo_error').innerText = "";
+            document.getElementById('photo_upload').disabled = false;
+        }
+        else
+        {
+            document.getElementById('photo_error').innerText = "Upload Gif or Jpg images only";
+            document.getElementById('photo_upload').disabled = true;
+            fup.focus();
+        }
+    }
+</script>
 
 
