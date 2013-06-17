@@ -45,21 +45,7 @@
       <% owner_number = user.Owners.count %>
       <ul class="user-nav nav nav-pills">
         <li class="dropdown custom-dropdown">
-          <%= link_to "Vote", :action => "vote_lightning", :controller => "startups" %>
-        </li>
-        <li  class="dropdown custom-dropdown">
-          <% if owner_number != 0 %>
-              <%= link_to "Feedback", :controller => 'startups', :action => 'dashboard', :id => user.Owners[0].startup_id  %>
-          <% else %>
-              <%= link_to "Feedback", :controller => 'campaigns', :action => 'guide_step'  %>
-          <% end %>
-        </li>
-        <li  class="dropdown custom-dropdown">
-          <% if owner_number != 0 %>
-            <%= link_to "My idea", :controller => 'startups', :action => 'show', :id => user.Owners[0].startup_id  %>
-          <% else %>
-            <%= link_to "My idea", :controller => 'campaigns', :action => 'guide_step'  %>
-          <% end %>
+          <%= link_to "ideas", :action => "index", :controller => "startups" %>
         </li>
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="height: 12px;">
@@ -75,10 +61,12 @@
           </a>
           <ul class="dropdown-menu">
             <% if owner_number != 0 %>
-                <li role="presentation"><%= link_to user.Owner_startups[0].name, :controller => 'startups',
-                                                    :action => 'show', :id => user.Owners[0].startup_id %></li>
+              <% user.Owner_startups.each do |startup| %>
+                <li role="presentation"><%= link_to startup.name, :controller => 'startups',
+                                                    :action => 'show', :id => startup.id %></li>
+              <% end %>
             <% else %>
-                <li role="presentation"><%= link_to "Start a company", :controller => 'campaigns',
+                <li role="presentation"><%= link_to "Start an idea", :controller => 'campaigns',
                                                     :action => 'guide_step' %></li>
             <% end %>
             <hr />
@@ -111,7 +99,10 @@
             </div>
             <%= submit_tag 'Login', class: "btn btn-small",
                            style: "margin-top:5px;height:26px;width:80px;"%>
+            <%=  link_to "Forgot...", {:controller => "authentications", :action => "forgot_password"}, :style =>
+                       "color:white; font-size:10px;", :hidden => true %>
         <% end %>
+
       </div>
   <% end %>
 </div>

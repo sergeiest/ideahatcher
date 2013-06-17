@@ -1,7 +1,8 @@
 <%= render :partial =>  "startups/demo_startup", :collection => @startups %>
 
-<div class="home-signup" >
-  <%= render 'authentications/clean_join_form' %>
-
-</div>
+<% if !session[:id] or session[:id] == 0 %>
+    <div class="home-signup">
+      <%= render 'authentications/clean_join_form' %>
+    </div>
+<% end %>
 

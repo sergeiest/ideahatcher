@@ -44,7 +44,7 @@
             </p>
           </div>
           <div style="clear:both"></div>
-          <%= link_to 'Add suggestion', :controller => "ideas", :action => "idea_test", :id => params[:id1] %>
+          <%= link_to 'Add suggestion', :controller => "startups", :action => "idea_hatching", :id => params[:id1] %>
         </div>
         <b><%= Allfield.find(description.allfield_id).field_name%></b>
         <% if class_name == "class1" %>

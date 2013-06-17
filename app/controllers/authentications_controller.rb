@@ -1,5 +1,15 @@
 class AuthenticationsController < ApplicationController
 
+  layout :layout_by_resource
+
+  def layout_by_resource
+    case params[:action]
+      when 'demo_login'
+        "demo"
+      else
+        "hatcher"
+    end
+  end
 
 # ---------------- Demo ----------------------
   
@@ -208,7 +218,7 @@ class AuthenticationsController < ApplicationController
     else
       flash[:error] = 'Invalid email/password combination'
       respond_to do |format|
-        format.html { render params.merge(:action => 'login') }
+        format.js { render "wrong_login" }
       end
     end
 

@@ -7,7 +7,7 @@ class StartupsController < ApplicationController
       when 'index', 'vote_lightning', 'show', 'team', 'detailed', 'circle', 'dashboard', "ab_testing"
         "hatcher"
       else
-        "demo"
+        "hatcher"
     end
   end
 
@@ -55,12 +55,52 @@ class StartupsController < ApplicationController
 
   def index
     @user = User.find(session[:id])  if session[:id] and session[:id] != 0
-    @startups = Startup.where("status > 2").all
+    @startups = Startup.where("status > 0").all
+
+    tags = Tag.all
+
+    @categories = Hash.new(0)
+
+    tags.each do |tag|
+      @categories[tag.name] += 1
+    end
+
+    @categories = @categories.keys.sort_by { |x| [@categories[x]* -1, x] }[0..9]
 
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @startups }
     end
+  end
+
+  def hashtag
+
+    @user = User.find(session[:id])  if session[:id] and session[:id] != 0
+
+    if !params[:tag] || params[:tag] == ""
+      @startups = Startup.all[0..8]
+    else
+      tags = Tag.where("UPPER(name) LIKE UPPER(?)", params[:tag])
+      @startups = Array.new
+      tags.each do |tag|
+        @startups << Startup.find(tag.startup_id)
+      end
+    end
+
+    tags = Tag.all
+
+    @categories = Hash.new(0)
+
+    tags.each do |tag|
+      @categories[tag.name] += 1
+    end
+
+    @categories = @categories.keys.sort_by { |x| [@categories[x]* -1, x] }[0..9]
+
+    respond_to do |format|
+      format.html {render "index"}
+    end
+
   end
 
   def show
@@ -99,6 +139,10 @@ class StartupsController < ApplicationController
     @user = User.find(session[:id])   if session[:id] and session[:id] != 0
     @startup = Startup.find(session[:startup_id])
     @descriptions = @startup.Companydescriptions.where("status = ?",1)
+    @startup_followers = @startup.Follower_users.all.uniq
+    @startup_owners = @startup.Owner_users.all.uniq
+    @companyupdate = Companyupdate.new
+    @company_descriptions = @startup.Companydescriptions.where("status =?", 1)
   end
   
   def team
@@ -107,7 +151,7 @@ class StartupsController < ApplicationController
     @people = User.all[0..20]
   end
 
-  def ab_testing
+  def idea_hatching
     @user = User.find(session[:id]) if session[:id] and session[:id] != 0
     @startup = Startup.find(params[:id])
 
@@ -125,7 +169,16 @@ class StartupsController < ApplicationController
   end
 
   def search_startups
-    redirect_to :action => "index"
+    if !params[:string] || params[:string] == ""
+      @startups = Startup.all[0..8]
+    else
+      s_name = params[:string]
+      @startups = Startup.where("UPPER(name) LIKE UPPER(?)", "%" + s_name + "%").all[0..8]
+    end
+
+    respond_to do |format|
+      format.js
+    end
   end
 
   def vote_lightning
@@ -165,7 +218,7 @@ class StartupsController < ApplicationController
     if params[:id2] || not_used_startups.select{|a| a.id == params[:id2].to_i()}.length > 0
       not_used_startups = not_used_startups.select{|a| a.id != params[:id2].to_i()}
     else
-      params[:id1] = nil
+      params[:id2] = nil
     end
 
     ids = not_used_startups.sample(3)
@@ -191,6 +244,7 @@ class StartupsController < ApplicationController
     
     redirect_to :action => "vote_lightning", :id0 => a[0], :id1 => a[1],:id2 => a[2]
   end
+
 
 
 end

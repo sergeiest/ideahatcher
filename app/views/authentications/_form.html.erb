@@ -5,7 +5,7 @@
         <%=text_field :authentication,:username, :style => "border-color:red"  %>
         <span style="font-size:12px;color:red"> <%= @authentication.errors[:username].to_s.split('"')[1] %></span>
     <% else %>
-        Email:<br />
+        <p>Email:</p>
         <%= text_field :authentication, :username %>
     <% end %>
 
@@ -14,7 +14,7 @@
         <%=password_field :authentication,:password, :style => "border-color:red"  %>
     <% else %>
         <div class="field">
-            Password:<br />
+            <p>Password:</p>
             <%= password_field :authentication, :password %>
         </div>
     <% end %>
@@ -23,7 +23,7 @@
         <p style="color:red">Confirm password:</p> <%=password_field :ll, :password_confirmation, :style => "border-color:red"  %>
     <% else %>
         <div class="field">
-            Password Confirm:<br />
+            <p>Password Confirm:</p>
             <%= password_field :ll, :password_confirmation %>
         </div>
     <% end %>
@@ -33,7 +33,7 @@
             <p style="color:red">First Name</p> <%=text_field :user,:firstname, :style => "border-color:red"  %>
         <% else %>
             <div class="field">
-                First Name:<br />
+                <p>First Name:</p>
                 <%= text_field :user, :firstname %>
             </div>
         <% end %>
@@ -42,32 +42,25 @@
             <p style="color:red">Last Name</p> <%=text_field :user,:lastname, :style => "border-color:red"  %>
         <% else %>
             <div class="field">
-                Last Name:<br />
+                <p>Last Name:</p>
                 <%= text_field :user, :lastname %>
             </div>
         <% end %>
 
-        <div class="field">
-            CMU Affiliation<br />
-            <%= select(:user, :cmuaffiliation, options_from_collection_for_select(Univaffiliation.all, :title_name, :title_name)) %>
-        </div>
 
     <%  else %>
         <div class="field">
-          First Name:<br />
+          <p>First Name:</p>
           <%= text_field :user, :firstname %>
         </div>
         <div class="field">
-          Last Name:<br />
+          <p>Last Name:</p>
           <%= text_field :user, :lastname %>
         </div>
-        <div class="field">
-          CMU Affiliation<br />
-          <%= select(:user, :cmuaffiliation, options_from_collection_for_select(Univaffiliation.all, :title_name, :title_name)) %>
-        </div>
+
     <% end %>
 
-    <%= submit_tag 'Create account',class: "btn btn-primary" %>
+    <%= submit_tag 'Create account',class: "btn btn-warning" %>
     <!--<a href = "javascript:history.back()">Go back</a>-->
 
 <% end %>

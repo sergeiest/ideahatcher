@@ -2,42 +2,40 @@
   <%= link_to :controller => "startups", :action => "vote_lightning" do %>
       <img src="/images/lightning_off.png">
   <% end %>
-  <%= form_tag(:action => "search_startups", :remote => true) do %>
-      <%= text_field_tag :string, "search", :onclick => "clearInput(this)" %>
+  <%= form_tag({:action => "search_startups"}, :remote => true) do %>
+      <%= text_field_tag :string, "search", :onclick => "clearInput(this)", :onkeyup => "submitForm(this.parentNode)" %>
       <%= submit_tag "Submit", :hidden => true %>
   <% end %>
   <ul>
-    <li class="cat-name">Categories</li>
-    <li>Advertising</li>
-    <li>Audio + Media</li>
-    <li>Education</li>
-    <li>Enterprise Service</li>
-    <li>Finance</li>
-    <li>Gaming</li>
-    <li>Social Media</li>
-  </ul>
-  <ul>
-    <li class="cat-name">Location / Origin</li>
-    <li>CMU</li>
-    <li>Pittsburgh</li>
-    <li>Bay Area</li>
-    <li>Stanford</li>
-    <li>New York</li>
-    <li>Boston</li>
+    <li class="cat-name">Hashtags</li>
+    <% @categories.each do |tag| %>
+        <li>
+          <%= link_to(:action => "hashtag", :tag => tag) do %>
+              #<%= tag %>
+          <% end %>
+        </li>
+    <% end %>
   </ul>
 </div>
 
 
 <div class="hatcher-container">
-  <%= link_to "See all New Ideas >", {:controller => "startups"}, :class => "more-startups"%>
-  <h1 class="page-title">New Ideas</h1>
-  <%= render :partial =>  "startup", :collection => @startups[0..2] %>
-  <div class="startup-holder"></div>
-  <hr/>
-  <%= link_to "See all Popular Ideas >", {:controller => "startups"}, :class => "more-startups"%>
-  <h1 class="page-title">Popular Ideas</h1>
-  <%= render :partial =>  "startup", :collection => @startups[4..6] %>
-  <div class="startup-holder"></div>
+  <div class="company-main">
+    <div class="company-left">
+      <%= link_to "See all New Ideas >", {:controller => "startups"}, :class => "more-startups"%>
+      <% if params[:action] == "hashtag" %>
+        <h1 class="page-title">#<%= params[:tag] %></h1>
+      <% else %>
+        <h1 class="page-title">New Ideas</h1>
+      <% end %>
+
+      <div id="startup-results">
+        <%= render :partial =>  "startup", :collection => @startups[0..8] %>
+      </div>
+      <div class="startup-holder"></div>
+    </div>
+    <div class="clear-both"></div>
+  </div>
 </div>
 
 <div class="clear-both"></div>

@@ -104,31 +104,39 @@ class InvestorsController < ApplicationController
   end
   
     
-  def followcompany
+  def follow_company
 
-    @user = User.find(session[:id])
-    @startup = Startup.find(session[:startup_id])
+    user = User.find(session[:id])
+    startup = Startup.find(session[:startup_id])
 
-    if session[:id]==nil || session[:id]==0
-      redirect_to :controller => 'users', :action => 'login_join'
-    #else
-    # if @startup.Investor_users.all.include? @user
-    #  @investor=@startup.Investors.find_by_user_id(session[:id])
-    else
-      @follower = Follower.new
-      @follower.startup_id = @startup.id
-      @follower.user_id = session[:id]
-      @follower.status = 1
+    if !user || !startup
+      return
+    end
+
+    respond_to do |format|
+      if !params[:unfollow] or (params[:unfollow] != 1 and params[:unfollow] != "1")
+        follower = Follower.where('startup_id = ? AND user_id =?', session[:startup_id], session[:id])[0]
+        if !follower
+          follower = Follower.new
+          follower.startup_id = session[:startup_id]
+          follower.user_id = session[:id]
+          follower.status = 1
+          follower.save
+        end
+        format.js
+      else
+        follower = Follower.where('startup_id = ? AND user_id =?', session[:startup_id], session[:id])[0]
+        if follower
+          follower.destroy
+          format.js {render "unfollow_company"}
+        end
+
+      end
+
 
     end
 
-    if @follower.save
-      session[:startup_id]=nil
-      redirect_to :controller => 'startups', :action =>'show', :id => @startup.id, :shortnotice => 'You were successfully added to the list of Followers for '+ @startup.name
-    else
-      format.html { render action: "new" }
-      format.json { render json: @investor.errors, status: :unprocessable_entity }
-    end
+
 
   end
 

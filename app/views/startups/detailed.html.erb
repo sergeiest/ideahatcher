@@ -6,7 +6,6 @@
     <div class="company-left">
       <div class="company-content">
         <div class="company-box">
-            <h5>Edit picture</h5>
             <% if @startup.errors[:avatar].length > 0 %>
                 <p style="color:red">Photo was not upload, probably wrong file format. Please try again</p>
             <% end %>
@@ -15,20 +14,49 @@
             <% else %>
               <img src='/images/profile/Nologo.png' class = "main-logo">
             <% end %>
-            <a href="#uploadPhoto" role="button" class="btn btn-mini" data-toggle="modal">Update new</a>
+            <h2 class="main-name">
+                <%= @startup.name %>
+            </h2>
+            <a href="#uploadPhoto" role="button" class="btn btn-mini btn-warning" style="color:white" data-toggle="modal">Update photo</a>
+          <div style="clear:both"></div>
         </div>
         <div class="company-box">
-            <h5>Edit description</h5>
+            <h5>Description</h5>
             <%= form_tag({:action => 'update_description', :controller => "campaigns"},
                        :remote => true) do %>
               <%= text_area_tag :pitch, @startup.pitch %>
-              <p>One sentence description of what your idea does</p>
-              <%= submit_tag "Save", :class => "btn btn-small" %>
+              <p>One sentence description of what your idea does <%= submit_tag "Save", :class => "btn btn-small btn-warning" %></p>
+
             <% end %>
         </div>
       </div>
-    </div>
+      <% @company_descriptions.each do |description| %>
+          <div class="company-box">
+              <h5><%= description.field_status %></h5>
+              <% if description != nil %>
+                  <p><%= description.content %></p>
+              <% else %>
+                  <p style="color:red">- no description - </p>
+              <% end %>
+          </div>
+      <% end %>
 
+    </div>
+    <div class="company-right">
+      <div class="company-info">
+        <h4>Team</h4>
+        <%= render :partial => 'investors/person', :collection => @startup_owners, :locals => {:status => 1} %>
+        <% if session[:connection_type]==2 %>
+            <%= link_to 'Add more people >', {:controller => "startups", :action => "team", :id => params[:id]},
+                        :class => "bottom-link" %>
+        <% end %>
+      </div>
+      <div class="company-info">
+        <h4>Followers</h4>
+        <%= render :partial => 'investors/person', :collection => @startup_followers[0..7], :locals => {:status => 0} %>
+        <%= link_to 'See all followers >', {:controller => "investors", :action => "people"}, :class => "bottom-link" %>
+      </div>
+    </div>
 
 
     <div class="clear-both"></div>
@@ -42,7 +70,7 @@
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
     <h3 id="myModalLabel">Upload photo or logo</h3>
   </div>
-  <%= form_tag({:controller => "campaigns", :action => "upload_logo"},
+  <%= form_tag({:action => "upload_logo", :controller => "campaigns"},
             :multipart => true,
             :remote => true) do %>
       <div class="modal-body">

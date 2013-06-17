@@ -4,20 +4,8 @@ newUl.className = "user-nav nav nav-pills";
 
 var liVote = document.createElement("li");
 liVote.className = "dropdown custom-dropdown"
-liVote.innerHTML = '<%= link_to "Vote", :action => "vote_lightning", :controller => "startups" %>';
+liVote.innerHTML = '<%= link_to "ideas", :action => "index", :controller => "startups" %>';
 newUl.appendChild(liVote);
-
-
-var liFeedback = document.createElement("li");
-liFeedback.className = "dropdown custom-dropdown"
-liFeedback.innerHTML = '<%= link_to "Feedback", :action => "vote_lightning", :controller => "startups" %>';
-newUl.appendChild(liFeedback);
-
-
-var liHatch = document.createElement("li");
-liHatch.className = "dropdown custom-dropdown"
-liHatch.innerHTML = '<%= link_to "My hatch", :action => "vote_lightning", :controller => "startups" %>';
-newUl.appendChild(liHatch);
 
 
 var newLi = document.createElement("li");
@@ -25,41 +13,41 @@ newLi.className = "dropdown"
 
 <% if @user.avatar? %>
     newLi.innerHTML = "<a class='dropdown-toggle' data-toggle='dropdown' href='#'  style='height: 12px;'>" +
-                        '<%= image_tag @user.avatar.url(:thumb), :class => "img-rounded-small" %>' +
+                        '<%= image_tag @user.avatar.url(:square) %>' +
                         "<b class='caret'></b></a>";
 <% else %>
     newLi.innerHTML = "<a class='dropdown-toggle' data-toggle='dropdown' href='#'  style='height: 12px;'>" +
-                        '<%= image_tag '/images/profile/Nophoto.png', :class => 'img-rounded-small' %>' +
+                        '<%= image_tag '/images/profile/Nophoto.png' %>' +
                         "<b class='caret'></b></a>";
 <% end %>
 
+
+
 var newMenu = document.createElement("ul");
 newMenu.className = "dropdown-menu";
-<% owner_number = @user.Owners.count %>
-<% if owner_number != 0 %>
 
-<% else %>
+newMenu.innerHTML =  '';
 
+<% @user.Owner_startups.each do |startup| %>
+    newMenu.innerHTML = newMenu.innerHTML + '<li role="presentation"><%= link_to(startup.name,
+                                                :controller => "startups",
+                                                :action => "show",
+                                                :id => startup.id) %></li>';
 <% end %>
 
+if (newMenu.innerHTML == '') {
+    newMenu.innerHTML = '<li role="presentation"><%= link_to "Start an idea", :controller => "campaigns",
+                                                :action => "guide_step" %></li>';
+}
 
-<% if owner_number != 0 %>
-    newMenu.innerHTML =  '<li role="presentation"><%= link_to(@user.Owner_startups[0].name, :controller => "startups",
-                                                :action => "show", :id => @user.Owners[0].startup_id) %></li> <hr />' +
+newMenu.innerHTML = newMenu.innerHTML + '<hr />'+
+        '<li role="presentation"><%= link_to 'Notifications', :controller => "users", :action => "index", :id => @user.id %></li>' +
         '<li role="presentation"><%= link_to 'Update profile', :controller => 'users', :action => 'edit',
                                                 :id => @user.id %></li>' +
         '<li role="presentation"><%= link_to 'Change password', :controller => 'users', :action => 'change_password',
                                                 :id => @user.id %></li>' +
         '<hr />' +
         '<li role="presentation"><%= link_to 'Logout', :controller => 'authentications', :action => 'logout' %></li>';
-<% else %>
-    newMenu.innerHTML =  '<li role="presentation"><%= link_to 'Update profile', :controller => 'users', :action => 'edit',
-                                                :id => @user.id %></li>' +
-        '<li role="presentation"><%= link_to 'Change password', :controller => 'users', :action => 'change_password',
-                                                :id => @user.id %></li>' +
-        '<hr />' +
-        '<li role="presentation"><%= link_to 'Logout', :controller => 'authentications', :action => 'logout' %></li>';
-<% end %>
 
 newLi.appendChild(newMenu);
 newUl.appendChild(newLi);
@@ -67,7 +55,10 @@ newUl.appendChild(newLi);
 var loginNav = document.getElementById("login-nav");
 loginNav.parentNode.replaceChild(newUl, loginNav);
 
-
+var notes = document.getElementsByClassName('home-signup');
+for (var i = 0; i < notes.length; i++) {
+    notes[i].hidden = true;
+}
 
 $('#login_modal').modal('hide');
 

@@ -84,7 +84,7 @@ Webapp::Application.routes.draw do
   resources :companyupdates
 
   get "investors/unfollowcompany"
-  get "investors/followcompany"
+  get "investors/follow_company"
   get "investors/add_mentor"
   get "investors/delete_mentor"
   get "investors/people"
@@ -131,7 +131,8 @@ Webapp::Application.routes.draw do
   get "startups/vote_next"
   get "startups/circle"
   get "startups/dashboard"
-  get "startups/ab_testing"
+  get "startups/idea_hatching"
+  get "startups/hashtag"
   resources :startups
   
   resources :peoples

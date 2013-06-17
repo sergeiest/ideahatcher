@@ -22,12 +22,7 @@
             </div>
             <% @company_descriptions.each do |description| %>
               <div class="company-box">
-                  <h5><%= Allfield.find(description.allfield_id).field_name %>:
-                    <% if description != nil %>
-                        <%= description.field_status %></h5>
-                    <% else %>
-                        - no information - </h5>
-                    <% end %>
+                  <h5><%= description.field_status %></h5>
                   <% if description != nil %>
                         <p><%= description.content %></p>
                   <% else %>
@@ -79,9 +74,10 @@
       </div>
       <div class="company-right">
         <%= link_to 'Follow',
-                    {:controller => 'authentications', :action => 'checklogin',
-                                :gotocontroller => 'investors', :gotoaction => 'followcompany'},
-                    :class => 'btn btn-warning' %>
+                    {:controller => 'investors', :action => 'follow_company'},
+                    :class => 'btn btn-warning',
+                    :id => 'follow_btn',
+                    :remote => true %>
         <div class="company-info">
           <h4>Team</h4>
           <%= render :partial => 'investors/person', :collection => @startup_owners, :locals => {:status => 1} %>

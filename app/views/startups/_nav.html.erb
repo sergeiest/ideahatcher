@@ -3,46 +3,46 @@
 
   <% if session[:connection_type]==2 %>
       <ul>
-        <li class="cat-name" style=" border-bottom:1px solid #adadad"><%= @startup.name%></li>
+        <li class="cat-name"><%= @startup.name%></li>
         <% case params[:action] %>
             <% when "show" %>
                 <li>Summary<i class="icon-play glyphw" style="float:right"></i></li>
                 <li><%= link_to 'Team', {:controller => "startups", :action => "team", :id => @startup.id}%></li>
-                <li><%= link_to 'Description', {:controller => "startups", :action => "detailed", :id => @startup.id}%></li>
-                <li><%= link_to 'Dashboard', {:controller => "startups", :action => "dashboard", :id => @startup.id}%></li>
+                <li><%= link_to 'Edit', {:controller => "startups", :action => "detailed", :id => @startup.id}%></li>
+                <li><%= link_to 'idea Hatching', {:controller => "startups", :action => "dashboard", :id => @startup.id}%></li>
                 <li><%= link_to 'Publish', {:controller => "startups", :action => "circle", :id => @startup.id}%></li>
             <% when "team" %>
                 <li><%=  link_to 'Summary', {:controller => "startups", :action => "show", :id => @startup.id }%></li>
                 <li>Team <i class="icon-play glyphw" style="float:right"></i></li>
-                <li><%= link_to 'Description', {:controller => "startups", :action => "detailed", :id => @startup.id}%></li>
-                <li><%= link_to 'Dashboard', {:controller => "startups", :action => "dashboard", :id => @startup.id}%></li>
+                <li><%= link_to 'Edit', {:controller => "startups", :action => "detailed", :id => @startup.id}%></li>
+                <li><%= link_to 'idea Hatching', {:controller => "startups", :action => "dashboard", :id => @startup.id}%></li>
                 <li><%= link_to 'Publish', {:controller => "startups", :action => "circle", :id => @startup.id}%></li>
             <% when "detailed" %>
                 <li><%=  link_to 'Summary', {:controller => "startups", :action => "show", :id => @startup.id }%></li>
                 <li><%= link_to 'Team', {:controller => "startups", :action => "team", :id => @startup.id}%></li>
-                <li>Description <i class="icon-play glyphw" style="float:right"></i></li>
-                <li><%= link_to 'Dashboard', {:controller => "startups", :action => "dashboard", :id => @startup.id}%></li>
+                <li>Edit <i class="icon-play glyphw" style="float:right"></i></li>
+                <li><%= link_to 'idea Hatching', {:controller => "startups", :action => "dashboard", :id => @startup.id}%></li>
                 <li><%= link_to 'Publish', {:controller => "startups", :action => "circle", :id => @startup.id}%></li>
             <% when "circle" %>
                 <li><%=  link_to 'Summary', {:controller => "startups", :action => "show", :id => @startup.id }%></li>
                 <li><%= link_to 'Team', {:controller => "startups", :action => "team", :id => @startup.id}%></li>
-                <li><%= link_to 'Description', {:controller => "startups", :action => "detailed", :id => @startup.id}%></li>
-                <li><%= link_to 'Dashboard', {:controller => "startups", :action => "dashboard", :id => @startup.id}%></li>
+                <li><%= link_to 'Edit', {:controller => "startups", :action => "detailed", :id => @startup.id}%></li>
+                <li><%= link_to 'idea Hatching', {:controller => "startups", :action => "dashboard", :id => @startup.id}%></li>
                 <li>Publish <i class="icon-play glyphw" style="float:right"></i></li>
             <% when "dashboard" %>
                 <li><%=  link_to 'Summary', {:controller => "startups", :action => "show", :id => @startup.id }%></li>
                 <li><%= link_to 'Team', {:controller => "startups", :action => "team", :id => @startup.id}%></li>
-                <li><%= link_to 'Description', {:controller => "startups", :action => "detailed", :id => @startup.id}%></li>
-                <li>Dashboard <i class="icon-play glyphw" style="float:right"></i></li>
+                <li><%= link_to 'Edit', {:controller => "startups", :action => "detailed", :id => @startup.id}%></li>
+                <li>idea Hatching <i class="icon-play glyphw" style="float:right"></i></li>
                 <li><%= link_to 'Publish', {:controller => "startups", :action => "circle", :id => @startup.id}%></li>
             <% else %>
                 <li><%=  link_to 'Summary', {:controller => "startups", :action => "show", :id => @startup.id }%></li>
                 <li><%= link_to 'Team', {:controller => "startups", :action => "team", :id => @startup.id}%></li>
-                <li><%= link_to 'Description', {:controller => "startups", :action => "detailed", :id => @startup.id}%></li>
-                <li><%= link_to 'Dashboard', {:controller => "startups", :action => "dashboard", :id => @startup.id}%></li>
+                <li><%= link_to 'Edit', {:controller => "startups", :action => "detailed", :id => @startup.id}%></li>
+                <li><%= link_to 'idea Hatching', {:controller => "startups", :action => "dashboard", :id => @startup.id}%></li>
                 <li><%= link_to 'Publish', {:controller => "startups", :action => "circle", :id => @startup.id}%></li>
         <% end %>
-        <li style="border-top:1px solid #adadad; margin-top:40px;"><%=  link_to 'Other companies', {:controller => "startups", :action => "index" }%></li>
+        <li   class="cat-name" style="margin-top:40px;"><%=  link_to 'Other ideas', {:controller => "startups", :action => "index" }%></li>
       </ul>
 
   <% else %>
@@ -51,14 +51,18 @@
         <% case params[:action] %>
             <% when "show" %>
                 <li>Summary <i class="icon-play glyphw" style="float:right"></i></li>
-                <li><%=  link_to 'Lightning vote', {:controller => "startups", :action => "vote_lightning", :id1 => @startup.id }%></li>
-                <li><%=  link_to 'A/B testing', {:controller => "startups", :action => "ab_testing", :id => @startup.id }%></li>
+                <li><%=  link_to 'Vote', {:controller => "startups", :action => "vote_lightning", :id1 => @startup.id }%></li>
+                <li><%=  link_to 'idea Hatching', {:controller => "startups", :action => "idea_hatching", :id => @startup.id }%></li>
+            <% when "idea_hatching" %>
+                <li><%=  link_to 'Summary', {:controller => "startups", :action => "show", :id => @startup.id }%></li>
+                <li><%=  link_to 'Vote', {:controller => "startups", :action => "vote_lightning", :id1 => @startup.id }%></li>
+                <li>idea Hatching <i class="icon-play glyphw" style="float:right"></i></li>
             <% else %>
                 <li><%=  link_to 'Summary', {:controller => "startups", :action => "show", :id => @startup.id }%></li>
-                <li><%=  link_to 'Lightning vote', {:controller => "startups", :action => "vote_lightning", :id1 => @startup.id }%></li>
-                <li><%=  link_to 'A/B testing', {:controller => "startups", :action => "ab_testing", :id => @startup.id }%></li>
+                <li><%=  link_to 'Vote', {:controller => "startups", :action => "vote_lightning", :id1 => @startup.id }%></li>
+                <li><%=  link_to 'idea Hatching', {:controller => "startups", :action => "idea_hatching", :id => @startup.id }%></li>
         <% end %>
-        <li style=" border-top:1px solid black; margin-top:40px;"><%=  link_to 'Other companies', {:controller => "startups", :action => "index" }%></li>
+        <li  class="cat-name" style="margin-top:40px;"><%=  link_to 'Other ideas', {:controller => "startups", :action => "index" }%></li>
       </ul>
 
   <% end %>

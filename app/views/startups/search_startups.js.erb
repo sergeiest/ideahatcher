@@ -1,0 +1,48 @@
+document.getElementsByClassName('page-title')[0].innerHTML = "Search results";
+var mainDiv = document.getElementById("startup-results");
+mainDiv.innerHTML = "";
+
+<% @startups.each do |startup| %>
+    <% div_name = 'project' + startup.id.to_s() %>
+
+    var startupDiv = document.createElement("div");
+    startupDiv.onmousemove = function() { MM_changeProp('<%= div_name %>','','backgroundColor','#ecf8ff','DIV'); };
+    startupDiv.onmouseout = function() { MM_changeProp('<%= div_name %>','','backgroundColor','white','DIV'); };
+
+    startupDiv.setAttribute("id", "project<%= startup.id %>");
+    startupDiv.setAttribute("class", "startup-frame");
+
+    startupDiv.innerHTML = "<a href='<%= startup.id %>'></a>";
+    <% if startup.avatar %>
+        htmlText = '<%= image_tag startup.avatar.url(:large) %>';
+    <% else %>
+        htmlText = '<img src="/images/profile/Nologo.png">';
+    <% end %>
+
+    htmlText = htmlText + "<h2><%= startup.name %></h2>";
+    htmlText = htmlText + '<p class="p-content">This is just another company no one cares about</p>';
+
+    <%
+    tags = startup.Tags
+    i=0
+    tag_line = ''
+    tags.each do |tag|
+        tag_line = tag_line + '#' + tag.name
+        tag_line = tag_line + ', ' if tags.length != i + 1
+        i += 1
+    end
+    tag_line = 'no hashtags' if tags.length == 0
+    %>
+
+    htmlText = htmlText + '<p class="hashtag" style="border:0px;background-color: inherit;"><%= tag_line%></p>';
+    htmlText = htmlText + '<p class="vote-stat"><%= rand(150) %> people voted</p>';
+
+
+    startupDiv.firstChild.innerHTML = htmlText;
+    mainDiv.appendChild(startupDiv);
+
+<% end %>
+
+if (mainDiv.innerHTML == "") {
+    mainDiv.innerHTML = "<p>no results</p>";
+};
