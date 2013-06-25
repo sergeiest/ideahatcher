@@ -11,7 +11,7 @@
     <% end %>
   </div>
 
-  <% company_descriptions=startup.Companydescriptions[0..2] %>
+  <% company_descriptions=startup.Companydescriptions.where('status = 1')[0..2] %>
 
   <% company_descriptions.each do |description| %>
     <div class="vote-box">
