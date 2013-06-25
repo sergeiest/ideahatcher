@@ -7,6 +7,19 @@
       <%= submit_tag "Submit", :hidden => true %>
   <% end %>
   <ul>
+    <% if session[:id] and session[:id] != 0 %>
+      <% if params[:action] == "your_ideas" %>
+        <li class="cat-name" style="margin-bottom:20px;color:inherit">Your ideas <i class="icon-play glyphw" style="float:right"></i></li>
+      <% else %>
+        <li  class="cat-name" style="margin-bottom:20px;"><%=  link_to 'Your ideas', {:action => "your_ideas"}%></li>
+      <% end %>
+      <% if params[:action] == "your_following_ideas" %>
+          <li class="cat-name" style="margin-bottom:20px;color:inherit">you follow <i class="icon-play glyphw" style="float:right"></i></li>
+      <% else %>
+          <li  class="cat-name" style="margin-bottom:20px;"><%=  link_to 'ideas you follow', {:action => "your_following_ideas"}%></li>
+      <% end %>
+    <% end %>
+
     <li class="cat-name">Hashtags</li>
     <% @categories.each do |tag| %>
         <li>
@@ -23,10 +36,15 @@
   <div class="company-main">
     <div class="company-left">
       <%= link_to "See all New Ideas >", {:controller => "startups"}, :class => "more-startups"%>
-      <% if params[:action] == "hashtag" %>
-        <h1 class="page-title">#<%= params[:tag] %></h1>
-      <% else %>
-        <h1 class="page-title">New Ideas</h1>
+      <% case params[:action] %>
+        <% when "hashtag" %>
+            <h1 class="page-title">#<%= params[:tag] %></h1>
+        <% when "your_ideas" %>
+          <h1 class="page-title">Your ideas</h1>
+        <% when "your_following_ideas" %>
+          <h1 class="page-title">ideas you follow</h1>
+        <% else %>
+          <h1 class="page-title">Popular Ideas</h1>
       <% end %>
 
       <div id="startup-results">

@@ -13,7 +13,7 @@ mainDiv.innerHTML = "";
     startupDiv.setAttribute("class", "startup-frame");
 
     startupDiv.innerHTML = "<a href='<%= startup.id %>'></a>";
-    <% if startup.avatar %>
+    <% if startup.avatar? %>
         htmlText = '<%= image_tag startup.avatar.url(:large) %>';
     <% else %>
         htmlText = '<img src="/images/profile/Nologo.png">';
@@ -22,19 +22,24 @@ mainDiv.innerHTML = "";
     htmlText = htmlText + "<h2><%= startup.name %></h2>";
     htmlText = htmlText + '<p class="p-content">This is just another company no one cares about</p>';
 
-    <%
-    tags = startup.Tags
-    i=0
-    tag_line = ''
+
+    <% tags = startup.Tags
+    tag_string = ""
     tags.each do |tag|
-        tag_line = tag_line + '#' + tag.name
-        tag_line = tag_line + ', ' if tags.length != i + 1
-        i += 1
+        tag_string += "#" + tag.name + ", "
     end
-    tag_line = 'no hashtags' if tags.length == 0
+    if tag_string.length > 26
+      tag_string = tag_string[0..24] + ".."
+    else
+      if tag_string.length > 0
+        tag_string = tag_string[0..-3]
+      else
+        tag_string = "no hashtags"
+      end
+    end
     %>
 
-    htmlText = htmlText + '<p class="hashtag" style="border:0px;background-color: inherit;"><%= tag_line%></p>';
+    htmlText = htmlText + '<p class="hashtag" style="border:0px;background-color: inherit;"><%= tag_string%></p>';
     htmlText = htmlText + '<p class="vote-stat"><%= rand(150) %> people voted</p>';
 
 
@@ -46,3 +51,5 @@ mainDiv.innerHTML = "";
 if (mainDiv.innerHTML == "") {
     mainDiv.innerHTML = "<p>no results</p>";
 };
+
+

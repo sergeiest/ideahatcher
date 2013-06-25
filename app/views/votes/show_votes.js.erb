@@ -17,3 +17,19 @@ new google.visualization.ColumnChart(document.getElementById('visualization_<%= 
                 width:600, height:200
             }
 );
+
+notes = document.getElementsByTagName("a");
+for (var i = 0; i < notes.length; i++) {
+    if (notes[i].getAttribute('href') == '/votes/show_votes?description_id=116') {
+        aNote = notes[i];
+    }
+}
+
+aNote.innerHTML = "Hide votes<i class=' icon-chevron-up glyphw '></i>";
+
+for (var i=aNote.attributes.length; i-->0;) {
+    aNote.removeAttributeNode(aNote.attributes[i]);
+}
+
+aNote.setAttribute("onclick", "showVotes(this, <%= params[:description_id] %>)");
+aNote.setAttribute("style", "cursor:pointer; font-size:12px;");

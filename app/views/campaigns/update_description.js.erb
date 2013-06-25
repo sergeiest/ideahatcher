@@ -1,0 +1,6 @@
+var mainNode = document.getElementById("main-description");
+
+mainNode.children[1].innerHTML = "<%= params[:pitch] %>";
+mainNode.children[0].children[1].hidden = false;
+mainNode.children[1].hidden = false;
+mainNode.children[2].hidden = true;

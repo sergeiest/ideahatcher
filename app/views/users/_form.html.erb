@@ -25,10 +25,6 @@
         </div>
     <%end%>
 
-    <div class="field">
-      CMU Affiliation<br />
-      <%= f.select("cmuaffiliation", options_from_collection_for_select(Univaffiliation.all, :title_name, :title_name, @user.cmuaffiliation)) %>
-    </div>
 
     <%= link_to do %>
         <button id="next-company" class="btn btn-primary">Save</button>

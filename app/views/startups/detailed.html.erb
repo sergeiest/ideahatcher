@@ -14,19 +14,32 @@
             <% else %>
               <img src='/images/profile/Nologo.png' class = "main-logo">
             <% end %>
-            <h2 class="main-name">
-                <%= @startup.name %>
+            <h2 id="main-name" class="main-name">
+                <span><%= @startup.name %></span>
+                <span><%= submit_tag "Edit",
+                                            :class => "btn btn-small btn-warning",
+                                            :onclick => "editName(this.parentNode)" %></span>
+                <%= form_tag({:action => 'update_name', :controller => "campaigns"},
+                           :remote => true, :hidden => true) do %>
+                  <span><%= text_field_tag :name, @startup.name %></span>
+                  <span><%= submit_tag "Save", :class => "btn btn-small btn-warning" %></span>
+                <% end %>
             </h2>
             <a href="#uploadPhoto" role="button" class="btn btn-mini btn-warning" style="color:white" data-toggle="modal">Update photo</a>
           <div style="clear:both"></div>
         </div>
-        <div class="company-box">
-            <h5>Description</h5>
+        <div id="main-description" class="company-box">
+            <h5>
+              <span>Description</span>
+              <span><%= submit_tag "Edit", :class => "btn btn-small btn-warning",
+                                  :onclick => "editDescription(this.parentNode.parentNode, this.parentNode)" %></span>
+            </h5>
+            <%= simple_format @startup.pitch %>
             <%= form_tag({:action => 'update_description', :controller => "campaigns"},
-                       :remote => true) do %>
+                       :remote => true, :hidden => true) do %>
+              <p>One sentence description of what your idea does:</p>
               <%= text_area_tag :pitch, @startup.pitch %>
-              <p>One sentence description of what your idea does <%= submit_tag "Save", :class => "btn btn-small btn-warning" %></p>
-
+              <%= submit_tag "Save", :class => "btn btn-small btn-warning" %>
             <% end %>
         </div>
       </div>
@@ -71,10 +84,10 @@
     <h3 id="myModalLabel">Upload photo or logo</h3>
   </div>
   <%= form_tag({:action => "upload_logo", :controller => "campaigns"},
-            :multipart => true,
-            :remote => true) do %>
+            :multipart => true) do %>
       <div class="modal-body">
         <%= file_field_tag :avatar, :onchange => "checkFile(this)"%>
+        <%= hidden_field_tag :back_action, "detailed"%>
         <p id="photo_error" style="color:red"></p>
       </div>
       <div class="modal-footer">
@@ -101,6 +114,19 @@
             fup.focus();
         }
     }
+
+    function editName(elementNode) {
+        elementNode.parentNode.children[0].hidden = true;
+        elementNode.parentNode.children[1].hidden = true;
+        elementNode.parentNode.children[2].hidden = false;
+    }
+
+    function editDescription(elementNode, childNode) {
+        childNode.hidden = true;
+        elementNode.parentNode.children[1].hidden = true;
+        elementNode.parentNode.children[2].hidden = false;
+    }
+
 </script>
 
 

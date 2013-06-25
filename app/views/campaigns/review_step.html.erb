@@ -1,20 +1,4 @@
-<div class="navbar navbar-inverse" xmlns="http://www.w3.org/1999/html">
-  <div class="navbar-inner">
-    <ul class="nav">
-      <li class="active"><%= link_to :action => "guide_step" do %>0. Guidelines<%end%></li>
-      <li class="active"><%= link_to :action => "basic_step" do %>1. Basic<%end%></li>
-      <li class="active"><%= link_to :action => "about_step" do %>2. About company<%end%></li>
-      <li class="active"><%= link_to :action => "team_step" do %>3. Team<%end%></li>
-      <li class="active"><a >4. Account</a></li>
-      <li class="active"><a >5. Review</a></li>
-      <li class="active" style="margin-left:100px">
-        <%= link_to :controller => "startups", :action => "show", :id => session[:startup_id] do %>
-          <%=  @startup.name %>
-        <% end %>
-      </li>
-    </ul>
-  </div>
-</div>
+<%= render "nav" %>
 
 
 <div class="sign-up">

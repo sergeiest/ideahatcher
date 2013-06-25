@@ -33,6 +33,7 @@ class StartupsController < ApplicationController
             connection_type=0
             if Owner.where("startup_id = ? AND user_id = ?", params[:id], session[:id]).length > 0
               connection_type=2
+              redirect_to :controller => 'startups', :action => 'detailed', :id => params[:id] and return if params[:action] == "show"
             end
             session[:connection_type] = connection_type
           else
@@ -101,6 +102,58 @@ class StartupsController < ApplicationController
       format.html {render "index"}
     end
 
+  end
+
+
+  def your_ideas
+
+    if !session[:id] || session[:id] == 0
+      redirect_to :action => "index" and return
+    end
+
+    @user = User.find(session[:id])
+
+    @startups = @user.Owner_startups
+
+    tags = Tag.all
+
+    @categories = Hash.new(0)
+
+    tags.each do |tag|
+      @categories[tag.name] += 1
+    end
+
+    @categories = @categories.keys.sort_by { |x| [@categories[x]* -1, x] }[0..9]
+
+    respond_to do |format|
+      format.html {render "index"}
+    end
+  end
+
+
+  def your_following_ideas
+
+    if !session[:id] || session[:id] == 0
+      redirect_to :action => "index" and return
+    end
+
+    @user = User.find(session[:id])
+
+    @startups = @user.Follower_startups
+
+    tags = Tag.all
+
+    @categories = Hash.new(0)
+
+    tags.each do |tag|
+      @categories[tag.name] += 1
+    end
+
+    @categories = @categories.keys.sort_by { |x| [@categories[x]* -1, x] }[0..9]
+
+    respond_to do |format|
+      format.html {render "index"}
+    end
   end
 
   def show

@@ -27,7 +27,7 @@ class CampaignsController < ApplicationController
         when "guide_step", "basic_step", "create_step"
           session[:startup_id] = nil
         when "basic_step", "about_step", "description_step", "team_step", "team_save_step", "review_step", "upload_logo", "update",
-            "destroy", "publish_step", "circles_step", "update_description"
+            "destroy", "publish_step", "circles_step", "update_description", "update_name"
           user = User.find(session[:id])
           if session[:startup_id] == nil
             startup = user.Owner_startups.first
@@ -49,11 +49,7 @@ class CampaignsController < ApplicationController
   end
 
   def index
-    @campaigns = Campaign.all
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @campaigns }
-    end
+    redirect_to :controller => 'campaigns', :action => 'guide_step'
   end
 
   def guide_step
@@ -77,7 +73,7 @@ class CampaignsController < ApplicationController
 
   def create_step
 
-    params[:startup][:status] = 4
+    params[:startup][:status] = 2
 
     if session[:startup_id] == nil
       @startup = Startup.new(params[:startup])
@@ -269,7 +265,15 @@ class CampaignsController < ApplicationController
 
   def update_description
     startup = Startup.find(session[:startup_id])
-    startup.update_attributes :pitch => params[:pitch]
+    startup.update_attributes :pitch => params[:pitch] if params[:pitch] and params[:pitch].length > 0
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def update_name
+    startup = Startup.find(session[:startup_id])
+    startup.update_attributes :name => params[:name] if params[:name] and params[:name].length > 0
     respond_to do |format|
       format.js
     end
@@ -277,23 +281,14 @@ class CampaignsController < ApplicationController
 
   def upload_logo
     @startup = Startup.find(session[:startup_id])
-    respond_to do |format|
-      if @startup.update_attributes :avatar => params[:avatar]
-        #format.html { redirect_to action: "about_step", id: session[:startup_id] }
-        format.js
-      else
-        @startup.errors.add :avatar, "Invalid photo format"
-        #format.html { render action: "about_step" }
-        #format.json { render json: @startup.errors, status: :unprocessable_entity }
-        format.js
+    if @startup.update_attributes :avatar => params[:avatar]
+      case params[:back_action]
+        when "detailed"
+          redirect_to :controller => "startups", :action => "detailed", :id => @startup.id and return
+        when "about_step"
+          redirect_to :controller => "campaigns", :action => "about_step" and return
       end
     end
-  end
-
-  def summary
-    @startup =Startup.find(session[:startup_id])
-    @campaign = @startup.Campaign
-    @allfields = Allfield.find_all_by_view_flag(3)
   end
 
 end

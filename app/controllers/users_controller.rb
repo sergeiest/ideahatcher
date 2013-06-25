@@ -138,6 +138,7 @@ class UsersController < ApplicationController
   
   def edit
     @user = User.find(session[:id])
+    session[:owner_type] == 1
 
     respond_to do |format|
       format.html # new.html.erb

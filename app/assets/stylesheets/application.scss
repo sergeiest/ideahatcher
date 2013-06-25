@@ -644,6 +644,11 @@ h2.project{
       padding:5px 20px;
       margin-right: -0px;
       margin-top:-100px;
+      input {
+        margin-top:-7px;
+        margin-bottom:0px;
+      }
+      .btn {margin-top:-5px;}
     }
 
     .hashtag_form {
@@ -1362,6 +1367,7 @@ h2.project{
 
 .glyphw{
   background-image: url(/assets/glyphicons-halflings.png);
+  margin:0 5px;
 }
 .glyphw-white{
   background-image: url(/assets/glyphicons-halflings-white.png);

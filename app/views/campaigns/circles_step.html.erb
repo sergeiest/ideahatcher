@@ -1,20 +1,4 @@
-<div class="navbar navbar-inverse" xmlns="http://www.w3.org/1999/html">
-  <div class="navbar-inner">
-    <ul class="nav">
-      <li class="active"><%= link_to :action => "guide_step" do %>0. Guidelines<%end%></li>
-      <li class="active"><%= link_to :action => "basic_step" do %>1. Basic<%end%></li>
-      <li class="active"><%= link_to :action => "about_step" do %>2. About company<%end%></li>
-      <li class="active"><%= link_to :action => "team_step" do %>3. Team<%end%></li>
-      <li class="active"><a >4. Publish</a></li>
-      <li><a >5. Review</a></li>
-      <li class="active" style="margin-left:100px">
-        <%= link_to :controller => "startups", :action => "show", :id => session[:startup_id] do %>
-            <%=  @startup.name %>
-        <% end %>
-      </li>
-    </ul>
-  </div>
-</div>
+<%= render "nav" %>
 
 
 <div class="hatcher-container">
@@ -51,7 +35,7 @@
             <%= form_tag({:action => "add_circle", :controller => "circles"},
                             :remote => 'true',
                             :onclick => 'submitForm(this)') do%>
-                <p><%= radio_button_tag :circle_status, 0, 1%>Do not share yet (you can share it late)</p>
+                <p><%= radio_button_tag :circle_status, 0, 1%>Do not share yet (you can share it later)</p>
                 <p><%= radio_button_tag :circle_status, 1%>Select people yourself</p>
                 <p><%= radio_button_tag :circle_status, 2%>Invite 20 random people</p>
                 <p><%= radio_button_tag :circle_status, 3%>Share the idea with everyone</p>

@@ -5,7 +5,7 @@
       <ul>
         <li class="cat-name"><%= @startup.name%></li>
 
-        <% if params[:action] == "show" %>
+        <% if params[:action] == "show" || params[:action] == "detailed" %>
             <li>Summary <i class="icon-play glyphw" style="float:right"></i></li>
         <% else %>
             <li><%=  link_to 'Summary', {:controller => "startups", :action => "show", :id => @startup.id }%></li>
@@ -15,12 +15,6 @@
             <li>Team <i class="icon-play glyphw" style="float:right"></i></li>
         <% else %>
             <li><%= link_to 'Team', {:controller => "startups", :action => "team", :id => @startup.id}%></li>
-        <% end %>
-
-        <% if params[:action] == "detailed" %>
-            <li>Edit <i class="icon-play glyphw" style="float:right"></i></li>
-        <% else %>
-            <li><%= link_to 'Edit', {:controller => "startups", :action => "detailed", :id => @startup.id}%></li>
         <% end %>
 
         <% if params[:action] == "dashboard" %>

@@ -1,20 +1,4 @@
-<div class="navbar navbar-inverse" xmlns="http://www.w3.org/1999/html">
-  <div class="navbar-inner">
-    <ul class="nav">
-      <li class="active"><%= link_to :action => "guide_step" do %>0. Guidelines<%end%></li>
-      <li class="active"><%= link_to :action => "basic_step" do %>1. Basic<%end%></li>
-      <li class="active"><a >2. About company</a></li>
-      <li><a >3. Team</a></li>
-      <li><a >4. Publish</a></li>
-      <li><a >5. Review</a></li>
-      <li class="active" style="margin-left:100px">
-        <%= link_to :controller => "startups", :action => "show", :id => session[:startup_id] do %>
-          <%=  @startup.name %>
-        <% end %>
-      </li>
-    </ul>
-  </div>
-</div>
+<%= render "nav" %>
 
 <div class="hatcher-container">
   <div class="company-main">
@@ -25,12 +9,14 @@
         <ol>
           <div class="company-box">
             <li>
-              <h4>Company/campaign image  <a href="#uploadPhoto" role="button" class="btn btn-mini" data-toggle="modal">Update Photo</a></h4>
+              <h4>Company image  <a href="#uploadPhoto" role="button" class="btn btn-mini" data-toggle="modal">Update Photo</a></h4>
               <% if @startup.errors[:avatar].length > 0 %>
                   <p style="color:red">Photo was not upload, probably wrong file format. Please try again</p>
               <% end %>
               <% if @startup.avatar? %>
                   <%= image_tag @startup.avatar.url(:large), :style=>"margin-bottom:20px " %>
+              <% else %>
+                  <img src='/images/profile/Nologo.png' class = "main-logo">
               <% end %>
             </li>
           </div>
@@ -40,7 +26,10 @@
               <h4><%= allfield.field_name   %></h4>
               <%= hidden_field :companydescriptions1, :field_status, :value => allfield.field_name %>
               <%= hidden_field :companydescriptions1, :allfield_id, :value => allfield.id %>
-              <p>Describe your product and specify your product stage</p>
+              <p>
+                Tell us about the problem that you are trying to solve. Who are your customers and why this problem is
+                important for them:
+              </p>
               <%= text_area :companydescriptions1, :content %>
             </li>
           </div>
@@ -51,7 +40,7 @@
 
               <%= hidden_field :companydescriptions2, :field_status, :value => allfield.field_name %>
               <%= hidden_field :companydescriptions2, :allfield_id, :value => allfield.id %>
-              <p>Specify if you raised capital</p>
+              <p>How your idea will solve the problem, how is it different from other solutions:</p>
               <%= text_area :companydescriptions2,:content %> </p>
             </li>
           </div>
@@ -61,7 +50,10 @@
               <h4><%= allfield.field_name   %></h4>
               <%= hidden_field :companydescriptions3, :field_status, :value => allfield.field_name %>
               <%= hidden_field :companydescriptions3, :allfield_id, :value => allfield.id %>
-              <p>Describe your customers and sales and specify your revenue stage</p>
+              <p>
+                Describe how your idea creates, delivers, and captures value. How do you plan to generate revenue
+                from your idea:
+              </p>
               <%= text_area :companydescriptions3,:content %> </p>
             </li>
           </div>
@@ -80,10 +72,14 @@
     <h3 id="myModalLabel">Upload photo or logo</h3>
   </div>
   <%= form_tag({:controller => "campaigns", :action => "upload_logo"},
-               :multipart => true,
-               :remote => true) do %>
+               :multipart => true) do %>
       <div class="modal-body">
+        <p>
+          Upload photo, picture or logo that will rep[resent your idea in the best way. Aspect ratio of the picture
+          should be 2:1
+        </p>
         <%= file_field_tag :avatar, :onchange => "checkFile(this)"%>
+        <%= hidden_field_tag :back_action, "about_step"%>
         <p id="photo_error" style="color:red"></p>
       </div>
       <div class="modal-footer">

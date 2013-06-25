@@ -29,15 +29,13 @@ Webapp::Application.routes.draw do
 
   resources :documents
 
-  get "campaigns/summary"
-  get "campaigns/secondstep"
-  get "campaigns/submit_campaign"
-  get "campaigns/delete"
+
   get "campaigns/guide_step"
   get "campaigns/basic_step"
   get "campaigns/about_step"
   get "campaigns/team_step"
   get "campaigns/review_step"
+
   post "campaigns/next_step"
   post "campaigns/create_step"
   post "campaigns/description_step"
@@ -45,6 +43,7 @@ Webapp::Application.routes.draw do
   post "campaigns/upload_logo"
   post "campaigns/publish_step"
   post "campaigns/update_description"
+  post "campaigns/update_name"
   get "campaigns/circles_step"
   resources :campaigns
 
@@ -135,6 +134,8 @@ Webapp::Application.routes.draw do
   get "startups/idea_hatching"
   get "startups/hashtag"
   get "startups/followers"
+  get "startups/your_ideas"
+  get "startups/your_following_ideas"
   resources :startups
   
   resources :peoples

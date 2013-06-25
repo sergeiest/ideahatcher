@@ -1,19 +1,23 @@
-var mainP = document.getElementById("p_<%= @description.companydescription_id %>");
-mainP.setAttribute("id", "p_<%= @description.id %>");
+var mainDiv = document.getElementById("description_<%= @description.companydescription_id %>");
 
-var mainDiv = mainP.parentElement
-mainDiv.setAttribute("id", "div_<%= @description.id %>");
+mainDiv.setAttribute("id","description_<%= @description.id %>");
 
-//mainDiv.querySelector("form").hidden = true;
+<%  content_string = ""
+@description.content.gsub(/\r\n?/, '\n').split("\n").each do |text_string|
+    content_string += text_string + ' '
+end
+content_string = content_string[0..-2]
+%>
+
+mainDiv.getElementsByClassName("p_new")[0].innerHTML = "<%= content_string %>";
+mainDiv.getElementsByClassName("p_new")[0].hidden = false;
+
+mainDiv.getElementsByTagName('form')[0].hidden = true;
+
+
 mainDiv.querySelector("#companydescription_companydescription_id").value = <%= @description.id %>;
 mainDiv.querySelector("#visualization_<%= @description.companydescription_id %>").setAttribute("id", "visualization_<%= @description.id %>");
 mainDiv.querySelector("#chart_link").href = "/votes/show_votes?description_id=<%= @description.id %>";
 mainDiv.querySelector("#form_link").onclick = function() {showForm(<%= @description.id %>)};
 
-
-mainP.innerHTML="";
-<% @description.content.gsub(/\r\n?/, '\n').split("\n").each do |text_string| %>
-    var newP = document.createElement("p");
-    newP.innerHTML = '<%= simple_format text_string %>';
-    mainP.appendChild(newP);
-<% end %>
+mainDiv.getElementsByClassName('edit-text')[0].setAttribute("onclick", "editDescription(this)");

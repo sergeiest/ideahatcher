@@ -1,24 +1,4 @@
-<div class="navbar navbar-inverse" xmlns="http://www.w3.org/1999/html">
-  <div class="navbar-inner">
-    <ul class="nav">
-      <li class="active"><%= link_to :action => "guide_step" do %>0. Guidelines<%end%></li>
-      <li class="active"><a >1. Basic</a></li>
-      <li><a >2. About company</a></li>
-      <li><a >3. Team</a></li>
-      <li><a >4. Account</a></li>
-      <li><a >5. Review</a></li>
-      <% if session[:startup_id] != nil %>
-      <li class="active" style="margin-left:100px">
-        <%= link_to :controller => "startups", :action => "show",:id => session[:startup_id] do %>
-          <%=  @startup.name %>
-        <% end %>
-      </li>
-      <% end %>
-    </ul>
-  </div>
-</div>
-
-
+<%= render "nav" %>
 
 <div class="hatcher-container">
   <div class="company-main">

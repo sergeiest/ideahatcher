@@ -1,36 +1,28 @@
 <div class="teaser-user">
   <div class="teaser-user-info">
-    <% investor_number = @user.Investor_startups.uniq.count %>
-    <% if investor_number != 0 %>
-        <% if investor_number == 1 %>
-            <p> > Invested in one company</p>
-        <% else %>
-            <p> > Invested in <%= investor_number %> companies</p>
-        <% end %>
-    <% else %>
-        <p> > Have not invested yet </p>
-    <% end %>
+
 
     <% follower_number = @user.Follower_startups.uniq.count %>
     <% if follower_number != 0 %>
         <% if follower_number == 1 %>
-            <p> > Following one company</p>
+            <p> > Following one idea</p>
         <% else %>
-            <p> > Following <%= follower_number %> companies</p>
+            <p> > Following <%= follower_number %> ideas</p>
         <% end %>
     <% else %>
-        <p> > Not following companies </p>
+        <p> > Not following ideas </p>
     <% end %>
 
 
-    <% owner_number = @user.Owners.count %>
-    <% if owner_number != 0 %>
-        <p> > Founder of <%= link_to @user.Owner_startups[0].name, :controller => 'startups', :action => 'show',
-                                     :id => @user.Owners[0].startup_id %> </p>
-    <% else %>
-        <% if session[:owner_type] == 1 %>
-            <a href="#startCompany" data-toggle="modal"><button class="btn btn-warning" style="margin:5px 0 0 15px">Start a company</button></a>
+    <% follower_number = @user.Owners.count %>
+    <% if follower_number != 0 %>
+        <% if follower_number == 1 %>
+            <p> > Started one idea</p>
+        <% else %>
+            <p> > Started <%= follower_number %> ideas</p>
         <% end %>
+    <% else %>
+        <p> > Not started ideas yet</p>
     <% end %>
 
   </div>
@@ -57,12 +49,13 @@ Update
 
 <% if session[:owner_type] == 1 %>
 <div id="uploadPhoto" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-header" style="background-color:#ff8c00; color:white">
+  <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
     <h3 id="myModalLabel">Upload your new photo</h3>
   </div>
   <%= form_for(@user) do |f| %>
     <div class="modal-body">
+      <p>Upload your photo (aspect ratio is 1:1) </p>
       <%= f.file_field :avatar, :onchange => "checkFile()"%>
       <p id="photo_error" style="color:red"></p>
     </div>
@@ -73,28 +66,7 @@ Update
   <% end %>
 </div>
 
-  <div id="startCompany" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-      <div class="modal-header" style="background-color:#ff8c00; color:white">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-        <h4>Let's get started</h4>
-      </div>
-      <div class="modal-body">
-          <h5>There are few simple steps:</h5>
-          <ol style="margin:0 30px;">
-            <li style="margin:15px 30px;font-size:14px;">Create your company profile. Provide information about your product and market to attract investors</li>
-            <hr/>
-            <li style="margin:15px 30px;font-size:14px;">Specify your fundraising goal, if you plan to raise capital (You can add a fundraising campaign later)</li>
-            <hr/>
-            <li style="margin:15px 30px;font-size:14px;">Communicate your idea to community via your company's Q&A forum</li>
-          </ol>
 
-      </div>
-      <div class="modal-footer">
-        <%= link_to(:controller => "campaigns", :action => "guide_step") do%>
-          <button class="btn btn-warning">Continue</button>
-        <% end %>
-      </div>
-  </div>
 <% end %>
 
 <script language="javascript">
