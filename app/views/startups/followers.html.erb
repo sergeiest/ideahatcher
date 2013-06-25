@@ -1,0 +1,13 @@
+<%= render "startups/nav" %>
+
+
+<div class="hatcher-container">
+  <div class="company-main">
+    <div class="company-left">
+      <div class="company-box">
+        <%= render :partial => "investors/people", :collection => @people, :locals => {:action_type => nil} %>
+      </div>
+    </div>
+    <div class="clear-both"></div>
+  </div>
+</div>

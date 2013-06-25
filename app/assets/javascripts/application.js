@@ -91,26 +91,21 @@ function stopSlideLightning(barId){
     $('#button_'+ barId).click();
 }
 
-function startSlide(barId){
-    var bar = document.getElementById('bar_'+barId);
-    var slider = document.getElementById('slider_'+barId);
-    var info = document.getElementById('info_'+barId);
-    var modal = document.getElementById('modal_like');
-    var set_perc = ((((event.clientX - bar.offsetLeft - modal.offsetLeft) / bar.offsetWidth)).toFixed(2));
-    slider.style.width = (set_perc * 100) + '%';
-    }
+function startSlideVote(barId, barNode, offsetPoint, totalWidth){
+    var set_perc = ((((event.clientX - barNode.offsetLeft - offsetPoint) / barNode.offsetWidth)).toFixed(2));
+    barNode.children[0].style.width = (set_perc * 100) + '%';
+}
 
 
-function stopSlide(barId){
-    var bar = document.getElementById('bar_'+ barId);
-    var slider = document.getElementById('slider_'+ barId);
+function stopSlideVote(barId, barNode, offsetPoint, totalWidth){
+    var set_perc = ((((event.clientX - barNode.offsetLeft - offsetPoint) / barNode.offsetWidth)).toFixed(2));
+    barNode.children[0].style.width = (set_perc * 100) + '%';
     var info = document.getElementById('info_'+ barId);
-    var modal = document.getElementById('modal_like');
-    var set_perc = ((((event.clientX - bar.offsetLeft - modal.offsetLeft) / bar.offsetWidth)).toFixed(2));
-    slider.style.width = (set_perc * 100) + '%';
-    info.style.marginLeft = set_perc * 180 + 'px';
-    info.innerText = Math.round(set_perc * 5)/1 ;
-    }
+    info.style.marginLeft = set_perc * totalWidth + 'px';
+    info.innerText = Math.round(set_perc * 5)/1;
+    document.getElementById('form_'+ barId).querySelector("#vote_score").value = Math.round(set_perc * 5)/1 ;
+    $('#button_'+ barId).click();
+}
 
 
 function MM_changeProp(objId,x,theProp,theValue) { //v9.0

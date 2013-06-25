@@ -17,19 +17,59 @@
         </div>
 
         <div class="company-content">
-            <div class="company-box">
+          <div class="company-box">
               <p><%= simple_format h @startup.pitch.firstletters(350) %></p>
-            </div>
-            <% @company_descriptions.each do |description| %>
+          </div>
+
+          <% @company_descriptions.each do |description| %>
               <div class="company-box">
-                  <h5><%= description.field_status %></h5>
-                  <% if description != nil %>
-                        <p><%= description.content %></p>
-                  <% else %>
-                        <p style="color:red">- no description - </p>
-                  <% end %>
+                <div class="action-box" >
+                  <div class="slider-bar" >
+                      <p style="margin-bottom:10px;">Rate (click on the scale): </p>
+                      <%= form_tag({:action => 'vote_description', :controller => 'votes'},
+                                   :multipart => true,
+                                   :id => "form_"+ description.id.to_s() ,
+                                   :remote => true) do %>
+                          <%= hidden_field :vote, :description_id, :value => description.id %>
+                          <%= hidden_field :vote, :score, :value => 3 %>
+                          <%= submit_tag 'submit', :id => "button_"+ description.id.to_s(), :hidden => 'true' %>
+                      <% end %>
+                      <div id="bar_<%=description.id%>" class="progress progress-primary progress-slider"
+                           onmousedown="stopSlideVote(<%=description.id%>, this, 105, 160)"
+                           onmouseup="startSlideVote(<%=description.id%>, this, 105, 160)">
+                        <div id='slider_<%=description.id%>' class='bar'></div>
+                      </div>
+                      <div>
+                        <p>
+                          <span class='slider-start'>0</span>
+                          <span class='slider-info' id='info_<%=description.id%>'></span>
+                          <span class='slider-end'>5</span>
+                        </p>
+                      </div>
+                    <div class="clear-both"></div>
+                  </div>
+                  <div class="slider-bar" >
+                    <%= link_to({:controller => "startups", :action => "idea_hatching", :id => params[:id]},
+                              :class => "btn btn-mini btn-primary") do %>
+                      <i class="icon-play glyphw-white "></i> Help hatch it!
+                    <% end %>
+                    <div class="clear-both"></div>
+                  </div>
+                  <div class="clear-both"></div>
+                </div>
+
+
+
+                <h5><%= description.field_status %></h5>
+                <% if description != nil %>
+                    <p><%= description.content %></p>
+                <% else %>
+                    <p style="color:red">- no description - </p>
+                <% end %>
+                <div class="clear-both"></div>
               </div>
-            <% end %>
+          <% end %>
+
           <div class="company-box">
             <h5>News</h5>
             <div id="teaser-text">
@@ -68,10 +108,13 @@
                     <button id="next-company" class="btn btn-primary">Save</button>
                 <% end %>
             <% end %>
-
           </div>
+
         </div>
-      </div>
+    </div>
+
+
+
       <div class="company-right">
         <%= link_to 'Follow',
                     {:controller => 'investors', :action => 'follow_company'},
@@ -80,7 +123,7 @@
                     :remote => true %>
         <div class="company-info">
           <h4>Team</h4>
-          <%= render :partial => 'investors/person', :collection => @startup_owners, :locals => {:status => 1} %>
+          <%= render :partial => 'investors/person', :collection => @startup_owners, :locals => { :action_type => nil, :status => 1} %>
           <% if session[:connection_type]==2 %>
             <%= link_to 'Add more people >', {:controller => "startups", :action => "team", :id => params[:id]},
                                         :class => "bottom-link" %>
@@ -88,8 +131,8 @@
         </div>
         <div class="company-info">
           <h4>Followers</h4>
-          <%= render :partial => 'investors/person', :collection => @startup_followers[0..7], :locals => {:status => 0} %>
-          <%= link_to 'See all followers >', {:controller => "investors", :action => "people"}, :class => "bottom-link" %>
+          <%= render :partial => 'investors/person', :collection => @startup_followers[0..7], :locals => { :action_type => nil, :status => 0} %>
+          <%= link_to 'See all followers >', {:controller => "startups", :action => "followers", :id => @startup.id}, :class => "bottom-link" %>
         </div>
       </div>
     <div class="clear-both"></div>

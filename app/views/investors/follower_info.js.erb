@@ -1,0 +1,68 @@
+
+notes = document.getElementsByName('follower-info');
+
+if (notes[0] == null) {
+    var modalNode = document.createElement('div');
+    modalNode.setAttribute('name', 'follower-info');
+    document.getElementsByTagName("body")[0].appendChild(modalNode);
+} else {
+    var modalNode = notes[0];
+}
+
+
+
+modalNode.setAttribute('class', 'modal hide fade modal-info');
+modalNode.setAttribute('tabindex', '-1');
+modalNode.setAttribute('role', 'dialog');
+modalNode.setAttribute('aria-labelledby', 'info_modalLabel');
+modalNode.setAttribute('aria-hidden', 'true');
+modalNode.setAttribute('id', 'info_modal');
+
+modalNode.innerHTML = '<div class="modal-header">' +
+                        '<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>' +
+                        '<h3 id="info_modalLabel"><%= @follower.firstname + " " + @follower.lastname %></h3>' +
+                      '</div>';
+
+<% if   @follower.avatar? %>
+modalBodyString =  "<img src='<%=  @follower.avatar.url(:square) %>' >";
+<% else %>
+modalBodyString =  "<img src='/images/profile/Nophoto.png'>";
+<% end %>
+
+modalBodyString = modalBodyString + "<p>This person's description is not available...</p>";
+
+<% startup_string  = "Started ideas:"
+@startups.each do |startup|
+    startup_string += ' ' + startup.name + ','
+end
+if @startups.length > 0
+    startup_string = startup_string[0..-2]
+else
+    startup_string += " no ideas started yet"
+end
+%>
+
+modalBodyString = modalBodyString + "<p><%= startup_string %></p></div>";
+
+modalNode.innerHTML = modalNode.innerHTML + "<div class='modal-body'>" + modalBodyString + "</div>";
+
+modalFooterString = '<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>';
+
+<% case params[:action_type] %>
+    <% when "add_team" %>
+        modalFooterString = modalFooterString +
+            '<button class="btn btn-primary" onclick ="addPerson(this,<%= @follower.id %>);">Add to the team</button>';
+    <% when "remove_team" %>
+        modalFooterString = modalFooterString +
+            '<button class="btn btn-primary" onclick ="removePerson(this,<%= @follower.id %>);">Remove from the team</button>';
+    <% when "add_circle" %>
+        modalFooterString = modalFooterString +
+            '<button class="btn btn-primary" onclick ="addPerson(this,<%= @follower.id %>);">Allow access to your idea</button>';
+    <% when "remove_circle" %>
+        modalFooterString = modalFooterString +
+            '<button class="btn btn-primary" onclick ="removePerson(this,<%= @follower.id %>);">Remove access to your idea</button>';
+<% end %>
+
+modalNode.innerHTML = modalNode.innerHTML + '<div class="modal-footer">' + modalFooterString + "</div>";
+
+$('#info_modal').modal('show');

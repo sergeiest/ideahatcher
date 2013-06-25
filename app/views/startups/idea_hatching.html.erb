@@ -35,8 +35,7 @@
                 <% end %>
 
                 <a onclick="showIdeas(this)" style="cursor:pointer; font-size:12px;">
-                    Show/add comments
-                    <span class="caret" style="color:#07b5b5;margin:17px 0 0 2px;"></span>
+                    Show/add suggestions <i class=' icon-chevron-down glyphw '></i>
                 </a>
                 <div name="ideas" hidden id="following_Idea<%= description.id %>">
                     <% @ideas.select{|a| a.companydescription_id == description.id }.each do |idea| %>
@@ -101,10 +100,10 @@
             }
         }
         if (ideasDiv.hidden == true) {
-            elementNode.innerText = "Hide comments";
+            elementNode.innerHTML = "Hide suggestions <i class=' icon-chevron-up glyphw '></i>";
             ideasDiv.hidden = false;
         } else {
-            elementNode.innerText = "Show/add comments";
+            elementNode.innerHTML = "Show/add suggestions <i class=' icon-chevron-down glyphw '></i>";
             ideasDiv.hidden = true;
         }
     }

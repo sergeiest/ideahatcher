@@ -23,18 +23,20 @@ class CampaignsController < ApplicationController
           if Fund.find_all_by_user_id(session[:id]) == nil
             wrong_link = 1
           end
-        when "about_step", "description_step", "team_step", "team_save_step", "review_step", "upload_logo", "update",
-                      "destroy", "publish_step", "circles_step", "update_description"
-          user = User.find(session[:id])
-          session[:startup_id] = user.Owner_startups.first.id
         when "next_step"
         when "guide_step", "basic_step", "create_step"
+          session[:startup_id] = nil
+        when "basic_step", "about_step", "description_step", "team_step", "team_save_step", "review_step", "upload_logo", "update",
+            "destroy", "publish_step", "circles_step", "update_description"
           user = User.find(session[:id])
-          startup = user.Owner_startups.first
-          if startup == nil
-            session[:startup_id] = nil
-          else
-            session[:startup_id] = startup.id
+          if session[:startup_id] == nil
+            startup = user.Owner_startups.first
+            if startup == nil
+              session[:startup_id] = nil
+              wrong_link = 1
+            else
+              session[:startup_id] = startup.id
+            end
           end
         else
             wrong_link = 1
@@ -55,11 +57,7 @@ class CampaignsController < ApplicationController
   end
 
   def guide_step
-    if session[:id] != nil and session[:id] != 0
-      @startup = User.find(session[:id]).Owner_startups.first
-    else
-      @startup = nil
-    end
+
   end
 
   def next_step
@@ -72,20 +70,14 @@ class CampaignsController < ApplicationController
   end
 
   def basic_step
-     if session[:startup_id] != nil
-       @startup = Startup.find(session[:startup_id])
-       session[:startup_id] = @startup.id
-     else
-       session[:startup_id] = nil
-       @startup = Startup.new
-     end
+     @startup = Startup.new
   end
 
 
 
   def create_step
 
-    params[:startup][:status] = 1
+    params[:startup][:status] = 4
 
     if session[:startup_id] == nil
       @startup = Startup.new(params[:startup])

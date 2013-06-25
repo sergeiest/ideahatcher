@@ -15,6 +15,7 @@
 
   <% company_descriptions.each do |description| %>
     <div class="vote-box">
+      <div class="action-box">
         <div class="slider-bar" >
           <p style="margin-bottom:10px;">Rate (click on the scale): </p>
           <% if class_name == "class1" %>
@@ -27,8 +28,8 @@
               <%= submit_tag 'dfsd', :id => "button_"+ description.id.to_s(), :hidden => 'true' %>
             <% end %>
                 <div id="bar_<%=description.id%>" class="progress progress-primary progress-slider"
-                   onmousedown="stopSlideLightning('<%=description.id%>')"
-                   onmouseup="startSlideLightning('<%=description.id%>')">
+                     onmousedown="stopSlideVote(<%=description.id%>, this, 277, 115)"
+                     onmouseup="startSlideVote(<%=description.id%>, this, 277, 115)">
                   <div id='slider_<%=description.id%>' class='bar'></div>
                 </div>
           <% else %>
@@ -44,14 +45,20 @@
             </p>
           </div>
           <div style="clear:both"></div>
-          <%= link_to 'Add suggestion', :controller => "startups", :action => "idea_hatching", :id => params[:id1] %>
         </div>
-        <b><%= Allfield.find(description.allfield_id).field_name%></b>
         <% if class_name == "class1" %>
-            <%= simple_format description.content.firstletters(400), :class => "description-p" %>
-        <% else %>
-            <%= simple_format description.content.firstletters(300), :class => "description-p" %>
+          <%= link_to({:controller => "startups", :action => "idea_hatching", :id => params[:id1]},
+                      :class => "btn btn-mini btn-primary", :style => "float:right") do %>
+              <i class="icon-play glyphw-white "></i> Help hatch it!
+          <% end %>
         <% end %>
+      </div>
+      <b><%= Allfield.find(description.allfield_id).field_name%></b>
+      <% if class_name == "class1" %>
+            <%= simple_format description.content.firstletters(400), :class => "description-p" %>
+      <% else %>
+            <%= simple_format description.content.firstletters(300), :class => "description-p" %>
+      <% end %>
     </div>
     <div style="clear:right"></div>
   <% end %>

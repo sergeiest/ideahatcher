@@ -63,30 +63,13 @@
                 <%= submit_tag "submit", :hidden => "true" %>
             <% end %>
             <div id="search-results" class="people-to-add">
-              <% @people.each do |person| %>
-                  <div class="person-circle" onclick="addPerson(this,<%= person.id %>)">
-                    <% if  person.avatar? %>
-                        <img src='<%= person.avatar.url(:square) %>' >
-                    <% else %>
-                        <img src='/images/profile/Nophoto.png'>
-                    <% end %>
-                    <h5><%= person.firstname %>  <%= person.lastname %></h5>
-                    <div class="clear-both"></div>
-                  </div>
-              <% end %>
+              <%= render :partial => "investors/people", :collection => @people,
+                         :locals => {:action_type => "add_circle"} %>
             </div>
             <div id="current-circle" class="people-added">
               <h4>People you have added:</h4>
-              <% @circles.each do |person| %>
-                  <div class="person-circle"  onclick="removePerson(this,<%= person.id %>)">
-                    <% if  person.avatar? %>
-                        <img src='<%= person.avatar.url(:square) %>' >
-                    <% else %>
-                        <img src='/images/profile/Nophoto.png'>
-                    <% end %>
-                    <h5><%= person.firstname %>  <%= person.lastname %></h5>
-                  </div>
-              <% end %>
+              <%= render :partial => "investors/people", :collection => @people,
+                         :locals => {:action_type => "remove_circle"} %>
             </div>
 
             <div class="clear-both"></div>
@@ -104,4 +87,29 @@
         element.hidden = true;
         document.getElementById("delete_this_tag").click();
     }
+
+    function addPerson (elementNode, id) {
+        var formElement = document.getElementById("add_person");
+        var notes = formElement.children;
+        for (var i = 0; i < notes.length; i++) {
+            if (notes[i].getAttribute('name') == 'user_id') {
+                notes[i].value = id;
+            }
+        }
+        submitForm(formElement);
+        $('#info_modal').modal('hide');
+    }
+
+    function removePerson (elementNode, id) {
+        var formElement = document.getElementById("remove_person");
+        var notes = formElement.children;
+        for (var i = 0; i < notes.length; i++) {
+            if (notes[i].getAttribute('name') == 'user_id') {
+                notes[i].value = id;
+            }
+        }
+        submitForm(formElement);
+        $('#info_modal').modal('hide');
+    }
+
 </script>

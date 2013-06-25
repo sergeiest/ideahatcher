@@ -255,7 +255,7 @@ h2.project{
 
 // -------------------------- Home page (new) ---------------------------
 .home-signup {
-  position: fixed;
+  position: absolute;
   top:80px;
   right:100px;
   z-index:3;
@@ -331,6 +331,47 @@ h2.project{
       line-height: 16px;
       //font-weight: bold;
     }
+  }
+}
+
+.how-it-works {
+  border:1px #c8c8c8 solid;
+
+  h2 {
+    color: #07b5b5;
+    text-align: center;
+    padding:20px 0 20px 0;
+  }
+
+  p {
+    font-size: 20px;
+    line-height: 40px;
+    padding-top:40px;
+  }
+
+  img {height: 200px;}
+
+  .content-white {
+    padding:10px 50px;
+    height: 190px;
+  }
+  .content-grey {
+    padding:10px 50px;
+    background-color: #f2f2f2;
+  }
+
+  .right-side {
+    padding-left:100px;
+
+
+  }
+
+  .left-side {
+    float:left;
+    width:calc( 50% - 50px);
+    padding-right:100px;
+    text-align: right;
+
   }
 }
 
@@ -588,6 +629,7 @@ h2.project{
 
 
     }
+
     .main-logo {
 
       width:100%;
@@ -642,8 +684,70 @@ h2.project{
       width: 360px;
     }
 
+    .action-box {
+      float:right;
+      width:30%;
+    }
+
+    .slider-bar {
+      background-color: #f1f1f1;
+      border:1px #c8c8c8 solid;
+      padding: 10px;
+      margin:0 0 5px 0;
+      color:#07b5b5;
+      p {
+        min-height:00px ;
+        width: 100%;
+        margin:0;
+      }
+
+      a {
+        padding:0 5px;
+        color:white;
+        float:right;
+      }
+
+      .progress-slider{
+        padding: 0;
+        margin:0% 4% 3% 4%;
+        cursor:pointer;
+      }
+
+      .bar{
+        width:0%;
+        cursor:pointer;
+        background-color: orange;
+        background-image: linear-gradient(orange, #e99600);;
+      }
+
+      .slider-start{
+        float:left;
+        margin:0px;
+        padding:0;
+
+
+      }
+      .slider-info{
+        margin:0px;
+        padding:0;
+        color:orange;
+        line-height: 10px;
+      }
+      .slider-end{
+        float:right;
+        margin:0px 0 0 0 ;
+      }
+    }
+
+
+
 
   }
+
+
+
+
+
   .company-right {
     margin-left:calc(80% + 100px);
     width: 200px;
@@ -954,13 +1058,16 @@ h2.project{
     .description-p {
       height:70px;
     }
+    .action-box {
+      float:right;
+      width:30%;
+    }
 
     .slider-bar {
-      width:30%;
-      float:right;
-      padding: 0;
-      margin:2% 0px 0 5%;
-      display:inline;
+      background-color: #f1f1f1;
+      border:1px #c8c8c8 solid;
+      padding: 10px;
+      margin:0 0 5px 0;
       color:#07b5b5;
       p {
         min-height:00px ;
@@ -969,11 +1076,9 @@ h2.project{
       }
 
       a {
-        padding:0px;
-        color:#07b5b5;
+        padding:0 5px;
+        color:white;
         float:right;
-        text-align: right;
-
       }
 
       .progress-slider{
@@ -1004,7 +1109,7 @@ h2.project{
       }
       .slider-end{
         float:right;
-        margin:0px 0 20% 0 ;
+        margin:0px 0 0 0 ;
       }
     }
 
@@ -1234,11 +1339,31 @@ h2.project{
   }
 }
 
+// ------------------------------- Modal ----------------------------
+
+.modal-info {
+ h3 {color: #07b5b5;}
+
+ img {
+   float:left;
+   margin:0 10px 10px 0;
+   width:100px;
+ }
+
+ p, a {
+   font-size: 16px;
+ }
+
+
+
+}
 
 // ------------------------------- ??? ------------------------------
 
 .glyphw{
   background-image: url(/assets/glyphicons-halflings.png);
 }
-
+.glyphw-white{
+  background-image: url(/assets/glyphicons-halflings-white.png);
+}
 

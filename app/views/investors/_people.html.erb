@@ -1,17 +1,15 @@
-<% div_name='investor' + people.firstname + people.lastname %>
-
-<%= link_to :controller => 'users', :id => people.id do %>
-  <div class="person-info">
-
-     <% if  people.avatar? %>
-        <img src='<%= people.avatar.url(:square) %>' >
-     <% else %>
-        <img src='/images/profile/Nophoto.png'>
-     <% end %>
-
-     <h5><%= people.firstname %>  <%= people.lastname %></h5>
-
-   <div class="clear-both"></div>
-
-  </div>
+<%= link_to({:controller => "investors",
+             :action => "follower_info",
+             :id => people.id,
+             :action_type => action_type},
+            :remote => true) do %>
+    <div class="person-info">
+        <% if  people.avatar? %>
+            <img src='<%= people.avatar.url(:square) %>' >
+        <% else %>
+            <img src='/images/profile/Nophoto.png'>
+        <% end %>
+        <h5><%= people.firstname %>  <%= people.lastname %></h5>
+        <div class="clear-both"></div>
+    </div>
 <% end %>

@@ -26,7 +26,7 @@ class StartupsController < ApplicationController
             wrong_link = 1
           end
         end
-      when "show", "ab_testing"
+      when "show", "ab_testing", "followers"
         if params[:id] and Startup.find(params[:id])
           session[:startup_id] = params[:id]
           if session[:id] != 0 and session[:id] != nil
@@ -151,6 +151,11 @@ class StartupsController < ApplicationController
     @people = User.all[0..20]
   end
 
+  def followers
+    @startup = Startup.find(session[:startup_id])
+    @people = @startup.Follower_users.all[0..20]
+  end
+
   def idea_hatching
     @user = User.find(session[:id]) if session[:id] and session[:id] != 0
     @startup = Startup.find(params[:id])
@@ -195,6 +200,14 @@ class StartupsController < ApplicationController
     @startups[0]=Startup.find(params[:id0])
     @startups[1]=Startup.find(params[:id1])
     @startups[2]=Startup.find(params[:id2])
+
+    @categories = Hash.new(0)
+
+    Tag.all.each do |tag|
+      @categories[tag.name] += 1
+    end
+
+    @categories = @categories.keys.sort_by { |x| [@categories[x]* -1, x] }[0..9]
 
   end
 

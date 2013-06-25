@@ -6,19 +6,21 @@ mainDiv.innerHTML ="<h4>Team</h4>";
 <% end %>
 
 <% @people.each do |person| %>
-    var newDiv = document.createElement("div");
+    var newA = document.createElement("a");
+    newA.setAttribute("href", "/investors/follower_info?id=<%= person.id %>&action_type=remove_team");
+    newA.setAttribute("data-remote", "true");
     <% if person.avatar? %>
-        newDiv.innerHTML = '<div class="person-info" onclick="removePerson(this,<%= person.id %>)">'+
+        newA.innerHTML = '<div class="person-info">'+
             '<%= image_tag person.avatar.url(:square) %>'+
             '<h5><%= person.firstname%> <%=person.lastname%></h5>'+
             '<p>Founder</p></div>';
     <% else %>
-        newDiv.innerHTML = '<div class="person-info"  onclick="removePerson(this,<%= person.id %>)">'+
+        newA.innerHTML = '<div class="person-info">'+
             '<%= image_tag "/images/profile/Nophoto.png" %>'+
             '<h5><%= person.firstname%> <%=person.lastname%></h5>'+
             '<p>Founder</p></div>';
     <% end %>
 
-mainDiv.appendChild(newDiv);
+mainDiv.appendChild(newA);
 
 <% end %>

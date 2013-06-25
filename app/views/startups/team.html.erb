@@ -33,17 +33,8 @@
     <div class="company-right">
       <div id="team" class="company-info">
         <h4>Team</h4>
-        <% @startup_owners.each do |founder| %>
-          <div  class = "person-info" onclick ="removePerson(this,<%= founder.id %>)">
-            <% if founder.avatar? %>
-                <%= image_tag founder.avatar.url(:square) %>
-            <% else %>
-                <%= image_tag "/images/profile/Nophoto.png" %>
-            <% end %>
-            <h5><%= founder.firstname %>  <%= founder.lastname %></h5>
-            <p>Founder</p>
-          </div>
-        <% end %>
+        <%= render :partial => "investors/person", :collection => @startup_owners,
+                   :locals => {:action_type => "remove_team", :status => 1} %>
       </div>
 
     </div>
@@ -62,6 +53,7 @@
           }
       }
       submitForm(formElement);
+      $('#info_modal').modal('hide');
   }
 
   function removePerson (elementNode, id) {
@@ -73,6 +65,7 @@
           }
       }
       submitForm(formElement);
+      $('#info_modal').modal('hide');
   }
 
 </script>

@@ -12,7 +12,9 @@
   <%= stylesheet_link_tag    "application", :media => "all" %>
 
 
+
   <%= javascript_include_tag "application" %>
+  <%= javascript_include_tag "bootstrap-modal" %>
 
 
   <%= csrf_meta_tags %>
@@ -65,10 +67,10 @@
                 <li role="presentation"><%= link_to startup.name, :controller => 'startups',
                                                     :action => 'show', :id => startup.id %></li>
               <% end %>
-            <% else %>
-                <li role="presentation"><%= link_to "Start an idea", :controller => 'campaigns',
-                                                    :action => 'guide_step' %></li>
+              <hr />
             <% end %>
+            <li role="presentation"><%= link_to "Start an idea", :controller => 'campaigns',
+                                                    :action => 'guide_step' %></li>
             <hr />
             <li role="presentation">
               <%= link_to :controller => 'users', :action => 'index',
@@ -117,25 +119,26 @@
   <p>Copyright 2013 - ideaHatcher</p>
 </div>
 
-
-<div id="login_modal" class="modal hide fade login-modal"
-                        tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h3 id="myModalLabel">First let everyone know who you are:</h3>
-  </div>
-  <div class="modal-body">
-    <div class="modal-left">
-      <%= render 'authentications/clean_login_form' %>
+<% if 1 == 2 %>
+    <div id="login_modal" class="modal hide fade login-modal"
+                            tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 id="myModalLabel">First let everyone know who you are:</h3>
+      </div>
+      <div class="modal-body">
+        <div class="modal-left">
+          <%= render 'authentications/clean_login_form' %>
+        </div>
+        <div class="modal-right">
+          <%= render 'authentications/clean_join_form' %>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+      </div>
     </div>
-    <div class="modal-right">
-      <%= render 'authentications/clean_join_form' %>
-    </div>
-  </div>
-  <div class="modal-footer">
-    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-  </div>
-</div>
+<% end %>
 
 
 </body>

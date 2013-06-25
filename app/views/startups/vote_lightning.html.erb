@@ -1,29 +1,16 @@
 <div class="left-nav">
-  <%= link_to :controller => "startups" do %>
+  <%= link_to :controller => "startups", :action => "index" do %>
       <img src="/images/lightning_on.png">
   <% end %>
-  <%= form_tag(:action => "search_startups", :remote => true) do %>
-      <%= text_field_tag :string, "search", :onclick => "clearInput(this)" %>
-      <%= submit_tag "Submit", :hidden => true %>
-  <% end %>
   <ul>
-    <li class="cat-name">Categories</li>
-    <li>Advertising</li>
-    <li>Audio + Media</li>
-    <li>Education</li>
-    <li>Enterprise Service</li>
-    <li>Finance</li>
-    <li>Gaming</li>
-    <li>Social Media</li>
-  </ul>
-  <ul>
-    <li class="cat-name">Location / Origin</li>
-    <li>CMU</li>
-    <li>Pittsburgh</li>
-    <li>Bay Area</li>
-    <li>Stanford</li>
-    <li>New York</li>
-    <li>Boston</li>
+    <li class="cat-name">Hashtags</li>
+    <% @categories.each do |tag| %>
+        <li>
+          <%= link_to(:action => "hashtag", :tag => tag) do %>
+              #<%= tag %>
+          <% end %>
+        </li>
+    <% end %>
   </ul>
 </div>
 

@@ -94,6 +94,7 @@ Webapp::Application.routes.draw do
   post "investors/add_founder"
   post "investors/remove_founder"
   get "investors/confirm_founder"
+  get "investors/follower_info"
   resources :investors
 
   get "users/login"
@@ -133,6 +134,7 @@ Webapp::Application.routes.draw do
   get "startups/dashboard"
   get "startups/idea_hatching"
   get "startups/hashtag"
+  get "startups/followers"
   resources :startups
   
   resources :peoples

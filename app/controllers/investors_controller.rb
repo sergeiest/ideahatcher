@@ -212,8 +212,6 @@ class InvestorsController < ApplicationController
       s = params[:string].split(" ")
       @people = User.where("(UPPER(firstname) LIKE UPPER(?) and UPPER(lastname) LIKE UPPER(?)) or (UPPER(firstname) LIKE UPPER(?) and UPPER(lastname) LIKE UPPER(?))",
                           "%"+ s[0].to_s()+"%", "%"+ s[1].to_s()+"%", "%"+ s[1].to_s()+"%", "%"+ s[0].to_s()+"%").all[0..5]
-
-
     end
 
     respond_to do |format|
@@ -317,6 +315,13 @@ class InvestorsController < ApplicationController
     else
 
     end
+
+  end
+
+  def follower_info
+
+    @follower = User.find(params[:id])
+    @startups = @follower.Owner_startups
 
   end
 
