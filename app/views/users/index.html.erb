@@ -1,5 +1,14 @@
 <div class="container">
-
+  <%= link_to({:controller => "campaigns", :action => "guide_step"}, :class => "button-next btn") do %>
+    <p>Start new idea...</p>
+    <%= image_tag "/images/how_it_works_2.png" %>
+  <% end %>
+  <%= link_to({:controller => "startups", :action => "index"}, :class => "button-next btn") do %>
+    <p>Browse other ideas...</p>
+    <%= image_tag "/images/how_it_works_4.png" %>
+  <% end %>
+</div>
+<div class="container">
 <% if flash[:success] %>
     <p class="notice" style="color:#46a546;"><%= flash[:success] %></p>
 
@@ -23,7 +32,13 @@
                                 :id => "notification" + notification.id.to_s() %>
                   </p>
               <% when 2 %>
-                  <p>You were removed from the team of <%= Startup.find(notification.event_id).name %></p>
+                  <p>You were removed from the team of <%= Startup.find(notification.event_id).name %> |
+                    <%= link_to "Ok", {:action => "check_notification",
+                                            :controller => "notifications",
+                                            :id => notification.id},
+                                :remote => true,
+                                :id => "notification" + notification.id.to_s() %>
+                  </p>
            <% end %>
         <% end %>
      <% end %>
@@ -38,7 +53,7 @@
    <% end %>
 <% else %>
     <% if session[:owner_type]==1 %>
-        <p>You have no notifications so far. To have updates in your news feed follow/invest in <%= link_to 'startups in our platform', startups_path %>.</p>
+        <p>To see updates in your news feed follow <%= link_to 'other ideas', startups_path %>.</p>
     <% else %>
         <p>This person does not have news to display</p>
     <% end %>

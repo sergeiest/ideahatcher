@@ -1,5 +1,10 @@
 Webapp::Application.routes.draw do
 
+  post "likes/vote"
+  resources :likes
+
+
+  get "notifications/check_notification"
   resources :notifications
 
 
@@ -60,6 +65,7 @@ Webapp::Application.routes.draw do
   post "authentications/demo_login"
   get "authentications/login_join"
   post "authentications/update_password"
+  get "authentications/join_login_form"
   resources :authentications
 
   resources :pictures

@@ -2,6 +2,21 @@ class VotesController < ApplicationController
   # GET /votes
   # GET /votes.json
 
+  before_filter do
+    wrong_link = 0
+    case params[:action]
+      when "vote_description"
+        wrong_link = 2 if session[:id] == nil || session[:id] == 0
+    end
+
+    case wrong_link
+      when 1
+        redirect_to :controller => 'authentications', :action => 'wrong_link'
+      when 2
+        render "authentications/join_login_form" and return
+    end
+  end
+
 
   def vote_description
 

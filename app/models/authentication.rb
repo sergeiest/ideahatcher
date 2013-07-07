@@ -27,27 +27,26 @@ class Authentication < ActiveRecord::Base
   end
 
   def self.check_errors(authentication_info)
-    if authentication_info[:username] == nil
-      return "username/Please enter an email address"
 
-    elsif  !authentication_info[:username] =~ /[a-z0-9!\#$%&'*+\/=?^_`{|}~-]+(?:\.[a-z0-9!\#$%\&'\*+\/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+(?:[A-Z]2}|com|org|net|edu|gov|mil|biz|info|mobi|name|aero|asia|jobs|museum|li|ru|io|co)/i
-      return "username/You entered invalid email address"
+    return "username/Please enter an email address" if authentication_info[:username] == nil
 
-    else
-
-      if !authentication_info[:username].length.between?(3, 60)
-        return "username/User name should be between 3 - 60 characters"
-
-      elsif !authentication_info[:password].length.between?(3, 20)
-        return "password/Password should be between 3 - 20 characters"
-      else
-        auth = find(:first, :conditions=>["username = ?", authentication_info[:username]])
-        if auth != nil
-          return "username/This username already exists"
-        end
-      end
+    if !authentication_info[:username].length.between?(3, 60)
+      return "username/Email should be between 3 - 60 characters"
     end
+
+    if authentication_info[:username] !~ /[a-z0-9!\#$%&'*+\/=?^_`{|}~-]+(?:\.[a-z0-9!\#$%\&'\*+\/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+(?:[A-Z]2}|com|org|net|edu|gov|mil|biz|info|mobi|name|aero|asia|jobs|museum|li|ru|io|co)/i
+      return "username/Invalid Email Address"
+    end
+
+    if !authentication_info[:password].length.between?(3, 20)
+        return "password/Password should be between 3 - 20 characters"
+    end
+
+    auth = find(:first, :conditions => ["username = ?", authentication_info[:username]])
+    return "username/This email is already registered" if auth != nil
+
     nil
+
   end
 
     def make_hash(pass)

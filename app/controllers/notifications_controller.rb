@@ -1,6 +1,29 @@
 class NotificationsController < ApplicationController
   # GET /notifications
   # GET /notifications.json
+
+
+  def check_notification
+    user = User.find(session[:id])
+
+    if user
+      notifications = Notification.where("user_id = ? AND status = 1", user.id)
+      if notifications
+        total_notifications = notifications.length
+        notification = Notification.find(params[:id])
+        if notification
+          notification.update_attribute(:status, 0)
+          user.update_attribute(:notification_num, total_notifications-1)
+        end
+        respond_to do |format|
+          format.js
+        end
+      end
+    end
+
+  end
+
+
   def index
     @notifications = Notification.all
 

@@ -3,14 +3,20 @@ class InvestorsController < ApplicationController
   # GET /investors.json
 
 
-  layout :layout_by_resource
+  layout "hatcher"
 
-  def layout_by_resource
+  before_filter do
+    wrong_link = 0
     case params[:action]
-      when 'new'
-        "main"
-      else
-        "application"
+      when "follow_company"
+        wrong_link = 2 if session[:id] == nil || session[:id] == 0
+    end
+
+    case wrong_link
+      when 1
+        redirect_to :controller => 'authentications', :action => 'wrong_link'
+      when 2
+        render "authentications/join_login_form" and return
     end
   end
 

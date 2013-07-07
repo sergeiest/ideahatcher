@@ -1,15 +1,6 @@
 class UsersController < ApplicationController
 
-  layout :layout_by_resource
-
-  def layout_by_resource
-    case params[:action]
-      when 'index', 'edit', 'change_password'
-        "hatcher"
-      else
-        "main"
-    end
-  end
+  layout "hatcher"
 
   def index
     @user = User.find(params[:id])
@@ -18,6 +9,8 @@ class UsersController < ApplicationController
     @notifications = @user.Notifications.where("status = 1")
     #@notifications.uniq! {|a| a.event_type and a.event_id}
     @notifications.sort! {|y, x| x["created_at"] <=> y["created_at"]}
+
+    @user.update_attribute(:notification_num, @notifications.length)
 
     @user_startups.each do |startup|
       if @user_updates == nil

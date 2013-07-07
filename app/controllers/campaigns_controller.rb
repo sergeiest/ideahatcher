@@ -2,16 +2,7 @@ class CampaignsController < ApplicationController
   # GET /campaigns
   # GET /campaigns.json
 
-  layout :layout_by_resource
-
-  def layout_by_resource
-    case params[:action]
-      when 'index'
-        "hatcher"
-      else
-        "hatcher"
-    end
-  end
+  layout "hatcher"
 
   before_filter do
     wrong_link = 0

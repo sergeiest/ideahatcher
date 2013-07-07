@@ -31,18 +31,19 @@ modalBodyString =  "<img src='/images/profile/Nophoto.png'>";
 
 modalBodyString = modalBodyString + "<p>This person's description is not available...</p>";
 
-<% startup_string  = "Started ideas:"
+<% startup_string  = 'Started ideas:'
 @startups.each do |startup|
-    startup_string += ' ' + startup.name + ','
+    startup_string += ' <a href=/startups/' + startup.id.to_s + '> ' + startup.name + ' </a>,'
 end
 if @startups.length > 0
     startup_string = startup_string[0..-2]
 else
-    startup_string += " no ideas started yet"
+    startup_string += ' no ideas started yet'
 end
+
 %>
 
-modalBodyString = modalBodyString + "<p><%= startup_string %></p></div>";
+modalBodyString = modalBodyString + '<p><%= startup_string %></p></div>'.replace(/&lt;/g, '<').replace(/&gt;/g, '>');
 
 modalNode.innerHTML = modalNode.innerHTML + "<div class='modal-body'>" + modalBodyString + "</div>";
 

@@ -1,15 +1,6 @@
 class StartupsController < ApplicationController
 
-  layout :layout_by_resource
-
-  def layout_by_resource
-    case params[:action]
-      when 'index', 'vote_lightning', 'show', 'team', 'detailed', 'circle', 'dashboard', "ab_testing"
-        "hatcher"
-      else
-        "hatcher"
-    end
-  end
+  layout "hatcher"
 
   before_filter do
     wrong_link = 0

@@ -2,7 +2,7 @@ class Startup < ActiveRecord::Base
   attr_accessible :name, :link, :pitch, :status, :avatar
 
   validates_length_of :name, :within => 3..40
-  validates_format_of :link, :with => /(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+(?:[A-Z]2}|com|org|net|edu|gov|mil|biz|info|mobi|name|aero|asia|jobs|museum|li|ru|io|co)/i, :message => "Invalid email"
+  #validates_format_of :link, :with => /(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+(?:[A-Z]2}|com|org|net|edu|gov|mil|biz|info|mobi|name|aero|asia|jobs|museum|li|ru|io|co)/i, :message => "Invalid email"
 
   has_many :Companyupdates
   has_many :Companydescriptions
@@ -34,7 +34,7 @@ class Startup < ActiveRecord::Base
     if startup_info[:name] == nil || startup_info[:name] == "" || !startup_info[:name].length.between?(3, 40)
       return "name/Invalid company name"
     end
-    if !startup_info[:link] =~ /(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+(?:[A-Z]2}|com|org|net|edu|gov|mil|biz|info|mobi|name|aero|asia|jobs|museum|li|ru|io|co)/i
+    if startup_info[:link] != "" and !startup_info[:link] =~ /(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+(?:[A-Z]2}|com|org|net|edu|gov|mil|biz|info|mobi|name|aero|asia|jobs|museum|li|ru|io|co)/i
       return "link/Invalid website link"
     end
     nil

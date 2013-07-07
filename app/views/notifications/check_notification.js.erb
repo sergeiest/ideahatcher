@@ -1,0 +1,4 @@
+var elNode = document.getElementById("notification<%= params[:id]%>");
+var newP = document.createElement("span")
+newP.innerHTML = "checked";
+elNode.parentNode.replaceChild(newP, elNode);

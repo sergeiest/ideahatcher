@@ -1,8 +1,8 @@
-<%= form_tag(params.merge(:action => 'create', :multipart => true)) do %>
+<%= form_tag(:action => 'create', :multipart => true) do %>
 
     <% if @authentication.errors[:username].length > 0 %>
         <p style="color:red">Email:</p>
-        <%=text_field :authentication,:username, :style => "border-color:red"  %>
+        <%= text_field :authentication, :username, :style => "border-color:red"  %>
         <span style="font-size:12px;color:red"> <%= @authentication.errors[:username].to_s.split('"')[1] %></span>
     <% else %>
         <p>Email:</p>
@@ -11,7 +11,8 @@
 
     <% if @authentication.errors[:password].length > 0 %>
         <p style="color:red">Password:</p>
-        <%=password_field :authentication,:password, :style => "border-color:red"  %>
+        <%= password_field :authentication, :password, :style => "border-color:red"  %>
+        <span style="font-size:12px;color:red"> <%= @authentication.errors[:password].to_s.split('"')[1] %></span>
     <% else %>
         <div class="field">
             <p>Password:</p>
@@ -20,7 +21,8 @@
     <% end %>
 
     <% if @authentication.errors[:password].length > 0 %>
-        <p style="color:red">Confirm password:</p> <%=password_field :ll, :password_confirmation, :style => "border-color:red"  %>
+        <p style="color:red">Confirm password:</p>
+        <%=password_field :ll, :password_confirmation, :style => "border-color:red"  %>
     <% else %>
         <div class="field">
             <p>Password Confirm:</p>
@@ -30,7 +32,9 @@
 
     <% if @user != nil%>
         <% if @user.errors[:firstname].length > 0 %>
-            <p style="color:red">First Name</p> <%=text_field :user,:firstname, :style => "border-color:red"  %>
+            <p style="color:red">First Name</p>
+            <%=text_field :user,:firstname, :style => "border-color:red"  %>
+            <span style="font-size:12px;color:red"> <%= @user.errors[:firstname].to_s.split('"')[1] %></span>
         <% else %>
             <div class="field">
                 <p>First Name:</p>
@@ -39,7 +43,10 @@
         <% end %>
 
         <% if @user.errors[:lastname].length > 0 %>
-            <p style="color:red">Last Name</p> <%=text_field :user,:lastname, :style => "border-color:red"  %>
+            <p style="color:red">Last Name</p>
+            <%=text_field :user,:lastname, :style => "border-color:red"  %>
+            <span style="font-size:12px;color:red"> <%= @user.errors[:lastname].to_s.split('"')[1] %></span>
+
         <% else %>
             <div class="field">
                 <p>Last Name:</p>
@@ -60,7 +67,6 @@
 
     <% end %>
 
-    <%= submit_tag 'Create account',class: "btn btn-warning" %>
-    <!--<a href = "javascript:history.back()">Go back</a>-->
+    <%= submit_tag 'Create account', class: "btn btn-warning" %>
 
 <% end %>

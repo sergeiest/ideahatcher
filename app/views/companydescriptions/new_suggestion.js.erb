@@ -9,7 +9,7 @@ end
 content_string = content_string[0..-2]
 %>
 
-mainDiv.getElementsByClassName("p_new")[0].innerHTML = "<%= content_string %>";
+mainDiv.getElementsByClassName("p_new")[0].innerHTML = "<%= content_string.firstletters(250) %>";
 mainDiv.getElementsByClassName("p_new")[0].hidden = false;
 
 mainDiv.getElementsByTagName('form')[0].hidden = true;

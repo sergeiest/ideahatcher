@@ -1,18 +1,6 @@
 class HomeController < ApplicationController
 
-  layout :layout_by_resource
-
-  def layout_by_resource
-    case params[:action]
-      when 'index'
-        "home"
-      when 'colorful'
-        "hatcher"
-      else
-        "application"
-    end
-  end
-
+  layout "hatcher"
 
   before_filter do
     if params[:action] == "index" and (session[:id] != nil and session[:id] != 0)

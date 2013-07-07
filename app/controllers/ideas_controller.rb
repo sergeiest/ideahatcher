@@ -1,26 +1,21 @@
 class IdeasController < ApplicationController
 
-  layout :layout_by_resource
-
-  def layout_by_resource
-    case params[:action]
-      when    'detailed'
-        "main"
-      else
-        "hatcher"
-    end
-  end
+  layout "hatcher"
 
   before_filter do
     wrong_link = 0
-    if params[:action] == "create" and (session[:id] == nil || session[:id] == 0)
-      wrong_link = 1
+
+    case params[:action]
+      when "create"
+        wrong_link = 2 if session[:id] == nil || session[:id] == 0
     end
-    if !params[:id]
-      wrong_link = 0
-    end
-    if wrong_link == 1
-      redirect_to :controller => 'authentications', :action => 'wrong_link'
+
+
+    case wrong_link
+      when 1
+        redirect_to :controller => 'authentications', :action => 'wrong_link'
+      when 2
+        render "authentications/join_login_form" and return
     end
   end
 

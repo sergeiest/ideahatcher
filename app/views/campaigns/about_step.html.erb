@@ -3,13 +3,13 @@
 <div class="hatcher-container">
   <div class="company-main">
     <div class="company-left">
-      <div class="company-box"> <h5>About company</h5></div>
+      <div class="company-box"> <h5>About idea</h5></div>
 
       <%= form_tag(:action => 'description_step', :multipart => true) do %>
         <ol>
           <div class="company-box">
             <li>
-              <h4>Company image  <a href="#uploadPhoto" role="button" class="btn btn-mini" data-toggle="modal">Update Photo</a></h4>
+              <h4>idea image  <a href="#uploadPhoto" role="button" class="btn btn-mini" data-toggle="modal">Update Photo</a></h4>
               <% if @startup.errors[:avatar].length > 0 %>
                   <p style="color:red">Photo was not upload, probably wrong file format. Please try again</p>
               <% end %>

@@ -12,14 +12,17 @@
                 <div id="description_<%= description.id%>" class="ab-test">
                     <div class="my_corner previous-test"></div>
                     <div class="idea-statement current-test">
-                        <%= simple_format Companydescription.find(description.companydescription_id).content,
+                        <% old_description = Companydescription.find(description.companydescription_id) %>
+                        <%= simple_format old_description.content.firstletters(250),
                                           :class => "p_old" %>
+                        <% old_description.approval_status = 0 if !old_description.approval_status %>
+                        <p class="approval_status"><%= old_description.approval_status %> people like this</p>
                     </div>
                     <button class="btn btn-mini btn-primary edit-text" onclick=editDescription(this)>Edit</button>
 
                     <div class="my_corner next-test"></div>
                     <div class="idea-statement next-test">
-                        <%= simple_format description.content,
+                        <%= simple_format description.content.firstletters(250),
                                             :class => "p_new" %>
                         <%= form_tag({:action => "new_suggestion", :controller => "companydescriptions"},
                                        :multipart => true,
@@ -30,6 +33,8 @@
                             <%= text_area :companydescription, :content%>
                             <%= submit_tag 'Save', class: "btn btn-mini btn-primary"%>
                         <% end %>
+                        <% description.approval_status = 0 if !description.approval_status %>
+                        <p class="approval_status"><%= description.approval_status %> people like this</p>
                     </div>
                     <div class="my_corner " hidden></div>
                     <div class="clear-both"></div>

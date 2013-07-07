@@ -6,17 +6,8 @@ class ApplicationController < ActionController::Base
   #      redirect_to :controller => 'home', :action => 'demo'
   #  end
   #end
-  
-  layout :layout_by_resource
 
-  def layout_by_resource
-    if params[:controller]+params[:action] =='homedemo'
-      "demo"
-    else
-      "application"
-    end
-  end
-  
+  layout "hatcher"
 end
 
 

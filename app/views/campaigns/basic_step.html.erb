@@ -9,7 +9,7 @@
               <li>
                 <div class="company-box">
                     <% if @startup.errors[:name].length > 0 %>
-                      <h4 class="error-message">Company name</h4>
+                      <h4 class="error-message">idea name</h4>
                       <%= text_field(:startup,:name, :style => "border-color:red")%>
                     <% else %>
                       <h4>Company name</h4>
@@ -20,10 +20,10 @@
               <li>
                 <div class="company-box">
                     <% if @startup.errors[:link].length > 0 %>
-                      <h4 class="error-message">Link to your website</h4>
+                      <h4 class="error-message">Link to your website (if exist)</h4>
                       <%= text_field(:startup,:link, :style => "border-color:red")%>
                     <% else %>
-                      <h4>Link to your website</h4>
+                      <h4>Link to your website (if exist)</h4>
                       <%= text_field(:startup,:link)%>
                     <%end%>
                 </div>

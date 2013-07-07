@@ -1,28 +1,7 @@
 class AuthenticationsController < ApplicationController
 
-  layout :layout_by_resource
+  layout "hatcher"
 
-  def layout_by_resource
-    case params[:action]
-      when 'demo_login'
-        "demo"
-      else
-        "hatcher"
-    end
-  end
-
-# ---------------- Demo ----------------------
-  
-  def demo_login
-    if params[:user][:username] == 'Sergey' and params[:user][:password] == '234s'
-      session[:id]=0
-      redirect_to  :controller => 'home', :action =>'index'
-    else
-      redirect_to :controller => 'home', :action => 'demo'
-    end 
-  end
-
-# ---------------- End demo -----------------
 
   def login
     @authentication = Authentication.new
@@ -73,6 +52,10 @@ class AuthenticationsController < ApplicationController
     id=session[:id]
     reset_session
     session[:id]=id
+  end
+
+  def join_login_form
+
   end
 
   def forgot_password
@@ -153,6 +136,7 @@ class AuthenticationsController < ApplicationController
             format.html { redirect_to controller: params[:gotocontroller], action: params[:gotoaction]}
           else
             format.html { redirect_to controller: 'users', action: 'index', id: @user.id}
+            format.js { render "remote_login"}
           end
         else
           format.html { render action: "new", gotocontroller: params[:gotocontroller], gotoaction: params[:gotoaction]}

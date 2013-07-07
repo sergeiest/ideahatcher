@@ -184,6 +184,27 @@ div.teaser{
 .container {
   margin:10px auto;
   width: 940px;
+
+  .button-next {
+    width:250px;
+    height: 200px;
+    float:left;
+    border:2px #bebebe solid;
+    //background-color: #eeeeee;
+    margin: 20px 30px;
+    p {
+      font-size:20px;
+      padding: 20% 0 0 0;
+      margin:0;
+      text-align: center;
+    }
+    img {
+      height: 70px;
+      margin: 20px 65px;
+      border:1px #bebebe solid;
+    }
+  }
+
 }
 
 .login-modal {
@@ -336,6 +357,7 @@ h2.project{
 
 .how-it-works {
   border:1px #c8c8c8 solid;
+  min-width: 880px;
 
   h2 {
     color: #07b5b5;
@@ -796,7 +818,6 @@ h2.project{
     color:white;
     height: 80px;
     margin-top:-25px;
-
   }
 
   .left-side{
@@ -863,7 +884,7 @@ h2.project{
     width:230px;
     border:3px white solid;
     color:white;
-    height: 100px;
+    height: 130px;
     float:left;
     textarea {
       width:225px;
@@ -884,6 +905,16 @@ h2.project{
       -webkit-border-radius:  5px;
 
     }
+
+    p {min-height: 110px;}
+    form {min-height: 120px;}
+
+    .approval_status{
+      border-top:1px white solid;
+      min-height: 0;
+    }
+
+
   }
 
   .my_corner {

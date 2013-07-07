@@ -123,7 +123,6 @@ class CompanydescriptionsController < ApplicationController
     end
   end
 
-
   # DELETE /companydescriptions/1
   # DELETE /companydescriptions/1.json
   def destroy

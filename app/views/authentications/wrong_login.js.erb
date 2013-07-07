@@ -15,3 +15,15 @@ for (var i = 0; i < aNodes.length; i++) {
     aNodes[i].hidden = false;
 }
 
+
+$('#login_modal').modal("show");
+
+var modalNode = document.getElementById("login_modal");
+modalForm = modalNode.getElementsByTagName("form")[0];
+
+
+inputNotes = modalForm.getElementsByTagName("input");
+for (var j = 2; j < 4; j++) {
+    inputNotes[j].style.border ="1px solid red";
+    inputNotes[j].style.color ="red";
+}

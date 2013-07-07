@@ -2,6 +2,7 @@ class CirclesController < ApplicationController
   # GET /circles
   # GET /circles.json
 
+
   before_filter do
     wrong_link = 0
     if session[:id] == nil || session[:id] == 0

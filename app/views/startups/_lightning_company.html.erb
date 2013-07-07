@@ -53,9 +53,9 @@
           <% end %>
         <% end %>
       </div>
-      <b><%= Allfield.find(description.allfield_id).field_name%></b>
+      <b><%= description.field_status %></b>
       <% if class_name == "class1" %>
-            <%= simple_format description.content.firstletters(400), :class => "description-p" %>
+            <%= simple_format description.content.firstletters(300), :class => "description-p" %>
       <% else %>
             <%= simple_format description.content.firstletters(300), :class => "description-p" %>
       <% end %>

@@ -33,6 +33,7 @@ class TagsController < ApplicationController
     startup = Startup.find(session[:startup_id])
     if params[:tag_name] and params[:tag_name].length.between?(1, 40)
       text = params[:tag_name].downcase.split.join('')
+      text = text[1..-1] if text[0] == "#"
       tag = startup.Tags.find_by_name(text)
       if !tag
         tag = Tag.new
