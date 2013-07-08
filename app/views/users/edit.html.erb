@@ -1,9 +1,99 @@
+<%= render "users/nav" %>
 
-<div class="container">
-    <%= render 'teaser' %>
+<div class="hatcher-container">
+  <div class="company-main">
+    <div class="company-left">
+      <div class="company-box">
 
-    <h3>Update your profile</h3>
+        <h3>Update your profile</h3>
 
-    <%= render 'form'%>
+        <% if @user.avatar? %>
+            <%= image_tag @user.avatar.url(:square), :class => "img-rounded-teaser"  %>
+        <% else %>
+            <img src='/images/profile/Nophoto.png' class="img-rounded-teaser"  />
+        <% end %>
+        <a href="#uploadPhoto" role="button" class="btn btn-mini" data-toggle="modal" style="margin-top:96px;margin-left:-51px;">
+          Update
+        </a>
 
+      </div>
+
+      <div class="company-box">
+
+        <%= form_for(@user) do |f| %>
+            <% if @user.errors.any? %>
+                <font color = 'red'>Please correct the following errors in your form</font>
+            <%end%>
+            <% if @user.errors[:firstname].length > 0 %>
+                <div class="field">
+                  <font color = 'red'>First Name<br /></font>
+                  <%= f.text_field :firstname, :style => "border-color:red" %>
+                </div>
+            <%else%>
+                <div class="field">
+                  First Name<br />
+                  <%= f.text_field :firstname %>
+                </div>
+            <%end%>
+            <% if @user.errors[:lastname].length > 0 %>
+                <div class="field">
+                  <font color = 'red'>Last Name<br /></font>
+                  <%= f.text_field :lastname, :style => "border-color:red"  %>
+                </div>
+            <%else%>
+                <div class="field">
+                  Last Name<br />
+                  <%= f.text_field :lastname %>
+                </div>
+            <%end%>
+
+
+            <%= link_to do %>
+                <button id="next-company" class="btn btn-warning">Save</button>
+            <% end %>
+
+        <% end %>
+
+
+      </div>
+    </div>
+    <div class="clear-both"></div>
+  </div>
 </div>
+
+<div id="uploadPhoto" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">Upload your new photo</h3>
+  </div>
+  <%= form_for(@user) do |f| %>
+      <div class="modal-body">
+        <p>Upload your photo (aspect ratio is 1:1) </p>
+        <%= f.file_field :avatar, :onchange => "checkFile()"%>
+        <p id="photo_error" style="color:red"></p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+        <button class="btn btn-warning" id="photo_upload" disabled>Upload photo</button>
+      </div>
+  <% end %>
+</div>
+
+
+<script>
+    function checkFile(){
+        var fileInput = document.getElementById('user_avatar');
+        var fileName = fileInput.value;
+        var ext = fileName.substring(fileName.lastIndexOf('.') + 1);
+        if(ext == "gif" || ext == "GIF" || ext == "JPEG" || ext == "jpeg" || ext == "jpg" || ext == "JPG" || ext == "png" || ext == "PNG") {
+            document.getElementById('photo_error').innerText = "";
+            document.getElementById('photo_upload').disabled = false;
+        }
+        else
+        {
+            document.getElementById('photo_error').innerText = "Upload Gif or Jpg images only";
+            document.getElementById('photo_upload').disabled = true;
+            fup.focus();
+        }
+    }
+</script>

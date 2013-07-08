@@ -11,9 +11,7 @@ class AuthenticationsController < ApplicationController
   def login_join
     @authentication = Authentication.new
     @authentication.username = params[:username]
-
     @user = @authentication.build_User
-
   end
 
 
@@ -42,10 +40,6 @@ class AuthenticationsController < ApplicationController
         format.html { render params.merge(:action => 'login') }
       end
     end
-  end 
-
-  def show
-
   end
 
   def wrong_link
@@ -54,9 +48,6 @@ class AuthenticationsController < ApplicationController
     session[:id]=id
   end
 
-  def join_login_form
-
-  end
 
   def forgot_password
      if params[:email] != nil

@@ -116,6 +116,7 @@ Webapp::Application.routes.draw do
   get "users/ideas_more"
   get "users/follow"
   get "users/change_password"
+  get "users/notifications"
 
   resources :users 
 

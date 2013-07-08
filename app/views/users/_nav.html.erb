@@ -1,0 +1,48 @@
+<div class="left-nav">
+
+
+  <% if session[:id] and session[:id] != 0 %>
+      <ul>
+
+        <% if params[:action] == "index" %>
+            <li>Get started <i class="icon-play glyphw" style="float:right"></i></li>
+        <% else %>
+            <li><%=  link_to 'Get started', {:controller => "users", :action => "index", :id => session[:id] }%></li>
+        <% end %>
+
+        <% if params[:action] == "notifications" %>
+            <li>Notifications <i class="icon-play glyphw" style="float:right"></i></li>
+        <% else %>
+            <li><%=  link_to 'Notifications', {:controller => "users", :action => "notifications", :id => session[:id] }%></li>
+        <% end %>
+
+        <% if params[:action] == "ideas" %>
+            <li>Discussions <i class="icon-play glyphw" style="float:right"></i></li>
+        <% else %>
+            <li><%= link_to 'Discussions', {:controller => "users", :action => "ideas", :id => session[:id]}%></li>
+        <% end %>
+
+        <% if params[:action] == "edit" %>
+            <li>Update profile<i class="icon-play glyphw" style="float:right"></i></li>
+        <% else %>
+            <li><%= link_to 'Update profile', {:controller => "users", :action => "edit", :id => session[:id]}%></li>
+        <% end %>
+
+        <% if params[:action] == "change_password" %>
+            <li>Passowrd <i class="icon-play glyphw" style="float:right"></i></li>
+        <% else %>
+            <li><%= link_to 'Change password', {:controller => "users", :action => "change_password", :id => session[:id]}%></li>
+        <% end %>
+
+
+        <li   class="cat-name" style="margin-top:40px;"><%=  link_to 'Other ideas', {:controller => "startups", :action => "index" }%></li>
+      </ul>
+
+  <% else %>
+
+
+
+
+  <% end %>
+
+</div>

@@ -1,0 +1,53 @@
+<%= render "users/nav" %>
+
+
+<div class="hatcher-container">
+  <div class="company-main">
+    <div class="company-left">
+      <div class="company-box">
+
+        <h3 style="color:#6f6f6f">Notifications</h3>
+        <% if !@notifications or @notifications.length == 0 %>
+          <p>You don't have new notifications</p>
+        <% else %>
+          <% @notifications.each do |notification| %>
+            <% case notification.event_type %>
+                <% when 1 %>
+                  <p>You were added to the team of <%= Startup.find(notification.event_id).name %> |
+                    <%= link_to "Confirm", {:action => "confirm_founder",
+                                            :controller => "investors",
+                                            :startup_id => notification.event_id,
+                                            :notification_id => notification.id},
+                                :remote => true,
+                                :id => "notification" + notification.id.to_s() %>
+                  </p>
+                <% when 2 %>
+                  <p>You were removed from the team of <%= Startup.find(notification.event_id).name %> |
+                    <%= link_to "Ok", {:action => "check_notification",
+                                       :controller => "notifications",
+                                       :id => notification.id},
+                                :remote => true,
+                                :id => "notification" + notification.id.to_s() %>
+                  </p>
+            <% end %>
+          <% end %>
+        <% end %>
+
+      </div>
+      <div class="company-box">
+        <h3 style="color:#6f6f6f">News</h3>
+        <% if @user_updates != nil %>
+            <% @user_updates.each do |news| %>
+              <p>
+                <b><%= news.newsdate.strftime '%m/%d/%Y' %> - <%= Startup.find(news.startup_id).name %> - <%= news.title %></b>
+                - <%= news.content %>
+              </p>
+            <% end %>
+        <% else %>
+          <p>To see updates in your news feed follow <%= link_to 'other ideas', startups_path %>.</p>
+        <% end %>
+      </div>
+    </div>
+    <div class="clear-both"></div>
+  </div>
+</div>

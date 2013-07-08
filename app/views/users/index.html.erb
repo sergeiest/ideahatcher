@@ -1,3 +1,5 @@
+<%= render "users/nav" %>
+
 <div class="container">
   <%= link_to({:controller => "campaigns", :action => "guide_step"}, :class => "button-next btn") do %>
     <p>Start new idea...</p>
@@ -8,55 +10,4 @@
     <%= image_tag "/images/how_it_works_4.png" %>
   <% end %>
 </div>
-<div class="container">
-<% if flash[:success] %>
-    <p class="notice" style="color:#46a546;"><%= flash[:success] %></p>
 
-<% end %>
-<p id="notice"><%= @shortnotice %></p>
-
-<% if session[:owner_type]==1 %>
-  <h3 style="color:#6f6f6f">Notifications</h3>
-     <% if !@notifications or @notifications.length == 0 %>
-        <p>You don't have new notifications</p>
-     <% else %>
-        <% @notifications.each do |notification| %>
-           <% case notification.event_type %>
-              <% when 1 %>
-                  <p>You were added to the team of <%= Startup.find(notification.event_id).name %> |
-                    <%= link_to "Confirm", {:action => "confirm_founder",
-                                            :controller => "investors",
-                                            :startup_id => notification.event_id,
-                                            :notification_id => notification.id},
-                                :remote => true,
-                                :id => "notification" + notification.id.to_s() %>
-                  </p>
-              <% when 2 %>
-                  <p>You were removed from the team of <%= Startup.find(notification.event_id).name %> |
-                    <%= link_to "Ok", {:action => "check_notification",
-                                            :controller => "notifications",
-                                            :id => notification.id},
-                                :remote => true,
-                                :id => "notification" + notification.id.to_s() %>
-                  </p>
-           <% end %>
-        <% end %>
-     <% end %>
-<% end %>
-<h3 style="color:#6f6f6f">News</h3>
-<% if @user_updates != nil %>
-   <% @user_updates.each do |news| %>
-      <p>
-        <b><%= news.newsdate.strftime '%m/%d/%Y' %> - <%= Startup.find(news.startup_id).name %> - <%= news.title %></b>
-        - <%= news.content %>
-      </p>
-   <% end %>
-<% else %>
-    <% if session[:owner_type]==1 %>
-        <p>To see updates in your news feed follow <%= link_to 'other ideas', startups_path %>.</p>
-    <% else %>
-        <p>This person does not have news to display</p>
-    <% end %>
-<% end %>
-
-</div>
