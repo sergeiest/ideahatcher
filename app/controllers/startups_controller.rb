@@ -246,7 +246,7 @@ class StartupsController < ApplicationController
     @startups.sort! {|y, x| x["status"] <=> y["status"]}
     @startups_shown = params[:startups_shown].to_i + 6
     @startups_shown = 0 if @startups.length <= @startups_shown
-    @startups = @startups[params[:startups_shown].to_i..params[:startups_shown].to_i+6]
+    @startups = @startups[params[:startups_shown].to_i..params[:startups_shown].to_i + 5]
 
     respond_to do |format|
       format.js

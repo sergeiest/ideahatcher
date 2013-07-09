@@ -49,11 +49,13 @@
       <div id="startup-results">
         <%= render :partial =>  "startup", :collection => @startups %>
         <% if params[:action] == "index" and @startups_shown != 0%>
+          <div>
             <div class="clear-both"></div>
             <%= link_to({:action => "show_more_startups", :startups_shown => @startups_shown},
                        :class => "show-more", :remote => true) do %>
                 <i class='icon-chevron-down glyphw'></i>Show more<i class='icon-chevron-down glyphw'></i>
             <% end %>
+          </div>
         <% end %>
       </div>
       <div class="clear-both"></div>

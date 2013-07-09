@@ -1,4 +1,4 @@
-document.getElementsByClassName('page-title')[0].innerHTML = "Search results";
+
 var mainDiv = document.getElementById("startup-results");
 
 var moreLink = mainDiv.getElementsByClassName("show-more")[0];
@@ -45,13 +45,13 @@ var moreLink = mainDiv.getElementsByClassName("show-more")[0];
 
 
     startupDiv.firstChild.innerHTML = htmlText;
-    mainDiv.insertBefore(startupDiv, moreLink);
+    mainDiv.insertBefore(startupDiv, moreLink.parentNode);
 <% end %>
 
 <% if @startups_shown == 0 %>
-    mainDiv.removeChild(moreLink);
+    moreLink.parentNode.removeChild(moreLink);
 <% else %>
-    moreLink.setAttribute("href", "/startups/show_more_startups?startups_shown=<%= @startups_shown%>");
+    moreLink.setAttribute("href", "/startups/show_more_startups?startups_shown=<%= @startups_shown %>");
 <% end %>
 if (mainDiv.innerHTML == "") {
     mainDiv.innerHTML = "<p>no results</p>";
