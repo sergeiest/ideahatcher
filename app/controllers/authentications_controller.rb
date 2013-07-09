@@ -29,7 +29,7 @@ class AuthenticationsController < ApplicationController
         params.delete :authenticity_token
         redirect_to  params.merge(:controller => go_to_controller, :action => go_to_action)
       else
-        redirect_to  :controller => 'users', :action =>'ideas', :id => session[:id]
+        redirect_to  :controller => 'users', :action =>'index', :id => session[:id]
       end
     else
       flash[:error] = 'Invalid email/password combination'

@@ -1,6 +1,0 @@
-<% @startup = Startup.find(session[:startup_id])%>
-<h1>Add a new team member to <%= @startup.name %></h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Back', companyteams_path %>

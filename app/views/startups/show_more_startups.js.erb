@@ -1,0 +1,60 @@
+document.getElementsByClassName('page-title')[0].innerHTML = "Search results";
+var mainDiv = document.getElementById("startup-results");
+
+var moreLink = mainDiv.getElementsByClassName("show-more")[0];
+
+<% @startups.each do |startup| %>
+    <% div_name = 'project' + startup.id.to_s() %>
+
+    var startupDiv = document.createElement("div");
+    startupDiv.onmousemove = function() { MM_changeProp('<%= div_name %>','','backgroundColor','#ecf8ff','DIV'); };
+    startupDiv.onmouseout = function() { MM_changeProp('<%= div_name %>','','backgroundColor','white','DIV'); };
+
+    startupDiv.setAttribute("id", "project<%= startup.id %>");
+    startupDiv.setAttribute("class", "startup-frame");
+
+    startupDiv.innerHTML = "<a href='<%= startup.id %>'></a>";
+    <% if startup.avatar? %>
+        htmlText = '<%= image_tag startup.avatar.url(:large) %>';
+    <% else %>
+        htmlText = '<img src="/images/profile/Nologo.png">';
+    <% end %>
+
+    htmlText = htmlText + "<h2><%= startup.name %></h2>";
+    htmlText = htmlText + '<p class="p-content">This is just another company no one cares about</p>';
+
+
+    <% tags = startup.Tags
+    tag_string = ""
+    tags.each do |tag|
+        tag_string += "#" + tag.name + ", "
+    end
+    if tag_string.length > 26
+      tag_string = tag_string[0..24] + ".."
+    else
+      if tag_string.length > 0
+        tag_string = tag_string[0..-3]
+      else
+        tag_string = "no hashtags"
+      end
+    end
+    %>
+
+    htmlText = htmlText + '<p class="hashtag" style="border:0px;background-color: inherit;"><%= tag_string%></p>';
+    htmlText = htmlText + '<p class="vote-stat"><%= rand(150) %> people voted</p>';
+
+
+    startupDiv.firstChild.innerHTML = htmlText;
+    mainDiv.insertBefore(startupDiv, moreLink);
+<% end %>
+
+<% if @startups_shown == 0 %>
+    mainDiv.removeChild(moreLink);
+<% else %>
+    moreLink.setAttribute("href", "/startups/show_more_startups?startups_shown=<%= @startups_shown%>");
+<% end %>
+if (mainDiv.innerHTML == "") {
+    mainDiv.innerHTML = "<p>no results</p>";
+};
+
+

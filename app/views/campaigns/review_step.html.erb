@@ -93,24 +93,6 @@
 
         <div class="highlighted-list">
           <li>
-            <h5>Team</h5>
-            <% @startup_teams.each do |startup_team|%>
-            <h5><%= startup_team.firstname %><%= startup_team.lastname %> - <%= startup_team.title %></h5>
-            <table style="margin-left:30px;">
-              <tr>
-                <td style="width:150px;"><p>CMU affiliation:</p></td>
-                <td><p><%= startup_team.cmuaffiliation %></p></td>
-              </tr>
-                <td style="width:150px;"><p>Description:</p></td>
-                <td><p><%= startup_team.description %></p></td>
-              </tr>
-            </table>
-            <% end %>
-          </li>
-        </div>
-
-        <div class="highlighted-list">
-          <li>
             <h5>Publish company profile</h5>
             <p style="font-style:italic;">Confirm that your company profile is ready to be published on the platform. After confirming the profile will
                    be available after a short review by our team within 24 hours.</p>

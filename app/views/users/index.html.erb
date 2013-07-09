@@ -1,6 +1,7 @@
 <%= render "users/nav" %>
 
-<div class="container">
+<div class="hatcher-container">
+  <div class="company-main">
   <%= link_to({:controller => "campaigns", :action => "guide_step"}, :class => "button-next btn") do %>
     <p>Start new idea...</p>
     <%= image_tag "/images/how_it_works_2.png" %>
@@ -9,5 +10,6 @@
     <p>Browse other ideas...</p>
     <%= image_tag "/images/how_it_works_4.png" %>
   <% end %>
+  </div>
 </div>
 

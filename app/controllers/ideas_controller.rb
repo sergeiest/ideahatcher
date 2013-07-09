@@ -19,46 +19,6 @@ class IdeasController < ApplicationController
     end
   end
 
-  def index
-    @user = User.find(session[:id]) if session[:id] and session[:id] != 0
-    session[:startup_id] = params[:id]
-    @startup = Startup.find(params[:id])
-    @startup_followers = @startup.Follower_users.all.uniq
-    @startup_owners = @startup.Owner_users.all.uniq
-
-    if session[:id] == nil || session[:id]== 0
-      @reader_type = 0
-    else
-      if @startup_owners.first.id == session[:id]
-        @reader_type = 3
-      else
-        if !@startup_followers.detect{|w| w.id == session[:id]}
-          @reader_type = 2
-        else
-          @reader_type = 1
-        end
-      end
-    end
-
-    if @reader_type > 1
-      @ideas = @startup.Ideas
-    else
-      @ideas = @startup.Ideas.find_all_by_is_protected(0)
-    end
-
-
-    @ideas.sort! { |a, b| [a['title'], a['created_at']] <=> [b['title'], b['created_at']] }
-
-    @idea = Idea.new
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @ideas }
-    end
-
-  end
-
-
   def create
 
     idea = Idea.new(params[:idea])

@@ -1,16 +1,5 @@
 class CompanyupdatesController < ApplicationController
-  # GET /companyupdates
-  # GET /companyupdates.json
-  def index
-    @startup = Startup.find(session[:startup_id])
-    @companyupdates = @startup.Companyupdates
-    @companyupdate = Companyupdate.new
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @companyupdates }
-    end
-  end
 
 
   # POST /companyupdates

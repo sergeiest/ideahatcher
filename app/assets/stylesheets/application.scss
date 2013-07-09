@@ -21,12 +21,18 @@
 }
 
 
-
-
 // ----------------------- General ---------------------
 
 .clear-both {
   clear:both;
+}
+
+.glyphw{
+  background-image: url(/assets/glyphicons-halflings.png);
+  margin:0 5px;
+}
+.glyphw-white{
+  background-image: url(/assets/glyphicons-halflings-white.png);
 }
 
 html{ height:100%;}
@@ -35,177 +41,10 @@ body {
   height:100%;
   min-width: 600px;
   font-family: 'Open Sans', Arial, sans-serif;
-  //  font-family: 'MisoRegular', Arial, sans-serif;
 }
 
+// ------------------------------------ Layout ---------------------------------------
 
-
-// ------------------------------- Old -------------------------
-
-.sign-up {
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  width:600px;
-  margin:0 auto;
-
-  h4 {
-    font-weight:normal;
-    color:orange;
-  }
-
-  ol {
-    font-weight:bold;
-  }
-
-
-  p {
-    line-height:normal;
-    font-size:14px;
-    font-weight:normal;
-  }
-
-  .highlighted-list {
-    background-color: #ecf8ff;
-    margin:10px -20px 10px -60px;
-    padding:2px 35px;
-    color:#333333;
-
-
-    input {
-      width:530px;
-
-      .small-input {
-        width:200px;
-      }
-
-    }
-
-    .input-prepend {
-      input {
-        width:200px;
-      }
-    }
-
-
-
-
-    .text-here {
-      padding:0 20px;
-    }
-
-    textarea{
-      width:530px;
-      height:105px;
-    }
-    .hashtag_form {
-      input {width: 200px; margin:0;}
-
-    }
-
-
-
-    .hashtag {
-      display:inline;
-      margin: 0 5px;
-      padding:4px;
-      background-color: white;
-      border:1px #c8c8c8 solid;
-      line-height: 32px;
-      .delete-tag {
-        background-color: #e5e5e5;
-        margin:0 0 0 4px;
-        padding:2px 6px;
-        font-size:16px;
-        line-height: 12px;
-        font-weight: normal;
-        cursor:pointer;
-
-
-      }
-
-
-    }
-
-  }
-}
-
-
-// ----------------------------- Company page (old) --------------------------
-
-
-
-.right-company{
-  float:right;
-  width:200px;
-}
-
-.campaign-info {
-  -webkit-border-radius: 5px;
-  border:1px #c8c8c8 solid;
-  background-color: white;
-  margin:0 0 10px 0;
-  padding:20px;
-  font-size:12px;
-  line-height:24px;
-
-}
-
-.box-company {
-  margin:0 0 10px 0;
-  padding:0px;
-  color:#333333;
-  width:600px;
-
-  img {padding:0 20px;}
-
-}
-
-
-div.teaser{
-  maring: 20px auto;
-  width: 900px;
-}
-
-.error-message {
-  color:red;
-  border-color:red;
-}
-
-// ------------------------- Layout ---------------------------------------
-
-#contacts-box {
-  clear:both;
-  border-top:1px #bebebe solid;
-  text-align:center;
-  width: 1105px;
-  margin: 0 auto;
-
-}
-
-.container {
-  margin:10px auto;
-  width: 940px;
-
-  .button-next {
-    width:250px;
-    height: 200px;
-    float:left;
-    border:2px #bebebe solid;
-    //background-color: #eeeeee;
-    margin: 20px 30px;
-    p {
-      font-size:20px;
-      padding: 20% 0 0 0;
-      margin:0;
-      text-align: center;
-    }
-    img {
-      height: 70px;
-      margin: 20px 65px;
-      border:1px #bebebe solid;
-    }
-  }
-
-}
 
 .login-modal {
   width: 700px;
@@ -240,6 +79,108 @@ div.teaser{
 }
 
 
+
+.hatcher-nav {
+  height: 40px;
+  background-color: #07b5b5;
+
+
+  .logo-img {
+    padding:2px 35px;
+    float:left;
+    img {height:35px;}
+  }
+
+  .login-nav {
+    form {
+      width:500px;
+      input { width:150px; height:16px;}
+    }
+    line-height:12px;
+    float:right;
+    margin:0;
+    font-size: 12px;
+    p {
+      margin:2px;
+      color:white;
+    }
+    .login-input {
+      float:left;
+      margin:5px 5px -5px 5px;
+      color: #c2c2c2;
+    }
+  }
+
+  .user-nav {
+    line-height:12px;
+    float:right;
+    margin:-10px 20px 0 0;
+    font-size: 14px;
+
+    .dropdown-toggle .notifications {
+      -webkit-border-radius: 10px;
+      margin:-30px -20px 30px 20px;
+      border:0px white solid;
+      width:15px;
+      height:13px;
+      padding:1px 0;
+      font-size:10px;
+      text-align: center;
+      background-color: red;
+      color: white;
+    }
+
+    .dropdown-menu .notifications {
+      -webkit-border-radius: 10px;
+      margin:-30px -20px 30px 5px;
+      padding:2px 15px;
+      font-weight: normal;
+      text-align: center;
+      background-color: grey;
+      color: white;
+    }
+
+    .custom-dropdown a {
+      height: 12px;
+      color:white;
+    }
+    .custom-dropdown a:hover, a:active, a:focus {color: #313131;}
+
+
+    img {
+      margin-top:-7px;
+      padding:0;
+      height: 25px;
+    }
+
+  }
+
+}
+
+
+.footer {
+  background-color:#e3e3e3;
+  font-size:12px;
+  color: #696969;
+  min-height: 40px;
+  padding:20px;
+  margin:0px 0;
+  text-align: center;
+}
+
+
+
+.hatcher-container {
+  margin:0px 0 0px 105px;
+  padding:10px 20% 0 0;
+  position: relative;
+  min-width:600px;
+  min-height: calc( 100% - 141px );
+}
+
+
+
+
 // ------------------------------ Other ------------------------------------
 
 h2.project{
@@ -255,26 +196,9 @@ h2.project{
 }
 
 
-.description {
-  height:85px;
-  color: #595959;
-  display: block;
-  font-size: 12px;
-  line-height: 16px;
-  padding-left: 0px;
-}
+// ------------------------------- Home Page ---------------------------------------
 
 
-.invest-field {
-  width:260px;
-  float:left;
-  padding-left:40px;
-  input {
-    width:100px;
-  }
-}
-
-// -------------------------- Home page (new) ---------------------------
 .home-signup {
   position: absolute;
   top:80px;
@@ -397,107 +321,8 @@ h2.project{
   }
 }
 
+// -----------------------------------Ideas Page--------------------------------------
 
-// -------------------------- Home page (old) ---------------------------
-
-
-
-.background-img {
-  background:url('/images/Home_background.png') no-repeat center top;
-  background-size: 100% 600px;
-}
-
-
-.home-nav {
-  height: 55px;
-  background-color: #e3e3e3;
-
-  .logo-img {
-    padding:10px 35px;
-    float:left;
-    img {height:30px;}
-  }
-
-  .login-nav {
-    form {
-      width:500px;
-      input { width:150px; height:16px;}
-    }
-    line-height:12px;
-    float:right;
-    margin:0;
-    font-size: 12px;
-    p {margin:2px}
-    .login-input {
-      float:left;
-      margin:5px 5px -5px 5px;
-    }
-  }
-
-  .user-nav {
-    line-height:12px;
-    float:right;
-    margin:-5px 100px 0 0;
-
-    p {margin:2px; font-size: 12px;}
-    .login-input {
-      float:left;
-      margin:5px 5px 0 5px;
-    }
-    a {}
-
-  }
-
-}
-
-
-.singup-right {
-  -webkit-border-radius: 5px;
-  background-color:white;
-  float:right;
-  margin:25px 0;
-  padding:10px 30px;
-  width:280px;
-  height:390px;
-  form {
-    margin:20px 30px 0 30px;
-    line-height:16px;
-    font-size: 12px;
-  }
-}
-
-.home-message{
-  -webkit-border-radius: 5px;
-  width:400px;
-  margin:50px;
-  padding:10px 30px;
-  background-color:#696969;
-  opacity:0.8;
-  h3 {
-    color:white;
-    text-shadow:  2px 2px black;
-  }
-  hr { box-shadow:  1px 1px black;}
-}
-
-.footer {
-  background-color:#e3e3e3;
-  font-size:12px;
-  color: #696969;
-  min-height: 40px;
-  padding:20px;
-  margin:0px 0;
-  text-align: center;
-}
-
-.container-ideas {
-  background-color: #f3f3f3;
-  margin:0px auto;
-  padding:10px 0;
-  h3 {margin-top:0;}
-}
-
-// ----------------------------- Ideas Page ----------------------------
 
 .idea {
   -webkit-border-radius: 5px;
@@ -590,16 +415,71 @@ h2.project{
 
 .author {font-style:italic;text-align:right}
 
-// ----------------- Company page (new) -----------------------
+
+
+// --------------------------------- Company page ------------------------------------
+
 
 .company-main {
   border:0px #c8c8c8 solid;
   margin:0 10px;
   padding:10px;
+  width:100%;
+  background-color: green;
+
+
+  .button-next {
+    width:250px;
+    height: 200px;
+    float:left;
+    border:2px #bebebe solid;
+    //background-color: #eeeeee;
+    margin: 20px 30px;
+    p {
+      font-size:20px;
+      padding: 20% 0 0 0;
+      margin:0;
+      text-align: center;
+    }
+    img {
+      height: 70px;
+      margin: 20px 65px;
+      border:1px #bebebe solid;
+    }
+  }
+
+  .more-startups {
+    color: #07b5b5;
+    float:right;
+    font-size:12px;
+    margin:10px 60px 0 0;
+  }
+
+  h1 {
+    padding-left:10px;
+    color:orange;
+    font-size:24px;
+    font-weight: normal;
+    margin-top: -0PX;
+    padding-top: 0;
+  }
+
+  .show-more {
+    width:100%;
+    text-align: center;
+    font-size:14px;
+    font-weight: normal;
+    margin-top: -0PX;
+    padding-top: 0;
+  }
+
+
+
   .company-left {
     float:left;
     padding-left: 10px;
     width: 80%;
+    background-color: red;
     .company-box {
       width: 100%;
       .person-info {
@@ -716,12 +596,14 @@ h2.project{
       width:30%;
     }
 
-    .slider-bar {
+
+    .slider-bar, .new-box {
       background-color: #f1f1f1;
       border:1px #c8c8c8 solid;
       padding: 10px;
       margin:0 0 5px 0;
       color:#07b5b5;
+
       p {
         min-height:00px ;
         width: 100%;
@@ -767,12 +649,10 @@ h2.project{
     }
 
 
+    .new-box {border:0px #c8c8c8 solid; background-color: inherit;}
 
 
   }
-
-
-
 
 
   .company-right {
@@ -796,8 +676,8 @@ h2.project{
   }
 }
 
+// ---------------------------------- A/B testing -----------------------------------
 
-// ----------------- A/B testing ------------------------------
 
 
 .idea-test{
@@ -953,7 +833,10 @@ h2.project{
 
 }
 
-// ------------------------- Guideline menu ---------------------
+
+
+
+// ----------------------------------- Navigation ------------------------------------
 
 .guideline-menu  {
   position:absolute;
@@ -968,12 +851,45 @@ h2.project{
   padding:0 20px;
 }
 
-// ------------------------- Startup Page -----------------------
 
-.startup-holder {
-  height: 320px;
+.left-nav {
+  float:left;
+  background-color: #f7f7f7;
+  min-height: calc(100%-60px);
+  width: 120px;
+  border-top: 1px solid #dadada;
+  border-right: 1px solid #dadada;
+  border-bottom: 1px solid #dadada;
+  padding: 40px 20px;
+  margin:20px 20px 20px 0px;
+  img {
+    margin:0 0 20px 8px;
+    width: 100px;
+    cursor: pointer;
+  }
+  input {
+    width:100px;
+    font-size: 12px;
+    height: 16px;
+    margin-bottom:20px;
+  }
+  ul {
+    list-style-type: none;
+    margin:0;
+    font-size: 12px;
+    li {padding:0 5px;}
+    .cat-name {
+      color: orange;
+      border-top:1px solid #adadad;
+      border-bottom:1px solid #adadad;
+
+    }
+
+  }
+
 }
 
+// --------------------------------- Startup Page ------------------------------------
 
 .startup-frame{
   float:left;
@@ -1023,8 +939,7 @@ h2.project{
     padding-top:4px;
   }
 }
-
-// ------------------------- Lightning Vote Page -----------------------
+// --------------------------------- Lightning Vote ----------------------------------
 
 .class0 {
   width: 560px; height: 760px;
@@ -1160,145 +1075,6 @@ h2.project{
 
 }
 
-.left-nav {
-  float:left;
-  background-color: #f7f7f7;
-  min-height: calc(100%-60px);
-  width: 120px;
-  border-top: 1px solid #dadada;
-  border-right: 1px solid #dadada;
-  border-bottom: 1px solid #dadada;
-  padding: 40px 20px;
-  margin:20px 20px 20px 0px;
-  img {
-    margin:0 0 20px 8px;
-    width: 100px;
-    cursor: pointer;
-  }
-  input {
-    width:100px;
-    font-size: 12px;
-    height: 16px;
-    margin-bottom:20px;
-  }
-  ul {
-    list-style-type: none;
-    margin:0;
-    font-size: 12px;
-    li {padding:0 5px;}
-    .cat-name {
-      color: orange;
-      border-top:1px solid #adadad;
-      border-bottom:1px solid #adadad;
-
-    }
-
-  }
-
-}
-
-
-// -------------------------- ideaHatcher layout ---------------------------
-
-.hatcher-nav {
-  height: 40px;
-  background-color: #07b5b5;
-
-
-  .logo-img {
-    padding:2px 35px;
-    float:left;
-    img {height:35px;}
-  }
-
-  .login-nav {
-    form {
-      width:500px;
-      input { width:150px; height:16px;}
-    }
-    line-height:12px;
-    float:right;
-    margin:0;
-    font-size: 12px;
-    p {
-      margin:2px;
-      color:white;
-    }
-    .login-input {
-      float:left;
-      margin:5px 5px -5px 5px;
-      color: #c2c2c2;
-    }
-  }
-
-  .user-nav {
-    line-height:12px;
-    float:right;
-    margin:-10px 20px 0 0;
-    font-size: 14px;
-
-    .dropdown-toggle .notifications {
-      -webkit-border-radius: 10px;
-      margin:-30px -20px 30px 20px;
-      border:0px white solid;
-      width:15px;
-      height:13px;
-      padding:1px 0;
-      font-size:10px;
-      text-align: center;
-      background-color: red;
-      color: white;
-    }
-
-    .dropdown-menu .notifications {
-      -webkit-border-radius: 10px;
-      margin:-30px -20px 30px 5px;
-      padding:2px 15px;
-      font-weight: normal;
-      text-align: center;
-      background-color: grey;
-      color: white;
-    }
-
-    .custom-dropdown a {
-      height: 12px;
-      color:white;
-    }
-    .custom-dropdown a:hover, a:active, a:focus {color: #313131;}
-
-
-    img {
-      margin-top:-7px;
-      padding:0;
-      height: 25px;
-    }
-
-  }
-
-}
-
-.hatcher-container {
-  margin:0px 0 0px 105px;
-  padding:20px 20% 0 0;
-  position: relative;
-  min-width:600px;
-
-  .more-startups {
-    color: #07b5b5;
-    float:right;
-    font-size:12px;
-    margin:20px 60px 0 0;
-  }
-
-  h1 {
-    padding-left:30px;
-    color:orange;
-    font-size:24px;
-    font-weight: normal;
-  }
-
-}
-
 
 // ---------------------------- People --------------------
 
@@ -1351,32 +1127,6 @@ h2.project{
   }
 }
 
-
-
-
-.highlighted-list {
-  .person-info {
-    width: 180px;
-    margin:15px 0;
-    float:left;
-    img {
-      height: 20px;
-      width: 20px;
-      float:left;
-      margin-right: 10px;
-    }
-    h5{
-      margin:0;
-      padding-top: 0px;
-      font-size:12px;
-      color: black;
-    }
-
-  }
-}
-
-// ------------------------------- Modal ----------------------------
-
 .modal-info {
  h3 {color: #07b5b5;}
 
@@ -1389,18 +1139,4 @@ h2.project{
  p, a {
    font-size: 16px;
  }
-
-
-
 }
-
-// ------------------------------- ??? ------------------------------
-
-.glyphw{
-  background-image: url(/assets/glyphicons-halflings.png);
-  margin:0 5px;
-}
-.glyphw-white{
-  background-image: url(/assets/glyphicons-halflings-white.png);
-}
-

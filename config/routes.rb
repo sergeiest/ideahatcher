@@ -70,8 +70,6 @@ Webapp::Application.routes.draw do
 
   resources :pictures
 
-  resources :companyteams
-
   post "companydescriptions/new_suggestion"
   post "companydescriptions/update_description"
   resources :companydescriptions
@@ -114,7 +112,6 @@ Webapp::Application.routes.draw do
   get "users/invest"
   get "users/ideas"
   get "users/ideas_more"
-  get "users/follow"
   get "users/change_password"
   get "users/notifications"
 
@@ -143,14 +140,15 @@ Webapp::Application.routes.draw do
   get "startups/followers"
   get "startups/your_ideas"
   get "startups/your_following_ideas"
+  get "startups/show_more_startups"
   resources :startups
   
   resources :peoples
   
-  get "home/contacts"
-  get "home/noaccess"
-  get "home/colorful"
+
   get "home" => 'home#colorful'
+  get "home/index" => 'home#colorful'
+  get "home/show" => 'home#colorful'
   resources :home
 
 

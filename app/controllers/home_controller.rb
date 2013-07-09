@@ -3,33 +3,12 @@ class HomeController < ApplicationController
   layout "hatcher"
 
   before_filter do
-    if params[:action] == "index" and (session[:id] != nil and session[:id] != 0)
-      redirect_to :controller => 'users', :action => 'ideas', :id => session[:id]
-    end
+    redirect_to :action => 'colorful' if params[:action] != "colorful"
   end
 
 
   def index
-
-    @authentication = Authentication.new
-    @authentication.username = params[:username]
-    @user = @authentication.build_User
-    @ideas = Idea.where(:is_protected => 0)
-
-    @ideas.uniq! {|a| a.startup_id}
-    @ideas.sort! { |a, b| [a['created_at']] <=> [b['created_at']] }
-
-
-
-
-    campaigns = Campaign.where(:status => 3).first(3)
-
-    @startups = Array.new(campaigns.length)
-    i=0
-    campaigns.each do |campaign|
-      @startups[i] = Startup.find(campaign.startup_id)
-      i=i+1
-    end
+    redirect_to :action => "colorful" and return
   end
 	
 	def contacts

@@ -17,7 +17,7 @@ class CampaignsController < ApplicationController
         when "next_step"
         when "guide_step", "basic_step", "create_step"
           session[:startup_id] = nil
-        when "basic_step", "about_step", "description_step", "team_step", "team_save_step", "review_step", "upload_logo", "update",
+        when "basic_step", "about_step", "description_step", "review_step", "upload_logo", "update",
             "destroy", "publish_step", "circles_step", "update_description", "update_name"
           user = User.find(session[:id])
           if session[:startup_id] == nil
@@ -230,8 +230,6 @@ class CampaignsController < ApplicationController
           @company_description_3 = @startup.Companydescriptions.find_by_allfield_id(allfield.id)
       end
     end
-
-    @startup_teams = @startup.Companyteams
 
 
   end

@@ -48,6 +48,9 @@ class StartupsController < ApplicationController
   def index
     @user = User.find(session[:id])  if session[:id] and session[:id] != 0
     @startups = Startup.where("status > 0").all
+    @startups.sort! {|y, x| x["status"] <=> y["status"]}
+    @startups = @startups[0..8]
+    @startups_shown = 9
 
     tags = Tag.all
 
@@ -225,9 +228,27 @@ class StartupsController < ApplicationController
       @startups = Startup.where("UPPER(name) LIKE UPPER(?)", "%" + s_name + "%").all[0..8]
     end
 
+    @startups_shown = 0
+    @startups_shown = 9 if @startups.length > 0
+
     respond_to do |format|
       format.js
     end
+  end
+
+
+  def show_more_startups
+
+    @startups = Startup.where("status > 0").all
+    @startups.sort! {|y, x| x["status"] <=> y["status"]}
+    @startups_shown = params[:startups_shown].to_i + 6
+    @startups_shown = 0 if @startups.length <= @startups_shown
+    @startups = @startups[params[:startups_shown].to_i..params[:startups_shown].to_i+6]
+
+    respond_to do |format|
+      format.js
+    end
+
   end
 
   def vote_lightning

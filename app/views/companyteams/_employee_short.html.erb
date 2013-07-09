@@ -1,9 +1,0 @@
-<div class="employee-short">
-    <% if employee_short.avatar? %>
-        <%= image_tag employee_short.avatar.url(:thumb), :class => "img-rounded-mid"  %>
-    <% else %>
-        <img src='/images/profile/Nophoto.png' class="img-rounded-mid"  />
-    <% end %>
-    <h5> <%= employee_short.firstname %> <%= employee_short.lastname %></h5>
-    <%= simple_format h employee_short.title %>
-</div>

@@ -6,8 +6,6 @@ class Startup < ActiveRecord::Base
 
   has_many :Companyupdates
   has_many :Companydescriptions
-  has_many :Companyteams
-  has_many :Companydocuments
   has_many :Ideas
   has_many :Tags
 

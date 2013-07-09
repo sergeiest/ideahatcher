@@ -6655,27 +6655,6 @@ footer h4 {margin-bottom: 8px;}
     position:fixed;
 }
 
-.campaign-info-table{
-    margin-top:20px;
-    margin-bottom:20px;
-}
-
-.campaign-info-table td{
-    text-align:right;
-    width:150px;
-    font-size: 14px;
-    padding-right:10px;
-
-}
-
-.campaign-info-table th{
-    text-align:left;
-    width:150px;
-    font-size: 14px;
-    padding-left:10px;
-
-}
-
 .main-nav {
     color:#f88a00;
     border-bottom-color: #bebebe;

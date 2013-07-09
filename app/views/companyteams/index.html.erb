@@ -1,9 +1,0 @@
-<%= render :partial => "startups/teaser" %>
-
-<%= render :partial => 'startups/startupnav' %>
-
-<h3>Manage the team of the company <%= @startup.name %></h3>
-
-<%= link_to 'Add a new team member', :action => 'new' %>
-
-<%= render :partial => "employeefull", :collection => @companyteams %>

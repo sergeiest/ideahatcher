@@ -67,27 +67,6 @@ ActiveRecord::Schema.define(:version => 20130707212853) do
     t.integer  "status"
   end
 
-  create_table "companyteams", :force => true do |t|
-    t.integer  "startup_id"
-    t.string   "firstname"
-    t.string   "lastname"
-    t.string   "title"
-    t.text     "description"
-    t.string   "linkedin"
-    t.string   "cmuaffiliation"
-    t.string   "email"
-    t.string   "phone"
-    t.string   "address"
-    t.integer  "picture_id"
-    t.string   "avatar"
-    t.datetime "created_at",          :null => false
-    t.datetime "updated_at",          :null => false
-    t.string   "avatar_file_name"
-    t.string   "avatar_content_type"
-    t.integer  "avatar_file_size"
-    t.datetime "avatar_updated_at"
-  end
-
   create_table "companyupdates", :force => true do |t|
     t.integer  "startup_id"
     t.string   "title"
