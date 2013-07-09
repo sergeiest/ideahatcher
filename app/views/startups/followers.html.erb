@@ -8,6 +8,21 @@
         <%= render :partial => "investors/people", :collection => @people, :locals => {:action_type => nil} %>
       </div>
     </div>
+    <div class="company-right">
+      <%= link_to 'Follow',
+                  {:controller => 'investors', :action => 'follow_company'},
+                  :class => 'btn btn-warning',
+                  :id => 'follow_btn',
+                  :remote => true %>
+      <div class="company-info">
+        <h4>Team</h4>
+        <%= render :partial => 'investors/person', :collection => @startup_owners, :locals => { :action_type => nil, :status => 1} %>
+        <% if session[:connection_type]==2 %>
+            <%= link_to 'Add more people >', {:controller => "startups", :action => "team", :id => params[:id]},
+                        :class => "bottom-link" %>
+        <% end %>
+      </div>
+    </div>
     <div class="clear-both"></div>
   </div>
 </div>

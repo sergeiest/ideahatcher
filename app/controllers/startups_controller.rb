@@ -172,6 +172,8 @@ class StartupsController < ApplicationController
     @tags = @startup.Tags
     @people = User.all[0..5]
     @circles = User.all[0..9]
+    @startup_owners = @startup.Owner_users.all.uniq
+    @startup_followers = @startup.Follower_users.all.uniq
   end
 
   def dashboard
@@ -201,6 +203,7 @@ class StartupsController < ApplicationController
   def followers
     @startup = Startup.find(session[:startup_id])
     @people = @startup.Follower_users.all[0..20]
+    @startup_owners = @startup.Owner_users.all.uniq
   end
 
   def idea_hatching

@@ -2,7 +2,6 @@
 
 <div class="hatcher-container">
   <div class="company-main">
-    <div class="company-left">
       <div class="company-content">
         <% @descriptions.each do |description| %>
             <div class="company-box" id="div_<%= description.id%>">
@@ -13,7 +12,7 @@
                     <div class="my_corner previous-test"></div>
                     <div class="idea-statement current-test">
                         <% old_description = Companydescription.find(description.companydescription_id) %>
-                        <%= simple_format old_description.content.firstletters(250),
+                        <%= simple_format old_description.content.firstletters(350),
                                           :class => "p_old" %>
                         <% old_description.approval_status = 0 if !old_description.approval_status %>
                         <p class="approval_status"><%= old_description.approval_status %> people like this</p>
@@ -22,7 +21,7 @@
 
                     <div class="my_corner next-test"></div>
                     <div class="idea-statement next-test">
-                        <%= simple_format description.content.firstletters(250),
+                        <%= simple_format description.content.firstletters(350),
                                             :class => "p_new" %>
                         <%= form_tag({:action => "new_suggestion", :controller => "companydescriptions"},
                                        :multipart => true,
@@ -50,7 +49,7 @@
                   <button class="btn btn-mini btn-primary edit-text" onclick=addDescription(this)>Edit</button>
                   <div class="my_corner next-test" hidden></div>
                   <div class="idea-statement next-test" hidden>
-                      <p class="p_new"></p>
+                      <p class="p_new" hidden></p>
                       <%= form_tag({:action => "new_suggestion", :controller => "companydescriptions"},
                                        :multipart => true,
                                        :class => "next-test",
@@ -99,7 +98,6 @@
             </div>
         <% end %>
       </div>
-    </div>
     <div class="clear-both"></div>
   </div>
 </div>
@@ -156,6 +154,7 @@
 
         elementNode.parentNode.getElementsByTagName('form')[0].hidden = false;
         elementNode.hidden = true;
+        elementNode.setAttribute("onclick", "editDescription(this)");
     }
 
     function showIdeas(elementNode) {

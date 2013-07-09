@@ -83,6 +83,7 @@ body {
 .hatcher-nav {
   height: 40px;
   background-color: #07b5b5;
+  min-width: 880px;
 
 
   .logo-img {
@@ -163,19 +164,20 @@ body {
   font-size:12px;
   color: #696969;
   min-height: 40px;
-  padding:20px;
+  padding-top:20px;
   margin:0px 0;
   text-align: center;
+  min-width: 880px;
 }
 
 
 
 .hatcher-container {
-  margin:0px 0 0px 105px;
-  padding:10px 20% 0 0;
-  position: relative;
-  min-width:600px;
-  min-height: calc( 100% - 141px );
+  margin:0 0 0 161px;
+  padding:0;
+  min-width: 700px;
+  max-width: 70%;
+  min-height: calc(100% - 101px);
 }
 
 
@@ -282,6 +284,7 @@ h2.project{
 .how-it-works {
   border:1px #c8c8c8 solid;
   min-width: 880px;
+  width: 100%;
 
   h2 {
     color: #07b5b5;
@@ -298,24 +301,24 @@ h2.project{
   img {height: 200px;}
 
   .content-white {
-    padding:10px 50px;
+    padding:10px 0%;
     height: 190px;
+    width: 100%;
   }
   .content-grey {
-    padding:10px 50px;
+    padding:10px 0%;
     background-color: #f2f2f2;
+    width: 100%;
   }
 
   .right-side {
-    padding-left:100px;
-
-
+    padding-left:0;
   }
 
   .left-side {
     float:left;
-    width:calc( 50% - 50px);
-    padding-right:100px;
+    width: 45%;
+    padding-right:10%;
     text-align: right;
 
   }
@@ -425,8 +428,6 @@ h2.project{
   margin:0 10px;
   padding:10px;
   width:100%;
-  background-color: green;
-
 
   .button-next {
     width:250px;
@@ -478,8 +479,7 @@ h2.project{
   .company-left {
     float:left;
     padding-left: 10px;
-    width: 80%;
-    background-color: red;
+    width: 70%;
     .company-box {
       width: 100%;
       .person-info {
@@ -513,9 +513,6 @@ h2.project{
     //  margin:0;
     //}
     .company-content {
-      //padding: 20px;
-      //border:1px #c8c8c8 solid;
-      //border-top:0px;
       .company-box {
         border-bottom:1px #07b5b5 solid;
         //width: 556px;
@@ -523,13 +520,7 @@ h2.project{
           width:calc(100% - 10px);
           height: 50px;
         }
-
-
-
       }
-
-
-
     }
 
     .main-logo {
@@ -656,11 +647,11 @@ h2.project{
 
 
   .company-right {
-    margin-left:calc(80% + 100px);
-    width: 200px;
+    float:right;
+    width: 25%;
     .btn-warning {
-      margin-left: 40px;
-      width: 100px;
+      margin-left: 19.5%;
+      width: 50%;
       font-size: 16px;
     }
     .company-info {
@@ -679,80 +670,14 @@ h2.project{
 // ---------------------------------- A/B testing -----------------------------------
 
 
-
-.idea-test{
-  padding-top:50px;
-  input{
-    margin-left:0px;
-    width:300px;
-  }
-
-  .idea-statement{
-    background-color:#b0c4de;
-    padding:10px;
-    -webkit-border-radius: 5px;
-    line-height: 20px;
-    font-size:12px;
-    width:250px;
-    border:3px white solid;
-    color:white;
-    height: 80px;
-    margin-top:-25px;
-  }
-
-  .left-side{
-   float: right;
-   margin-top:-25px;
-   input{
-     margin-top:32px;
-     margin-left:0px;
-     width:270px;
-   }
-  }
-
-  .my_corner {
-    position: relative;
-    margin:-40px 7px;
-    width: 0px;
-    height: 70px;
-    padding: 10px;
-    background-color: #ffd486;
-    float: right;
-  }
-
-  .my_corner .tl, .my_corner .tr,
-  .my_corner .bl, .my_corner .br {
-    width: 0;
-    height: 0;
-    position: absolute;
-  }
-
-
-  .my_corner .tr {
-    top: 0;
-    right: 0;
-    border-top: 50px solid white;
-    border-left: 20px solid transparent;
-  }
-
-  .my_corner .br {
-    bottom: 0;
-    right: 0;
-    border-bottom: 50px solid white;
-    border-left: 20px solid transparent;
-  }
-
-
-}
-
-
 .ab-test{
   padding:0px;
 
 
   input{
-    margin-left:0px;
-    width:300px;
+    margin-left: 35px;
+    margin-right: -5px;
+    width: 355px;
   }
 
   .idea-statement{
@@ -761,13 +686,13 @@ h2.project{
     -webkit-border-radius: 5px;
     line-height: 20px;
     font-size:12px;
-    width:230px;
+    width:330px;
     border:3px white solid;
     color:white;
     height: 130px;
     float:left;
     textarea {
-      width:225px;
+      width:320px;
       height:100px;
       margin:-5px 0 5px -5px;
       line-height: 18px;
@@ -853,7 +778,9 @@ h2.project{
 
 
 .left-nav {
-  float:left;
+  position: absolute;
+  top:60px;
+  left:0;
   background-color: #f7f7f7;
   min-height: calc(100%-60px);
   width: 120px;
@@ -861,7 +788,6 @@ h2.project{
   border-right: 1px solid #dadada;
   border-bottom: 1px solid #dadada;
   padding: 40px 20px;
-  margin:20px 20px 20px 0px;
   img {
     margin:0 0 20px 8px;
     width: 100px;

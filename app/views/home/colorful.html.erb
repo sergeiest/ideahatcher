@@ -1,4 +1,6 @@
-<%= render :partial =>  "startups/demo_startup", :collection => @startups %>
+<div style="min-width: 880px;">
+  <%= render :partial =>  "startups/demo_startup", :collection => @startups %>
+</div>
 
 <% if !session[:id] or session[:id] == 0 %>
     <div class="home-signup">
