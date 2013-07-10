@@ -31,10 +31,28 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="show_more_startups.js.erb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="show_more_startups.js.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/startups/show_more_startups.js.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+            <state line="23" column="49" selection-start="967" selection-end="967" vertical-scroll-proportion="-14.375">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="startups_controller.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/controllers/startups_controller.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="225" column="0" selection-start="5921" selection-end="5921" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="search_startups.js.erb" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/views/startups/search_startups.js.erb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="18" column="72" selection-start="882" selection-end="882" vertical-scroll-proportion="0.48214287">
               <folding />
             </state>
           </provider>
@@ -53,7 +71,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/assets/stylesheets/bootstrap.css" />
         <option value="$PROJECT_DIR$/app/views/users/index.html.erb" />
         <option value="$PROJECT_DIR$/app/controllers/campaigns_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/campaigns/basic_step.html.erb" />
@@ -68,6 +85,7 @@
         <option value="$PROJECT_DIR$/app/views/startups/index.html.erb" />
         <option value="$PROJECT_DIR$/app/controllers/startups_controller.rb" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/application.scss" />
+        <option value="$PROJECT_DIR$/app/views/startups/search_startups.js.erb" />
         <option value="$PROJECT_DIR$/app/views/startups/show_more_startups.js.erb" />
       </list>
     </option>
@@ -670,13 +688,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/views/users/index.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="26" selection-start="85" selection-end="85" vertical-scroll-proportion="-1.875">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/campaigns_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="19" column="61" selection-start="556" selection-end="556" vertical-scroll-proportion="0.0">
@@ -770,13 +781,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/startups_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="246" column="54" selection-start="6485" selection-end="6485" vertical-scroll-proportion="0.21015762">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/application.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state line="474" column="19" selection-start="8643" selection-end="8643" vertical-scroll-proportion="0.0">
@@ -787,9 +791,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/startups_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="225" column="0" selection-start="5921" selection-end="5921" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/startups/show_more_startups.js.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+        <state line="23" column="49" selection-start="967" selection-end="967" vertical-scroll-proportion="-14.375">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/startups/search_startups.js.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="72" selection-start="882" selection-end="882" vertical-scroll-proportion="0.48214287">
           <folding />
         </state>
       </provider>

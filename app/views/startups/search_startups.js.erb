@@ -20,7 +20,7 @@ mainDiv.innerHTML = "";
     <% end %>
 
     htmlText = htmlText + "<h2><%= startup.name %></h2>";
-    htmlText = htmlText + '<p class="p-content">This is just another company no one cares about</p>';
+    htmlText = htmlText + '<p class="p-content"><%= startup.pitch %></p>';
 
 
     <% tags = startup.Tags
