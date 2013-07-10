@@ -16128,3 +16128,1137 @@ ActionController::RoutingError (No route matches [GET] "/avatars/large/missing.p
 
 
   Rendered /Users/sergeyastretsov/.rvm/gems/ruby-1.9.3-p362/gems/actionpack-3.2.11/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-07-09 17:29:46 -0700
+Processing by HomeController#colorful as HTML
+  [1m[36mStartup Load (0.4ms)[0m  [1mSELECT `startups`.* FROM `startups` WHERE (status >2)[0m
+  Rendered startups/_demo_startup.html.erb (28.4ms)
+  Rendered authentications/_clean_join_form.html.erb (1.2ms)
+  Rendered home/colorful.html.erb within layouts/hatcher (31.8ms)
+  Rendered authentications/_clean_login_form.html.erb (1.0ms)
+  Rendered authentications/_clean_join_form.html.erb (1.1ms)
+Completed 200 OK in 43ms (Views: 40.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2013-07-09 17:29:46 -0700
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-modal.js" for 127.0.0.1 at 2013-07-09 17:29:46 -0700
+Served asset /bootstrap-modal.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2013-07-09 17:29:46 -0700
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap.css" for 127.0.0.1 at 2013-07-09 17:29:46 -0700
+Served asset /bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/avatars/large/missing.png" for 127.0.0.1 at 2013-07-09 17:29:46 -0700
+
+ActionController::RoutingError (No route matches [GET] "/avatars/large/missing.png"):
+  actionpack (3.2.11) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (3.2.11) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.11) lib/rails/rack/logger.rb:32:in `call_app'
+  railties (3.2.11) lib/rails/rack/logger.rb:16:in `block in call'
+  activesupport (3.2.11) lib/active_support/tagged_logging.rb:22:in `tagged'
+  railties (3.2.11) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.11) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.5) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.5) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.11) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.5) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.11) lib/action_dispatch/middleware/static.rb:62:in `call'
+  railties (3.2.11) lib/rails/engine.rb:479:in `call'
+  railties (3.2.11) lib/rails/application.rb:223:in `call'
+  rack (1.4.5) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.11) lib/rails/rack/log_tailer.rb:17:in `call'
+  rack (1.4.5) lib/rack/handler/webrick.rb:59:in `service'
+  /Users/sergeyastretsov/.rvm/rubies/ruby-1.9.3-p362/lib/ruby/1.9.1/webrick/httpserver.rb:138:in `service'
+  /Users/sergeyastretsov/.rvm/rubies/ruby-1.9.3-p362/lib/ruby/1.9.1/webrick/httpserver.rb:94:in `run'
+  /Users/sergeyastretsov/.rvm/rubies/ruby-1.9.3-p362/lib/ruby/1.9.1/webrick/server.rb:191:in `block in start_thread'
+
+
+  Rendered /Users/sergeyastretsov/.rvm/gems/ruby-1.9.3-p362/gems/actionpack-3.2.11/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.7ms)
+
+
+Started GET "/startups/8" for 127.0.0.1 at 2013-07-09 17:31:47 -0700
+Processing by StartupsController#show as HTML
+  Parameters: {"id"=>"8"}
+  [1m[35mStartup Load (0.5ms)[0m  SELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 8 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 8 LIMIT 1[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT `users`.* FROM `users` INNER JOIN `followers` ON `users`.`id` = `followers`.`user_id` WHERE `followers`.`startup_id` = 8
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT `users`.* FROM `users` INNER JOIN `owners` ON `users`.`id` = `owners`.`user_id` WHERE `owners`.`startup_id` = 8[0m
+  Rendered startups/_nav.html.erb (1.1ms)
+  [1m[35mCompanydescription Load (0.5ms)[0m  SELECT `companydescriptions`.* FROM `companydescriptions` WHERE `companydescriptions`.`startup_id` = 8 AND (status =1)
+  [1m[36mCompanyupdate Load (0.4ms)[0m  [1mSELECT `companyupdates`.* FROM `companyupdates` WHERE `companyupdates`.`startup_id` = 8[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM `companyupdates` WHERE `companyupdates`.`startup_id` = 8
+  Rendered companyupdates/_news.html.erb (0.0ms)
+  Rendered investors/_person.html.erb (1.0ms)
+  Rendered investors/_person.html.erb (2.3ms)
+  Rendered startups/show.html.erb within layouts/hatcher (56.7ms)
+  Rendered authentications/_clean_login_form.html.erb (1.2ms)
+  Rendered authentications/_clean_join_form.html.erb (1.2ms)
+Completed 200 OK in 74ms (Views: 65.1ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/assets/bootstrap.css" for 127.0.0.1 at 2013-07-09 17:31:48 -0700
+Served asset /bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2013-07-09 17:31:48 -0700
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2013-07-09 17:31:48 -0700
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-modal.js" for 127.0.0.1 at 2013-07-09 17:31:48 -0700
+Served asset /bootstrap-modal.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/glyphicons-halflings.png" for 127.0.0.1 at 2013-07-09 17:31:48 -0700
+Served asset /glyphicons-halflings.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/glyphicons-halflings-white.png" for 127.0.0.1 at 2013-07-09 17:31:48 -0700
+Served asset /glyphicons-halflings-white.png - 304 Not Modified (0ms)
+
+
+Started POST "/votes/vote_description" for 127.0.0.1 at 2013-07-09 17:31:49 -0700
+Processing by VotesController#vote_description as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"+TVvTltdnm3YdP02i3Lij8O+O+Y3/dMorgKvxv56TwM=", "vote"=>{"description_id"=>"101", "score"=>"-2"}, "commit"=>"submit"}
+  Rendered authentications/join_login_form.js.erb (0.1ms)
+Filter chain halted as #<Proc:0x000001009048d0@/Users/sergeyastretsov/Learn/heroku/prototype_0.2/app/controllers/votes_controller.rb:5> rendered or redirected
+Completed 200 OK in 8ms (Views: 7.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/authentications/remote_login" for 127.0.0.1 at 2013-07-09 17:31:55 -0700
+Processing by AuthenticationsController#remote_login as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"+TVvTltdnm3YdP02i3Lij8O+O+Y3/dMorgKvxv56TwM=", "authentication"=>{"username"=>"sergey.astretsov@gmail.com", "password"=>"[FILTERED]"}, "commit"=>"Login"}
+  [1m[36mAuthentication Load (0.5ms)[0m  [1mSELECT `authentications`.* FROM `authentications` WHERE (username = 'sergey.astretsov@gmail.com') LIMIT 1[0m
+  [1m[35mUser Load (0.5ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`authentication_id` = 1 LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35mStartup Load (1.2ms)[0m  SELECT `startups`.* FROM `startups` INNER JOIN `owners` ON `startups`.`id` = `owners`.`startup_id` WHERE `owners`.`user_id` = 1
+  Rendered authentications/remote_login.js.erb (10.7ms)
+Completed 200 OK in 20ms (Views: 14.4ms | ActiveRecord: 2.4ms)
+
+
+Started POST "/votes/vote_description" for 127.0.0.1 at 2013-07-09 17:31:57 -0700
+Processing by VotesController#vote_description as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"+TVvTltdnm3YdP02i3Lij8O+O+Y3/dMorgKvxv56TwM=", "vote"=>{"description_id"=>"101", "score"=>"0"}, "commit"=>"submit"}
+  [1m[36mVote Load (0.5ms)[0m  [1mSELECT `votes`.* FROM `votes` WHERE `votes`.`user_id` = 1 AND `votes`.`companydescription_id` = 101 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO `votes` (`companydescription_id`, `created_at`, `score`, `updated_at`, `user_id`) VALUES (101, '2013-07-10 00:31:57', 0, '2013-07-10 00:31:57', 1)[0m
+  [1m[35m (0.4ms)[0m  COMMIT
+  Rendered votes/vote_description.js.erb (0.4ms)
+Completed 200 OK in 30ms (Views: 5.4ms | ActiveRecord: 7.8ms)
+
+
+Started GET "/startups/8" for 127.0.0.1 at 2013-07-09 17:32:39 -0700
+Processing by StartupsController#show as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mStartup Load (0.4ms)[0m  [1mSELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 8 LIMIT 1[0m
+  [1m[35mOwner Load (1.7ms)[0m  SELECT `owners`.* FROM `owners` WHERE (startup_id = '8' AND user_id = 1)
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 8 LIMIT 1
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT `users`.* FROM `users` INNER JOIN `followers` ON `users`.`id` = `followers`.`user_id` WHERE `followers`.`startup_id` = 8[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT `users`.* FROM `users` INNER JOIN `owners` ON `users`.`id` = `owners`.`user_id` WHERE `owners`.`startup_id` = 8
+  Rendered startups/_nav.html.erb (1.2ms)
+  [1m[36mCompanydescription Load (0.7ms)[0m  [1mSELECT `companydescriptions`.* FROM `companydescriptions` WHERE `companydescriptions`.`startup_id` = 8 AND (status =1)[0m
+  [1m[35mCompanyupdate Load (0.8ms)[0m  SELECT `companyupdates`.* FROM `companyupdates` WHERE `companyupdates`.`startup_id` = 8
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM `companyupdates` WHERE `companyupdates`.`startup_id` = 8[0m
+  Rendered companyupdates/_news.html.erb (0.0ms)
+  Rendered investors/_person.html.erb (1.0ms)
+  Rendered investors/_person.html.erb (2.3ms)
+  Rendered startups/show.html.erb within layouts/hatcher (22.9ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+  [1m[36m (1.6ms)[0m  [1mSELECT COUNT(*) FROM `owners` WHERE `owners`.`user_id` = 1[0m
+  [1m[35mStartup Load (0.5ms)[0m  SELECT `startups`.* FROM `startups` INNER JOIN `owners` ON `startups`.`id` = `owners`.`startup_id` WHERE `owners`.`user_id` = 1
+Completed 200 OK in 57ms (Views: 36.0ms | ActiveRecord: 7.5ms)
+
+
+Started GET "/assets/bootstrap.css" for 127.0.0.1 at 2013-07-09 17:32:39 -0700
+Served asset /bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2013-07-09 17:32:39 -0700
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2013-07-09 17:32:39 -0700
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-modal.js" for 127.0.0.1 at 2013-07-09 17:32:39 -0700
+Served asset /bootstrap-modal.js - 304 Not Modified (0ms)
+
+
+Started POST "/votes/vote_description" for 127.0.0.1 at 2013-07-09 17:32:40 -0700
+Processing by VotesController#vote_description as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"+TVvTltdnm3YdP02i3Lij8O+O+Y3/dMorgKvxv56TwM=", "vote"=>{"description_id"=>"101", "score"=>"0"}, "commit"=>"submit"}
+  [1m[36mVote Load (0.5ms)[0m  [1mSELECT `votes`.* FROM `votes` WHERE `votes`.`user_id` = 1 AND `votes`.`companydescription_id` = 101 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mCOMMIT[0m
+  Rendered votes/vote_description.js.erb (0.3ms)
+Completed 200 OK in 9ms (Views: 5.1ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/votes/vote_description" for 127.0.0.1 at 2013-07-09 17:33:36 -0700
+Processing by VotesController#vote_description as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"+TVvTltdnm3YdP02i3Lij8O+O+Y3/dMorgKvxv56TwM=", "vote"=>{"description_id"=>"101", "score"=>"0"}, "commit"=>"submit"}
+  [1m[35mVote Load (0.6ms)[0m  SELECT `votes`.* FROM `votes` WHERE `votes`.`user_id` = 1 AND `votes`.`companydescription_id` = 101 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  COMMIT
+  Rendered votes/vote_description.js.erb (0.0ms)
+Completed 200 OK in 9ms (Views: 4.8ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/votes/vote_description" for 127.0.0.1 at 2013-07-09 17:33:37 -0700
+Processing by VotesController#vote_description as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"+TVvTltdnm3YdP02i3Lij8O+O+Y3/dMorgKvxv56TwM=", "vote"=>{"description_id"=>"101", "score"=>"0"}, "commit"=>"submit"}
+  [1m[36mVote Load (0.4ms)[0m  [1mSELECT `votes`.* FROM `votes` WHERE `votes`.`user_id` = 1 AND `votes`.`companydescription_id` = 101 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mCOMMIT[0m
+  Rendered votes/vote_description.js.erb (0.0ms)
+Completed 200 OK in 7ms (Views: 4.2ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/votes/vote_description" for 127.0.0.1 at 2013-07-09 17:33:38 -0700
+Processing by VotesController#vote_description as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"+TVvTltdnm3YdP02i3Lij8O+O+Y3/dMorgKvxv56TwM=", "vote"=>{"description_id"=>"101", "score"=>"1"}, "commit"=>"submit"}
+  [1m[35mVote Load (0.6ms)[0m  SELECT `votes`.* FROM `votes` WHERE `votes`.`user_id` = 1 AND `votes`.`companydescription_id` = 101 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.4ms)[0m  UPDATE `votes` SET `score` = 1, `updated_at` = '2013-07-10 00:33:38' WHERE `votes`.`id` = 176
+  [1m[36m (2.9ms)[0m  [1mCOMMIT[0m
+  Rendered votes/vote_description.js.erb (0.0ms)
+Completed 200 OK in 13ms (Views: 4.6ms | ActiveRecord: 4.0ms)
+
+
+Started POST "/votes/vote_description" for 127.0.0.1 at 2013-07-09 17:33:39 -0700
+Processing by VotesController#vote_description as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"+TVvTltdnm3YdP02i3Lij8O+O+Y3/dMorgKvxv56TwM=", "vote"=>{"description_id"=>"101", "score"=>"1"}, "commit"=>"submit"}
+  [1m[35mVote Load (0.4ms)[0m  SELECT `votes`.* FROM `votes` WHERE `votes`.`user_id` = 1 AND `votes`.`companydescription_id` = 101 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  COMMIT
+  Rendered votes/vote_description.js.erb (0.0ms)
+Completed 200 OK in 10ms (Views: 7.0ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/startups/8" for 127.0.0.1 at 2013-07-09 17:33:40 -0700
+Processing by StartupsController#show as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mStartup Load (0.4ms)[0m  [1mSELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 8 LIMIT 1[0m
+  [1m[35mOwner Load (0.3ms)[0m  SELECT `owners`.* FROM `owners` WHERE (startup_id = '8' AND user_id = 1)
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 8 LIMIT 1
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT `users`.* FROM `users` INNER JOIN `followers` ON `users`.`id` = `followers`.`user_id` WHERE `followers`.`startup_id` = 8[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT `users`.* FROM `users` INNER JOIN `owners` ON `users`.`id` = `owners`.`user_id` WHERE `owners`.`startup_id` = 8
+  Rendered startups/_nav.html.erb (1.2ms)
+  [1m[36mCompanydescription Load (0.6ms)[0m  [1mSELECT `companydescriptions`.* FROM `companydescriptions` WHERE `companydescriptions`.`startup_id` = 8 AND (status =1)[0m
+  [1m[35mCompanyupdate Load (0.4ms)[0m  SELECT `companyupdates`.* FROM `companyupdates` WHERE `companyupdates`.`startup_id` = 8
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM `companyupdates` WHERE `companyupdates`.`startup_id` = 8[0m
+  Rendered companyupdates/_news.html.erb (0.0ms)
+  Rendered investors/_person.html.erb (0.9ms)
+  Rendered investors/_person.html.erb (2.1ms)
+  Rendered startups/show.html.erb within layouts/hatcher (17.5ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM `owners` WHERE `owners`.`user_id` = 1[0m
+  [1m[35mStartup Load (0.4ms)[0m  SELECT `startups`.* FROM `startups` INNER JOIN `owners` ON `startups`.`id` = `owners`.`startup_id` WHERE `owners`.`user_id` = 1
+Completed 200 OK in 43ms (Views: 30.0ms | ActiveRecord: 3.8ms)
+
+
+Started GET "/assets/bootstrap.css" for 127.0.0.1 at 2013-07-09 17:33:40 -0700
+Served asset /bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-modal.js" for 127.0.0.1 at 2013-07-09 17:33:40 -0700
+Served asset /bootstrap-modal.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2013-07-09 17:33:40 -0700
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2013-07-09 17:33:40 -0700
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started POST "/votes/vote_description" for 127.0.0.1 at 2013-07-09 17:33:42 -0700
+Processing by VotesController#vote_description as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"+TVvTltdnm3YdP02i3Lij8O+O+Y3/dMorgKvxv56TwM=", "vote"=>{"description_id"=>"101", "score"=>"1"}, "commit"=>"submit"}
+  [1m[36mVote Load (0.9ms)[0m  [1mSELECT `votes`.* FROM `votes` WHERE `votes`.`user_id` = 1 AND `votes`.`companydescription_id` = 101 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mCOMMIT[0m
+  Rendered votes/vote_description.js.erb (0.1ms)
+Completed 200 OK in 460ms (Views: 5.0ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/startups/8" for 127.0.0.1 at 2013-07-09 17:33:47 -0700
+Processing by StartupsController#show as HTML
+  Parameters: {"id"=>"8"}
+  [1m[35mStartup Load (0.6ms)[0m  SELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 8 LIMIT 1
+  [1m[36mOwner Load (0.4ms)[0m  [1mSELECT `owners`.* FROM `owners` WHERE (startup_id = '8' AND user_id = 1)[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 8 LIMIT 1[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT `users`.* FROM `users` INNER JOIN `followers` ON `users`.`id` = `followers`.`user_id` WHERE `followers`.`startup_id` = 8
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT `users`.* FROM `users` INNER JOIN `owners` ON `users`.`id` = `owners`.`user_id` WHERE `owners`.`startup_id` = 8[0m
+  Rendered startups/_nav.html.erb (1.2ms)
+  [1m[35mCompanydescription Load (0.8ms)[0m  SELECT `companydescriptions`.* FROM `companydescriptions` WHERE `companydescriptions`.`startup_id` = 8 AND (status =1)
+  [1m[36mCompanyupdate Load (0.4ms)[0m  [1mSELECT `companyupdates`.* FROM `companyupdates` WHERE `companyupdates`.`startup_id` = 8[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM `companyupdates` WHERE `companyupdates`.`startup_id` = 8
+  Rendered companyupdates/_news.html.erb (0.0ms)
+  Rendered investors/_person.html.erb (0.9ms)
+  Rendered investors/_person.html.erb (2.1ms)
+  Rendered startups/show.html.erb within layouts/hatcher (20.1ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `owners` WHERE `owners`.`user_id` = 1
+  [1m[36mStartup Load (0.4ms)[0m  [1mSELECT `startups`.* FROM `startups` INNER JOIN `owners` ON `startups`.`id` = `owners`.`startup_id` WHERE `owners`.`user_id` = 1[0m
+Completed 200 OK in 45ms (Views: 32.5ms | ActiveRecord: 4.6ms)
+
+
+Started GET "/assets/bootstrap.css" for 127.0.0.1 at 2013-07-09 17:33:48 -0700
+Served asset /bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2013-07-09 17:33:48 -0700
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2013-07-09 17:33:48 -0700
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-modal.js" for 127.0.0.1 at 2013-07-09 17:33:48 -0700
+Served asset /bootstrap-modal.js - 304 Not Modified (0ms)
+
+
+Started POST "/votes/vote_description" for 127.0.0.1 at 2013-07-09 17:33:49 -0700
+Processing by VotesController#vote_description as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"+TVvTltdnm3YdP02i3Lij8O+O+Y3/dMorgKvxv56TwM=", "vote"=>{"description_id"=>"101", "score"=>"0"}, "commit"=>"submit"}
+  [1m[35mVote Load (0.6ms)[0m  SELECT `votes`.* FROM `votes` WHERE `votes`.`user_id` = 1 AND `votes`.`companydescription_id` = 101 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.9ms)[0m  UPDATE `votes` SET `score` = 0, `updated_at` = '2013-07-10 00:33:49' WHERE `votes`.`id` = 176
+  [1m[36m (1.4ms)[0m  [1mCOMMIT[0m
+  Rendered votes/vote_description.js.erb (0.1ms)
+Completed 200 OK in 13ms (Views: 5.5ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/startups/8" for 127.0.0.1 at 2013-07-09 17:33:53 -0700
+Processing by StartupsController#show as HTML
+  Parameters: {"id"=>"8"}
+  [1m[35mStartup Load (0.4ms)[0m  SELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 8 LIMIT 1
+  [1m[36mOwner Load (0.3ms)[0m  [1mSELECT `owners`.* FROM `owners` WHERE (startup_id = '8' AND user_id = 1)[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 8 LIMIT 1[0m
+  [1m[35mUser Load (0.5ms)[0m  SELECT `users`.* FROM `users` INNER JOIN `followers` ON `users`.`id` = `followers`.`user_id` WHERE `followers`.`startup_id` = 8
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT `users`.* FROM `users` INNER JOIN `owners` ON `users`.`id` = `owners`.`user_id` WHERE `owners`.`startup_id` = 8[0m
+  Rendered startups/_nav.html.erb (1.2ms)
+  [1m[35mCompanydescription Load (0.5ms)[0m  SELECT `companydescriptions`.* FROM `companydescriptions` WHERE `companydescriptions`.`startup_id` = 8 AND (status =1)
+  [1m[36mCompanyupdate Load (0.4ms)[0m  [1mSELECT `companyupdates`.* FROM `companyupdates` WHERE `companyupdates`.`startup_id` = 8[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM `companyupdates` WHERE `companyupdates`.`startup_id` = 8
+  Rendered companyupdates/_news.html.erb (0.0ms)
+  Rendered investors/_person.html.erb (0.9ms)
+  Rendered investors/_person.html.erb (2.1ms)
+  Rendered startups/show.html.erb within layouts/hatcher (20.5ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM `owners` WHERE `owners`.`user_id` = 1
+  [1m[36mStartup Load (0.5ms)[0m  [1mSELECT `startups`.* FROM `startups` INNER JOIN `owners` ON `startups`.`id` = `owners`.`startup_id` WHERE `owners`.`user_id` = 1[0m
+Completed 200 OK in 45ms (Views: 33.2ms | ActiveRecord: 3.7ms)
+
+
+Started GET "/assets/bootstrap.css" for 127.0.0.1 at 2013-07-09 17:33:54 -0700
+Served asset /bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-modal.js" for 127.0.0.1 at 2013-07-09 17:33:54 -0700
+Served asset /bootstrap-modal.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2013-07-09 17:33:54 -0700
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2013-07-09 17:33:54 -0700
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started POST "/votes/vote_description" for 127.0.0.1 at 2013-07-09 17:33:56 -0700
+Processing by VotesController#vote_description as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"+TVvTltdnm3YdP02i3Lij8O+O+Y3/dMorgKvxv56TwM=", "vote"=>{"description_id"=>"101", "score"=>"0"}, "commit"=>"submit"}
+  [1m[35mVote Load (1.2ms)[0m  SELECT `votes`.* FROM `votes` WHERE `votes`.`user_id` = 1 AND `votes`.`companydescription_id` = 101 LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  COMMIT
+  Rendered votes/vote_description.js.erb (0.1ms)
+Completed 200 OK in 13ms (Views: 6.2ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/startups/8" for 127.0.0.1 at 2013-07-09 17:33:59 -0700
+Processing by StartupsController#show as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mStartup Load (0.5ms)[0m  [1mSELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 8 LIMIT 1[0m
+  [1m[35mOwner Load (0.4ms)[0m  SELECT `owners`.* FROM `owners` WHERE (startup_id = '8' AND user_id = 1)
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 8 LIMIT 1
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT `users`.* FROM `users` INNER JOIN `followers` ON `users`.`id` = `followers`.`user_id` WHERE `followers`.`startup_id` = 8[0m
+  [1m[35mUser Load (0.6ms)[0m  SELECT `users`.* FROM `users` INNER JOIN `owners` ON `users`.`id` = `owners`.`user_id` WHERE `owners`.`startup_id` = 8
+  Rendered startups/_nav.html.erb (1.2ms)
+  [1m[36mCompanydescription Load (0.5ms)[0m  [1mSELECT `companydescriptions`.* FROM `companydescriptions` WHERE `companydescriptions`.`startup_id` = 8 AND (status =1)[0m
+  [1m[35mCompanyupdate Load (0.6ms)[0m  SELECT `companyupdates`.* FROM `companyupdates` WHERE `companyupdates`.`startup_id` = 8
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM `companyupdates` WHERE `companyupdates`.`startup_id` = 8[0m
+  Rendered companyupdates/_news.html.erb (0.0ms)
+  Rendered investors/_person.html.erb (0.9ms)
+  Rendered investors/_person.html.erb (2.0ms)
+  Rendered startups/show.html.erb within layouts/hatcher (21.1ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM `owners` WHERE `owners`.`user_id` = 1[0m
+  [1m[35mStartup Load (0.5ms)[0m  SELECT `startups`.* FROM `startups` INNER JOIN `owners` ON `startups`.`id` = `owners`.`startup_id` WHERE `owners`.`user_id` = 1
+Completed 200 OK in 49ms (Views: 33.8ms | ActiveRecord: 4.7ms)
+
+
+Started GET "/assets/bootstrap.css" for 127.0.0.1 at 2013-07-09 17:34:00 -0700
+Served asset /bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2013-07-09 17:34:00 -0700
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2013-07-09 17:34:00 -0700
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-modal.js" for 127.0.0.1 at 2013-07-09 17:34:00 -0700
+Served asset /bootstrap-modal.js - 304 Not Modified (0ms)
+
+
+Started POST "/votes/vote_description" for 127.0.0.1 at 2013-07-09 17:34:02 -0700
+Processing by VotesController#vote_description as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"+TVvTltdnm3YdP02i3Lij8O+O+Y3/dMorgKvxv56TwM=", "vote"=>{"description_id"=>"101", "score"=>"0"}, "commit"=>"submit"}
+  [1m[36mVote Load (0.6ms)[0m  [1mSELECT `votes`.* FROM `votes` WHERE `votes`.`user_id` = 1 AND `votes`.`companydescription_id` = 101 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mCOMMIT[0m
+  Rendered votes/vote_description.js.erb (0.1ms)
+Completed 200 OK in 8ms (Views: 5.2ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/votes/vote_description" for 127.0.0.1 at 2013-07-09 17:34:04 -0700
+Processing by VotesController#vote_description as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"+TVvTltdnm3YdP02i3Lij8O+O+Y3/dMorgKvxv56TwM=", "vote"=>{"description_id"=>"101", "score"=>"-1"}, "commit"=>"submit"}
+  [1m[35mVote Load (0.4ms)[0m  SELECT `votes`.* FROM `votes` WHERE `votes`.`user_id` = 1 AND `votes`.`companydescription_id` = 101 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (37.5ms)[0m  UPDATE `votes` SET `score` = -1, `updated_at` = '2013-07-10 00:34:04' WHERE `votes`.`id` = 176
+  [1m[36m (16.4ms)[0m  [1mCOMMIT[0m
+  Rendered votes/vote_description.js.erb (0.0ms)
+Completed 200 OK in 61ms (Views: 4.3ms | ActiveRecord: 54.3ms)
+
+
+Started POST "/votes/vote_description" for 127.0.0.1 at 2013-07-09 17:34:05 -0700
+Processing by VotesController#vote_description as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"+TVvTltdnm3YdP02i3Lij8O+O+Y3/dMorgKvxv56TwM=", "vote"=>{"description_id"=>"101", "score"=>"-2"}, "commit"=>"submit"}
+  [1m[35mVote Load (0.4ms)[0m  SELECT `votes`.* FROM `votes` WHERE `votes`.`user_id` = 1 AND `votes`.`companydescription_id` = 101 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.3ms)[0m  UPDATE `votes` SET `score` = -2, `updated_at` = '2013-07-10 00:34:05' WHERE `votes`.`id` = 176
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  Rendered votes/vote_description.js.erb (0.0ms)
+Completed 200 OK in 8ms (Views: 4.6ms | ActiveRecord: 1.4ms)
+
+
+Started POST "/votes/vote_description" for 127.0.0.1 at 2013-07-09 17:34:08 -0700
+Processing by VotesController#vote_description as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"+TVvTltdnm3YdP02i3Lij8O+O+Y3/dMorgKvxv56TwM=", "vote"=>{"description_id"=>"102", "score"=>"0"}, "commit"=>"submit"}
+  [1m[35mVote Load (1.1ms)[0m  SELECT `votes`.* FROM `votes` WHERE `votes`.`user_id` = 1 AND `votes`.`companydescription_id` = 102 LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO `votes` (`companydescription_id`, `created_at`, `score`, `updated_at`, `user_id`) VALUES (102, '2013-07-10 00:34:08', 0, '2013-07-10 00:34:08', 1)
+  [1m[36m (1.2ms)[0m  [1mCOMMIT[0m
+  Rendered votes/vote_description.js.erb (0.0ms)
+Completed 200 OK in 10ms (Views: 4.1ms | ActiveRecord: 2.8ms)
+
+
+Started POST "/votes/vote_description" for 127.0.0.1 at 2013-07-09 17:34:09 -0700
+Processing by VotesController#vote_description as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"+TVvTltdnm3YdP02i3Lij8O+O+Y3/dMorgKvxv56TwM=", "vote"=>{"description_id"=>"102", "score"=>"-2"}, "commit"=>"submit"}
+  [1m[35mVote Load (0.5ms)[0m  SELECT `votes`.* FROM `votes` WHERE `votes`.`user_id` = 1 AND `votes`.`companydescription_id` = 102 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.3ms)[0m  UPDATE `votes` SET `score` = -2, `updated_at` = '2013-07-10 00:34:09' WHERE `votes`.`id` = 177
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  Rendered votes/vote_description.js.erb (0.0ms)
+Completed 200 OK in 10ms (Views: 4.9ms | ActiveRecord: 1.3ms)
+
+
+Started POST "/votes/vote_description" for 127.0.0.1 at 2013-07-09 17:34:12 -0700
+Processing by VotesController#vote_description as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"+TVvTltdnm3YdP02i3Lij8O+O+Y3/dMorgKvxv56TwM=", "vote"=>{"description_id"=>"102", "score"=>"1"}, "commit"=>"submit"}
+  [1m[35mVote Load (3.3ms)[0m  SELECT `votes`.* FROM `votes` WHERE `votes`.`user_id` = 1 AND `votes`.`companydescription_id` = 102 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.3ms)[0m  UPDATE `votes` SET `score` = 1, `updated_at` = '2013-07-10 00:34:12' WHERE `votes`.`id` = 177
+  [1m[36m (1.0ms)[0m  [1mCOMMIT[0m
+  Rendered votes/vote_description.js.erb (0.1ms)
+Completed 200 OK in 91ms (Views: 79.0ms | ActiveRecord: 4.7ms)
+
+
+Started POST "/votes/vote_description" for 127.0.0.1 at 2013-07-09 17:34:16 -0700
+Processing by VotesController#vote_description as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"+TVvTltdnm3YdP02i3Lij8O+O+Y3/dMorgKvxv56TwM=", "vote"=>{"description_id"=>"103", "score"=>"-1"}, "commit"=>"submit"}
+  [1m[35mVote Load (0.4ms)[0m  SELECT `votes`.* FROM `votes` WHERE `votes`.`user_id` = 1 AND `votes`.`companydescription_id` = 103 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO `votes` (`companydescription_id`, `created_at`, `score`, `updated_at`, `user_id`) VALUES (103, '2013-07-10 00:34:16', -1, '2013-07-10 00:34:16', 1)
+  [1m[36m (1.0ms)[0m  [1mCOMMIT[0m
+  Rendered votes/vote_description.js.erb (0.1ms)
+Completed 200 OK in 10ms (Views: 4.9ms | ActiveRecord: 1.8ms)
+
+
+Started POST "/votes/vote_description" for 127.0.0.1 at 2013-07-09 17:34:18 -0700
+Processing by VotesController#vote_description as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"+TVvTltdnm3YdP02i3Lij8O+O+Y3/dMorgKvxv56TwM=", "vote"=>{"description_id"=>"103", "score"=>"-2"}, "commit"=>"submit"}
+  [1m[35mVote Load (0.9ms)[0m  SELECT `votes`.* FROM `votes` WHERE `votes`.`user_id` = 1 AND `votes`.`companydescription_id` = 103 LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.4ms)[0m  UPDATE `votes` SET `score` = -2, `updated_at` = '2013-07-10 00:34:18' WHERE `votes`.`id` = 178
+  [1m[36m (0.7ms)[0m  [1mCOMMIT[0m
+  Rendered votes/vote_description.js.erb (0.0ms)
+Completed 200 OK in 10ms (Views: 4.4ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/startups/8" for 127.0.0.1 at 2013-07-09 17:34:24 -0700
+Processing by StartupsController#show as HTML
+  Parameters: {"id"=>"8"}
+  [1m[35mStartup Load (0.4ms)[0m  SELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 8 LIMIT 1
+  [1m[36mOwner Load (1.9ms)[0m  [1mSELECT `owners`.* FROM `owners` WHERE (startup_id = '8' AND user_id = 1)[0m
+  [1m[35mUser Load (0.6ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 8 LIMIT 1[0m
+  [1m[35mUser Load (0.6ms)[0m  SELECT `users`.* FROM `users` INNER JOIN `followers` ON `users`.`id` = `followers`.`user_id` WHERE `followers`.`startup_id` = 8
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT `users`.* FROM `users` INNER JOIN `owners` ON `users`.`id` = `owners`.`user_id` WHERE `owners`.`startup_id` = 8[0m
+  Rendered startups/_nav.html.erb (1.2ms)
+  [1m[35mCompanydescription Load (0.5ms)[0m  SELECT `companydescriptions`.* FROM `companydescriptions` WHERE `companydescriptions`.`startup_id` = 8 AND (status =1)
+  [1m[36mCompanyupdate Load (0.3ms)[0m  [1mSELECT `companyupdates`.* FROM `companyupdates` WHERE `companyupdates`.`startup_id` = 8[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `companyupdates` WHERE `companyupdates`.`startup_id` = 8
+  Rendered companyupdates/_news.html.erb (0.0ms)
+  Rendered investors/_person.html.erb (1.0ms)
+  Rendered investors/_person.html.erb (2.3ms)
+  Rendered startups/show.html.erb within layouts/hatcher (20.2ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `owners` WHERE `owners`.`user_id` = 1
+  [1m[36mStartup Load (0.4ms)[0m  [1mSELECT `startups`.* FROM `startups` INNER JOIN `owners` ON `startups`.`id` = `owners`.`startup_id` WHERE `owners`.`user_id` = 1[0m
+Completed 200 OK in 53ms (Views: 33.3ms | ActiveRecord: 5.9ms)
+
+
+Started GET "/assets/bootstrap.css" for 127.0.0.1 at 2013-07-09 17:34:24 -0700
+Served asset /bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2013-07-09 17:34:24 -0700
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2013-07-09 17:34:24 -0700
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-modal.js" for 127.0.0.1 at 2013-07-09 17:34:24 -0700
+Served asset /bootstrap-modal.js - 304 Not Modified (0ms)
+
+
+Started POST "/votes/vote_description" for 127.0.0.1 at 2013-07-09 17:34:26 -0700
+Processing by VotesController#vote_description as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"+TVvTltdnm3YdP02i3Lij8O+O+Y3/dMorgKvxv56TwM=", "vote"=>{"description_id"=>"103", "score"=>"4"}, "commit"=>"submit"}
+  [1m[35mVote Load (1.6ms)[0m  SELECT `votes`.* FROM `votes` WHERE `votes`.`user_id` = 1 AND `votes`.`companydescription_id` = 103 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (1.0ms)[0m  UPDATE `votes` SET `score` = 4, `updated_at` = '2013-07-10 00:34:26' WHERE `votes`.`id` = 178
+  [1m[36m (1.0ms)[0m  [1mCOMMIT[0m
+  Rendered votes/vote_description.js.erb (0.1ms)
+Completed 200 OK in 14ms (Views: 5.4ms | ActiveRecord: 3.7ms)
+
+
+Started POST "/votes/vote_description" for 127.0.0.1 at 2013-07-09 17:34:28 -0700
+Processing by VotesController#vote_description as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"+TVvTltdnm3YdP02i3Lij8O+O+Y3/dMorgKvxv56TwM=", "vote"=>{"description_id"=>"103", "score"=>"2"}, "commit"=>"submit"}
+  [1m[35mVote Load (2.7ms)[0m  SELECT `votes`.* FROM `votes` WHERE `votes`.`user_id` = 1 AND `votes`.`companydescription_id` = 103 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.3ms)[0m  UPDATE `votes` SET `score` = 2, `updated_at` = '2013-07-10 00:34:28' WHERE `votes`.`id` = 178
+  [1m[36m (1.0ms)[0m  [1mCOMMIT[0m
+  Rendered votes/vote_description.js.erb (0.0ms)
+Completed 200 OK in 14ms (Views: 6.4ms | ActiveRecord: 4.2ms)
+
+
+Started POST "/votes/vote_description" for 127.0.0.1 at 2013-07-09 17:34:29 -0700
+Processing by VotesController#vote_description as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"+TVvTltdnm3YdP02i3Lij8O+O+Y3/dMorgKvxv56TwM=", "vote"=>{"description_id"=>"103", "score"=>"1"}, "commit"=>"submit"}
+  [1m[35mVote Load (0.4ms)[0m  SELECT `votes`.* FROM `votes` WHERE `votes`.`user_id` = 1 AND `votes`.`companydescription_id` = 103 LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.4ms)[0m  UPDATE `votes` SET `score` = 1, `updated_at` = '2013-07-10 00:34:29' WHERE `votes`.`id` = 178
+  [1m[36m (1.2ms)[0m  [1mCOMMIT[0m
+  Rendered votes/vote_description.js.erb (0.0ms)
+Completed 200 OK in 12ms (Views: 5.3ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/startups/8" for 127.0.0.1 at 2013-07-09 17:36:07 -0700
+Processing by StartupsController#show as HTML
+  Parameters: {"id"=>"8"}
+  [1m[35mStartup Load (0.4ms)[0m  SELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 8 LIMIT 1
+  [1m[36mOwner Load (0.3ms)[0m  [1mSELECT `owners`.* FROM `owners` WHERE (startup_id = '8' AND user_id = 1)[0m
+  [1m[35mUser Load (0.6ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 8 LIMIT 1[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT `users`.* FROM `users` INNER JOIN `followers` ON `users`.`id` = `followers`.`user_id` WHERE `followers`.`startup_id` = 8
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT `users`.* FROM `users` INNER JOIN `owners` ON `users`.`id` = `owners`.`user_id` WHERE `owners`.`startup_id` = 8[0m
+  Rendered startups/_nav.html.erb (1.5ms)
+  [1m[35mCompanydescription Load (0.6ms)[0m  SELECT `companydescriptions`.* FROM `companydescriptions` WHERE `companydescriptions`.`startup_id` = 8 AND (status =1)
+  [1m[36mCompanyupdate Load (0.5ms)[0m  [1mSELECT `companyupdates`.* FROM `companyupdates` WHERE `companyupdates`.`startup_id` = 8[0m
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM `companyupdates` WHERE `companyupdates`.`startup_id` = 8
+  Rendered companyupdates/_news.html.erb (0.0ms)
+  Rendered investors/_person.html.erb (0.9ms)
+  Rendered investors/_person.html.erb (3.1ms)
+  Rendered startups/show.html.erb within layouts/hatcher (19.8ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM `owners` WHERE `owners`.`user_id` = 1
+  [1m[36mStartup Load (0.5ms)[0m  [1mSELECT `startups`.* FROM `startups` INNER JOIN `owners` ON `startups`.`id` = `owners`.`startup_id` WHERE `owners`.`user_id` = 1[0m
+Completed 200 OK in 49ms (Views: 33.3ms | ActiveRecord: 4.5ms)
+
+
+Started GET "/assets/bootstrap.css" for 127.0.0.1 at 2013-07-09 17:36:07 -0700
+Served asset /bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2013-07-09 17:36:07 -0700
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-modal.js" for 127.0.0.1 at 2013-07-09 17:36:07 -0700
+Served asset /bootstrap-modal.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2013-07-09 17:36:07 -0700
+Compiled application.js  (11ms)  (pid 39821)
+Served asset /application.js - 200 OK (153ms)
+
+
+Started POST "/votes/vote_description" for 127.0.0.1 at 2013-07-09 17:36:09 -0700
+Processing by VotesController#vote_description as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"+TVvTltdnm3YdP02i3Lij8O+O+Y3/dMorgKvxv56TwM=", "vote"=>{"description_id"=>"103", "score"=>"3"}, "commit"=>"submit"}
+  [1m[35mVote Load (1.0ms)[0m  SELECT `votes`.* FROM `votes` WHERE `votes`.`user_id` = 1 AND `votes`.`companydescription_id` = 103 LIMIT 1
+  [1m[36m (0.4ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.7ms)[0m  UPDATE `votes` SET `score` = 3, `updated_at` = '2013-07-10 00:36:09' WHERE `votes`.`id` = 178
+  [1m[36m (7.1ms)[0m  [1mCOMMIT[0m
+  Rendered votes/vote_description.js.erb (0.1ms)
+Completed 200 OK in 19ms (Views: 5.2ms | ActiveRecord: 9.2ms)
+
+
+Started POST "/votes/vote_description" for 127.0.0.1 at 2013-07-09 17:36:10 -0700
+Processing by VotesController#vote_description as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"+TVvTltdnm3YdP02i3Lij8O+O+Y3/dMorgKvxv56TwM=", "vote"=>{"description_id"=>"103", "score"=>"2"}, "commit"=>"submit"}
+  [1m[35mVote Load (0.5ms)[0m  SELECT `votes`.* FROM `votes` WHERE `votes`.`user_id` = 1 AND `votes`.`companydescription_id` = 103 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.4ms)[0m  UPDATE `votes` SET `score` = 2, `updated_at` = '2013-07-10 00:36:10' WHERE `votes`.`id` = 178
+  [1m[36m (1.1ms)[0m  [1mCOMMIT[0m
+  Rendered votes/vote_description.js.erb (0.0ms)
+Completed 200 OK in 10ms (Views: 5.1ms | ActiveRecord: 2.1ms)
+
+
+Started POST "/votes/vote_description" for 127.0.0.1 at 2013-07-09 17:36:14 -0700
+Processing by VotesController#vote_description as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"+TVvTltdnm3YdP02i3Lij8O+O+Y3/dMorgKvxv56TwM=", "vote"=>{"description_id"=>"103", "score"=>"4"}, "commit"=>"submit"}
+  [1m[35mVote Load (1.1ms)[0m  SELECT `votes`.* FROM `votes` WHERE `votes`.`user_id` = 1 AND `votes`.`companydescription_id` = 103 LIMIT 1
+  [1m[36m (0.6ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.5ms)[0m  UPDATE `votes` SET `score` = 4, `updated_at` = '2013-07-10 00:36:15' WHERE `votes`.`id` = 178
+  [1m[36m (13.2ms)[0m  [1mCOMMIT[0m
+  Rendered votes/vote_description.js.erb (0.0ms)
+Completed 200 OK in 239ms (Views: 4.8ms | ActiveRecord: 15.4ms)
+
+
+Started POST "/votes/vote_description" for 127.0.0.1 at 2013-07-09 17:36:16 -0700
+Processing by VotesController#vote_description as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"+TVvTltdnm3YdP02i3Lij8O+O+Y3/dMorgKvxv56TwM=", "vote"=>{"description_id"=>"103", "score"=>"2"}, "commit"=>"submit"}
+  [1m[35mVote Load (8.3ms)[0m  SELECT `votes`.* FROM `votes` WHERE `votes`.`user_id` = 1 AND `votes`.`companydescription_id` = 103 LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.4ms)[0m  UPDATE `votes` SET `score` = 2, `updated_at` = '2013-07-10 00:36:16' WHERE `votes`.`id` = 178
+  [1m[36m (3.5ms)[0m  [1mCOMMIT[0m
+  Rendered votes/vote_description.js.erb (0.0ms)
+Completed 200 OK in 22ms (Views: 5.2ms | ActiveRecord: 12.4ms)
+
+
+Started POST "/votes/vote_description" for 127.0.0.1 at 2013-07-09 17:36:17 -0700
+Processing by VotesController#vote_description as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"+TVvTltdnm3YdP02i3Lij8O+O+Y3/dMorgKvxv56TwM=", "vote"=>{"description_id"=>"103", "score"=>"1"}, "commit"=>"submit"}
+  [1m[35mVote Load (0.4ms)[0m  SELECT `votes`.* FROM `votes` WHERE `votes`.`user_id` = 1 AND `votes`.`companydescription_id` = 103 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.7ms)[0m  UPDATE `votes` SET `score` = 1, `updated_at` = '2013-07-10 00:36:17' WHERE `votes`.`id` = 178
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  Rendered votes/vote_description.js.erb (0.0ms)
+Completed 200 OK in 9ms (Views: 4.7ms | ActiveRecord: 1.8ms)
+
+
+Started POST "/votes/vote_description" for 127.0.0.1 at 2013-07-09 17:36:19 -0700
+Processing by VotesController#vote_description as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"+TVvTltdnm3YdP02i3Lij8O+O+Y3/dMorgKvxv56TwM=", "vote"=>{"description_id"=>"103", "score"=>"0"}, "commit"=>"submit"}
+  [1m[35mVote Load (0.8ms)[0m  SELECT `votes`.* FROM `votes` WHERE `votes`.`user_id` = 1 AND `votes`.`companydescription_id` = 103 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.3ms)[0m  UPDATE `votes` SET `score` = 0, `updated_at` = '2013-07-10 00:36:19' WHERE `votes`.`id` = 178
+  [1m[36m (1.0ms)[0m  [1mCOMMIT[0m
+  Rendered votes/vote_description.js.erb (0.0ms)
+Completed 200 OK in 10ms (Views: 5.1ms | ActiveRecord: 2.3ms)
+
+
+Started POST "/votes/vote_description" for 127.0.0.1 at 2013-07-09 17:36:20 -0700
+Processing by VotesController#vote_description as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"+TVvTltdnm3YdP02i3Lij8O+O+Y3/dMorgKvxv56TwM=", "vote"=>{"description_id"=>"103", "score"=>"5"}, "commit"=>"submit"}
+  [1m[35mVote Load (0.5ms)[0m  SELECT `votes`.* FROM `votes` WHERE `votes`.`user_id` = 1 AND `votes`.`companydescription_id` = 103 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.4ms)[0m  UPDATE `votes` SET `score` = 5, `updated_at` = '2013-07-10 00:36:20' WHERE `votes`.`id` = 178
+  [1m[36m (1.1ms)[0m  [1mCOMMIT[0m
+  Rendered votes/vote_description.js.erb (0.0ms)
+Completed 200 OK in 11ms (Views: 5.4ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/startups/8" for 127.0.0.1 at 2013-07-09 17:36:28 -0700
+Processing by StartupsController#show as HTML
+  Parameters: {"id"=>"8"}
+  [1m[35mStartup Load (1.1ms)[0m  SELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 8 LIMIT 1
+  [1m[36mOwner Load (0.5ms)[0m  [1mSELECT `owners`.* FROM `owners` WHERE (startup_id = '8' AND user_id = 1)[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 8 LIMIT 1[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT `users`.* FROM `users` INNER JOIN `followers` ON `users`.`id` = `followers`.`user_id` WHERE `followers`.`startup_id` = 8
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT `users`.* FROM `users` INNER JOIN `owners` ON `users`.`id` = `owners`.`user_id` WHERE `owners`.`startup_id` = 8[0m
+  Rendered startups/_nav.html.erb (1.1ms)
+  [1m[35mCompanydescription Load (0.5ms)[0m  SELECT `companydescriptions`.* FROM `companydescriptions` WHERE `companydescriptions`.`startup_id` = 8 AND (status =1)
+  [1m[36mCompanyupdate Load (0.3ms)[0m  [1mSELECT `companyupdates`.* FROM `companyupdates` WHERE `companyupdates`.`startup_id` = 8[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM `companyupdates` WHERE `companyupdates`.`startup_id` = 8
+  Rendered companyupdates/_news.html.erb (0.0ms)
+  Rendered investors/_person.html.erb (1.0ms)
+  Rendered investors/_person.html.erb (2.3ms)
+  Rendered startups/show.html.erb within layouts/hatcher (16.6ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35m (0.5ms)[0m  SELECT COUNT(*) FROM `owners` WHERE `owners`.`user_id` = 1
+  [1m[36mStartup Load (0.5ms)[0m  [1mSELECT `startups`.* FROM `startups` INNER JOIN `owners` ON `startups`.`id` = `owners`.`startup_id` WHERE `owners`.`user_id` = 1[0m
+Completed 200 OK in 49ms (Views: 31.7ms | ActiveRecord: 4.7ms)
+
+
+Started GET "/assets/bootstrap.css" for 127.0.0.1 at 2013-07-09 17:36:28 -0700
+Served asset /bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-modal.js" for 127.0.0.1 at 2013-07-09 17:36:28 -0700
+Served asset /bootstrap-modal.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2013-07-09 17:36:28 -0700
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2013-07-09 17:36:28 -0700
+Compiled application.js  (6ms)  (pid 39821)
+Served asset /application.js - 200 OK (137ms)
+
+
+Started POST "/votes/vote_description" for 127.0.0.1 at 2013-07-09 17:36:29 -0700
+Processing by VotesController#vote_description as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"+TVvTltdnm3YdP02i3Lij8O+O+Y3/dMorgKvxv56TwM=", "vote"=>{"description_id"=>"103", "score"=>"4"}, "commit"=>"submit"}
+  [1m[35mVote Load (0.6ms)[0m  SELECT `votes`.* FROM `votes` WHERE `votes`.`user_id` = 1 AND `votes`.`companydescription_id` = 103 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.3ms)[0m  UPDATE `votes` SET `score` = 4, `updated_at` = '2013-07-10 00:36:29' WHERE `votes`.`id` = 178
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  Rendered votes/vote_description.js.erb (0.1ms)
+Completed 200 OK in 10ms (Views: 4.8ms | ActiveRecord: 1.6ms)
+
+
+Started POST "/votes/vote_description" for 127.0.0.1 at 2013-07-09 17:36:31 -0700
+Processing by VotesController#vote_description as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"+TVvTltdnm3YdP02i3Lij8O+O+Y3/dMorgKvxv56TwM=", "vote"=>{"description_id"=>"103", "score"=>"5"}, "commit"=>"submit"}
+  [1m[35mVote Load (0.7ms)[0m  SELECT `votes`.* FROM `votes` WHERE `votes`.`user_id` = 1 AND `votes`.`companydescription_id` = 103 LIMIT 1
+  [1m[36m (0.4ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.3ms)[0m  UPDATE `votes` SET `score` = 5, `updated_at` = '2013-07-10 00:36:31' WHERE `votes`.`id` = 178
+  [1m[36m (31.6ms)[0m  [1mCOMMIT[0m
+  Rendered votes/vote_description.js.erb (0.0ms)
+Completed 200 OK in 40ms (Views: 4.4ms | ActiveRecord: 33.1ms)
+
+
+Started GET "/startups/8" for 127.0.0.1 at 2013-07-09 17:36:36 -0700
+Processing by StartupsController#show as HTML
+  Parameters: {"id"=>"8"}
+  [1m[35mStartup Load (0.4ms)[0m  SELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 8 LIMIT 1
+  [1m[36mOwner Load (0.3ms)[0m  [1mSELECT `owners`.* FROM `owners` WHERE (startup_id = '8' AND user_id = 1)[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 8 LIMIT 1[0m
+  [1m[35mUser Load (0.5ms)[0m  SELECT `users`.* FROM `users` INNER JOIN `followers` ON `users`.`id` = `followers`.`user_id` WHERE `followers`.`startup_id` = 8
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT `users`.* FROM `users` INNER JOIN `owners` ON `users`.`id` = `owners`.`user_id` WHERE `owners`.`startup_id` = 8[0m
+  Rendered startups/_nav.html.erb (1.3ms)
+  [1m[35mCompanydescription Load (1.0ms)[0m  SELECT `companydescriptions`.* FROM `companydescriptions` WHERE `companydescriptions`.`startup_id` = 8 AND (status =1)
+  [1m[36mCompanyupdate Load (0.4ms)[0m  [1mSELECT `companyupdates`.* FROM `companyupdates` WHERE `companyupdates`.`startup_id` = 8[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM `companyupdates` WHERE `companyupdates`.`startup_id` = 8
+  Rendered companyupdates/_news.html.erb (0.0ms)
+  Rendered investors/_person.html.erb (1.1ms)
+  Rendered investors/_person.html.erb (2.6ms)
+  Rendered startups/show.html.erb within layouts/hatcher (20.9ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM `owners` WHERE `owners`.`user_id` = 1
+  [1m[36mStartup Load (0.5ms)[0m  [1mSELECT `startups`.* FROM `startups` INNER JOIN `owners` ON `startups`.`id` = `owners`.`startup_id` WHERE `owners`.`user_id` = 1[0m
+Completed 200 OK in 54ms (Views: 38.3ms | ActiveRecord: 4.4ms)
+
+
+Started GET "/assets/bootstrap.css" for 127.0.0.1 at 2013-07-09 17:36:36 -0700
+Served asset /bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2013-07-09 17:36:36 -0700
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2013-07-09 17:36:36 -0700
+Compiled application.js  (7ms)  (pid 39821)
+Served asset /application.js - 200 OK (116ms)
+
+
+Started GET "/assets/bootstrap-modal.js" for 127.0.0.1 at 2013-07-09 17:36:36 -0700
+Served asset /bootstrap-modal.js - 304 Not Modified (0ms)
+
+
+Started POST "/votes/vote_description" for 127.0.0.1 at 2013-07-09 17:36:38 -0700
+Processing by VotesController#vote_description as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"+TVvTltdnm3YdP02i3Lij8O+O+Y3/dMorgKvxv56TwM=", "vote"=>{"description_id"=>"102", "score"=>"4"}, "commit"=>"submit"}
+  [1m[35mVote Load (0.5ms)[0m  SELECT `votes`.* FROM `votes` WHERE `votes`.`user_id` = 1 AND `votes`.`companydescription_id` = 102 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.4ms)[0m  UPDATE `votes` SET `score` = 4, `updated_at` = '2013-07-10 00:36:38' WHERE `votes`.`id` = 177
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  Rendered votes/vote_description.js.erb (0.1ms)
+Completed 200 OK in 11ms (Views: 4.9ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/startups/8" for 127.0.0.1 at 2013-07-09 17:36:57 -0700
+Processing by StartupsController#show as HTML
+  Parameters: {"id"=>"8"}
+  [1m[35mStartup Load (0.5ms)[0m  SELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 8 LIMIT 1
+  [1m[36mOwner Load (0.4ms)[0m  [1mSELECT `owners`.* FROM `owners` WHERE (startup_id = '8' AND user_id = 1)[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 8 LIMIT 1[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT `users`.* FROM `users` INNER JOIN `followers` ON `users`.`id` = `followers`.`user_id` WHERE `followers`.`startup_id` = 8
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT `users`.* FROM `users` INNER JOIN `owners` ON `users`.`id` = `owners`.`user_id` WHERE `owners`.`startup_id` = 8[0m
+  Rendered startups/_nav.html.erb (1.2ms)
+  [1m[35mCompanydescription Load (0.5ms)[0m  SELECT `companydescriptions`.* FROM `companydescriptions` WHERE `companydescriptions`.`startup_id` = 8 AND (status =1)
+  [1m[36mCompanyupdate Load (0.4ms)[0m  [1mSELECT `companyupdates`.* FROM `companyupdates` WHERE `companyupdates`.`startup_id` = 8[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM `companyupdates` WHERE `companyupdates`.`startup_id` = 8
+  Rendered companyupdates/_news.html.erb (0.0ms)
+  Rendered investors/_person.html.erb (1.0ms)
+  Rendered investors/_person.html.erb (2.1ms)
+  Rendered startups/show.html.erb within layouts/hatcher (19.8ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM `owners` WHERE `owners`.`user_id` = 1
+  [1m[36mStartup Load (0.5ms)[0m  [1mSELECT `startups`.* FROM `startups` INNER JOIN `owners` ON `startups`.`id` = `owners`.`startup_id` WHERE `owners`.`user_id` = 1[0m
+Completed 200 OK in 45ms (Views: 33.0ms | ActiveRecord: 3.8ms)
+
+
+Started GET "/assets/bootstrap.css" for 127.0.0.1 at 2013-07-09 17:36:57 -0700
+Served asset /bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2013-07-09 17:36:57 -0700
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2013-07-09 17:36:57 -0700
+Compiled application.js  (9ms)  (pid 39821)
+Served asset /application.js - 200 OK (39ms)
+
+
+Started GET "/assets/bootstrap-modal.js" for 127.0.0.1 at 2013-07-09 17:36:57 -0700
+Served asset /bootstrap-modal.js - 304 Not Modified (0ms)
+
+
+Started GET "/startups/8" for 127.0.0.1 at 2013-07-09 17:37:16 -0700
+Processing by StartupsController#show as HTML
+  Parameters: {"id"=>"8"}
+  [1m[35mStartup Load (0.4ms)[0m  SELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 8 LIMIT 1
+  [1m[36mOwner Load (0.3ms)[0m  [1mSELECT `owners`.* FROM `owners` WHERE (startup_id = '8' AND user_id = 1)[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 8 LIMIT 1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT `users`.* FROM `users` INNER JOIN `followers` ON `users`.`id` = `followers`.`user_id` WHERE `followers`.`startup_id` = 8
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT `users`.* FROM `users` INNER JOIN `owners` ON `users`.`id` = `owners`.`user_id` WHERE `owners`.`startup_id` = 8[0m
+  Rendered startups/_nav.html.erb (2.0ms)
+  [1m[35mCompanydescription Load (0.5ms)[0m  SELECT `companydescriptions`.* FROM `companydescriptions` WHERE `companydescriptions`.`startup_id` = 8 AND (status =1)
+  [1m[36mCompanyupdate Load (0.4ms)[0m  [1mSELECT `companyupdates`.* FROM `companyupdates` WHERE `companyupdates`.`startup_id` = 8[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM `companyupdates` WHERE `companyupdates`.`startup_id` = 8
+  Rendered companyupdates/_news.html.erb (0.0ms)
+  Rendered investors/_person.html.erb (1.0ms)
+  Rendered investors/_person.html.erb (2.7ms)
+  Rendered startups/show.html.erb within layouts/hatcher (78.7ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35m (1.1ms)[0m  SELECT COUNT(*) FROM `owners` WHERE `owners`.`user_id` = 1
+  [1m[36mStartup Load (0.6ms)[0m  [1mSELECT `startups`.* FROM `startups` INNER JOIN `owners` ON `startups`.`id` = `owners`.`startup_id` WHERE `owners`.`user_id` = 1[0m
+Completed 200 OK in 108ms (Views: 95.3ms | ActiveRecord: 4.7ms)
+
+
+Started GET "/assets/bootstrap.css" for 127.0.0.1 at 2013-07-09 17:37:17 -0700
+Served asset /bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2013-07-09 17:37:17 -0700
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-modal.js" for 127.0.0.1 at 2013-07-09 17:37:17 -0700
+Served asset /bootstrap-modal.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2013-07-09 17:37:17 -0700
+Compiled application.js  (9ms)  (pid 39821)
+Served asset /application.js - 200 OK (41ms)
+
+
+Started POST "/votes/vote_description" for 127.0.0.1 at 2013-07-09 17:37:18 -0700
+Processing by VotesController#vote_description as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"+TVvTltdnm3YdP02i3Lij8O+O+Y3/dMorgKvxv56TwM=", "vote"=>{"description_id"=>"102", "score"=>"5"}, "commit"=>"submit"}
+  [1m[35mVote Load (0.4ms)[0m  SELECT `votes`.* FROM `votes` WHERE `votes`.`user_id` = 1 AND `votes`.`companydescription_id` = 102 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.3ms)[0m  UPDATE `votes` SET `score` = 5, `updated_at` = '2013-07-10 00:37:18' WHERE `votes`.`id` = 177
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  Rendered votes/vote_description.js.erb (0.1ms)
+Completed 200 OK in 10ms (Views: 5.5ms | ActiveRecord: 1.2ms)
+
+
+Started POST "/votes/vote_description" for 127.0.0.1 at 2013-07-09 17:37:19 -0700
+Processing by VotesController#vote_description as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"+TVvTltdnm3YdP02i3Lij8O+O+Y3/dMorgKvxv56TwM=", "vote"=>{"description_id"=>"102", "score"=>"4"}, "commit"=>"submit"}
+  [1m[35mVote Load (0.4ms)[0m  SELECT `votes`.* FROM `votes` WHERE `votes`.`user_id` = 1 AND `votes`.`companydescription_id` = 102 LIMIT 1
+  [1m[36m (0.5ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.3ms)[0m  UPDATE `votes` SET `score` = 4, `updated_at` = '2013-07-10 00:37:19' WHERE `votes`.`id` = 177
+  [1m[36m (1.1ms)[0m  [1mCOMMIT[0m
+  Rendered votes/vote_description.js.erb (0.0ms)
+Completed 200 OK in 10ms (Views: 5.3ms | ActiveRecord: 2.3ms)
+
+
+Started POST "/votes/vote_description" for 127.0.0.1 at 2013-07-09 17:37:20 -0700
+Processing by VotesController#vote_description as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"+TVvTltdnm3YdP02i3Lij8O+O+Y3/dMorgKvxv56TwM=", "vote"=>{"description_id"=>"102", "score"=>"3"}, "commit"=>"submit"}
+  [1m[35mVote Load (17.5ms)[0m  SELECT `votes`.* FROM `votes` WHERE `votes`.`user_id` = 1 AND `votes`.`companydescription_id` = 102 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.4ms)[0m  UPDATE `votes` SET `score` = 3, `updated_at` = '2013-07-10 00:37:20' WHERE `votes`.`id` = 177
+  [1m[36m (1.0ms)[0m  [1mCOMMIT[0m
+  Rendered votes/vote_description.js.erb (0.0ms)
+Completed 200 OK in 32ms (Views: 10.5ms | ActiveRecord: 19.0ms)
+
+
+Started POST "/votes/vote_description" for 127.0.0.1 at 2013-07-09 17:37:21 -0700
+Processing by VotesController#vote_description as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"+TVvTltdnm3YdP02i3Lij8O+O+Y3/dMorgKvxv56TwM=", "vote"=>{"description_id"=>"102", "score"=>"2"}, "commit"=>"submit"}
+  [1m[35mVote Load (2.3ms)[0m  SELECT `votes`.* FROM `votes` WHERE `votes`.`user_id` = 1 AND `votes`.`companydescription_id` = 102 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.4ms)[0m  UPDATE `votes` SET `score` = 2, `updated_at` = '2013-07-10 00:37:21' WHERE `votes`.`id` = 177
+  [1m[36m (1.3ms)[0m  [1mCOMMIT[0m
+  Rendered votes/vote_description.js.erb (0.0ms)
+Completed 200 OK in 11ms (Views: 4.6ms | ActiveRecord: 4.0ms)
+
+
+Started POST "/votes/vote_description" for 127.0.0.1 at 2013-07-09 17:37:22 -0700
+Processing by VotesController#vote_description as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"+TVvTltdnm3YdP02i3Lij8O+O+Y3/dMorgKvxv56TwM=", "vote"=>{"description_id"=>"102", "score"=>"1"}, "commit"=>"submit"}
+  [1m[35mVote Load (0.6ms)[0m  SELECT `votes`.* FROM `votes` WHERE `votes`.`user_id` = 1 AND `votes`.`companydescription_id` = 102 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.5ms)[0m  UPDATE `votes` SET `score` = 1, `updated_at` = '2013-07-10 00:37:22' WHERE `votes`.`id` = 177
+  [1m[36m (2.1ms)[0m  [1mCOMMIT[0m
+  Rendered votes/vote_description.js.erb (0.0ms)
+Completed 200 OK in 14ms (Views: 7.2ms | ActiveRecord: 3.3ms)
+
+
+Started POST "/votes/vote_description" for 127.0.0.1 at 2013-07-09 17:37:23 -0700
+Processing by VotesController#vote_description as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"+TVvTltdnm3YdP02i3Lij8O+O+Y3/dMorgKvxv56TwM=", "vote"=>{"description_id"=>"102", "score"=>"0"}, "commit"=>"submit"}
+  [1m[35mVote Load (1.1ms)[0m  SELECT `votes`.* FROM `votes` WHERE `votes`.`user_id` = 1 AND `votes`.`companydescription_id` = 102 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.3ms)[0m  UPDATE `votes` SET `score` = 0, `updated_at` = '2013-07-10 00:37:23' WHERE `votes`.`id` = 177
+  [1m[36m (1.2ms)[0m  [1mCOMMIT[0m
+  Rendered votes/vote_description.js.erb (0.1ms)
+Completed 200 OK in 12ms (Views: 6.1ms | ActiveRecord: 2.8ms)
+
+
+Started GET "/startups/8" for 127.0.0.1 at 2013-07-09 17:37:42 -0700
+Processing by StartupsController#show as HTML
+  Parameters: {"id"=>"8"}
+  [1m[35mStartup Load (0.6ms)[0m  SELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 8 LIMIT 1
+  [1m[36mOwner Load (0.3ms)[0m  [1mSELECT `owners`.* FROM `owners` WHERE (startup_id = '8' AND user_id = 1)[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 8 LIMIT 1[0m
+  [1m[35mUser Load (0.5ms)[0m  SELECT `users`.* FROM `users` INNER JOIN `followers` ON `users`.`id` = `followers`.`user_id` WHERE `followers`.`startup_id` = 8
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT `users`.* FROM `users` INNER JOIN `owners` ON `users`.`id` = `owners`.`user_id` WHERE `owners`.`startup_id` = 8[0m
+  Rendered startups/_nav.html.erb (1.2ms)
+  [1m[35mCompanydescription Load (0.6ms)[0m  SELECT `companydescriptions`.* FROM `companydescriptions` WHERE `companydescriptions`.`startup_id` = 8 AND (status =1)
+  [1m[36mCompanyupdate Load (0.4ms)[0m  [1mSELECT `companyupdates`.* FROM `companyupdates` WHERE `companyupdates`.`startup_id` = 8[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM `companyupdates` WHERE `companyupdates`.`startup_id` = 8
+  Rendered companyupdates/_news.html.erb (0.0ms)
+  Rendered investors/_person.html.erb (3.1ms)
+  Rendered investors/_person.html.erb (4.8ms)
+  Rendered startups/show.html.erb within layouts/hatcher (100.6ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM `owners` WHERE `owners`.`user_id` = 1
+  [1m[36mStartup Load (0.4ms)[0m  [1mSELECT `startups`.* FROM `startups` INNER JOIN `owners` ON `startups`.`id` = `owners`.`startup_id` WHERE `owners`.`user_id` = 1[0m
+Completed 200 OK in 128ms (Views: 116.0ms | ActiveRecord: 4.1ms)
+
+
+Started GET "/assets/bootstrap.css" for 127.0.0.1 at 2013-07-09 17:37:43 -0700
+Served asset /bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2013-07-09 17:37:43 -0700
+Compiled application.js  (5ms)  (pid 39821)
+Served asset /application.js - 200 OK (36ms)
+
+
+Started GET "/assets/bootstrap-modal.js" for 127.0.0.1 at 2013-07-09 17:37:43 -0700
+Served asset /bootstrap-modal.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2013-07-09 17:37:43 -0700
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started POST "/votes/vote_description" for 127.0.0.1 at 2013-07-09 17:37:44 -0700
+Processing by VotesController#vote_description as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"+TVvTltdnm3YdP02i3Lij8O+O+Y3/dMorgKvxv56TwM=", "vote"=>{"description_id"=>"102", "score"=>"4"}, "commit"=>"submit"}
+  [1m[35mVote Load (0.5ms)[0m  SELECT `votes`.* FROM `votes` WHERE `votes`.`user_id` = 1 AND `votes`.`companydescription_id` = 102 LIMIT 1
+  [1m[36m (0.5ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.4ms)[0m  UPDATE `votes` SET `score` = 4, `updated_at` = '2013-07-10 00:37:44' WHERE `votes`.`id` = 177
+  [1m[36m (3.6ms)[0m  [1mCOMMIT[0m
+  Rendered votes/vote_description.js.erb (0.1ms)
+Completed 200 OK in 14ms (Views: 5.0ms | ActiveRecord: 5.0ms)
+
+
+Started POST "/votes/vote_description" for 127.0.0.1 at 2013-07-09 17:37:45 -0700
+Processing by VotesController#vote_description as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"+TVvTltdnm3YdP02i3Lij8O+O+Y3/dMorgKvxv56TwM=", "vote"=>{"description_id"=>"102", "score"=>"5"}, "commit"=>"submit"}
+  [1m[35mVote Load (1.1ms)[0m  SELECT `votes`.* FROM `votes` WHERE `votes`.`user_id` = 1 AND `votes`.`companydescription_id` = 102 LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.4ms)[0m  UPDATE `votes` SET `score` = 5, `updated_at` = '2013-07-10 00:37:45' WHERE `votes`.`id` = 177
+  [1m[36m (1.1ms)[0m  [1mCOMMIT[0m
+  Rendered votes/vote_description.js.erb (0.0ms)
+Completed 200 OK in 11ms (Views: 4.6ms | ActiveRecord: 2.8ms)
+
+
+Started POST "/votes/vote_description" for 127.0.0.1 at 2013-07-09 17:37:46 -0700
+Processing by VotesController#vote_description as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"+TVvTltdnm3YdP02i3Lij8O+O+Y3/dMorgKvxv56TwM=", "vote"=>{"description_id"=>"102", "score"=>"5"}, "commit"=>"submit"}
+  [1m[35mVote Load (0.4ms)[0m  SELECT `votes`.* FROM `votes` WHERE `votes`.`user_id` = 1 AND `votes`.`companydescription_id` = 102 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  COMMIT
+  Rendered votes/vote_description.js.erb (0.0ms)
+Completed 200 OK in 7ms (Views: 4.5ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/votes/vote_description" for 127.0.0.1 at 2013-07-09 17:37:47 -0700
+Processing by VotesController#vote_description as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"+TVvTltdnm3YdP02i3Lij8O+O+Y3/dMorgKvxv56TwM=", "vote"=>{"description_id"=>"102", "score"=>"2"}, "commit"=>"submit"}
+  [1m[36mVote Load (0.9ms)[0m  [1mSELECT `votes`.* FROM `votes` WHERE `votes`.`user_id` = 1 AND `votes`.`companydescription_id` = 102 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.3ms)[0m  [1mUPDATE `votes` SET `score` = 2, `updated_at` = '2013-07-10 00:37:47' WHERE `votes`.`id` = 177[0m
+  [1m[35m (2.0ms)[0m  COMMIT
+  Rendered votes/vote_description.js.erb (0.0ms)
+Completed 200 OK in 12ms (Views: 4.8ms | ActiveRecord: 3.3ms)
+
+
+Started POST "/votes/vote_description" for 127.0.0.1 at 2013-07-09 17:37:48 -0700
+Processing by VotesController#vote_description as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"+TVvTltdnm3YdP02i3Lij8O+O+Y3/dMorgKvxv56TwM=", "vote"=>{"description_id"=>"102", "score"=>"0"}, "commit"=>"submit"}
+  [1m[36mVote Load (0.9ms)[0m  [1mSELECT `votes`.* FROM `votes` WHERE `votes`.`user_id` = 1 AND `votes`.`companydescription_id` = 102 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.5ms)[0m  [1mUPDATE `votes` SET `score` = 0, `updated_at` = '2013-07-10 00:37:48' WHERE `votes`.`id` = 177[0m
+  [1m[35m (1.2ms)[0m  COMMIT
+  Rendered votes/vote_description.js.erb (0.0ms)
+Completed 200 OK in 10ms (Views: 4.5ms | ActiveRecord: 2.6ms)
+
+
+Started POST "/votes/vote_description" for 127.0.0.1 at 2013-07-09 17:37:52 -0700
+Processing by VotesController#vote_description as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"+TVvTltdnm3YdP02i3Lij8O+O+Y3/dMorgKvxv56TwM=", "vote"=>{"description_id"=>"101", "score"=>"3"}, "commit"=>"submit"}
+  [1m[36mVote Load (0.5ms)[0m  [1mSELECT `votes`.* FROM `votes` WHERE `votes`.`user_id` = 1 AND `votes`.`companydescription_id` = 101 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.4ms)[0m  [1mUPDATE `votes` SET `score` = 3, `updated_at` = '2013-07-10 00:37:52' WHERE `votes`.`id` = 176[0m
+  [1m[35m (1.3ms)[0m  COMMIT
+  Rendered votes/vote_description.js.erb (0.0ms)
+Completed 200 OK in 11ms (Views: 5.1ms | ActiveRecord: 2.3ms)
+
+
+Started POST "/votes/vote_description" for 127.0.0.1 at 2013-07-09 17:37:53 -0700
+Processing by VotesController#vote_description as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"+TVvTltdnm3YdP02i3Lij8O+O+Y3/dMorgKvxv56TwM=", "vote"=>{"description_id"=>"101", "score"=>"5"}, "commit"=>"submit"}
+  [1m[36mVote Load (0.4ms)[0m  [1mSELECT `votes`.* FROM `votes` WHERE `votes`.`user_id` = 1 AND `votes`.`companydescription_id` = 101 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (1.1ms)[0m  [1mUPDATE `votes` SET `score` = 5, `updated_at` = '2013-07-10 00:37:53' WHERE `votes`.`id` = 176[0m
+  [1m[35m (0.4ms)[0m  COMMIT
+  Rendered votes/vote_description.js.erb (0.0ms)
+Completed 200 OK in 10ms (Views: 5.0ms | ActiveRecord: 2.0ms)
+
+
+Started POST "/votes/vote_description" for 127.0.0.1 at 2013-07-09 17:37:56 -0700
+Processing by VotesController#vote_description as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"+TVvTltdnm3YdP02i3Lij8O+O+Y3/dMorgKvxv56TwM=", "vote"=>{"description_id"=>"103", "score"=>"3"}, "commit"=>"submit"}
+  [1m[36mVote Load (0.5ms)[0m  [1mSELECT `votes`.* FROM `votes` WHERE `votes`.`user_id` = 1 AND `votes`.`companydescription_id` = 103 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.4ms)[0m  [1mUPDATE `votes` SET `score` = 3, `updated_at` = '2013-07-10 00:37:56' WHERE `votes`.`id` = 178[0m
+  [1m[35m (1.3ms)[0m  COMMIT
+  Rendered votes/vote_description.js.erb (0.1ms)
+Completed 200 OK in 12ms (Views: 4.6ms | ActiveRecord: 2.3ms)
+
+
+Started POST "/votes/vote_description" for 127.0.0.1 at 2013-07-09 17:37:57 -0700
+Processing by VotesController#vote_description as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"+TVvTltdnm3YdP02i3Lij8O+O+Y3/dMorgKvxv56TwM=", "vote"=>{"description_id"=>"103", "score"=>"4"}, "commit"=>"submit"}
+  [1m[36mVote Load (0.4ms)[0m  [1mSELECT `votes`.* FROM `votes` WHERE `votes`.`user_id` = 1 AND `votes`.`companydescription_id` = 103 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.5ms)[0m  [1mUPDATE `votes` SET `score` = 4, `updated_at` = '2013-07-10 00:37:57' WHERE `votes`.`id` = 178[0m
+  [1m[35m (0.4ms)[0m  COMMIT
+  Rendered votes/vote_description.js.erb (0.1ms)
+Completed 200 OK in 9ms (Views: 4.6ms | ActiveRecord: 1.4ms)
+
+
+Started POST "/votes/vote_description" for 127.0.0.1 at 2013-07-09 17:37:58 -0700
+Processing by VotesController#vote_description as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"+TVvTltdnm3YdP02i3Lij8O+O+Y3/dMorgKvxv56TwM=", "vote"=>{"description_id"=>"103", "score"=>"1"}, "commit"=>"submit"}
+  [1m[36mVote Load (0.7ms)[0m  [1mSELECT `votes`.* FROM `votes` WHERE `votes`.`user_id` = 1 AND `votes`.`companydescription_id` = 103 LIMIT 1[0m
+  [1m[35m (4.2ms)[0m  BEGIN
+  [1m[36m (0.6ms)[0m  [1mUPDATE `votes` SET `score` = 1, `updated_at` = '2013-07-10 00:37:58' WHERE `votes`.`id` = 178[0m
+  [1m[35m (1.0ms)[0m  COMMIT
+  Rendered votes/vote_description.js.erb (0.0ms)
+Completed 200 OK in 15ms (Views: 4.8ms | ActiveRecord: 6.4ms)
+
+
+Started POST "/votes/vote_description" for 127.0.0.1 at 2013-07-09 17:38:00 -0700
+Processing by VotesController#vote_description as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"+TVvTltdnm3YdP02i3Lij8O+O+Y3/dMorgKvxv56TwM=", "vote"=>{"description_id"=>"103", "score"=>"5"}, "commit"=>"submit"}
+  [1m[36mVote Load (0.5ms)[0m  [1mSELECT `votes`.* FROM `votes` WHERE `votes`.`user_id` = 1 AND `votes`.`companydescription_id` = 103 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.3ms)[0m  [1mUPDATE `votes` SET `score` = 5, `updated_at` = '2013-07-10 00:38:00' WHERE `votes`.`id` = 178[0m
+  [1m[35m (31.5ms)[0m  COMMIT
+  Rendered votes/vote_description.js.erb (0.0ms)
+Completed 200 OK in 40ms (Views: 4.7ms | ActiveRecord: 32.5ms)
+
+
+Started POST "/votes/vote_description" for 127.0.0.1 at 2013-07-09 17:38:01 -0700
+Processing by VotesController#vote_description as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"+TVvTltdnm3YdP02i3Lij8O+O+Y3/dMorgKvxv56TwM=", "vote"=>{"description_id"=>"103", "score"=>"2"}, "commit"=>"submit"}
+  [1m[36mVote Load (0.4ms)[0m  [1mSELECT `votes`.* FROM `votes` WHERE `votes`.`user_id` = 1 AND `votes`.`companydescription_id` = 103 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.3ms)[0m  [1mUPDATE `votes` SET `score` = 2, `updated_at` = '2013-07-10 00:38:01' WHERE `votes`.`id` = 178[0m
+  [1m[35m (1.1ms)[0m  COMMIT
+  Rendered votes/vote_description.js.erb (0.0ms)
+Completed 200 OK in 9ms (Views: 4.5ms | ActiveRecord: 1.8ms)
+
+
+Started POST "/votes/vote_description" for 127.0.0.1 at 2013-07-09 17:38:02 -0700
+Processing by VotesController#vote_description as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"+TVvTltdnm3YdP02i3Lij8O+O+Y3/dMorgKvxv56TwM=", "vote"=>{"description_id"=>"103", "score"=>"3"}, "commit"=>"submit"}
+  [1m[36mVote Load (1.8ms)[0m  [1mSELECT `votes`.* FROM `votes` WHERE `votes`.`user_id` = 1 AND `votes`.`companydescription_id` = 103 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.3ms)[0m  [1mUPDATE `votes` SET `score` = 3, `updated_at` = '2013-07-10 00:38:02' WHERE `votes`.`id` = 178[0m
+  [1m[35m (1.1ms)[0m  COMMIT
+  Rendered votes/vote_description.js.erb (0.0ms)
+Completed 200 OK in 15ms (Views: 8.9ms | ActiveRecord: 3.3ms)
+
+
+Started POST "/votes/vote_description" for 127.0.0.1 at 2013-07-09 17:38:04 -0700
+Processing by VotesController#vote_description as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"+TVvTltdnm3YdP02i3Lij8O+O+Y3/dMorgKvxv56TwM=", "vote"=>{"description_id"=>"103", "score"=>"4"}, "commit"=>"submit"}
+  [1m[36mVote Load (0.9ms)[0m  [1mSELECT `votes`.* FROM `votes` WHERE `votes`.`user_id` = 1 AND `votes`.`companydescription_id` = 103 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.4ms)[0m  [1mUPDATE `votes` SET `score` = 4, `updated_at` = '2013-07-10 00:38:04' WHERE `votes`.`id` = 178[0m
+  [1m[35m (0.9ms)[0m  COMMIT
+  Rendered votes/vote_description.js.erb (0.0ms)
+Completed 200 OK in 13ms (Views: 7.5ms | ActiveRecord: 2.3ms)

@@ -35,8 +35,8 @@
                           <%= submit_tag 'submit', :id => "button_"+ description.id.to_s(), :hidden => 'true' %>
                       <% end %>
                       <div id="bar_<%=description.id%>" class="progress progress-primary progress-slider"
-                           onmousedown="stopSlideVote(<%=description.id%>, this, 105, 160)"
-                           onmouseup="startSlideVote(<%=description.id%>, this, 105, 160)">
+                           onmousedown="stopSlideVote(<%=description.id%>, this, 0, 160)"
+                           onmouseup="startSlideVote(<%=description.id%>, this, 0, 160)">
                         <div id='slider_<%=description.id%>' class='bar'></div>
                       </div>
                       <div>

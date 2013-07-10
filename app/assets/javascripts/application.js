@@ -101,7 +101,7 @@ function stopSlideVote(barId, barNode, offsetPoint, totalWidth){
     var set_perc = ((((event.clientX - barNode.offsetLeft - offsetPoint) / barNode.offsetWidth)).toFixed(2));
     barNode.children[0].style.width = (set_perc * 100) + '%';
     var info = document.getElementById('info_'+ barId);
-    info.style.marginLeft = set_perc * totalWidth + 'px';
+    info.style.marginLeft = (set_perc * barNode.clientWidth * 0.9) + 'px';
     info.innerText = Math.round(set_perc * 5)/1;
     document.getElementById('form_'+ barId).querySelector("#vote_score").value = Math.round(set_perc * 5)/1 ;
     $('#button_'+ barId).click();
