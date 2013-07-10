@@ -456,6 +456,11 @@ h2.project{
     margin:10px 60px 0 0;
   }
 
+  textarea {
+    width:85%;
+    height: 80px;
+  }
+
   h1 {
     padding-left:10px;
     color:orange;
@@ -518,10 +523,6 @@ h2.project{
       .company-box {
         border-bottom:1px #07b5b5 solid;
         //width: 556px;
-        textarea {
-          width:calc(100% - 10px);
-          height: 50px;
-        }
       }
     }
 
