@@ -28,8 +28,8 @@
               <%= submit_tag 'dfsd', :id => "button_"+ description.id.to_s(), :hidden => 'true' %>
             <% end %>
                 <div id="bar_<%=description.id%>" class="progress progress-primary progress-slider"
-                     onmousedown="stopSlideVote(<%=description.id%>, this, 277, 115)"
-                     onmouseup="startSlideVote(<%=description.id%>, this, 277, 115)">
+                     onmousedown="stopSlideVote(<%=description.id%>, this, 263, 115)"
+                     onmouseup="startSlideVote(<%=description.id%>, this, 263, 115)">
                   <div id='slider_<%=description.id%>' class='bar'></div>
                 </div>
           <% else %>
@@ -68,4 +68,5 @@
           <button class="btn btn-warning" style="float:right;margin:10px 5% 0 5%;">Next</button>
       <% end %>
   <% end %>
+
 </div>

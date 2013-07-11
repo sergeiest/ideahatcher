@@ -21,7 +21,7 @@ var moreLink = mainDiv.getElementsByClassName("show-more")[0];
     <% end %>
 
     htmlText = htmlText + "<h2><%= startup.name %></h2>";
-    htmlText = htmlText + '<p class="p-content"><%= startup.pitch %></p>';
+    htmlText = htmlText + '<p class="p-content"><%= startup.pitch.firstletters(120) %></p>';
 
 
     <% tags = startup.Tags

@@ -486,7 +486,9 @@ h2.project{
   .company-left {
     float:left;
     padding-left: 10px;
+    padding-top:10px;
     width: 70%;
+
     .company-box {
       width: 100%;
       .person-info {
@@ -651,6 +653,7 @@ h2.project{
 
   .company-right {
     float:right;
+    padding-top:10px;
     width: 25%;
     .btn-warning {
       margin-left: 19.5%;
@@ -680,7 +683,7 @@ h2.project{
   input{
     margin-left: 35px;
     margin-right: -5px;
-    width: 355px;
+    width: 40%;
   }
 
   .idea-statement{
@@ -689,7 +692,7 @@ h2.project{
     -webkit-border-radius: 5px;
     line-height: 20px;
     font-size:12px;
-    width:330px;
+    width:37%;
     border:3px white solid;
     color:white;
     height: 130px;
@@ -771,6 +774,7 @@ h2.project{
   right:0;
   width:15%;
   top:70px;
+  z-index:10;
 
   background-color: #f7f7f7;
   border-top: 1px solid #dadada;
@@ -872,26 +876,21 @@ h2.project{
 
 .class0 {
   width: 560px; height: 760px;
-  position: absolute;
-  top: 40px;
-  left: 80px;
+  margin: 40px 0 0 40px;
   z-index:0;
 }
 .class1 {
   width: 600px; height: 800px;
-  position: absolute;
-  top: 20px;
-  left: 170px;
+  margin: -790px 0 0 100px;
   z-index:2;
+  position: relative;
 
 }
 .class2 {
   width: 560px; height: 760px;
-  margin: 20px 0 0 0;
-  position: absolute;
-  top: 20px;
-  left: 340px;
+  margin: -780px 0 30px 200px;
   z-index:1;
+
 }
 
 .vote-frame {
