@@ -46,7 +46,10 @@
                   <%= f.text_field :lastname %>
                 </div>
             <%end%>
-
+            <div class="field">
+                About me<br />
+                <%= f.text_area :description   %>
+            </div>
 
             <%= link_to do %>
                 <button id="next-company" class="btn btn-warning">Save</button>

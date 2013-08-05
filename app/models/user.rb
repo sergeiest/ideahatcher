@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
 
-  attr_accessible :firstname, :lastname, :cmuaffiliation, :authentication_id, :avatar
+  attr_accessible :firstname, :lastname, :description, :authentication_id, :avatar
 
   validates_presence_of :firstname, :lastname,  :message => "Incomplete fields"
 

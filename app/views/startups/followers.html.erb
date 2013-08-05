@@ -6,15 +6,18 @@
     <div class="company-left">
       <div class="company-box">
         <%= render :partial => "investors/people", :collection => @people, :locals => {:action_type => nil} %>
+        <%= simple_format 'This idea does not have followers yet' if @people.length == 0  %>
       </div>
     </div>
     <div class="company-right">
-      <%= link_to 'Follow',
+      <% if session[:id].nil? || session[:id]== 0 || @startup_owners.include?(@user) %>
+        <%= link_to 'Follow',
                   {:controller => 'investors', :action => 'follow_company'},
                   :class => 'btn btn-warning',
                   :id => 'follow_btn',
                   :remote => true %>
-      <div class="company-info">
+        <% end %>
+      <div class="company-info" hidden>
         <h4>Team</h4>
         <%= render :partial => 'investors/person', :collection => @startup_owners, :locals => { :action_type => nil, :status => 1} %>
         <% if session[:connection_type]==2 %>

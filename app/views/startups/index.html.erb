@@ -10,13 +10,9 @@
     <% if session[:id] and session[:id] != 0 %>
       <% if params[:action] == "your_ideas" %>
         <li class="cat-name" style="margin-bottom:20px;color:inherit">Your ideas <i class="icon-play glyphw" style="float:right"></i></li>
-      <% else %>
-        <li  class="cat-name" style="margin-bottom:20px;"><%=  link_to 'Your ideas', {:action => "your_ideas"}%></li>
       <% end %>
       <% if params[:action] == "your_following_ideas" %>
           <li class="cat-name" style="margin-bottom:20px;color:inherit">you follow <i class="icon-play glyphw" style="float:right"></i></li>
-      <% else %>
-          <li  class="cat-name" style="margin-bottom:20px;"><%=  link_to 'ideas you follow', {:action => "your_following_ideas"}%></li>
       <% end %>
     <% end %>
 
@@ -34,7 +30,6 @@
 
 <div class="hatcher-container">
   <div class="company-main">
-      <%= link_to "See all New Ideas >", {:controller => "startups"}, :class => "more-startups"%>
       <% case params[:action] %>
         <% when "hashtag" %>
             <h1 class="page-title">#<%= params[:tag] %></h1>
@@ -63,13 +58,13 @@
 </div>
 
 
-<div class="guideline-menu">
-  <h5>Browse ideas and help hatch them</h5>
-  <p>You can browse all ideas on the platform, pick those by category and hashtags or just search for a particular idea</p>
-  <p>You also can turn on the lightning mode to compare the ideas</p>
+<div class="guideline-menu" onclick="showHelp(this)">
+  <i class=' icon-question-sign glyphw ' style="float:left;"></i>
+  <h5 hidden>What to do here</h5>
+  <p hidden>Browse ideas and help hatch them</p>
+  <p hidden>You can browse all ideas on the platform, pick those by category and hashtags or just search for a particular idea</p>
+  <p hidden>You also can turn on the lightning mode to compare the ideas</p>
 </div>
-
-<div class="clear-both"></div>
 
 
 

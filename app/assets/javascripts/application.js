@@ -153,3 +153,26 @@ function submitForm (formElement) {
         }
     }
 }
+
+function showHelp (elementNode) {
+    if (elementNode.getElementsByTagName("i")[0].hidden == false) {
+        elementNode.style.width = '20%';
+        elementNode.getElementsByTagName("i")[0].hidden = true;
+        for (var i = 0; i < elementNode.getElementsByTagName("h5").length; i++) {
+            elementNode.getElementsByTagName("h5")[i].hidden = false;
+        }
+        for (var i = 0; i < elementNode.getElementsByTagName("p").length; i++) {
+            elementNode.getElementsByTagName("p")[i].hidden = false;
+        }
+    } else {
+        elementNode.style.width = '15px';
+        elementNode.getElementsByTagName("i")[0].hidden = false;
+        for (var i = 0; i < elementNode.getElementsByTagName("h5").length; i++) {
+            elementNode.getElementsByTagName("h5")[i].hidden = true;
+        }
+        for (var i = 0; i < elementNode.getElementsByTagName("p").length; i++) {
+            elementNode.getElementsByTagName("p")[i].hidden = true;
+        }
+    }
+
+}

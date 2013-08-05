@@ -131,6 +131,11 @@ body {
       color: white;
     }
 
+    .custom-dropdown-menu {
+      margin:0px;
+      margin-top:2px;
+    }
+
     .dropdown-menu .notifications {
       -webkit-border-radius: 10px;
       margin:-30px -20px 30px 5px;
@@ -145,7 +150,15 @@ body {
       height: 12px;
       color:white;
     }
+
+    .custom-dropdown ul a {
+      height: 12px;
+      color:black;
+      padding:5px 20px 10px 20px;
+    }
+
     .custom-dropdown a:hover, a:active, a:focus {color: #313131;}
+    .custom-dropdown ul a:hover, a:active, a:focus {color: white;}
 
 
     img {
@@ -328,13 +341,13 @@ h2.project{
 
 
 .idea {
-  -webkit-border-radius: 5px;
   border:1px #c8c8c8 solid;
   background-color: white;
+  width:100%;
   margin:20px 0;
   padding:10px 20px;
   .idea-content {
-    width:660px;
+    width:100%;
     .idea-text {min-height: 95px;}
     .comment {
       min-height: 15px;
@@ -343,6 +356,8 @@ h2.project{
     h5 {
       color:orange;
       margin:0px ;
+      margin-bottom:10px ;
+
     }
     p {
       line-height: 16px;
@@ -364,54 +379,21 @@ h2.project{
   }
 
   .startup-content {
-    img {  -webkit-border-radius: 5px;}
+    img {
+      width: 120px;
+    }
     padding-left:10px;
     margin-left: 20px;
     float:right;
-    border-left:2px white solid;
-    width:200px;
+    border-left:1px grey solid;
+    width:100px;
     h5 {
       margin:10px 0;
-      color: #464646;
+      color: #07b5b5;
       line-height: 16px;
-      font-size:14px;
-      font-weight:normal;
-    }
-    p {
-      margin:0 0 0;
-      color: #464646;
-      line-height: 20px;
-      font-size:12px;
-    }
-    .check-img {
-      float:right;
-      height:30px;
-      margin-top:-5px;
-    }
-    tr {
-      vertical-align: top;
-      font-size:12px;
-      color:#464646;
-      height: 20px;
-      margin:0;
-      padding:0;
-      line-height: 20px;
-    }
-    td {
-      vertical-align: top;
-      font-size:12px;
-      color:#464646;
-      height: 20px;
-      margin:0;
-      padding:0;
-      line-height: 30px;
-    }
-    .td2 {
+      font-size:16px;
       text-align: right;
-      vertical-align: top;
-      width:300px;
-      font-size:12px;
-      color:#464646;
+      font-weight:normal;
     }
   }
 }
@@ -546,6 +528,14 @@ h2.project{
         margin-top:-7px;
         margin-bottom:0px;
       }
+      i {
+        padding:0 0 1px 2px;
+        margin-top: 20px;
+        margin-bottom: 0;
+        border-bottom:1px white dashed;
+        cursor:pointer;
+      }
+
       .btn {margin-top:-5px;}
     }
 
@@ -650,6 +640,25 @@ h2.project{
 
   }
 
+
+  .edit-button {
+    i {
+      padding:0 0 1px 2px;
+      margin-top: 2px;
+      margin-bottom: 0;
+      border-bottom:1px #696969 dashed;
+      cursor:pointer;
+    }
+  }
+
+  .edit-description {
+    i {
+      padding:0 0 1px 2px;
+      margin-bottom: 0;
+      border-bottom:1px #696969 dashed;
+      cursor:pointer;
+    }
+  }
 
   .company-right {
     float:right;
@@ -772,15 +781,20 @@ h2.project{
 .guideline-menu  {
   position:absolute;
   right:0;
-  width:15%;
+  width:15px;
   top:70px;
   z-index:10;
+  cursor: pointer;
 
   background-color: #f7f7f7;
   border-top: 1px solid #dadada;
   border-left: 1px solid #dadada;
   border-bottom: 1px solid #dadada;
   padding:0 20px;
+
+  i {
+    margin:13px 5px 13px 0;
+  }
 }
 
 

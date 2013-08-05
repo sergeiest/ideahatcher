@@ -4,7 +4,7 @@
   <div class="company-main">
     <div class="company-left">
       <div class="company-box">
-        <h4>Add founders to your team by selecting them:</h4>
+        <h4>Add team members to your idea by selecting them:</h4>
         <%= form_tag({:action => "search_people", :controller => "investors"},
                      :remote => true) do %>
             <%= text_field_tag :string, "search", :onclick => "clearInput(this)", :onkeyup => "submitForm(this.parentNode)" %>

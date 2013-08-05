@@ -16,9 +16,7 @@
             <% end %>
             <h2 id="main-name" class="main-name">
                 <span><%= @startup.name %></span>
-                <span><%= submit_tag "Edit",
-                                            :class => "btn btn-small btn-warning",
-                                            :onclick => "editName(this.parentNode)" %></span>
+                <span><i class=' icon-pencil glyphw-white' onclick="editName(this.parentNode)"></i></span>
                 <%= form_tag({:action => 'update_name', :controller => "campaigns"},
                            :remote => true, :hidden => true) do %>
                   <span><%= text_field_tag :name, @startup.name %></span>
@@ -31,8 +29,7 @@
         <div id="main-description" class="company-box">
             <h5>
               <span>Description</span>
-              <span><%= submit_tag "Edit", :class => "btn btn-small btn-warning",
-                                  :onclick => "editDescription(this.parentNode.parentNode, this.parentNode)" %></span>
+              <span class="edit-button"><i class=' icon-pencil glyphw' onclick="editDescription(this.parentNode.parentNode, this.parentNode)"></i></span>
             </h5>
             <%= simple_format @startup.pitch %>
             <%= form_tag({:action => 'update_description', :controller => "campaigns"},

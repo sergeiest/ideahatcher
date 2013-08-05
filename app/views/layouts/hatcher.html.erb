@@ -37,7 +37,7 @@
 
 <div class="hatcher-nav">
   <div class="logo-img">
-    <%= link_to(:controller => "home") do  %>
+    <%= link_to(:controller => "startups") do  %>
         <img src="/images/ideahatcher_logo.png">
     <% end %>
   </div>
@@ -47,8 +47,33 @@
       <% owner_number = user.Owners.count %>
       <ul class="user-nav nav nav-pills">
         <li class="dropdown custom-dropdown">
-          <%= link_to "ideas", :action => "index", :controller => "startups" %>
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="height: 12px;">
+                My ideas
+              </a>
+          <ul class="dropdown-menu custom-dropdown-menu">
+            <% if owner_number != 0 %>
+                <% user.Owner_startups.each do |startup| %>
+                    <li role="presentation"><%= link_to startup.name, :controller => 'startups',
+                                                        :action => 'show', :id => startup.id %></li>
+                <% end %>
+                <hr />
+                <li role="presentation"><%= link_to "See all my ideas", :controller => 'startups',
+                                                    :action => 'your_ideas' %></li>
+            <% end %>
+            <li role="presentation"><%= link_to "Start an idea", :controller => 'campaigns',
+                                                :action => 'guide_step' %></li>
+          </ul>
         </li>
+        <li class="dropdown custom-dropdown">
+          <%= link_to "Browse", :action => "index", :controller => "startups" %>
+        </li>
+        <li class="dropdown custom-dropdown">
+          <%= link_to "Following", :action => "your_following_ideas", :controller => "startups" %>
+        </li>
+        <li class="dropdown custom-dropdown">
+          <%= link_to "About", :action => "colorful", :controller => "home" %>
+        </li>
+
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="height: 12px;">
             <% if user.avatar? %>
@@ -62,23 +87,13 @@
             <% end %>
           </a>
           <ul class="dropdown-menu">
-            <% if owner_number != 0 %>
-              <% user.Owner_startups.each do |startup| %>
-                <li role="presentation"><%= link_to startup.name, :controller => 'startups',
-                                                    :action => 'show', :id => startup.id %></li>
-              <% end %>
-              <hr />
-            <% end %>
-            <li role="presentation"><%= link_to "Start an idea", :controller => 'campaigns',
-                                                    :action => 'guide_step' %></li>
-            <hr />
             <li role="presentation">
               <%= link_to :controller => 'users', :action => 'notifications',
                                                   :id => user.id  do%>
                  Notifications <span class ="notifications"><%= user.notification_num %></span>
               <%end%>
             </li>
-            <li role="presentation"><%= link_to 'Update profile', :controller => 'users', :action => 'edit',
+            <li role="presentation"><%= link_to 'My profile', :controller => 'users', :action => 'edit',
                                                 :id => user.id %></li>
             <li role="presentation"><%= link_to 'Change password', :controller => 'users', :action => 'change_password',
                                                 :id => user.id %></li>

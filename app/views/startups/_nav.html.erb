@@ -12,9 +12,9 @@
         <% end %>
 
         <% if params[:action] == "team" %>
-            <li>Team <i class="icon-play glyphw" style="float:right"></i></li>
+            <li>Manage team <i class="icon-play glyphw" style="float:right"></i></li>
         <% else %>
-            <li><%= link_to 'Team', {:controller => "startups", :action => "team", :id => @startup.id}%></li>
+            <li><%= link_to 'Manage team', {:controller => "startups", :action => "team", :id => @startup.id}%></li>
         <% end %>
 
         <% if params[:action] == "dashboard" %>
@@ -24,9 +24,9 @@
         <% end %>
 
         <% if params[:action] == "circle" %>
-            <li>Publish <i class="icon-play glyphw" style="float:right"></i></li>
+            <li>Share <i class="icon-play glyphw" style="float:right"></i></li>
         <% else %>
-            <li><%= link_to 'Publish', {:controller => "startups", :action => "circle", :id => @startup.id}%></li>
+            <li><%= link_to 'Share', {:controller => "startups", :action => "circle", :id => @startup.id}%></li>
         <% end %>
 
         <% if params[:action] == "followers" %>
@@ -35,8 +35,6 @@
             <li><%=  link_to 'Followers', {:controller => "startups", :action => "followers", :id => @startup.id }%></li>
         <% end %>
 
-
-        <li   class="cat-name" style="margin-top:40px;"><%=  link_to 'Other ideas', {:controller => "startups", :action => "index" }%></li>
       </ul>
 
   <% else %>
@@ -61,9 +59,6 @@
         <% else %>
             <li><%=  link_to 'Followers', {:controller => "startups", :action => "followers", :id => @startup.id }%></li>
         <% end %>
-
-        <li  class="cat-name" style="margin-top:40px;"><%=  link_to 'Other ideas', {:controller => "startups", :action => "index" }%></li>
-
       </ul>
 
 

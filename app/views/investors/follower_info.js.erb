@@ -29,7 +29,11 @@ modalBodyString =  "<img src='<%=  @follower.avatar.url(:square) %>' >";
 modalBodyString =  "<img src='/images/profile/Nophoto.png'>";
 <% end %>
 
-modalBodyString = modalBodyString + "<p>This person's description is not available...</p>";
+<% if @follower.description.nil? || @follower.description.length < 1 %>
+    modalBodyString = modalBodyString + "<p>This person's description is not available...</p>";
+<% else %>
+    modalBodyString = modalBodyString + "<p>About: <%= @follower.description %></p>";
+<% end %>
 
 <% startup_string  = 'Started ideas:'
 @startups.each do |startup|

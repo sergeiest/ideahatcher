@@ -17,12 +17,13 @@
                         <% old_description.approval_status = 0 if !old_description.approval_status %>
                         <p class="approval_status"><%= old_description.approval_status %> people like this</p>
                     </div>
-                    <button class="btn btn-mini btn-primary edit-text" onclick=editDescription(this)>Edit</button>
 
                     <div class="my_corner next-test"></div>
                     <div class="idea-statement next-test">
-                        <%= simple_format description.content.firstletters(350),
-                                            :class => "p_new" %>
+                        <p class="p_new">
+                          <%= description.content.firstletters(350) %>
+                          <span class="edit-description"><i class=' icon-pencil glyphw' onclick="editDescription(this.parentNode.parentNode, this.parentNode)"></i></span>
+                        </p>
                         <%= form_tag({:action => "new_suggestion", :controller => "companydescriptions"},
                                        :multipart => true,
                                        :hidden => true,
@@ -33,7 +34,9 @@
                             <%= submit_tag 'Save', class: "btn btn-mini btn-primary"%>
                         <% end %>
                         <% description.approval_status = 0 if !description.approval_status %>
-                        <p class="approval_status"><%= description.approval_status %> people like this</p>
+                        <p class="approval_status">
+                          <%= description.approval_status %> people like this
+                        </p>
                     </div>
                     <div class="my_corner " hidden></div>
                     <div class="clear-both"></div>
@@ -44,9 +47,11 @@
                 <div id="description_<%= description.id%>" class="ab-test">
                   <div class="my_corner previous-test"></div>
                   <div class="idea-statement current-test">
-                        <%= simple_format description.content, :class => "p_old" %>
+                    <p class="p_old">
+                      <%= description.content.firstletters(350) %>
+                      <span class="edit-description"><i class=' icon-pencil glyphw' onclick="addDescription(this.parentNode.parentNode.parentNode)"></i></span>
+                    </p>
                   </div>
-                  <button class="btn btn-mini btn-primary edit-text" onclick=addDescription(this)>Edit</button>
                   <div class="my_corner next-test" hidden></div>
                   <div class="idea-statement next-test" hidden>
                       <p class="p_new" hidden></p>
@@ -103,9 +108,10 @@
   </div>
 </div>
 
-<div class="guideline-menu">
-  <h5>What to do here</h5>
-  <p>You can check how people voted and what they suggested regarding your idea</p>
+<div class="guideline-menu" onclick="showHelp(this)">
+  <i class=' icon-question-sign glyphw ' style="float:left;"></i>
+  <h5 hidden>What to do here</h5>
+  <p hidden>You can check how people voted and what they suggested regarding your idea.</p>
 </div>
 
 
@@ -154,9 +160,7 @@
         }
 
         elementNode.parentNode.getElementsByTagName('form')[0].hidden = false;
-        elementNode.hidden = true;
-        elementNode.setAttribute("onclick", "editDescription(this)");
-    }
+        }
 
     function showIdeas(elementNode) {
         notes = elementNode.parentNode.children;

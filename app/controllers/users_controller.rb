@@ -55,6 +55,10 @@ class UsersController < ApplicationController
       @user_updates.sort! { |y, x| x["newsdate"] <=> y["newsdate"] }
     end
 
+    @ideas = Idea.where("user_id = ?", session[:id])
+    @ideas.uniq! {|a| a.companydescription_id}
+    @ideas.sort! { |a, b| [a['title'], a['created_at']] <=> [b['title'], b['created_at']] }
+
     if params[:id]==session[:id].to_s()
       session[:owner_type]=1
     else
@@ -63,12 +67,6 @@ class UsersController < ApplicationController
 
   end
 
-  def ideas
-    @user = User.find(params[:id])  if params[:id] and params[:id]!=0
-    @ideas = Idea.where("user_id = ?", session[:id])
-    @ideas.uniq! {|a| a.companydescription_id}
-    @ideas.sort! { |a, b| [a['title'], a['created_at']] <=> [b['title'], b['created_at']] }
-  end
 
   def my_account
   end

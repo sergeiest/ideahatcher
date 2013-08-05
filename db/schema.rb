@@ -183,7 +183,7 @@ ActiveRecord::Schema.define(:version => 20130707212853) do
   create_table "users", :force => true do |t|
     t.string   "firstname"
     t.string   "lastname"
-    t.string   "cmuaffiliation"
+    t.string   "description"
     t.integer  "authentication_id"
     t.string   "avatar"
     t.datetime "created_at",          :null => false

@@ -4,7 +4,7 @@ class CreateUsers < ActiveRecord::Migration
 
       t.string   :firstname
       t.string   :lastname
-      t.string   :cmuaffiliation
+      t.string   :description
       t.integer  :authentication_id
       t.string   :avatar
       t.integer  :notification_num
