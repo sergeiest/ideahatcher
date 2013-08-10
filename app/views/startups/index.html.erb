@@ -7,15 +7,6 @@
       <%= submit_tag "Submit", :hidden => true %>
   <% end %>
   <ul>
-    <% if session[:id] and session[:id] != 0 %>
-      <% if params[:action] == "your_ideas" %>
-        <li class="cat-name" style="margin-bottom:20px;color:inherit">Your ideas <i class="icon-play glyphw" style="float:right"></i></li>
-      <% end %>
-      <% if params[:action] == "your_following_ideas" %>
-          <li class="cat-name" style="margin-bottom:20px;color:inherit">you follow <i class="icon-play glyphw" style="float:right"></i></li>
-      <% end %>
-    <% end %>
-
     <li class="cat-name">Hashtags</li>
     <% @categories.each do |tag| %>
         <li>
@@ -33,10 +24,10 @@
       <% case params[:action] %>
         <% when "hashtag" %>
             <h1 class="page-title">#<%= params[:tag] %></h1>
-        <% when "your_ideas" %>
-          <h1 class="page-title">Your ideas</h1>
-        <% when "your_following_ideas" %>
-          <h1 class="page-title">ideas you follow</h1>
+        <% when "my_ideas" %>
+          <h1 class="page-title">My ideas</h1>
+        <% when "following_ideas" %>
+          <h1 class="page-title">Following</h1>
         <% else %>
           <h1 class="page-title">Popular Ideas</h1>
       <% end %>

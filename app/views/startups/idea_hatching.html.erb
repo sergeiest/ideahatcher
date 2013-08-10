@@ -11,16 +11,16 @@
                         <% old_description = Companydescription.find(description.companydescription_id) %>
                         <div class="my_corner previous-test"></div>
                         <div class="idea-statement current-test">
-                            <%= simple_format Companydescription.find(description.companydescription_id).content.firstletters(350),
+                            <%= simple_format Companydescription.find(description.companydescription_id).content.firstletters(340),
                                             :id => "p_old_"+ description.id.to_s() %>
                           <% old_description.approval_status = 0 if !old_description.approval_status %>
-                          <p class="approval_status"><%= old_description.approval_status %> people like this</p>
+                          <p class="approval_status"><%= old_description.approval_status %> like this</p>
                         </div>
                         <div class="my_corner next-test"></div>
                         <div class="idea-statement next-test">
-                            <%= simple_format description.content.firstletters(350), :id => "p_new_"+ description.id.to_s() %>
+                            <%= simple_format description.content.firstletters(340), :id => "p_new_"+ description.id.to_s() %>
                             <% description.approval_status = 0 if !description.approval_status %>
-                            <p class="approval_status"><%= description.approval_status %> people like this</p>
+                            <p class="approval_status"><%= description.approval_status %> like this</p>
                         </div>
                         <div class="my_corner " hidden></div>
                         <div class="clear-both"></div>
@@ -33,7 +33,7 @@
                     <div class="ab-test">
                         <div class="my_corner previous-test"></div>
                         <div class="idea-statement current-test">
-                            <%= simple_format description.content %>
+                            <%= simple_format description.content.firstletters(340) %>
                         </div>
                         <div class="clear-both"></div>
                       </div>

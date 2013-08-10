@@ -3,7 +3,7 @@ class HomeController < ApplicationController
   layout "hatcher"
 
   before_filter do
-    redirect_to :action => 'colorful' if params[:action] != "colorful"
+    redirect_to :action => 'colorful' if !["colorful","about"].include?(params[:action])
   end
 
 
@@ -11,7 +11,7 @@ class HomeController < ApplicationController
     redirect_to :action => "colorful" and return
   end
 	
-	def contacts
+	def about
   
 	end
 

@@ -46,35 +46,79 @@
       <% user = User.find(session[:id]) %>
       <% owner_number = user.Owners.count %>
       <ul class="user-nav nav nav-pills">
-        <li class="dropdown custom-dropdown">
+        <%
+          if (params[:controller] == 'startups' and ['my_ideas'].include?(params[:action])) ||
+                  params[:controller] == 'campaigns' ||
+                  (params[:controller] == 'startups' and !session[:connection_type].nil? and session[:connection_type] == 2)
+            custom_str = "custom-active"
+          else
+            custom_str = ""
+          end
+        %>
+        <li class="dropdown custom-dropdown <%= custom_str %>">
               <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="height: 12px;">
                 My ideas
               </a>
           <ul class="dropdown-menu custom-dropdown-menu">
+            <li role="presentation"><%= link_to "Start new idea", :controller => 'campaigns',
+                                                :action => 'guide_step' %></li>
             <% if owner_number != 0 %>
+                <li role="presentation"><%= link_to "See all my ideas", :controller => 'startups',
+                                                    :action => 'my_ideas' %></li>
+                <hr />
                 <% user.Owner_startups.each do |startup| %>
                     <li role="presentation"><%= link_to startup.name, :controller => 'startups',
                                                         :action => 'show', :id => startup.id %></li>
                 <% end %>
-                <hr />
-                <li role="presentation"><%= link_to "See all my ideas", :controller => 'startups',
-                                                    :action => 'your_ideas' %></li>
             <% end %>
-            <li role="presentation"><%= link_to "Start an idea", :controller => 'campaigns',
-                                                :action => 'guide_step' %></li>
           </ul>
         </li>
-        <li class="dropdown custom-dropdown">
+
+        <%
+           if (params[:controller] == 'startups' and ['index', 'hashtag'].include?(params[:action])) ||
+                   (params[:controller] == 'startups' and !['my_ideas', 'following_ideas'].include?(params[:action]) and
+                        (session[:connection_type].nil? || session[:connection_type] == 0))
+             custom_str = "custom-active"
+           else
+             custom_str = ""
+           end
+        %>
+        <li class="dropdown custom-dropdown <%= custom_str %>">
           <%= link_to "Browse", :action => "index", :controller => "startups" %>
         </li>
-        <li class="dropdown custom-dropdown">
-          <%= link_to "Following", :action => "your_following_ideas", :controller => "startups" %>
-        </li>
-        <li class="dropdown custom-dropdown">
-          <%= link_to "About", :action => "colorful", :controller => "home" %>
+
+        <%
+           if (params[:controller] == 'startups' and ['following_ideas'].include?(params[:action])) ||
+                   params[:controller] == 'campaigns' ||
+                   (params[:controller] == 'startups' and !session[:connection_type].nil? and session[:connection_type] == 1)
+             custom_str = "custom-active"
+           else
+             custom_str = ""
+           end
+        %>
+        <li class="dropdown custom-dropdown <%= custom_str %>">
+          <%= link_to "Following", :action => "following_ideas", :controller => "startups" %>
         </li>
 
-        <li class="dropdown">
+        <%
+           if (params[:controller] == 'home' and ['about'].include?(params[:action]))
+             custom_str = "custom-active"
+           else
+             custom_str = ""
+           end
+        %>
+        <li class="dropdown custom-dropdown  <%= custom_str %>">
+          <%= link_to "About", :action => "about", :controller => "home" %>
+        </li>
+
+        <%
+           if params[:controller] == 'users'
+             custom_str = "custom-active"
+           else
+             custom_str = ""
+           end
+        %>
+        <li class="dropdown  <%= custom_str %>">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="height: 12px;">
             <% if user.avatar? %>
                 <%= image_tag user.avatar.url(:square) %>

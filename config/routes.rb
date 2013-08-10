@@ -124,7 +124,6 @@ Webapp::Application.routes.draw do
   get "startups/team"
   get "startups/developermode"
   get "startups/newlook"
-  #get "startups/editcapital"
   get "startups/show"
   get "startups/update"
   post "startups/search_startups"
@@ -138,17 +137,19 @@ Webapp::Application.routes.draw do
   get "startups/idea_hatching"
   get "startups/hashtag"
   get "startups/followers"
-  get "startups/your_ideas"
-  get "startups/your_following_ideas"
+  get "startups/my_ideas"
+  get "startups/following_ideas"
   get "startups/show_more_startups"
   resources :startups
   
   resources :peoples
   
 
-  get "home" => 'home#colorful'
+
   get "home/index" => 'home#colorful'
   get "home/show" => 'home#colorful'
+  get "home/about"
+  get "home" => 'home#colorful'
   resources :home
 
 

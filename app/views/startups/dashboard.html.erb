@@ -1,6 +1,6 @@
 <%= render "startups/nav" %>
 
-<div class="hatcher-container">
+<div class="hatcher-container" xmlns="http://www.w3.org/1999/html">
   <div class="company-main">
       <div class="company-content">
         <% @descriptions.each do |description| %>
@@ -12,30 +12,49 @@
                     <div class="my_corner previous-test"></div>
                     <div class="idea-statement current-test">
                         <% old_description = Companydescription.find(description.companydescription_id) %>
-                        <%= simple_format old_description.content.firstletters(350),
+                        <%= simple_format old_description.content.firstletters(340),
                                           :class => "p_old" %>
                         <% old_description.approval_status = 0 if !old_description.approval_status %>
-                        <p class="approval_status"><%= old_description.approval_status %> people like this</p>
+                        <p class="approval_status"><%= old_description.approval_status %> like this</p>
                     </div>
 
                     <div class="my_corner next-test"></div>
                     <div class="idea-statement next-test">
                         <p class="p_new">
-                          <%= description.content.firstletters(350) %>
-                          <span class="edit-description"><i class=' icon-pencil glyphw' onclick="editDescription(this.parentNode.parentNode, this.parentNode)"></i></span>
+                          <%= description.content.firstletters(340) %>
+                          <span class="edit-description"><i class=' icon-pencil glyphw' onclick="editPen(this.parentNode.parentNode)"></i></span>
                         </p>
-                        <%= form_tag({:action => "new_suggestion", :controller => "companydescriptions"},
-                                       :multipart => true,
-                                       :hidden => true,
-                                       :class => "next-test",
-                                       :remote => true) do %>
-                            <%= hidden_field :companydescription, :companydescription_id, :value => description.id %>
-                            <%= text_area :companydescription, :content%>
-                            <%= submit_tag 'Save', class: "btn btn-mini btn-primary"%>
-                        <% end %>
+                        <div class="edit-description-form" hidden>
+                          <div name="step1">
+                              <p>
+                                <input type="radio" name="group<%= description.id%>" value="new_vesrsion" checked> Add new version<br/>
+                                <input type="radio" name="group<%= description.id%>" value="this_version"> Correct current version
+                              </p>
+                              <hr/>
+                              <button class="btn btn-mini btn-warning" onclick="editStep2(this)">Next</button>
+                              <button class="btn btn-mini" onclick="editCancel(this)">Cancel</button>
+                          </div>
+                          <div name="step2" hidden>
+                            <%= form_tag({:action => "new_suggestion", :controller => "companydescriptions"},
+                                         :multipart => true,
+                                         :hidden => false,
+                                         :class => "next-test",
+                                         :remote => true) do %>
+                                <%= hidden_field :companydescription, :companydescription_id, :value => description.id %>
+                                <%= text_area :companydescription, :content%>
+                                <hr/>
+                                <%= submit_tag 'Save', class: "btn btn-mini btn-warning"%>
+                                <button class="btn btn-mini" onclick="editCancel(this.parentNode)">Cancel</button>
+                            <% end %>
+                          </div>
+                        </div>
+
+
+
+
                         <% description.approval_status = 0 if !description.approval_status %>
                         <p class="approval_status">
-                          <%= description.approval_status %> people like this
+                          <%= description.approval_status %> like this
                         </p>
                     </div>
                     <div class="my_corner " hidden></div>
@@ -48,7 +67,7 @@
                   <div class="my_corner previous-test"></div>
                   <div class="idea-statement current-test">
                     <p class="p_old">
-                      <%= description.content.firstletters(350) %>
+                      <%= description.content.firstletters(340) %>
                       <span class="edit-description"><i class=' icon-pencil glyphw' onclick="addDescription(this.parentNode.parentNode.parentNode)"></i></span>
                     </p>
                   </div>
@@ -115,7 +134,6 @@
 </div>
 
 
-
 <script type="text/javascript" src="http://www.google.com/jsapi"></script>
 <script type="text/javascript">
     google.load('visualization', '1', {packages: ['corechart']});
@@ -149,6 +167,21 @@
         }
         nextElements.getElementsByTagName('form')[0].hidden = false;
         elementNode.hidden = true;
+    }
+
+    function editPen(elementNode) {
+        elementNode.parentNode.childNodes[3].hidden = false;
+    }
+
+    function editStep2(elementNode) {
+        elementNode.parentNode.hidden = true;
+        var formNode = elementNode.parentNode.parentNode.childNodes[3];
+        formNode.hidden = false;
+    }
+
+    function editCancel(elementNode) {
+        elementNode.parentNode.parentNode.hidden = true;
+        cancelFormSubmission();
     }
 
     function addDescription(elementNode){

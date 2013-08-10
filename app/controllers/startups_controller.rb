@@ -23,8 +23,12 @@ class StartupsController < ApplicationController
           if session[:id] != 0 and session[:id] != nil
             connection_type=0
             if Owner.where("startup_id = ? AND user_id = ?", params[:id], session[:id]).length > 0
-              connection_type=2
+              connection_type = 2
               redirect_to :controller => 'startups', :action => 'detailed', :id => params[:id] and return if params[:action] == "show"
+            else
+              if Follower.where("startup_id = ? AND user_id = ?", params[:id], session[:id]).length > 0
+                connection_type = 1
+              end
             end
             session[:connection_type] = connection_type
           else
@@ -33,7 +37,10 @@ class StartupsController < ApplicationController
         else
           wrong_link = 2
         end
-      when "index"
+      when "index", "hashtag", "my_ideas", "following_ideas"
+        session[:startup_id] = nil
+        session[:connection_type] = nil
+      else
         session[:startup_id] = nil
         session[:connection_type] = nil
     end
@@ -99,7 +106,7 @@ class StartupsController < ApplicationController
   end
 
 
-  def your_ideas
+  def my_ideas
 
     if !session[:id] || session[:id] == 0
       redirect_to :action => "index" and return
@@ -125,7 +132,7 @@ class StartupsController < ApplicationController
   end
 
 
-  def your_following_ideas
+  def following_ideas
 
     if !session[:id] || session[:id] == 0
       redirect_to :action => "index" and return

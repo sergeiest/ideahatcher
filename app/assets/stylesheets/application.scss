@@ -160,6 +160,11 @@ body {
     .custom-dropdown a:hover, a:active, a:focus {color: #313131;}
     .custom-dropdown ul a:hover, a:active, a:focus {color: white;}
 
+    .custom-active {
+      background-color: white;
+      a {color: #313131;}
+    }
+
 
     img {
       margin-top:-7px;
@@ -334,6 +339,28 @@ h2.project{
     padding-right:10%;
     text-align: right;
 
+  }
+}
+
+.about-div{
+  float:left;
+  margin:10px 10px 10px 9px;
+  height: 150px;
+  img {
+    width:135px;
+
+  }
+
+  p {
+    font-size:12px;
+    background-color: #333333;
+    color:white;
+    opacity:0.90;
+    filter:alpha( opacity=90);
+    padding:2px 10px;
+    margin-right: -0px;
+    margin-top:-30px;
+    text-align: right;
   }
 }
 
@@ -688,13 +715,6 @@ h2.project{
 .ab-test{
   padding:0px;
 
-
-  input{
-    margin-left: 35px;
-    margin-right: -5px;
-    width: 40%;
-  }
-
   .idea-statement{
     background-color:#07b5b5;
     padding:10px;
@@ -706,13 +726,8 @@ h2.project{
     color:white;
     height: 130px;
     float:left;
-    textarea {
-      width:320px;
-      height:100px;
-      margin:-5px 0 5px -5px;
-      line-height: 18px;
-      font-size:12px;
-    }
+
+
     .btn-primary {
       position: relative;
       bottom:0px;
@@ -723,15 +738,53 @@ h2.project{
     }
     .edit-text {
       -webkit-border-radius:  5px;
-
     }
 
-    p {min-height: 110px;}
+    p {min-height: 110px; }
     form {min-height: 120px;}
 
     .approval_status{
       border-top:1px white solid;
       min-height: 0;
+    }
+
+    .edit-description-form {
+      background-color: #F1F1F1;
+      width: 96%;
+      margin-top: -120px;
+      height: 120px;
+      margin-bottom: -10px;
+      padding:5px 2%;
+      border:1px #696969 solid;
+
+      input{
+        margin: 5px;
+      }
+
+      .btn {
+        float: right;
+        margin: 0px;
+        margin-left: 10px;
+        width: 50px;
+      }
+      position: relative;
+      z-index:10;
+
+      p{
+        min-height: 80px;
+        padding: 2px;
+        margin:0;
+        color:grey;
+      }
+
+      textarea {
+        width:95%;
+        height:70px;
+        margin:2px;
+        line-height: 18px;
+        font-size:12px;
+      }
+
     }
 
 
