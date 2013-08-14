@@ -22,7 +22,45 @@
       <file leaf-file-name="application.scss" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/application.scss">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="799" column="17" selection-start="13981" selection-end="13981" vertical-scroll-proportion="19.20673">
+            <state line="223" column="7" selection-start="4398" selection-end="4398" vertical-scroll-proportion="0.38141027">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="hatcher.html.erb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/layouts/hatcher.html.erb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="98" column="19" selection-start="4011" selection-end="4011" vertical-scroll-proportion="-8.958333">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="colorful.html.erb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/home/colorful.html.erb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="5" column="27" selection-start="179" selection-end="190" vertical-scroll-proportion="-3.125">
+              <folding>
+                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="home_controller.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/controllers/home_controller.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="13" column="42" selection-start="261" selection-end="261" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="startups_controller.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/controllers/startups_controller.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="57" column="57" selection-start="2041" selection-end="2077" vertical-scroll-proportion="-7.8076925">
               <folding />
             </state>
           </provider>
@@ -43,7 +81,6 @@
       <list>
         <option value="$PROJECT_DIR$/app/views/startups/index.html.erb" />
         <option value="$PROJECT_DIR$/config/routes.rb" />
-        <option value="$PROJECT_DIR$/app/controllers/home_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/home/about.html.erb" />
         <option value="$PROJECT_DIR$/app/views/likes/vote.js.erb" />
         <option value="$PROJECT_DIR$/app/views/authentications/remote_login.js.erb" />
@@ -52,11 +89,12 @@
         <option value="$PROJECT_DIR$/app/views/companydescriptions/new_suggestion.js.erb" />
         <option value="$PROJECT_DIR$/app/views/companydescriptions/update_suggestion.js.erb" />
         <option value="$PROJECT_DIR$/app/views/votes/show_votes.js.erb" />
-        <option value="$PROJECT_DIR$/app/views/layouts/hatcher.html.erb" />
-        <option value="$PROJECT_DIR$/app/assets/stylesheets/application.scss" />
         <option value="$PROJECT_DIR$/app/views/users/_nav.html.erb" />
         <option value="$PROJECT_DIR$/app/views/startups/dashboard.html.erb" />
         <option value="$PROJECT_DIR$/app/views/startups/idea_hatching.html.erb" />
+        <option value="$PROJECT_DIR$/app/views/layouts/hatcher.html.erb" />
+        <option value="$PROJECT_DIR$/app/controllers/home_controller.rb" />
+        <option value="$PROJECT_DIR$/app/assets/stylesheets/application.scss" />
       </list>
     </option>
   </component>
@@ -168,7 +206,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="layouts" />
+              <option name="myItemId" value="home" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -710,29 +748,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/application.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="147" column="19" selection-start="5719" selection-end="5729" vertical-scroll-proportion="2.3312402">
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/companydescriptions/update_description.js.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/companydescriptions/new_suggestion.js.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="0" selection-start="19" selection-end="19" vertical-scroll-proportion="-0.625">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/companydescriptions/update_suggestion.js.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="9" column="52" selection-start="316" selection-end="316" vertical-scroll-proportion="0.2284264">
@@ -781,16 +796,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/layouts/hatcher.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="193" column="12" selection-start="8116" selection-end="8116" vertical-scroll-proportion="0.9021207">
-          <folding>
-            <element signature="n#style#0;n#a#0;n#li#0;n#ul#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#0;n#li#4;n#ul#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/authentications_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="185" column="0" selection-start="6290" selection-end="6290" vertical-scroll-proportion="0.48194662">
@@ -829,9 +834,39 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/layouts/hatcher.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="98" column="19" selection-start="4011" selection-end="4011" vertical-scroll-proportion="-8.958333">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/startups_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="57" column="57" selection-start="2041" selection-end="2077" vertical-scroll-proportion="-7.8076925">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/home_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="42" selection-start="261" selection-end="261" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/home/colorful.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="27" selection-start="179" selection-end="190" vertical-scroll-proportion="-3.125">
+          <folding>
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/application.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="799" column="17" selection-start="13981" selection-end="13981" vertical-scroll-proportion="19.20673">
+        <state line="223" column="7" selection-start="4398" selection-end="4398" vertical-scroll-proportion="0.38141027">
           <folding />
         </state>
       </provider>

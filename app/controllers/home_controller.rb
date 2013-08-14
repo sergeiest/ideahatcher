@@ -19,10 +19,7 @@ class HomeController < ApplicationController
     startups = Startup.where("status >2").all
     s1 = startups
     s2 = startups
-    s3 = startups
-    s4 = startups
-    s5 = startups
-    @startups = s1.concat(s2.concat(s3).concat(s4.concat(s5)))[0..19]
+    @startups = s1.concat(s2).sample(10)
 
   end
 	
