@@ -9,24 +9,23 @@
                 <% if description.companydescription_id %>
                     <div class="ab-test">
                         <% old_description = Companydescription.find(description.companydescription_id) %>
-                        <div class="my_corner previous-test"></div>
+                        <img src="/images/arrowLeft.png" class="my_corner">
                         <div class="idea-statement current-test">
                             <%= simple_format Companydescription.find(description.companydescription_id).content.firstletters(340),
                                             :id => "p_old_"+ description.id.to_s() %>
                           <% old_description.approval_status = 0 if !old_description.approval_status %>
                           <p class="approval_status"><%= old_description.approval_status %> like this</p>
                         </div>
-                        <div class="my_corner next-test"></div>
+                        <img src="/images/vs.png" class="my_corner">
                         <div class="idea-statement next-test">
                             <%= simple_format description.content.firstletters(340), :id => "p_new_"+ description.id.to_s() %>
                             <% description.approval_status = 0 if !description.approval_status %>
                             <p class="approval_status"><%= description.approval_status %> like this</p>
                         </div>
-                        <div class="my_corner " hidden></div>
                         <div class="clear-both"></div>
-                      <input class="btn btn-mini" name="like_old" type="submit" value="I like this more"
+                      <input class="btn btn-mini" name="like_old" type="submit" value="I like this more" style="width:40%;margin-left:44px;"
                              onclick="changeButton(this, <%= old_description.id %>, 0 )"/>
-                      <input class="btn btn-mini" name="like_new" type="submit" value="I like this more"
+                      <input class="btn btn-mini" name="like_new" type="submit" value="I like this more" style="width:40%;margin-left:40px;"
                              onclick="changeButton(this, <%= description.id %>, 1)"/>
                     </div>
                 <% else %>
@@ -77,11 +76,6 @@
 
 
 <script>
-
-    $('.my_corner').prepend('<div class="tr"></div>')
-            .prepend('<div class="tl"></div>')
-            .prepend('<div class="br"></div>')
-            .prepend('<div class="bl"></div>');
 
     function changeButton(elementNode, descriptionId, addValue){
 

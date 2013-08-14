@@ -1,0 +1,14 @@
+var mainDiv = document.getElementById("description_<%= @description.id %>");
+
+<%  content_string = ""
+@description.content.gsub(/\r\n?/, '\n').split("\n").each do |text_string|
+    content_string += text_string + ' '
+end
+content_string = content_string[0..-2]
+%>
+
+mainDiv.getElementsByClassName("p_new")[0].innerHTML = "<%= content_string.firstletters(340) %>" +
+                '<span class="edit-description"><i class="icon-pencil glyphw" onclick="editStep1(this.parentNode.parentNode)"></i></span>';
+mainDiv.getElementsByClassName("p_new")[0].hidden = false;
+
+mainDiv.getElementsByClassName('edit-description-form')[0].hidden = true;

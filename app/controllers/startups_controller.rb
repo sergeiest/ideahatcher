@@ -165,7 +165,7 @@ class StartupsController < ApplicationController
     @startup_updates = @startup.Companyupdates
     @companyupdate = Companyupdate.new
 
-    @company_descriptions = @startup.Companydescriptions.where("status =?", 1)
+    @company_descriptions = @startup.Companydescriptions.where("status =?", 1).sort!{|x, y| x["allfield_id"] <=> y["allfield_id"]}
 
     respond_to do |format|
       format.html # show.html.erb
@@ -186,7 +186,7 @@ class StartupsController < ApplicationController
   def dashboard
     @user = User.find(session[:id])   if session[:id] and session[:id] != 0
     @startup = Startup.find(params[:id])
-    @descriptions = @startup.Companydescriptions.where("status = ?",1)
+    @descriptions = @startup.Companydescriptions.where("status = ?",1).sort!{|x, y| x["allfield_id"] <=> y["allfield_id"]}
     @ideas = @startup.Ideas
 
   end
@@ -198,7 +198,7 @@ class StartupsController < ApplicationController
     @startup_followers = @startup.Follower_users.all.uniq
     @startup_owners = @startup.Owner_users.all.uniq
     @companyupdate = Companyupdate.new
-    @company_descriptions = @startup.Companydescriptions.where("status =?", 1)
+    @company_descriptions = @startup.Companydescriptions.where("status =?", 1).sort!{|x, y| x["allfield_id"] <=> y["allfield_id"]}
   end
   
   def team
@@ -218,7 +218,7 @@ class StartupsController < ApplicationController
     @startup = Startup.find(params[:id])
 
     i=0
-    @company_descriptions = @startup.Companydescriptions.where("status =?", 1)
+    @company_descriptions = @startup.Companydescriptions.where("status =?", 1).sort!{|x, y| x["allfield_id"] <=> y["allfield_id"]}
 
     @ideas = @startup.Ideas
 

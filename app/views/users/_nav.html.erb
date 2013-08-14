@@ -4,11 +4,7 @@
   <% if session[:id] and session[:id] != 0 %>
       <ul>
 
-        <% if params[:action] == "index" %>
-            <li>Get started <i class="icon-play glyphw" style="float:right"></i></li>
-        <% else %>
-            <li><%=  link_to 'Get started', {:controller => "users", :action => "index", :id => session[:id] }%></li>
-        <% end %>
+        <li><%=  link_to 'Start new idea', {:controller => "campaigns", :action => "guide_step"} %></li>
 
         <% if params[:action] == "notifications" %>
             <li>Notifications <i class="icon-play glyphw" style="float:right"></i></li>

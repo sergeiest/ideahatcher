@@ -89,7 +89,6 @@
 
         <%
            if (params[:controller] == 'startups' and ['following_ideas'].include?(params[:action])) ||
-                   params[:controller] == 'campaigns' ||
                    (params[:controller] == 'startups' and !session[:connection_type].nil? and session[:connection_type] == 1)
              custom_str = "custom-active"
            else
@@ -147,24 +146,53 @@
         </li>
       </ul>
   <% else %>
-      <div id="login-nav" class="login-nav">
-        <%= form_tag({:action => 'remote_login', :controller => 'authentications'},
-                     :multipart => true, :remote => true) do %>
-            <div class="login-input">
-              <%= text_field "authentication", "username", :value => "Login (email):",
-                             :onclick => "clearInput(this)"%>
-            </div>
-            <div class="login-input">
-              <%= password_field "authentication", "password", :value => "password",
-                             :onclick => "clearInput(this)"%>
-            </div>
-            <%= submit_tag 'Login', class: "btn btn-small",
-                           style: "margin-top:5px;height:26px;width:80px;"%>
-            <%=  link_to "Forgot...", {:controller => "authentications", :action => "forgot_password"}, :style =>
-                       "color:white; font-size:10px;", :hidden => true %>
-        <% end %>
+      <ul id="login-nav" class="user-nav nav nav-pills">
+        <%
+           if (params[:controller] == 'startups')
+             custom_str = "custom-active"
+           else
+             custom_str = ""
+           end
+        %>
+        <li class="dropdown custom-dropdown <%= custom_str %>">
+          <%= link_to "Browse", :action => "index", :controller => "startups" %>
+        </li>
+        <%
+           if (params[:controller] == 'home' and ['about'].include?(params[:action]))
+             custom_str = "custom-active"
+           else
+             custom_str = ""
+           end
+        %>
+        <li class="dropdown custom-dropdown  <%= custom_str %>">
+          <%= link_to "About", :action => "about", :controller => "home" %>
+        </li>
+        <li class="dropdown custom-dropdown  <%= custom_str %>">
+          <a href="#" onclick="$('#login_modal').modal('show');">Join | Login</a>
+        </li>
+      </ul>
 
-      </div>
+      <% if 1==2 %>
+          <div id="login-nav" class="login-nav" hidden>
+            <%= form_tag({:action => 'remote_login', :controller => 'authentications'},
+                         :multipart => true, :remote => true) do %>
+                <div class="login-input">
+                  <%= text_field "authentication", "username", :value => "Login (email):",
+                                 :onclick => "clearInput(this)"%>
+                </div>
+                <div class="login-input">
+                  <%= password_field "authentication", "password", :value => "password",
+                                 :onclick => "clearInput(this)"%>
+                </div>
+                <%= submit_tag 'Login', class: "btn btn-small",
+                               style: "margin-top:5px;height:26px;width:80px;"%>
+                <%=  link_to "Forgot...", {:controller => "authentications", :action => "forgot_password"}, :style =>
+                           "color:white; font-size:10px;", :hidden => true %>
+            <% end %>
+
+          </div>
+      <% end %>
+
   <% end %>
 </div>
 

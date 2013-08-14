@@ -2,10 +2,51 @@ var newUl = document.createElement("ul");
 newUl.className = "user-nav nav nav-pills";
 
 
+var liStartup = document.createElement("li");
+liStartup.className = "dropdown custom-dropdown"
+
+liStartup.innerHTML = '<a class="dropdown-toggle" data-toggle="dropdown" href="#" style="height: 12px;"> My ideas </a>';
+
+var menuStartup = document.createElement("ul");
+menuStartup.className = "dropdown-menu custom-dropdown-menu";
+
+menuStartup.innerHTML = '<li role="presentation"><%= link_to "Start new idea", :controller => "campaigns",
+                                                :action => "guide_step" %></li>';
+
+<% if @user.Owner_startups.length > 0 %>
+    menuStartup.innerHTML = menuStartup.innerHTML + '<li role="presentation"><%= link_to "See all my ideas", :controller => "startups", :action => "my_ideas" %></li><hr />';
+<% end %>
+
+<% @user.Owner_startups.each do |startup| %>
+menuStartup.innerHTML = menuStartup.innerHTML + '<li role="presentation"><%= link_to(startup.name,
+                                                :controller => "startups",
+                                                :action => "show",
+                                                :id => startup.id) %></li>';
+<% end %>
+
+liStartup.appendChild(menuStartup);
+newUl.appendChild(liStartup);
+
+
+
+
+
 var liVote = document.createElement("li");
 liVote.className = "dropdown custom-dropdown"
-liVote.innerHTML = '<%= link_to "ideas", :action => "index", :controller => "startups" %>';
+liVote.innerHTML = '<%= link_to "Browse", :action => "index", :controller => "startups" %>';
 newUl.appendChild(liVote);
+
+var liVote = document.createElement("li");
+liVote.className = "dropdown custom-dropdown"
+liVote.innerHTML = '<%= link_to "Following", :action => "following_ideas", :controller => "startups" %>';
+newUl.appendChild(liVote);
+
+var liVote = document.createElement("li");
+liVote.className = "dropdown custom-dropdown"
+liVote.innerHTML = '<%= link_to "About", :action => "about", :controller => "home" %>';
+newUl.appendChild(liVote);
+
+
 
 
 var newLi = document.createElement("li");
@@ -25,23 +66,7 @@ newLi.className = "dropdown"
 
 var newMenu = document.createElement("ul");
 newMenu.className = "dropdown-menu";
-
-newMenu.innerHTML =  '';
-
-<% @user.Owner_startups.each do |startup| %>
-    newMenu.innerHTML = newMenu.innerHTML + '<li role="presentation"><%= link_to(startup.name,
-                                                :controller => "startups",
-                                                :action => "show",
-                                                :id => startup.id) %></li>';
-<% end %>
-
-if (newMenu.innerHTML == '') {
-    newMenu.innerHTML = '<li role="presentation"><%= link_to "Start an idea", :controller => "campaigns",
-                                                :action => "guide_step" %></li>';
-}
-
-newMenu.innerHTML = newMenu.innerHTML + '<hr />'+
-        '<li role="presentation"><%= link_to 'Notifications', :controller => "users", :action => "notifications", :id => @user.id %></li>' +
+newMenu.innerHTML = '<li role="presentation"><%= link_to 'Notifications', :controller => "users", :action => "notifications", :id => @user.id %></li>' +
         '<li role="presentation"><%= link_to 'Update profile', :controller => 'users', :action => 'edit',
                                                 :id => @user.id %></li>' +
         '<li role="presentation"><%= link_to 'Change password', :controller => 'users', :action => 'change_password',

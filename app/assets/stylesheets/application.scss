@@ -741,17 +741,21 @@ h2.project{
     }
 
     p {min-height: 110px; }
-    form {min-height: 120px;}
 
     .approval_status{
       border-top:1px white solid;
       min-height: 0;
+      span {
+        float:right;
+        text-align: right;
+        font-style: italic;
+      }
     }
 
     .edit-description-form {
       background-color: #F1F1F1;
       width: 96%;
-      margin-top: -120px;
+      margin-top: -122px;
       height: 120px;
       margin-bottom: -10px;
       padding:5px 2%;
@@ -791,38 +795,13 @@ h2.project{
   }
 
   .my_corner {
+
     position: relative;
-    margin:20px 7px;
-    width: 0px;
-    height: 70px;
+    margin:60px 2px;
+    width: 20px;
     padding: 10px;
-    background-color: #ffd486;
     float: left;
   }
-
-  .my_corner .tl, .my_corner .tr,
-  .my_corner .bl, .my_corner .br {
-    width: 0;
-    height: 0;
-    position: absolute;
-  }
-
-
-  .my_corner .tr {
-    top: 0;
-    right: 0;
-    border-top: 50px solid white;
-    border-left: 20px solid transparent;
-  }
-
-  .my_corner .br {
-    bottom: 0;
-    right: 0;
-    border-bottom: 50px solid white;
-    border-left: 20px solid transparent;
-  }
-
-
 
 }
 
@@ -885,6 +864,9 @@ h2.project{
 
     }
 
+  }
+  i {
+    margin: 2px;
   }
 
 }

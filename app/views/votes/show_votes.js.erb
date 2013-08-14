@@ -18,12 +18,7 @@ new google.visualization.ColumnChart(document.getElementById('visualization_<%= 
             }
 );
 
-notes = document.getElementsByTagName("a");
-for (var i = 0; i < notes.length; i++) {
-    if (notes[i].getAttribute('href') == '/votes/show_votes?description_id=116') {
-        aNote = notes[i];
-    }
-}
+aNote = document.getElementById("chart_link<%= params[:description_id] %>");
 
 aNote.innerHTML = "Hide votes<i class=' icon-chevron-up glyphw '></i>";
 

@@ -6,23 +6,29 @@
         <% @descriptions.each do |description| %>
             <div class="company-box" id="div_<%= description.id%>">
               <h5><%= description.field_status %></h5>
+
               <% if description.companydescription_id %>
 
                 <div id="description_<%= description.id%>" class="ab-test">
-                    <div class="my_corner previous-test"></div>
+                    <img src="/images/arrowLeft.png" class="my_corner">
+
                     <div class="idea-statement current-test">
                         <% old_description = Companydescription.find(description.companydescription_id) %>
                         <%= simple_format old_description.content.firstletters(340),
                                           :class => "p_old" %>
                         <% old_description.approval_status = 0 if !old_description.approval_status %>
-                        <p class="approval_status"><%= old_description.approval_status %> like this</p>
+                        <p class="approval_status">
+                          <%= old_description.approval_status %> like this
+                          <span>v. <%= description.created_at.strftime("%m/%d/%Y") %></span>
+                        </p>
                     </div>
 
-                    <div class="my_corner next-test"></div>
+                    <img src="/images/vs.png" class="my_corner">
+
                     <div class="idea-statement next-test">
                         <p class="p_new">
                           <%= description.content.firstletters(340) %>
-                          <span class="edit-description"><i class=' icon-pencil glyphw' onclick="editPen(this.parentNode.parentNode)"></i></span>
+                          <span class="edit-description"><i class=' icon-pencil glyphw' onclick="editStep1(this.parentNode.parentNode)"></i></span>
                         </p>
                         <div class="edit-description-form" hidden>
                           <div name="step1">
@@ -37,24 +43,23 @@
                           <div name="step2" hidden>
                             <%= form_tag({:action => "new_suggestion", :controller => "companydescriptions"},
                                          :multipart => true,
-                                         :hidden => false,
                                          :class => "next-test",
                                          :remote => true) do %>
                                 <%= hidden_field :companydescription, :companydescription_id, :value => description.id %>
+                                <%= hidden_field_tag :change_type, 0 %>
                                 <%= text_area :companydescription, :content%>
-                                <hr/>
-                                <%= submit_tag 'Save', class: "btn btn-mini btn-warning"%>
-                                <button class="btn btn-mini" onclick="editCancel(this.parentNode)">Cancel</button>
+                                <%= submit_tag 'Save', hidden: "true" %>
                             <% end %>
+                            <hr/>
+                            <button class="btn btn-mini btn-warning" onclick="submitForm(this.parentNode.childNodes[1])">Save</button>
+                            <button class="btn btn-mini" onclick="editCancel(this)">Cancel</button>
                           </div>
                         </div>
 
-
-
-
                         <% description.approval_status = 0 if !description.approval_status %>
                         <p class="approval_status">
-                          <%= description.approval_status %> like this
+                            <%= old_description.approval_status %> like this
+                            <span>v. <%= description.created_at.strftime("%m/%d/%Y") %></span>
                         </p>
                     </div>
                     <div class="my_corner " hidden></div>
@@ -66,24 +71,38 @@
                 <div id="description_<%= description.id%>" class="ab-test">
                   <div class="my_corner previous-test"></div>
                   <div class="idea-statement current-test">
-                    <p class="p_old">
+                    <p class="p_new">
                       <%= description.content.firstletters(340) %>
-                      <span class="edit-description"><i class=' icon-pencil glyphw' onclick="addDescription(this.parentNode.parentNode.parentNode)"></i></span>
+                      <span class="edit-description"><i class=' icon-pencil glyphw' onclick="editStep1(this.parentNode.parentNode)"></i></span>
                     </p>
-                  </div>
-                  <div class="my_corner next-test" hidden></div>
-                  <div class="idea-statement next-test" hidden>
-                      <p class="p_new" hidden></p>
-                      <%= form_tag({:action => "new_suggestion", :controller => "companydescriptions"},
-                                       :multipart => true,
-                                       :class => "next-test",
-                                       :remote => true) do %>
-                            <%= hidden_field :companydescription, :companydescription_id, :value => description.id %>
-                            <%= text_area :companydescription, :content%>
-                            <%= submit_tag 'Save', class: "btn btn-mini btn-primary"%>
-                      <% end %>
-                  </div>
+                    <div class="edit-description-form" hidden>
+                      <div name="step1">
+                        <p>
+                          <input type="radio" name="group<%= description.id%>" value="new_vesrsion" checked> Add new version<br/>
+                          <input type="radio" name="group<%= description.id%>" value="this_version"> Correct current version
+                        </p>
+                        <hr/>
+                        <button class="btn btn-mini btn-warning" onclick="editStep2(this)">Next</button>
+                        <button class="btn btn-mini" onclick="editCancel(this)">Cancel</button>
+                      </div>
 
+                      <div name="step2" hidden>
+                        <%= form_tag({:action => "new_suggestion", :controller => "companydescriptions"},
+                                     :multipart => true,
+                                     :class => "next-test",
+                                     :remote => true) do %>
+                            <%= hidden_field :companydescription, :companydescription_id, :value => description.id %>
+                            <%= hidden_field_tag :change_type, 0 %>
+                            <%= text_area :companydescription, :content%>
+                            <%= submit_tag 'Save', hidden: "true" %>
+                        <% end %>
+                        <hr/>
+                        <button class="btn btn-mini btn-warning" onclick="submitForm(this.parentNode.childNodes[1])">Save</button>
+                        <button class="btn btn-mini" onclick="editCancel(this)">Cancel</button>
+                      </div>
+                    </div>
+
+                  </div>
                   <div class="clear-both"></div>
                 </div>
 
@@ -91,7 +110,7 @@
 
               <%= link_to({:action => 'show_votes', :controller => 'votes',
                                                             :description_id => description.id},
-                                      :id => "chart_link",
+                                      :id => "chart_link" + description.id.to_s(),
                                       :remote => true,
                                       :style => "cursor:pointer; font-size:12px;") do %>
                 Show votes<i class=' icon-chevron-down glyphw '></i>
@@ -136,64 +155,36 @@
 
 <script type="text/javascript" src="http://www.google.com/jsapi"></script>
 <script type="text/javascript">
+
     google.load('visualization', '1', {packages: ['corechart']});
-</script>
 
-
-<script>
-    $('.my_corner').prepend('<div class="tr"></div>')
-            .prepend('<div class="tl"></div>')
-            .prepend('<div class="br"></div>')
-            .prepend('<div class="bl"></div>');
-</script>
-
-<script>
-    function editDescription(elementNode){
-
-        var descriptionDiv = elementNode.parentNode.parentNode;
-
-        var nextElements = descriptionDiv.getElementsByClassName('next-test');
-
-        var oldContent = descriptionDiv.getElementsByClassName('p_old')[0];
-        var newContent = descriptionDiv.getElementsByClassName('p_new')[0];
-
-        oldContent.innerHTML = newContent.innerHTML;
-
-        for (var i = 0; i < nextElements.length; i++) {
-            nextElements[i].hidden = false;
-            if (nextElements[i].getElementsByTagName('p').length > 0){
-                nextElements[i].getElementsByTagName('p')[0].hidden = true;
-            }
-        }
-        nextElements.getElementsByTagName('form')[0].hidden = false;
-        elementNode.hidden = true;
-    }
-
-    function editPen(elementNode) {
+    function editStep1(elementNode) {
         elementNode.parentNode.childNodes[3].hidden = false;
+        elementNode.parentNode.childNodes[3].childNodes[1].hidden = false;
+        elementNode.parentNode.childNodes[3].childNodes[3].hidden = true;
     }
 
     function editStep2(elementNode) {
         elementNode.parentNode.hidden = true;
         var formNode = elementNode.parentNode.parentNode.childNodes[3];
         formNode.hidden = false;
+
+        var pNew = elementNode.parentNode.parentNode.parentNode.getElementsByClassName('p_new')[0];
+
+        if (elementNode.parentNode.getElementsByTagName("input")[0].checked == true){
+            formNode.getElementsByTagName('textarea')[0].value = "";
+            formNode.getElementsByTagName('input')[3].value = "1";
+        } else {
+            formNode.getElementsByTagName('textarea')[0].value = pNew.innerText;
+            formNode.getElementsByTagName('input')[3].value = "0";
+        }
     }
 
     function editCancel(elementNode) {
         elementNode.parentNode.parentNode.hidden = true;
-        cancelFormSubmission();
+        elementNode.parentNode.hidden = true;
     }
 
-    function addDescription(elementNode){
-
-        notes = elementNode.parentNode.children;
-
-        for (var i = 0; i < notes.length; i++) {
-            notes[i].hidden = false;
-        }
-
-        elementNode.parentNode.getElementsByTagName('form')[0].hidden = false;
-        }
 
     function showIdeas(elementNode) {
         notes = elementNode.parentNode.children;

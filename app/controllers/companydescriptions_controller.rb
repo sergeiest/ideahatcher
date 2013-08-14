@@ -20,24 +20,37 @@ class CompanydescriptionsController < ApplicationController
 
   def new_suggestion
 
-    old_description = Companydescription.find(params[:companydescription][:companydescription_id])
-    @description = Companydescription.new(params[:companydescription])
-    @description.startup_id = old_description.startup_id
-    @description.allfield_id = old_description.allfield_id
-    @description.field_status = old_description.field_status
-    @description.status = 1
+    if params[:change_type] == "1"
 
-    respond_to do |format|
-      if @description.save
-        old_description.update_attribute(:status, 0)
-        format.html { redirect_to controller: "campaigns" }
-        format.json { head :no_content }
-        format.js
-      else
-        format.html { redirect_to controller: "campaigns"}
-        format.json { render json: @companydescription.errors, status: :unprocessable_entity }
-        format.js
+      old_description = Companydescription.find(params[:companydescription][:companydescription_id])
+      @description = Companydescription.new(params[:companydescription])
+      @description.startup_id = old_description.startup_id
+      @description.allfield_id = old_description.allfield_id
+      @description.field_status = old_description.field_status
+      @description.status = 1
+
+      respond_to do |format|
+        if @description.save
+          old_description.update_attribute(:status, 0)
+          format.js
+        else
+          format.js
+        end
       end
+
+    else
+
+      @description = Companydescription.find(params[:companydescription][:companydescription_id])
+      @description.content = params[:companydescription][:content]
+
+      respond_to do |format|
+        if @description.update_attribute(:content, params[:companydescription][:content])
+          format.js  {render "update_suggestion"}
+        else
+          format.js
+        end
+      end
+
     end
 
   end
