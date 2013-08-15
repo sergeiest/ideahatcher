@@ -34,7 +34,7 @@
         <% end %>
       </div>
 
-
+      <hr/>
       <div class="company-box">
         <h3 style="color:#6f6f6f">News</h3>
         <% if !@user_updates.nil? and @user_updates.length > 0 %>
@@ -48,15 +48,17 @@
           <p>To see updates in your news feed follow <%= link_to 'other ideas', startups_path %>.</p>
         <% end %>
       </div>
-
+      <hr/>
       <h3>My discussions</h3>
       <% @ideas.each do |idea| %>
           <% div_name='Idea' + idea.id.to_s() %>
           <%= link_to({:controller => "startups", :action => 'idea_hatching', :id => idea.startup_id},
                       :onMouseMove => "MM_changeProp('" + div_name + "','','backgroundColor','#ecf8ff','DIV')",
                       :onMouseOut => "MM_changeProp('" + div_name + "','','backgroundColor','white','DIV')") do %>
+
+
             <div id="<%= div_name %>" class="idea">
-               <div class="startup-content" id="<%= div_name %>">
+                <div class="startup-content" id="<%= div_name %>">
                   <% startup = Startup.find(idea.startup_id) %>
                   <% if startup.avatar != nil %>
                       <%= image_tag startup.avatar.url(:teaser) %>
@@ -64,8 +66,7 @@
                       <img class="thumbnail1" src='/images/profile/Nologo.png'>
                   <% end %>
                   <h5><%= startup.name %></h5>
-               </div>
-
+                </div>
                 <div class="idea-content">
                   <div class="comment">
                     <h5>
@@ -74,6 +75,7 @@
                       <% else %>
                           <%=  idea.title %>
                       <% end %>
+                      <hr/>
                     </h5>
                     <p><%=  idea.content %></p>
                     <p class="author"><%=idea.first_name %> <%= idea.last_name %> on
@@ -81,9 +83,12 @@
                     </p>
                   </div>
                 </div>
-            <% end %>
-            <div style="clear:both"></div>
-          </div>
+                <div style="clear:both"></div>
+            </div>
+
+          <% end %>
+
+
       <% end %>
 
     </div>

@@ -371,17 +371,20 @@ h2.project{
   border:1px #c8c8c8 solid;
   background-color: white;
   width:100%;
-  margin:20px 0;
-  padding:10px 20px;
+  min-height: 100px;
+  margin:10px 0 20px 0;
+  padding:0;
+
   .idea-content {
-    width:100%;
+    margin:5px 20px;
+
     .idea-text {min-height: 95px;}
     .comment {
       min-height: 15px;
       .author {font-style:italic;text-align:right}
     }
     h5 {
-      color:orange;
+      color: #07b5b5;
       margin:0px ;
       margin-bottom:10px ;
 
@@ -406,21 +409,29 @@ h2.project{
   }
 
   .startup-content {
+
+    padding:0px;
+    margin-right: 10px;
+    float:left;
+
     img {
-      width: 120px;
+      width: 200px;
+      border-right:1px grey solid;
     }
-    padding-left:10px;
-    margin-left: 20px;
-    float:right;
-    border-left:1px grey solid;
-    width:100px;
+
     h5 {
-      margin:10px 0;
+      margin-left:40px;
+      margin-top:-40px;
+      padding-right: 10px;
       color: #07b5b5;
-      line-height: 16px;
+      line-height: 24px;
       font-size:16px;
       text-align: right;
       font-weight:normal;
+      background-color: #333333;
+      color:white;
+      opacity:0.90;
+      filter:alpha(opacity=90);
     }
   }
 }

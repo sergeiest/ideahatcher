@@ -57,7 +57,7 @@ class UsersController < ApplicationController
 
     @ideas = Idea.where("user_id = ?", session[:id])
     @ideas.uniq! {|a| a.companydescription_id}
-    @ideas.sort! { |a, b| [a['title'], a['created_at']] <=> [b['title'], b['created_at']] }
+    @ideas.sort! { |b, a| [a['created_at'], a['title']] <=> [b['created_at'], b['title'] ] }
 
     if params[:id]==session[:id].to_s()
       session[:owner_type]=1
