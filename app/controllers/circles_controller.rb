@@ -12,7 +12,11 @@ class CirclesController < ApplicationController
 
         when "add_circle", "add_person", "remove_person"
           user = User.find(session[:id])
-          session[:startup_id] = user.Owner_startups.first.id
+          if params[:id] and Owner.where("startup_id = ? AND user_id = ?", params[:id], session[:id]).length > 0
+            session[:startup_id] = params[:id]
+          else
+            wrong_link = 1
+          end
         else
           wrong_link = 1
       end
@@ -32,15 +36,17 @@ class CirclesController < ApplicationController
         when "0"
           circles = startup.Circles
           circles.destroy_all
-          @people = startup.Circle_users[0..9]
+          @people = startup.Circle_users[0..39]
           format.js {render "hide_people"}
 
         when "1"
-          @people = startup.Circle_users[0..9]
+          circles = startup.Circles.where("status > 2")
+          circles.destroy_all
+          @people = startup.Circle_users[0..39]
           format.js
 
         when "2"
-          circles = startup.Circles.where("status = ?",2)
+          circles = startup.Circles.where("status > 1")
           circles.destroy_all
           User.all.sample(20).each do |user|
             circle = Circle.new
@@ -49,20 +55,19 @@ class CirclesController < ApplicationController
             circle.status = 2
             circle.save
           end
-          @people = startup.Circle_users[0..9]
+          @people = startup.Circle_users[0..39]
         format.js
 
         when "3"
-
           circle = Circle.new
           circle.startup_id = startup.id
           circle.user_id = 0
           circle.status = 3
           circle.save
-          @people = startup.Circle_users[0..9]
+          @people = startup.Circle_users[0..39]
           format.js   {render "hide_people"}
         else
-          @people = startup.Circle_users[0..9]
+          @people = startup.Circle_users[0..39]
           format.js   {render "hide_people"}
       end
 
@@ -75,8 +80,7 @@ class CirclesController < ApplicationController
       return
     end
 
-    if User.find(params[:user_id]) and
-        Circle.where("user_id = ? AND startup_id = ?",params[:user_id], session[:startup_id]).length == 0
+    if User.find(params[:user_id]) and circle = startup.Circles.where("user_id = ?",params[:user_id]).length == 0
       circle = Circle.new
       circle.startup_id = session[:startup_id]
       circle.user_id = params[:user_id]
@@ -85,24 +89,24 @@ class CirclesController < ApplicationController
     end
 
     respond_to do |format|
-      @people = startup.Circle_users[0..19]
+      @people = startup.Circle_users[0..39]
       format.js {render "add_circle"}
     end
   end
 
   def remove_person
+
+    return if !params[:user_id]
+
     startup = Startup.find(session[:startup_id])
-    if !params[:user_id]
-      return
-    end
-    circle = Circle.find_by_user_id(params[:user_id])
-    if circle and User.find(params[:user_id])
-      circle.destroy
-    end
+    circle = startup.Circles.where("user_id = ?",params[:user_id])
+    circle.destroy_all if circle.length > 0
+
     respond_to do |format|
-      @people = startup.Circle_users[0..19]
+      @people = startup.Circle_users[0..39]
       format.js {render "add_circle"}
     end
+
   end
 
 

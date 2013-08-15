@@ -178,7 +178,7 @@ class StartupsController < ApplicationController
     @startup = Startup.find(session[:startup_id])
     @tags = @startup.Tags
     @people = User.all[0..5]
-    @circles = User.all[0..9]
+    @circles = @startup.Circle_users[0..39]
     @startup_owners = @startup.Owner_users.all.uniq
     @startup_followers = @startup.Follower_users.all.uniq
   end

@@ -19,37 +19,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="application.scss" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/application.scss">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="982" column="24" selection-start="17042" selection-end="17042" vertical-scroll-proportion="-29.923077">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="investors_controller.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/controllers/investors_controller.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="156" column="0" selection-start="4039" selection-end="4039" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="follower_info.js.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/investors/follower_info.js.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="59" column="57" selection-start="2155" selection-end="2155" vertical-scroll-proportion="-12.125">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="circle.html.erb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/startups/circle.html.erb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="51" column="43" selection-start="2529" selection-end="2529" vertical-scroll-proportion="-5.625">
+            <state line="59" column="57" selection-start="2155" selection-end="2155" vertical-scroll-proportion="-12.416667">
               <folding />
             </state>
           </provider>
@@ -58,7 +31,25 @@
       <file leaf-file-name="circles_controller.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/controllers/circles_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="102" column="41" selection-start="2598" selection-end="2598" vertical-scroll-proportion="0.68949044">
+            <state line="90" column="39" selection-start="2399" selection-end="2399" vertical-scroll-proportion="0.31711146">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="add_circle.js.erb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/circles/add_circle.js.erb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="12" column="25" selection-start="481" selection-end="481" vertical-scroll-proportion="-7.5">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="startups_controller.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/controllers/startups_controller.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="180" column="36" selection-start="4770" selection-end="4770" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -77,21 +68,21 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/views/startups/dashboard.html.erb" />
-        <option value="$PROJECT_DIR$/app/views/startups/idea_hatching.html.erb" />
         <option value="$PROJECT_DIR$/app/views/layouts/hatcher.html.erb" />
         <option value="$PROJECT_DIR$/app/controllers/home_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/home/colorful.html.erb" />
         <option value="$PROJECT_DIR$/app/views/startups/_lightning_company.html.erb" />
         <option value="$PROJECT_DIR$/app/views/campaigns/about_step.html.erb" />
-        <option value="$PROJECT_DIR$/app/assets/stylesheets/application.scss" />
         <option value="$PROJECT_DIR$/app/views/startups/vote_lightning.html.erb" />
         <option value="$PROJECT_DIR$/app/views/investors/search_people.js.erb" />
         <option value="$PROJECT_DIR$/app/controllers/investors_controller.rb" />
-        <option value="$PROJECT_DIR$/app/views/startups/circle.html.erb" />
         <option value="$PROJECT_DIR$/app/views/investors/follower_info.js.erb" />
         <option value="$PROJECT_DIR$/app/views/startups/team.html.erb" />
         <option value="$PROJECT_DIR$/log/development.log" />
+        <option value="$PROJECT_DIR$/app/assets/stylesheets/application.scss" />
+        <option value="$PROJECT_DIR$/app/models/startup.rb" />
+        <option value="$PROJECT_DIR$/app/controllers/startups_controller.rb" />
+        <option value="$PROJECT_DIR$/app/views/startups/circle.html.erb" />
         <option value="$PROJECT_DIR$/app/controllers/circles_controller.rb" />
       </list>
     </option>
@@ -196,6 +187,28 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="investors" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="beta" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="prototype_0.2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="home" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -233,6 +246,24 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="beta" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="prototype_0.2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="models" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -760,27 +791,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/views/startups/dashboard.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="20" selection-start="491" selection-end="542" vertical-scroll-proportion="0.29363784">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/campaigns/basic_step.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/campaigns/about_step.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="77" column="108" selection-start="3655" selection-end="3655" vertical-scroll-proportion="0.31484503">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/startups/_lightning_company.html.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="73" column="32" selection-start="3051" selection-end="3214" vertical-scroll-proportion="-13.041667">
@@ -796,20 +806,6 @@
             <element signature="n#style#0;n#div#1;n#div#1;n#!!top" expanded="true" />
             <element signature="n#style#0;n#i#0;n#div#2;n#!!top" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/startups_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="245" column="12" selection-start="6797" selection-end="6797" vertical-scroll-proportion="0.05023548">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/investors/_people.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
         </state>
       </provider>
     </entry>
@@ -843,35 +839,74 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/application.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="982" column="24" selection-start="17042" selection-end="17042" vertical-scroll-proportion="-29.923077">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/startups/circle.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="51" column="43" selection-start="2529" selection-end="2529" vertical-scroll-proportion="-5.625">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/investors/follower_info.js.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="59" column="57" selection-start="2155" selection-end="2155" vertical-scroll-proportion="-12.125">
+        <state line="597" column="17" selection-start="10626" selection-end="10626" vertical-scroll-proportion="0.2076412">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/investors_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="156" column="0" selection-start="4039" selection-end="4039" vertical-scroll-proportion="0.0">
+        <state line="156" column="0" selection-start="4039" selection-end="4039" vertical-scroll-proportion="-1.5667189">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/user.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/startup.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="61" selection-start="779" selection-end="779" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/circles/add_circle.js.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="25" selection-start="481" selection-end="481" vertical-scroll-proportion="-7.5">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/startups_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="180" column="36" selection-start="4770" selection-end="4770" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/investors/_people.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="17" selection-start="229" selection-end="401" vertical-scroll-proportion="0.24834438">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/startups/circle.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="108" column="23" selection-start="5299" selection-end="5299" vertical-scroll-proportion="0.65989846">
+          <folding>
+            <element signature="e#3442#3655#0" expanded="false" />
+            <element signature="e#3820#4039#0" expanded="false" />
+            <element signature="n#style#0;n#i#0;n#div#1;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/investors/follower_info.js.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="59" column="57" selection-start="2155" selection-end="2155" vertical-scroll-proportion="-12.416667">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/circles_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="102" column="41" selection-start="2598" selection-end="2598" vertical-scroll-proportion="0.68949044">
+        <state line="90" column="39" selection-start="2399" selection-end="2399" vertical-scroll-proportion="0.31711146">
           <folding />
         </state>
       </provider>
