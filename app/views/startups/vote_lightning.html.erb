@@ -15,12 +15,16 @@
 </div>
 
 <div class="hatcher-container">
-    <%= render :partial =>  'startups/lightning_company',
+    <div onclick="moveIdeaLeft()" style="cursor:pointer">
+      <%= render :partial =>  'startups/lightning_company',
                     :locals => {:startup => @startups[0], :class_name => "class0"} %>
+    </div>
     <%= render :partial =>  'startups/lightning_company',
                     :locals => {:startup => @startups[1], :class_name => "class1"} %>
-    <%= render :partial =>  'startups/lightning_company',
+    <div onclick="moveIdeaRight()" style="cursor:pointer">
+      <%= render :partial =>  'startups/lightning_company',
                  :locals => {:startup => @startups[2], :class_name => "class2"} %>
+    </div>
     <div class="clear-both"></div>
 </div>
 
@@ -30,3 +34,12 @@
   <p hidden>Rate and compare ideas: What do you think about each aspect of their idea?</p>
   <p hidden>If you have a suggestion how to improve the idea, help hatch it!</p>
 </div>
+
+<script>
+  function moveIdeaLeft() {
+    window.location.href = "/startups/vote_lightning?id1=<%= @startups[0].id %>&id2=<%= @startups[1].id %>";
+  }
+  function moveIdeaRight() {
+      window.location.href = "/startups/vote_lightning?id0=<%= @startups[1].id %>&id1=<%= @startups[2].id %>";
+  }
+</script>

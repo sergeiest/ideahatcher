@@ -24,9 +24,9 @@ modalNode.innerHTML = '<div class="modal-header">' +
                       '</div>';
 
 <% if   @follower.avatar? %>
-modalBodyString =  "<img src='<%=  @follower.avatar.url(:square) %>' >";
+    modalBodyString =  "<img src='<%=  @follower.avatar.url(:square) %>' >";
 <% else %>
-modalBodyString =  "<img src='/images/profile/Nophoto.png'>";
+    modalBodyString =  "<img src='/images/profile/Nophoto.png'>";
 <% end %>
 
 <% if @follower.description.nil? || @follower.description.length < 1 %>
@@ -35,7 +35,8 @@ modalBodyString =  "<img src='/images/profile/Nophoto.png'>";
     modalBodyString = modalBodyString + "<p>About: <%= @follower.description %></p>";
 <% end %>
 
-<% startup_string  = 'Started ideas:'
+<%
+startup_string  = 'Started ideas:'
 @startups.each do |startup|
     startup_string += ' <a href=/startups/' + startup.id.to_s + '> ' + startup.name + ' </a>,'
 end

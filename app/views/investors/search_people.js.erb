@@ -7,7 +7,7 @@ mainDiv.innerHTML ="";
 
 <% @people.each do |person| %>
   var newA = document.createElement("a");
-  newA.setAttribute("href", "/investors/follower_info?id=<%= person.id %>&action_type=add_team");
+  newA.setAttribute("href", "/investors/follower_info?id=<%= person.id %>&action_type=<%= params[:action_type] %>");
   newA.setAttribute("data-remote", "true");
 
   <% if person.avatar? %>

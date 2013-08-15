@@ -1,6 +1,16 @@
 <div class="vote-frame <%= class_name %>">
   <h2 class="vote-name">
+    <% if class_name == "class1" %>
+      <%= link_to({:action => "vote_next", :id2 => params[:id1], :id1 => params[:id0]}, :style => "float:left") do %>
+        <img src="/images/arrowLeft.png" class="my_corner">
+      <% end %>
+    <% end %>
     <%= startup.name %>
+    <% if class_name == "class1" %>
+      <%= link_to({:action => "vote_next", :id0 => params[:id1], :id1 => params[:id2]}, :style => "float:right")  do %>
+        <img src="/images/arrowRight.png" class="my_corner">
+      <% end %>
+    <% end %>
   </h2>
   <%= simple_format startup.pitch.firstletters(100), :class => "vote-summary" %>
   <div class="vote-img">
@@ -46,29 +56,31 @@
           </div>
           <div style="clear:both"></div>
         </div>
-        <% if class_name == "class1" %>
-          <%= link_to({:controller => "startups", :action => "idea_hatching", :id => params[:id1]},
-                      :class => "btn btn-mini btn-primary", :style => "float:right") do %>
-              <i class="icon-play glyphw-white "></i> Help hatch it!
-          <% end %>
-        <% end %>
       </div>
       <b><%= description.field_status %></b>
       <% if class_name == "class1" %>
-            <%= simple_format description.content.firstletters(300), :class => "description-p" %>
+            <%= simple_format description.content.firstletters(340), :class => "description-p" %>
       <% else %>
-            <%= simple_format description.content.firstletters(300), :class => "description-p" %>
+            <%= simple_format description.content.firstletters(340), :class => "description-p" %>
       <% end %>
     </div>
     <div style="clear:right"></div>
   <% end %>
 
   <% if class_name == "class1" %>
-      <%= link_to :action => "vote_next", :id0 => params[:id1], :id1 => params[:id2]  do %>
-          <button class="btn btn-warning" style="margin:10px 5% 0 85%;">Next</button>
+    <div class="vote-nav">
+      <%= link_to :action => "vote_next", :id2 => params[:id1], :id1 => params[:id0]  do %>
+          <img src="/images/arrowLeft.png" class="my_corner">
       <% end %>
+      <%= link_to({:controller => "startups", :action => "idea_hatching", :id => params[:id1]},
+                  :class => "btn btn-mini btn-primary") do %>
+          <i class="icon-play glyphw-white "></i> Help hatch it!
+      <% end %>
+      <%= link_to :action => "vote_next", :id0 => params[:id1], :id1 => params[:id2]  do %>
+          <img src="/images/arrowRight.png" class="my_corner">
+      <% end %>
+    </div>
   <% end %>
-
 
 
 

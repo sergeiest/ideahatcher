@@ -46,6 +46,7 @@
             <%= form_tag({:action => "search_people", :controller => "investors"},
                          :remote => true) do %>
                 <%= text_field_tag :string, "search", :onclick => "clearInput(this)", :onkeyup => "submitForm(this.parentNode)" %>
+                <%= hidden_field_tag :action_type, "add_circle" %>
                 <%= submit_tag "submit", :hidden => "true" %>
             <% end %>
             <%= form_tag({:action => "add_person", :controller => "circles"},

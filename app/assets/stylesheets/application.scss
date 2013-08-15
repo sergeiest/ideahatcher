@@ -924,22 +924,22 @@ h2.project{
 // --------------------------------- Lightning Vote ----------------------------------
 
 .class0 {
-  width: 560px; height: 760px;
-  margin: 40px 0 0 40px;
+  width: 560px; height: 770px;
+  margin: 42px 0 0 40px;
   z-index:0;
   position: relative;
 
 }
 .class1 {
-  width: 600px; height: 800px;
-  margin: -790px 0 0 100px;
+  width: 600px; height: 825px;
+  margin: -798px 0 0 100px;
   z-index:2;
   position: relative;
 
 }
 .class2 {
-  width: 560px; height: 760px;
-  margin: -780px 0 30px 200px;
+  width: 560px; height: 770px;
+  margin: -805px 0 30px 200px;
   z-index:1;
   position: relative;
 
@@ -949,6 +949,7 @@ h2.project{
 .vote-frame {
   border:2px #c8c8c8 solid;
   background-color: white;
+
 
 
   .vote-name {
@@ -973,11 +974,13 @@ h2.project{
   .vote-box {
     margin: 1% 5%;
     border-bottom:1px #07b5b5 solid;
+    margin-left: 20px;
     b {
       line-height:16px;
       padding:0px;
       font-size:16px;
       color:#07b5b5;
+      margin-left: 10px;
     }
 
     p, a {
@@ -988,11 +991,14 @@ h2.project{
     }
 
     .description-p {
-      height:70px;
+      height:80px;
+      margin-left: 10px;
     }
     .action-box {
       float:right;
       width:30%;
+      margin-left: 10px;
+      margin-top:15px;
     }
 
     .slider-bar {
@@ -1050,6 +1056,14 @@ h2.project{
 
     }
 
+
+  }
+
+  .vote-nav {
+    a {
+      margin-left: 20px;
+      margin-right: 177px;
+    }
 
   }
 

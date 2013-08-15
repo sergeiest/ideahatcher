@@ -75,8 +75,7 @@
                :multipart => true) do %>
       <div class="modal-body">
         <p>
-          Upload photo, picture or logo that will rep[resent your idea in the best way. Aspect ratio of the picture
-          should be 2:1
+          Upload photo or graphic that best represents your idea. Aspect ratio of the picture should be 2:1.
         </p>
         <%= file_field_tag :avatar, :onchange => "checkFile(this)"%>
         <%= hidden_field_tag :back_action, "about_step"%>
