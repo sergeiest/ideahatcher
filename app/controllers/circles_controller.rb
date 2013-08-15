@@ -74,15 +74,18 @@ class CirclesController < ApplicationController
     if !params[:user_id]
       return
     end
-    if User.find(params[:user_id]) and !Circle.find_by_user_id(params[:user_id])
+
+    if User.find(params[:user_id]) and
+        Circle.where("user_id = ? AND startup_id = ?",params[:user_id], session[:startup_id]).length == 0
       circle = Circle.new
       circle.startup_id = session[:startup_id]
       circle.user_id = params[:user_id]
       circle.status = 1
       circle.save
     end
+
     respond_to do |format|
-      @people = startup.Circle_users[0..9]
+      @people = startup.Circle_users[0..19]
       format.js {render "add_circle"}
     end
   end
@@ -97,7 +100,7 @@ class CirclesController < ApplicationController
       circle.destroy
     end
     respond_to do |format|
-      @people = startup.Circle_users[0..9]
+      @people = startup.Circle_users[0..19]
       format.js {render "add_circle"}
     end
   end
