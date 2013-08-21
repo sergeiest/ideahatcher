@@ -295,7 +295,7 @@ class StartupsController < ApplicationController
 
   def vote_next
 
-    not_used_startups = Startup.all
+    not_used_startups = Startup.where("status >= 2").all
 
 
     if params[:id0] || not_used_startups.select{|a| a.id == params[:id0].to_i()}.length > 0
