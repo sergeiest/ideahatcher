@@ -20,6 +20,7 @@
                 <%= form_tag({:action => 'update_name', :controller => "campaigns"},
                            :remote => true, :hidden => true) do %>
                   <span><%= text_field_tag :name, @startup.name %></span>
+                  <%= hidden_field_tag :id, @startup.id%>
                   <span><%= submit_tag "Save", :class => "btn btn-small btn-warning" %></span>
                 <% end %>
             </h2>
@@ -34,6 +35,7 @@
             <%= simple_format @startup.pitch %>
             <%= form_tag({:action => 'update_description', :controller => "campaigns"},
                        :remote => true, :hidden => true) do %>
+              <%= hidden_field_tag :id, @startup.id%>
               <p>One sentence description of what your idea does:</p>
               <%= text_area_tag :pitch, @startup.pitch %>
               <%= submit_tag "Save", :class => "btn btn-small btn-warning" %>

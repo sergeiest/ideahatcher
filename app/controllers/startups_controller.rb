@@ -13,6 +13,13 @@ class StartupsController < ApplicationController
           if params[:id] and Owner.where("startup_id = ? AND user_id = ?", params[:id], session[:id]).length > 0
             session[:startup_id] = params[:id]
             session[:connection_type] = 2
+            startup = Startup.find(params[:id])
+            case startup.status
+              when 0
+                redirect_to :controller => 'campaigns', :action => 'about_step', :id => params[:id] and return
+              when 1
+                redirect_to :controller => 'campaigns', :action => 'circles_step', :id => params[:id] and return
+            end
           else
             wrong_link = 1
           end

@@ -10,37 +10,25 @@ class CampaignsController < ApplicationController
       wrong_link = 1
     else
       case params[:action]
-        when "index"
-          if Fund.find_all_by_user_id(session[:id]) == nil
-            wrong_link = 1
-          end
         when "next_step"
         when "guide_step", "basic_step", "create_step"
           session[:startup_id] = nil
-        when "basic_step", "about_step", "description_step", "review_step", "upload_logo", "update",
+        when "about_step", "description_step", "upload_logo", "update",
             "destroy", "publish_step", "circles_step", "update_description", "update_name"
           user = User.find(session[:id])
-          if session[:startup_id] == nil
-            startup = user.Owner_startups.first
-            if startup == nil
-              session[:startup_id] = nil
-              wrong_link = 1
-            else
-              session[:startup_id] = startup.id
-            end
+          if user.nil? or Owner.where("startup_id = ? AND user_id = ?", params[:id], session[:id]).length == 0
+            wrong_link = 1
+          else
+            session[:startup_id] = params[:id]
           end
         else
-            wrong_link = 1
+          wrong_link = 1
       end
 
     end
     if wrong_link == 1
       redirect_to :controller => 'authentications', :action => 'wrong_link'
     end
-  end
-
-  def index
-    redirect_to :controller => 'campaigns', :action => 'guide_step'
   end
 
   def guide_step
@@ -64,9 +52,8 @@ class CampaignsController < ApplicationController
 
   def create_step
 
-    params[:startup][:status] = 2
-
     if session[:startup_id] == nil
+      params[:startup][:status] = 0
       @startup = Startup.new(params[:startup])
     else
       @startup = Startup.find(session[:startup_id])
@@ -90,7 +77,7 @@ class CampaignsController < ApplicationController
             owner.user_id = session[:id]
             owner.status = 1
             owner.save
-            format.html { redirect_to action: 'about_step'}
+            format.html { redirect_to action: 'about_step', :id => session[:startup_id]}
           else
             format.html { render action: "basic_step"}
           end
@@ -98,7 +85,7 @@ class CampaignsController < ApplicationController
       else
         respond_to do |format|
           if @startup.update_attributes(params[:startup])
-            format.html { redirect_to action: 'about_step'}
+            format.html { redirect_to action: 'about_step', :id => session[:startup_id]}
           else
             format.html { render action: "basic_step"}
           end
@@ -198,7 +185,8 @@ class CampaignsController < ApplicationController
 
     respond_to do |format|
       if no_errors == 1
-        format.html { redirect_to action: 'circles_step'}
+        startup.update_attributes :status => 1
+        format.html { redirect_to action: 'circles_step', :id => startup.id}
       else
         format.html { render action: 'about_step'}
       end
@@ -214,42 +202,10 @@ class CampaignsController < ApplicationController
     @circles = User.all[0..9]
   end
 
-  def review_step
-    @startup =Startup.find(session[:startup_id])
-    @campaign = @startup.Campaign
-
-    i=0
-    for allfield in Allfield.find_all_by_view_flag(3)
-      i = i +1
-      case i
-        when 1
-          @company_description_1 = @startup.Companydescriptions.find_by_allfield_id(allfield.id)
-        when 2
-          @company_description_2 = @startup.Companydescriptions.find_by_allfield_id(allfield.id)
-        when 3
-          @company_description_3 = @startup.Companydescriptions.find_by_allfield_id(allfield.id)
-      end
-    end
-
-
-  end
-
   def publish_step
-    @startup =Startup.find(session[:startup_id])
-    if params[:publish_check] == "1"
-      status = 2
-    else
-      status = 1
-    end
-    respond_to do |format|
-      if @startup.update_attributes :status =>  status
-        format.html { redirect_to controller: "startups", action: "show", id: session[:startup_id] }
-      else
-        @startup.errors.add :avatar, "Invalid photo format"
-        format.html { render action: "review_step" }
-        format.json { render json: @startup.errors, status: :unprocessable_entity }
-      end
-    end
+    startup = Startup.find(session[:startup_id])
+    startup.update_attributes :status => 2
+    redirect_to :controller => "startups", :action => "show", :id => session[:startup_id]
   end
 
   def update_description

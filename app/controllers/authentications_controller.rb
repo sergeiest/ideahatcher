@@ -126,7 +126,7 @@ class AuthenticationsController < ApplicationController
           if params[:gotoaction]!= nil and params[:gotocontroller] != nil
             format.html { redirect_to controller: params[:gotocontroller], action: params[:gotoaction]}
           else
-            format.html { redirect_to controller: 'users', action: 'index', id: @user.id}
+            format.html { redirect_to controller: 'startups', action: 'index'}
             format.js { render "remote_login"}
           end
         else

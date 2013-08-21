@@ -30,8 +30,8 @@
         </div>
         <div class="company-box">
           <li class="add-people">
-            <h4>Who do you want to share your idea with?</h4>
-            <p>Select people that you want to invite to your idea. The more the better advice:</p>
+            <h4>Choose who to share with:</h4>
+            <p>Select people you want to share your idea with to receive feedback and advice.</p>
             <%= form_tag({:action => "add_circle", :controller => "circles"},
                             :remote => 'true',
                             :onclick => 'submitForm(this)') do%>
@@ -41,11 +41,13 @@
                 <p><%= radio_button_tag :circle_status, 3%>Share the idea with everyone</p>
                 <%= submit_tag "submit", :hidden => "true" %>
             <% end %>
-            <div id="manual-selection" hidden>
-                <hr/>
+            <div id="manual-selection" hidden >
+              <hr/>
+              <div class="people-to-add">
                 <%= form_tag({:action => "search_people", :controller => "investors"},
                              :remote => true) do %>
                     <%= text_field_tag :string, "search", :onclick => "clearInput(this)", :onkeyup => "submitForm(this.parentNode)" %>
+                    <%= hidden_field_tag :action_type, "add_circle" %>
                     <%= submit_tag "submit", :hidden => "true" %>
                 <% end %>
                 <%= form_tag({:action => "add_person", :controller => "circles"},
@@ -62,21 +64,35 @@
                     <%= hidden_field_tag :user_id, 0 %>
                     <%= submit_tag "submit", :hidden => "true" %>
                 <% end %>
-              <div id="search-results" class="people-to-add">
-                <%= render :partial => "investors/people", :collection => @people,
-                           :locals => {:action_type => "add_circle"} %>
+                <div id="search-results">
+                  <%= render :partial => "investors/people", :collection => @people,
+                             :locals => {:action_type => "add_circle"} %>
+                </div>
               </div>
               <div id="current-circle" class="people-added">
                 <h4>People you have added:</h4>
-                <%= render :partial => "investors/people", :collection => @circles,
-                           :locals => {:action_type => "remove_circle"} %>
+                <% @circles.each do |person| %>
+                    <%=  link_to({:controller => "investors", :action => "follower_info", :id => person.id, :action_type => "remove_circle"},
+                                 :remote => true) do %>
+                        <div class="person-circle">
+                          <% if  person.avatar? %>
+                              <img src='<%= person.avatar.url(:square) %>' >
+                          <% else %>
+                              <img src='/images/profile/Nophoto.png'>
+                          <% end %>
+                          <h5><%= person.firstname %> <%= person.lastname %></h5>
+                          <div class="clear-both"></div>
+                        </div>
+                    <% end %>
+                <% end %>
               </div>
-                <div class="clear-both"></div>
+
+              <div class="clear-both"></div>
             </div>
-          </li>
+            </li>
         </div>
       </ol>
-      <%= link_to({:controller => "startups", :action => "show", :id => @startup.id}, :class => "btn btn-warning", :style => "float:right") do %>
+      <%= link_to({ :action => "publish_step", :id => @startup.id}, :class => "btn btn-warning", :style => "float:right") do %>
           Next <span style="padding-left:20px"> > </span>
       <% end %>
     </div>
