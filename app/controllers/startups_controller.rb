@@ -333,20 +333,24 @@ class StartupsController < ApplicationController
     end
 
     a = Array.new
+    k = 0
     if !params[:id0]
-      a[0] = ids[0].id
+      a[0] = ids[k].id
+      k += 1
     else
       a[0] = params[:id0]
     end
 
     if !params[:id1]
-      a[1] = ids[1].id
+      a[1] = ids[k].id
+      k += 1
     else
       a[1] = params[:id1]
     end
 
     if !params[:id2]
-      a[2] = ids[2].id
+      a[2] = ids[k].id
+      k += 1
     else
       a[2] = params[:id2]
     end
