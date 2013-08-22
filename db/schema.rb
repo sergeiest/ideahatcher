@@ -198,6 +198,7 @@ ActiveRecord::Schema.define(:version => 20130707212853) do
   create_table "votes", :force => true do |t|
     t.integer  "companydescription_id"
     t.integer  "user_id"
+    t.integer  "startup_id"
     t.integer  "score"
     t.datetime "created_at",            :null => false
     t.datetime "updated_at",            :null => false

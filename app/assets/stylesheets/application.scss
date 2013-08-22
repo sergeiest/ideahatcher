@@ -653,6 +653,14 @@ h2.project{
         background-image: linear-gradient(orange, #e99600);;
       }
 
+      .split-bar-div{
+        margin-left:30px;
+        .bar-split{
+          border-left:1px grey solid;
+          padding:20px 29px 20px 0px;
+        }
+      }
+
       .slider-start{
         float:left;
         margin:0px;
@@ -1043,12 +1051,19 @@ h2.project{
         background-image: linear-gradient(orange, #e99600);;
       }
 
+      .split-bar-div{
+        margin:0px;
+        margin-left:26px;
+        .bar-split{
+          border-left:1px grey solid;
+          padding:20px 0px 20px 25px;
+        }
+      }
+
       .slider-start{
         float:left;
         margin:0px;
         padding:0;
-
-
       }
       .slider-info{
         margin:0px;
@@ -1061,6 +1076,7 @@ h2.project{
         margin:0px 0 0 0 ;
       }
     }
+
 
     .vote-btn {
       float:right;

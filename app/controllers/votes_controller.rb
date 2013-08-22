@@ -24,6 +24,7 @@ class VotesController < ApplicationController
     if vote == nil
       vote = Vote.new
       vote.companydescription_id = params[:vote][:description_id]
+      vote.startup_id = params[:startup_id]
       vote.user_id = session[:id]
       vote.score = params[:vote][:score]
       vote.save

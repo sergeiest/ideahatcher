@@ -34,13 +34,22 @@
                        :id => "form_"+ description.id.to_s() ,
                        :remote => true) do %>
               <%= hidden_field :vote, :description_id, :value => description.id %>
-              <%= hidden_field :vote, :score, :value => 3 %>
-              <%= submit_tag 'dfsd', :id => "button_"+ description.id.to_s(), :hidden => 'true' %>
+              <%= hidden_field :vote, :score, :value => 0 %>
+              <%= hidden_field_tag :startup_id, description.startup_id %>
+              <%= submit_tag 'submit', :id => "button_"+ description.id.to_s(), :hidden => 'true' %>
             <% end %>
+                <%  final_val = 3 %>
                 <div id="bar_<%=description.id%>" class="progress progress-primary progress-slider"
                      onmousedown="stopSlideVote(<%=description.id%>, this, 263, 115)"
                      onmouseup="startSlideVote(<%=description.id%>, this, 263, 115)">
                   <div id='slider_<%=description.id%>' class='bar'></div>
+                  <div class="split-bar-div" >
+                    <span class = "bar-split"></span>
+                    <span class = "bar-split"></span>
+                    <span class = "bar-split"></span>
+                    <span class = "bar-split"></span>
+                    <span class = "bar-split" style="padding-right: 0;"></span>
+                  </div>
                 </div>
           <% else %>
             <div id="bar_<%=description.id%>" class="progress progress-primary progress-slider">

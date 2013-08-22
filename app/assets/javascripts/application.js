@@ -93,20 +93,25 @@ function stopSlideLightning(barId){
 
 function startSlideVote(barId, barNode, offsetPoint, totalWidth){
     var set_perc = ((((event.clientX - barNode.offsetLeft - offsetPoint) / barNode.offsetWidth)).toFixed(2));
-    barNode.children[0].style.width = (set_perc * 100) + '%';
+    var final_val = Math.ceil(set_perc * 5)
+    barNode.children[0].style.width = (final_val * 20) + '%';
 }
-
 
 function stopSlideVote(barId, barNode, offsetPoint, totalWidth){
     var set_perc = ((((event.clientX - barNode.offsetLeft - offsetPoint) / barNode.offsetWidth)).toFixed(2));
-    barNode.children[0].style.width = (set_perc * 100) + '%';
+    var final_val = Math.ceil(set_perc * 5)
+    barNode.children[0].style.width = (final_val * 20) + '%';
     var info = document.getElementById('info_'+ barId);
-    info.style.marginLeft = (set_perc * barNode.clientWidth * 0.9) + 'px';
-    info.innerText = Math.round(set_perc * 5)/1;
-    document.getElementById('form_'+ barId).querySelector("#vote_score").value = Math.round(set_perc * 5)/1 ;
+    info.style.marginLeft = (final_val * barNode.clientWidth * 0.2 - 3) + 'px';
+    if ( final_val == 0 ||  final_val == 5){
+        info.innerText = "";
+    } else {
+        info.innerText = final_val;
+    }
+
+    document.getElementById('form_'+ barId).querySelector("#vote_score").value = final_val ;
     $('#button_'+ barId).click();
 }
-
 
 function MM_changeProp(objId,x,theProp,theValue) { //v9.0
     var obj = null; with (document){ if (getElementById)

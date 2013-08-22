@@ -295,28 +295,42 @@ class StartupsController < ApplicationController
 
   def vote_next
 
-    not_used_startups = Startup.where("status >= 2").all
+    all_startups = Startup.where("status >= 2").all
+    not_used_startups = Array.new
 
+    if !session[:id].nil? and session[:id] != 0
+      voted_descriptions = Vote.where("user_id = ?", session[:id])
+      voted_descriptions.uniq! {|p| p.startup_id}
+      all_startups.each do |startup|
+        not_used_startups << startup if !voted_descriptions.any?{|p| p.startup_id == startup.id}
+      end
+    end
 
-    if params[:id0] || not_used_startups.select{|a| a.id == params[:id0].to_i()}.length > 0
+    if params[:id0] || all_startups.select{|a| a.id == params[:id0].to_i()}.length > 0
+      all_startups = all_startups.select{|a| a.id != params[:id0].to_i()}
       not_used_startups = not_used_startups.select{|a| a.id != params[:id0].to_i()}
     else
       params[:id0] = nil
     end
 
-    if params[:id1] || not_used_startups.select{|a| a.id == params[:id1].to_i()}.length > 0
+    if params[:id1] || all_startups.select{|a| a.id == params[:id1].to_i()}.length > 0
+      all_startups = all_startups.select{|a| a.id != params[:id1].to_i()}
       not_used_startups = not_used_startups.select{|a| a.id != params[:id1].to_i()}
     else
       params[:id1] = nil
     end
 
-    if params[:id2] || not_used_startups.select{|a| a.id == params[:id2].to_i()}.length > 0
+    if params[:id2] || all_startups.select{|a| a.id == params[:id2].to_i()}.length > 0
+      all_startups = all_startups.select{|a| a.id != params[:id2].to_i()}
       not_used_startups = not_used_startups.select{|a| a.id != params[:id2].to_i()}
     else
       params[:id2] = nil
     end
 
     ids = not_used_startups.sample(3)
+    while ids.length < 3 do
+      ids << all_startups.select{|a| !ids.include?(a.id)}.sample(1)
+    end
 
     a = Array.new
     if !params[:id0]
