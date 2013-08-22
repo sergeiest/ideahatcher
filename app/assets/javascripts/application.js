@@ -105,8 +105,10 @@ function stopSlideVote(barId, barNode, offsetPoint, totalWidth){
     info.style.marginLeft = (final_val * barNode.clientWidth * 0.2 - 3) + 'px';
     if ( final_val == 0 ||  final_val == 5){
         info.innerText = "";
+        info.hidden = true;
     } else {
         info.innerText = final_val;
+        info.hidden = false;
     }
 
     document.getElementById('form_'+ barId).querySelector("#vote_score").value = final_val ;

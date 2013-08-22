@@ -654,10 +654,11 @@ h2.project{
       }
 
       .split-bar-div{
-        margin-left:30px;
+        margin-left:20%;
         .bar-split{
           border-left:1px grey solid;
-          padding:20px 29px 20px 0px;
+          padding:20px 0 20px 0px;
+          padding-right: -webkit-calc(25%  - 1px);
         }
       }
 
