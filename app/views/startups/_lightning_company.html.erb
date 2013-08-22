@@ -21,7 +21,7 @@
     <% end %>
   </div>
 
-  <% company_descriptions=startup.Companydescriptions.where('status = 1')[0..2] %>
+  <% company_descriptions=startup.Companydescriptions.where('status = 1')[0..2].sort!{|x, y| x["allfield_id"] <=> y["allfield_id"]} %>
 
   <% company_descriptions.each do |description| %>
     <div class="vote-box">
