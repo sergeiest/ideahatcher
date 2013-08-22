@@ -25459,3 +25459,1620 @@ Processing by VotesController#vote_description as JS
   [1m[35m (1.0ms)[0m  COMMIT
   Rendered votes/vote_description.js.erb (0.0ms)
 Completed 200 OK in 9ms (Views: 4.7ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/startups/index" for 127.0.0.1 at 2013-08-21 20:09:38 -0700
+Connecting to database specified by database.yml
+Processing by StartupsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35mStartup Load (0.4ms)[0m  SELECT `startups`.* FROM `startups` WHERE (status > 0)
+  [1m[36mTag Load (0.2ms)[0m  [1mSELECT `tags`.* FROM `tags` [0m
+  [1m[35mTag Load (0.4ms)[0m  SELECT `tags`.* FROM `tags` WHERE `tags`.`startup_id` = 14
+  [1m[36mTag Load (0.4ms)[0m  [1mSELECT `tags`.* FROM `tags` WHERE `tags`.`startup_id` = 9[0m
+  [1m[35mTag Load (0.4ms)[0m  SELECT `tags`.* FROM `tags` WHERE `tags`.`startup_id` = 10
+  [1m[36mTag Load (0.3ms)[0m  [1mSELECT `tags`.* FROM `tags` WHERE `tags`.`startup_id` = 8[0m
+  [1m[35mTag Load (0.3ms)[0m  SELECT `tags`.* FROM `tags` WHERE `tags`.`startup_id` = 11
+  [1m[36mTag Load (0.3ms)[0m  [1mSELECT `tags`.* FROM `tags` WHERE `tags`.`startup_id` = 15[0m
+  [1m[35mTag Load (0.3ms)[0m  SELECT `tags`.* FROM `tags` WHERE `tags`.`startup_id` = 13
+  [1m[36mTag Load (0.3ms)[0m  [1mSELECT `tags`.* FROM `tags` WHERE `tags`.`startup_id` = 29[0m
+  [1m[35mTag Load (0.3ms)[0m  SELECT `tags`.* FROM `tags` WHERE `tags`.`startup_id` = 27
+  Rendered startups/_startup.html.erb (115.3ms)
+  Rendered startups/index.html.erb within layouts/hatcher (132.3ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM `owners` WHERE `owners`.`user_id` = 1
+  [1m[36mStartup Load (0.5ms)[0m  [1mSELECT `startups`.* FROM `startups` INNER JOIN `owners` ON `startups`.`id` = `owners`.`startup_id` WHERE `owners`.`user_id` = 1[0m
+Completed 200 OK in 434ms (Views: 239.2ms | ActiveRecord: 17.1ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2013-08-21 20:09:39 -0700
+Served asset /application.css - 304 Not Modified (5ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2013-08-21 20:09:39 -0700
+Served asset /application.js - 304 Not Modified (18ms)
+
+
+Started GET "/assets/bootstrap.css" for 127.0.0.1 at 2013-08-21 20:09:39 -0700
+Served asset /bootstrap.css - 304 Not Modified (4ms)
+
+
+Started GET "/assets/bootstrap-modal.js" for 127.0.0.1 at 2013-08-21 20:09:39 -0700
+Served asset /bootstrap-modal.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/glyphicons-halflings.png" for 127.0.0.1 at 2013-08-21 20:09:40 -0700
+Served asset /glyphicons-halflings.png - 304 Not Modified (2ms)
+
+
+Started GET "/startups/vote_lightning" for 127.0.0.1 at 2013-08-21 20:09:43 -0700
+Processing by StartupsController#vote_lightning as HTML
+Redirected to http://localhost:3000/startups/vote_next
+Completed 302 Found in 6ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/startups/vote_next" for 127.0.0.1 at 2013-08-21 20:09:43 -0700
+Processing by StartupsController#vote_next as HTML
+  [1m[35mStartup Load (0.5ms)[0m  SELECT `startups`.* FROM `startups` WHERE (status >= 2)
+  [1m[36mVote Load (0.3ms)[0m  [1mSELECT `votes`.* FROM `votes` WHERE (user_id = 1)[0m
+Redirected to http://localhost:3000/startups/vote_lightning?id0=27&id1=23&id2=19
+Completed 302 Found in 27ms (ActiveRecord: 3.5ms)
+
+
+Started GET "/startups/vote_lightning?id0=27&id1=23&id2=19" for 127.0.0.1 at 2013-08-21 20:09:43 -0700
+Processing by StartupsController#vote_lightning as HTML
+  Parameters: {"id0"=>"27", "id1"=>"23", "id2"=>"19"}
+  [1m[35mStartup Load (0.4ms)[0m  SELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 27 LIMIT 1
+  [1m[36mStartup Load (0.2ms)[0m  [1mSELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 23 LIMIT 1[0m
+  [1m[35mStartup Load (0.2ms)[0m  SELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 19 LIMIT 1
+  [1m[36mTag Load (0.2ms)[0m  [1mSELECT `tags`.* FROM `tags` [0m
+  [1m[35mCompanydescription Load (0.5ms)[0m  SELECT `companydescriptions`.* FROM `companydescriptions` WHERE `companydescriptions`.`startup_id` = 27 AND (status = 1)
+  Rendered startups/_lightning_company.html.erb (85.0ms)
+  [1m[36mCompanydescription Load (0.6ms)[0m  [1mSELECT `companydescriptions`.* FROM `companydescriptions` WHERE `companydescriptions`.`startup_id` = 23 AND (status = 1)[0m
+  Rendered startups/_lightning_company.html.erb (8.4ms)
+  [1m[35mCompanydescription Load (0.7ms)[0m  SELECT `companydescriptions`.* FROM `companydescriptions` WHERE `companydescriptions`.`startup_id` = 19 AND (status = 1)
+  Rendered startups/_lightning_company.html.erb (2.2ms)
+  Rendered startups/vote_lightning.html.erb within layouts/hatcher (104.0ms)
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM `owners` WHERE `owners`.`user_id` = 1
+  [1m[36mStartup Load (0.5ms)[0m  [1mSELECT `startups`.* FROM `startups` INNER JOIN `owners` ON `startups`.`id` = `owners`.`startup_id` WHERE `owners`.`user_id` = 1[0m
+Completed 200 OK in 128ms (Views: 116.8ms | ActiveRecord: 6.7ms)
+
+
+Started GET "/assets/bootstrap.css" for 127.0.0.1 at 2013-08-21 20:09:43 -0700
+Served asset /bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-modal.js" for 127.0.0.1 at 2013-08-21 20:09:43 -0700
+Served asset /bootstrap-modal.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2013-08-21 20:09:43 -0700
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2013-08-21 20:09:43 -0700
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/glyphicons-halflings-white.png" for 127.0.0.1 at 2013-08-21 20:09:43 -0700
+Served asset /glyphicons-halflings-white.png - 304 Not Modified (5ms)
+
+
+Started GET "/assets/glyphicons-halflings.png" for 127.0.0.1 at 2013-08-21 20:09:43 -0700
+Served asset /glyphicons-halflings.png - 304 Not Modified (0ms)
+
+
+Started POST "/votes/vote_description" for 127.0.0.1 at 2013-08-21 20:09:47 -0700
+Processing by VotesController#vote_description as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"XdX2fp6jeucptpcnaz2Nn0Uq0/Q1M5UN1G8Y2bPyr9w=", "vote"=>{"description_id"=>"220", "score"=>"4"}, "startup_id"=>"23", "commit"=>"submit"}
+  [1m[35mVote Load (0.4ms)[0m  SELECT `votes`.* FROM `votes` WHERE `votes`.`user_id` = 1 AND `votes`.`companydescription_id` = 220 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (2.7ms)[0m  INSERT INTO `votes` (`companydescription_id`, `created_at`, `score`, `startup_id`, `updated_at`, `user_id`) VALUES (220, '2013-08-22 03:09:47', 4, 23, '2013-08-22 03:09:47', 1)
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  Rendered votes/vote_description.js.erb (0.7ms)
+Completed 200 OK in 33ms (Views: 18.8ms | ActiveRecord: 3.7ms)
+
+
+Started GET "/startups/vote_next?id0=23&id1=19" for 127.0.0.1 at 2013-08-21 20:09:49 -0700
+Processing by StartupsController#vote_next as HTML
+  Parameters: {"id0"=>"23", "id1"=>"19"}
+  [1m[35mStartup Load (4.3ms)[0m  SELECT `startups`.* FROM `startups` WHERE (status >= 2)
+  [1m[36mVote Load (0.4ms)[0m  [1mSELECT `votes`.* FROM `votes` WHERE (user_id = 1)[0m
+Redirected to http://localhost:3000/startups/vote_lightning?id0=23&id1=19&id2=9
+Completed 302 Found in 13ms (ActiveRecord: 4.7ms)
+
+
+Started GET "/startups/vote_lightning?id0=23&id1=19&id2=9" for 127.0.0.1 at 2013-08-21 20:09:49 -0700
+Processing by StartupsController#vote_lightning as HTML
+  Parameters: {"id0"=>"23", "id1"=>"19", "id2"=>"9"}
+  [1m[35mStartup Load (0.4ms)[0m  SELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 23 LIMIT 1
+  [1m[36mStartup Load (0.2ms)[0m  [1mSELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 19 LIMIT 1[0m
+  [1m[35mStartup Load (0.4ms)[0m  SELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 9 LIMIT 1
+  [1m[36mTag Load (0.3ms)[0m  [1mSELECT `tags`.* FROM `tags` [0m
+  [1m[35mCompanydescription Load (0.7ms)[0m  SELECT `companydescriptions`.* FROM `companydescriptions` WHERE `companydescriptions`.`startup_id` = 23 AND (status = 1)
+  Rendered startups/_lightning_company.html.erb (3.9ms)
+  [1m[36mCompanydescription Load (1.2ms)[0m  [1mSELECT `companydescriptions`.* FROM `companydescriptions` WHERE `companydescriptions`.`startup_id` = 19 AND (status = 1)[0m
+  Rendered startups/_lightning_company.html.erb (6.1ms)
+  [1m[35mCompanydescription Load (0.7ms)[0m  SELECT `companydescriptions`.* FROM `companydescriptions` WHERE `companydescriptions`.`startup_id` = 9 AND (status = 1)
+  Rendered startups/_lightning_company.html.erb (4.1ms)
+  Rendered startups/vote_lightning.html.erb within layouts/hatcher (21.1ms)
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM `owners` WHERE `owners`.`user_id` = 1
+  [1m[36mStartup Load (0.5ms)[0m  [1mSELECT `startups`.* FROM `startups` INNER JOIN `owners` ON `startups`.`id` = `owners`.`startup_id` WHERE `owners`.`user_id` = 1[0m
+Completed 200 OK in 112ms (Views: 98.4ms | ActiveRecord: 5.3ms)
+
+
+Started GET "/assets/bootstrap.css" for 127.0.0.1 at 2013-08-21 20:09:49 -0700
+Served asset /bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-modal.js" for 127.0.0.1 at 2013-08-21 20:09:49 -0700
+Served asset /bootstrap-modal.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2013-08-21 20:09:49 -0700
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2013-08-21 20:09:49 -0700
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/glyphicons-halflings-white.png" for 127.0.0.1 at 2013-08-21 20:09:49 -0700
+Served asset /glyphicons-halflings-white.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/glyphicons-halflings.png" for 127.0.0.1 at 2013-08-21 20:09:49 -0700
+Served asset /glyphicons-halflings.png - 304 Not Modified (0ms)
+
+
+Started GET "/startups/vote_next?id0=19&id1=9" for 127.0.0.1 at 2013-08-21 20:09:52 -0700
+Processing by StartupsController#vote_next as HTML
+  Parameters: {"id0"=>"19", "id1"=>"9"}
+  [1m[35mStartup Load (0.4ms)[0m  SELECT `startups`.* FROM `startups` WHERE (status >= 2)
+  [1m[36mVote Load (0.4ms)[0m  [1mSELECT `votes`.* FROM `votes` WHERE (user_id = 1)[0m
+Redirected to http://localhost:3000/startups/vote_lightning?id0=19&id1=9&id2=18
+Completed 302 Found in 7ms (ActiveRecord: 0.8ms)
+
+
+Started GET "/startups/vote_lightning?id0=19&id1=9&id2=18" for 127.0.0.1 at 2013-08-21 20:09:52 -0700
+Processing by StartupsController#vote_lightning as HTML
+  Parameters: {"id0"=>"19", "id1"=>"9", "id2"=>"18"}
+  [1m[35mStartup Load (0.4ms)[0m  SELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 19 LIMIT 1
+  [1m[36mStartup Load (0.2ms)[0m  [1mSELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 9 LIMIT 1[0m
+  [1m[35mStartup Load (0.2ms)[0m  SELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 18 LIMIT 1
+  [1m[36mTag Load (0.3ms)[0m  [1mSELECT `tags`.* FROM `tags` [0m
+  [1m[35mCompanydescription Load (0.7ms)[0m  SELECT `companydescriptions`.* FROM `companydescriptions` WHERE `companydescriptions`.`startup_id` = 19 AND (status = 1)
+  Rendered startups/_lightning_company.html.erb (2.6ms)
+  [1m[36mCompanydescription Load (0.6ms)[0m  [1mSELECT `companydescriptions`.* FROM `companydescriptions` WHERE `companydescriptions`.`startup_id` = 9 AND (status = 1)[0m
+  Rendered startups/_lightning_company.html.erb (18.0ms)
+  [1m[35mCompanydescription Load (0.6ms)[0m  SELECT `companydescriptions`.* FROM `companydescriptions` WHERE `companydescriptions`.`startup_id` = 18 AND (status = 1)
+  Rendered startups/_lightning_company.html.erb (11.4ms)
+  Rendered startups/vote_lightning.html.erb within layouts/hatcher (42.0ms)
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM `owners` WHERE `owners`.`user_id` = 1
+  [1m[36mStartup Load (0.5ms)[0m  [1mSELECT `startups`.* FROM `startups` INNER JOIN `owners` ON `startups`.`id` = `owners`.`startup_id` WHERE `owners`.`user_id` = 1[0m
+Completed 200 OK in 67ms (Views: 58.1ms | ActiveRecord: 4.4ms)
+
+
+Started GET "/assets/bootstrap.css" for 127.0.0.1 at 2013-08-21 20:09:52 -0700
+Served asset /bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2013-08-21 20:09:52 -0700
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2013-08-21 20:09:52 -0700
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-modal.js" for 127.0.0.1 at 2013-08-21 20:09:52 -0700
+Served asset /bootstrap-modal.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/glyphicons-halflings-white.png" for 127.0.0.1 at 2013-08-21 20:09:52 -0700
+Served asset /glyphicons-halflings-white.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/glyphicons-halflings.png" for 127.0.0.1 at 2013-08-21 20:09:52 -0700
+Served asset /glyphicons-halflings.png - 304 Not Modified (0ms)
+
+
+Started POST "/votes/vote_description" for 127.0.0.1 at 2013-08-21 20:09:54 -0700
+Processing by VotesController#vote_description as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"XdX2fp6jeucptpcnaz2Nn0Uq0/Q1M5UN1G8Y2bPyr9w=", "vote"=>{"description_id"=>"27", "score"=>"4"}, "startup_id"=>"9", "commit"=>"submit"}
+  [1m[35mVote Load (0.4ms)[0m  SELECT `votes`.* FROM `votes` WHERE `votes`.`user_id` = 1 AND `votes`.`companydescription_id` = 27 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO `votes` (`companydescription_id`, `created_at`, `score`, `startup_id`, `updated_at`, `user_id`) VALUES (27, '2013-08-22 03:09:54', 4, 9, '2013-08-22 03:09:54', 1)
+  [1m[36m (14.9ms)[0m  [1mCOMMIT[0m
+  Rendered votes/vote_description.js.erb (0.1ms)
+Completed 200 OK in 24ms (Views: 5.1ms | ActiveRecord: 15.6ms)
+
+
+Started GET "/startups/vote_next?id0=9&id1=18" for 127.0.0.1 at 2013-08-21 20:09:56 -0700
+Processing by StartupsController#vote_next as HTML
+  Parameters: {"id0"=>"9", "id1"=>"18"}
+  [1m[35mStartup Load (0.6ms)[0m  SELECT `startups`.* FROM `startups` WHERE (status >= 2)
+  [1m[36mVote Load (0.4ms)[0m  [1mSELECT `votes`.* FROM `votes` WHERE (user_id = 1)[0m
+Redirected to http://localhost:3000/startups/vote_lightning?id0=9&id1=18&id2=17
+Completed 302 Found in 13ms (ActiveRecord: 1.0ms)
+
+
+Started GET "/startups/vote_lightning?id0=9&id1=18&id2=17" for 127.0.0.1 at 2013-08-21 20:09:56 -0700
+Processing by StartupsController#vote_lightning as HTML
+  Parameters: {"id0"=>"9", "id1"=>"18", "id2"=>"17"}
+  [1m[35mStartup Load (0.5ms)[0m  SELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 9 LIMIT 1
+  [1m[36mStartup Load (0.2ms)[0m  [1mSELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 18 LIMIT 1[0m
+  [1m[35mStartup Load (0.2ms)[0m  SELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 17 LIMIT 1
+  [1m[36mTag Load (0.3ms)[0m  [1mSELECT `tags`.* FROM `tags` [0m
+  [1m[35mCompanydescription Load (0.7ms)[0m  SELECT `companydescriptions`.* FROM `companydescriptions` WHERE `companydescriptions`.`startup_id` = 9 AND (status = 1)
+  Rendered startups/_lightning_company.html.erb (4.0ms)
+  [1m[36mCompanydescription Load (0.6ms)[0m  [1mSELECT `companydescriptions`.* FROM `companydescriptions` WHERE `companydescriptions`.`startup_id` = 18 AND (status = 1)[0m
+  Rendered startups/_lightning_company.html.erb (9.1ms)
+  [1m[35mCompanydescription Load (0.8ms)[0m  SELECT `companydescriptions`.* FROM `companydescriptions` WHERE `companydescriptions`.`startup_id` = 17 AND (status = 1)
+  Rendered startups/_lightning_company.html.erb (3.4ms)
+  Rendered startups/vote_lightning.html.erb within layouts/hatcher (23.2ms)
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `owners` WHERE `owners`.`user_id` = 1
+  [1m[36mStartup Load (0.5ms)[0m  [1mSELECT `startups`.* FROM `startups` INNER JOIN `owners` ON `startups`.`id` = `owners`.`startup_id` WHERE `owners`.`user_id` = 1[0m
+Completed 200 OK in 51ms (Views: 41.5ms | ActiveRecord: 4.9ms)
+
+
+Started GET "/assets/bootstrap.css" for 127.0.0.1 at 2013-08-21 20:09:56 -0700
+Served asset /bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2013-08-21 20:09:56 -0700
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2013-08-21 20:09:56 -0700
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-modal.js" for 127.0.0.1 at 2013-08-21 20:09:56 -0700
+Served asset /bootstrap-modal.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/glyphicons-halflings-white.png" for 127.0.0.1 at 2013-08-21 20:09:56 -0700
+Served asset /glyphicons-halflings-white.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/glyphicons-halflings.png" for 127.0.0.1 at 2013-08-21 20:09:56 -0700
+Served asset /glyphicons-halflings.png - 304 Not Modified (0ms)
+
+
+Started POST "/votes/vote_description" for 127.0.0.1 at 2013-08-21 20:09:57 -0700
+Processing by VotesController#vote_description as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"XdX2fp6jeucptpcnaz2Nn0Uq0/Q1M5UN1G8Y2bPyr9w=", "vote"=>{"description_id"=>"162", "score"=>"4"}, "startup_id"=>"18", "commit"=>"submit"}
+  [1m[35mVote Load (0.4ms)[0m  SELECT `votes`.* FROM `votes` WHERE `votes`.`user_id` = 1 AND `votes`.`companydescription_id` = 162 LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO `votes` (`companydescription_id`, `created_at`, `score`, `startup_id`, `updated_at`, `user_id`) VALUES (162, '2013-08-22 03:09:57', 4, 18, '2013-08-22 03:09:57', 1)
+  [1m[36m (45.4ms)[0m  [1mCOMMIT[0m
+  Rendered votes/vote_description.js.erb (0.1ms)
+Completed 200 OK in 59ms (Views: 7.9ms | ActiveRecord: 46.3ms)
+
+
+Started GET "/startups/vote_next?id0=18&id1=17" for 127.0.0.1 at 2013-08-21 20:09:59 -0700
+Processing by StartupsController#vote_next as HTML
+  Parameters: {"id0"=>"18", "id1"=>"17"}
+  [1m[35mStartup Load (0.4ms)[0m  SELECT `startups`.* FROM `startups` WHERE (status >= 2)
+  [1m[36mVote Load (0.4ms)[0m  [1mSELECT `votes`.* FROM `votes` WHERE (user_id = 1)[0m
+Redirected to http://localhost:3000/startups/vote_lightning?id0=18&id1=17&id2=27
+Completed 302 Found in 9ms (ActiveRecord: 0.8ms)
+
+
+Started GET "/startups/vote_lightning?id0=18&id1=17&id2=27" for 127.0.0.1 at 2013-08-21 20:09:59 -0700
+Processing by StartupsController#vote_lightning as HTML
+  Parameters: {"id0"=>"18", "id1"=>"17", "id2"=>"27"}
+  [1m[35mStartup Load (0.4ms)[0m  SELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 18 LIMIT 1
+  [1m[36mStartup Load (0.4ms)[0m  [1mSELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 17 LIMIT 1[0m
+  [1m[35mStartup Load (0.3ms)[0m  SELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 27 LIMIT 1
+  [1m[36mTag Load (0.2ms)[0m  [1mSELECT `tags`.* FROM `tags` [0m
+  [1m[35mCompanydescription Load (0.7ms)[0m  SELECT `companydescriptions`.* FROM `companydescriptions` WHERE `companydescriptions`.`startup_id` = 18 AND (status = 1)
+  Rendered startups/_lightning_company.html.erb (3.9ms)
+  [1m[36mCompanydescription Load (0.6ms)[0m  [1mSELECT `companydescriptions`.* FROM `companydescriptions` WHERE `companydescriptions`.`startup_id` = 17 AND (status = 1)[0m
+  Rendered startups/_lightning_company.html.erb (7.8ms)
+  [1m[35mCompanydescription Load (3.7ms)[0m  SELECT `companydescriptions`.* FROM `companydescriptions` WHERE `companydescriptions`.`startup_id` = 27 AND (status = 1)
+  Rendered startups/_lightning_company.html.erb (8.0ms)
+  Rendered startups/vote_lightning.html.erb within layouts/hatcher (26.1ms)
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35m (0.6ms)[0m  SELECT COUNT(*) FROM `owners` WHERE `owners`.`user_id` = 1
+  [1m[36mStartup Load (0.5ms)[0m  [1mSELECT `startups`.* FROM `startups` INNER JOIN `owners` ON `startups`.`id` = `owners`.`startup_id` WHERE `owners`.`user_id` = 1[0m
+Completed 200 OK in 120ms (Views: 107.3ms | ActiveRecord: 8.0ms)
+
+
+Started GET "/assets/bootstrap.css" for 127.0.0.1 at 2013-08-21 20:09:59 -0700
+Served asset /bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2013-08-21 20:09:59 -0700
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-modal.js" for 127.0.0.1 at 2013-08-21 20:09:59 -0700
+Served asset /bootstrap-modal.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2013-08-21 20:09:59 -0700
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/glyphicons-halflings-white.png" for 127.0.0.1 at 2013-08-21 20:09:59 -0700
+Served asset /glyphicons-halflings-white.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/glyphicons-halflings.png" for 127.0.0.1 at 2013-08-21 20:09:59 -0700
+Served asset /glyphicons-halflings.png - 304 Not Modified (0ms)
+
+
+Started POST "/votes/vote_description" for 127.0.0.1 at 2013-08-21 20:10:00 -0700
+Processing by VotesController#vote_description as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"XdX2fp6jeucptpcnaz2Nn0Uq0/Q1M5UN1G8Y2bPyr9w=", "vote"=>{"description_id"=>"159", "score"=>"4"}, "startup_id"=>"17", "commit"=>"submit"}
+  [1m[35mVote Load (0.4ms)[0m  SELECT `votes`.* FROM `votes` WHERE `votes`.`user_id` = 1 AND `votes`.`companydescription_id` = 159 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO `votes` (`companydescription_id`, `created_at`, `score`, `startup_id`, `updated_at`, `user_id`) VALUES (159, '2013-08-22 03:10:00', 4, 17, '2013-08-22 03:10:00', 1)
+  [1m[36m (1.1ms)[0m  [1mCOMMIT[0m
+  Rendered votes/vote_description.js.erb (0.1ms)
+Completed 200 OK in 12ms (Views: 6.4ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/startups/vote_next?id0=17&id1=27" for 127.0.0.1 at 2013-08-21 20:10:02 -0700
+Processing by StartupsController#vote_next as HTML
+  Parameters: {"id0"=>"17", "id1"=>"27"}
+  [1m[35mStartup Load (0.5ms)[0m  SELECT `startups`.* FROM `startups` WHERE (status >= 2)
+  [1m[36mVote Load (0.4ms)[0m  [1mSELECT `votes`.* FROM `votes` WHERE (user_id = 1)[0m
+Redirected to http://localhost:3000/startups/vote_lightning?id0=17&id1=27&id2=10
+Completed 302 Found in 8ms (ActiveRecord: 0.9ms)
+
+
+Started GET "/startups/vote_lightning?id0=17&id1=27&id2=10" for 127.0.0.1 at 2013-08-21 20:10:02 -0700
+Processing by StartupsController#vote_lightning as HTML
+  Parameters: {"id0"=>"17", "id1"=>"27", "id2"=>"10"}
+  [1m[35mStartup Load (0.4ms)[0m  SELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 17 LIMIT 1
+  [1m[36mStartup Load (0.2ms)[0m  [1mSELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 27 LIMIT 1[0m
+  [1m[35mStartup Load (0.2ms)[0m  SELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 10 LIMIT 1
+  [1m[36mTag Load (0.2ms)[0m  [1mSELECT `tags`.* FROM `tags` [0m
+  [1m[35mCompanydescription Load (0.6ms)[0m  SELECT `companydescriptions`.* FROM `companydescriptions` WHERE `companydescriptions`.`startup_id` = 17 AND (status = 1)
+  Rendered startups/_lightning_company.html.erb (4.1ms)
+  [1m[36mCompanydescription Load (0.8ms)[0m  [1mSELECT `companydescriptions`.* FROM `companydescriptions` WHERE `companydescriptions`.`startup_id` = 27 AND (status = 1)[0m
+  Rendered startups/_lightning_company.html.erb (10.6ms)
+  [1m[35mCompanydescription Load (0.6ms)[0m  SELECT `companydescriptions`.* FROM `companydescriptions` WHERE `companydescriptions`.`startup_id` = 10 AND (status = 1)
+  Rendered startups/_lightning_company.html.erb (3.6ms)
+  Rendered startups/vote_lightning.html.erb within layouts/hatcher (24.7ms)
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `owners` WHERE `owners`.`user_id` = 1
+  [1m[36mStartup Load (0.6ms)[0m  [1mSELECT `startups`.* FROM `startups` INNER JOIN `owners` ON `startups`.`id` = `owners`.`startup_id` WHERE `owners`.`user_id` = 1[0m
+Completed 200 OK in 52ms (Views: 44.1ms | ActiveRecord: 4.4ms)
+
+
+Started GET "/assets/bootstrap.css" for 127.0.0.1 at 2013-08-21 20:10:02 -0700
+Served asset /bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2013-08-21 20:10:02 -0700
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2013-08-21 20:10:02 -0700
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-modal.js" for 127.0.0.1 at 2013-08-21 20:10:02 -0700
+Served asset /bootstrap-modal.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/glyphicons-halflings-white.png" for 127.0.0.1 at 2013-08-21 20:10:02 -0700
+Served asset /glyphicons-halflings-white.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/glyphicons-halflings.png" for 127.0.0.1 at 2013-08-21 20:10:02 -0700
+Served asset /glyphicons-halflings.png - 304 Not Modified (0ms)
+
+
+Started POST "/votes/vote_description" for 127.0.0.1 at 2013-08-21 20:10:05 -0700
+Processing by VotesController#vote_description as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"XdX2fp6jeucptpcnaz2Nn0Uq0/Q1M5UN1G8Y2bPyr9w=", "vote"=>{"description_id"=>"230", "score"=>"4"}, "startup_id"=>"27", "commit"=>"submit"}
+  [1m[35mVote Load (0.4ms)[0m  SELECT `votes`.* FROM `votes` WHERE `votes`.`user_id` = 1 AND `votes`.`companydescription_id` = 230 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO `votes` (`companydescription_id`, `created_at`, `score`, `startup_id`, `updated_at`, `user_id`) VALUES (230, '2013-08-22 03:10:05', 4, 27, '2013-08-22 03:10:05', 1)
+  [1m[36m (59.7ms)[0m  [1mCOMMIT[0m
+  Rendered votes/vote_description.js.erb (0.1ms)
+Completed 200 OK in 70ms (Views: 6.0ms | ActiveRecord: 60.4ms)
+
+
+Started GET "/startups/vote_next?id0=27&id1=10" for 127.0.0.1 at 2013-08-21 20:10:06 -0700
+Processing by StartupsController#vote_next as HTML
+  Parameters: {"id0"=>"27", "id1"=>"10"}
+  [1m[35mStartup Load (0.4ms)[0m  SELECT `startups`.* FROM `startups` WHERE (status >= 2)
+  [1m[36mVote Load (7.3ms)[0m  [1mSELECT `votes`.* FROM `votes` WHERE (user_id = 1)[0m
+Redirected to http://localhost:3000/startups/vote_lightning?id0=27&id1=10&id2=8
+Completed 302 Found in 13ms (ActiveRecord: 7.7ms)
+
+
+Started GET "/startups/vote_lightning?id0=27&id1=10&id2=8" for 127.0.0.1 at 2013-08-21 20:10:06 -0700
+Processing by StartupsController#vote_lightning as HTML
+  Parameters: {"id0"=>"27", "id1"=>"10", "id2"=>"8"}
+  [1m[35mStartup Load (0.4ms)[0m  SELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 27 LIMIT 1
+  [1m[36mStartup Load (0.3ms)[0m  [1mSELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 10 LIMIT 1[0m
+  [1m[35mStartup Load (0.2ms)[0m  SELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 8 LIMIT 1
+  [1m[36mTag Load (0.2ms)[0m  [1mSELECT `tags`.* FROM `tags` [0m
+  [1m[35mCompanydescription Load (0.7ms)[0m  SELECT `companydescriptions`.* FROM `companydescriptions` WHERE `companydescriptions`.`startup_id` = 27 AND (status = 1)
+  Rendered startups/_lightning_company.html.erb (4.2ms)
+  [1m[36mCompanydescription Load (0.6ms)[0m  [1mSELECT `companydescriptions`.* FROM `companydescriptions` WHERE `companydescriptions`.`startup_id` = 10 AND (status = 1)[0m
+  Rendered startups/_lightning_company.html.erb (8.7ms)
+  [1m[35mCompanydescription Load (0.7ms)[0m  SELECT `companydescriptions`.* FROM `companydescriptions` WHERE `companydescriptions`.`startup_id` = 8 AND (status = 1)
+  Rendered startups/_lightning_company.html.erb (5.2ms)
+  Rendered startups/vote_lightning.html.erb within layouts/hatcher (27.4ms)
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `owners` WHERE `owners`.`user_id` = 1
+  [1m[36mStartup Load (0.5ms)[0m  [1mSELECT `startups`.* FROM `startups` INNER JOIN `owners` ON `startups`.`id` = `owners`.`startup_id` WHERE `owners`.`user_id` = 1[0m
+Completed 200 OK in 56ms (Views: 46.9ms | ActiveRecord: 4.4ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2013-08-21 20:10:06 -0700
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2013-08-21 20:10:06 -0700
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-modal.js" for 127.0.0.1 at 2013-08-21 20:10:06 -0700
+Served asset /bootstrap-modal.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap.css" for 127.0.0.1 at 2013-08-21 20:10:06 -0700
+Served asset /bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/glyphicons-halflings-white.png" for 127.0.0.1 at 2013-08-21 20:10:06 -0700
+Served asset /glyphicons-halflings-white.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/glyphicons-halflings.png" for 127.0.0.1 at 2013-08-21 20:10:06 -0700
+Served asset /glyphicons-halflings.png - 304 Not Modified (0ms)
+
+
+Started POST "/votes/vote_description" for 127.0.0.1 at 2013-08-21 20:10:08 -0700
+Processing by VotesController#vote_description as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"XdX2fp6jeucptpcnaz2Nn0Uq0/Q1M5UN1G8Y2bPyr9w=", "vote"=>{"description_id"=>"30", "score"=>"4"}, "startup_id"=>"10", "commit"=>"submit"}
+  [1m[35mVote Load (0.4ms)[0m  SELECT `votes`.* FROM `votes` WHERE `votes`.`user_id` = 1 AND `votes`.`companydescription_id` = 30 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO `votes` (`companydescription_id`, `created_at`, `score`, `startup_id`, `updated_at`, `user_id`) VALUES (30, '2013-08-22 03:10:08', 4, 10, '2013-08-22 03:10:08', 1)
+  [1m[36m (88.6ms)[0m  [1mCOMMIT[0m
+  Rendered votes/vote_description.js.erb (0.1ms)
+Completed 200 OK in 97ms (Views: 4.5ms | ActiveRecord: 89.3ms)
+
+
+Started GET "/startups/vote_next?id0=10&id1=8" for 127.0.0.1 at 2013-08-21 20:10:09 -0700
+Processing by StartupsController#vote_next as HTML
+  Parameters: {"id0"=>"10", "id1"=>"8"}
+  [1m[35mStartup Load (1.0ms)[0m  SELECT `startups`.* FROM `startups` WHERE (status >= 2)
+  [1m[36mVote Load (0.4ms)[0m  [1mSELECT `votes`.* FROM `votes` WHERE (user_id = 1)[0m
+Redirected to http://localhost:3000/startups/vote_lightning?id0=10&id1=8&id2=22
+Completed 302 Found in 11ms (ActiveRecord: 1.4ms)
+
+
+Started GET "/startups/vote_lightning?id0=10&id1=8&id2=22" for 127.0.0.1 at 2013-08-21 20:10:09 -0700
+Processing by StartupsController#vote_lightning as HTML
+  Parameters: {"id0"=>"10", "id1"=>"8", "id2"=>"22"}
+  [1m[35mStartup Load (0.7ms)[0m  SELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 10 LIMIT 1
+  [1m[36mStartup Load (0.3ms)[0m  [1mSELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 8 LIMIT 1[0m
+  [1m[35mStartup Load (0.3ms)[0m  SELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 22 LIMIT 1
+  [1m[36mTag Load (0.2ms)[0m  [1mSELECT `tags`.* FROM `tags` [0m
+  [1m[35mCompanydescription Load (0.6ms)[0m  SELECT `companydescriptions`.* FROM `companydescriptions` WHERE `companydescriptions`.`startup_id` = 10 AND (status = 1)
+  Rendered startups/_lightning_company.html.erb (3.5ms)
+  [1m[36mCompanydescription Load (9.8ms)[0m  [1mSELECT `companydescriptions`.* FROM `companydescriptions` WHERE `companydescriptions`.`startup_id` = 8 AND (status = 1)[0m
+  Rendered startups/_lightning_company.html.erb (18.4ms)
+  [1m[35mCompanydescription Load (0.6ms)[0m  SELECT `companydescriptions`.* FROM `companydescriptions` WHERE `companydescriptions`.`startup_id` = 22 AND (status = 1)
+  Rendered startups/_lightning_company.html.erb (2.2ms)
+  Rendered startups/vote_lightning.html.erb within layouts/hatcher (31.4ms)
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `owners` WHERE `owners`.`user_id` = 1
+  [1m[36mStartup Load (0.5ms)[0m  [1mSELECT `startups`.* FROM `startups` INNER JOIN `owners` ON `startups`.`id` = `owners`.`startup_id` WHERE `owners`.`user_id` = 1[0m
+Completed 200 OK in 59ms (Views: 39.7ms | ActiveRecord: 13.8ms)
+
+
+Started GET "/assets/bootstrap.css" for 127.0.0.1 at 2013-08-21 20:10:09 -0700
+Served asset /bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2013-08-21 20:10:09 -0700
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2013-08-21 20:10:09 -0700
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-modal.js" for 127.0.0.1 at 2013-08-21 20:10:09 -0700
+Served asset /bootstrap-modal.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/glyphicons-halflings.png" for 127.0.0.1 at 2013-08-21 20:10:09 -0700
+Served asset /glyphicons-halflings.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/glyphicons-halflings-white.png" for 127.0.0.1 at 2013-08-21 20:10:09 -0700
+Served asset /glyphicons-halflings-white.png - 304 Not Modified (0ms)
+
+
+Started POST "/votes/vote_description" for 127.0.0.1 at 2013-08-21 20:10:13 -0700
+Processing by VotesController#vote_description as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"XdX2fp6jeucptpcnaz2Nn0Uq0/Q1M5UN1G8Y2bPyr9w=", "vote"=>{"description_id"=>"101", "score"=>"4"}, "startup_id"=>"8", "commit"=>"submit"}
+  [1m[35mVote Load (0.4ms)[0m  SELECT `votes`.* FROM `votes` WHERE `votes`.`user_id` = 1 AND `votes`.`companydescription_id` = 101 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO `votes` (`companydescription_id`, `created_at`, `score`, `startup_id`, `updated_at`, `user_id`) VALUES (101, '2013-08-22 03:10:13', 4, 8, '2013-08-22 03:10:13', 1)
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  Rendered votes/vote_description.js.erb (0.1ms)
+Completed 200 OK in 10ms (Views: 4.9ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/startups/vote_next?id0=8&id1=22" for 127.0.0.1 at 2013-08-21 20:10:14 -0700
+Processing by StartupsController#vote_next as HTML
+  Parameters: {"id0"=>"8", "id1"=>"22"}
+  [1m[35mStartup Load (0.4ms)[0m  SELECT `startups`.* FROM `startups` WHERE (status >= 2)
+  [1m[36mVote Load (2.4ms)[0m  [1mSELECT `votes`.* FROM `votes` WHERE (user_id = 1)[0m
+Redirected to http://localhost:3000/startups/vote_lightning?id0=8&id1=22&id2=19
+Completed 302 Found in 9ms (ActiveRecord: 2.8ms)
+
+
+Started GET "/startups/vote_lightning?id0=8&id1=22&id2=19" for 127.0.0.1 at 2013-08-21 20:10:15 -0700
+Processing by StartupsController#vote_lightning as HTML
+  Parameters: {"id0"=>"8", "id1"=>"22", "id2"=>"19"}
+  [1m[35mStartup Load (2.6ms)[0m  SELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 8 LIMIT 1
+  [1m[36mStartup Load (0.7ms)[0m  [1mSELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 22 LIMIT 1[0m
+  [1m[35mStartup Load (0.4ms)[0m  SELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 19 LIMIT 1
+  [1m[36mTag Load (0.4ms)[0m  [1mSELECT `tags`.* FROM `tags` [0m
+  [1m[35mCompanydescription Load (0.7ms)[0m  SELECT `companydescriptions`.* FROM `companydescriptions` WHERE `companydescriptions`.`startup_id` = 8 AND (status = 1)
+  Rendered startups/_lightning_company.html.erb (4.0ms)
+  [1m[36mCompanydescription Load (0.6ms)[0m  [1mSELECT `companydescriptions`.* FROM `companydescriptions` WHERE `companydescriptions`.`startup_id` = 22 AND (status = 1)[0m
+  Rendered startups/_lightning_company.html.erb (5.7ms)
+  [1m[35mCompanydescription Load (0.6ms)[0m  SELECT `companydescriptions`.* FROM `companydescriptions` WHERE `companydescriptions`.`startup_id` = 19 AND (status = 1)
+  Rendered startups/_lightning_company.html.erb (2.2ms)
+  Rendered startups/vote_lightning.html.erb within layouts/hatcher (18.4ms)
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `owners` WHERE `owners`.`user_id` = 1
+  [1m[36mStartup Load (0.6ms)[0m  [1mSELECT `startups`.* FROM `startups` INNER JOIN `owners` ON `startups`.`id` = `owners`.`startup_id` WHERE `owners`.`user_id` = 1[0m
+Completed 200 OK in 46ms (Views: 34.0ms | ActiveRecord: 7.1ms)
+
+
+Started GET "/assets/bootstrap.css" for 127.0.0.1 at 2013-08-21 20:10:15 -0700
+Served asset /bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2013-08-21 20:10:15 -0700
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-modal.js" for 127.0.0.1 at 2013-08-21 20:10:15 -0700
+Served asset /bootstrap-modal.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2013-08-21 20:10:15 -0700
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/glyphicons-halflings-white.png" for 127.0.0.1 at 2013-08-21 20:10:15 -0700
+Served asset /glyphicons-halflings-white.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/glyphicons-halflings.png" for 127.0.0.1 at 2013-08-21 20:10:15 -0700
+Served asset /glyphicons-halflings.png - 304 Not Modified (0ms)
+
+
+Started GET "/startups/vote_next?id0=22&id1=19" for 127.0.0.1 at 2013-08-21 20:10:17 -0700
+Processing by StartupsController#vote_next as HTML
+  Parameters: {"id0"=>"22", "id1"=>"19"}
+  [1m[35mStartup Load (0.4ms)[0m  SELECT `startups`.* FROM `startups` WHERE (status >= 2)
+  [1m[36mVote Load (2.5ms)[0m  [1mSELECT `votes`.* FROM `votes` WHERE (user_id = 1)[0m
+Redirected to http://localhost:3000/startups/vote_lightning?id0=22&id1=19&id2=13
+Completed 302 Found in 9ms (ActiveRecord: 2.9ms)
+
+
+Started GET "/startups/vote_lightning?id0=22&id1=19&id2=13" for 127.0.0.1 at 2013-08-21 20:10:17 -0700
+Processing by StartupsController#vote_lightning as HTML
+  Parameters: {"id0"=>"22", "id1"=>"19", "id2"=>"13"}
+  [1m[35mStartup Load (0.5ms)[0m  SELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 22 LIMIT 1
+  [1m[36mStartup Load (0.2ms)[0m  [1mSELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 19 LIMIT 1[0m
+  [1m[35mStartup Load (0.2ms)[0m  SELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 13 LIMIT 1
+  [1m[36mTag Load (0.9ms)[0m  [1mSELECT `tags`.* FROM `tags` [0m
+  [1m[35mCompanydescription Load (1.3ms)[0m  SELECT `companydescriptions`.* FROM `companydescriptions` WHERE `companydescriptions`.`startup_id` = 22 AND (status = 1)
+  Rendered startups/_lightning_company.html.erb (3.0ms)
+  [1m[36mCompanydescription Load (0.6ms)[0m  [1mSELECT `companydescriptions`.* FROM `companydescriptions` WHERE `companydescriptions`.`startup_id` = 19 AND (status = 1)[0m
+  Rendered startups/_lightning_company.html.erb (4.3ms)
+  [1m[35mCompanydescription Load (0.7ms)[0m  SELECT `companydescriptions`.* FROM `companydescriptions` WHERE `companydescriptions`.`startup_id` = 13 AND (status = 1)
+  Rendered startups/_lightning_company.html.erb (3.9ms)
+  Rendered startups/vote_lightning.html.erb within layouts/hatcher (17.5ms)
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `owners` WHERE `owners`.`user_id` = 1
+  [1m[36mStartup Load (0.5ms)[0m  [1mSELECT `startups`.* FROM `startups` INNER JOIN `owners` ON `startups`.`id` = `owners`.`startup_id` WHERE `owners`.`user_id` = 1[0m
+Completed 200 OK in 44ms (Views: 33.9ms | ActiveRecord: 5.6ms)
+
+
+Started GET "/assets/bootstrap.css" for 127.0.0.1 at 2013-08-21 20:10:17 -0700
+Served asset /bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2013-08-21 20:10:17 -0700
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2013-08-21 20:10:17 -0700
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-modal.js" for 127.0.0.1 at 2013-08-21 20:10:17 -0700
+Served asset /bootstrap-modal.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/glyphicons-halflings-white.png" for 127.0.0.1 at 2013-08-21 20:10:17 -0700
+Served asset /glyphicons-halflings-white.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/glyphicons-halflings.png" for 127.0.0.1 at 2013-08-21 20:10:17 -0700
+Served asset /glyphicons-halflings.png - 304 Not Modified (0ms)
+
+
+Started GET "/startups/vote_next?id0=19&id1=13" for 127.0.0.1 at 2013-08-21 20:10:18 -0700
+Processing by StartupsController#vote_next as HTML
+  Parameters: {"id0"=>"19", "id1"=>"13"}
+  [1m[35mStartup Load (0.5ms)[0m  SELECT `startups`.* FROM `startups` WHERE (status >= 2)
+  [1m[36mVote Load (0.4ms)[0m  [1mSELECT `votes`.* FROM `votes` WHERE (user_id = 1)[0m
+Redirected to http://localhost:3000/startups/vote_lightning?id0=19&id1=13&id2=21
+Completed 302 Found in 12ms (ActiveRecord: 0.9ms)
+
+
+Started GET "/startups/vote_lightning?id0=19&id1=13&id2=21" for 127.0.0.1 at 2013-08-21 20:10:18 -0700
+Processing by StartupsController#vote_lightning as HTML
+  Parameters: {"id0"=>"19", "id1"=>"13", "id2"=>"21"}
+  [1m[35mStartup Load (0.4ms)[0m  SELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 19 LIMIT 1
+  [1m[36mStartup Load (0.4ms)[0m  [1mSELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 13 LIMIT 1[0m
+  [1m[35mStartup Load (0.3ms)[0m  SELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 21 LIMIT 1
+  [1m[36mTag Load (0.3ms)[0m  [1mSELECT `tags`.* FROM `tags` [0m
+  [1m[35mCompanydescription Load (0.7ms)[0m  SELECT `companydescriptions`.* FROM `companydescriptions` WHERE `companydescriptions`.`startup_id` = 19 AND (status = 1)
+  Rendered startups/_lightning_company.html.erb (2.9ms)
+  [1m[36mCompanydescription Load (0.7ms)[0m  [1mSELECT `companydescriptions`.* FROM `companydescriptions` WHERE `companydescriptions`.`startup_id` = 13 AND (status = 1)[0m
+  Rendered startups/_lightning_company.html.erb (10.1ms)
+  [1m[35mCompanydescription Load (0.6ms)[0m  SELECT `companydescriptions`.* FROM `companydescriptions` WHERE `companydescriptions`.`startup_id` = 21 AND (status = 1)
+  Rendered startups/_lightning_company.html.erb (3.2ms)
+  Rendered startups/vote_lightning.html.erb within layouts/hatcher (25.2ms)
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `owners` WHERE `owners`.`user_id` = 1
+  [1m[36mStartup Load (0.5ms)[0m  [1mSELECT `startups`.* FROM `startups` INNER JOIN `owners` ON `startups`.`id` = `owners`.`startup_id` WHERE `owners`.`user_id` = 1[0m
+Completed 200 OK in 60ms (Views: 46.2ms | ActiveRecord: 4.6ms)
+
+
+Started GET "/assets/bootstrap.css" for 127.0.0.1 at 2013-08-21 20:10:19 -0700
+Served asset /bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2013-08-21 20:10:19 -0700
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2013-08-21 20:10:19 -0700
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-modal.js" for 127.0.0.1 at 2013-08-21 20:10:19 -0700
+Served asset /bootstrap-modal.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/glyphicons-halflings-white.png" for 127.0.0.1 at 2013-08-21 20:10:19 -0700
+Served asset /glyphicons-halflings-white.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/glyphicons-halflings.png" for 127.0.0.1 at 2013-08-21 20:10:19 -0700
+Served asset /glyphicons-halflings.png - 304 Not Modified (0ms)
+
+
+Started POST "/votes/vote_description" for 127.0.0.1 at 2013-08-21 20:10:20 -0700
+Processing by VotesController#vote_description as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"XdX2fp6jeucptpcnaz2Nn0Uq0/Q1M5UN1G8Y2bPyr9w=", "vote"=>{"description_id"=>"179", "score"=>"4"}, "startup_id"=>"13", "commit"=>"submit"}
+  [1m[35mVote Load (0.4ms)[0m  SELECT `votes`.* FROM `votes` WHERE `votes`.`user_id` = 1 AND `votes`.`companydescription_id` = 179 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO `votes` (`companydescription_id`, `created_at`, `score`, `startup_id`, `updated_at`, `user_id`) VALUES (179, '2013-08-22 03:10:20', 4, 13, '2013-08-22 03:10:20', 1)
+  [1m[36m (9.9ms)[0m  [1mCOMMIT[0m
+  Rendered votes/vote_description.js.erb (0.1ms)
+Completed 200 OK in 20ms (Views: 6.1ms | ActiveRecord: 10.7ms)
+
+
+Started GET "/startups/vote_next?id0=13&id1=21" for 127.0.0.1 at 2013-08-21 20:10:22 -0700
+Processing by StartupsController#vote_next as HTML
+  Parameters: {"id0"=>"13", "id1"=>"21"}
+  [1m[35mStartup Load (0.4ms)[0m  SELECT `startups`.* FROM `startups` WHERE (status >= 2)
+  [1m[36mVote Load (0.3ms)[0m  [1mSELECT `votes`.* FROM `votes` WHERE (user_id = 1)[0m
+Redirected to http://localhost:3000/startups/vote_lightning?id0=13&id1=21&id2=15
+Completed 302 Found in 10ms (ActiveRecord: 0.7ms)
+
+
+Started GET "/startups/vote_lightning?id0=13&id1=21&id2=15" for 127.0.0.1 at 2013-08-21 20:10:22 -0700
+Processing by StartupsController#vote_lightning as HTML
+  Parameters: {"id0"=>"13", "id1"=>"21", "id2"=>"15"}
+  [1m[35mStartup Load (0.4ms)[0m  SELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 13 LIMIT 1
+  [1m[36mStartup Load (0.5ms)[0m  [1mSELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 21 LIMIT 1[0m
+  [1m[35mStartup Load (0.8ms)[0m  SELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 15 LIMIT 1
+  [1m[36mTag Load (3.2ms)[0m  [1mSELECT `tags`.* FROM `tags` [0m
+  [1m[35mCompanydescription Load (0.6ms)[0m  SELECT `companydescriptions`.* FROM `companydescriptions` WHERE `companydescriptions`.`startup_id` = 13 AND (status = 1)
+  Rendered startups/_lightning_company.html.erb (4.3ms)
+  [1m[36mCompanydescription Load (0.6ms)[0m  [1mSELECT `companydescriptions`.* FROM `companydescriptions` WHERE `companydescriptions`.`startup_id` = 21 AND (status = 1)[0m
+  Rendered startups/_lightning_company.html.erb (73.3ms)
+  [1m[35mCompanydescription Load (0.6ms)[0m  SELECT `companydescriptions`.* FROM `companydescriptions` WHERE `companydescriptions`.`startup_id` = 15 AND (status = 1)
+  Rendered startups/_lightning_company.html.erb (3.0ms)
+  Rendered startups/vote_lightning.html.erb within layouts/hatcher (87.3ms)
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `owners` WHERE `owners`.`user_id` = 1
+  [1m[36mStartup Load (0.6ms)[0m  [1mSELECT `startups`.* FROM `startups` INNER JOIN `owners` ON `startups`.`id` = `owners`.`startup_id` WHERE `owners`.`user_id` = 1[0m
+Completed 200 OK in 125ms (Views: 104.5ms | ActiveRecord: 8.3ms)
+
+
+Started GET "/assets/bootstrap.css" for 127.0.0.1 at 2013-08-21 20:10:22 -0700
+Served asset /bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2013-08-21 20:10:22 -0700
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2013-08-21 20:10:22 -0700
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-modal.js" for 127.0.0.1 at 2013-08-21 20:10:22 -0700
+Served asset /bootstrap-modal.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/glyphicons-halflings-white.png" for 127.0.0.1 at 2013-08-21 20:10:22 -0700
+Served asset /glyphicons-halflings-white.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/glyphicons-halflings.png" for 127.0.0.1 at 2013-08-21 20:10:22 -0700
+Served asset /glyphicons-halflings.png - 304 Not Modified (2ms)
+
+
+Started POST "/votes/vote_description" for 127.0.0.1 at 2013-08-21 20:10:23 -0700
+Processing by VotesController#vote_description as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"XdX2fp6jeucptpcnaz2Nn0Uq0/Q1M5UN1G8Y2bPyr9w=", "vote"=>{"description_id"=>"189", "score"=>"4"}, "startup_id"=>"21", "commit"=>"submit"}
+  [1m[35mVote Load (0.4ms)[0m  SELECT `votes`.* FROM `votes` WHERE `votes`.`user_id` = 1 AND `votes`.`companydescription_id` = 189 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO `votes` (`companydescription_id`, `created_at`, `score`, `startup_id`, `updated_at`, `user_id`) VALUES (189, '2013-08-22 03:10:23', 4, 21, '2013-08-22 03:10:23', 1)
+  [1m[36m (5.7ms)[0m  [1mCOMMIT[0m
+  Rendered votes/vote_description.js.erb (0.1ms)
+Completed 200 OK in 15ms (Views: 4.8ms | ActiveRecord: 6.5ms)
+
+
+Started GET "/startups/vote_next?id0=21&id1=15" for 127.0.0.1 at 2013-08-21 20:10:25 -0700
+Processing by StartupsController#vote_next as HTML
+  Parameters: {"id0"=>"21", "id1"=>"15"}
+  [1m[35mStartup Load (0.4ms)[0m  SELECT `startups`.* FROM `startups` WHERE (status >= 2)
+  [1m[36mVote Load (0.4ms)[0m  [1mSELECT `votes`.* FROM `votes` WHERE (user_id = 1)[0m
+Redirected to http://localhost:3000/startups/vote_lightning?id0=21&id1=15&id2=22
+Completed 302 Found in 6ms (ActiveRecord: 0.8ms)
+
+
+Started GET "/startups/vote_lightning?id0=21&id1=15&id2=22" for 127.0.0.1 at 2013-08-21 20:10:25 -0700
+Processing by StartupsController#vote_lightning as HTML
+  Parameters: {"id0"=>"21", "id1"=>"15", "id2"=>"22"}
+  [1m[35mStartup Load (0.4ms)[0m  SELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 21 LIMIT 1
+  [1m[36mStartup Load (0.3ms)[0m  [1mSELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 15 LIMIT 1[0m
+  [1m[35mStartup Load (0.7ms)[0m  SELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 22 LIMIT 1
+  [1m[36mTag Load (0.4ms)[0m  [1mSELECT `tags`.* FROM `tags` [0m
+  [1m[35mCompanydescription Load (0.7ms)[0m  SELECT `companydescriptions`.* FROM `companydescriptions` WHERE `companydescriptions`.`startup_id` = 21 AND (status = 1)
+  Rendered startups/_lightning_company.html.erb (3.4ms)
+  [1m[36mCompanydescription Load (0.7ms)[0m  [1mSELECT `companydescriptions`.* FROM `companydescriptions` WHERE `companydescriptions`.`startup_id` = 15 AND (status = 1)[0m
+  Rendered startups/_lightning_company.html.erb (8.5ms)
+  [1m[35mCompanydescription Load (0.6ms)[0m  SELECT `companydescriptions`.* FROM `companydescriptions` WHERE `companydescriptions`.`startup_id` = 22 AND (status = 1)
+  Rendered startups/_lightning_company.html.erb (2.4ms)
+  Rendered startups/vote_lightning.html.erb within layouts/hatcher (22.1ms)
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM `owners` WHERE `owners`.`user_id` = 1
+  [1m[36mStartup Load (0.4ms)[0m  [1mSELECT `startups`.* FROM `startups` INNER JOIN `owners` ON `startups`.`id` = `owners`.`startup_id` WHERE `owners`.`user_id` = 1[0m
+Completed 200 OK in 51ms (Views: 37.2ms | ActiveRecord: 4.9ms)
+
+
+Started GET "/assets/bootstrap.css" for 127.0.0.1 at 2013-08-21 20:10:25 -0700
+Served asset /bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2013-08-21 20:10:25 -0700
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2013-08-21 20:10:25 -0700
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-modal.js" for 127.0.0.1 at 2013-08-21 20:10:25 -0700
+Served asset /bootstrap-modal.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/glyphicons-halflings-white.png" for 127.0.0.1 at 2013-08-21 20:10:25 -0700
+Served asset /glyphicons-halflings-white.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/glyphicons-halflings.png" for 127.0.0.1 at 2013-08-21 20:10:25 -0700
+Served asset /glyphicons-halflings.png - 304 Not Modified (0ms)
+
+
+Started POST "/votes/vote_description" for 127.0.0.1 at 2013-08-21 20:10:26 -0700
+Processing by VotesController#vote_description as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"XdX2fp6jeucptpcnaz2Nn0Uq0/Q1M5UN1G8Y2bPyr9w=", "vote"=>{"description_id"=>"213", "score"=>"4"}, "startup_id"=>"15", "commit"=>"submit"}
+  [1m[35mVote Load (0.4ms)[0m  SELECT `votes`.* FROM `votes` WHERE `votes`.`user_id` = 1 AND `votes`.`companydescription_id` = 213 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO `votes` (`companydescription_id`, `created_at`, `score`, `startup_id`, `updated_at`, `user_id`) VALUES (213, '2013-08-22 03:10:26', 4, 15, '2013-08-22 03:10:26', 1)
+  [1m[36m (37.7ms)[0m  [1mCOMMIT[0m
+  Rendered votes/vote_description.js.erb (0.1ms)
+Completed 200 OK in 48ms (Views: 6.1ms | ActiveRecord: 38.4ms)
+
+
+Started GET "/startups/vote_next?id0=15&id1=22" for 127.0.0.1 at 2013-08-21 20:10:28 -0700
+Processing by StartupsController#vote_next as HTML
+  Parameters: {"id0"=>"15", "id1"=>"22"}
+  [1m[35mStartup Load (2.7ms)[0m  SELECT `startups`.* FROM `startups` WHERE (status >= 2)
+  [1m[36mVote Load (1.1ms)[0m  [1mSELECT `votes`.* FROM `votes` WHERE (user_id = 1)[0m
+Redirected to http://localhost:3000/startups/vote_lightning?id0=15&id1=22&id2=19
+Completed 302 Found in 18ms (ActiveRecord: 3.7ms)
+
+
+Started GET "/startups/vote_lightning?id0=15&id1=22&id2=19" for 127.0.0.1 at 2013-08-21 20:10:28 -0700
+Processing by StartupsController#vote_lightning as HTML
+  Parameters: {"id0"=>"15", "id1"=>"22", "id2"=>"19"}
+  [1m[35mStartup Load (0.5ms)[0m  SELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 15 LIMIT 1
+  [1m[36mStartup Load (0.3ms)[0m  [1mSELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 22 LIMIT 1[0m
+  [1m[35mStartup Load (0.2ms)[0m  SELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 19 LIMIT 1
+  [1m[36mTag Load (0.2ms)[0m  [1mSELECT `tags`.* FROM `tags` [0m
+  [1m[35mCompanydescription Load (0.6ms)[0m  SELECT `companydescriptions`.* FROM `companydescriptions` WHERE `companydescriptions`.`startup_id` = 15 AND (status = 1)
+  Rendered startups/_lightning_company.html.erb (3.2ms)
+  [1m[36mCompanydescription Load (0.7ms)[0m  [1mSELECT `companydescriptions`.* FROM `companydescriptions` WHERE `companydescriptions`.`startup_id` = 22 AND (status = 1)[0m
+  Rendered startups/_lightning_company.html.erb (4.6ms)
+  [1m[35mCompanydescription Load (0.9ms)[0m  SELECT `companydescriptions`.* FROM `companydescriptions` WHERE `companydescriptions`.`startup_id` = 19 AND (status = 1)
+  Rendered startups/_lightning_company.html.erb (3.4ms)
+  Rendered startups/vote_lightning.html.erb within layouts/hatcher (18.2ms)
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `owners` WHERE `owners`.`user_id` = 1
+  [1m[36mStartup Load (0.6ms)[0m  [1mSELECT `startups`.* FROM `startups` INNER JOIN `owners` ON `startups`.`id` = `owners`.`startup_id` WHERE `owners`.`user_id` = 1[0m
+Completed 200 OK in 53ms (Views: 40.4ms | ActiveRecord: 4.7ms)
+
+
+Started GET "/assets/bootstrap.css" for 127.0.0.1 at 2013-08-21 20:10:28 -0700
+Served asset /bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2013-08-21 20:10:28 -0700
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2013-08-21 20:10:28 -0700
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-modal.js" for 127.0.0.1 at 2013-08-21 20:10:28 -0700
+Served asset /bootstrap-modal.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/glyphicons-halflings-white.png" for 127.0.0.1 at 2013-08-21 20:10:28 -0700
+Served asset /glyphicons-halflings-white.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/glyphicons-halflings.png" for 127.0.0.1 at 2013-08-21 20:10:28 -0700
+Served asset /glyphicons-halflings.png - 304 Not Modified (0ms)
+
+
+Started GET "/startups/vote_next?id0=22&id1=19" for 127.0.0.1 at 2013-08-21 20:10:29 -0700
+Processing by StartupsController#vote_next as HTML
+  Parameters: {"id0"=>"22", "id1"=>"19"}
+  [1m[35mStartup Load (0.6ms)[0m  SELECT `startups`.* FROM `startups` WHERE (status >= 2)
+  [1m[36mVote Load (0.3ms)[0m  [1mSELECT `votes`.* FROM `votes` WHERE (user_id = 1)[0m
+Redirected to http://localhost:3000/startups/vote_lightning?id0=22&id1=19&id2=14
+Completed 302 Found in 7ms (ActiveRecord: 0.9ms)
+
+
+Started GET "/startups/vote_lightning?id0=22&id1=19&id2=14" for 127.0.0.1 at 2013-08-21 20:10:29 -0700
+Processing by StartupsController#vote_lightning as HTML
+  Parameters: {"id0"=>"22", "id1"=>"19", "id2"=>"14"}
+  [1m[35mStartup Load (2.4ms)[0m  SELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 22 LIMIT 1
+  [1m[36mStartup Load (0.3ms)[0m  [1mSELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 19 LIMIT 1[0m
+  [1m[35mStartup Load (0.3ms)[0m  SELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 14 LIMIT 1
+  [1m[36mTag Load (0.3ms)[0m  [1mSELECT `tags`.* FROM `tags` [0m
+  [1m[35mCompanydescription Load (0.7ms)[0m  SELECT `companydescriptions`.* FROM `companydescriptions` WHERE `companydescriptions`.`startup_id` = 22 AND (status = 1)
+  Rendered startups/_lightning_company.html.erb (2.6ms)
+  [1m[36mCompanydescription Load (3.3ms)[0m  [1mSELECT `companydescriptions`.* FROM `companydescriptions` WHERE `companydescriptions`.`startup_id` = 19 AND (status = 1)[0m
+  Rendered startups/_lightning_company.html.erb (8.0ms)
+  [1m[35mCompanydescription Load (0.7ms)[0m  SELECT `companydescriptions`.* FROM `companydescriptions` WHERE `companydescriptions`.`startup_id` = 14 AND (status = 1)
+  Rendered startups/_lightning_company.html.erb (4.2ms)
+  Rendered startups/vote_lightning.html.erb within layouts/hatcher (24.7ms)
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `owners` WHERE `owners`.`user_id` = 1
+  [1m[36mStartup Load (0.5ms)[0m  [1mSELECT `startups`.* FROM `startups` INNER JOIN `owners` ON `startups`.`id` = `owners`.`startup_id` WHERE `owners`.`user_id` = 1[0m
+Completed 200 OK in 56ms (Views: 41.3ms | ActiveRecord: 9.2ms)
+
+
+Started GET "/assets/bootstrap.css" for 127.0.0.1 at 2013-08-21 20:10:30 -0700
+Served asset /bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2013-08-21 20:10:30 -0700
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2013-08-21 20:10:30 -0700
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-modal.js" for 127.0.0.1 at 2013-08-21 20:10:30 -0700
+Served asset /bootstrap-modal.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/glyphicons-halflings-white.png" for 127.0.0.1 at 2013-08-21 20:10:30 -0700
+Served asset /glyphicons-halflings-white.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/glyphicons-halflings.png" for 127.0.0.1 at 2013-08-21 20:10:30 -0700
+Served asset /glyphicons-halflings.png - 304 Not Modified (0ms)
+
+
+Started GET "/startups/vote_next?id0=19&id1=14" for 127.0.0.1 at 2013-08-21 20:10:32 -0700
+Processing by StartupsController#vote_next as HTML
+  Parameters: {"id0"=>"19", "id1"=>"14"}
+  [1m[35mStartup Load (0.5ms)[0m  SELECT `startups`.* FROM `startups` WHERE (status >= 2)
+  [1m[36mVote Load (0.3ms)[0m  [1mSELECT `votes`.* FROM `votes` WHERE (user_id = 1)[0m
+Redirected to http://localhost:3000/startups/vote_lightning?id0=19&id1=14&id2=29
+Completed 302 Found in 9ms (ActiveRecord: 0.8ms)
+
+
+Started GET "/startups/vote_lightning?id0=19&id1=14&id2=29" for 127.0.0.1 at 2013-08-21 20:10:32 -0700
+Processing by StartupsController#vote_lightning as HTML
+  Parameters: {"id0"=>"19", "id1"=>"14", "id2"=>"29"}
+  [1m[35mStartup Load (0.4ms)[0m  SELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 19 LIMIT 1
+  [1m[36mStartup Load (0.2ms)[0m  [1mSELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 14 LIMIT 1[0m
+  [1m[35mStartup Load (0.3ms)[0m  SELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 29 LIMIT 1
+  [1m[36mTag Load (0.2ms)[0m  [1mSELECT `tags`.* FROM `tags` [0m
+  [1m[35mCompanydescription Load (0.7ms)[0m  SELECT `companydescriptions`.* FROM `companydescriptions` WHERE `companydescriptions`.`startup_id` = 19 AND (status = 1)
+  Rendered startups/_lightning_company.html.erb (3.0ms)
+  [1m[36mCompanydescription Load (0.7ms)[0m  [1mSELECT `companydescriptions`.* FROM `companydescriptions` WHERE `companydescriptions`.`startup_id` = 14 AND (status = 1)[0m
+  Rendered startups/_lightning_company.html.erb (10.1ms)
+  [1m[35mCompanydescription Load (0.6ms)[0m  SELECT `companydescriptions`.* FROM `companydescriptions` WHERE `companydescriptions`.`startup_id` = 29 AND (status = 1)
+  Rendered startups/_lightning_company.html.erb (3.1ms)
+  Rendered startups/vote_lightning.html.erb within layouts/hatcher (23.9ms)
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `owners` WHERE `owners`.`user_id` = 1
+  [1m[36mStartup Load (0.6ms)[0m  [1mSELECT `startups`.* FROM `startups` INNER JOIN `owners` ON `startups`.`id` = `owners`.`startup_id` WHERE `owners`.`user_id` = 1[0m
+Completed 200 OK in 50ms (Views: 41.5ms | ActiveRecord: 4.4ms)
+
+
+Started GET "/assets/bootstrap.css" for 127.0.0.1 at 2013-08-21 20:10:32 -0700
+Served asset /bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2013-08-21 20:10:32 -0700
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-modal.js" for 127.0.0.1 at 2013-08-21 20:10:32 -0700
+Served asset /bootstrap-modal.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2013-08-21 20:10:32 -0700
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/glyphicons-halflings-white.png" for 127.0.0.1 at 2013-08-21 20:10:32 -0700
+Served asset /glyphicons-halflings-white.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/glyphicons-halflings.png" for 127.0.0.1 at 2013-08-21 20:10:32 -0700
+Served asset /glyphicons-halflings.png - 304 Not Modified (0ms)
+
+
+Started POST "/votes/vote_description" for 127.0.0.1 at 2013-08-21 20:10:34 -0700
+Processing by VotesController#vote_description as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"XdX2fp6jeucptpcnaz2Nn0Uq0/Q1M5UN1G8Y2bPyr9w=", "vote"=>{"description_id"=>"216", "score"=>"4"}, "startup_id"=>"14", "commit"=>"submit"}
+  [1m[35mVote Load (0.4ms)[0m  SELECT `votes`.* FROM `votes` WHERE `votes`.`user_id` = 1 AND `votes`.`companydescription_id` = 216 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO `votes` (`companydescription_id`, `created_at`, `score`, `startup_id`, `updated_at`, `user_id`) VALUES (216, '2013-08-22 03:10:34', 4, 14, '2013-08-22 03:10:34', 1)
+  [1m[36m (15.7ms)[0m  [1mCOMMIT[0m
+  Rendered votes/vote_description.js.erb (0.1ms)
+Completed 200 OK in 26ms (Views: 5.3ms | ActiveRecord: 16.5ms)
+
+
+Started GET "/startups/vote_next?id0=14&id1=29" for 127.0.0.1 at 2013-08-21 20:10:35 -0700
+Processing by StartupsController#vote_next as HTML
+  Parameters: {"id0"=>"14", "id1"=>"29"}
+  [1m[35mStartup Load (0.9ms)[0m  SELECT `startups`.* FROM `startups` WHERE (status >= 2)
+  [1m[36mVote Load (0.4ms)[0m  [1mSELECT `votes`.* FROM `votes` WHERE (user_id = 1)[0m
+Redirected to http://localhost:3000/startups/vote_lightning?id0=14&id1=29&id2=19
+Completed 302 Found in 8ms (ActiveRecord: 1.3ms)
+
+
+Started GET "/startups/vote_lightning?id0=14&id1=29&id2=19" for 127.0.0.1 at 2013-08-21 20:10:35 -0700
+Processing by StartupsController#vote_lightning as HTML
+  Parameters: {"id0"=>"14", "id1"=>"29", "id2"=>"19"}
+  [1m[35mStartup Load (0.4ms)[0m  SELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 14 LIMIT 1
+  [1m[36mStartup Load (0.3ms)[0m  [1mSELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 29 LIMIT 1[0m
+  [1m[35mStartup Load (0.9ms)[0m  SELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 19 LIMIT 1
+  [1m[36mTag Load (0.3ms)[0m  [1mSELECT `tags`.* FROM `tags` [0m
+  [1m[35mCompanydescription Load (2.5ms)[0m  SELECT `companydescriptions`.* FROM `companydescriptions` WHERE `companydescriptions`.`startup_id` = 14 AND (status = 1)
+  Rendered startups/_lightning_company.html.erb (5.8ms)
+  [1m[36mCompanydescription Load (0.8ms)[0m  [1mSELECT `companydescriptions`.* FROM `companydescriptions` WHERE `companydescriptions`.`startup_id` = 29 AND (status = 1)[0m
+  Rendered startups/_lightning_company.html.erb (14.2ms)
+  [1m[35mCompanydescription Load (0.7ms)[0m  SELECT `companydescriptions`.* FROM `companydescriptions` WHERE `companydescriptions`.`startup_id` = 19 AND (status = 1)
+  Rendered startups/_lightning_company.html.erb (2.4ms)
+  Rendered startups/vote_lightning.html.erb within layouts/hatcher (31.1ms)
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `owners` WHERE `owners`.`user_id` = 1
+  [1m[36mStartup Load (0.6ms)[0m  [1mSELECT `startups`.* FROM `startups` INNER JOIN `owners` ON `startups`.`id` = `owners`.`startup_id` WHERE `owners`.`user_id` = 1[0m
+Completed 200 OK in 63ms (Views: 45.1ms | ActiveRecord: 7.1ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2013-08-21 20:10:35 -0700
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-modal.js" for 127.0.0.1 at 2013-08-21 20:10:35 -0700
+Served asset /bootstrap-modal.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2013-08-21 20:10:35 -0700
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap.css" for 127.0.0.1 at 2013-08-21 20:10:35 -0700
+Served asset /bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/glyphicons-halflings-white.png" for 127.0.0.1 at 2013-08-21 20:10:35 -0700
+Served asset /glyphicons-halflings-white.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/glyphicons-halflings.png" for 127.0.0.1 at 2013-08-21 20:10:35 -0700
+Served asset /glyphicons-halflings.png - 304 Not Modified (0ms)
+
+
+Started POST "/votes/vote_description" for 127.0.0.1 at 2013-08-21 20:10:36 -0700
+Processing by VotesController#vote_description as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"XdX2fp6jeucptpcnaz2Nn0Uq0/Q1M5UN1G8Y2bPyr9w=", "vote"=>{"description_id"=>"229", "score"=>"4"}, "startup_id"=>"29", "commit"=>"submit"}
+  [1m[35mVote Load (0.4ms)[0m  SELECT `votes`.* FROM `votes` WHERE `votes`.`user_id` = 1 AND `votes`.`companydescription_id` = 229 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO `votes` (`companydescription_id`, `created_at`, `score`, `startup_id`, `updated_at`, `user_id`) VALUES (229, '2013-08-22 03:10:36', 4, 29, '2013-08-22 03:10:36', 1)
+  [1m[36m (20.1ms)[0m  [1mCOMMIT[0m
+  Rendered votes/vote_description.js.erb (0.1ms)
+Completed 200 OK in 30ms (Views: 4.9ms | ActiveRecord: 20.9ms)
+
+
+Started GET "/startups/vote_next?id0=29&id1=19" for 127.0.0.1 at 2013-08-21 20:10:39 -0700
+Processing by StartupsController#vote_next as HTML
+  Parameters: {"id0"=>"29", "id1"=>"19"}
+  [1m[35mStartup Load (0.5ms)[0m  SELECT `startups`.* FROM `startups` WHERE (status >= 2)
+  [1m[36mVote Load (0.3ms)[0m  [1mSELECT `votes`.* FROM `votes` WHERE (user_id = 1)[0m
+Redirected to http://localhost:3000/startups/vote_lightning?id0=29&id1=19&id2=22
+Completed 302 Found in 7ms (ActiveRecord: 0.8ms)
+
+
+Started GET "/startups/vote_lightning?id0=29&id1=19&id2=22" for 127.0.0.1 at 2013-08-21 20:10:39 -0700
+Processing by StartupsController#vote_lightning as HTML
+  Parameters: {"id0"=>"29", "id1"=>"19", "id2"=>"22"}
+  [1m[35mStartup Load (0.4ms)[0m  SELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 29 LIMIT 1
+  [1m[36mStartup Load (0.3ms)[0m  [1mSELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 19 LIMIT 1[0m
+  [1m[35mStartup Load (0.2ms)[0m  SELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 22 LIMIT 1
+  [1m[36mTag Load (0.2ms)[0m  [1mSELECT `tags`.* FROM `tags` [0m
+  [1m[35mCompanydescription Load (0.8ms)[0m  SELECT `companydescriptions`.* FROM `companydescriptions` WHERE `companydescriptions`.`startup_id` = 29 AND (status = 1)
+  Rendered startups/_lightning_company.html.erb (3.7ms)
+  [1m[36mCompanydescription Load (0.8ms)[0m  [1mSELECT `companydescriptions`.* FROM `companydescriptions` WHERE `companydescriptions`.`startup_id` = 19 AND (status = 1)[0m
+  Rendered startups/_lightning_company.html.erb (4.9ms)
+  [1m[35mCompanydescription Load (0.6ms)[0m  SELECT `companydescriptions`.* FROM `companydescriptions` WHERE `companydescriptions`.`startup_id` = 22 AND (status = 1)
+  Rendered startups/_lightning_company.html.erb (2.2ms)
+  Rendered startups/vote_lightning.html.erb within layouts/hatcher (19.9ms)
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `owners` WHERE `owners`.`user_id` = 1
+  [1m[36mStartup Load (0.5ms)[0m  [1mSELECT `startups`.* FROM `startups` INNER JOIN `owners` ON `startups`.`id` = `owners`.`startup_id` WHERE `owners`.`user_id` = 1[0m
+Completed 200 OK in 50ms (Views: 40.9ms | ActiveRecord: 4.6ms)
+
+
+Started GET "/assets/bootstrap.css" for 127.0.0.1 at 2013-08-21 20:10:39 -0700
+Served asset /bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2013-08-21 20:10:39 -0700
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2013-08-21 20:10:39 -0700
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-modal.js" for 127.0.0.1 at 2013-08-21 20:10:39 -0700
+Served asset /bootstrap-modal.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/glyphicons-halflings-white.png" for 127.0.0.1 at 2013-08-21 20:10:39 -0700
+Served asset /glyphicons-halflings-white.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/glyphicons-halflings.png" for 127.0.0.1 at 2013-08-21 20:10:39 -0700
+Served asset /glyphicons-halflings.png - 304 Not Modified (0ms)
+
+
+Started GET "/startups/vote_next?id0=19&id1=22" for 127.0.0.1 at 2013-08-21 20:10:43 -0700
+Processing by StartupsController#vote_next as HTML
+  Parameters: {"id0"=>"19", "id1"=>"22"}
+  [1m[35mStartup Load (0.4ms)[0m  SELECT `startups`.* FROM `startups` WHERE (status >= 2)
+  [1m[36mVote Load (0.3ms)[0m  [1mSELECT `votes`.* FROM `votes` WHERE (user_id = 1)[0m
+Completed 500 Internal Server Error in 6ms
+
+NoMethodError (undefined method `id' for #<Array:0x000001036fe240>):
+  app/controllers/startups_controller.rb:352:in `vote_next'
+
+
+  Rendered /Users/sergeyastretsov/.rvm/gems/ruby-1.9.3-p362/gems/actionpack-3.2.11/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.7ms)
+  Rendered /Users/sergeyastretsov/.rvm/gems/ruby-1.9.3-p362/gems/actionpack-3.2.11/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.3ms)
+  Rendered /Users/sergeyastretsov/.rvm/gems/ruby-1.9.3-p362/gems/actionpack-3.2.11/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (23.2ms)
+
+
+Started GET "/startups/vote_next?id0=19&id1=22" for 127.0.0.1 at 2013-08-21 20:11:15 -0700
+Processing by StartupsController#vote_next as HTML
+  Parameters: {"id0"=>"19", "id1"=>"22"}
+  [1m[35mStartup Load (0.4ms)[0m  SELECT `startups`.* FROM `startups` WHERE (status >= 2)
+  [1m[36mVote Load (0.3ms)[0m  [1mSELECT `votes`.* FROM `votes` WHERE (user_id = 1)[0m
+Completed 500 Internal Server Error in 300ms
+
+NoMethodError (undefined method `id' for #<Array:0x00000101124600>):
+  app/controllers/startups_controller.rb:352:in `vote_next'
+
+
+  Rendered /Users/sergeyastretsov/.rvm/gems/ruby-1.9.3-p362/gems/actionpack-3.2.11/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.2ms)
+  Rendered /Users/sergeyastretsov/.rvm/gems/ruby-1.9.3-p362/gems/actionpack-3.2.11/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (6.1ms)
+  Rendered /Users/sergeyastretsov/.rvm/gems/ruby-1.9.3-p362/gems/actionpack-3.2.11/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (30.7ms)
+
+
+Started GET "/startups/vote_next?id0=19&id1=22" for 127.0.0.1 at 2013-08-21 20:11:18 -0700
+Processing by StartupsController#vote_next as HTML
+  Parameters: {"id0"=>"19", "id1"=>"22"}
+  [1m[35mStartup Load (1.1ms)[0m  SELECT `startups`.* FROM `startups` WHERE (status >= 2)
+  [1m[36mVote Load (0.4ms)[0m  [1mSELECT `votes`.* FROM `votes` WHERE (user_id = 1)[0m
+Completed 500 Internal Server Error in 9ms
+
+NoMethodError (undefined method `id' for #<Array:0x00000103310110>):
+  app/controllers/startups_controller.rb:352:in `vote_next'
+
+
+  Rendered /Users/sergeyastretsov/.rvm/gems/ruby-1.9.3-p362/gems/actionpack-3.2.11/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.8ms)
+  Rendered /Users/sergeyastretsov/.rvm/gems/ruby-1.9.3-p362/gems/actionpack-3.2.11/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.7ms)
+  Rendered /Users/sergeyastretsov/.rvm/gems/ruby-1.9.3-p362/gems/actionpack-3.2.11/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (36.3ms)
+
+
+Started GET "/startups/vote_next?id0=19&id1=22" for 127.0.0.1 at 2013-08-21 20:11:27 -0700
+Processing by StartupsController#vote_next as HTML
+  Parameters: {"id0"=>"19", "id1"=>"22"}
+  [1m[35mStartup Load (0.3ms)[0m  SELECT `startups`.* FROM `startups` WHERE (status >= 2)
+  [1m[36mVote Load (0.4ms)[0m  [1mSELECT `votes`.* FROM `votes` WHERE (user_id = 1)[0m
+Redirected to http://localhost:3000/startups/vote_lightning?id0=19&id1=22&id2=20
+Completed 302 Found in 45ms (ActiveRecord: 7.3ms)
+
+
+Started GET "/startups/vote_lightning?id0=19&id1=22&id2=20" for 127.0.0.1 at 2013-08-21 20:11:27 -0700
+Processing by StartupsController#vote_lightning as HTML
+  Parameters: {"id0"=>"19", "id1"=>"22", "id2"=>"20"}
+  [1m[35mStartup Load (0.4ms)[0m  SELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 19 LIMIT 1
+  [1m[36mStartup Load (0.2ms)[0m  [1mSELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 22 LIMIT 1[0m
+  [1m[35mStartup Load (0.4ms)[0m  SELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 20 LIMIT 1
+  [1m[36mTag Load (0.2ms)[0m  [1mSELECT `tags`.* FROM `tags` [0m
+  [1m[35mCompanydescription Load (1.5ms)[0m  SELECT `companydescriptions`.* FROM `companydescriptions` WHERE `companydescriptions`.`startup_id` = 19 AND (status = 1)
+  Rendered startups/_lightning_company.html.erb (128.7ms)
+  [1m[36mCompanydescription Load (2.2ms)[0m  [1mSELECT `companydescriptions`.* FROM `companydescriptions` WHERE `companydescriptions`.`startup_id` = 22 AND (status = 1)[0m
+  Rendered startups/_lightning_company.html.erb (8.2ms)
+  [1m[35mCompanydescription Load (1.5ms)[0m  SELECT `companydescriptions`.* FROM `companydescriptions` WHERE `companydescriptions`.`startup_id` = 20 AND (status = 1)
+  Rendered startups/_lightning_company.html.erb (140.0ms)
+  Rendered startups/vote_lightning.html.erb within layouts/hatcher (285.8ms)
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `owners` WHERE `owners`.`user_id` = 1
+  [1m[36mStartup Load (0.7ms)[0m  [1mSELECT `startups`.* FROM `startups` INNER JOIN `owners` ON `startups`.`id` = `owners`.`startup_id` WHERE `owners`.`user_id` = 1[0m
+Completed 200 OK in 622ms (Views: 566.4ms | ActiveRecord: 22.4ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2013-08-21 20:11:28 -0700
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2013-08-21 20:11:28 -0700
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap.css" for 127.0.0.1 at 2013-08-21 20:11:28 -0700
+Served asset /bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-modal.js" for 127.0.0.1 at 2013-08-21 20:11:28 -0700
+Served asset /bootstrap-modal.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/glyphicons-halflings-white.png" for 127.0.0.1 at 2013-08-21 20:11:28 -0700
+Served asset /glyphicons-halflings-white.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/glyphicons-halflings.png" for 127.0.0.1 at 2013-08-21 20:11:28 -0700
+Served asset /glyphicons-halflings.png - 304 Not Modified (0ms)
+
+
+Started GET "/startups/vote_next?id0=22&id1=20" for 127.0.0.1 at 2013-08-21 20:11:32 -0700
+Processing by StartupsController#vote_next as HTML
+  Parameters: {"id0"=>"22", "id1"=>"20"}
+  [1m[35mStartup Load (0.5ms)[0m  SELECT `startups`.* FROM `startups` WHERE (status >= 2)
+  [1m[36mVote Load (0.4ms)[0m  [1mSELECT `votes`.* FROM `votes` WHERE (user_id = 1)[0m
+Redirected to http://localhost:3000/startups/vote_lightning?id0=22&id1=20&id2=19
+Completed 302 Found in 7ms (ActiveRecord: 0.9ms)
+
+
+Started GET "/startups/vote_lightning?id0=22&id1=20&id2=19" for 127.0.0.1 at 2013-08-21 20:11:32 -0700
+Processing by StartupsController#vote_lightning as HTML
+  Parameters: {"id0"=>"22", "id1"=>"20", "id2"=>"19"}
+  [1m[35mStartup Load (0.4ms)[0m  SELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 22 LIMIT 1
+  [1m[36mStartup Load (0.3ms)[0m  [1mSELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 20 LIMIT 1[0m
+  [1m[35mStartup Load (0.3ms)[0m  SELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 19 LIMIT 1
+  [1m[36mTag Load (0.5ms)[0m  [1mSELECT `tags`.* FROM `tags` [0m
+  [1m[35mCompanydescription Load (0.7ms)[0m  SELECT `companydescriptions`.* FROM `companydescriptions` WHERE `companydescriptions`.`startup_id` = 22 AND (status = 1)
+  Rendered startups/_lightning_company.html.erb (2.8ms)
+  [1m[36mCompanydescription Load (10.7ms)[0m  [1mSELECT `companydescriptions`.* FROM `companydescriptions` WHERE `companydescriptions`.`startup_id` = 20 AND (status = 1)[0m
+  Rendered startups/_lightning_company.html.erb (19.4ms)
+  [1m[35mCompanydescription Load (9.8ms)[0m  SELECT `companydescriptions`.* FROM `companydescriptions` WHERE `companydescriptions`.`startup_id` = 19 AND (status = 1)
+  Rendered startups/_lightning_company.html.erb (11.5ms)
+  Rendered startups/vote_lightning.html.erb within layouts/hatcher (44.3ms)
+  [1m[36mUser Load (3.2ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM `owners` WHERE `owners`.`user_id` = 1
+  [1m[36mStartup Load (0.6ms)[0m  [1mSELECT `startups`.* FROM `startups` INNER JOIN `owners` ON `startups`.`id` = `owners`.`startup_id` WHERE `owners`.`user_id` = 1[0m
+Completed 200 OK in 105ms (Views: 74.2ms | ActiveRecord: 26.7ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2013-08-21 20:11:32 -0700
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2013-08-21 20:11:32 -0700
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap.css" for 127.0.0.1 at 2013-08-21 20:11:32 -0700
+Served asset /bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-modal.js" for 127.0.0.1 at 2013-08-21 20:11:32 -0700
+Served asset /bootstrap-modal.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/glyphicons-halflings-white.png" for 127.0.0.1 at 2013-08-21 20:11:32 -0700
+Served asset /glyphicons-halflings-white.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/glyphicons-halflings.png" for 127.0.0.1 at 2013-08-21 20:11:32 -0700
+Served asset /glyphicons-halflings.png - 304 Not Modified (0ms)
+
+
+Started GET "/startups/vote_next?id0=20&id1=19" for 127.0.0.1 at 2013-08-21 20:11:35 -0700
+Processing by StartupsController#vote_next as HTML
+  Parameters: {"id0"=>"20", "id1"=>"19"}
+  [1m[35mStartup Load (0.5ms)[0m  SELECT `startups`.* FROM `startups` WHERE (status >= 2)
+  [1m[36mVote Load (0.4ms)[0m  [1mSELECT `votes`.* FROM `votes` WHERE (user_id = 1)[0m
+Redirected to http://localhost:3000/startups/vote_lightning?id0=20&id1=19&id2=22
+Completed 302 Found in 12ms (ActiveRecord: 0.9ms)
+
+
+Started GET "/startups/vote_lightning?id0=20&id1=19&id2=22" for 127.0.0.1 at 2013-08-21 20:11:35 -0700
+Processing by StartupsController#vote_lightning as HTML
+  Parameters: {"id0"=>"20", "id1"=>"19", "id2"=>"22"}
+  [1m[35mStartup Load (0.4ms)[0m  SELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 20 LIMIT 1
+  [1m[36mStartup Load (0.2ms)[0m  [1mSELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 19 LIMIT 1[0m
+  [1m[35mStartup Load (0.2ms)[0m  SELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 22 LIMIT 1
+  [1m[36mTag Load (0.3ms)[0m  [1mSELECT `tags`.* FROM `tags` [0m
+  [1m[35mCompanydescription Load (0.6ms)[0m  SELECT `companydescriptions`.* FROM `companydescriptions` WHERE `companydescriptions`.`startup_id` = 20 AND (status = 1)
+  Rendered startups/_lightning_company.html.erb (3.1ms)
+  [1m[36mCompanydescription Load (0.6ms)[0m  [1mSELECT `companydescriptions`.* FROM `companydescriptions` WHERE `companydescriptions`.`startup_id` = 19 AND (status = 1)[0m
+  Rendered startups/_lightning_company.html.erb (6.9ms)
+  [1m[35mCompanydescription Load (0.6ms)[0m  SELECT `companydescriptions`.* FROM `companydescriptions` WHERE `companydescriptions`.`startup_id` = 22 AND (status = 1)
+  Rendered startups/_lightning_company.html.erb (2.3ms)
+  Rendered startups/vote_lightning.html.erb within layouts/hatcher (19.0ms)
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `owners` WHERE `owners`.`user_id` = 1
+  [1m[36mStartup Load (0.5ms)[0m  [1mSELECT `startups`.* FROM `startups` INNER JOIN `owners` ON `startups`.`id` = `owners`.`startup_id` WHERE `owners`.`user_id` = 1[0m
+Completed 200 OK in 108ms (Views: 35.4ms | ActiveRecord: 4.1ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2013-08-21 20:11:35 -0700
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap.css" for 127.0.0.1 at 2013-08-21 20:11:35 -0700
+Served asset /bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2013-08-21 20:11:35 -0700
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-modal.js" for 127.0.0.1 at 2013-08-21 20:11:35 -0700
+Served asset /bootstrap-modal.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/glyphicons-halflings-white.png" for 127.0.0.1 at 2013-08-21 20:11:35 -0700
+Served asset /glyphicons-halflings-white.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/glyphicons-halflings.png" for 127.0.0.1 at 2013-08-21 20:11:35 -0700
+Served asset /glyphicons-halflings.png - 304 Not Modified (0ms)
+
+
+Started GET "/startups/vote_next?id0=19&id1=22" for 127.0.0.1 at 2013-08-21 20:11:36 -0700
+Processing by StartupsController#vote_next as HTML
+  Parameters: {"id0"=>"19", "id1"=>"22"}
+  [1m[35mStartup Load (2.5ms)[0m  SELECT `startups`.* FROM `startups` WHERE (status >= 2)
+  [1m[36mVote Load (4.6ms)[0m  [1mSELECT `votes`.* FROM `votes` WHERE (user_id = 1)[0m
+Redirected to http://localhost:3000/startups/vote_lightning?id0=19&id1=22&id2=20
+Completed 302 Found in 15ms (ActiveRecord: 7.1ms)
+
+
+Started GET "/startups/vote_lightning?id0=19&id1=22&id2=20" for 127.0.0.1 at 2013-08-21 20:11:36 -0700
+Processing by StartupsController#vote_lightning as HTML
+  Parameters: {"id0"=>"19", "id1"=>"22", "id2"=>"20"}
+  [1m[35mStartup Load (0.4ms)[0m  SELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 19 LIMIT 1
+  [1m[36mStartup Load (0.3ms)[0m  [1mSELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 22 LIMIT 1[0m
+  [1m[35mStartup Load (0.2ms)[0m  SELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 20 LIMIT 1
+  [1m[36mTag Load (1.7ms)[0m  [1mSELECT `tags`.* FROM `tags` [0m
+  [1m[35mCompanydescription Load (1.8ms)[0m  SELECT `companydescriptions`.* FROM `companydescriptions` WHERE `companydescriptions`.`startup_id` = 19 AND (status = 1)
+  Rendered startups/_lightning_company.html.erb (8.0ms)
+  [1m[36mCompanydescription Load (0.7ms)[0m  [1mSELECT `companydescriptions`.* FROM `companydescriptions` WHERE `companydescriptions`.`startup_id` = 22 AND (status = 1)[0m
+  Rendered startups/_lightning_company.html.erb (5.5ms)
+  [1m[35mCompanydescription Load (0.8ms)[0m  SELECT `companydescriptions`.* FROM `companydescriptions` WHERE `companydescriptions`.`startup_id` = 20 AND (status = 1)
+  Rendered startups/_lightning_company.html.erb (6.9ms)
+  Rendered startups/vote_lightning.html.erb within layouts/hatcher (27.4ms)
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35m (0.7ms)[0m  SELECT COUNT(*) FROM `owners` WHERE `owners`.`user_id` = 1
+  [1m[36mStartup Load (0.5ms)[0m  [1mSELECT `startups`.* FROM `startups` INNER JOIN `owners` ON `startups`.`id` = `owners`.`startup_id` WHERE `owners`.`user_id` = 1[0m
+Completed 200 OK in 57ms (Views: 44.7ms | ActiveRecord: 7.7ms)
+
+
+Started GET "/assets/bootstrap.css" for 127.0.0.1 at 2013-08-21 20:11:36 -0700
+Served asset /bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2013-08-21 20:11:36 -0700
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-modal.js" for 127.0.0.1 at 2013-08-21 20:11:36 -0700
+Served asset /bootstrap-modal.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2013-08-21 20:11:36 -0700
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/glyphicons-halflings-white.png" for 127.0.0.1 at 2013-08-21 20:11:37 -0700
+Served asset /glyphicons-halflings-white.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/glyphicons-halflings.png" for 127.0.0.1 at 2013-08-21 20:11:37 -0700
+Served asset /glyphicons-halflings.png - 304 Not Modified (0ms)
+
+
+Started GET "/startups/vote_next?id0=22&id1=20" for 127.0.0.1 at 2013-08-21 20:11:38 -0700
+Processing by StartupsController#vote_next as HTML
+  Parameters: {"id0"=>"22", "id1"=>"20"}
+  [1m[35mStartup Load (3.2ms)[0m  SELECT `startups`.* FROM `startups` WHERE (status >= 2)
+  [1m[36mVote Load (0.4ms)[0m  [1mSELECT `votes`.* FROM `votes` WHERE (user_id = 1)[0m
+Redirected to http://localhost:3000/startups/vote_lightning?id0=22&id1=20&id2=19
+Completed 302 Found in 13ms (ActiveRecord: 3.6ms)
+
+
+Started GET "/startups/vote_lightning?id0=22&id1=20&id2=19" for 127.0.0.1 at 2013-08-21 20:11:38 -0700
+Processing by StartupsController#vote_lightning as HTML
+  Parameters: {"id0"=>"22", "id1"=>"20", "id2"=>"19"}
+  [1m[35mStartup Load (0.4ms)[0m  SELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 22 LIMIT 1
+  [1m[36mStartup Load (0.2ms)[0m  [1mSELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 20 LIMIT 1[0m
+  [1m[35mStartup Load (0.2ms)[0m  SELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 19 LIMIT 1
+  [1m[36mTag Load (0.2ms)[0m  [1mSELECT `tags`.* FROM `tags` [0m
+  [1m[35mCompanydescription Load (0.6ms)[0m  SELECT `companydescriptions`.* FROM `companydescriptions` WHERE `companydescriptions`.`startup_id` = 22 AND (status = 1)
+  Rendered startups/_lightning_company.html.erb (8.0ms)
+  [1m[36mCompanydescription Load (0.6ms)[0m  [1mSELECT `companydescriptions`.* FROM `companydescriptions` WHERE `companydescriptions`.`startup_id` = 20 AND (status = 1)[0m
+  Rendered startups/_lightning_company.html.erb (7.8ms)
+  [1m[35mCompanydescription Load (0.7ms)[0m  SELECT `companydescriptions`.* FROM `companydescriptions` WHERE `companydescriptions`.`startup_id` = 19 AND (status = 1)
+  Rendered startups/_lightning_company.html.erb (2.4ms)
+  Rendered startups/vote_lightning.html.erb within layouts/hatcher (32.2ms)
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM `owners` WHERE `owners`.`user_id` = 1
+  [1m[36mStartup Load (0.5ms)[0m  [1mSELECT `startups`.* FROM `startups` INNER JOIN `owners` ON `startups`.`id` = `owners`.`startup_id` WHERE `owners`.`user_id` = 1[0m
+Completed 200 OK in 60ms (Views: 50.9ms | ActiveRecord: 4.4ms)
+
+
+Started GET "/assets/bootstrap.css" for 127.0.0.1 at 2013-08-21 20:11:38 -0700
+Served asset /bootstrap.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2013-08-21 20:11:38 -0700
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2013-08-21 20:11:38 -0700
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-modal.js" for 127.0.0.1 at 2013-08-21 20:11:38 -0700
+Served asset /bootstrap-modal.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/glyphicons-halflings-white.png" for 127.0.0.1 at 2013-08-21 20:11:39 -0700
+Served asset /glyphicons-halflings-white.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/glyphicons-halflings.png" for 127.0.0.1 at 2013-08-21 20:11:39 -0700
+Served asset /glyphicons-halflings.png - 304 Not Modified (0ms)
+
+
+Started POST "/votes/vote_description" for 127.0.0.1 at 2013-08-21 20:11:40 -0700
+Processing by VotesController#vote_description as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"XdX2fp6jeucptpcnaz2Nn0Uq0/Q1M5UN1G8Y2bPyr9w=", "vote"=>{"description_id"=>"172", "score"=>"3"}, "startup_id"=>"20", "commit"=>"submit"}
+  [1m[35mVote Load (0.4ms)[0m  SELECT `votes`.* FROM `votes` WHERE `votes`.`user_id` = 1 AND `votes`.`companydescription_id` = 172 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.4ms)[0m  UPDATE `votes` SET `score` = 3, `updated_at` = '2013-08-22 03:11:40' WHERE `votes`.`id` = 192
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  Rendered votes/vote_description.js.erb (0.1ms)
+Completed 200 OK in 12ms (Views: 5.6ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/startups/vote_next?id0=20&id1=19" for 127.0.0.1 at 2013-08-21 20:11:41 -0700
+Processing by StartupsController#vote_next as HTML
+  Parameters: {"id0"=>"20", "id1"=>"19"}
+  [1m[35mStartup Load (3.2ms)[0m  SELECT `startups`.* FROM `startups` WHERE (status >= 2)
+  [1m[36mVote Load (0.4ms)[0m  [1mSELECT `votes`.* FROM `votes` WHERE (user_id = 1)[0m
+Redirected to http://localhost:3000/startups/vote_lightning?id0=20&id1=19&id2=22
+Completed 302 Found in 9ms (ActiveRecord: 3.6ms)
+
+
+Started GET "/startups/vote_lightning?id0=20&id1=19&id2=22" for 127.0.0.1 at 2013-08-21 20:11:41 -0700
+Processing by StartupsController#vote_lightning as HTML
+  Parameters: {"id0"=>"20", "id1"=>"19", "id2"=>"22"}
+  [1m[35mStartup Load (0.3ms)[0m  SELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 20 LIMIT 1
+  [1m[36mStartup Load (0.3ms)[0m  [1mSELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 19 LIMIT 1[0m
+  [1m[35mStartup Load (2.0ms)[0m  SELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 22 LIMIT 1
+  [1m[36mTag Load (1.8ms)[0m  [1mSELECT `tags`.* FROM `tags` [0m
+  [1m[35mCompanydescription Load (0.6ms)[0m  SELECT `companydescriptions`.* FROM `companydescriptions` WHERE `companydescriptions`.`startup_id` = 20 AND (status = 1)
+  Rendered startups/_lightning_company.html.erb (3.1ms)
+  [1m[36mCompanydescription Load (0.7ms)[0m  [1mSELECT `companydescriptions`.* FROM `companydescriptions` WHERE `companydescriptions`.`startup_id` = 19 AND (status = 1)[0m
+  Rendered startups/_lightning_company.html.erb (6.1ms)
+  [1m[35mCompanydescription Load (0.7ms)[0m  SELECT `companydescriptions`.* FROM `companydescriptions` WHERE `companydescriptions`.`startup_id` = 22 AND (status = 1)
+  Rendered startups/_lightning_company.html.erb (2.6ms)
+  Rendered startups/vote_lightning.html.erb within layouts/hatcher (19.1ms)
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `owners` WHERE `owners`.`user_id` = 1
+  [1m[36mStartup Load (0.5ms)[0m  [1mSELECT `startups`.* FROM `startups` INNER JOIN `owners` ON `startups`.`id` = `owners`.`startup_id` WHERE `owners`.`user_id` = 1[0m
+Completed 200 OK in 113ms (Views: 100.3ms | ActiveRecord: 7.5ms)
+
+
+Started GET "/assets/bootstrap.css" for 127.0.0.1 at 2013-08-21 20:11:42 -0700
+Served asset /bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-modal.js" for 127.0.0.1 at 2013-08-21 20:11:42 -0700
+Served asset /bootstrap-modal.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2013-08-21 20:11:42 -0700
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2013-08-21 20:11:42 -0700
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/glyphicons-halflings-white.png" for 127.0.0.1 at 2013-08-21 20:11:42 -0700
+Served asset /glyphicons-halflings-white.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/glyphicons-halflings.png" for 127.0.0.1 at 2013-08-21 20:11:42 -0700
+Served asset /glyphicons-halflings.png - 304 Not Modified (0ms)
+
+
+Started GET "/startups/vote_next?id0=19&id1=22" for 127.0.0.1 at 2013-08-21 20:11:43 -0700
+Processing by StartupsController#vote_next as HTML
+  Parameters: {"id0"=>"19", "id1"=>"22"}
+  [1m[35mStartup Load (1.0ms)[0m  SELECT `startups`.* FROM `startups` WHERE (status >= 2)
+  [1m[36mVote Load (6.1ms)[0m  [1mSELECT `votes`.* FROM `votes` WHERE (user_id = 1)[0m
+Redirected to http://localhost:3000/startups/vote_lightning?id0=19&id1=22&id2=15
+Completed 302 Found in 18ms (ActiveRecord: 7.2ms)
+
+
+Started GET "/startups/vote_lightning?id0=19&id1=22&id2=15" for 127.0.0.1 at 2013-08-21 20:11:43 -0700
+Processing by StartupsController#vote_lightning as HTML
+  Parameters: {"id0"=>"19", "id1"=>"22", "id2"=>"15"}
+  [1m[35mStartup Load (0.6ms)[0m  SELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 19 LIMIT 1
+  [1m[36mStartup Load (0.5ms)[0m  [1mSELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 22 LIMIT 1[0m
+  [1m[35mStartup Load (0.5ms)[0m  SELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 15 LIMIT 1
+  [1m[36mTag Load (0.3ms)[0m  [1mSELECT `tags`.* FROM `tags` [0m
+  [1m[35mCompanydescription Load (0.6ms)[0m  SELECT `companydescriptions`.* FROM `companydescriptions` WHERE `companydescriptions`.`startup_id` = 19 AND (status = 1)
+  Rendered startups/_lightning_company.html.erb (2.4ms)
+  [1m[36mCompanydescription Load (0.6ms)[0m  [1mSELECT `companydescriptions`.* FROM `companydescriptions` WHERE `companydescriptions`.`startup_id` = 22 AND (status = 1)[0m
+  Rendered startups/_lightning_company.html.erb (4.5ms)
+  [1m[35mCompanydescription Load (0.6ms)[0m  SELECT `companydescriptions`.* FROM `companydescriptions` WHERE `companydescriptions`.`startup_id` = 15 AND (status = 1)
+  Rendered startups/_lightning_company.html.erb (3.0ms)
+  Rendered startups/vote_lightning.html.erb within layouts/hatcher (16.4ms)
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM `owners` WHERE `owners`.`user_id` = 1
+  [1m[36mStartup Load (0.6ms)[0m  [1mSELECT `startups`.* FROM `startups` INNER JOIN `owners` ON `startups`.`id` = `owners`.`startup_id` WHERE `owners`.`user_id` = 1[0m
+Completed 200 OK in 52ms (Views: 36.8ms | ActiveRecord: 5.1ms)
+
+
+Started GET "/assets/bootstrap.css" for 127.0.0.1 at 2013-08-21 20:11:43 -0700
+Served asset /bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2013-08-21 20:11:43 -0700
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-modal.js" for 127.0.0.1 at 2013-08-21 20:11:43 -0700
+Served asset /bootstrap-modal.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2013-08-21 20:11:43 -0700
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/glyphicons-halflings-white.png" for 127.0.0.1 at 2013-08-21 20:11:43 -0700
+Served asset /glyphicons-halflings-white.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/glyphicons-halflings.png" for 127.0.0.1 at 2013-08-21 20:11:43 -0700
+Served asset /glyphicons-halflings.png - 304 Not Modified (0ms)
+
+
+Started GET "/startups/vote_next?id0=22&id1=15" for 127.0.0.1 at 2013-08-21 20:11:44 -0700
+Processing by StartupsController#vote_next as HTML
+  Parameters: {"id0"=>"22", "id1"=>"15"}
+  [1m[35mStartup Load (0.6ms)[0m  SELECT `startups`.* FROM `startups` WHERE (status >= 2)
+  [1m[36mVote Load (6.3ms)[0m  [1mSELECT `votes`.* FROM `votes` WHERE (user_id = 1)[0m
+Redirected to http://localhost:3000/startups/vote_lightning?id0=22&id1=15&id2=19
+Completed 302 Found in 13ms (ActiveRecord: 6.9ms)
+
+
+Started GET "/startups/vote_lightning?id0=22&id1=15&id2=19" for 127.0.0.1 at 2013-08-21 20:11:44 -0700
+Processing by StartupsController#vote_lightning as HTML
+  Parameters: {"id0"=>"22", "id1"=>"15", "id2"=>"19"}
+  [1m[35mStartup Load (0.3ms)[0m  SELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 22 LIMIT 1
+  [1m[36mStartup Load (0.2ms)[0m  [1mSELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 15 LIMIT 1[0m
+  [1m[35mStartup Load (0.2ms)[0m  SELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 19 LIMIT 1
+  [1m[36mTag Load (0.2ms)[0m  [1mSELECT `tags`.* FROM `tags` [0m
+  [1m[35mCompanydescription Load (0.7ms)[0m  SELECT `companydescriptions`.* FROM `companydescriptions` WHERE `companydescriptions`.`startup_id` = 22 AND (status = 1)
+  Rendered startups/_lightning_company.html.erb (2.3ms)
+  [1m[36mCompanydescription Load (0.6ms)[0m  [1mSELECT `companydescriptions`.* FROM `companydescriptions` WHERE `companydescriptions`.`startup_id` = 15 AND (status = 1)[0m
+  Rendered startups/_lightning_company.html.erb (8.3ms)
+  [1m[35mCompanydescription Load (0.6ms)[0m  SELECT `companydescriptions`.* FROM `companydescriptions` WHERE `companydescriptions`.`startup_id` = 19 AND (status = 1)
+  Rendered startups/_lightning_company.html.erb (2.4ms)
+  Rendered startups/vote_lightning.html.erb within layouts/hatcher (19.6ms)
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `owners` WHERE `owners`.`user_id` = 1
+  [1m[36mStartup Load (0.5ms)[0m  [1mSELECT `startups`.* FROM `startups` INNER JOIN `owners` ON `startups`.`id` = `owners`.`startup_id` WHERE `owners`.`user_id` = 1[0m
+Completed 200 OK in 45ms (Views: 36.2ms | ActiveRecord: 4.1ms)
+
+
+Started GET "/assets/bootstrap.css" for 127.0.0.1 at 2013-08-21 20:11:44 -0700
+Served asset /bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2013-08-21 20:11:44 -0700
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2013-08-21 20:11:44 -0700
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-modal.js" for 127.0.0.1 at 2013-08-21 20:11:44 -0700
+Served asset /bootstrap-modal.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/glyphicons-halflings-white.png" for 127.0.0.1 at 2013-08-21 20:11:44 -0700
+Served asset /glyphicons-halflings-white.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/glyphicons-halflings.png" for 127.0.0.1 at 2013-08-21 20:11:44 -0700
+Served asset /glyphicons-halflings.png - 304 Not Modified (0ms)

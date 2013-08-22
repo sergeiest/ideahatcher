@@ -329,7 +329,7 @@ class StartupsController < ApplicationController
 
     ids = not_used_startups.sample(3)
     while ids.length < 3 do
-      ids << all_startups.select{|a| !ids.include?(a.id)}.sample(1)
+      ids << all_startups.sample()
     end
 
     a = Array.new
