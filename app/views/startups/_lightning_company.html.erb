@@ -68,9 +68,9 @@
       </div>
       <b><%= description.field_status %></b>
       <% if class_name == "class1" %>
-            <%= simple_format description.content.firstletters(340), :class => "description-p" %>
+            <%= simple_format description.content.firstletters(300), :class => "description-p" %>
       <% else %>
-            <%= simple_format description.content.firstletters(340), :class => "description-p" %>
+            <%= simple_format description.content.firstletters(320), :class => "description-p" %>
       <% end %>
     </div>
     <div style="clear:right"></div>
@@ -82,7 +82,7 @@
           <img src="/images/arrowLeft.png" class="my_corner">
       <% end %>
       <%= link_to({:controller => "startups", :action => "idea_hatching", :id => params[:id1]},
-                  :class => "btn btn-mini btn-primary") do %>
+                  :class => "btn btn-mini btn-primary", :target => '_blank') do %>
           <i class="icon-play glyphw-white "></i> Help hatch it!
       <% end %>
       <%= link_to :action => "vote_next", :id0 => params[:id1], :id1 => params[:id2]  do %>

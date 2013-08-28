@@ -1,5 +1,5 @@
 class Startup < ActiveRecord::Base
-  attr_accessible :name, :link, :pitch, :status, :avatar
+  attr_accessible :name, :link, :pitch, :status, :avatar, :votes
 
   validates_length_of :name, :within => 3..40
   #validates_format_of :link, :with => /(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+(?:[A-Z]2}|com|org|net|edu|gov|mil|biz|info|mobi|name|aero|asia|jobs|museum|li|ru|io|co)/i, :message => "Invalid email"

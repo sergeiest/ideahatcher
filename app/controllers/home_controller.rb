@@ -17,10 +17,7 @@ class HomeController < ApplicationController
 
   def colorful
     startups = Startup.where("status >2").all
-    s1 = startups
-    s2 = startups
-    @startups = s1.concat(s2).sample(10)
-
+    @startups = startups.sample(10)
   end
 	
 	

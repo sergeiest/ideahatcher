@@ -41,7 +41,7 @@ var moreLink = mainDiv.getElementsByClassName("show-more")[0];
     %>
 
     htmlText = htmlText + '<p class="hashtag" style="border:0px;background-color: inherit;"><%= tag_string%></p>';
-    htmlText = htmlText + '<p class="vote-stat"><%= rand(150) %> people voted</p>';
+    htmlText = htmlText + '<p class="vote-stat"><%= startup.votes %> people voted</p>';
 
 
     startupDiv.firstChild.innerHTML = htmlText;
@@ -51,7 +51,14 @@ var moreLink = mainDiv.getElementsByClassName("show-more")[0];
 <% if @startups_shown == 0 %>
     moreLink.parentNode.removeChild(moreLink);
 <% else %>
-    moreLink.setAttribute("href", "/startups/show_more_startups?startups_shown=<%= @startups_shown %>");
+    <%
+       startup_list = params[:startup_list] + ","
+       @startups.each do |startup|
+         startup_list += startup.id.to_s() + ","
+       end
+       startup_list = startup_list[0..-2]
+    %>
+    moreLink.setAttribute("href", "/startups/show_more_startups?startups_shown=<%= @startups_shown %>;startup_list=<%= startup_list %>");
 <% end %>
 if (mainDiv.innerHTML == "") {
     mainDiv.innerHTML = "<p>no results</p>";

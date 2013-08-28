@@ -37,7 +37,14 @@
         <% if params[:action] == "index" and @startups_shown != 0%>
           <div>
             <div class="clear-both"></div>
-            <%= link_to({:action => "show_more_startups", :startups_shown => @startups_shown},
+            <%
+               startup_list = ""
+               @startups.each do |startup|
+                 startup_list += startup.id.to_s() + ","
+               end
+               startup_list = startup_list[0..-2]
+            %>
+            <%= link_to({:action => "show_more_startups", :startups_shown => @startups_shown, :startup_list => startup_list},
                        :class => "show-more", :remote => true) do %>
                 <i class='icon-chevron-down glyphw'></i>Show more<i class='icon-chevron-down glyphw'></i>
             <% end %>

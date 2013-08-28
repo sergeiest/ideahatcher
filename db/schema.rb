@@ -158,6 +158,7 @@ ActiveRecord::Schema.define(:version => 20130707212853) do
     t.string   "name"
     t.text     "pitch"
     t.integer  "status"
+    t.integer  "votes"
     t.string   "avatar"
     t.datetime "created_at",          :null => false
     t.datetime "updated_at",          :null => false

@@ -40,7 +40,7 @@ mainDiv.innerHTML = "";
     %>
 
     htmlText = htmlText + '<p class="hashtag" style="border:0px;background-color: inherit;"><%= tag_string%></p>';
-    htmlText = htmlText + '<p class="vote-stat"><%= rand(150) %> people voted</p>';
+    htmlText = htmlText + '<p class="vote-stat"><%= startup.votes %> people voted</p>';
 
 
     startupDiv.firstChild.innerHTML = htmlText;

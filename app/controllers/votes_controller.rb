@@ -20,17 +20,35 @@ class VotesController < ApplicationController
 
   def vote_description
 
-    vote = Vote.find_by_user_id_and_companydescription_id(session[:id],params[:vote][:description_id])
-    if vote == nil
+    startup_votes = Vote.where("user_id = ? AND startup_id =?", session[:id], params[:startup_id])
+
+    if startup_votes.length == 0
+      is_voted = 0
+    else
+      vote = startup_votes.select{|x| x.companydescription_id.to_s == params[:vote][:description_id]}
+      if !vote.nil? and vote.length > 0
+        is_voted = 1
+      else
+        is_voted = 0
+      end
+    end
+
+    if is_voted == 0
       vote = Vote.new
       vote.companydescription_id = params[:vote][:description_id]
       vote.startup_id = params[:startup_id]
       vote.user_id = session[:id]
       vote.score = params[:vote][:score]
       vote.save
+      if startup_votes.length == 0
+        startup = Startup.find(params[:startup_id])
+        startup.votes = 0 if startup.votes.nil?
+        startup.update_attribute(:votes, startup.votes + 1)
+      end
     else
-      vote.update_attribute(:score, params[:vote][:score])
+      vote[0].update_attribute(:score, params[:vote][:score])
     end
+
     respond_to do |format|
       format.js
     end

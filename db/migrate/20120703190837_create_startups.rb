@@ -7,6 +7,8 @@ class CreateStartups < ActiveRecord::Migration
       t.text     :pitch
       t.integer  :status
       t.string   :avatar
+      t.integer  :status
+      t.integer  :votes
 
 	    t.timestamps
     end
