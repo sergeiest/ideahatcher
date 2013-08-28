@@ -34739,3 +34739,45 @@ Served asset /bootstrap-modal.js - 304 Not Modified (0ms)
 
 Started GET "/assets/glyphicons-halflings.png" for 127.0.0.1 at 2013-08-28 16:19:23 -0700
 Served asset /glyphicons-halflings.png - 304 Not Modified (0ms)
+
+
+Started GET "/startups/index" for 127.0.0.1 at 2013-08-28 16:30:04 -0700
+Processing by StartupsController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35mStartup Load (0.9ms)[0m  SELECT `startups`.* FROM `startups` WHERE (status > 1)
+  [1m[36mTag Load (0.4ms)[0m  [1mSELECT `tags`.* FROM `tags` [0m
+  [1m[35mTag Load (0.4ms)[0m  SELECT `tags`.* FROM `tags` WHERE `tags`.`startup_id` = 13
+  [1m[36mTag Load (0.3ms)[0m  [1mSELECT `tags`.* FROM `tags` WHERE `tags`.`startup_id` = 17[0m
+  [1m[35mTag Load (0.4ms)[0m  SELECT `tags`.* FROM `tags` WHERE `tags`.`startup_id` = 11
+  [1m[36mTag Load (0.5ms)[0m  [1mSELECT `tags`.* FROM `tags` WHERE `tags`.`startup_id` = 21[0m
+  [1m[35mTag Load (0.3ms)[0m  SELECT `tags`.* FROM `tags` WHERE `tags`.`startup_id` = 29
+  [1m[36mTag Load (0.3ms)[0m  [1mSELECT `tags`.* FROM `tags` WHERE `tags`.`startup_id` = 27[0m
+  [1m[35mTag Load (0.3ms)[0m  SELECT `tags`.* FROM `tags` WHERE `tags`.`startup_id` = 9
+  [1m[36mTag Load (0.3ms)[0m  [1mSELECT `tags`.* FROM `tags` WHERE `tags`.`startup_id` = 20[0m
+  [1m[35mTag Load (0.3ms)[0m  SELECT `tags`.* FROM `tags` WHERE `tags`.`startup_id` = 8
+  Rendered startups/_startup.html.erb (26.4ms)
+  Rendered startups/index.html.erb within layouts/hatcher (31.7ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35m (0.6ms)[0m  SELECT COUNT(*) FROM `owners` WHERE `owners`.`user_id` = 1
+  [1m[36mStartup Load (0.5ms)[0m  [1mSELECT `startups`.* FROM `startups` INNER JOIN `owners` ON `startups`.`id` = `owners`.`startup_id` WHERE `owners`.`user_id` = 1[0m
+Completed 200 OK in 119ms (Views: 105.5ms | ActiveRecord: 6.1ms)
+
+
+Started GET "/assets/bootstrap.css" for 127.0.0.1 at 2013-08-28 16:30:04 -0700
+Served asset /bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2013-08-28 16:30:04 -0700
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-modal.js" for 127.0.0.1 at 2013-08-28 16:30:04 -0700
+Served asset /bootstrap-modal.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2013-08-28 16:30:04 -0700
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/glyphicons-halflings.png" for 127.0.0.1 at 2013-08-28 16:30:05 -0700
+Served asset /glyphicons-halflings.png - 304 Not Modified (0ms)
