@@ -1,6 +1,14 @@
 class StartupsController < ApplicationController
 
-  layout "hatcher"
+  layout :layout_by_resource
+
+  def layout_by_resource
+    if params[:action] == 'new_view'
+      "startups"
+    else
+      "hatcher"
+    end
+  end
 
   before_filter do
     wrong_link = 0
@@ -357,6 +365,34 @@ class StartupsController < ApplicationController
     end
     
     redirect_to :action => "vote_lightning", :id0 => a[0], :id1 => a[1],:id2 => a[2]
+  end
+
+
+
+
+  def new_view
+    if session[:id].nil? or session[:id] != 1
+      if !params[:id].nil?
+        redirect_to :action => "show", :id => params[:id]
+      else
+        redirect_to :action => "index", :id => params[:id]
+      end
+    end
+
+    @user = User.find(session[:id]) if session[:id] and session[:id] != 0
+    @startup = Startup.find(params[:id])
+    @startup_followers = @startup.Follower_users.all.uniq
+    @startup_owners = @startup.Owner_users.all.uniq
+    @startup_updates = @startup.Companyupdates
+    @companyupdate = Companyupdate.new
+
+    @company_descriptions = @startup.Companydescriptions.where("status =?", 1).sort!{|x, y| x["allfield_id"] <=> y["allfield_id"]}
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @startup }
+    end
+
   end
 
 

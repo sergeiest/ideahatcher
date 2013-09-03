@@ -27,6 +27,7 @@ gem 'jquery-rails'
 gem 'cocaine',  '~> 0.5.0'
 gem 'paperclip', '~> 3.4.2'
 gem 'aws-sdk'
+gem 'haml'
 
 gem 'carrierwave'
 

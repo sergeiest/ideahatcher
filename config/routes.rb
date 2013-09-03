@@ -138,6 +138,7 @@ Webapp::Application.routes.draw do
   get "startups/my_ideas"
   get "startups/following_ideas"
   get "startups/show_more_startups"
+  get "startups/new_view"
   resources :startups
   
   resources :peoples

@@ -35,6 +35,7 @@
     <orderEntry type="library" scope="PROVIDED" name="coffee-script-source (v1.6.2, RVM: ruby-1.9.3-p362) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="erubis (v2.7.0, RVM: ruby-1.9.3-p362) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="execjs (v1.4.0, RVM: ruby-1.9.3-p362) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="haml (v4.0.3, RVM: ruby-1.9.3-p362) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="hike (v1.2.2, RVM: ruby-1.9.3-p362) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="i18n (v0.6.4, RVM: ruby-1.9.3-p362) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="journey (v1.0.4, RVM: ruby-1.9.3-p362) [gem]" level="application" />

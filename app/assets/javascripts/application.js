@@ -183,3 +183,39 @@ function showHelp (elementNode) {
     }
 
 }
+
+function animationScroll(startPoint, endPoint) {
+    animationStepScroll(startPoint, endPoint, 0);
+}
+
+function animationStepScroll(startPoint, endPoint, i){
+    k = 1 * ((startPoint < endPoint) - (endPoint < startPoint));
+    i += k;
+    window.scrollBy(0,k);
+    scrolldelay = setTimeout(function(){animationStepScroll( startPoint, endPoint, i);},1);
+    if ( (startPoint + i) * k >= k * endPoint){clearTimeout(scrolldelay);}
+}
+
+
+function animationCustom(elementNode,attributeName, startPoint, endPoint, toHide) {
+    animationStep(elementNode, attributeName, startPoint, endPoint, toHide, 0);
+}
+
+function animationStep(elementNode, attributeName, startPoint, endPoint, toHide, i){
+    stepSign = ((startPoint < endPoint) - (endPoint < startPoint));
+    step = (endPoint - startPoint) / 30
+    i += step;
+    if (attributeName == "height") {
+        elementNode.style.height = startPoint + i + 'px';
+    }
+    animationDelay = setTimeout(function(){animationStep(elementNode, attributeName, startPoint, endPoint, toHide, i)},1);
+    if ( (startPoint + i) * stepSign >= stepSign * endPoint){
+        clearTimeout(animationDelay);
+        if (toHide) {
+            elementNode.hidden = true
+            if (attributeName == "height") {
+                elementNode.style.height = startPoint + 'px';
+            }
+        };
+    }
+}

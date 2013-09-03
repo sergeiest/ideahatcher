@@ -1,0 +1,66 @@
+.description-box{:'z-index' => description.allfield_id}
+  .action-box
+    .slider-bar
+      %p{ :style => "margin-bottom:10px;"} Rate (click on the scale):
+      = form_tag :url => {:action => 'vote_description', :controller => 'votes'},
+         :multipart => true, :id => "form_"+ description.id.to_s(), :remote => true do
+        = hidden_field :vote, :description_id, :value => description.id
+        = hidden_field :vote, :score, :value => 3
+        = hidden_field_tag :startup_id, description.startup_id
+        = submit_tag 'submit', :id => "button_"+ description.id.to_s(), :hidden => 'true'
+      %div.progress.progress-primary.progress-slider{:id => "bar_#{description.id}",
+          :onmousedown => "stopSlideVote(#{description.id}, this, 170, 160)",
+          :onmouseup => "startSlideVote(#{description.id}, this, 170, 160)"}
+        %div{:id=> "slider_#{description.id}", :class=> "bar" }
+        .split-bar-div
+          %span.bar-split
+          %span.bar-split
+          %span.bar-split
+          %span.bar-split
+          %span.bar-split{:style => "padding-right: 0;"}
+      %p
+        %span.slider-start 0
+        %span.slider-info{:id => "info_#{description.id}"}
+        %span.slider-end 5
+
+  %h5= description.field_status
+  %p= description.content
+  %a.help-hatch{:onclick => "hideHatching(this.parentNode.getElementsByClassName('ideahatching')[0], this)"}
+    %i.icon-comment.glyphw
+    Help hatch it!
+  .clear-both
+
+  .ideahatching{:hidden => "true"}
+    .idea-box
+      - if !description.companydescription_id.nil?
+        .idea-statement
+          - old_description = Companydescription.find(description.companydescription_id)
+          = simple_format old_description.content.firstletters(340)
+        %img{:src => "../images/vs.png"}
+        .idea-statement
+          = simple_format description.content.firstletters(340)
+      -else
+        .idea-statement
+          = simple_format description.content.firstletters(340)
+        %img{:src => "../images/vs.png"}
+        .idea-statement.empty-statement
+          %p No other versions available. Suggest a new one bellow...
+      .clear-both
+
+    .idea-box
+      %hr
+      .discussion
+        - ideas = Idea.where("companydescription_id = ?", description.id)
+        - if ideas.nil? || ideas.length == 0
+          %p no suggestions so far. be the first one to contribute...
+        - ideas.each do |idea|
+          = simple_format idea.content
+          %p.author
+            = idea.first_name
+            = idea.last_name
+            on
+            = idea.created_at.strftime('%m/%d/%Y')
+          %hr
+
+
+
