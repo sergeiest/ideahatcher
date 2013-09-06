@@ -385,6 +385,19 @@ h2.project{
     padding:10px 0%;
     background-color: #f2f2f2;
     width: 100%;
+
+    .button-div{
+      background-color: orange;
+      a {color:white;}
+      font-size:16px;
+      padding:5px 50px;
+      text-align: center;
+      display: inline;
+      margin-left: -webkit-calc(33% - 150px);
+      cursor:pointer;
+      -webkit-border-radius: 30px;
+    }
+
   }
 
   .right-side {
@@ -399,6 +412,8 @@ h2.project{
     text-align: right;
 
   }
+
+
 }
 .content-about {
   .about-div{

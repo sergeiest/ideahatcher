@@ -7,7 +7,11 @@ class CampaignsController < ApplicationController
   before_filter do
     wrong_link = 0
     if session[:id] == nil || session[:id] == 0
-      wrong_link = 1
+      if !params[:login].nil?
+        wrong_link = 2 #access from home page
+      else
+        wrong_link = 1
+      end
     else
       case params[:action]
         when "next_step"
@@ -26,8 +30,11 @@ class CampaignsController < ApplicationController
       end
 
     end
-    if wrong_link == 1
-      redirect_to :controller => 'authentications', :action => 'wrong_link'
+    case wrong_link
+      when 1
+        redirect_to :controller => 'authentications', :action => 'wrong_link'
+      when 2
+        render "authentications/join_login_form" and return
     end
   end
 

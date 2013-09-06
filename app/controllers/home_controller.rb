@@ -9,7 +9,7 @@ class HomeController < ApplicationController
 
   def index
     startups = Startup.where("status >2").all
-    @startups = startups.sample(15)
+    @startups = startups.sample(16)[0..14]
   end
 	
 	def about

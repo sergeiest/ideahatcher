@@ -31,9 +31,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/views/startups/team.html.erb" />
-        <option value="$PROJECT_DIR$/app/assets/stylesheets/startups.css.scss" />
-        <option value="$PROJECT_DIR$/app/controllers/investors_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/investors/add_founder.js.erb" />
         <option value="$PROJECT_DIR$/app/views/startups/new_view.html.haml" />
         <option value="$PROJECT_DIR$/app/views/startups/detailed.html.haml" />
@@ -41,12 +38,15 @@
         <option value="$PROJECT_DIR$/app/controllers/startups_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/home/_demo_startup.html.haml" />
         <option value="$PROJECT_DIR$/app/views/home/home.html.haml" />
-        <option value="$PROJECT_DIR$/app/assets/stylesheets/application.scss" />
-        <option value="$PROJECT_DIR$/app/views/authentications/remote_login.js.erb" />
         <option value="$PROJECT_DIR$/app/views/layouts/hatcher.html.erb" />
-        <option value="$PROJECT_DIR$/app/controllers/home_controller.rb" />
         <option value="$PROJECT_DIR$/config/routes.rb" />
         <option value="$PROJECT_DIR$/app/views/layouts/startups.html.erb" />
+        <option value="$PROJECT_DIR$/app/controllers/home_controller.rb" />
+        <option value="$PROJECT_DIR$/app/assets/stylesheets/startups.css" />
+        <option value="$PROJECT_DIR$/app/assets/stylesheets/application.scss" />
+        <option value="$PROJECT_DIR$/app/controllers/campaigns_controller.rb" />
+        <option value="$PROJECT_DIR$/app/views/home/index.html.haml" />
+        <option value="$PROJECT_DIR$/app/views/authentications/remote_login.js.erb" />
       </list>
     </option>
   </component>
@@ -794,70 +794,9 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/views/startups/team.html.haml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="39" column="0" selection-start="1415" selection-end="1829" vertical-scroll-proportion="-16.25">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/startups_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="58" selection-start="163" selection-end="163" vertical-scroll-proportion="-2.8846154">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/startups/_demo_startup.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="76" selection-start="132" selection-end="209" vertical-scroll-proportion="0.09933775">
-          <folding>
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/home/_demo_startup.html.haml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="3" selection-start="700" selection-end="709" vertical-scroll-proportion="0.7201987">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/startups.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="164" column="6" selection-start="3096" selection-end="3345" vertical-scroll-proportion="-4.931818">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/home/colorful.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="0" selection-start="329" selection-end="1710" vertical-scroll-proportion="-0.34185302">
-          <folding>
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/home/about.html.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="50" column="41" selection-start="869" selection-end="1918" vertical-scroll-proportion="0.7553018">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/home/index.html.haml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="57" selection-start="472" selection-end="472" vertical-scroll-proportion="0.22204472">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/application.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="253" column="18" selection-start="5011" selection-end="5011" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -876,31 +815,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/authentications/remote_login.js.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="45" column="65" selection-start="1865" selection-end="1865" vertical-scroll-proportion="0.5872757">
-          <folding>
-            <marker date="1378451091000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1378451091000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1378451091000" expanded="true" signature="-1:-1" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/authentications_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="185" column="0" selection-start="6279" selection-end="6279" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/home_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="40" selection-start="125" selection-end="125" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config/routes.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="154" column="25" selection-start="3478" selection-end="3478" vertical-scroll-proportion="0.0">
@@ -912,6 +826,138 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="103" column="55" selection-start="4130" selection-end="4130" vertical-scroll-proportion="0.6899489">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.rvm/gems/ruby-1.9.3-p362/gems/railties-3.2.11/guides/code/getting_started/app/controllers/home_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="6" selection-start="51" selection-end="51" vertical-scroll-proportion="0.023076924">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/startups.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="9" selection-start="342" selection-end="349" vertical-scroll-proportion="0.41538462">
+          <folding>
+            <marker date="1378484328000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1378484328000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1378484328000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1378484328000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1378484328000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1378484328000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1378484328000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1378484328000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1378484328000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1378484328000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1378484328000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1378484328000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1378484328000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1378484328000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1378484328000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1378484328000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1378484328000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1378484328000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1378484328000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1378484328000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1378484328000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1378484328000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1378484328000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1378484328000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1378484328000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1378484328000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1378484328000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1378484328000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1378484328000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1378484328000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1378484328000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1378484328000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1378484328000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1378484328000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1378484328000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1378484328000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1378484328000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1378484328000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1378484328000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1378484328000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1378484328000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1378484328000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1378484328000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1378484328000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1378484328000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1378484328000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1378484328000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1378484328000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1378484328000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1378484328000" expanded="true" signature="-1:-1" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/application.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="395" column="34" selection-start="7505" selection-end="7505" vertical-scroll-proportion="1.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/investors_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/startups_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="62" column="3" selection-start="2283" selection-end="2457" vertical-scroll-proportion="0.6097561">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/votes_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="4" selection-start="255" selection-end="442" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/home_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="0" selection-start="168" selection-end="168" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/campaigns_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="45" selection-start="275" selection-end="275" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/authentications_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="185" column="0" selection-start="6279" selection-end="6279" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/home/index.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="46" column="13" selection-start="1768" selection-end="1768" vertical-scroll-proportion="-18.125">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/authentications/remote_login.js.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="88" column="75" selection-start="3767" selection-end="3767" vertical-scroll-proportion="0.8662316">
+          <folding>
+            <marker date="1378486067000" expanded="false" signature="-1:-1" placeholder="..." />
+            <marker date="1378486067000" expanded="false" signature="-1:-1" placeholder="..." />
+            <marker date="1378486067000" expanded="false" signature="-1:-1" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>

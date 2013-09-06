@@ -39,7 +39,15 @@
       %p
         A large community of entrepreneurs from many different sectors ensures you’ll get lots of valuable
         feedback to hatch your idea.
-  .content-grey{:style => "border-top:1px #07b5b5 solid; border-bottom:1px #07b5b5 solid;"}
+  .content-grey{:style => "border-bottom:1px #07b5b5 solid;padding:30px 0"}
+    .button-div= link_to 'Browse all ideas', :controller => 'startups'
+    .button-div
+      - if session[:id].nil? || session[:id] == 0
+        = link_to 'Start new idea', {:controller => 'campaigns', :action => "guide_step", :login => 0}, :remote => true,
+          :id => "start-new-idea"
+      - else
+        = link_to 'Start new idea', {:controller => 'campaigns', :action => "guide_step"}
+
   %a{:name => "about-us"}
   %h2 About us
   .content-about
