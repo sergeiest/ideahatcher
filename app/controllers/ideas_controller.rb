@@ -21,14 +21,13 @@ class IdeasController < ApplicationController
 
   def create
 
-    idea = Idea.new(params[:idea])
+    @idea = Idea.new(params[:idea])
 
-
-    if params[:idea][:content] == ""
+    if params[:idea].nil? || params[:idea][:content].nil? ||
+            ["", "Add your suggestion here...", "Add another suggestion.."].include?(params[:idea][:content])
       flash[:error] = "No message"
       return
     end
-
 
     if !session[:id] or session[:id] == 0
       flash[:error] = "PLease login first"
@@ -36,30 +35,24 @@ class IdeasController < ApplicationController
     end
 
     user = User.find(session[:id])
-
     return if !user
 
-
-    idea.last_name = user.lastname
-    idea.first_name = user.firstname
-    idea.user_id = user.id
-
+    @idea.last_name = user.lastname
+    @idea.first_name = user.firstname
+    @idea.user_id = user.id
 
     respond_to do |format|
-      if idea.save
-        if !idea.idea_id
-          idea.idea_id = idea.id
-          idea.update_attributes :idea_id => idea.id
+      if @idea.save
+        if !@idea.idea_id
+          @idea.idea_id = @idea.id
+          @idea.update_attributes :idea_id => @idea.id
         end
         #Do not sent an email!!!
         #email_idea(idea)
-        format.html { redirect_to action: "index", id: idea.startup_id}
-        @ideas = Array.new
-        @ideas[0] = idea
-        params[:id] = idea.companydescription_id
-        format.js {render "show_idea"}
+        format.html { redirect_to action: "index", id: @idea.startup_id}
+        format.js
       else
-        format.html { render action: "index", id: idea.startup_id }
+        format.html { render action: "index", id: @idea.startup_id }
         format.json { render json: idea.errors, status: :unprocessable_entity }
       end
     end

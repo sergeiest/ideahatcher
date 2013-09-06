@@ -1,0 +1,74 @@
+.description-box{:'z-index' => description.allfield_id}
+  - if params[:action] == 'show'
+    .action-box
+      .slider-bar
+        %p{:style => "margin-bottom:0px;font-size:14px;line-height:18px"} Rate #{description.field_status.downcase}:
+        %p{:style => "font-size:12px;margin-bottom:0px;color:grey" } (click on the scale)
+        = form_tag({:action => 'vote_description', :controller => 'votes'},
+           :multipart => true, :id => "form_"+ description.id.to_s(), :remote => true) do
+          = hidden_field :vote, :description_id, :value => description.id
+          = hidden_field :vote, :score, :value => 3
+          = hidden_field_tag :startup_id, description.startup_id
+          = submit_tag 'submit', :id => "button_"+ description.id.to_s(), :hidden => true
+        %div.progress.progress-primary.progress-slider{:id => "bar_#{description.id}",
+            :onmousedown => "stopSlideVote(#{description.id}, this, this.parentNode.parentNode.parentNode.offsetLeft, 160)",
+            :onmouseup => "startSlideVote(#{description.id}, this, this.parentNode.parentNode.parentNode.offsetLeft, 160)"}
+          %div{:id=> "slider_#{description.id}", :class=> "bar" }
+          .split-bar-div
+            %span.bar-split
+            %span.bar-split
+            %span.bar-split
+            %span.bar-split
+            %span.bar-split{:style => "padding-right: 0;"}
+        %p
+          %span.slider-start 0
+          %span.slider-info{:id => "info_#{description.id}"}
+          %span.slider-end 5
+
+  %h5= description.field_status
+  %p= description.content
+  %a.help-hatch{:onclick => "hideHatching(this.parentNode.getElementsByClassName('ideahatching')[0], this)"}
+    %i.icon-comment.glyphw
+    - if params[:action] == 'show'
+      Help hatch it!
+    - else
+      Open dashboard
+  .clear-both
+
+  .ideahatching{:hidden => "true"}
+    .idea-box
+      - if !description.companydescription_id.nil?
+        .idea-statement
+          - old_description = Companydescription.find(description.companydescription_id)
+          = simple_format old_description.content.firstletters(300)
+        %img{:src => "../images/vs.png"}
+        .idea-statement
+          = simple_format description.content.firstletters(300)
+      -else
+        .idea-statement
+          = simple_format description.content.firstletters(300)
+        %img{:src => "../images/vs.png"}
+        .idea-statement.empty-statement
+          %p No other versions available. Suggest a new one bellow...
+      .clear-both
+
+    .idea-box
+      %hr
+      .discussion{:id => "discussion_#{description.id}"}
+        - ideas = Idea.where("companydescription_id = ?", description.id)
+        - if ideas.nil? || ideas.length == 0
+          %p no suggestions so far. be the first one to contribute...
+          %hr.middle-hr
+        - ideas.each do |idea|
+          = simple_format idea.content
+          %p.author by #{idea.first_name} #{idea.last_name} on #{idea.created_at.strftime('%m/%d/%Y')}
+          %hr.middle-hr
+        = form_tag({:controller => "ideas", :action => "create"},:remote => true) do
+          = hidden_field :idea, :title, :value => description.field_status
+          = hidden_field :idea, :is_protected, :value => 0
+          = hidden_field :idea, :idea_id, :value => ""
+          = hidden_field :idea, :startup_id, :value => @startup.id
+          = hidden_field :idea, :companydescription_id, :value => description.id
+          = text_area :idea, :content, :value => "Add your suggestion here...", :onclick => "clearInput(this)"
+          = submit_tag 'Save', :class => "btn btn-warning"
+

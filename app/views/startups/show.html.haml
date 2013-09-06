@@ -1,0 +1,47 @@
+.new-view-content
+  .new-view-company
+    .pitch-box
+      %h2.main-name
+        = @startup.name
+        %br
+        = link_to 'Follow', {:controller => 'investors', :action => 'follow_company', :id => @startup.id},
+                                      :class => 'startup-button',
+                                      :id => 'follow_btn',
+                                      :remote => true,
+                                      :style => "float:right;"
+      - if @startup.avatar?
+        = image_tag @startup.avatar.url(:large), :class => "main-logo"
+      - else
+        = image_tag '/images/profile/Nologo.png', :class => "main-logo"
+
+    .clear-both
+    .description-box
+      = simple_format h @startup.pitch.firstletters(500)
+    - @company_descriptions.each do |description|
+      = render :partial => 'description', :locals => {:description => description}
+
+  .team-box
+    %h3 Team
+    - @startup_owners.each do |person|
+      %p #{person.firstname} #{person.lastname}
+    %hr
+    %h3 Followers
+    - @startup_followers.each do |person|
+      %p #{person.firstname} #{person.lastname}
+    - if @startup_followers.length == 0
+      %p No followers so far, be the first to follow
+
+  .clear-both
+
+
+:javascript
+  function hideHatching(elementNode,linkNode){
+    if (elementNode.hidden == true){
+      elementNode.hidden = false;
+      linkNode.innerHTML = linkNode.innerHTML.replace("Help hatch it!", "Hide dashboard...");
+      animationCustom(elementNode,"height", 0, elementNode.offsetHeight, 0);
+    } else {
+      linkNode.innerHTML = linkNode.innerHTML.replace("Hide dashboard...", "Help hatch it!");
+      animationCustom(elementNode,"height", elementNode.offsetHeight, 0, 1);
+    }
+  }

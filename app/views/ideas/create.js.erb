@@ -1,0 +1,25 @@
+var ideaDiv = document.getElementById('discussion_<%= @idea.companydescription_id %>');
+var formNode = ideaDiv.getElementsByTagName("form")[0];
+
+formNode.getElementsByTagName("textarea")[0].value="Add another suggestion..";
+formNode.hidden = true;
+
+<% @idea.content.gsub(/\r\n?/, '\n').split("\n").each do |text_string| %>
+var newP = document.createElement("div");
+newP.innerHTML = '<%= simple_format h @idea.content.gsub(/\r\n?/, '\n') %>';
+ideaDiv.insertBefore(newP, formNode);
+
+
+var newAuthor = document.createElement("p");
+
+newAuthor.className = "author";
+newAuthor.innerHTML = "by <%= @idea.first_name %> <%= @idea.last_name %> on " +
+        "<%= @idea.created_at.strftime('%m/%d/%Y') %>";
+ideaDiv.insertBefore(newAuthor, formNode);
+
+hrNode = document.createElement("hr");
+hrNode.setAttribute("class", "middle-hr");
+ideaDiv.insertBefore(hrNode, formNode);
+
+<% end %>
+

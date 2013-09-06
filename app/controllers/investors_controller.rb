@@ -58,7 +58,7 @@ class InvestorsController < ApplicationController
   def follow_company
 
     user = User.find(session[:id])
-    startup = Startup.find(session[:startup_id])
+    startup = Startup.find(params[:id])
 
     if !user || !startup
       return
@@ -66,17 +66,17 @@ class InvestorsController < ApplicationController
 
     respond_to do |format|
       if !params[:unfollow] or (params[:unfollow] != 1 and params[:unfollow] != "1")
-        follower = Follower.where('startup_id = ? AND user_id =?', session[:startup_id], session[:id])[0]
+        follower = Follower.where('startup_id = ? AND user_id =?', params[:id], session[:id])[0]
         if !follower
           follower = Follower.new
-          follower.startup_id = session[:startup_id]
+          follower.startup_id = params[:id]
           follower.user_id = session[:id]
           follower.status = 1
           follower.save
         end
         format.js
       else
-        follower = Follower.where('startup_id = ? AND user_id =?', session[:startup_id], session[:id])[0]
+        follower = Follower.where('startup_id = ? AND user_id =?', params[:id], session[:id])[0]
         if follower
           follower.destroy
           format.js {render "unfollow_company"}

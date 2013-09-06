@@ -1,0 +1,35 @@
+.new-view-content
+  %h2.page-title
+    - case params[:action]
+      - when "hashtag"
+        Hashtags / ##{params[:tag]}
+      - when "my_ideas"
+        My ideas
+      - when "following_ideas"
+        Following
+      - else
+        Browse
+
+  #startup-results.new_view
+    - @startups.each do |startup|
+      = render :partial => 'new_view_startup', :locals => {:startup => startup}
+
+  .new-view-nav
+    = form_tag({:action => "search_startups"}, :remote => true) do
+      = text_field_tag :string, "search", :onclick => "clearInput(this)", :onkeyup => "submitForm(this.parentNode)"
+      = submit_tag "Submit", :hidden => true
+    %hr
+    %h3 Hashtags:
+    - @categories.each do |tag|
+      %p= link_to "#" + tag, :action => "hashtag", :tag => tag
+
+
+.guideline-menu{:onclick => "showHelp(this)"}
+  %i.icon-question-sign.glyphw-white{:style => "float:left;"}
+  %h5{:hidden => "true"} What to do here
+  %p{:hidden => "true"} Browse ideas and help hatch them
+  %p{:hidden => "true"} You can browse all ideas on the platform, pick those by category and hashtags or just search for a particular idea
+  %p{:hidden => "true"} You also can turn on the lightning mode to compare the ideas
+
+
+

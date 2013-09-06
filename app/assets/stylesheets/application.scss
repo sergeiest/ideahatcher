@@ -41,6 +41,7 @@ body {
   height:100%;
   min-width: 600px;
   font-family: 'Open Sans', Arial, sans-serif;
+  background-color: #eeeeee;
   //background-image:url('../images/temp.png');
 }
 
@@ -85,6 +86,12 @@ body {
   height: 40px;
   background-color: #07b5b5;
   min-width: 880px;
+  box-shadow: 0px 0px 10px #888;
+  position:fixed;
+  z-index: 100;
+  top:0;
+  width:100%;
+
 
 
   .logo-img {
@@ -179,14 +186,15 @@ body {
 
 
 .footer {
-  background-color:#e3e3e3;
+  background-color:#2f2f2f;
   font-size:12px;
-  color: #696969;
+  color: white;
   min-height: 40px;
   padding-top:20px;
   margin:0px 0;
   text-align: center;
   min-width: 880px;
+  box-shadow: 0px 0px 10px #2f2f2f;
 }
 
 
@@ -227,7 +235,7 @@ h2.project{
   z-index:3;
 
 
-  background-color: #d7d7d7;
+  background-color: white;
   border:2px #bebebe solid;
 
   padding:0px 0px;
@@ -832,17 +840,21 @@ h2.project{
 // ----------------------------------- Navigation ------------------------------------
 
 .guideline-menu  {
-  position:absolute;
+  position:fixed;
   right:0;
   width:15px;
-  top:70px;
+  top:60px;
   z-index:10;
+  opacity:0.80;
+  filter:alpha(opacity=80);
   cursor: pointer;
+  color:white;
+  box-shadow: 0px 0px 10px #2f2f2f;
 
-  background-color: #f7f7f7;
-  border-top: 1px solid #dadada;
-  border-left: 1px solid #dadada;
-  border-bottom: 1px solid #dadada;
+  background-color: #3c3c3c;
+  //border-top: 1px solid #dadada;
+  //border-left: 1px solid #dadada;
+  //border-bottom: 1px solid #dadada;
   padding:0 20px;
 
   i {

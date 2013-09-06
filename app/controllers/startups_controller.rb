@@ -3,7 +3,7 @@ class StartupsController < ApplicationController
   layout :layout_by_resource
 
   def layout_by_resource
-    if params[:action] == 'new_view'
+    if ['show', 'new_view', 'detailed', 'index', 'hashtag', 'following_ideas', 'my_ideas'].include?(params[:action])
       "startups"
     else
       "hatcher"
@@ -71,8 +71,8 @@ class StartupsController < ApplicationController
     @user = User.find(session[:id])  if session[:id] and session[:id] != 0
     @startups = Startup.where("status > 1").all
     @startups.sort! {|y, x| x["status"] <=> y["status"]}
-    @startups = @startups.sample(9)
-    @startups_shown = 9
+    @startups = @startups.sample(16)
+    @startups_shown = 16
 
     tags = Tag.all
 
@@ -89,6 +89,7 @@ class StartupsController < ApplicationController
       format.json { render json: @startups }
     end
   end
+
 
   def hashtag
 
@@ -189,6 +190,35 @@ class StartupsController < ApplicationController
 
   end
 
+
+  def new_view  # New view for "show"
+    if session[:id].nil? or session[:id] != 1
+      if !params[:id].nil?
+        redirect_to :action => "show", :id => params[:id]
+      else
+        redirect_to :action => "index", :id => params[:id]
+      end
+    end
+
+    @user = User.find(session[:id]) if session[:id] and session[:id] != 0
+    @startup = Startup.find(params[:id])
+    @startup_followers = @startup.Follower_users.all.uniq
+    @startup_owners = @startup.Owner_users.all.uniq
+    @startup_updates = @startup.Companyupdates
+    @companyupdate = Companyupdate.new
+
+    @company_descriptions = @startup.Companydescriptions.where("status =?", 1).sort!{|x, y| x["allfield_id"] <=> y["allfield_id"]}
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @startup }
+    end
+
+  end
+
+
+
+
   def circle
     @startup = Startup.find(session[:startup_id])
     @tags = @startup.Tags
@@ -247,7 +277,7 @@ class StartupsController < ApplicationController
 
   def search_startups
     if !params[:string] || params[:string] == ""
-      @startups = Startup.sample(9)
+      @startups = Startup.all.sample(9)
     else
       s_name = params[:string]
       @startups = Startup.where("UPPER(name) LIKE UPPER(?)", "%" + s_name + "%").sample(9)
@@ -368,32 +398,6 @@ class StartupsController < ApplicationController
   end
 
 
-
-
-  def new_view
-    if session[:id].nil? or session[:id] != 1
-      if !params[:id].nil?
-        redirect_to :action => "show", :id => params[:id]
-      else
-        redirect_to :action => "index", :id => params[:id]
-      end
-    end
-
-    @user = User.find(session[:id]) if session[:id] and session[:id] != 0
-    @startup = Startup.find(params[:id])
-    @startup_followers = @startup.Follower_users.all.uniq
-    @startup_owners = @startup.Owner_users.all.uniq
-    @startup_updates = @startup.Companyupdates
-    @companyupdate = Companyupdate.new
-
-    @company_descriptions = @startup.Companydescriptions.where("status =?", 1).sort!{|x, y| x["allfield_id"] <=> y["allfield_id"]}
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @startup }
-    end
-
-  end
 
 
 
