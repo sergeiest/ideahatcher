@@ -10,6 +10,10 @@ class InvestorsController < ApplicationController
     case params[:action]
       when "follow_company"
         wrong_link = 2 if session[:id] == nil || session[:id] == 0
+      when "add_founder", "remove_founder"
+        if params[:id].nil? || session[:id].nil? || session[:id] == 0 || Startup.find(params[:id]).nil?
+          wrong_link = 1
+        end
     end
 
     case wrong_link
@@ -19,6 +23,11 @@ class InvestorsController < ApplicationController
         render "authentications/join_login_form" and return
     end
   end
+
+
+
+
+
 
   def index
 
@@ -169,23 +178,23 @@ class InvestorsController < ApplicationController
      return
     end
 
-    if User.find(params[:founder_id]) and !Owner.find_by_user_id_and_startup_id(params[:founder_id], session[:startup_id])
+    if User.find(params[:founder_id]) and !Owner.find_by_user_id_and_startup_id(params[:founder_id], params[:id])
       owner = Owner.new
-      owner.startup_id = session[:startup_id]
+      owner.startup_id = params[:id]
       owner.user_id = params[:founder_id]
       owner.status = 2
       owner.save
 
 
       notifications = Notification.where("event_id = ? AND user_id = ? AND status > ? AND (event_type =? OR event_type =?)",
-                                         session[:startup_id], params[:founder_id], 0, 1, 2).all
+                                         params[:id], params[:founder_id], 0, 1, 2).all
 
       notifications.each do |notification|
         notification.update_attribute(:status, 0)
       end
 
       notification  = Notification.new
-      notification.event_id = session[:startup_id]
+      notification.event_id = params[:id]
       notification.user_id = params[:founder_id]
       notification.status = 1
       notification.event_type = 1
@@ -193,7 +202,7 @@ class InvestorsController < ApplicationController
     end
 
     respond_to do |format|
-        startup = Startup.find(session[:startup_id])
+        startup = Startup.find(params[:id])
         @people = startup.Owner_users
         format.js
     end
@@ -202,7 +211,7 @@ class InvestorsController < ApplicationController
 
   def remove_founder
 
-    owner = Owner.find_by_user_id_and_startup_id(params[:founder_id], session[:startup_id])
+    owner = Owner.find_by_user_id_and_startup_id(params[:founder_id], params[:id])
 
     if !owner
       return
@@ -215,21 +224,21 @@ class InvestorsController < ApplicationController
       else
 
         notifications = Notification.where("event_id = ? AND user_id = ? AND status > ? AND (event_type =? OR event_type =?)",
-                                           session[:startup_id], params[:founder_id], 0, 1, 2).all
+                                           params[:id], params[:founder_id], 0, 1, 2).all
 
         notifications.each do |notification|
           notification.update_attribute(:status, 0)
         end
 
         notification = Notification.new
-        notification.event_id = session[:startup_id]
+        notification.event_id = params[:id]
         notification.user_id = params[:founder_id]
         notification.status = 1
         notification.event_type = 2
         notification.save
 
         owner.destroy
-        startup = Startup.find(session[:startup_id])
+        startup = Startup.find(params[:id])
         @people = startup.Owner_users
         format.js {render "add_founder"}
       end

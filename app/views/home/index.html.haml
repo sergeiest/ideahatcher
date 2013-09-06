@@ -1,0 +1,76 @@
+.demo-picture
+  - @startups.each do |startup|
+    = render :partial =>  "demo_startup", :locals => {:startup => startup}
+
+- if session[:id].nil? or session[:id] == 0
+  .home-signup= render 'authentications/clean_join_form'
+
+.tagline
+  %h2 Validate and get insightful feedback on you business idea
+  %hr
+  %h2 Help other entrepreneurs start businesses
+  %p
+    %a{:href=>"#how-it-works"} Learn how it works...
+    |
+    = link_to 'Browse ideas...', :controller => 'startups'
+
+%a{:name => "how-it-works"}
+.how-it-works
+  %h2 How it works
+  .content-grey
+    .left-side
+      %p
+        Share your ideas with a community of entrepreneurs and get valuable feedback.
+    .right-side= image_tag "/images/how_it_works_1.png"
+  .content-white
+    .left-side= image_tag "/images/how_it_works_2.png"
+    .right-side
+      %p
+        Tell us about your idea's problem, solution, and business plan, then choose who to share it with.
+  .content-grey
+    .left-side
+      %p
+        Other entrepreneurs rate and give feedback on your idea's problem, solution and business plan.
+        Improve your idea and repost to get feedback again.
+    .right-side= image_tag "/images/how_it_works_3.png"
+  .content-white
+    .left-side= image_tag "/images/how_it_works_4.png"
+    .right-side
+      %p
+        A large community of entrepreneurs from many different sectors ensures you’ll get lots of valuable
+        feedback to hatch your idea.
+  .content-grey{:style => "border-top:1px #07b5b5 solid; border-bottom:1px #07b5b5 solid;"}
+  %a{:name => "about-us"}
+  %h2 About us
+  .content-about
+    .about-div
+      %img.about-img{:src => '/images/profile/Sergey.png'}
+      %p Sergey Astretsov
+    .about-div
+      %img.about-img{:src =>'/images/profile/Alison.png'}
+      %p.about-name Ali Servis
+    .about-div
+      %img.about-img{:src => '/images/profile/Luis.png'}
+      %p.about-name Luis Gonzalez
+    .about-div
+      %img.about-img{:src => '/images/profile/Debra.png'}
+      %p.about-name Debra Gladwin
+    .clear-both
+  .content-about
+    %h5 Why we do this
+    %p
+      When we joined forces, coming from different backgrounds and interests, we had one thing in common:
+      make it easier for people start companies and develop entrepreneurial environment everywhere
+    %p
+      While at Carnegie Mellon University we started to work together during an awesome entrepreneurship class.
+      The experience of brainstorming and collaboration, which we had there, should be available to everyone. We decided
+      to dedicate our efforts to create a platform where entrepreneurs and enthusiasts are working together to
+      bring new ideas to live!
+    %hr
+    %p Special Thanks to Matt Moench, Arpita Shrivastava, Siddharth Subramanian and Fangming Lu!
+    %hr
+    %p
+      Contact us at
+      %a{:href => "mailto:team@ideahatcher.co"}team@ideahatcher.co
+
+

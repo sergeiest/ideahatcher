@@ -147,13 +147,12 @@ Webapp::Application.routes.draw do
 
 
   get "home/index" => 'home#colorful'
-  get "home/show" => 'home#colorful'
   get "home/about"
-  get "home" => 'home#colorful'
+  get "home" => 'home#index'
   resources :home
 
 
-  root :to => 'home#colorful'
+  root :to => 'home#index'
 
 
   # The priority is based upon order of creation:

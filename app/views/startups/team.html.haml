@@ -1,0 +1,86 @@
+.new-view-content
+  %h2 My ideas / #{@startup.name}
+  .new-view-company
+    %h4 Add team members to your idea by selecting them:
+    = form_tag({:action => "search_people", :controller => "investors"},
+                     :remote => true) do
+      = text_field_tag :string, "search", :onclick => "clearInput(this)", :onkeyup => "submitForm(this.parentNode)"
+      = hidden_field_tag :action_type, "add_team"
+      = submit_tag "submit", :hidden => "true"
+
+    = form_tag({:action => "add_founder", :controller => "investors"},
+                   :remote => true,
+                   :id => "add_founder",
+                   :hidden => true) do
+      = hidden_field_tag :founder_id, 0
+      = hidden_field_tag :id, @startup.id
+      = submit_tag "submit"
+
+    = form_tag({:action => "remove_founder", :controller => "investors"},
+                   :remote => true,
+                   :id => "remove_founder",
+                   :hidden => true) do
+      = hidden_field_tag :founder_id, 0
+      = hidden_field_tag :id, @startup.id
+      = submit_tag "submit"
+
+    #search-results.company-box
+
+
+  .team-box
+    %h3 Manage my idea
+    %p= link_to 'Dashboard', :action => "detailed", :id => @startup.id
+    %p= link_to 'Manage team', :action => "team", :id => @startup.id
+    %p= link_to 'Share', :action => "circle", :id => @startup.id
+
+  .team-box
+    %h3 Team
+    #team-list
+      - @startup_owners.each do |person|
+        = link_to({:controller => "investors", :action => "follower_info", :id => person.id,
+                  :action_type => 1}, :remote => true) do
+          .person-info
+            - if person.avatar?
+              = image_tag person.avatar.url(:square)
+            - else
+              = image_tag "/images/profile/Nophoto.png"
+            %h5= person.firstname + " " + person.lastname
+            %p Founder
+    %hr
+    %h3 Followers
+    - @startup_followers.each do |person|
+      %p #{person.firstname} #{person.lastname}
+
+
+
+    - if @startup_followers.length == 0
+      %p No followers so far, be the first to follow
+
+  .clear-both
+
+:javascript
+
+  function addPerson (elementNode, id) {
+      var formElement = document.getElementById("add_founder");
+      var notes = formElement.children;
+      for (var i = 0; i < notes.length; i++) {
+          if (notes[i].getAttribute('name') == 'founder_id') {
+              notes[i].value = id;
+          }
+      }
+      submitForm(formElement);
+      $('#info_modal').modal('hide');
+  }
+
+  function removePerson (elementNode, id) {
+      var formElement = document.getElementById("remove_founder");
+      var notes = formElement.children;
+      for (var i = 0; i < notes.length; i++) {
+          if (notes[i].getAttribute('name') == 'founder_id') {
+              notes[i].value = id;
+          }
+      }
+      submitForm(formElement);
+      $('#info_modal').modal('hide');
+  }
+

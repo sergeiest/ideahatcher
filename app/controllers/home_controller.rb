@@ -3,12 +3,13 @@ class HomeController < ApplicationController
   layout "hatcher"
 
   before_filter do
-    redirect_to :action => 'colorful' if !["colorful","about"].include?(params[:action])
+    redirect_to :action => 'index' if !["index"].include?(params[:action])
   end
 
 
   def index
-    redirect_to :action => "colorful" and return
+    startups = Startup.where("status >2").all
+    @startups = startups.sample(15)
   end
 	
 	def about
@@ -17,9 +18,8 @@ class HomeController < ApplicationController
 
   def colorful
     startups = Startup.where("status >2").all
-    @startups = startups.sample(10)
+    @startups = startups.sample(15)
   end
-	
 	
 end
 

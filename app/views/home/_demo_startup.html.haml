@@ -1,0 +1,32 @@
+.demo-startup{ :style => "background-image:url('#{startup.avatar.url(:large) }');"}
+  - a = rand(3)
+  - b = rand(2)
+  - case a
+    - when 0
+      - c1 = 70
+      - if b == 1
+        - c2 = 255
+        - c3 = rand(255)
+      - else
+        - c2 = rand(255)
+        - c3 = 255
+    - when 1
+      - c2 = 255
+      - if b == 1
+        - c1 = 255
+        - c3 = rand(255)
+      - else
+        - c1 = rand(255)
+        - c3 = 255
+    - when 2
+      - c3 = 255
+      - if b == 1
+        - c2 = 255
+        - c1 = rand(255)
+      - else
+        - c2 = rand(255)
+        - c1 = 255
+  .demo-grad{ :style => "background: -webkit-linear-gradient(bottom left, rgba(#{c1},#{c2},#{c3}, 1),  rgba(0, 0, 0, 0));"}
+  .demo-text
+    %h2= startup.name
+    %p= simple_format startup.pitch.firstletters(80), :class => "p-content"

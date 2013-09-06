@@ -3,7 +3,7 @@ class StartupsController < ApplicationController
   layout :layout_by_resource
 
   def layout_by_resource
-    if ['show', 'new_view', 'detailed', 'index', 'hashtag', 'following_ideas', 'my_ideas'].include?(params[:action])
+    if ['show', 'new_view', 'detailed', 'index', 'team', 'hashtag', 'following_ideas', 'my_ideas'].include?(params[:action])
       "startups"
     else
       "hatcher"
@@ -249,7 +249,8 @@ class StartupsController < ApplicationController
   def team
     @startup = Startup.find(session[:startup_id])
     @startup_owners = @startup.Owner_users.all.uniq
-    @people = User.all[0..20]
+    @startup_followers = @startup.Follower_users.all.uniq
+    #@people = User.all[0..20]
   end
 
   def followers

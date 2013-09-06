@@ -43,11 +43,8 @@ newUl.appendChild(liVote);
 
 var liVote = document.createElement("li");
 liVote.className = "dropdown custom-dropdown"
-liVote.innerHTML = '<%= link_to "About", :action => "about", :controller => "home" %>';
+liVote.innerHTML = '<%= link_to "How it works", :action => "index", :controller => "home", :anchor => "how-it-works" %>';
 newUl.appendChild(liVote);
-
-
-
 
 var newLi = document.createElement("li");
 newLi.className = "dropdown"
