@@ -12,7 +12,7 @@
 
   #startup-results.new_view
     - @startups.each do |startup|
-      = render :partial => 'new_view_startup', :locals => {:startup => startup}
+      = render :partial => 'startup', :locals => {:startup => startup}
 
   .new-view-nav
     = form_tag({:action => "search_startups"}, :remote => true) do

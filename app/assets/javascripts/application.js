@@ -1,20 +1,3 @@
-// This is a manifest file that'll be compiled into application.js, which will include all the files
-// listed below.
-//
-// Any JavaScript/Coffee file within this directory, lib/assets/javascripts, vendor/assets/javascripts,
-// or vendor/assets/javascripts of plugins, if any, can be referenced here using a relative path.
-//
-// It's not advisable to add code directly here, but if you do, it'll appear at the bottom of the
-// the compiled file.
-//
-// WARNING: THE FIRST BLANK LINE MARKS THE END OF WHAT'S TO BE PROCESSED, ANY BLANK LINE SHOULD
-// GO AFTER THE REQUIRES BELOW.
-//
-//= require jquery
-//= require jquery_ujs
-//= require_tree .
-
-
 function showHiddenIdeas(elementName) {
 
     var elementName_1 = elementName + "_1";
@@ -35,7 +18,6 @@ function showHiddenIdeas(elementName) {
         document.getElementById(elementName_3).hidden = true;
     }
 }
-
 
 function showHiddenForm(elementName) {
 
@@ -69,27 +51,7 @@ function checkProblem(elementName) {
     }
 }
 
-function startSlideLightning(barId){
-    var bar = document.getElementById('bar_'+barId);
-    var slider = document.getElementById('slider_'+barId);
-    var info = document.getElementById('info_'+barId);
-    var set_perc = ((((event.clientX - bar.offsetLeft -280) / bar.offsetWidth)).toFixed(2));
-    slider.style.width = (set_perc * 100) + '%';
 
-}
-
-
-function stopSlideLightning(barId){
-    var bar = document.getElementById('bar_'+ barId);
-    var slider = document.getElementById('slider_'+ barId);
-    var info = document.getElementById('info_'+ barId);
-    var set_perc = ((((event.clientX - bar.offsetLeft -280) / bar.offsetWidth)).toFixed(2));
-    slider.style.width = (set_perc * 100) + '%';
-    info.style.marginLeft = set_perc * 135 + 'px';
-    info.innerText = Math.round(set_perc * 5)/1 ;
-    document.getElementById('form_'+ barId).querySelector("#vote_score").value = Math.round(set_perc * 5)/1 ;
-    $('#button_'+ barId).click();
-}
 
 function startSlideVote(barId, barNode, offsetPoint, totalWidth){
     var set_perc = ((((event.clientX - barNode.offsetLeft - offsetPoint) / barNode.offsetWidth)).toFixed(2));

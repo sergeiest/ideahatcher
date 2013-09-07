@@ -2,7 +2,7 @@ class CampaignsController < ApplicationController
   # GET /campaigns
   # GET /campaigns.json
 
-  layout "hatcher"
+  layout "campaigns"
 
   before_filter do
     wrong_link = 0
@@ -15,7 +15,7 @@ class CampaignsController < ApplicationController
     else
       case params[:action]
         when "next_step"
-        when "guide_step", "basic_step", "create_step"
+        when "guide_step", "basic_step", "create_step", "new_view"
           session[:startup_id] = nil
         when "about_step", "description_step", "upload_logo", "update",
             "destroy", "publish_step", "circles_step", "update_description", "update_name"
@@ -36,6 +36,10 @@ class CampaignsController < ApplicationController
       when 2
         render "authentications/join_login_form" and return
     end
+  end
+
+  def new_view
+
   end
 
   def guide_step

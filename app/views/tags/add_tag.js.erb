@@ -4,10 +4,9 @@ var mainDiv = document.getElementById("hashtags");
 mainDiv.innerHTML = "";
 
 <% @tags.each do |tag| %>
-    var tagDiv = document.createElement("div");
-    tagDiv.className = "hashtag";
-    tagDiv.innerHTML = '#<%= tag.name %>' +
-                        '<span class="delete-tag" onclick="deleteTag(<%= tag.id %>, this)">x</span>';
+    var tagDiv = document.createElement("span");
+    tagDiv.className = "hashtags";
+    tagDiv.innerHTML = '#<%= tag.name %> <span class="delete-tag" onclick="deleteTag(<%= tag.id %>, this)">x</span>';
     mainDiv.appendChild(tagDiv);
 <% end %>
 

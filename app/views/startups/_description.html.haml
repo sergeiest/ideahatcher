@@ -2,8 +2,8 @@
   - if params[:action] == 'show'
     .action-box
       .slider-bar
-        %p{:style => "margin-bottom:0px;font-size:14px;line-height:18px"} Rate #{description.field_status.downcase}:
-        %p{:style => "font-size:12px;margin-bottom:0px;color:grey" } (click on the scale)
+        %p{:style => "text-align: center;margin-bottom:0px;font-size:14px;line-height:18px"} Rate #{description.field_status.downcase}:
+        %p{:style => "text-align: center;font-size:12px;margin-bottom:0px;color:grey" } (click on the scale)
         = form_tag({:action => 'vote_description', :controller => 'votes'},
            :multipart => true, :id => "form_"+ description.id.to_s(), :remote => true) do
           = hidden_field :vote, :description_id, :value => description.id

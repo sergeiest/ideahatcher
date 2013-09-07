@@ -3,37 +3,30 @@ Webapp::Application.routes.draw do
   post "likes/vote"
   resources :likes
 
-
   get "notifications/check_notification"
   resources :notifications
-
 
   post "circles/add_circle"
   post "circles/add_person"
   post "circles/remove_person"
-
+  resources :circles
 
   post "tags/add_tag"
   post "tags/delete_tag"
   resources :tags
 
-
   resources :locations
 
-
-  get "votes/vote_description"
+    get "votes/vote_description"
   post "votes/vote_description"
   get "votes/show_votes"
   resources :votes
-
 
   get "ideas/show_idea"
   get "ideas/idea_test"
   resources :ideas
 
-
   resources :documents
-
 
   get "campaigns/guide_step"
   get "campaigns/basic_step"
@@ -48,6 +41,7 @@ Webapp::Application.routes.draw do
   post "campaigns/update_description"
   post "campaigns/update_name"
   get "campaigns/circles_step"
+  get "campaigns/new_view"
   resources :campaigns
 
   get "authentications/login"
@@ -72,16 +66,6 @@ Webapp::Application.routes.draw do
   post "companydescriptions/update_description"
   resources :companydescriptions
 
-  get "funds/approval"
-  get "funds/update"
-  post "funds/update"
-  resources :funds
-  resources :companydocuments
-
-  get "companydocs/uploaddoc"
-  post "companydocs/uploadfile"
-  resources :companydocs
-
   resources :companyupdates
 
   get "investors/unfollowcompany"
@@ -101,7 +85,6 @@ Webapp::Application.routes.draw do
   get "users/login"
   get "users/update"
   post "users/process_login"
-
   get "users/logout"
   get "users/my_account"
   get "users/new"
@@ -123,23 +106,13 @@ Webapp::Application.routes.draw do
   get "startups/developermode"
   get "startups/newlook"
   get "startups/show"
-  get "startups/update"
   post "startups/search_startups"
-  post "startups/vote_like"
-  post "startups/vote_not_clear"
-  post "startups/vote_dislike"
-  get "startups/vote_lightning"
-  get "startups/vote_next"
   get "startups/circle"
   get "startups/dashboard"
-  get "startups/idea_hatching"
   get "startups/hashtag"
-  get "startups/followers"
   get "startups/my_ideas"
   get "startups/following_ideas"
   get "startups/show_more_startups"
-  get "startups/new_view"
-  get "startups/new_view_index"
   resources :startups
   
   resources :peoples

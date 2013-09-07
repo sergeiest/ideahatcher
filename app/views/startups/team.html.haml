@@ -1,30 +1,31 @@
 .new-view-content
   %h2 My ideas / #{@startup.name}
   .new-view-company
-    %h4 Add team members to your idea by selecting them:
-    = form_tag({:action => "search_people", :controller => "investors"},
-                     :remote => true) do
-      = text_field_tag :string, "search", :onclick => "clearInput(this)", :onkeyup => "submitForm(this.parentNode)"
-      = hidden_field_tag :action_type, "add_team"
-      = submit_tag "submit", :hidden => "true"
+    .manage-view
+      %h5 Add team members to your idea by selecting them:
+      = form_tag({:action => "search_people", :controller => "investors"},
+                       :remote => true) do
+        = text_field_tag :string, "search", :onclick => "clearInput(this)", :onkeyup => "submitForm(this.parentNode)"
+        = hidden_field_tag :action_type, "add_team"
+        = submit_tag "submit", :hidden => "true"
 
-    = form_tag({:action => "add_founder", :controller => "investors"},
-                   :remote => true,
-                   :id => "add_founder",
-                   :hidden => true) do
-      = hidden_field_tag :founder_id, 0
-      = hidden_field_tag :id, @startup.id
-      = submit_tag "submit"
+      = form_tag({:action => "add_founder", :controller => "investors"},
+                     :remote => true,
+                     :id => "add_founder",
+                     :hidden => true) do
+        = hidden_field_tag :founder_id, 0
+        = hidden_field_tag :id, @startup.id
+        = submit_tag "submit"
 
-    = form_tag({:action => "remove_founder", :controller => "investors"},
-                   :remote => true,
-                   :id => "remove_founder",
-                   :hidden => true) do
-      = hidden_field_tag :founder_id, 0
-      = hidden_field_tag :id, @startup.id
-      = submit_tag "submit"
+      = form_tag({:action => "remove_founder", :controller => "investors"},
+                     :remote => true,
+                     :id => "remove_founder",
+                     :hidden => true) do
+        = hidden_field_tag :founder_id, 0
+        = hidden_field_tag :id, @startup.id
+        = submit_tag "submit"
 
-    #search-results.company-box
+      #search-results.company-box
 
 
   .team-box

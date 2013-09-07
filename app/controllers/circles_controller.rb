@@ -12,9 +12,7 @@ class CirclesController < ApplicationController
 
         when "add_circle", "add_person", "remove_person"
           user = User.find(session[:id])
-          if params[:id] and Owner.where("startup_id = ? AND user_id = ?", params[:id], session[:id]).length > 0
-            session[:startup_id] = params[:id]
-          else
+          if user.nil? || params[:startup_id].nil? || Owner.where("startup_id = ? AND user_id = ?", params[:startup_id], session[:id]).length == 0
             wrong_link = 1
           end
         else
@@ -30,7 +28,7 @@ class CirclesController < ApplicationController
 
 
   def add_circle
-    startup = Startup.find(session[:startup_id])
+    startup = Startup.find(params[:startup_id])
     respond_to do |format|
       case params[:circle_status]
         when "0"
@@ -75,14 +73,14 @@ class CirclesController < ApplicationController
   end
 
   def add_person
-    startup = Startup.find(session[:startup_id])
+    startup = Startup.find(params[:startup_id])
     if !params[:user_id]
       return
     end
 
     if User.find(params[:user_id]) and circle = startup.Circles.where("user_id = ?",params[:user_id]).length == 0
       circle = Circle.new
-      circle.startup_id = session[:startup_id]
+      circle.startup_id = params[:startup_id]
       circle.user_id = params[:user_id]
       circle.status = 1
       circle.save
@@ -98,7 +96,7 @@ class CirclesController < ApplicationController
 
     return if !params[:user_id]
 
-    startup = Startup.find(session[:startup_id])
+    startup = Startup.find(params[:startup_id])
     circle = startup.Circles.where("user_id = ?",params[:user_id])
     circle.destroy_all if circle.length > 0
 

@@ -19,10 +19,37 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="application.scss" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/application.scss">
+      <file leaf-file-name="startups.html.erb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/layouts/startups.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="272" column="10" selection-start="5240" selection-end="5240" vertical-scroll-proportion="0.42948717">
+            <state line="8" column="34" selection-start="279" selection-end="279" vertical-scroll-proportion="-5.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="startups_controller.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/controllers/startups_controller.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="236" column="0" selection-start="6477" selection-end="6477" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html.haml" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/views/startups/index.html.haml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="19" column="27" selection-start="600" selection-end="600" vertical-scroll-proportion="0.4649266">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="routes.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/config/routes.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="108" column="22" selection-start="2659" selection-end="2659" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -41,22 +68,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/views/investors/add_founder.js.erb" />
+        <option value="$PROJECT_DIR$/app/controllers/circles_controller.rb" />
+        <option value="$PROJECT_DIR$/app/views/circles/add_circle.js.erb" />
         <option value="$PROJECT_DIR$/app/views/startups/new_view.html.haml" />
-        <option value="$PROJECT_DIR$/app/views/startups/detailed.html.haml" />
-        <option value="$PROJECT_DIR$/app/views/startups/show.html.haml" />
-        <option value="$PROJECT_DIR$/app/controllers/startups_controller.rb" />
-        <option value="$PROJECT_DIR$/app/views/home/_demo_startup.html.haml" />
-        <option value="$PROJECT_DIR$/app/views/home/home.html.haml" />
-        <option value="$PROJECT_DIR$/app/views/layouts/hatcher.html.erb" />
-        <option value="$PROJECT_DIR$/config/routes.rb" />
-        <option value="$PROJECT_DIR$/app/views/layouts/startups.html.erb" />
-        <option value="$PROJECT_DIR$/app/controllers/home_controller.rb" />
-        <option value="$PROJECT_DIR$/app/assets/stylesheets/startups.css" />
+        <option value="$PROJECT_DIR$/app/views/startups/team.html.haml" />
+        <option value="$PROJECT_DIR$/app/views/startups/_description.html.haml" />
+        <option value="$PROJECT_DIR$/app/views/layouts/campaigns.html.erb" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/application.js" />
+        <option value="$PROJECT_DIR$/app/assets/stylesheets/startups.css.scss" />
         <option value="$PROJECT_DIR$/app/controllers/campaigns_controller.rb" />
-        <option value="$PROJECT_DIR$/app/views/home/index.html.haml" />
-        <option value="$PROJECT_DIR$/app/views/authentications/remote_login.js.erb" />
-        <option value="$PROJECT_DIR$/app/assets/stylesheets/application.scss" />
+        <option value="$PROJECT_DIR$/app/views/campaigns/new_view.html.haml" />
+        <option value="$PROJECT_DIR$/app/assets/stylesheets/campaigns.css.scss" />
+        <option value="$PROJECT_DIR$/app/views/startups/_startup.html.haml" />
+        <option value="$PROJECT_DIR$/app/controllers/startups_controller.rb" />
+        <option value="$PROJECT_DIR$/app/views/startups/search_startups.js.erb" />
+        <option value="$PROJECT_DIR$/config/routes.rb" />
+        <option value="$PROJECT_DIR$/app/views/startups/index.html.haml" />
       </list>
     </option>
   </component>
@@ -91,6 +118,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="RailsProjectView" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -105,7 +133,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="prototype_0.2" />
+              <option name="myItemId" value="prototype_0.3" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -115,7 +143,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="prototype_0.2" />
+              <option name="myItemId" value="prototype_0.3" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -129,25 +157,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="prototype_0.2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="config" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="environments" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="beta" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="prototype_0.2" />
+              <option name="myItemId" value="prototype_0.3" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -165,7 +175,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="prototype_0.2" />
+              <option name="myItemId" value="prototype_0.3" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -187,29 +197,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="prototype_0.2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="locations" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="beta" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="prototype_0.2" />
+              <option name="myItemId" value="prototype_0.3" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -231,7 +219,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="prototype_0.2" />
+              <option name="myItemId" value="prototype_0.3" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -243,7 +231,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="home" />
+              <option name="myItemId" value="campaigns" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -253,7 +241,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="prototype_0.2" />
+              <option name="myItemId" value="prototype_0.3" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -267,25 +255,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="prototype_0.2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="models" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="beta" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="prototype_0.2" />
+              <option name="myItemId" value="prototype_0.3" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -303,7 +273,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="prototype_0.2" />
+              <option name="myItemId" value="prototype_0.3" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -325,7 +295,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="prototype_0.2" />
+              <option name="myItemId" value="prototype_0.3" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -347,7 +317,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="prototype_0.2" />
+              <option name="myItemId" value="prototype_0.3" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -361,21 +331,20 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="RailsProjectView" />
       <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="options.lastSelected" value="org.jetbrains.plugins.ruby.settings.RubyIdeSdkConfigurable" />
     <property name="recentsLimit" value="5" />
+    <property name="options.lastSelected" value="org.jetbrains.plugins.ruby.settings.RubyIdeSdkConfigurable" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../agconnect/rhok-accountability" />
     <property name="RakeTaksPopup.undocumentedIncluded" value="false" />
     <property name="RailsGeneratorsPopup.hiddenIncluded" value="false" />
-    <property name="Ruby.ViewRefParam.DefaultExtension" value="html.haml" />
-    <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
+    <property name="Ruby.ViewRefParam.DefaultExtension" value="html.haml" />
   </component>
   <component name="RunManager" selected="Rake.db:migrate">
     <configuration default="false" name="db:migrate" type="RakeRunConfigurationType" factoryName="Rake" temporary="true">
@@ -550,6 +519,13 @@
       <RTEST_RUN_CONFIG_SETTINGS_ID NAME="RUNNER_OPTIONS" VALUE="" />
       <method />
     </configuration>
+    <configuration default="true" type="JavascriptDebugSession" factoryName="Remote">
+      <JSRemoteDebuggerConfigurationSettings>
+        <option name="engineId" value="embedded" />
+        <option name="fileUrl" />
+      </JSRemoteDebuggerConfigurationSettings>
+      <method />
+    </configuration>
     <configuration default="true" type="CucumberRunConfigurationType" factoryName="Cucumber">
       <predefined_log_file id="RUBY_CUCUMBER" enabled="true" />
       <module name="" />
@@ -581,13 +557,6 @@
       <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="CUCUMBER_RUNNER_PATH" VALUE="" />
       <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="USE_CUSTOM_RUNNER" VALUE="false" />
       <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="SETTINGS_VERSION" VALUE="2" />
-      <method />
-    </configuration>
-    <configuration default="true" type="JavascriptDebugSession" factoryName="Remote">
-      <JSRemoteDebuggerConfigurationSettings>
-        <option name="engineId" value="embedded" />
-        <option name="fileUrl" />
-      </JSRemoteDebuggerConfigurationSettings>
       <method />
     </configuration>
     <configuration default="false" name="test" type="RakeRunConfigurationType" factoryName="Rake">
@@ -736,11 +705,11 @@
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3293944" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21231766" sideWeight="0.6706056" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21555915" sideWeight="0.6720827" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32784185" sideWeight="0.42058346" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32905984" sideWeight="0.57374394" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32791728" sideWeight="0.57374394" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -804,169 +773,130 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/views/home/about.html.erb">
+    <entry file="file://$PROJECT_DIR$/app/views/startups/team.html.haml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="50" column="41" selection-start="869" selection-end="1918" vertical-scroll-proportion="0.7553018">
+        <state line="4" column="9" selection-start="98" selection-end="98" vertical-scroll-proportion="0.09933775">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/authentication.rb">
+    <entry file="file://$PROJECT_DIR$/app/views/layouts/campaigns.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/layouts/hatcher.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="102" column="55" selection-start="4101" selection-end="4101" vertical-scroll-proportion="0.2300163">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/routes.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="154" column="25" selection-start="3478" selection-end="3478" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/layouts/startups.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="103" column="55" selection-start="4130" selection-end="4130" vertical-scroll-proportion="0.6899489">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.rvm/gems/ruby-1.9.3-p362/gems/railties-3.2.11/guides/code/getting_started/app/controllers/home_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="6" selection-start="51" selection-end="51" vertical-scroll-proportion="0.023076924">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/startups.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="9" selection-start="342" selection-end="349" vertical-scroll-proportion="0.41538462">
+        <state line="8" column="39" selection-start="284" selection-end="284" vertical-scroll-proportion="0.20304568">
           <folding>
-            <marker date="1378484328000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1378484328000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1378484328000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1378484328000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1378484328000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1378484328000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1378484328000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1378484328000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1378484328000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1378484328000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1378484328000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1378484328000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1378484328000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1378484328000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1378484328000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1378484328000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1378484328000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1378484328000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1378484328000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1378484328000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1378484328000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1378484328000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1378484328000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1378484328000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1378484328000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1378484328000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1378484328000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1378484328000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1378484328000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1378484328000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1378484328000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1378484328000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1378484328000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1378484328000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1378484328000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1378484328000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1378484328000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1378484328000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1378484328000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1378484328000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1378484328000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1378484328000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1378484328000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1378484328000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1378484328000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1378484328000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1378484328000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1378484328000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1378484328000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1378484328000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <element signature="n#style#0;n#a#0;n#li#0;n#ul#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#li#4;n#ul#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/investors_controller.rb">
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/application.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/startups_controller.rb">
+    <entry file="file://$PROJECT_DIR$/app/views/campaigns/circles_step.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="62" column="3" selection-start="2283" selection-end="2457" vertical-scroll-proportion="0.6097561">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/votes_controller.rb">
+    <entry file="file://$PROJECT_DIR$/app/views/startups/_description.html.haml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="4" selection-start="255" selection-end="442" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/home_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="0" selection-start="168" selection-end="168" vertical-scroll-proportion="0.0">
+        <state line="24" column="59" selection-start="1514" selection-end="1514" vertical-scroll-proportion="-15.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/campaigns_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="45" selection-start="275" selection-end="275" vertical-scroll-proportion="0.0">
+        <state line="17" column="66" selection-start="449" selection-end="449" vertical-scroll-proportion="0.25384617">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/authentications_controller.rb">
+    <entry file="file://$PROJECT_DIR$/app/views/campaigns/guide_step.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="185" column="0" selection-start="6279" selection-end="6279" vertical-scroll-proportion="0.0">
+        <state line="0" column="0" selection-start="0" selection-end="2679" vertical-scroll-proportion="-0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/home/index.html.haml">
+    <entry file="file://$PROJECT_DIR$/app/views/campaigns/new_view.html.haml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="46" column="13" selection-start="1768" selection-end="1768" vertical-scroll-proportion="-18.125">
+        <state line="1" column="108" selection-start="34" selection-end="34" vertical-scroll-proportion="0.02446982">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/authentications/remote_login.js.erb">
+    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/startups.css.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="88" column="75" selection-start="3767" selection-end="3767" vertical-scroll-proportion="0.8662316">
+        <state line="42" column="0" selection-start="803" selection-end="930" vertical-scroll-proportion="0.5769231">
           <folding>
-            <marker date="1378486067000" expanded="false" signature="-1:-1" placeholder="..." />
-            <marker date="1378486067000" expanded="false" signature="-1:-1" placeholder="..." />
-            <marker date="1378486067000" expanded="false" signature="-1:-1" placeholder="..." />
+            <element signature="e#808#855#0" expanded="false" />
+            <element signature="e#862#929#0" expanded="false" />
+            <element signature="e#944#1499#0" expanded="false" />
+            <element signature="e#1519#4910#0" expanded="false" />
+            <element signature="e#1742#1883#0" expanded="false" />
+            <element signature="e#1926#3112#0" expanded="false" />
+            <element signature="e#3130#3393#0" expanded="false" />
+            <element signature="e#3412#4906#0" expanded="false" />
+            <element signature="e#3818#4900#0" expanded="false" />
+            <element signature="e#4926#5896#0" expanded="false" />
+            <element signature="e#5909#6169#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/application.scss">
+    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/campaigns.css.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="272" column="10" selection-start="5240" selection-end="5240" vertical-scroll-proportion="0.42948717">
+        <state line="6" column="27" selection-start="163" selection-end="163" vertical-scroll-proportion="0.1433121">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/layouts/startups.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="34" selection-start="279" selection-end="279" vertical-scroll-proportion="-5.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/startups/_startup.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="16" selection-start="278" selection-end="278" vertical-scroll-proportion="0.07188498">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/routes.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="108" column="22" selection-start="2659" selection-end="2659" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/startups/search_startups.js.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="79" selection-start="651" selection-end="651" vertical-scroll-proportion="0.3115016">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/startups_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="236" column="0" selection-start="6477" selection-end="6477" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/startups/index.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="27" selection-start="600" selection-end="600" vertical-scroll-proportion="0.4649266">
           <folding />
         </state>
       </provider>
