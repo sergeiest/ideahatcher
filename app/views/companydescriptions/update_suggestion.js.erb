@@ -7,8 +7,5 @@ end
 content_string = content_string[0..-2]
 %>
 
-mainDiv.getElementsByClassName("p_new")[0].innerHTML = "<%= content_string.firstletters(340) %>" +
-                '<span class="edit-description"><i class="icon-pencil glyphw" onclick="editStep1(this.parentNode.parentNode)"></i></span>';
-mainDiv.getElementsByClassName("p_new")[0].hidden = false;
-
-mainDiv.getElementsByClassName('edit-description-form')[0].hidden = true;
+mainDiv.getElementsByClassName("p_new")[0].innerHTML = "<%= content_string.firstletters(340) %>";
+mainDiv.getElementsByClassName('edit-description')[0].hidden = true;

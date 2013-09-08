@@ -1,0 +1,121 @@
+.new-view-content
+  %h2 My ideas / #{@startup.name}
+  .new-view-company
+    .pitch-box
+      %h2.main-name{:id => "main-name"}
+        %span= @startup.name
+        %span
+          %i.icon-pencil.glyphw{:onclick => "editName(this.parentNode)"}
+        = form_tag({:action => 'update_name', :controller => "campaigns"},
+                                   :remote => true, :hidden => true) do
+          = text_field_tag :name, @startup.name
+          = hidden_field_tag :id, @startup.id
+          %br
+          = submit_tag "Save", :class => "btn btn-small btn-warning"
+      - if @startup.avatar?
+        = image_tag @startup.avatar.url(:large), :class => "main-logo"
+      - else
+        = image_tag '/images/profile/Nologo.png', :class => "main-logo"
+      %a.btn.btn-mini{:href => "#uploadPhoto", :role => "button", :'data-toggle' => "modal",
+                         :style => "margin:-20px 0 0px 0;width:100px"} Update photo
+
+    .clear-both
+    #main-description.description-box
+      %p
+        =@startup.pitch.firstletters(500)
+        %i.icon-pencil.glyphw{:onclick => "editDescription(this.parentNode.parentNode)"}
+      = form_tag({:action => 'update_description', :controller => "campaigns"},
+                             :remote => true, :hidden => true) do
+        = hidden_field_tag :id, @startup.id
+        = text_area_tag :pitch, @startup.pitch
+        %br
+        = submit_tag "Save", :class => "btn btn-small btn-warning"
+
+    - @company_descriptions.each do |description|
+      = render :partial => 'description', :locals => {:description => description}
+
+  = render "info"
+
+#uploadPhoto.modal.hide.fade{:tabindex => "-1", :role => "dialog", :'aria-labelledby' => "myModalLabel", :'aria-hidden' => "true"}
+  .modal-header
+    %button.close{ :type => "button", :'data-dismiss' => "modal", :'aria-hidden' => "true"} ×
+    %h3{ :id => "myModalLabel"} Upload photo or logo
+  = form_tag({:controller => "campaigns", :action => "upload_logo"}, :multipart => true) do
+    .modal-body
+      %p Upload photo or graphic that best represents your idea. Aspect ratio of the picture should be 2:1.
+      = file_field_tag :avatar, :onchange => "checkFile(this)"
+      = hidden_field_tag :back_action, "dashboard"
+      = hidden_field_tag :id, @startup.id
+      %p#photo_error{ :style => "color:red"}
+    .modal-footer
+      %button{:class => "btn", :'data-dismiss' => "modal", :'aria-hidden' => "true"} Close
+      %button{:class => "btn btn-primary", :id => "photo_upload", :disabled => "true"} Upload photo
+
+
+%script{ :type => "text/javascript", :src => "http://www.google.com/jsapi"}
+
+:javascript
+  google.load('visualization', '1', {packages: ['corechart']});
+
+  function hideHatching(elementNode,linkNode){
+    if (elementNode.hidden == true){
+      elementNode.hidden = false;
+      linkNode.innerHTML = linkNode.innerHTML.replace("Help hatch it!", "Hide dashboard...");
+      animationCustom(elementNode,"height", 0, elementNode.offsetHeight, 0);
+    } else {
+      linkNode.innerHTML = linkNode.innerHTML.replace("Hide dashboard...", "Help hatch it!");
+      animationCustom(elementNode,"height", elementNode.offsetHeight, 0, 1);
+    }
+  }
+  function editName(elementNode){
+      elementNode.parentNode.children[0].hidden = true;
+      elementNode.parentNode.children[1].hidden = true;
+      elementNode.parentNode.children[2].hidden = false;
+  }
+  function editDescription(elementNode) {
+      elementNode.children[0].hidden = true;
+      elementNode.children[1].hidden = false;
+  }
+
+  function editStep1(elementNode) {
+      elementNode.getElementsByClassName("step1")[0].hidden = false;
+      elementNode.getElementsByClassName("step2")[0].hidden = true;
+      elementNode.getElementsByClassName("edit-description")[0].hidden = false;
+  }
+
+  function editStep2(elementNode) {
+      var formNode = elementNode.getElementsByTagName("form")[0];
+      var pNew = elementNode.getElementsByClassName('p_new')[0];
+
+      if (elementNode.parentNode.getElementsByTagName("input")[0].checked == true){
+          formNode.getElementsByTagName('textarea')[0].value = "";
+          formNode.getElementsByTagName('input')[3].value = "1";
+      } else {
+          formNode.getElementsByTagName('textarea')[0].value = pNew.innerText;
+          formNode.getElementsByTagName('input')[3].value = "0";
+      }
+      elementNode.getElementsByClassName("step1")[0].hidden = true;
+      elementNode.getElementsByClassName("step2")[0].hidden = false;
+      elementNode.getElementsByClassName("edit-description")[0].hidden = false;
+  }
+
+  function editCancel(elementNode) {
+      elementNode.parentNode.parentNode.hidden = true;
+      elementNode.parentNode.hidden = true;
+  }
+
+  function checkFile(elementNode){
+    var fileInput = elementNode;
+    var fileName = fileInput.value;
+    var ext = fileName.substring(fileName.lastIndexOf('.') + 1);
+    if(ext == "gif" || ext == "GIF" || ext == "JPEG" || ext == "jpeg" || ext == "jpg" || ext == "JPG" || ext == "png" || ext == "PNG") {
+      document.getElementById('photo_error').innerText = "";
+      document.getElementById('photo_upload').disabled = false;
+    } else {
+      document.getElementById('photo_error').innerText = "Upload Gif or Jpg images only";
+      document.getElementById('photo_upload').disabled = true;
+      fup.focus();
+    }
+  }
+
+

@@ -1,0 +1,27 @@
+.new-view-content
+  = render "nav"
+
+  .campaign-box
+    %h5 Basic information
+    = form_tag(:action => 'create_step', :multipart => true) do
+      %ol
+        %li
+          - if @startup.errors[:name].length > 0
+            %h4{ :style => "color:red; border-color:red;" } idea name
+            = text_field(:startup,:name, :style => "border-color:red")
+          - else
+            %h4 idea name
+            = text_field(:startup,:name)
+        %li
+          - if @startup.errors[:link].length > 0
+            %h4{:style => "color:red; border-color:red;"} Link to your website (if you have one)
+            = text_field(:startup,:link, :style => "border-color:red")
+          - else
+            %h4 Link to your website (if you have one)
+            = text_field(:startup,:link)
+        %li
+          %h4 Short description
+          %p Here is you opportunity to sell your idea and attract investors
+          = text_area :startup, :pitch
+      = submit_tag "Next", :class => "btn btn-warning", :style => "float:right"
+      .clear-both

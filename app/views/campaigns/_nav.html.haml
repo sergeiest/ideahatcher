@@ -1,0 +1,11 @@
+.navbar.navbar-inverse
+  .navbar-inner
+    %ul.nav
+      %li{:class => "#{'active' if params[:action] == 'guide_step'}"}
+        %a{:href => "#"} 1. Guidelines
+      %li{:class => "#{'active' if params[:action] == 'basic_step'}"}
+        %a{:href => "#"} 2. Basic info
+      %li{:class => "#{'active' if params[:action] == 'about_step'}"}
+        %a{:href => "#"} 3. Details
+      %li{:class => "#{'active' if params[:action] == 'circles_step'}"}
+        %a{:href => "#"} 4. Publish

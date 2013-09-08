@@ -20,26 +20,7 @@
     - @company_descriptions.each do |description|
       = render :partial => 'description', :locals => {:description => description}
 
-  .team-box
-    %h3 Team
-    - @startup_owners.each do |person|
-      = link_to({:controller => "investors", :action => "follower_info", :id => person.id,
-                :action_type => 1}, :remote => true) do
-        .person-info
-          - if person.avatar?
-            = image_tag person.avatar.url(:square)
-          - else
-            = image_tag "/images/profile/Nophoto.png"
-          %h5= person.firstname + " " + person.lastname
-          %p Founder
-    %hr
-    %h3 Followers
-    - @startup_followers.each do |person|
-      %p #{person.firstname} #{person.lastname}
-    - if @startup_followers.length == 0
-      %p No followers so far, be the first to follow
-
-  .clear-both
+  = render "info"
 
 
 :javascript

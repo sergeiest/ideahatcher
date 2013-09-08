@@ -1,0 +1,116 @@
+.new-view-content {
+  min-width:720px;
+  min-height: -webkit-calc(100% - 112px);
+  width:70%;
+  margin:0px auto 0px auto;
+  padding:50px 20px 0 20px;
+  width: 65%;
+  background-color: white;
+  border:1px #07b5b5 solid;
+  box-shadow: 0px 0px 10px #888, 0px 0px 10px #888;
+}
+
+.campaign-box {
+  padding: 20px 20px;
+  p {
+    font-size:14px;
+    line-height:24px;
+  }
+  h5 {
+    color: #07b5b5;
+    font-size: 18px;
+  }
+  .check-box {
+    background-color: #d7d7d7;
+    border:1px #888 solid;
+    padding:20px;
+    margin-right: 20px;
+    #accept-check {
+      margin-top: 18px;
+      margin-bottom: -30px;
+      width:10px;
+      float:left;
+    }
+    button {margin-top: 6px;}
+  }
+
+  input {width:-webkit-calc(100% - 40px)}
+  img {width:-webkit-calc(100% - 20px)}
+  input.btn {
+    width:100px;
+    margin-top: 30px;
+  }
+  textarea {
+    width:-webkit-calc(100% - 40px);
+    height: 120px;
+  }
+
+  #hashtags{
+    margin-bottom: 30px;
+  }
+  .hashtag_form{
+    input{width:200px;}
+    .btn{
+      width:70px;
+      margin: -10px 0 0 10px;
+    }
+    hr{margin: 10px 0 20px 0 ;}
+  }
+  .hashtags{
+    border:1px #888 solid;
+    padding:5px 5px 5px 10px;
+    margin-right:10px;
+
+    span {
+      background-color: #d4d4d4;
+      padding:0px 5px 2px 5px;
+      color:white;
+      cursor: pointer;
+      -webkit-border-radius: 3px;
+    }
+  }
+
+  .add-people {
+    input{width:20px;}
+    hr{margin: 10px 0 20px 0 ;}
+  }
+
+  #manual-selection{
+    input{width:200px;}
+  }
+  #current-circle {
+    border-left:2px #c8c8c8 solid;
+    float:right;
+    padding-left: 10px;
+    width: 55%;
+    input{width:200px;}
+
+    div{
+      padding:0;
+      margin:0 10px;
+      width:40%;
+      float:left;
+      a {
+        line-height: 20px;
+        font-size:12px;
+      }
+    }
+  }
+  #search-results{
+    width:30%;
+    .person-info{
+      margin:10px 0 10px 10px;
+      float:left;
+      h5 {
+        font-size:14px;
+        font-weight: normal;
+        padding-top:5px;
+      }
+      img {
+        width:30px;
+        height:30px;
+      }
+    }
+  }
+
+}

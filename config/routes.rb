@@ -29,20 +29,18 @@ Webapp::Application.routes.draw do
   resources :documents
 
   get "campaigns/guide_step"
-  get "campaigns/basic_step"
-  get "campaigns/about_step"
-  get "campaigns/team_step"
   post "campaigns/next_step"
+  get "campaigns/basic_step"
   post "campaigns/create_step"
+  get "campaigns/about_step"
   post "campaigns/description_step"
-  post "campaigns/team_save_step"
-  post "campaigns/upload_logo"
+  get "campaigns/circles_step"
   get "campaigns/publish_step"
+  post "campaigns/upload_logo"
   post "campaigns/update_description"
   post "campaigns/update_name"
-  get "campaigns/circles_step"
-  get "campaigns/new_view"
-  resources :campaigns
+
+  #resources :campaigns
 
   get "authentications/login"
   post "authentications/remote_login"
@@ -107,7 +105,7 @@ Webapp::Application.routes.draw do
   get "startups/newlook"
   get "startups/show"
   post "startups/search_startups"
-  get "startups/circle"
+  get "startups/circles"
   get "startups/dashboard"
   get "startups/hashtag"
   get "startups/my_ideas"

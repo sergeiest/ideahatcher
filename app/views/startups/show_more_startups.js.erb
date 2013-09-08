@@ -4,6 +4,7 @@ var mainDiv = document.getElementById("startup-results");
 var moreLink = mainDiv.getElementsByClassName("show-more")[0];
 
 <% @startups.each do |startup| %>
+
     <% div_name = 'project' + startup.id.to_s() %>
 
     var startupDiv = document.createElement("div");
@@ -11,17 +12,17 @@ var moreLink = mainDiv.getElementsByClassName("show-more")[0];
     startupDiv.onmouseout = function() { MM_changeProp('<%= div_name %>','','backgroundColor','white','DIV'); };
 
     startupDiv.setAttribute("id", "project<%= startup.id %>");
-    startupDiv.setAttribute("class", "startup-frame");
+    startupDiv.setAttribute("class", "new-view-startup");
 
     startupDiv.innerHTML = "<a href='<%= startup.id %>'></a>";
     <% if startup.avatar? %>
-        htmlText = '<%= image_tag startup.avatar.url(:large) %>';
+    htmlText = '<%= image_tag startup.avatar.url(:large), :class => "main-logo" %>';
     <% else %>
-        htmlText = '<img src="/images/profile/Nologo.png">';
+    htmlText = '<img src="/images/profile/Nologo.png"  class="main-logo">';
     <% end %>
 
-    htmlText = htmlText + "<h2><%= startup.name %></h2>";
-    htmlText = htmlText + '<p class="p-content"><%= startup.pitch.firstletters(120) %></p>';
+    htmlText = htmlText + "<h5><%= startup.name %></h5>";
+    htmlText = htmlText + '<p><%= startup.pitch.firstletters(120) %></p>';
 
 
     <% tags = startup.Tags
@@ -29,8 +30,8 @@ var moreLink = mainDiv.getElementsByClassName("show-more")[0];
     tags.each do |tag|
         tag_string += "#" + tag.name + ", "
     end
-    if tag_string.length > 26
-      tag_string = tag_string[0..24] + ".."
+    if tag_string.length > 30
+      tag_string = tag_string[0..28] + ".."
     else
       if tag_string.length > 0
         tag_string = tag_string[0..-3]
@@ -40,12 +41,10 @@ var moreLink = mainDiv.getElementsByClassName("show-more")[0];
     end
     %>
 
-    htmlText = htmlText + '<p class="hashtag" style="border:0px;background-color: inherit;"><%= tag_string%></p>';
-    htmlText = htmlText + '<p class="vote-stat"><%= startup.votes %> people voted</p>';
-
+    htmlText = htmlText + '<p class="hashtags"><%= tag_string%></p>';
 
     startupDiv.firstChild.innerHTML = htmlText;
-    mainDiv.insertBefore(startupDiv, moreLink.parentNode);
+    mainDiv.insertBefore(startupDiv, moreLink);
 <% end %>
 
 <% if @startups_shown == 0 %>

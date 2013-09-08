@@ -13,6 +13,18 @@
   #startup-results.new_view
     - @startups.each do |startup|
       = render :partial => 'startup', :locals => {:startup => startup}
+    - if params[:action] == "index" and @startups_shown != 0
+      :ruby
+        startup_list = ""
+        @startups.each do |startup|
+          startup_list += startup.id.to_s() + ","
+        end
+        startup_list = startup_list[0..-2]
+      = link_to({:action => "show_more_startups", :startups_shown => @startups_shown, :startup_list => startup_list},
+                           :class => "show-more", :remote => true) do
+        %i.icon-chevron-down.glyphw
+        Show more
+        %i.icon-chevron-down.glyphw
 
   .new-view-nav
     = form_tag({:action => "search_startups"}, :remote => true) do

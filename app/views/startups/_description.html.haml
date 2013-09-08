@@ -1,4 +1,4 @@
-.description-box{:'z-index' => description.allfield_id}
+.description-box{:id => "description_#{description.id}", :'z-index' => description.allfield_id}
   - if params[:action] == 'show'
     .action-box
       .slider-bar
@@ -43,14 +43,53 @@
           = simple_format old_description.content.firstletters(300)
         %img{:src => "../images/vs.png"}
         .idea-statement
-          = simple_format description.content.firstletters(300)
+          = simple_format description.content.firstletters(300), :class => "p_new"
+          %i.icon-pencil.glyphw{:onclick => "editStep1(this.parentNode.parentNode)"}
       -else
         .idea-statement
-          = simple_format description.content.firstletters(300)
+          = simple_format description.content.firstletters(300), :class => "p_new"
+          %i.icon-pencil.glyphw{:onclick => "editStep1(this.parentNode.parentNode)"}
         %img{:src => "../images/vs.png"}
         .idea-statement.empty-statement
           %p No other versions available. Suggest a new one bellow...
       .clear-both
+      .edit-description{:hidden => "true"}
+        %div.step1{:hidden => "true"}
+          %p
+            %input{ :type => "radio", :name => "group#{description.id}", :value => "new_vesrsion", :checked => 'true'}
+            Add new version
+          %p
+            %input{ :type => "radio", :name => "group#{description.id}", :value => "new_vesrsion"}
+            Correct current version
+            %hr
+            %button.btn.btn-mini.btn-warning{:onclick => "editStep2(this.parentNode.parentNode.parentNode.parentNode)"} Next
+            %button.btn.btn-mini{:onclick => "editCancel(this)"} Cancel
+            .clear-both
+        %div.step2{:hidden => "true"}
+          = form_tag({:action => "new_suggestion", :controller => "companydescriptions"},
+                                                   :multipart => true,
+                                                   :class => "next-test",
+                                                   :remote => true) do
+            = hidden_field :companydescription, :companydescription_id, :value => description.id
+            = hidden_field_tag :change_type, 0
+            = text_area :companydescription, :content
+            = submit_tag 'Save', hidden: "true"
+          %hr
+            %button.btn.btn-mini.btn-warning{:onclick => "submitForm(this.parentNode.childNodes[1])"} Save
+            %button.btn.btn-mini{:onclick => "editCancel(this)"} Cancel
+            .clear-both
+
+    .chart-box
+      %hr
+        = link_to({:action => 'show_votes', :controller => 'votes',
+                  :description_id => description.id},
+                  :id => "chart_link" + description.id.to_s(),
+                  :remote => true,
+                  :style => "cursor:pointer; font-size:12px;") do
+          %i.icon-chevron-down.glyphw
+          Load votes
+          %i.icon-chevron-down.glyphw
+        .div{:id => "visualization_#{description.id}"}
 
     .idea-box
       %hr

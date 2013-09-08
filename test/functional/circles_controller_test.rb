@@ -18,10 +18,10 @@ class CirclesControllerTest < ActionController::TestCase
 
   test "should create circle" do
     assert_difference('Circle.count') do
-      post :create, circle: { startup_id: @circle.startup_id, status: @circle.status, user_id: @circle.user_id }
+      post :create, circles: { startup_id: @circle.startup_id, status: @circle.status, user_id: @circle.user_id }
     end
 
-    assert_redirected_to circle_path(assigns(:circle))
+    assert_redirected_to circle_path(assigns(:circles))
   end
 
   test "should show circle" do
@@ -35,8 +35,8 @@ class CirclesControllerTest < ActionController::TestCase
   end
 
   test "should update circle" do
-    put :update, id: @circle, circle: { startup_id: @circle.startup_id, status: @circle.status, user_id: @circle.user_id }
-    assert_redirected_to circle_path(assigns(:circle))
+    put :update, id: @circle, circles: { startup_id: @circle.startup_id, status: @circle.status, user_id: @circle.user_id }
+    assert_redirected_to circle_path(assigns(:circles))
   end
 
   test "should destroy circle" do

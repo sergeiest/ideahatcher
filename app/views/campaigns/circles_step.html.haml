@@ -1,0 +1,109 @@
+.new-view-content
+  = render "nav"
+
+  .campaign-box
+    %h5 Invite other people to discuss your idea
+    %ol
+      %li
+        %h4 Hashtags
+        %p This is a simple way to let people know what your idea is about
+        = form_tag({:action => "add_tag", :controller => "tags"}, :remote => true, :class => "hashtag_form") do
+          = text_field_tag :tag_name
+          = hidden_field_tag :id, @startup.id
+          = submit_tag "Add", :class => "btn btn-small"
+          %hr
+        = form_tag({:action => "delete_tag", :controller => "tags"}, :remote => true, :hidden => "true") do
+          = hidden_field_tag :tag_id, 0
+          = hidden_field_tag :id, @startup.id
+          = submit_tag "delete", :id => "delete_this_tag"
+        #hashtags
+          - @tags.each do |tag|
+            %span.hashtags
+              = "#" + tag.name
+              %span.delete-tag{:onclick => "deleteTag(#{tag.id}, this)"} x
+      %li.add-people
+        %h4 Choose who to share with:
+        %p Select people you want to share your idea with to receive feedback and advice.
+        = form_tag({:action => "add_circle", :controller => "circles"}, :remote => 'true',
+                              :onclick => 'submitForm(this)') do
+          %p
+            = radio_button_tag :circle_status, 0, 1
+            Do not share yet (you can share it later)
+          %p
+            = radio_button_tag :circle_status, 1
+            Select people yourself
+          %p
+            = radio_button_tag :circle_status, 2
+            Invite 20 random people
+          %p
+            = radio_button_tag :circle_status, 3
+            Share the idea with everyone
+          = hidden_field_tag :startup_id, @startup.id
+          = submit_tag "submit", :hidden => "true"
+
+        #manual-selection{:hidden => "true"}
+          %hr
+          #current-circle
+            %h4 People you have added:
+            - @circles.each do |person|
+              %div= link_to(person.firstname + " " + person.lastname,
+                                  {:controller => "investors", :action => "follower_info",
+                                  :id => person.id, :action_type => "remove_circle"},
+                                  :remote => true)
+          = form_tag({:action => "search_people", :controller => "investors"},
+                                  :remote => true) do
+            = text_field_tag :string, "search", :onclick => "clearInput(this)", :onkeyup => "submitForm(this.parentNode)"
+            = hidden_field_tag :action_type, "add_circle"
+            = submit_tag "submit", :hidden => "true"
+          = form_tag({:action => "add_person", :controller => "circles"},
+                                  :remote => true,
+                                  :hidden => true,
+                                  :id => "add_person") do
+            = hidden_field_tag :user_id, 0
+            = hidden_field_tag :startup_id, @startup.id
+            = submit_tag "submit", :hidden => "true"
+          = form_tag({:action => "remove_person", :controller => "circles"},
+                                  :remote => true,
+                                  :hidden => true,
+                                  :id => "remove_person") do
+            = hidden_field_tag :user_id, 0
+            = hidden_field_tag :startup_id, @startup.id
+            = submit_tag "submit", :hidden => "true"
+          #search-results
+          .clear-both
+    = link_to 'Publish', { :action => "publish_step", :id => @startup.id}, :class => "btn btn-warning", :style => "float:right"
+    .clear-both
+
+
+:javascript
+  function deleteTag(id, element){
+          document.getElementById("tag_id").value = id;
+          element.hidden = true;
+          document.getElementById("delete_this_tag").click();
+      }
+
+
+  function addPerson (elementNode, id) {
+      var formElement = document.getElementById("add_person");
+      var notes = formElement.children;
+      for (var i = 0; i < notes.length; i++) {
+          if (notes[i].getAttribute('name') == 'user_id') {
+              notes[i].value = id;
+          }
+      }
+      submitForm(formElement);
+      $('#info_modal').modal('hide');
+  }
+
+  function removePerson (elementNode, id) {
+      var formElement = document.getElementById("remove_person");
+      var notes = formElement.children;
+      for (var i = 0; i < notes.length; i++) {
+          if (notes[i].getAttribute('name') == 'user_id') {
+              notes[i].value = id;
+          }
+      }
+      submitForm(formElement);
+      $('#info_modal').modal('hide');
+  }
+

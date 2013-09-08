@@ -11,20 +11,15 @@ var data = google.visualization.arrayToDataTable([
 ]);
 
 // Create and draw the visualization.
-new google.visualization.ColumnChart(document.getElementById('visualization_<%= params[:description_id] %>')).
+var mainDiv = document.getElementById('visualization_<%= params[:description_id] %>');
+new google.visualization.ColumnChart(mainDiv).
     draw(data,
-            {title:"Distribution of votes for this aspect",
-                width:600, height:200
+            {title:"Distribution of votes",
+                width:400, height:160
             }
 );
 
-aNote = document.getElementById("chart_link<%= params[:description_id] %>");
+document.getElementById("chart_link<%= params[:description_id] %>").hidden = true;
+chartNode = mainDiv.getElementsByTagName('div')[0]
+chartNode.setAttribute("class", "chart-field");
 
-aNote.innerHTML = "Hide votes<i class=' icon-chevron-up glyphw '></i>";
-
-for (var i=aNote.attributes.length; i-->0;) {
-    aNote.removeAttributeNode(aNote.attributes[i]);
-}
-
-aNote.setAttribute("onclick", "showVotes(this, <%= params[:description_id] %>)");
-aNote.setAttribute("style", "cursor:pointer; font-size:12px;");

@@ -9,7 +9,7 @@ class StartupsController < ApplicationController
   before_filter do
     wrong_link = 0
     case params[:action]
-      when "team", "detailed", "circle"
+      when "team", "dashboard", "circles"
         if session[:id] == nil || session[:id] == 0
           wrong_link = 1
         else
@@ -34,7 +34,7 @@ class StartupsController < ApplicationController
             connection_type=0
             if Owner.where("startup_id = ? AND user_id = ?", params[:id], session[:id]).length > 0
               connection_type = 2
-              redirect_to :controller => 'startups', :action => 'detailed', :id => params[:id] and return if params[:action] == "show"
+              redirect_to :controller => 'startups', :action => 'dashboard', :id => params[:id] and return
             else
               if Follower.where("startup_id = ? AND user_id = ?", params[:id], session[:id]).length > 0
                 connection_type = 1
@@ -184,7 +184,7 @@ class StartupsController < ApplicationController
   end
 
 
-  def circle
+  def circles
     @startup = Startup.find(session[:startup_id])
     @tags = @startup.Tags
     @people = User.all[0..5]
@@ -194,7 +194,7 @@ class StartupsController < ApplicationController
   end
 
 
-  def detailed
+  def dashboard
     @user = User.find(session[:id])   if session[:id] and session[:id] != 0
     @startup = Startup.find(session[:startup_id])
     @descriptions = @startup.Companydescriptions.where("status = ?",1)

@@ -1,0 +1,27 @@
+- if session[:connection_type]==2
+  .team-box
+    %h3 Manage my idea
+    %p= link_to 'Dashboard', :action => "dashboard", :id => @startup.id
+    %p= link_to 'Manage team', :action => "team", :id => @startup.id
+    %p= link_to 'Share', :action => "circles", :id => @startup.id
+
+.team-box
+  %h3 Team
+  #team-list
+    - @startup_owners.each do |person|
+      = link_to({:controller => "investors", :action => "follower_info", :id => person.id,
+                :action_type => 1}, :remote => true) do
+        .person-info
+          - if person.avatar?
+            = image_tag person.avatar.url(:square)
+          - else
+            = image_tag "/images/profile/Nophoto.png"
+          %h5= person.firstname + " " + person.lastname
+          %p Founder
+  %hr
+  %h3 Followers
+  - @startup_followers.each do |person|
+    %p #{person.firstname} #{person.lastname}
+  - if @startup_followers.length == 0
+    %p No followers so far, be the first to follow
+.clear-both

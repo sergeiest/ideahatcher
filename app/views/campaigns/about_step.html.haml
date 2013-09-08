@@ -1,0 +1,74 @@
+.new-view-content
+  = render "nav"
+
+  .campaign-box
+    %h5 About idea
+    = form_tag(:action => 'description_step', :multipart => true) do
+      %ol
+        %li
+          %h4
+            idea image
+            %a{:href => "#uploadPhoto", :role => "button", :class => "btn btn-mini", :'data-toggle' => "modal"} Update Photo
+            - if @startup.errors[:avatar].length > 0
+              %p {:style => "color:red"} Photo was not upload, probably wrong file format. Please try again
+            - if @startup.avatar?
+              = image_tag @startup.avatar.url(:large), :style=>"margin-bottom:20px "
+            - else
+              %img{ :src => '/images/profile/Nologo.png', :class => "main-logo" }
+        %li
+          %h4= @descriptions[0].field_status
+          = hidden_field :companydescriptions1, :field_status, :value => @descriptions[0].field_status
+          = hidden_field :companydescriptions1, :allfield_id, :value => @descriptions[0].allfield_id
+          %p
+            Tell us about the problem that you are trying to solve. Who are your customers and why this problem is
+            important for them:
+          = text_area :companydescriptions1, :content, :value => @descriptions[0].content
+        %li
+          %h4= @descriptions[0].field_status
+          = hidden_field :companydescriptions2, :field_status, :value => @descriptions[1].field_status
+          = hidden_field :companydescriptions2, :allfield_id, :value => @descriptions[1].allfield_id
+          %p How your idea will solve the problem, how is it different from other solutions:
+          = text_area :companydescriptions2, :content, :value => @descriptions[1].content
+        %li
+          %h4= @descriptions[0].field_status
+          = hidden_field :companydescriptions3, :field_status, :value => @descriptions[2].field_status
+          = hidden_field :companydescriptions3, :allfield_id, :value => @descriptions[2].allfield_id
+          %p
+            Describe how your idea creates, delivers, and captures value. How do you plan to generate revenue
+            from your idea:
+          = text_area :companydescriptions3, :content, :value => @descriptions[2].content
+      = hidden_field_tag :id, params[:id]
+      = submit_tag "Next", :class => "btn btn-warning", :style => "float:right"
+    .clear-both
+
+
+    #uploadPhoto.modal.hide.fade{:tabindex => "-1", :role => "dialog", :'aria-labelledby' => "myModalLabel", :'aria-hidden' => "true"}
+      .modal-header
+        %button.close{ :type => "button", :'data-dismiss' => "modal", :'aria-hidden' => "true"} ×
+        %h3{ :id => "myModalLabel"} Upload photo or logo
+      = form_tag({:controller => "campaigns", :action => "upload_logo"}, :multipart => true) do
+        .modal-body
+          %p Upload photo or graphic that best represents your idea. Aspect ratio of the picture should be 2:1.
+          = file_field_tag :avatar, :onchange => "checkFile(this)"
+          = hidden_field_tag :back_action, "about_step"
+          = hidden_field_tag :id, @startup.id
+          %p#photo_error{ :style => "color:red"}
+        .modal-footer
+          %button{:class => "btn", :'data-dismiss' => "modal", :'aria-hidden' => "true"} Close
+          %button{:class => "btn btn-primary", :id => "photo_upload", :disabled => "true"} Upload photo
+
+
+:javascript
+  function checkFile(elementNode){
+    var fileInput = elementNode;
+    var fileName = fileInput.value;
+    var ext = fileName.substring(fileName.lastIndexOf('.') + 1);
+    if(ext == "gif" || ext == "GIF" || ext == "JPEG" || ext == "jpeg" || ext == "jpg" || ext == "JPG" || ext == "png" || ext == "PNG") {
+      document.getElementById('photo_error').innerText = "";
+      document.getElementById('photo_upload').disabled = false;
+    } else {
+      document.getElementById('photo_error').innerText = "Upload Gif or Jpg images only";
+      document.getElementById('photo_upload').disabled = true;
+      fup.focus();
+    }
+  }

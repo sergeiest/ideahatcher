@@ -14,21 +14,25 @@ class CampaignsController < ApplicationController
       end
     else
       case params[:action]
-        when "next_step"
-        when "guide_step", "basic_step", "create_step", "new_view"
-          session[:startup_id] = nil
-        when "about_step", "description_step", "upload_logo", "update",
-            "destroy", "publish_step", "circles_step", "update_description", "update_name"
+        when "create_step"
           user = User.find(session[:id])
-          if user.nil? or Owner.where("startup_id = ? AND user_id = ?", params[:id], session[:id]).length == 0
+          if user.nil?
             wrong_link = 1
           else
-            session[:startup_id] = params[:id]
+            if params[:id].nil? || Owner.where("startup_id = ? AND user_id = ?", params[:id], session[:id]).length == 0
+              params[:id] = nil
+            end
           end
+        when "about_step", "description_step", "upload_logo", "publish_step", "circles_step",
+            "update_description", "update_name"
+          user = User.find(session[:id])
+          if user.nil? || Owner.where("startup_id = ? AND user_id = ?", params[:id], session[:id]).length == 0
+            wrong_link = 1
+          end
+        when "guide_step", "basic_step", "next_step"
         else
           wrong_link = 1
       end
-
     end
     case wrong_link
       when 1
@@ -38,36 +42,25 @@ class CampaignsController < ApplicationController
     end
   end
 
-  def new_view
-
-  end
-
   def guide_step
 
   end
 
   def next_step
-
-    #if user.Owner_startups == nil
-        redirect_to  :action =>'basic_step'
-    #  else
-    #    redirect_to  :action =>'guide_step'
-    #end
+    redirect_to  :action =>'basic_step'
   end
 
   def basic_step
      @startup = Startup.new
   end
 
-
-
   def create_step
 
-    if session[:startup_id] == nil
+    if params[:id] == nil
       params[:startup][:status] = 0
       @startup = Startup.new(params[:startup])
     else
-      @startup = Startup.find(session[:startup_id])
+      @startup = Startup.find(params[:id])
     end
 
     startup_errors = Startup.check_errors(params[:startup])
@@ -79,16 +72,15 @@ class CampaignsController < ApplicationController
         format.json { render json: @startup }
       end
     else
-      if session[:startup_id] == nil
+      if params[:id] == nil
         respond_to do |format|
           if @startup.save
-            session[:startup_id] = @startup.id
             owner = Owner.new
             owner.startup_id = @startup.id
             owner.user_id = session[:id]
             owner.status = 1
             owner.save
-            format.html { redirect_to action: 'about_step', :id => session[:startup_id]}
+            format.html { redirect_to action: 'about_step', :id => @startup.id}
           else
             format.html { render action: "basic_step"}
           end
@@ -96,7 +88,7 @@ class CampaignsController < ApplicationController
       else
         respond_to do |format|
           if @startup.update_attributes(params[:startup])
-            format.html { redirect_to action: 'about_step', :id => session[:startup_id]}
+            format.html { redirect_to action: 'about_step', :id => @startup.id}
           else
             format.html { render action: "basic_step"}
           end
@@ -108,66 +100,53 @@ class CampaignsController < ApplicationController
   end
 
   def about_step
-    @startup = Startup.find(session[:startup_id])
 
-    # Works only for 3 fields!
+    @startup = Startup.find(params[:id])
+    all_descriptions = @startup.Companydescriptions.where("status = 1")
+    @descriptions = Array.new
 
-    i=0
-    for allfield in Allfield.find_all_by_view_flag(3)
-      i = i +1
-      case i
-        when 1
-          @companydescriptions1 = @startup.Companydescriptions.where("allfield_id = ? AND status = 1",allfield.id)[0]
-          if @companydescriptions1 == nil
-            @companydescriptions1 = Companydescription.new
-            @companydescriptions1.allfield_id = allfield.id
-          end
-        when 2
-          @companydescriptions2 = @startup.Companydescriptions.where("allfield_id = ? AND status = 1",allfield.id)[0]
-          if @companydescriptions2 == nil
-            @companydescriptions2 = Companydescription.new
-            @companydescriptions2.allfield_id = allfield.id
-          end
-        when 3
-          @companydescriptions3 = @startup.Companydescriptions.where("allfield_id = ? AND status = 1",allfield.id)[0]
-          if @companydescriptions3 == nil
-            @companydescriptions3 = Companydescription.new
-            @companydescriptions3.allfield_id = allfield.id
-          end
+    Allfield.where("view_flag = 3").each do |all_field|
+      if all_descriptions.select{|x| x.allfield_id == all_field.id}.length > 0
+        @descriptions << all_descriptions.select{|x| x.allfield_id == all_field.id}[0]
+      else
+        new_description = Companydescription.new
+        new_description.allfield_id = all_field.id
+        new_description.field_status = all_field.field_name
+        @descriptions << new_description
       end
     end
+
+    @descriptions.sort!{|x, y| x["allfield_id"] <=> y["allfield_id"]}
+
   end
 
   def description_step
 
     #Works only for 3 fields!
 
-    startup = Startup.find(session[:startup_id])
-
-    no_errors = 1
-
+    startup = Startup.find(params[:id])
     all_descriptions = startup.Companydescriptions.where("status = 1")
-
+    no_errors = 1
 
     params_descriptions = Array.new
 
-    params_descriptions[0] = Companydescription.new
-    params_descriptions[0].allfield_id = params[:companydescriptions1][:allfield_id]
-    params_descriptions[0].content = params[:companydescriptions1][:content]
-    params_descriptions[0].field_status = params[:companydescriptions1][:field_status]
+    params_description = Companydescription.new
+    params_description.allfield_id = params[:companydescriptions1][:allfield_id]
+    params_description.content = params[:companydescriptions1][:content]
+    params_description.field_status = params[:companydescriptions1][:field_status]
+    params_descriptions << params_description
 
-    params_descriptions[1] = Companydescription.new
-    params_descriptions[1].allfield_id = params[:companydescriptions2][:allfield_id]
-    params_descriptions[1].content = params[:companydescriptions2][:content]
-    params_descriptions[1].field_status = params[:companydescriptions2][:field_status]
+    params_description = Companydescription.new
+    params_description.allfield_id = params[:companydescriptions2][:allfield_id]
+    params_description.content = params[:companydescriptions2][:content]
+    params_description.field_status = params[:companydescriptions2][:field_status]
+    params_descriptions << params_description
 
-    params_descriptions[2] = Companydescription.new
-    params_descriptions[2].allfield_id = params[:companydescriptions3][:allfield_id]
-    params_descriptions[2].content = params[:companydescriptions3][:content]
-    params_descriptions[2].field_status = params[:companydescriptions3][:field_status]
-
-
-
+    params_description = Companydescription.new
+    params_description.allfield_id = params[:companydescriptions3][:allfield_id]
+    params_description.content = params[:companydescriptions3][:content]
+    params_description.field_status = params[:companydescriptions3][:field_status]
+    params_descriptions << params_description
 
     params_descriptions.each do |params_description|
       descriptions = all_descriptions.select {|a| a.allfield_id == params_description.allfield_id }
@@ -187,7 +166,7 @@ class CampaignsController < ApplicationController
         description.allfield_id = params_description.allfield_id
         description.content = params_description.content
         description.field_status = params_description.field_status
-        description.startup_id = session[:startup_id]
+        description.startup_id = params[:id]
         description.status = 1
         description.companydescription_id = description_id
         no_errors = 0 if !description.save
@@ -207,20 +186,20 @@ class CampaignsController < ApplicationController
   end
 
   def circles_step
-    @startup = Startup.find(session[:startup_id])
+    @startup = Startup.find(params[:id])
     @tags = @startup.Tags
     @people = User.all[0..5]
     @circles = User.all[0..9]
   end
 
   def publish_step
-    startup = Startup.find(session[:startup_id])
+    startup = Startup.find(params[:id])
     startup.update_attributes :status => 2
-    redirect_to :controller => "startups", :action => "show", :id => session[:startup_id]
+    redirect_to :controller => "startups", :action => "show", :id => params[:id]
   end
 
   def update_description
-    startup = Startup.find(session[:startup_id])
+    startup = Startup.find(params[:id])
     startup.update_attributes :pitch => params[:pitch] if params[:pitch] and params[:pitch].length > 0
     respond_to do |format|
       format.js
@@ -228,7 +207,7 @@ class CampaignsController < ApplicationController
   end
 
   def update_name
-    startup = Startup.find(session[:startup_id])
+    startup = Startup.find(params[:id])
     startup.update_attributes :name => params[:name] if params[:name] and params[:name].length > 0
     respond_to do |format|
       format.js
@@ -236,11 +215,11 @@ class CampaignsController < ApplicationController
   end
 
   def upload_logo
-    @startup = Startup.find(session[:startup_id])
+    @startup = Startup.find(params[:id])
     if @startup.update_attributes :avatar => params[:avatar]
       case params[:back_action]
-        when "detailed"
-          redirect_to :controller => "startups", :action => "detailed", :id => @startup.id and return
+        when "dashboard"
+          redirect_to :controller => "startups", :action => "dashboard", :id => @startup.id and return
         when "about_step"
           redirect_to :controller => "campaigns", :action => "about_step" and return
       end
