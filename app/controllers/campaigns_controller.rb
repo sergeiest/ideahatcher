@@ -221,7 +221,7 @@ class CampaignsController < ApplicationController
         when "dashboard"
           redirect_to :controller => "startups", :action => "dashboard", :id => @startup.id and return
         when "about_step"
-          redirect_to :controller => "campaigns", :action => "about_step" and return
+          redirect_to :controller => "campaigns", :action => "about_step", :id => @startup.id and return
       end
     end
   end
