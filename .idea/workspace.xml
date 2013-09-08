@@ -18,7 +18,17 @@
     <disable_hints />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file leaf-file-name="_description.html.haml" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/views/startups/_description.html.haml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="74" column="42" selection-start="3878" selection-end="3878" vertical-scroll-proportion="1.7128874">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -41,12 +51,12 @@
         <option value="$PROJECT_DIR$/app/controllers/campaigns_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/startups/_info.html.haml" />
         <option value="$PROJECT_DIR$/app/views/startups/dashboard.html.haml" />
-        <option value="$PROJECT_DIR$/app/views/startups/_description.html.haml" />
         <option value="$PROJECT_DIR$/app/views/votes/show_votes.js.erb" />
         <option value="$PROJECT_DIR$/app/views/startups/index.html.haml" />
         <option value="$PROJECT_DIR$/app/views/startups/show_more_startups.js.erb" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/startups.css.scss" />
         <option value="$PROJECT_DIR$/config/application.rb" />
+        <option value="$PROJECT_DIR$/app/views/startups/_description.html.haml" />
       </list>
     </option>
   </component>
@@ -701,14 +711,14 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1280" height="774" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3293944" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21555915" sideWeight="0.6706056" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21555915" sideWeight="0.6706056" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32784185" sideWeight="0.42058346" order="7" side_tool="true" content_ui="tabs" />
@@ -818,13 +828,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/startups/_description.html.haml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="83" column="39" selection-start="4268" selection-end="4268" vertical-scroll-proportion="-8.666667">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/votes/show_votes.js.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="17" column="36" selection-start="713" selection-end="713" vertical-scroll-proportion="-10.625">
@@ -884,6 +887,13 @@
     <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/startups.css">
       <provider selected="true" editor-type-id="text-editor">
         <state line="172" column="22" selection-start="3387" selection-end="3387" vertical-scroll-proportion="3.0769231">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/startups/_description.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="74" column="42" selection-start="3878" selection-end="3878" vertical-scroll-proportion="1.7128874">
           <folding />
         </state>
       </provider>
