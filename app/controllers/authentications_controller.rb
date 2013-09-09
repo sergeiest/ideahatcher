@@ -1,19 +1,12 @@
 class AuthenticationsController < ApplicationController
 
-  layout "hatcher"
+  layout "general"
 
 
   def login
     @authentication = Authentication.new
     @authentication.username = params[:username]
   end
-
-  def login_join
-    @authentication = Authentication.new
-    @authentication.username = params[:username]
-    @user = @authentication.build_User
-  end
-
 
   def process_login
     if authentication = Authentication.authenticate(params[:authentication])
@@ -43,9 +36,9 @@ class AuthenticationsController < ApplicationController
   end
 
   def wrong_link
-    id=session[:id]
+    id = session[:id]
     reset_session
-    session[:id]=id
+    session[:id] = id
   end
 
 

@@ -1,10 +1,6 @@
 class StartupsController < ApplicationController
 
-  layout :layout_by_resource
-
-  def layout_by_resource
-    "startups"
-  end
+  layout "general"
 
   before_filter do
     wrong_link = 0

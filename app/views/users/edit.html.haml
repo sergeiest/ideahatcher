@@ -1,0 +1,61 @@
+.user-content
+  %h5 Update profile
+  .profile-photo
+    - if @user.avatar?
+      = image_tag @user.avatar.url(:square), :class => "img-rounded-teaser"
+    - else
+      %img{:src => '/images/profile/Nophoto.png', :class => "img-rounded-teaser"}
+    %a.btn.btn-mini{:href => "#uploadPhoto", :role => "button", :'data-toggle' => "modal", :style => "margin-top:96px;margin-left:-51px;"}
+      Update
+
+  .profile-info
+    = form_for(@user) do |f|
+      -if @user.errors.any?
+        %p{:style => "color=red;"} Please correct the following errors in your form
+      - if @user.errors[:firstname].length > 0
+        %p{:style => "color=red;"} First name:
+        = f.text_field :firstname, :style => "border-color:red"
+      - else
+        %p First name:
+        = f.text_field :firstname
+      - if @user.errors[:lastname].length > 0
+        %p{:style => "color=red;"} Last name:
+        = f.text_field :lastname, :style => "border-color:red"
+      - else
+        %p Last name:
+        = f.text_field :lastname
+      %p About me:
+      = f.text_area :description
+
+      = link_to do
+        %button.btn.btn-warning Save
+
+#uploadPhoto.modal.hide.fade{:tabindex => "-1", :role => "dialog", :'aria-labelledby' => "myModalLabel", :'aria-hidden' => "true"}
+  .modal-header
+    %button.close{ :type => "button", :'data-dismiss' => "modal", :'aria-hidden' => "true"} ×
+    %h3{ :id => "myModalLabel"} Upload your new photo
+  = form_for(@user) do |f|
+    .modal-body
+      %p Upload your photo (aspect ratio is 1:1).
+      = file_field_tag :avatar, :onchange => "checkFile(this)"
+      %p#photo_error{ :style => "color:red"}
+    .modal-footer
+      %button{:class => "btn", :'data-dismiss' => "modal", :'aria-hidden' => "true"} Close
+      %button{:class => "btn btn-primary", :id => "photo_upload", :disabled => "true"} Upload photo
+
+:javascript
+  function checkFile(){
+    var fileInput = document.getElementById('user_avatar');
+    var fileName = fileInput.value;
+    var ext = fileName.substring(fileName.lastIndexOf('.') + 1);
+    if(ext == "gif" || ext == "GIF" || ext == "JPEG" || ext == "jpeg" || ext == "jpg" || ext == "JPG" || ext == "png" || ext == "PNG") {
+      document.getElementById('photo_error').innerText = "";
+      document.getElementById('photo_upload').disabled = false;
+    }
+    else
+    {
+      document.getElementById('photo_error').innerText = "Upload Gif or Jpg images only";
+      document.getElementById('photo_upload').disabled = true;
+      fup.focus();
+    }
+  }

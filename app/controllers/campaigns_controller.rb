@@ -2,7 +2,7 @@ class CampaignsController < ApplicationController
   # GET /campaigns
   # GET /campaigns.json
 
-  layout "campaigns"
+  layout "general"
 
   before_filter do
     wrong_link = 0

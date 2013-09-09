@@ -1,0 +1,15 @@
+.new-view-content
+  %h5 Wrong link
+  %p Looks like you don't have access to this page or page does not exist...
+  %p
+    You can go to
+    = link_to "home page", :controller => "home", :action => "index"
+    , or you can try to go
+    %a{:href => "javascript:history.back()"} back
+    and do it again.
+  %p
+    If you think that you should have access to this page, or believe that just something went wrong, or you see these
+    page too often, or...
+    %br
+    please let us know:
+    %a{:href => "mailto:team@ideahatcher.co"}team@ideahatcher.co

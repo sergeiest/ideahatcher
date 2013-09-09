@@ -1,22 +1,3 @@
-var formNode = document.getElementById("login-nav").getElementsByTagName('form')[0];
-
-inputDivs = formNode.getElementsByTagName("div");
-
-for (var i = 0; i < inputDivs.length; i++) {
-    inputNotes = inputDivs[i].getElementsByTagName("input");
-    for (var j = 0; j < inputNotes.length; j++) {
-        inputNotes[j].style.border ="1px solid red";
-        inputNotes[j].style.color ="red";
-    }
-}
-
-aNodes = formNode.getElementsByTagName("a");
-for (var i = 0; i < aNodes.length; i++) {
-    aNodes[i].hidden = false;
-}
-
-
-$('#login_modal').modal("show");
 
 var modalNode = document.getElementById("login_modal");
 modalForm = modalNode.getElementsByTagName("form")[0];

@@ -17,13 +17,12 @@ Webapp::Application.routes.draw do
 
   resources :locations
 
-    get "votes/vote_description"
+  get "votes/vote_description"
   post "votes/vote_description"
   get "votes/show_votes"
   resources :votes
 
   get "ideas/show_idea"
-  get "ideas/idea_test"
   resources :ideas
 
   resources :documents
@@ -52,10 +51,7 @@ Webapp::Application.routes.draw do
   get "authentications/logout"
   get "authentications/checklogin"
   post "authentications/process_login"
-  post "authentications/demo_login"
-  get "authentications/login_join"
   post "authentications/update_password"
-  get "authentications/join_login_form"
   resources :authentications
 
   resources :pictures
@@ -80,29 +76,16 @@ Webapp::Application.routes.draw do
   get "investors/follower_info"
   resources :investors
 
-  get "users/login"
   get "users/update"
-  post "users/process_login"
-  get "users/logout"
-  get "users/my_account"
-  get "users/new"
   get "users/index"
   get "users/edit"
-  get "users/invest"
-  get "users/ideas"
-  get "users/ideas_more"
   get "users/change_password"
   get "users/notifications"
 
   resources :users 
 
   get "startups/index"
-  get "startups/documents"
-  get "startups/mentors"
-  get "startups/detailed"
   get "startups/team"
-  get "startups/developermode"
-  get "startups/newlook"
   get "startups/show"
   post "startups/search_startups"
   get "startups/circles"

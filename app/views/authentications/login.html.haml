@@ -1,0 +1,13 @@
+.new-view-content
+  %h5 Please login to proceed
+  - if flash[:error]
+    %p{:style => "color:red"}= flash[:error]
+    - flash[:error] = nil
+
+  = form_tag params.merge(:action => 'process_login') do
+    %p Email:
+    = text_field "authentication", "username"
+    %p Password:
+    = password_field "authentication", "password"
+    %p= link_to "Forgot password", :action => "forgot_password"
+    = submit_tag 'Login', class: "btn btn-primary"
