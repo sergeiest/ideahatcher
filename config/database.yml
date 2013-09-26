@@ -14,6 +14,7 @@ development:
   reconnect: false
   database: beta_development
   pool: 5
+  host: localhost
   username: root
   password: anna
   socket: /tmp/mysql.sock

@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
 
-  layout "hatcher"
+  layout "general"
 
   before_filter do
     redirect_to :action => 'index' if !["index"].include?(params[:action])

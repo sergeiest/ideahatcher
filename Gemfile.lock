@@ -137,6 +137,6 @@ DEPENDENCIES
   mysql2
   paperclip (~> 3.4.2)
   pg
-  rails (= 3.2.11)
+  rails
   sass-rails (~> 3.2.3)
   uglifier (>= 1.0.3)
