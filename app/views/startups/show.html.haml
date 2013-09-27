@@ -1,26 +1,38 @@
 .new-view-content
   .new-view-company
     .pitch-box
-      %h2.main-name
-        = @startup.name
-        %br
-        = link_to 'Follow', {:controller => 'investors', :action => 'follow_company', :id => @startup.id},
-                                      :class => 'startup-button',
-                                      :id => 'follow_btn',
-                                      :remote => true,
-                                      :style => "float:right;"
       - if @startup.avatar?
         = image_tag @startup.avatar.url(:large), :class => "main-logo"
       - else
         = image_tag '/images/profile/Nologo.png', :class => "main-logo"
-
+      = link_to 'Follow', {:controller => 'investors', :action => 'follow_company', :id => @startup.id},
+                                :class => 'startup-button',
+                                :id => 'follow_btn',
+                                :remote => true,
+                                :style => "float:right;color:white"
+      %h2.main-name{:style => "font-weight: lighter;"}= @startup.name
+      = simple_format h @startup.pitch.firstletters(500)
     .clear-both
     .description-box
-      = simple_format h @startup.pitch.firstletters(500)
+      %h5{:style => "font-weight:lighter"} Meet the Team
+      #team-list
+        - @startup_owners.each do |person|
+          = link_to({:controller => "investors", :action => "follower_info", :id => person.id,
+                    :action_type => 1}, :remote => true) do
+            .person-info
+              - if person.avatar?
+                = image_tag person.avatar.url(:square)
+              - else
+                = image_tag "/images/profile/Nophoto.png"
+              %p
+                %span{:style => "font-weight:normal"}= person.firstname + " " + person.lastname
+                %br
+                Founder
+              .clear-both
+        .clear-both
     - @company_descriptions.each do |description|
       = render :partial => 'description', :locals => {:description => description}
 
-  = render "info"
 
 
 :javascript

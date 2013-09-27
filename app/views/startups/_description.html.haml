@@ -25,15 +25,16 @@
           %span.slider-info{:id => "info_#{description.id}"}
           %span.slider-end 5
 
-  %h5= description.field_status
-  %p= description.content
+  .description-statement
+    %h5{:style => "font-weight:lighter"}= description.field_status
+    %p= description.content
+  .clear-both
   %a.help-hatch{:onclick => "hideHatching(this.parentNode.getElementsByClassName('ideahatching')[0], this)"}
-    %i.icon-comment.glyphw
     - if params[:action] == 'show'
       Help hatch it!
     - else
       Open dashboard
-  .clear-both
+
 
   .ideahatching{:hidden => "true"}
     .idea-box
