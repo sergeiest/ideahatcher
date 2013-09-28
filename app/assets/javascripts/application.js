@@ -183,13 +183,13 @@ function animationCustom(elementNode,attributeName, startPoint, endPoint, toHide
 
 function animationStep(elementNode, attributeName, startPoint, endPoint, toHide, i){
     stepSign = ((startPoint < endPoint) - (endPoint < startPoint));
-    step = (endPoint - startPoint) / 30
+    step = (endPoint - startPoint) / 3
     i += step;
     if (attributeName == "height") {
         elementNode.style.height = startPoint + i + 'px';
     }
-    animationDelay = setTimeout(function(){animationStep(elementNode, attributeName, startPoint, endPoint, toHide, i)},1);
-    if ( (startPoint + i) * stepSign >= stepSign * endPoint){
+    animationDelay = setTimeout(function(){animationStep(elementNode, attributeName, startPoint, endPoint, toHide, i)},500);
+    if ( (startPoint + i) * stepSign >= stepSign * endPoint ){
         clearTimeout(animationDelay);
         if (toHide) {
             elementNode.hidden = true

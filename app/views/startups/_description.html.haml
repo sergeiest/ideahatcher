@@ -1,4 +1,4 @@
-.description-box{:id => "description_#{description.id}", :'z-index' => description.allfield_id}
+.description-box{:id => "description_#{description.id}"}
   - if params[:action] == 'show'
     .action-box
       .slider-bar
@@ -29,21 +29,31 @@
     %h5{:style => "font-weight:lighter"}= description.field_status
     %p= description.content
   .clear-both
-  %a.help-hatch{:onclick => "hideHatching(this.parentNode.getElementsByClassName('ideahatching')[0], this)"}
+  %a.help-hatch{:onclick => "$('#ideahatching_#{description.id}').collapse('toggle')"}
     - if params[:action] == 'show'
       Help hatch it!
     - else
       Open dashboard
 
-
-  .ideahatching{:hidden => "true"}
+  .ideahatching.collapse{:id => "ideahatching_#{description.id}"}
     .idea-box
+      .help-text
+        %h5{:style => "font-weight:lighter"} Help hatch the #{description.field_status}
+        %p
+          On this dashboard you do things. Yup, you do! This idea is waiting for you to be improved and become a
+          successful business:
+          %ul
+            %li{:style => "font-weight:lighter"} First, select which #{description.field_status} do you like the most, which has the most potential.
+            %li{:style => "font-weight:lighter"}
+              Second, add you suggestions how this #{description.field_status} or patricipate in the discussion with
+              other like-minded people
+            %li{:style => "font-weight:lighter"} Finally, see how the idea evolves, launches and succeed thanks to your help!
       - if !description.companydescription_id.nil?
-        .idea-statement
+        .idea-statement{:onclick => "voteThis(this)"}
           - old_description = Companydescription.find(description.companydescription_id)
           = simple_format old_description.content.firstletters(300)
         %img{:src => "../images/vs.png"}
-        .idea-statement
+        .idea-statement{:onclick => "voteThis(this)"}
           = simple_format description.content.firstletters(300), :class => "p_new"
           -if session[:connection_type] == 2
             %i.icon-pencil.glyphw{:onclick => "editStep1(this.parentNode.parentNode)"}
@@ -114,5 +124,5 @@
           = hidden_field :idea, :startup_id, :value => @startup.id
           = hidden_field :idea, :companydescription_id, :value => description.id
           = text_area :idea, :content, :value => "Add your suggestion here...", :onclick => "clearInput(this)"
-          = submit_tag 'Save', :class => "btn btn-warning"
-
+          = submit_tag 'Save', :class => "startup-button-yellow"
+          .clear-both

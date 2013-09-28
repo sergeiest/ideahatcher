@@ -9,10 +9,14 @@
                                 :class => 'startup-button',
                                 :id => 'follow_btn',
                                 :remote => true,
-                                :style => "float:right;color:white"
+                                :style => "float:right;color:white",
+                                :onmousedown => "customClickDown(this)",
+                                :onmouseup => "customClickUp(this)",
+                                :onmouseout => "customClickUp(this)"
       %h2.main-name{:style => "font-weight: lighter;"}= @startup.name
       = simple_format h @startup.pitch.firstletters(500)
     .clear-both
+
     .description-box
       %h5{:style => "font-weight:lighter"} Meet the Team
       #team-list
@@ -34,15 +38,26 @@
       = render :partial => 'description', :locals => {:description => description}
 
 
-
 :javascript
   function hideHatching(elementNode,linkNode){
     if (elementNode.hidden == true){
       elementNode.hidden = false;
       linkNode.innerHTML = linkNode.innerHTML.replace("Help hatch it!", "Hide dashboard...");
-      animationCustom(elementNode,"height", 0, elementNode.offsetHeight, 0);
+      animationCustom(elementNode,"height", 0, elementNode.offsetHeight - 400, 0);
     } else {
       linkNode.innerHTML = linkNode.innerHTML.replace("Hide dashboard...", "Help hatch it!");
       animationCustom(elementNode,"height", elementNode.offsetHeight, 0, 1);
     }
+  }
+  function voteThis(elementNode){
+    elementNode.style.boxShadow = "5px 5px 0px #888888";
+    elementNode.style.backgroundColor = "#07b5b5";
+  }
+  function customClickDown(elementNode){
+    elementNode.style.margin = "5px 0 0 5px";
+    elementNode.style.boxShadow = "";
+  }
+  function customClickUp(elementNode){
+    elementNode.style.margin = "0";
+    elementNode.style.boxShadow = "5px 5px 0px #888888";
   }
