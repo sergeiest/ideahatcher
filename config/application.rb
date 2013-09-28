@@ -17,7 +17,9 @@ module Webapp
     config.assets.precompile += %w( users.css )
     config.assets.precompile += %w( authentications.css )
     config.assets.precompile += %w( bootstrap-modal.js )
-  
+    config.assets.precompile += %w( bootstrap-collapse.js )
+    config.assets.precompile += %w( bootstrap-transitions.js )
+
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
