@@ -6,13 +6,10 @@
       - else
         = image_tag '/images/profile/Nologo.png', :class => "main-logo"
       = link_to 'Follow', {:controller => 'investors', :action => 'follow_company', :id => @startup.id},
-                                :class => 'startup-button',
+                                :class => 'startup-button custom-button',
                                 :id => 'follow_btn',
                                 :remote => true,
-                                :style => "float:right;color:white",
-                                :onmousedown => "customClickDown(this)",
-                                :onmouseup => "customClickUp(this)",
-                                :onmouseout => "customClickUp(this)"
+                                :style => "float:right;color:white"
       %h2.main-name{:style => "font-weight: lighter;"}= @startup.name
       = simple_format h @startup.pitch.firstletters(500)
     .clear-both
@@ -37,27 +34,17 @@
     - @company_descriptions.each do |description|
       = render :partial => 'description', :locals => {:description => description}
 
+    -if params[:action] == "show"
+      .featured-ideas{:style => "margin:80px -80px -60px -80px;"}
+        %h2{:style => "font-size:24px;margin:20px 20px;font-weight:lighter"} Other ideas:
+        - Startup.where('status > 2').sample(3).each do |startup|
+          = render :partial =>  "startups/startup", :locals => {:startup => startup}
+        %p= link_to 'See all ideas', {:controller => 'startups', :action => "index"}, :class => "custom-button"
+        .clear-both
+
 
 :javascript
-  function hideHatching(elementNode,linkNode){
-    if (elementNode.hidden == true){
-      elementNode.hidden = false;
-      linkNode.innerHTML = linkNode.innerHTML.replace("Help hatch it!", "Hide dashboard...");
-      animationCustom(elementNode,"height", 0, elementNode.offsetHeight - 400, 0);
-    } else {
-      linkNode.innerHTML = linkNode.innerHTML.replace("Hide dashboard...", "Help hatch it!");
-      animationCustom(elementNode,"height", elementNode.offsetHeight, 0, 1);
-    }
-  }
   function voteThis(elementNode){
     elementNode.style.boxShadow = "5px 5px 0px #888888";
     elementNode.style.backgroundColor = "#07b5b5";
-  }
-  function customClickDown(elementNode){
-    elementNode.style.margin = "5px 0 0 5px";
-    elementNode.style.boxShadow = "";
-  }
-  function customClickUp(elementNode){
-    elementNode.style.margin = "0";
-    elementNode.style.boxShadow = "5px 5px 0px #888888";
   }

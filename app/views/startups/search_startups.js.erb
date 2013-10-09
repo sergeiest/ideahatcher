@@ -28,7 +28,14 @@ mainDiv.innerHTML = "";
     <% end %>
 
 
-    htmlText = htmlText + '<p><%= startup.pitch.firstletters(120) %></p>';
+    <%  content_string = ""
+    startup.pitch.gsub(/\r\n?/, '\n').split("\n").each do |text_string|
+        content_string += text_string + ' '
+    end
+    content_string = content_string[0..-2]
+    %>
+
+    htmlText = htmlText + '<p><%= content_string.firstletters(120) %></p>';
 
 
     <% tags = startup.Tags

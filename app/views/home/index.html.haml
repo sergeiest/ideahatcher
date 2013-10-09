@@ -9,10 +9,10 @@
     %h2{:style => "color: white;"} Help other entrepreneurs start businesses
     %p
       - if session[:id].nil? || session[:id] == 0
-        = link_to 'Get hatching', {:controller => 'campaigns', :action => "guide_step", :login => 0}, :remote => true,
-                :id => "start-new-idea"
+        = link_to 'Get hatching', {:controller => 'campaigns', :action => "guide_step", :login => 0},
+                :class => "custom-button", :remote => true, :id => "start-new-idea"
       - else
-        = link_to 'Get hatching', {:controller => 'campaigns', :action => "guide_step"}
+        = link_to 'Get hatching', {:controller => 'campaigns', :action => "guide_step"}, :class => "custom-button"
 
   %a{:name => "how-it-works"}
   %h2 How it works
@@ -39,12 +39,11 @@
         A large community of entrepreneurs from many different sectors ensures you’ll get lots of valuable
         feedback to hatch your idea.
 
-  %a{:name => "about-us"}
   .featured-ideas
     %h2 Featured ideas
     - @startups.sample(3).each do |startup|
       = render :partial =>  "startups/startup", :locals => {:startup => startup}
-    %p= link_to 'See all ideas', {:controller => 'startups', :action => "index"}
+    %p= link_to 'See all ideas', {:controller => 'startups', :action => "index"}, :class => "custom-button"
     .clear-both
 
 

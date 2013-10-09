@@ -18,7 +18,6 @@
   text-align: center;
   cursor:pointer;
   text-decoration: none;
-  box-shadow: 5px 5px 0px #888888;
 }
 
 .startup-button-yellow {
@@ -213,7 +212,6 @@
       color:black;
       font-size:16px;
       font-weight: lighter;
-      box-shadow: 5px 5px 0px #888888;
       padding:10px 15px;
       min-width: 100px;
       text-align: center;
@@ -436,8 +434,6 @@
     min-width: 100px;
     cursor:pointer;
     text-decoration: none;
-    box-shadow: 5px 5px 0px #888888;
-
     margin:0px 0 20px -webkit-calc(40% - 45px);
     i{margin-top: 3px;}
 

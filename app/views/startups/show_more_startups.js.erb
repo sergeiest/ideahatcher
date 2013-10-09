@@ -14,6 +14,8 @@ var moreLink = mainDiv.getElementsByClassName("show-more")[0];
     startupDiv.setAttribute("id", "project<%= startup.id %>");
     startupDiv.setAttribute("class", "new-view-startup");
 
+
+
     startupDiv.innerHTML = "<a href='<%= startup.id %>'></a>";
     <%
     if startup.name.length > 20
@@ -29,8 +31,14 @@ var moreLink = mainDiv.getElementsByClassName("show-more")[0];
     htmlText = htmlText + '<img src="/images/profile/Nologo.png"  class="main-logo">';
     <% end %>
 
+    <%  content_string = ""
+    startup.pitch.gsub(/\r\n?/, '\n').split("\n").each do |text_string|
+        content_string += text_string + ' '
+    end
+    content_string = content_string[0..-2]
+    %>
 
-    htmlText = htmlText + '<p><%= startup.pitch.firstletters(120) %></p>';
+    htmlText = htmlText + '<p><%= content_string.firstletters(120) %></p>';
 
 
     <% tags = startup.Tags

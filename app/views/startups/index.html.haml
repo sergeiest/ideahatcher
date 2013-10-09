@@ -34,7 +34,7 @@
           end
           startup_list = startup_list[0..-2]
         = link_to({:action => "show_more_startups", :startups_shown => @startups_shown, :startup_list => startup_list},
-                             :class => "show-more", :style => "font-weight: lighter;", :remote => true) do
+                             :class => "show-more custom-button", :style => "font-weight: lighter;", :remote => true) do
           %i.icon-chevron-down.glyphw
           Show more
           %i.icon-chevron-down.glyphw

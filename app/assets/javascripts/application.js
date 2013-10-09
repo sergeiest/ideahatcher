@@ -199,3 +199,23 @@ function animationStep(elementNode, attributeName, startPoint, endPoint, toHide,
         };
     }
 }
+
+function designButtons(){
+    notes = document.getElementsByClassName("custom-button");
+    for (var i = 0; i < notes.length; i++) {
+        notes[i].style.boxShadow = "5px 5px 0px #888888";
+        notes[i].onmousedown = function(){customClickDown(this)};
+        notes[i].onmouseup = function(){customClickUp(this)};
+        notes[i].onmouseout = function(){customClickUp(this)};
+    }
+}
+
+function customClickDown(elementNode){
+    elementNode.style.left = elementNode.offesLeft + 5 +'px';
+    elementNode.style.boxShadow = "";
+}
+function customClickUp(elementNode){
+    elementNode.style.left = elementNode.offesLeft - 5 + 'px';
+    elementNode.style.boxShadow = "5px 5px 0px #888888";
+}
+
