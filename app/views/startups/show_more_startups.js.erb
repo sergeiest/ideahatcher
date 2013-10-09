@@ -15,33 +15,42 @@ var moreLink = mainDiv.getElementsByClassName("show-more")[0];
     startupDiv.setAttribute("class", "new-view-startup");
 
     startupDiv.innerHTML = "<a href='<%= startup.id %>'></a>";
+    <%
+    if startup.name.length > 20
+        startup_name = startup.name[0..20] + ".."
+    else
+        startup_name = startup.name
+    end
+    %>
+    htmlText = "<h5><%= startup_name %></h5>";
     <% if startup.avatar? %>
-    htmlText = '<%= image_tag startup.avatar.url(:large), :class => "main-logo" %>';
+    htmlText = htmlText + '<%= image_tag startup.avatar.url(:large), :class => "main-logo" %>';
     <% else %>
-    htmlText = '<img src="/images/profile/Nologo.png"  class="main-logo">';
+    htmlText = htmlText + '<img src="/images/profile/Nologo.png"  class="main-logo">';
     <% end %>
 
-    htmlText = htmlText + "<h5><%= startup.name %></h5>";
+
     htmlText = htmlText + '<p><%= startup.pitch.firstletters(120) %></p>';
 
 
     <% tags = startup.Tags
-    tag_string = ""
+    tag_string = ''
     tags.each do |tag|
-        tag_string += "#" + tag.name + ", "
+        tag_string += '#' + tag.name + ', '
     end
     if tag_string.length > 30
-      tag_string = tag_string[0..28] + ".."
+      tag_string = tag_string[0..28] + '..'
     else
       if tag_string.length > 0
         tag_string = tag_string[0..-3]
       else
-        tag_string = "no hashtags"
+        tag_string = '#new'
       end
     end
     %>
 
-    htmlText = htmlText + '<p class="hashtags"><%= tag_string%></p>';
+    htmlText = htmlText + "<p class='hashtags'><%= tag_string%></p>";
+
 
     startupDiv.firstChild.innerHTML = htmlText;
     mainDiv.insertBefore(startupDiv, moreLink);

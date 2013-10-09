@@ -177,11 +177,7 @@
                   :'aria-hidden' => "true"}
         .modal-header
           %button{:type => "button", :class => "close", :'data-dismiss' => "modal", :'aria-hidden' => "true"} ×
-          %h3#myModalLabel Let everyone know who you are:
+          %h3#myModalLabel{:style => "font-weight: lighter;"} Let everyone know who you are:
         .modal-body
           .modal-left= render 'authentications/clean_login_form'
           .modal-right= render 'authentications/clean_join_form'
-        .modal-footer
-          %button.btn{:'data-dismiss' => "modal", :'aria-hidden' => "true"} Close
-
-

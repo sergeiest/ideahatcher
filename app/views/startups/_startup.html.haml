@@ -1,12 +1,16 @@
 - div_name = 'project' + startup.id.to_s()
 .new-view-startup{ :id => "#{div_name}", :onMouseMove => "MM_changeProp('#{div_name}','','backgroundColor','#ecf8ff','DIV')",
-          :onMouseOut => "MM_changeProp('#{div_name}','','backgroundColor','white','DIV')" }
+          :onMouseOut => "MM_changeProp('#{div_name}','','backgroundColor','inherit','DIV')" }
   = link_to (startup) do
+    %h5{:style => "font-weight: lighter;"}
+      - if startup.name.length > 20
+        #{startup.name[0..20]}..
+      - else
+        #{startup.name}
     - if startup.avatar?
       = image_tag startup.avatar.url(:large), :class => "main-logo"
     - else
       = image_tag '/images/profile/Nologo.png', :class => "main-logo"
-    %h5 #{startup.name}
     = simple_format startup.pitch.firstletters(120)
     - tags = startup.Tags
     - tag_string = ""
@@ -18,5 +22,5 @@
       - if tag_string.length > 0
         -tag_string = tag_string[0..-3]
       - else
-        - tag_string = "no hashtags"
+        - tag_string = "#new"
     %p.hashtags= tag_string

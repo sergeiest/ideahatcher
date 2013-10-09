@@ -60,8 +60,8 @@ class StartupsController < ApplicationController
     @user = User.find(session[:id])  if session[:id] and session[:id] != 0
     @startups = Startup.where("status > 1").all
     @startups.sort! {|y, x| x["status"] <=> y["status"]}
-    @startups = @startups.sample(16)
-    @startups_shown = 16
+    @startups = @startups.sample(15)
+    @startups_shown = 15
 
     tags = Tag.all
 
@@ -235,7 +235,12 @@ class StartupsController < ApplicationController
       @startups = Startup.all.sample(9)
     else
       s_name = params[:string]
-      @startups = Startup.where("UPPER(name) LIKE UPPER(?)", "%" + s_name + "%").sample(9)
+      @startups = Startup.where("UPPER(name) LIKE UPPER(?)", "%" + s_name + "%")
+      #startups_by_hashtag = Tag.where("UPPER(name) LIKE UPPER(?)", "%" + s_name + "%").sample(9)
+      #startups_by_hashtag.each do |hashtag|
+      #  @startups << Startup.find(hashtag.startup_id)
+      #end
+      @startups = @startups.uniq.sample(9)
     end
 
     @startups_shown = 0

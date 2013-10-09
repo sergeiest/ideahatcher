@@ -3,13 +3,13 @@ class HomeController < ApplicationController
   layout "general"
 
   before_filter do
-    redirect_to :action => 'index' if !["index"].include?(params[:action])
+    redirect_to :action => 'index' if !["index", "about"].include?(params[:action])
   end
 
 
   def index
     startups = Startup.where("status >2").all
-    @startups = startups.sample(16)[0..14]
+    @startups = startups.sample(10)
   end
 	
 	def about
