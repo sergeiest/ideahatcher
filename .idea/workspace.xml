@@ -19,37 +19,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="index.html.haml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/startups/index.html.haml">
+      <file leaf-file-name="edit.html.haml" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/views/users/edit.html.haml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="36" column="63" selection-start="1590" selection-end="1590" vertical-scroll-proportion="-17.416666">
+            <state line="60" column="3" selection-start="2466" selection-end="2466" vertical-scroll-proportion="0.85318106">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="show_more_startups.js.erb" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/views/startups/show_more_startups.js.erb">
+      <file leaf-file-name="about_step.html.haml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/campaigns/about_step.html.haml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="26" column="46" selection-start="875" selection-end="875" vertical-scroll-proportion="0.21319798">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="search_startups.js.erb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/startups/search_startups.js.erb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="33" column="49" selection-start="1314" selection-end="1314" vertical-scroll-proportion="-5.7916665">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="update_suggestion.js.erb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/companydescriptions/update_suggestion.js.erb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="0" selection-start="78" selection-end="262" vertical-scroll-proportion="-1.25">
+            <state line="73" column="4" selection-start="3295" selection-end="3918" vertical-scroll-proportion="-21.166666">
               <folding />
             </state>
           </provider>
@@ -68,22 +50,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/controllers/startups_controller.rb" />
-        <option value="$PROJECT_DIR$/app/controllers/home_controller.rb" />
-        <option value="$PROJECT_DIR$/app/views/home/about.html.haml" />
-        <option value="$PROJECT_DIR$/app/views/startups/_startup.html.haml" />
-        <option value="$PROJECT_DIR$/app/views/layouts/general.html.haml" />
-        <option value="$PROJECT_DIR$/app/assets/javascripts/application.js" />
-        <option value="$PROJECT_DIR$/app/views/startups/_description.html.haml" />
-        <option value="$PROJECT_DIR$/app/views/startups/show.html.haml" />
-        <option value="$PROJECT_DIR$/app/views/home/index.html.haml" />
-        <option value="$PROJECT_DIR$/app/views/authentications/_clean_join_form.html.erb" />
         <option value="$PROJECT_DIR$/app/views/authentications/_clean_login_form.html.erb" />
-        <option value="$PROJECT_DIR$/app/assets/stylesheets/application.scss" />
-        <option value="$PROJECT_DIR$/app/assets/stylesheets/startups.css.scss" />
         <option value="$PROJECT_DIR$/app/views/startups/index.html.haml" />
         <option value="$PROJECT_DIR$/app/views/startups/show_more_startups.js.erb" />
         <option value="$PROJECT_DIR$/app/views/startups/search_startups.js.erb" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/application.js" />
+        <option value="$PROJECT_DIR$/app/assets/stylesheets/startups.css.scss" />
+        <option value="$PROJECT_DIR$/app/assets/stylesheets/authentications.css" />
+        <option value="$PROJECT_DIR$/app/views/authentications/_form.html.erb" />
+        <option value="$PROJECT_DIR$/app/assets/stylesheets/authentications.css.scss" />
+        <option value="$PROJECT_DIR$/app/views/startups/show.html.haml" />
+        <option value="$PROJECT_DIR$/app/views/startups/_description.html.haml" />
+        <option value="$PROJECT_DIR$/app/assets/stylesheets/application.scss" />
+        <option value="$PROJECT_DIR$/app/views/investors/follow_company.js.erb" />
+        <option value="$PROJECT_DIR$/app/views/investors/unfollow_company.js.erb" />
+        <option value="$PROJECT_DIR$/app/views/campaigns/about_step.html.haml" />
+        <option value="$PROJECT_DIR$/app/views/users/edit.html.haml" />
       </list>
     </option>
   </component>
@@ -204,6 +186,28 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="users" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="beta" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="prototype_0.3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="startups" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -271,6 +275,28 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="companydescriptions" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="beta" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="prototype_0.3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="campaigns" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -875,121 +901,121 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/controllers/home_controller.rb">
+    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/authentications.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="55" selection-start="140" selection-end="140" vertical-scroll-proportion="0.0">
-          <folding />
+        <state line="26" column="11" selection-start="579" selection-end="579" vertical-scroll-proportion="0.0">
+          <folding>
+            <marker date="1381355813000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1381355813000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1381355813000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1381355813000" expanded="true" signature="-1:-1" placeholder="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/home/about.html.haml">
+    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/startups.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="13" selection-start="13" selection-end="13" vertical-scroll-proportion="0.0">
+        <state line="205" column="38" selection-start="3821" selection-end="3825" vertical-scroll-proportion="-2.2733686">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/startups/_startup.html.haml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="78" selection-start="413" selection-end="413" vertical-scroll-proportion="-4.375">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/layouts/general.html.haml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="56" column="7" selection-start="2402" selection-end="2402" vertical-scroll-proportion="-16.25">
+        <state line="1" column="115" selection-start="151" selection-end="158" vertical-scroll-proportion="-0.625">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/javascripts/application.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="203" column="58" selection-start="7594" selection-end="7594" vertical-scroll-proportion="-10.538462">
+        <state line="93" column="4" selection-start="3605" selection-end="3726" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/startups/_description.html.haml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="29" selection-start="1696" selection-end="1710" vertical-scroll-proportion="-19.375">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/startups/show.html.haml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="41" column="111" selection-start="2005" selection-end="2005" vertical-scroll-proportion="-15.791667">
+        <state line="61" column="43" selection-start="2702" selection-end="2708" vertical-scroll-proportion="-21.416666">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/home/index.html.haml">
+    <entry file="file://$PROJECT_DIR$/app/views/startups/_description.html.haml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="43" selection-start="533" selection-end="533" vertical-scroll-proportion="-7.5">
-          <folding>
-            <element signature="tag#div#2;tag#div#0" expanded="false" />
-            <element signature="tag#div#3;tag#div#0" expanded="false" />
-            <element signature="tag#div#4;tag#div#0" expanded="false" />
-            <element signature="tag#div#5;tag#div#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/authentications/_clean_join_form.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="62" selection-start="580" selection-end="580" vertical-scroll-proportion="-11.25">
+        <state line="18" column="150" selection-start="1482" selection-end="1482" vertical-scroll-proportion="-11.25">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/authentications/_clean_login_form.html.erb">
+    <entry file="file://$PROJECT_DIR$/app/controllers/startups_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="61" selection-start="498" selection-end="498" vertical-scroll-proportion="-7.5">
+        <state line="34" column="18" selection-start="1366" selection-end="1367" vertical-scroll-proportion="0.8536155">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/application.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="97" column="21" selection-start="2443" selection-end="2443" vertical-scroll-proportion="-7.6923075">
+        <state line="442" column="27" selection-start="8250" selection-end="8250" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/startups.css">
+    <entry file="file://$PROJECT_DIR$/app/controllers/investors_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="436" column="7" selection-start="8789" selection-end="8789" vertical-scroll-proportion="-13.615385">
+        <state line="66" column="0" selection-start="1448" selection-end="1448" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/startups/index.html.haml">
+    <entry file="file://$PROJECT_DIR$/app/views/authentications/new.html.haml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="63" selection-start="1590" selection-end="1590" vertical-scroll-proportion="-17.416666">
+        <state line="3" column="14" selection-start="87" selection-end="87" vertical-scroll-proportion="-1.875">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/companydescriptions/update_suggestion.js.erb">
+    <entry file="file://$PROJECT_DIR$/app/views/investors/follow_company.js.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="0" selection-start="78" selection-end="262" vertical-scroll-proportion="-1.25">
+        <state line="2" column="87" selection-start="151" selection-end="172" vertical-scroll-proportion="-1.25">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/startups/search_startups.js.erb">
+    <entry file="file://$PROJECT_DIR$/app/views/investors/unfollow_company.js.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="49" selection-start="1314" selection-end="1314" vertical-scroll-proportion="-5.7916665">
+        <state line="2" column="56" selection-start="139" selection-end="139" vertical-scroll-proportion="-1.25">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/startups/show_more_startups.js.erb">
+    <entry file="file://$PROJECT_DIR$/app/controllers/campaigns_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="46" selection-start="875" selection-end="875" vertical-scroll-proportion="0.21319798">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/users/_form.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/campaigns/about_step.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="73" column="4" selection-start="3295" selection-end="3918" vertical-scroll-proportion="-21.166666">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/users/edit.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="60" column="3" selection-start="2466" selection-end="2466" vertical-scroll-proportion="0.85318106">
           <folding />
         </state>
       </provider>

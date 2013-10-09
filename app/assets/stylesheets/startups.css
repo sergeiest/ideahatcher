@@ -153,53 +153,34 @@
     }
     .action-box {
       float:right;
-      width:30%;
+      width:190px;
       padding-top: 10px;
       .slider-bar, .new-box {
         //background-color: #f1f1f1;
         //border:1px #c8c8c8 solid;
         padding: 10px;
         margin:0 0 5px 0;
-        color:#07b5b5;
+
+
         p {
           min-height:00px ;
           width: 100%;
           margin:0;
-          .rate-title {}
+          font-size:14px;
+          line-height:22px;
+          color:black;
+          font-weight: bold;
         }
-        .progress-slider{
-          padding: 0;
-          margin:0% 4% 3% 4%;
-          cursor:pointer;
-        }
-        .bar{
-          width:0%;
-          cursor:pointer;
-          background-color: orange;
-          background-image: linear-gradient(orange, #e99600);;
-        }
-        .split-bar-div{
-          margin-left:20%;
-          .bar-split{
-            border-left:1px grey solid;
-            padding:20px 0 20px 0px;
-            padding-right: -webkit-calc(25%  - 1px);
+
+        .scale-to-rate {
+          margin-top: 10px;
+          span{
+            margin:0px -2px;
+            padding:8px 12px;
+            border:1px grey solid;
+            border-left:0px grey solid;
+            cursor:pointer;
           }
-        }
-        .slider-start{
-          float:left;
-          margin:0px;
-          padding:0;
-        }
-        .slider-info{
-          margin:0px;
-          padding:0;
-          color:orange;
-          line-height: 10px;
-        }
-        .slider-end{
-          float:right;
-          margin:0px 0 0 0 ;
         }
       }
     }

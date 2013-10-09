@@ -44,8 +44,8 @@
       %button{:class => "btn btn-primary", :id => "photo_upload", :disabled => "true"} Upload photo
 
 :javascript
-  function checkFile(){
-    var fileInput = document.getElementById('user_avatar');
+  function checkFile(elementNode){
+    var fileInput = elementNode;
     var fileName = fileInput.value;
     var ext = fileName.substring(fileName.lastIndexOf('.') + 1);
     if(ext == "gif" || ext == "GIF" || ext == "JPEG" || ext == "jpeg" || ext == "jpg" || ext == "JPG" || ext == "png" || ext == "PNG") {

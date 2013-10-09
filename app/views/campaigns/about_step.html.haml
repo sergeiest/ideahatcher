@@ -24,13 +24,13 @@
             important for them:
           = text_area :companydescriptions1, :content, :value => @descriptions[0].content
         %li
-          %h4= @descriptions[0].field_status
+          %h4= @descriptions[1].field_status
           = hidden_field :companydescriptions2, :field_status, :value => @descriptions[1].field_status
           = hidden_field :companydescriptions2, :allfield_id, :value => @descriptions[1].allfield_id
           %p How your idea will solve the problem, how is it different from other solutions:
           = text_area :companydescriptions2, :content, :value => @descriptions[1].content
         %li
-          %h4= @descriptions[0].field_status
+          %h4= @descriptions[2].field_status
           = hidden_field :companydescriptions3, :field_status, :value => @descriptions[2].field_status
           = hidden_field :companydescriptions3, :allfield_id, :value => @descriptions[2].allfield_id
           %p

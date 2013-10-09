@@ -2,28 +2,22 @@
   - if params[:action] == 'show'
     .action-box
       .slider-bar
-        %p{:style => "text-align: center;margin-bottom:0px;font-size:14px;line-height:18px"} Rate #{description.field_status.downcase}:
-        %p{:style => "text-align: center;font-size:12px;margin-bottom:0px;color:grey" } (click on the scale)
+        %p Rate #{description.field_status.downcase}:
         = form_tag({:action => 'vote_description', :controller => 'votes'},
            :multipart => true, :id => "form_"+ description.id.to_s(), :remote => true) do
           = hidden_field :vote, :description_id, :value => description.id
           = hidden_field :vote, :score, :value => 3
           = hidden_field_tag :startup_id, description.startup_id
           = submit_tag 'submit', :id => "button_"+ description.id.to_s(), :hidden => true
-        %div.progress.progress-primary.progress-slider{:id => "bar_#{description.id}",
-            :onmousedown => "stopSlideVote(#{description.id}, this, this.parentNode.parentNode.parentNode.offsetLeft, 160)",
-            :onmouseup => "startSlideVote(#{description.id}, this, this.parentNode.parentNode.parentNode.offsetLeft, 160)"}
-          %div{:id=> "slider_#{description.id}", :class=> "bar" }
-          .split-bar-div
-            %span.bar-split
-            %span.bar-split
-            %span.bar-split
-            %span.bar-split
-            %span.bar-split{:style => "padding-right: 0;"}
-        %p
-          %span.slider-start 0
-          %span.slider-info{:id => "info_#{description.id}"}
-          %span.slider-end 5
+
+        .scale-to-rate
+          %span{:onMouseMove => "customHighlightIn(this)", :onMouseOut => "customHighlightOut(this)", :onclick => "rateThis(this, 1, #{description.id})",
+                  :style => "border-left:1px grey solid;"} 1
+          %span{:onMouseMove => "customHighlightIn(this)", :onMouseOut => "customHighlightOut(this)", :onclick => "rateThis(this, 2, #{description.id})"} 2
+          %span{:onMouseMove => "customHighlightIn(this)", :onMouseOut => "customHighlightOut(this)", :onclick => "rateThis(this, 3, #{description.id})"} 3
+          %span{:onMouseMove => "customHighlightIn(this)", :onMouseOut => "customHighlightOut(this)", :onclick => "rateThis(this, 4, #{description.id})"} 4
+          %span{:onMouseMove => "customHighlightIn(this)", :onMouseOut => "customHighlightOut(this)", :onclick => "rateThis(this, 5, #{description.id})"} 5
+
 
   .description-statement
     %h5{:style => "font-weight:lighter"}= description.field_status

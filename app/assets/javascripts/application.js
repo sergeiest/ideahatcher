@@ -219,3 +219,10 @@ function customClickUp(elementNode){
     elementNode.style.boxShadow = "5px 5px 0px #888888";
 }
 
+function customHighlightIn(elementNode){
+    elementNode.style.backgroundColor = '#ecf8ff'
+}
+function customHighlightOut(elementNode){
+    elementNode.style.backgroundColor = 'inherit'
+}
+

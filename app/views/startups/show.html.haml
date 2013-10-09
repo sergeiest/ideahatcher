@@ -48,3 +48,18 @@
     elementNode.style.boxShadow = "5px 5px 0px #888888";
     elementNode.style.backgroundColor = "#07b5b5";
   }
+  function rateThis(elementNode, vote, formId){
+    notes = elementNode.parentNode.children;
+    for (var i = 0; i < notes.length; i++) {
+        notes[i].onmousemove = function(){customHighlightIn(this)};
+        notes[i].onmouseout = function(){customHighlightOut(this)};
+        notes[i].style.backgroundColor = "inherit";
+    }
+    elementNode.style.backgroundColor = "#07b5b5";
+    elementNode.removeAttribute("onMouseOut");
+    elementNode.removeAttribute("onMouseMove");
+
+    document.getElementById('form_'+ formId).querySelector("#vote_score").value = vote ;
+    $('#button_'+ formId).click()
+
+  }
