@@ -10,15 +10,13 @@ mainDiv.innerHTML ="";
     newA.setAttribute("href", "/investors/follower_info?id=<%= person.id %>&action_type=remove_team");
     newA.setAttribute("data-remote", "true");
     <% if person.avatar? %>
-        newA.innerHTML = '<div class="person-info">'+
+        newA.innerHTML = '<div class="person-info-manage">'+
             '<%= image_tag person.avatar.url(:square) %>'+
-            '<h5><%= person.firstname%> <%=person.lastname%></h5>'+
-            '<p>Founder</p></div>';
+            '<h5><%= person.firstname%> <%=person.lastname%></h5>'</div>';
     <% else %>
         newA.innerHTML = '<div class="person-info">'+
             '<%= image_tag "/images/profile/Nophoto.png" %>'+
-            '<h5><%= person.firstname%> <%=person.lastname%></h5>'+
-            '<p>Founder</p></div>';
+            '<h5><%= person.firstname%> <%=person.lastname%></h5>'</div>';
     <% end %>
 
 mainDiv.appendChild(newA);

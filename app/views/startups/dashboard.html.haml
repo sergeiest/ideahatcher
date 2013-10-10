@@ -1,8 +1,13 @@
 .new-view-content
-  %h2 My ideas / #{@startup.name}
   .new-view-company
     .pitch-box
-      %h2.main-name{:id => "main-name"}
+      - if @startup.avatar?
+        = image_tag @startup.avatar.url(:large), :class => "main-logo"
+      - else
+        = image_tag '/images/profile/Nologo.png', :class => "main-logo"
+      %a.btn.btn.custom-button{:href => "#uploadPhoto", :role => "button", :'data-toggle' => "modal",
+                               :style => "margin:-20px 0 0px 0;width:100px;-webkit-border-radius: 0px;"} Update photo
+      %h2.main-name#main-name{:style => "font-weight: lighter;"}
         %span= @startup.name
         %span
           %i.icon-pencil.glyphw{:onclick => "editName(this.parentNode)"}
@@ -11,14 +16,7 @@
           = text_field_tag :name, @startup.name
           = hidden_field_tag :id, @startup.id
           %br
-          = submit_tag "Save", :class => "btn btn-small btn-warning"
-      - if @startup.avatar?
-        = image_tag @startup.avatar.url(:large), :class => "main-logo"
-      - else
-        = image_tag '/images/profile/Nologo.png', :class => "main-logo"
-      %a.btn.btn-mini{:href => "#uploadPhoto", :role => "button", :'data-toggle' => "modal",
-                         :style => "margin:-20px 0 0px 0;width:100px"} Update photo
-
+          = submit_tag "Save", :class => "btn custom-button"
     .clear-both
     #main-description.description-box
       %p
@@ -29,12 +27,54 @@
         = hidden_field_tag :id, @startup.id
         = text_area_tag :pitch, @startup.pitch
         %br
-        = submit_tag "Save", :class => "btn btn-small btn-warning"
+        = submit_tag "Save", :class => "btn custom-button"
 
     - @company_descriptions.each do |description|
-      = render :partial => 'description', :locals => {:description => description}
+      = render :partial => 'dashboard_description', :locals => {:description => description}
+    .description-box{:style => "margin-bottom:20px; "}
+      .team-box
+        %p Current team
+        #team-list
+          - @startup_owners.each do |person|
+            = link_to({:controller => "investors", :action => "follower_info", :id => person.id,
+                      :action_type => 1}, :remote => true) do
+              .person-info-manage
+                - if person.avatar?
+                  = image_tag person.avatar.url(:square)
+                - else
+                  = image_tag "/images/profile/Nophoto.png"
+                %h5= person.firstname + " " + person.lastname
+      .description-statement
+        %h5{:style => "font-weight:lighter"} Team
+        %p Add team members to your idea by selecting them:
+        = form_tag({:action => "search_people", :controller => "investors"},
+                         :remote => true) do
+          = text_field_tag :string, "search", :onclick => "clearInput(this)", :onkeyup => "submitForm(this.parentNode)"
+          = hidden_field_tag :action_type, "add_team"
+          = submit_tag "submit", :hidden => "true"
 
-  = render "info"
+        = form_tag({:action => "add_founder", :controller => "investors"},
+                       :remote => true,
+                       :id => "add_founder",
+                       :hidden => true) do
+          = hidden_field_tag :founder_id, 0
+          = hidden_field_tag :id, @startup.id
+          = submit_tag "submit"
+
+        = form_tag({:action => "remove_founder", :controller => "investors"},
+                       :remote => true,
+                       :id => "remove_founder",
+                       :hidden => true) do
+          = hidden_field_tag :founder_id, 0
+          = hidden_field_tag :id, @startup.id
+          = submit_tag "submit"
+
+        #search-results.company-box
+        .clear-both
+    =link_to({:action => "circles", :id => @startup.id}, :class => "help-hatch custom-button",
+                   :style => "margin-left:-webkit-calc(50% - 105px)") do
+      %i.icon-pencil.glyphw{:style => "margin-top:3px"}
+      Share / Edit settings
 
 #uploadPhoto.modal.hide.fade{:tabindex => "-1", :role => "dialog", :'aria-labelledby' => "myModalLabel", :'aria-hidden' => "true"}
   .modal-header
@@ -117,5 +157,32 @@
       fup.focus();
     }
   }
+
+
+  function addPerson (elementNode, id) {
+      var formElement = document.getElementById("add_founder");
+      var notes = formElement.children;
+      for (var i = 0; i < notes.length; i++) {
+          if (notes[i].getAttribute('name') == 'founder_id') {
+              notes[i].value = id;
+          }
+      }
+      submitForm(formElement);
+      $('#info_modal').modal('hide');
+  }
+
+  function removePerson (elementNode, id) {
+      var formElement = document.getElementById("remove_founder");
+      var notes = formElement.children;
+      for (var i = 0; i < notes.length; i++) {
+          if (notes[i].getAttribute('name') == 'founder_id') {
+              notes[i].value = id;
+          }
+      }
+      submitForm(formElement);
+      $('#info_modal').modal('hide');
+  }
+
+
 
 

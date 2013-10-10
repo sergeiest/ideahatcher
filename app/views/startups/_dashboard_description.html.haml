@@ -23,22 +23,18 @@
     %h5{:style => "font-weight:lighter"}= description.field_status
     %p= description.content
   .clear-both
-  %a.help-hatch.custom-button{:onclick => "$('#ideahatching_#{description.id}').collapse('toggle')"}
-    Help hatch it!
+  %a.help-hatch.custom-button{:onclick => "$('#ideahatching_#{description.id}').collapse('toggle')",
+          :style => "margin-left:-webkit-calc(50% - 117px)"}
+    %i.icon-pencil.glyphw{:style => "margin-top:3px"}
+    Edit / Open dashboard
 
   .ideahatching.collapse{:id => "ideahatching_#{description.id}"}
     .idea-box
       .help-text
-        %h5{:style => "font-weight:lighter"} Help hatch the #{description.field_status}
+        %h5{:style => "font-weight:lighter"} Hatch your #{description.field_status}
         %p
-          On this dashboard you do things. Yup, you do! This idea is waiting for you to be improved and become a
-          successful business:
-          %ul
-            %li{:style => "font-weight:lighter"} First, select which #{description.field_status} do you like the most, which has the most potential.
-            %li{:style => "font-weight:lighter"}
-              Second, add you suggestions how this #{description.field_status} or patricipate in the discussion with
-              other like-minded people
-            %li{:style => "font-weight:lighter"} Finally, see how the idea evolves, launches and succeed thanks to your help!
+          Create several versions of your idea's #{description.field_status} so people can choice which one they like
+          the most and which has the most potential. Collect the results and keep improving!
       - if !description.companydescription_id.nil?
         .idea-statement{:onclick => "voteThis(this)"}
           - old_description = Companydescription.find(description.companydescription_id)
@@ -57,6 +53,45 @@
         .idea-statement.empty-statement
           %p No other versions available. Suggest a new one bellow...
       .clear-both
+      -if session[:connection_type] == 2
+        .edit-description{:hidden => "true"}
+          %div.step1{:hidden => "true"}
+            %p
+              %input{ :type => "radio", :name => "group#{description.id}", :value => "new_vesrsion", :checked => 'true'}
+              Add new version
+            %p
+              %input{ :type => "radio", :name => "group#{description.id}", :value => "new_vesrsion"}
+              Correct current version
+              %hr
+              %button.btn.btn-mini.btn-warning{:onclick => "editStep2(this.parentNode.parentNode.parentNode.parentNode)"} Next
+              %button.btn.btn-mini{:onclick => "editCancel(this)"} Cancel
+              .clear-both
+          %div.step2{:hidden => "true"}
+            = form_tag({:action => "new_suggestion", :controller => "companydescriptions"},
+                                                     :multipart => true,
+                                                     :class => "next-test",
+                                                     :remote => true) do
+              = hidden_field :companydescription, :companydescription_id, :value => description.id
+              = hidden_field_tag :change_type, 0
+              = text_area :companydescription, :content
+              = submit_tag 'Save', hidden: "true"
+            %hr
+              %button.btn.btn-mini.btn-warning{:onclick => "submitForm(this.parentNode.childNodes[1])"} Save
+              %button.btn.btn-mini{:onclick => "editCancel(this)"} Cancel
+              .clear-both
+
+    -if session[:connection_type] == 2
+      .chart-box
+        %hr
+          = link_to({:action => 'show_votes', :controller => 'votes',
+                    :description_id => description.id},
+                    :id => "chart_link" + description.id.to_s(),
+                    :remote => true,
+                    :style => "cursor:pointer; font-size:12px;") do
+            %i.icon-chevron-down.glyphw
+            Load votes
+            %i.icon-chevron-down.glyphw
+          .div{:id => "visualization_#{description.id}"}
 
     .idea-box
       %hr

@@ -1,6 +1,10 @@
 .new-view-content
-  %h2 My ideas / #{@startup.name}
   .new-view-company
+    %h2 #{@startup.name} / Sharing settings
+    = link_to 'Back to Dashboard', {:action => 'dashboard', :id => @startup.id},
+                                    :class => 'startup-button custom-button',
+                                    :style => "float:right;color:white"
+
     .manage-view{:style => "border-bottom:1px #07b5b5 solid;"}
       %h5 Hashtags
       %p This is a simple way to let people know what your idea is about
@@ -78,16 +82,7 @@
           = submit_tag "submit", :hidden => "true"
         #search-results
       .clear-both
-  = render "info"
 
-.guideline-menu{:onclick => "showHelp(this)"}
-  %i.icon-question-sign.glyphw-white{:style => "float:left;"}
-  %h5{:hidden => "true"} What to do here
-  %p{:hidden => "true"}
-    The more the better.
-  %p{:hidden => "true"}
-    Select people you want to share the idea with and we will encourage them to give
-    the feedback and advice
 
 :javascript
   function deleteTag(id, element){
