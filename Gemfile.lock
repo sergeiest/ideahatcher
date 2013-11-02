@@ -74,6 +74,7 @@ GEM
       activesupport (>= 3.0.0)
       cocaine (~> 0.5.0)
       mime-types
+    pg (0.17.0)
     polyglot (0.3.3)
     rack (1.4.5)
     rack-cache (1.2)
@@ -134,6 +135,7 @@ DEPENDENCIES
   jquery-rails
   mysql2
   paperclip (~> 3.4.2)
+  pg
   rails (= 3.2.15)
   sass-rails (~> 3.2.3)
   uglifier (>= 1.0.3)
