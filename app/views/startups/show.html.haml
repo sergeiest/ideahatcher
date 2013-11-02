@@ -9,7 +9,7 @@
                                 :class => 'startup-button custom-button',
                                 :id => 'follow_btn',
                                 :remote => true,
-                                :style => "float:right;color:white"
+                                :style => "float:right"
       %h2.main-name{:style => "font-weight: lighter;"}= @startup.name
       = simple_format h @startup.pitch.firstletters(500)
     .clear-both
@@ -55,7 +55,7 @@
         notes[i].onmouseout = function(){customHighlightOut(this)};
         notes[i].style.backgroundColor = "inherit";
     }
-    elementNode.style.backgroundColor = "#07b5b5";
+    elementNode.style.backgroundColor = "#94d500";
     elementNode.removeAttribute("onMouseOut");
     elementNode.removeAttribute("onMouseMove");
 

@@ -8,9 +8,9 @@
 }
 
 .startup-button {
-  background-color: #07b5b5;
-  color:white;
-  a {color:white;}
+  background-color: #94d500;
+  color:black;
+  a {color:black;}
   font-size:18px;
   padding:2px 10px;
   margin-top: 0px;
@@ -21,7 +21,7 @@
 }
 
 .startup-button-yellow {
-  background-color: #fee946;
+  background-color: #94d500;
   color:black;
   font-size:14px;
   padding:2px 10px;
@@ -39,9 +39,8 @@
   padding:80px 80px 60px 80px;
   width: -webkit-calc(100% - 160px);
   min-height: 550px;
-  background-color: white;
   //border:1px #07b5b5 solid;
-  box-shadow: 0px 0px 10px #888, 0px 0px 10px #888;
+  //box-shadow: 0px 0px 10px #888, 0px 0px 10px #888;
   float:left;
 
   p {
@@ -113,7 +112,6 @@
 
   .description-box{
 
-    background-color: white;
     position:relative;
     margin-top: -10px;
     border-bottom:1px black solid;
@@ -195,6 +193,7 @@
             border:1px grey solid;
             border-left:0px grey solid;
             cursor:pointer;
+            font-weight: bold;
           }
         }
       }
@@ -206,12 +205,13 @@
 
 
     .ideahatching {
-      background-color: white;
       //background-image: linear-gradient(45deg, #cacaca 25%, transparent 25%, transparent 75%, #cacaca 75%, #cacaca),
       //linear-gradient(45deg, #cacaca 25%, transparent 25%, transparent 75%, #cacaca 75%, #cacaca);
       //background-size:4px 4px;
       //background-position:0 0, 2px 2px;
-      box-shadow: 0px 0px 10px #888 inset, 0px 0px 10px #888 inset;
+      //box-shadow: 0px 0px 10px #888 inset, 0px 0px 10px #888 inset;
+      //border-top:1px #888 solid;
+      //border-bottom:1px #888 solid;
 
       margin-top: 20px;
       padding:0px 30px;
@@ -382,7 +382,7 @@
 }
 
 a.help-hatch {
-  background-color: #fee946;
+  background-color: #94d500;
   color:black;
   font-size:16px;
   font-weight: lighter;
@@ -391,7 +391,7 @@ a.help-hatch {
   text-align: center;
   cursor:pointer;
   text-decoration: none;
-  margin:20px -webkit-calc(50% - 50px);
+  margin:20px 0;
 }
 
 .team-box{
@@ -425,9 +425,9 @@ a.help-hatch {
 
   .show-more {
 
-    background-color: #07b5b5;
-    color:white;
-    a {color:white;}
+    background-color: #94d500;
+    color:black;
+    a {color:black;}
     font-size:18px;
     padding:2px 10px;
     text-align: center;
@@ -444,8 +444,7 @@ a.help-hatch {
     margin:0 40px 50px 0;
     padding:10px 0px;
     width: -webkit-calc((100% - 135px) / 3);
-    min-height: -webkit-calc(100% - 101px);
-    background-color: white;
+    min-height: -webkit-calc(260px);
     border-top:3px black solid;
     float:left;
 
@@ -459,12 +458,13 @@ a.help-hatch {
       height: 70px;
       color:black;
       font-size:14px;
-      line-height:20px;
+      line-height:18px;
       font-weight: lighter;
     }
     .hashtags {
-      color:#07b5b5;
+      color:#94d500;
       height: 10px;
+      font-weight: bold;
     }
   }
 }

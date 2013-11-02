@@ -58,7 +58,7 @@
 
     .hatcher-nav
       .logo-img
-        = link_to(:controller => "startups") do
+        = link_to(:controller => "home") do
           %img{:src => "/images/ideahatcher_logo.png"}
 
       - if session[:id] != nil and session[:id] != 0
@@ -66,15 +66,26 @@
         - owner_number = user.Owners.count
         %ul.user-nav.nav.nav-pills
           :ruby
-            if (params[:controller] == 'startups' and ['my_ideas'].include?(params[:action])) ||
-                   params[:controller] == 'campaigns' ||
-                   (params[:controller] == 'startups' and !session[:connection_type].nil? and session[:connection_type] == 2)
-              custom_str = "custom-active"
+            if (params[:controller] == 'startups' and ['index', 'hashtag'].include?(params[:action])) ||
+                   (params[:controller] == 'startups' and !['my_ideas', 'following_ideas'].include?(params[:action]) and
+                   (session[:connection_type].nil? || session[:connection_type] == 0))
+              custom_str = "custom-active-green"
             else
               custom_str = ""
             end
-          %li{:class => "dropdown custom-dropdown #{custom_str}"}
-            %a.dropdown-toggle{:href => "#", :style => "height: 12px;", :'data-toggle' => "dropdown"} My ideas
+          %li{:class => "dropdown custom-dropdown custom-dropdown-green #{custom_str}"}
+            = link_to "browse", :action => "index", :controller => "startups"
+
+          :ruby
+            if (params[:controller] == 'startups' and ['my_ideas'].include?(params[:action])) ||
+                   params[:controller] == 'campaigns' ||
+                   (params[:controller] == 'startups' and !session[:connection_type].nil? and session[:connection_type] == 2)
+              custom_str = "custom-active-orange"
+            else
+              custom_str = ""
+            end
+          %li{:class => "dropdown custom-dropdown custom-dropdown-orange #{custom_str}"}
+            %a.dropdown-toggle{:href => "#", :style => "height: 12px;", :'data-toggle' => "dropdown"} dashboard
             %ul.dropdown-menu.custom-dropdown-menu
               %li{:role => "presentation"}= link_to "Start new idea", :controller => 'campaigns', :action => 'guide_step'
               - if owner_number != 0
@@ -83,36 +94,16 @@
                 - user.Owner_startups.each do |startup|
                   %li{:role => "presentation"}= link_to startup.name, :controller => 'startups',:action => 'show', :id => startup.id
 
-          :ruby
-            if (params[:controller] == 'startups' and ['index', 'hashtag'].include?(params[:action])) ||
-                   (params[:controller] == 'startups' and !['my_ideas', 'following_ideas'].include?(params[:action]) and
-                   (session[:connection_type].nil? || session[:connection_type] == 0))
-              custom_str = "custom-active"
-            else
-              custom_str = ""
-            end
-          %li{:class => "dropdown custom-dropdown #{custom_str}"}
-            = link_to "Browse", :action => "index", :controller => "startups"
 
           :ruby
             if (params[:controller] == 'startups' and ['following_ideas'].include?(params[:action])) ||
                      (params[:controller] == 'startups' and !session[:connection_type].nil? and session[:connection_type] == 1)
-              custom_str = "custom-active"
+              custom_str = "custom-active-aqua"
             else
               custom_str = ""
             end
-          %li{:class => "dropdown custom-dropdown #{custom_str}"}
-            = link_to "Following", :action => "following_ideas", :controller => "startups"
-
-          :ruby
-            if (params[:controller] == 'home' and ['about'].include?(params[:action]))
-              custom_str = "custom-active"
-            else
-              custom_str = ""
-            end
-
-          %li{:class => "dropdown custom-dropdown #{custom_str}"}
-            = link_to "How it works", :action => "index", :controller => "home", :anchor => "how-it-works"
+          %li{:class => "dropdown custom-dropdown custom-dropdown-aqua #{custom_str}"}
+            = link_to "following", :action => "following_ideas", :controller => "startups"
 
           :ruby
             if params[:controller] == 'users'
@@ -121,7 +112,8 @@
               custom_str = ""
             end
           %li{:class => "dropdown #{custom_str}"}
-            %a.dropdown-toggle{:href => "#", :style => "height: 12px;", :'data-toggle' => "dropdown"}>
+            %a.dropdown-toggle{:href => "#", :style => "height: 12px; color:white; margin:10px 0 0 20px;", :'data-toggle' => "dropdown"}>
+              hi, #{user.firstname}!
               - if user.avatar?
                 = image_tag user.avatar.url(:square)
               - else
@@ -169,8 +161,21 @@
     .clear-both
 
     .footer
-      %hr
-      %p Copyright 2013 - ideaHatcher
+      .topic
+        %hr
+        %img{:src => "/images/ideahatcher_icon.png"}
+      .left-text
+        = link_to 'Browse ideas', :controller => 'startups'
+        %br
+        = link_to 'How it works', :action => "index", :controller => "home", :anchor => "how-it-works"
+        %br
+        = link_to 'About us', :action => 'about', :controller => 'home'
+        %br
+        = link_to 'Join the team', :action => 'about', :controller => 'home'
+      .right-text
+        %p Contact us:
+        %a{:href => 'mailto:team@ideahacter.co'} team@ideahacter.co
+      .clear-both
 
 
     - if !session[:id] || session[:id] == 0

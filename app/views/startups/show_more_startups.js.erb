@@ -9,7 +9,7 @@ var moreLink = mainDiv.getElementsByClassName("show-more")[0];
 
     var startupDiv = document.createElement("div");
     startupDiv.onmousemove = function() { MM_changeProp('<%= div_name %>','','backgroundColor','#ecf8ff','DIV'); };
-    startupDiv.onmouseout = function() { MM_changeProp('<%= div_name %>','','backgroundColor','white','DIV'); };
+    startupDiv.onmouseout = function() { MM_changeProp('<%= div_name %>','','backgroundColor','inherit','DIV'); };
 
     startupDiv.setAttribute("id", "project<%= startup.id %>");
     startupDiv.setAttribute("class", "new-view-startup");

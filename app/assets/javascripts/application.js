@@ -220,7 +220,7 @@ function customClickUp(elementNode){
 }
 
 function customHighlightIn(elementNode){
-    elementNode.style.backgroundColor = '#ecf8ff'
+    elementNode.style.backgroundColor = '#94d500'
 }
 function customHighlightOut(elementNode){
     elementNode.style.backgroundColor = 'inherit'

@@ -75,7 +75,6 @@ class StartupsController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @startups }
     end
   end
 
@@ -174,7 +173,6 @@ class StartupsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @startup }
     end
 
   end
@@ -224,7 +222,6 @@ class StartupsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @startup }
     end
 
 
