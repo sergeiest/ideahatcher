@@ -1,6 +1,8 @@
 var mainNode = document.getElementById("main-description");
 
-mainNode.children[0].innerHTML = "<%= params[:pitch] %>" +
-                   "<i class='icon-pencil glyphw' onclick='editDescription(this.parentNode.parentNode)'></i>";
-mainNode.children[0].hidden = false;
-mainNode.children[1].hidden = true;
+mainNode.children[0].innerHTML = 'About' +
+    '<img alt="Pen" class="edit-pen" onclick="editDescription(this, this.parentNode.parentNode)" src="/images/pen.png" style="float:right" />'
+
+mainNode.children[1].innerHTML = "<%= params[:pitch].firstletters(500) %>";
+mainNode.children[1].hidden = false;
+mainNode.children[2].hidden = true;

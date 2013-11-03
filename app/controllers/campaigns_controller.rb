@@ -68,8 +68,7 @@ class CampaignsController < ApplicationController
     if startup_errors != nil
       @startup.errors.add startup_errors.partition("/")[0]  , startup_errors.partition("/")[2]
       respond_to  do |format|
-        format.html { render action: "basic_step" }
-        format.json { render json: @startup }
+        format.html { render "basic_step" }
       end
     else
       if params[:id] == nil

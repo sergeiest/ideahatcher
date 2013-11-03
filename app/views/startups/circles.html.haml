@@ -1,11 +1,13 @@
-.new-view-content
-  .new-view-company
-    %h2 #{@startup.name} / Sharing settings
-    = link_to 'Back to Dashboard', {:action => 'dashboard', :id => @startup.id},
-                                    :class => 'startup-button custom-button',
-                                    :style => "float:right;color:white"
+.dashboard-view
+  = render :partial => 'dashboard_nav'
 
-    .manage-view{:style => "border-bottom:1px #07b5b5 solid;"}
+  .new-view-company{:style => "padding-top:0"}
+    %h2 #{@startup.name} / Sharing settings
+    = link_to 'BACK TO DASHBOARD', {:action => 'dashboard', :id => @startup.id},
+                                    :class => 'custom-button',
+                                    :style => "float:right;width:200px;padding-top:6px;padding-bottom:0px"
+
+    .manage-view{:style => "border-bottom:1px #fbb03b solid;"}
       %h5 Hashtags
       %p This is a simple way to let people know what your idea is about
       = form_tag({:action => "add_tag", :controller => "tags"}, :remote => true, :class => "hashtag_form") do

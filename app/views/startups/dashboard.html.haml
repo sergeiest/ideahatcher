@@ -1,33 +1,37 @@
-.new-view-content
-  .new-view-company
+.dashboard-view
+  = render :partial => 'dashboard_nav'
+
+  .dashboard-company
     .pitch-box
+      %h2.main-name#main-name{:style => "font-weight: lighter;"}
+        %span= @startup.name
+        = image_tag '/images/pen.png', :class => "edit-pen", :onclick => "editName(this)"
+        = form_tag({:action => 'update_name', :controller => "campaigns"},
+                                   :remote => true, :hidden => true) do
+          = text_field_tag :name, @startup.name, :class => "name-field"
+          = hidden_field_tag :id, @startup.id
+          = submit_tag "SUBMIT", :class => "custom-button", :style => "float:right"
       - if @startup.avatar?
         = image_tag @startup.avatar.url(:large), :class => "main-logo"
       - else
         = image_tag '/images/profile/Nologo.png', :class => "main-logo"
-      %a.btn.btn.custom-button{:href => "#uploadPhoto", :role => "button", :'data-toggle' => "modal",
-                               :style => "margin:-20px 0 0px 0;width:100px;-webkit-border-radius: 0px;"} Update photo
-      %h2.main-name#main-name{:style => "font-weight: lighter;"}
-        %span= @startup.name
-        %span
-          %i.icon-pencil.glyphw{:onclick => "editName(this.parentNode)"}
-        = form_tag({:action => 'update_name', :controller => "campaigns"},
-                                   :remote => true, :hidden => true) do
-          = text_field_tag :name, @startup.name
+      = image_tag '/images/pen.png', :class => "edit-pen-large", :onclick => "$('#uploadPhoto').modal(open)"
+
+      .clear-both
+      #main-description.description-box
+        %h5{:style => "font-weight:lighter"}
+          About
+          = image_tag '/images/pen.png', :class => "edit-pen",
+                :onclick => "editDescription(this, this.parentNode.parentNode)", :style => "float:right"
+        %p
+          =@startup.pitch.firstletters(500)
+        = form_tag({:action => 'update_description', :controller => "campaigns"},
+                               :remote => true, :hidden => true) do
           = hidden_field_tag :id, @startup.id
+          = text_area_tag :pitch, @startup.pitch
           %br
-          = submit_tag "Save", :class => "btn custom-button"
-    .clear-both
-    #main-description.description-box
-      %p
-        =@startup.pitch.firstletters(500)
-        %i.icon-pencil.glyphw{:onclick => "editDescription(this.parentNode.parentNode)"}
-      = form_tag({:action => 'update_description', :controller => "campaigns"},
-                             :remote => true, :hidden => true) do
-        = hidden_field_tag :id, @startup.id
-        = text_area_tag :pitch, @startup.pitch
-        %br
-        = submit_tag "Save", :class => "btn custom-button"
+          = submit_tag "SUBMIT", :class => "custom-button", :style => "float:right"
+          .clear-both
 
     - @company_descriptions.each do |description|
       = render :partial => 'dashboard_description', :locals => {:description => description}
@@ -112,9 +116,10 @@
       elementNode.parentNode.children[1].hidden = true;
       elementNode.parentNode.children[2].hidden = false;
   }
-  function editDescription(elementNode) {
-      elementNode.children[0].hidden = true;
-      elementNode.children[1].hidden = false;
+  function editDescription(buttonNode, elementNode) {
+      buttonNode.hidden = true;
+      elementNode.children[1].hidden = true;
+      elementNode.children[2].hidden = false;
   }
 
   function editStep1(elementNode) {
@@ -183,6 +188,12 @@
       $('#info_modal').modal('hide');
   }
 
-
+  function openThis(description_id){
+    notes = document.getElementsByClassName("collapse");
+    for (var i = 0; i < notes.length; i++) {
+      $('#' + notes[i].id).collapse('hide');
+    }
+    $('#ideahatching_' + description_id).collapse('toggle');
+  }
 
 

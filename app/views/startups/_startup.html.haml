@@ -23,4 +23,8 @@
         -tag_string = tag_string[0..-3]
       - else
         - tag_string = "#new"
-    %p.hashtags= tag_string
+    - if params[:action] == "my_ideas"
+      - style_str = "color:#fbb03b"
+    - else
+      - style_str = ";"
+    %p.hashtags{:style => "#{style_str}"}= tag_string

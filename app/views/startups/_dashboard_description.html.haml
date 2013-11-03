@@ -20,14 +20,10 @@
 
 
   .description-statement
-    %h5{:style => "font-weight:lighter"}= description.field_status
-    %p= description.content
-  .clear-both
-  %a.help-hatch.custom-button{:onclick => "$('#ideahatching_#{description.id}').collapse('toggle')",
-          :style => "margin-left:-webkit-calc(50% - 117px)"}
-    %i.icon-pencil.glyphw{:style => "margin-top:3px"}
-    Edit / Open dashboard
-
+    %h5{:style => "font-weight:lighter"}
+      = description.field_status
+      %i.icon-chevron-down.glyphw{:onclick => "openThis(#{description.id})",
+          :style => "float:right; cursor:pointer"}
   .ideahatching.collapse{:id => "ideahatching_#{description.id}"}
     .idea-box
       .help-text
@@ -74,7 +70,7 @@
               = hidden_field :companydescription, :companydescription_id, :value => description.id
               = hidden_field_tag :change_type, 0
               = text_area :companydescription, :content
-              = submit_tag 'Save', hidden: "true"
+              = submit_tag 'Save', :hidden => "true"
             %hr
               %button.btn.btn-mini.btn-warning{:onclick => "submitForm(this.parentNode.childNodes[1])"} Save
               %button.btn.btn-mini{:onclick => "editCancel(this)"} Cancel
@@ -111,5 +107,5 @@
           = hidden_field :idea, :startup_id, :value => @startup.id
           = hidden_field :idea, :companydescription_id, :value => description.id
           = text_area :idea, :content, :value => "Add your suggestion here...", :onclick => "clearInput(this)"
-          = submit_tag 'Save', :class => "startup-button-yellow"
+          = submit_tag 'SUBMIT', :class => "custom-button", :style => "float:right"
           .clear-both

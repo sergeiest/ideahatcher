@@ -45,8 +45,14 @@
 
 :javascript
   function voteThis(elementNode){
-    elementNode.style.boxShadow = "5px 5px 0px #888888";
-    elementNode.style.backgroundColor = "#07b5b5";
+    notes = elementNode.parentNode.getElementsByClassName("idea-statement");
+        for (var i = 0; i < notes.length; i++) {
+            notes[i].style.boxShadow = "";
+            notes[i].style.backgroundColor = "#e4e4e4";
+        }
+
+    elementNode.style.boxShadow = "3px 3px 0px #888888";
+    elementNode.style.backgroundColor = "#8a969a";
   }
   function rateThis(elementNode, vote, formId){
     notes = elementNode.parentNode.children;

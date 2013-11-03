@@ -179,6 +179,7 @@ class StartupsController < ApplicationController
 
 
   def circles
+    @user = User.find(session[:id])
     @startup = Startup.find(session[:startup_id])
     @tags = @startup.Tags
     @people = User.all[0..5]
