@@ -35,50 +35,49 @@
 
     - @company_descriptions.each do |description|
       = render :partial => 'dashboard_description', :locals => {:description => description}
-    .description-box{:style => "margin-bottom:20px; "}
-      .team-box
-        %p Current team
-        #team-list
-          - @startup_owners.each do |person|
-            = link_to({:controller => "investors", :action => "follower_info", :id => person.id,
-                      :action_type => 1}, :remote => true) do
-              .person-info-manage
-                - if person.avatar?
-                  = image_tag person.avatar.url(:square)
-                - else
-                  = image_tag "/images/profile/Nophoto.png"
-                %h5= person.firstname + " " + person.lastname
-      .description-statement
-        %h5{:style => "font-weight:lighter"} Team
-        %p Add team members to your idea by selecting them:
-        = form_tag({:action => "search_people", :controller => "investors"},
-                         :remote => true) do
-          = text_field_tag :string, "search", :onclick => "clearInput(this)", :onkeyup => "submitForm(this.parentNode)"
-          = hidden_field_tag :action_type, "add_team"
-          = submit_tag "submit", :hidden => "true"
 
-        = form_tag({:action => "add_founder", :controller => "investors"},
-                       :remote => true,
-                       :id => "add_founder",
-                       :hidden => true) do
-          = hidden_field_tag :founder_id, 0
-          = hidden_field_tag :id, @startup.id
-          = submit_tag "submit"
+  .dashboard-info
+    %h5{:style => "font-weight:lighter"}
+      The Team
+      =link_to :action => "team", :id => @startup.id do
+        = image_tag '/images/pen.png', :class => "edit-pen", :style => "float:right;width:20px"
+    - @startup_owners.each do |person|
+      = link_to({:controller => "investors", :action => "follower_info", :id => person.id,
+                :action_type => 1}, :remote => true) do
+        .person-info
+          - if person.avatar?
+            = image_tag person.avatar.url(:square)
+          - else
+            = image_tag "/images/profile/Nophoto.png"
+          %p
+            %span{:style => "font-weight:bold"}= person.firstname + " " + person.lastname
+            %br
+            Founder
+          .clear-both
 
-        = form_tag({:action => "remove_founder", :controller => "investors"},
-                       :remote => true,
-                       :id => "remove_founder",
-                       :hidden => true) do
-          = hidden_field_tag :founder_id, 0
-          = hidden_field_tag :id, @startup.id
-          = submit_tag "submit"
+    %h5{:style => "font-weight:lighter"}
+      Your Share Settings
+      =link_to :action => "circles", :id => @startup.id do
+        = image_tag '/images/pen.png', :class => "edit-pen", :style => "float:right;width:20px"
+      %p{:style => "font-weight:bold;margin-top:20px"}
+        = image_tag '/images/share_invite.png', :style => "width:30px"
+        INVITE ONLY
+      %p{:style => "font-weight:bold"}
+        = image_tag '/images/share_random.png', :style => "width:30px"
+        RANDOM USERS TEST
+      %p{:style => "font-weight:bold"}
+        = image_tag '/images/share_public.png', :style => "width:30px"
+        PUBLIC
+    %h5{:style => "font-weight:lighter"}
+      Your Hatchers
+    - User.all.sample(8).each do |person|
+      - if person.avatar?
+        = image_tag person.avatar.url(:square), :class => "hatchers"
+      - else
+        = image_tag "/images/profile/Nophoto.png", :class => "hatchers"
 
-        #search-results.company-box
-        .clear-both
-    =link_to({:action => "circles", :id => @startup.id}, :class => "help-hatch custom-button",
-                   :style => "margin-left:-webkit-calc(50% - 105px)") do
-      %i.icon-pencil.glyphw{:style => "margin-top:3px"}
-      Share / Edit settings
+  .clear-both
+
 
 #uploadPhoto.modal.hide.fade{:tabindex => "-1", :role => "dialog", :'aria-labelledby' => "myModalLabel", :'aria-hidden' => "true"}
   .modal-header

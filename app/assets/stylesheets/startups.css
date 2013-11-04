@@ -276,6 +276,20 @@ a.help-hatch {
   .dashboard-company {
     float:left;
     width: 65%;
+    min-height: 400px;
+  }
+
+  .dashboard-info {
+    float:left;
+    width: -webkit-calc(35% - 45px);
+    padding-left: 40px;
+
+    h5 {
+      font-size:24px;
+      margin: 60px 0 20px 0;
+      font-weight: lighter;
+    }
+
   }
 
 
@@ -359,6 +373,32 @@ a.help-hatch {
   }
 }
 
+.person-info{
+  margin-right:5px;
+  margin-bottom: 20px;
+
+  p {
+    color:black;
+    font-size: 16px;
+    line-height: 20px;
+    margin-top:0px;
+    padding:0;
+    font-weight: lighter;
+  }
+
+  img{
+    height: 80px;
+    width: 80px;
+    float:left;
+    margin-right:10px;
+  }
+}
+
+.hatchers {
+  width: 60px;
+  margin: 0 20px 20px 0;
+  float:left;
+}
 
 .description-box{
 
@@ -396,25 +436,11 @@ a.help-hatch {
     height: 100px;
   }
 
-
   .person-info{
     width:30%;
-    margin-right:5px;
-    p {
-      color:black;
-      font-size: 16px;
-      line-height: 20px;
-      margin-top:0px;
-      padding:0;
-    }
-    img{
-      height: 80px;
-      width: 80px;
-      float:left;
-      margin-right:10px;
-    }
     float:left;
   }
+
   .action-box {
     float:right;
     width:190px;

@@ -54,6 +54,7 @@
       ga('create', 'UA-41329570-2', 'ideahatcher.co');
       ga('send', 'pageview');
 
+
   %body{:onload => "designButtons(this)"}
 
     .hatcher-nav
@@ -137,22 +138,22 @@
         %ul.user-nav.nav.nav-pills{:id => "login-nav"}
           :ruby
             if (params[:controller] == 'startups')
-              custom_str = "custom-active"
+              custom_str = "custom-active-green"
             else
               custom_str = ""
             end
-          %li{:class => "dropdown custom-dropdown #{custom_str}"}
-            = link_to "Browse", :action => "index", :controller => "startups"
+          %li{:class => "dropdown custom-dropdown custom-dropdown-green #{custom_str}"}
+            = link_to "browse", :action => "index", :controller => "startups"
           :ruby
-            if (params[:controller] == 'home' and ['about'].include?(params[:action]))
-              custom_str = "custom-active"
+            if (params[:controller] == 'home')
+              custom_str = ""
             else
               custom_str = ""
             end
-          %li{:class => "dropdown custom-dropdown #{custom_str}"}
-            = link_to "How it works", :action => "index", :controller => "home", :anchor => "how-it-works"
-          %li{:class => "dropdown custom-dropdown"}
-            %a{:href => "#", :onclick => "$('#login_modal').modal('show');"} Join | Login
+          %li{:class => "dropdown custom-dropdown custom-dropdown-yellow #{custom_str}"}
+            = link_to "how it works", :action => "index", :controller => "home", :anchor => "how-it-works"
+          %li{:class => "dropdown custom-dropdown custom-dropdown-aqua"}
+            %a{:href => "#", :onclick => "$('#login_modal').modal('show');"} join | login
 
     .clear-both
 

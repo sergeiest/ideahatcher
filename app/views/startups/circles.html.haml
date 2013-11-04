@@ -1,7 +1,7 @@
 .dashboard-view
   = render :partial => 'dashboard_nav'
 
-  .new-view-company{:style => "padding-top:0"}
+  .new-view-company{:style => "padding-top:0;"}
     %h2 #{@startup.name} / Sharing settings
     = link_to 'BACK TO DASHBOARD', {:action => 'dashboard', :id => @startup.id},
                                     :class => 'custom-button',
@@ -84,6 +84,7 @@
           = submit_tag "submit", :hidden => "true"
         #search-results
       .clear-both
+  .clear-both
 
 
 :javascript

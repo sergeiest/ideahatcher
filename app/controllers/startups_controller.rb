@@ -200,6 +200,7 @@ class StartupsController < ApplicationController
   end
   
   def team
+    @user = User.find(session[:id])   if session[:id] and session[:id] != 0
     @startup = Startup.find(session[:startup_id])
     @startup_owners = @startup.Owner_users.all.uniq
     @startup_followers = @startup.Follower_users.all.uniq

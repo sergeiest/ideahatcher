@@ -225,4 +225,3 @@ function customHighlightIn(elementNode){
 function customHighlightOut(elementNode){
     elementNode.style.backgroundColor = 'inherit'
 }
-

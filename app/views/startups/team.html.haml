@@ -1,6 +1,12 @@
-.new-view-content
-  %h2 My ideas / #{@startup.name}
-  .new-view-company
+.dashboard-view
+  = render :partial => 'dashboard_nav'
+
+  %h2 #{@startup.name} / Manage the Team
+  = link_to 'BACK TO DASHBOARD', {:action => 'dashboard', :id => @startup.id},
+                                      :class => 'custom-button',
+                                      :style => "float:right;width:200px;padding-top:6px;padding-bottom:0px"
+  .clear-both
+  .dashboard-company
     .manage-view
       %h5 Add team members to your idea by selecting them:
       = form_tag({:action => "search_people", :controller => "investors"},
@@ -27,8 +33,25 @@
 
       #search-results.company-box
 
+  .dashboard-info
+    %h5{:style => "font-weight:lighter"}
+      The Team
+    #team-list
+      - @startup_owners.each do |person|
+        = link_to({:controller => "investors", :action => "follower_info", :id => person.id,
+                                    :action_type => "remove_team"}, :remote => true) do
+          .person-info
+            - if person.avatar?
+              = image_tag person.avatar.url(:square)
+            - else
+              = image_tag "/images/profile/Nophoto.png"
+            %p
+              %span{:style => "font-weight:bold"}= person.firstname + " " + person.lastname
+              %br
+              Founder
+            .clear-both
 
-  = render "info"
+
 
 :javascript
 

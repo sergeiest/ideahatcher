@@ -23,8 +23,11 @@
         -tag_string = tag_string[0..-3]
       - else
         - tag_string = "#new"
-    - if params[:action] == "my_ideas"
-      - style_str = "color:#fbb03b"
-    - else
-      - style_str = ";"
+    - case params[:action]
+      - when "my_ideas"
+        - style_str = "color:#fbb03b"
+      - when "following_ideas"
+        - style_str = "color:#0fdbc7"
+      - else
+        - style_str = ";"
     %p.hashtags{:style => "#{style_str}"}= tag_string

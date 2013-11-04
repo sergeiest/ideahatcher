@@ -1,5 +1,5 @@
 var mainDiv = document.getElementById("team-list");
-mainDiv.innerHTML ="";
+mainDiv.innerHTML = "";
 
 <% if !@people || @people.length == 0 %>
   mainDiv.innerHTML ="<p>No team specified</p>";
@@ -19,6 +19,6 @@ mainDiv.innerHTML ="";
             '<h5><%= person.firstname%> <%=person.lastname%></h5>'</div>';
     <% end %>
 
-mainDiv.appendChild(newA);
+    mainDiv.appendChild(newA);
 
 <% end %>
