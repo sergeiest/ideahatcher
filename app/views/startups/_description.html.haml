@@ -31,39 +31,52 @@
       .help-text
         %h5{:style => "font-weight:lighter"} Help hatch the #{description.field_status}
         %p
-          On this dashboard you do things. Yup, you do! This idea is waiting for you to be improved and become a
-          successful business:
-          %ul
-            %li{:style => "font-weight:lighter"} First, select which #{description.field_status} do you like the most, which has the most potential.
-            %li{:style => "font-weight:lighter"}
-              Second, add you suggestions how this #{description.field_status} or patricipate in the discussion with
-              other like-minded people
-            %li{:style => "font-weight:lighter"} Finally, see how the idea evolves, launches and succeed thanks to your help!
+          Help the founders improve this idea and turn it into a successful business:
+          %ol
+            %li{:style => "font-weight:lighter"} Select which #{description.field_status} you like the most or which has the most potential.
+            %li{:style => "font-weight:lighter"} Add your suggestions for this #{description.field_status} or participate in the discussion with other idea hatchers.
+            %li{:style => "font-weight:lighter"} Follow the idea to see how it evolves, launches and succeeds thanks to your help!
       - if !description.companydescription_id.nil?
         .idea-statement{:onclick => "voteThis(this)"}
           - old_description = Companydescription.find(description.companydescription_id)
-          = simple_format old_description.content.firstletters(300)
+          = simple_format old_description.content.firstletters(500)
         %img{:src => "../images/vs.png"}
         .idea-statement{:onclick => "voteThis(this)"}
-          = simple_format description.content.firstletters(300), :class => "p_new"
+          = simple_format description.content.firstletters(500), :class => "p_new"
           -if session[:connection_type] == 2
             %i.icon-pencil.glyphw{:onclick => "editStep1(this.parentNode.parentNode)"}
       -else
         .idea-statement
-          = simple_format description.content.firstletters(300), :class => "p_new"
+          = simple_format description.content.firstletters(500), :class => "p_new"
           -if session[:connection_type] == 2
             %i.icon-pencil.glyphw{:onclick => "editStep1(this.parentNode.parentNode)"}
         %img{:src => "../images/vs.png"}
         .idea-statement.empty-statement
-          %p No other versions available. Suggest a new one bellow...
+          %p No other versions available. Suggest a new one below.
       .clear-both
 
     .idea-box
+      :ruby
+        query_str = ""
+        description_list = Array.new
+        description_list << description.id
+        current_description = description
+        while current_description.companydescription_id != nil do
+          description_list << current_description.companydescription_id
+          current_description = @company_descriptions_all.select{|x| x.id == current_description.companydescription_id}.first
+        end
+        description_list.each do |disc_id|
+          if query_str == ""
+            query_str += 'companydescription_id = ' + disc_id.to_s()
+          else
+            query_str += ' OR companydescription_id = ' + disc_id.to_s()
+          end
+        end
       %hr
       .discussion{:id => "discussion_#{description.id}"}
-        - ideas = Idea.where("companydescription_id = ?", description.id)
+        - ideas = Idea.where(query_str)
         - if ideas.nil? || ideas.length == 0
-          %p no suggestions so far. be the first one to contribute...
+          %p There are no suggestions so far - be the first to contribute!
           %hr.middle-hr
         - ideas.each do |idea|
           = simple_format idea.content

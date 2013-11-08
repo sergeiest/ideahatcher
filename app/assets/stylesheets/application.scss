@@ -160,6 +160,7 @@ body {
     .custom-dropdown-menu {
       margin:0px;
       margin-top:2px;
+      margin-left:-28px;
     }
 
     .custom-dropdown-green {
@@ -192,6 +193,8 @@ body {
     .custom-dropdown a {
       height: 12px;
       color:white;
+      min-width:75px;
+      text-align: center;
     }
 
     .custom-dropdown ul a {
@@ -201,6 +204,12 @@ body {
     }
 
     .custom-dropdown a:hover, a:active, a:focus {color: #313131;}
+    .custom-dropdown-green a:hover, a:active, a:focus {background-color: #94d500;}
+    .custom-dropdown-aqua a:hover, a:active, a:focus {background-color: #0fdbc7;}
+    .custom-dropdown-orange a:hover, a:active, a:focus {background-color: #fbb03b;}
+    .custom-dropdown-yellow a:hover, a:active, a:focus {background-color: #fee946;}
+
+
     .custom-dropdown ul a:hover, a:active, a:focus {color: white;}
 
     .custom-active-aqua {

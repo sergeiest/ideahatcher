@@ -29,25 +29,25 @@
       .help-text
         %h5{:style => "font-weight:lighter"} Hatch your #{description.field_status}
         %p
-          Create several versions of your idea's #{description.field_status} so people can choice which one they like
+          Create several versions of your idea's #{description.field_status} so people can choose which one they like
           the most and which has the most potential. Collect the results and keep improving!
       - if !description.companydescription_id.nil?
         .idea-statement{:onclick => "voteThis(this)"}
           - old_description = Companydescription.find(description.companydescription_id)
-          = simple_format old_description.content.firstletters(300)
+          = simple_format old_description.content.firstletters(500)
         %img{:src => "../images/vs.png"}
         .idea-statement{:onclick => "voteThis(this)"}
-          = simple_format description.content.firstletters(300), :class => "p_new"
+          = simple_format description.content.firstletters(500), :class => "p_new"
           -if session[:connection_type] == 2
             %i.icon-pencil.glyphw{:onclick => "editStep1(this.parentNode.parentNode)"}
       -else
         .idea-statement
-          = simple_format description.content.firstletters(300), :class => "p_new"
+          = simple_format description.content.firstletters(500), :class => "p_new"
           -if session[:connection_type] == 2
             %i.icon-pencil.glyphw{:onclick => "editStep1(this.parentNode.parentNode)"}
         %img{:src => "../images/vs.png"}
         .idea-statement.empty-statement
-          %p No other versions available. Suggest a new one bellow...
+          %p No other versions available. Suggest a new one below.
       .clear-both
       -if session[:connection_type] == 2
         .edit-description{:hidden => "true"}
@@ -90,9 +90,25 @@
           .div{:id => "visualization_#{description.id}"}
 
     .idea-box
+      :ruby
+        query_str = ""
+        description_list = Array.new
+        description_list << description.id
+        current_description = description
+        while current_description.companydescription_id != nil do
+          description_list << current_description.companydescription_id
+          current_description = @company_descriptions_all.select{|x| x.id == current_description.companydescription_id}.first
+        end
+        description_list.each do |disc_id|
+          if query_str == ""
+            query_str += 'companydescription_id = ' + disc_id.to_s()
+          else
+            query_str += ' OR companydescription_id = ' + disc_id.to_s()
+          end
+        end
       %hr
       .discussion{:id => "discussion_#{description.id}"}
-        - ideas = Idea.where("companydescription_id = ?", description.id)
+        - ideas = Idea.where(query_str)
         - if ideas.nil? || ideas.length == 0
           %p no suggestions so far. be the first one to contribute...
           %hr.middle-hr

@@ -10,9 +10,18 @@ class StartupsController < ApplicationController
           wrong_link = 1
         else
           user = User.find(session[:id])
-          if params[:id] and Owner.where("startup_id = ? AND user_id = ?", params[:id], session[:id]).length > 0
+          startups = user.Owner_startups
+          if params[:id] == nil
+            if startups.length == 0
+              redirect_to :controller => 'campaigns', :action => 'guide_step' and return
+            else
+              params[:id] = startups[0].id
+            end
+          end
+          startup_with_id = user.Owner_startups.where("startup_id = ?", params[:id])
+          if startup_with_id.length != 0
             session[:connection_type] = 2
-            startup = Startup.find(params[:id])
+            startup = startup_with_id[0]
             case startup.status
               when 0
                 redirect_to :controller => 'campaigns', :action => 'about_step', :id => params[:id] and return
@@ -20,12 +29,11 @@ class StartupsController < ApplicationController
                 redirect_to :controller => 'campaigns', :action => 'circles_step', :id => params[:id] and return
             end
           else
-            wrong_link = 1
+            redirect_to :controller => 'campaigns', :action => 'guide_step' and return
           end
         end
       when "show"
         if params[:id] and Startup.find(params[:id])
-          session[:startup_id] = params[:id]
           if session[:id] != 0 and session[:id] != nil
             connection_type=0
             if Owner.where("startup_id = ? AND user_id = ?", params[:id], session[:id]).length > 0
@@ -169,7 +177,9 @@ class StartupsController < ApplicationController
     @startup_updates = @startup.Companyupdates
     @companyupdate = Companyupdate.new
 
-    @company_descriptions = @startup.Companydescriptions.where("status =?", 1).sort!{|x, y| x["allfield_id"] <=> y["allfield_id"]}
+    @company_descriptions_all = @startup.Companydescriptions
+    @company_descriptions = @company_descriptions_all.select{|x| x.status == 1}.sort!{|x, y| x["allfield_id"] <=> y["allfield_id"]}
+
 
     respond_to do |format|
       format.html # show.html.erb
@@ -180,7 +190,7 @@ class StartupsController < ApplicationController
 
   def circles
     @user = User.find(session[:id])
-    @startup = Startup.find(session[:startup_id])
+    @startup = Startup.find(params[:id])
     @tags = @startup.Tags
     @people = User.all[0..5]
     @circles = @startup.Circle_users[0..39]
@@ -191,24 +201,25 @@ class StartupsController < ApplicationController
 
   def dashboard
     @user = User.find(session[:id])   if session[:id] and session[:id] != 0
-    @startup = Startup.find(session[:startup_id])
+    @startup = Startup.find(params[:id])
     @descriptions = @startup.Companydescriptions.where("status = ?",1)
     @startup_followers = @startup.Follower_users.all.uniq
     @startup_owners = @startup.Owner_users.all.uniq
     @companyupdate = Companyupdate.new
-    @company_descriptions = @startup.Companydescriptions.where("status =?", 1).sort!{|x, y| x["allfield_id"] <=> y["allfield_id"]}
+    @company_descriptions_all = @startup.Companydescriptions
+    @company_descriptions = @company_descriptions_all.select{|x| x.status == 1}.sort!{|x, y| x["allfield_id"] <=> y["allfield_id"]}
   end
   
   def team
     @user = User.find(session[:id])   if session[:id] and session[:id] != 0
-    @startup = Startup.find(session[:startup_id])
+    @startup = Startup.find(params[:id])
     @startup_owners = @startup.Owner_users.all.uniq
     @startup_followers = @startup.Follower_users.all.uniq
     #@people = User.all[0..20]
   end
 
   def followers
-    @startup = Startup.find(session[:startup_id])
+    @startup = Startup.find(params[:id])
     @people = @startup.Follower_users.all[0..20]
     @startup_owners = @startup.Owner_users.all.uniq
   end

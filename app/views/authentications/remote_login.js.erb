@@ -1,61 +1,31 @@
 var newUl = document.createElement("ul");
 newUl.className = "user-nav nav nav-pills";
 
-
-var liStartup = document.createElement("li");
-liStartup.className = "dropdown custom-dropdown"
-
-liStartup.innerHTML = '<a class="dropdown-toggle" data-toggle="dropdown" href="#" style="height: 12px;"> My ideas </a>';
-
-var menuStartup = document.createElement("ul");
-menuStartup.className = "dropdown-menu custom-dropdown-menu";
-
-menuStartup.innerHTML = '<li role="presentation"><%= link_to "Start new idea", :controller => "campaigns",
-                                                :action => "guide_step" %></li>';
-
-<% if @user.Owner_startups.length > 0 %>
-    menuStartup.innerHTML = menuStartup.innerHTML + '<li role="presentation"><%= link_to "See all my ideas", :controller => "startups", :action => "my_ideas" %></li><hr />';
-<% end %>
-
-<% @user.Owner_startups.each do |startup| %>
-menuStartup.innerHTML = menuStartup.innerHTML + '<li role="presentation"><%= link_to(startup.name,
-                                                :controller => "startups",
-                                                :action => "show",
-                                                :id => startup.id) %></li>';
-<% end %>
-
-liStartup.appendChild(menuStartup);
-newUl.appendChild(liStartup);
-
-
-
-
-
 var liVote = document.createElement("li");
-liVote.className = "dropdown custom-dropdown"
-liVote.innerHTML = '<%= link_to "Browse", :action => "index", :controller => "startups" %>';
+liVote.className = "dropdown custom-dropdown custom-dropdown-green"
+liVote.innerHTML = '<%= link_to "browse", :action => "index", :controller => "startups" %>';
 newUl.appendChild(liVote);
 
 var liVote = document.createElement("li");
-liVote.className = "dropdown custom-dropdown"
-liVote.innerHTML = '<%= link_to "Following", :action => "following_ideas", :controller => "startups" %>';
+liVote.className = "dropdown custom-dropdown custom-dropdown-orange"
+liVote.innerHTML = '<%= link_to "dashboard", :action => "dashboard", :controller => "startups" %>';
 newUl.appendChild(liVote);
 
 var liVote = document.createElement("li");
-liVote.className = "dropdown custom-dropdown"
-liVote.innerHTML = '<%= link_to "How it works", :action => "index", :controller => "home", :anchor => "how-it-works" %>';
+liVote.className = "dropdown custom-dropdown custom-dropdown-aqua"
+liVote.innerHTML = '<%= link_to "following", :action => "following_ideas", :controller => "startups" %>';
 newUl.appendChild(liVote);
 
 var newLi = document.createElement("li");
-newLi.className = "dropdown"
+newLi.className = "dropdown custom-dropdown custom-dropdown-yellow"
 
 <% if @user.avatar? %>
     newLi.innerHTML = "<a class='dropdown-toggle' data-toggle='dropdown' href='#'  style='height: 12px;'>" +
-                        '<%= image_tag @user.avatar.url(:square) %>' +
+                        'hi, <%= @user.firstname %><%= image_tag @user.avatar.url(:square) %>' +
                         "<b class='caret'></b></a>";
 <% else %>
     newLi.innerHTML = "<a class='dropdown-toggle' data-toggle='dropdown' href='#'  style='height: 12px;'>" +
-                        '<%= image_tag '/images/profile/Nophoto.png' %>' +
+                        'hi, <%= @user.firstname %><%= image_tag '/images/profile/Nophoto.png' %>' +
                         "<b class='caret'></b></a>";
 <% end %>
 

@@ -86,15 +86,7 @@
               custom_str = ""
             end
           %li{:class => "dropdown custom-dropdown custom-dropdown-orange #{custom_str}"}
-            %a.dropdown-toggle{:href => "#", :style => "height: 12px;", :'data-toggle' => "dropdown"} dashboard
-            %ul.dropdown-menu.custom-dropdown-menu
-              %li{:role => "presentation"}= link_to "Start new idea", :controller => 'campaigns', :action => 'guide_step'
-              - if owner_number != 0
-                %li{:role => "presentation"}= link_to "See all my ideas", :controller => 'startups',:action => 'my_ideas'
-                %hr
-                - user.Owner_startups.each do |startup|
-                  %li{:role => "presentation"}= link_to startup.name, :controller => 'startups',:action => 'show', :id => startup.id
-
+            =link_to "dashboard", :controller => "startups", :action => "dashboard"
 
           :ruby
             if (params[:controller] == 'startups' and ['following_ideas'].include?(params[:action])) ||
@@ -108,12 +100,12 @@
 
           :ruby
             if params[:controller] == 'users'
-              custom_str = "custom-active"
+              custom_str = "custom-active-yellow"
             else
               custom_str = ""
             end
-          %li{:class => "dropdown #{custom_str}"}
-            %a.dropdown-toggle{:href => "#", :style => "height: 12px; color:white; margin:10px 0 0 20px;", :'data-toggle' => "dropdown"}>
+          %li{:class => "dropdown custom-dropdown custom-dropdown-yellow #{custom_str}"}
+            %a.dropdown-toggle{:href => "#", :style => "height: 12px;", :'data-toggle' => "dropdown"}>
               hi, #{user.firstname}!
               - if user.avatar?
                 = image_tag user.avatar.url(:square)
@@ -122,7 +114,7 @@
               %b.caret
               - if user.notification_num and user.notification_num >0
                 .notifications= user.notification_num
-            %ul.dropdown-menu
+            %ul.dropdown-menu.custom-dropdown-menu
               %li{:role => "presentation"}
                 = link_to :controller => 'users', :action => 'notifications',
                             :id => user.id  do
