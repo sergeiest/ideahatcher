@@ -219,8 +219,9 @@ function customClickUp(elementNode){
     elementNode.style.boxShadow = "5px 5px 0px #888888";
 }
 
-function customHighlightIn(elementNode){
-    elementNode.style.backgroundColor = '#94d500'
+function customHighlightIn(elementNode, colorName){
+    if (colorName == null) {elementNode.style.backgroundColor = '#94d500'}
+    if (colorName == 'yellow') {elementNode.style.backgroundColor = '#fee946'}
 }
 function customHighlightOut(elementNode){
     elementNode.style.backgroundColor = 'inherit'

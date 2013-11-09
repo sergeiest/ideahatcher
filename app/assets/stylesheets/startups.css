@@ -437,7 +437,8 @@ a.help-hatch {
   }
 
   .person-info{
-    width:30%;
+    width: 60px;
+    height:60px;
     float:left;
   }
 

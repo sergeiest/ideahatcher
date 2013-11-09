@@ -1,54 +1,70 @@
 .user-content
-  %h5 Notifications
-  - if !@notifications or @notifications.length == 0
-    %p You don't have new notifications
-  - else
-    - @notifications.each do |notification|
-      - case notification.event_type
-        - when 1
-          %p
-            You were added to the team of #{Startup.find(notification.event_id).name}
-            |
-            = link_to "Confirm", {:action => "confirm_founder",
-                                :controller => "investors",
-                                :startup_id => notification.event_id,
-                                :notification_id => notification.id},
-                                :remote => true,
-                                :id => "notification" + notification.id.to_s()
+  .notification-box
+    %h5{:style => "font-weight: lighter;"} Notifications
+    - if !@notifications or @notifications.length == 0
+      %p.topic-line ALL
+      .notification-line You don't have new notifications
+    - else
+      %p.topic-line ALL
+      - @notifications.each do |notification|
+        - case notification.event_type
+          - when 1
+            .notification-line{:onMouseMove => "customHighlightIn(this,'yellow')", :onMouseOut => "customHighlightOut(this,'yellow')"}
+              =image_tag '/images/comment.png', :class => "edit-pen"
+              %span.just-text You were added to the team of
+              %span.author #{Startup.find(notification.event_id).name}
+              %span.just-text
+                |
+                = link_to "Confirm", {:action => "confirm_founder",
+                                  :controller => "investors",
+                                  :startup_id => notification.event_id,
+                                  :notification_id => notification.id},
+                                  :remote => true,
+                                  :id => "notification" + notification.id.to_s()
 
-        - when 2
-          %p
-            You were removed from the team of #{Startup.find(notification.event_id).name}
-            |
-            = link_to "Ok", {:action => "check_notification",
-                                :controller => "notifications",
-                                :id => notification.id},
-                                :remote => true,
-                                :id => "notification" + notification.id.to_s()
+          - when 2
+            .notification-line{:onMouseMove => "customHighlightIn(this,'yellow')", :onMouseOut => "customHighlightOut(this,'yellow')"}
+              =image_tag '/images/comment.png', :class => "edit-pen"
+              %span.just-text You were removed from the team of
+              %span.author #{Startup.find(notification.event_id).name}
+              %span.just-text
+                |
+                = link_to "Ok", {:action => "check_notification",
+                                  :controller => "notifications",
+                                  :id => notification.id},
+                                  :remote => true,
+                                  :id => "notification" + notification.id.to_s()
 
 
-  %hr
-  %h5 My discussions
-  - @ideas.each do |idea|
-    - div_name='Idea' + idea.id.to_s()
-    = link_to({:controller => "startups", :action => 'show', :id => idea.startup_id},
-                    :onMouseMove => "MM_changeProp('" + div_name + "','','backgroundColor','#ecf8ff','DIV')",
-                    :onMouseOut => "MM_changeProp('" + div_name + "','','backgroundColor','white','DIV')") do
-      .idea{:id => "#{div_name}"}
-        .idea-startup
-          - startup = Startup.find(idea.startup_id)
-          - if startup.avatar != nil
-            = image_tag startup.avatar.url(:teaser)
-          - else
-            %img.thumbnail1{:src => '/images/profile/Nologo.png'}
-          %h5 #{startup.name}
-        .idea-content
-          %h5
-            - if idea.title == nil || idea.title == ""
-              Open discussion
-            - else
-              #{idea.title}
-          %hr
-          %p= idea.content
-          %p.author by #{idea.first_name} #{idea.last_name} on #{idea.created_at.strftime('%m/%d/%Y')}
-        .clear-both
+  .notification-box
+    %h5{:style => "font-weight: lighter;"} My discussions
+    - time_now = Time.new
+    - display_date = 0
+    - @ideas.each do |idea|
+      :ruby
+        display_date = 1 if display_date == 0 and time_now.year - idea.created_at.year == 0 and
+                time_now.month - idea.created_at.month == 0 and time_now.day - idea.created_at.day == 0
+        display_date = 2 if (display_date == 0 || display_date == 4) and time_now.year - idea.created_at.year == 0 and time_now.month - idea.created_at.month == 0 and
+                                            time_now.day - idea.created_at.day == 1
+        display_date = 3 if (display_date == 0 || display_date > 3) and (time_now.year - idea.created_at.year > 0 || time_now.month - idea.created_at.month > 0 ||
+                                                    time_now.day - idea.created_at.day == 1)
+
+      -case display_date
+        -when 1
+          %p.topic-line TODAY
+          -display_date = 4
+        -when 2
+          %p.topic-line YESTERDAY
+          -display_date = 5
+        -when 3
+          %p.topic-line DAYS AGO
+          -display_date = -1
+
+
+      = link_to({:controller => "startups", :action => 'show', :id => idea.startup_id}) do
+        .notification-line{:onMouseMove => "customHighlightIn(this,'yellow')", :onMouseOut => "customHighlightOut(this,'yellow')"}
+          =image_tag '/images/comment.png', :class => "edit-pen"
+          %span.author #{idea.first_name} #{idea.last_name}
+          %span.just-text commented on the
+          %span.name #{Startup.find(idea.startup_id).name}'s
+          %span.just-text #{idea.title}

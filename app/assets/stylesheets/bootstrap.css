@@ -199,9 +199,9 @@ body {
 
 
 .img-rounded-teaser {
-    -webkit-border-radius: 6px;
-    -moz-border-radius: 6px;
-    border-radius: 6px;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
     height:120px;
     margin-right:00px;
 }

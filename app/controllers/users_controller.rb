@@ -21,8 +21,6 @@ class UsersController < ApplicationController
   def notifications
 
     @user = User.find(params[:id])
-    @user_startups = (@user.Owner_startups + @user.Investor_startups + @user.Follower_startups).uniq
-
     @notifications = @user.Notifications.where("status = 1")
     #@notifications.uniq! {|a| a.event_type and a.event_id}
     @notifications.sort! {|y, x| x["created_at"] <=> y["created_at"]}
@@ -37,9 +35,37 @@ class UsersController < ApplicationController
     #  @user_updates.sort! { |y, x| x["newsdate"] <=> y["newsdate"] }
     #end
 
-    @ideas = Idea.where("user_id = ?", session[:id])
-    @ideas.uniq! {|a| a.companydescription_id}
-    @ideas.sort! { |b, a| [a['created_at'], a['title']] <=> [b['created_at'], b['title'] ] }
+    ideas = Idea.where("user_id = ?", session[:id])
+
+    startups_id = Array.new
+
+    @user.Owner_startups.each do |startup|
+      startups_id << startup.id
+    end
+
+    @user.Follower_startups.each do |startup|
+      startups_id << startup.id
+    end
+
+    ideas.each do |idea|
+      startups_id << idea.startup_id
+    end
+
+    startups_id.uniq!
+
+    query_str = ""
+    startups_id.each do |startup_id|
+      if query_str == ""
+        query_str = "startup_id = " + startup_id.to_s
+      else
+        query_str += " OR startup_id = " + startup_id.to_s
+      end
+    end
+
+    @ideas = Idea.where(query_str)
+    #@ideas.uniq! {|a| a.companydescription_id}
+    @ideas.sort! { |b, a| [a['created_at']] <=> [b['created_at']] }
+    @ideas = @ideas[0..20]
 
   end
 

@@ -47,7 +47,7 @@
   %h2{:style => "font-weight: lighter;margin-top:-30px"} Hatching now:
 
 .featured-ideas
-  - @startups.sample(3).each do |startup|
+  - @startups.select{|x| x.status > 1}.sample(3).each do |startup|
     = render :partial =>  "startups/startup", :locals => {:startup => startup}
   %p= link_to 'See all ideas', {:controller => 'startups', :action => "index"}, :class => "custom-button"
   .clear-both

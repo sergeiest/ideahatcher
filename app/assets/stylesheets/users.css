@@ -1,25 +1,45 @@
 .user-content {
   min-width:720px;
-  min-height: -webkit-calc(100% - 112px);
+  min-height: -webkit-calc(100% - 195px);
   width:70%;
   margin:0px auto 0px auto;
-  padding:50px 20px 0 20px;
+  padding:70px 20px 0 20px;
   width: 65%;
-  background-color: white;
-  box-shadow: 0px 0px 10px #888, 0px 0px 10px #888;
+  //background-color: white;
+  //box-shadow: 0px 0px 10px #888, 0px 0px 10px #888;
 
-  .idea{
-    box-shadow: 0px 0px 10px #888, 0px 0px 10px #888;
-    .idea-startup{
-      width: 25%;
-      margin-right: 20px;
-      float:left;
-      border-right:1px #888 solid;
-      h5{text-align: right;}
+  h5 {
+    font-size:36px;
+    font-weight: lighter;
+    margin-bottom: 40px;
+  }
+  input, textarea{ -webkit-border-radius: 0px; }
+
+  .notification-box {
+    margin-bottom: 80px;
+    .topic-line {
+      margin:15px 40px 0px 40px;
+      padding:0;
+      font-size: 16px;
+      border-bottom: 1px #0fdbc7 solid;
+      color: #0fdbc7;
+      font-weight: bold;
     }
-    .idea-content{
+
+    .notification-line {
+      height: 40px;
+      margin:0px 40px;
+      padding:10px 0px;
+      border-bottom: 1px #d8d8d8 solid;
+
+      a {text-decoration: none; color:black; line-height: 20px;}
+      img {padding:0; margin:0; height: 40px; margin-right: 10px;}
+      .author {color:orange; font-weight: bold; font-style: normal;}
+      .just-text {color:black; font-weight: ligher; font-style: normal;}
+      .name {color:black; font-weight: bold; font-style: normal;}
 
     }
+
   }
 
   .profile-photo{
@@ -29,6 +49,14 @@
     img{
      width:120px;
      height:120px;
+    }
+    .edit-pen{
+      margin-top:-30px;
+      margin-right:50px;
+      float:right;
+      cursor:pointer;
+      z-index: 3;
+      position: relative;
     }
   }
 
@@ -47,10 +75,29 @@
     }
     textarea{
       height: 120px;
-      width:100%;
+      width:-webkit-calc(100% - 13px);
       resize: none;
     }
   }
 
 }
 
+.custom-button {
+  margin-top:5px;
+  padding:2px 10px;
+
+  width:100px;
+  height: 40px;
+
+  border:0px black solid;
+  color:black;
+  background-color: #fee946;
+
+  font-size:14px;
+  font-weight: lighter;
+  text-align: center;
+
+  cursor:pointer;
+
+
+}

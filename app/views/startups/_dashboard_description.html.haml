@@ -110,7 +110,7 @@
       .discussion{:id => "discussion_#{description.id}"}
         - ideas = Idea.where(query_str)
         - if ideas.nil? || ideas.length == 0
-          %p no suggestions so far. be the first one to contribute...
+          %p There are no suggestions so far.
           %hr.middle-hr
         - ideas.each do |idea|
           = simple_format idea.content
