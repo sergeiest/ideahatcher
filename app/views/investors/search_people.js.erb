@@ -13,13 +13,13 @@ mainDiv.innerHTML ="";
   <% if person.avatar? %>
     newA.innerHTML = '<div class="person-info" >'+
                      '<%= image_tag person.avatar.url(:square) %>'+
-                     '<h5><%= person.firstname%> <%=person.lastname%></h5>'+
+                     '<h5><%= person.firstname%> <%=person.lastname%><div class="clear-both"></div></h5>'+
                      '<div class="clear-both"></div></div>';
   <% else %>
     newA.innerHTML = '<div class="person-info" >'+
         '<%= image_tag "/images/profile/Nophoto.png" %>'+
-        '<h5><%= person.firstname%> <%=person.lastname%></h5>'+
-        '<div class="clear-both"></div></div>';
+        '<h5><%= person.firstname%> <%=person.lastname%><div class="clear-both"></div></h5>'+
+        '</div>';
   <% end %>
 
   mainDiv.appendChild(newA);

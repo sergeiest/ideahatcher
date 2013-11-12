@@ -21,11 +21,11 @@ newLi.className = "dropdown custom-dropdown custom-dropdown-yellow"
 
 <% if @user.avatar? %>
     newLi.innerHTML = "<a class='dropdown-toggle' data-toggle='dropdown' href='#'  style='height: 12px;'>" +
-                        'hi, <%= @user.firstname %><%= image_tag @user.avatar.url(:square) %>' +
+                        'hi, <%= @user.firstname %>! <%= image_tag @user.avatar.url(:square) %>' +
                         "<b class='caret'></b></a>";
 <% else %>
     newLi.innerHTML = "<a class='dropdown-toggle' data-toggle='dropdown' href='#'  style='height: 12px;'>" +
-                        'hi, <%= @user.firstname %><%= image_tag '/images/profile/Nophoto.png' %>' +
+                        'hi, <%= @user.firstname %>! <%= image_tag '/images/profile/Nophoto.png' %>' +
                         "<b class='caret'></b></a>";
 <% end %>
 

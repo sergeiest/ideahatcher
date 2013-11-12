@@ -43,11 +43,11 @@
     - @ideas.each do |idea|
       :ruby
         display_date = 1 if display_date == 0 and time_now.year - idea.created_at.year == 0 and
-                time_now.month - idea.created_at.month == 0 and time_now.day - idea.created_at.day == 0
+                time_now.month - idea.created_at.month == 0 and time_now.day - idea.created_at.day <= 0
         display_date = 2 if (display_date == 0 || display_date == 4) and time_now.year - idea.created_at.year == 0 and time_now.month - idea.created_at.month == 0 and
                                             time_now.day - idea.created_at.day == 1
         display_date = 3 if (display_date == 0 || display_date > 3) and (time_now.year - idea.created_at.year > 0 || time_now.month - idea.created_at.month > 0 ||
-                                                    time_now.day - idea.created_at.day == 1)
+                                                    time_now.day - idea.created_at.day > 0)
 
       -case display_date
         -when 1

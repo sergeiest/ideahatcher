@@ -180,6 +180,10 @@ class AuthenticationsController < ApplicationController
     if authentication = Authentication.authenticate(params[:authentication])
       session[:id]=authentication.User.id
       @user = User.find(session[:id])
+
+      @notifications = @user.Notifications.where("status = 1")
+      @user.update_attribute(:notification_num, @notifications.length) if @notifications.length != @user.notification_num
+
       respond_to do |format|
         format.js
       end

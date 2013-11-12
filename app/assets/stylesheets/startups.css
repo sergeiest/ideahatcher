@@ -99,7 +99,7 @@
   #search-results{
     width:100%;
     .person-info{
-      margin:10px 0 10px 10px;
+      margin:30px 0 10px 10px;
       h5 {
         font-size:14px;
         font-weight: normal;
@@ -437,9 +437,10 @@ a.help-hatch {
   }
 
   .person-info{
-    width: 60px;
-    height:60px;
+    //width: 60px;
+    //height:60px;
     float:left;
+    margin: 0 30px 0 0;
   }
 
   .action-box {

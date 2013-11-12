@@ -1,35 +1,28 @@
 .demo
-  .demo-picture
-    - @startups.each do |startup|
-      = render :partial =>  "demo_startup", :locals => {:startup => startup}
-
+  %a{:name => "how-it-works"}
   .tagline
-    %h3{:style => "color: white;"} Validate and get insightful feedback on you business idea
-    %hr
-    %h3{:style => "color: white;"} Help other entrepreneurs start businesses
-    %p
-      - if session[:id].nil? || session[:id] == 0
-        = link_to 'Get hatching', {:controller => 'campaigns', :action => "guide_step", :login => 0},
-                :class => "custom-button", :remote => true, :id => "start-new-idea"
-      - else
-        = link_to 'Get hatching', {:controller => 'campaigns', :action => "guide_step"}, :class => "custom-button"
+    = image_tag "/images/big_icon.png"
+    %h1{:style => "font-weight:lighter"}
+      How do you
+      %br
+      %span{:style => "color:orange; font-weight:bold"}hatch
+      an idea?
+
 
 .how-it-works
-  %a{:name => "how-it-works"}
-  %h2{:style => "font-weight: lighter;"} How it works
-  .content-grey
+  .content-white
     .left-side
       %p
         Share your ideas with a community of entrepreneurs and get valuable feedback.
     .right-side= image_tag "/images/how_it_works_1.png"
     .clear-both
-  .content-white{:style => "border-bottom:1px #c8c8c8 solid;"}
+  .content-white
     .left-side= image_tag "/images/how_it_works_2.png"
     .right-side
       %p
         Tell us about your idea's problem, solution, and business plan, then choose who to share it with.
     .clear-both
-  .content-grey
+  .content-white
     .left-side
       %p
         Other entrepreneurs rate and give feedback on your idea's problem, solution and business plan.
@@ -43,6 +36,14 @@
         A large community of entrepreneurs from many different sectors ensures you’ll get lots of valuable
         feedback to hatch your idea.
     .clear-both
+  .content-white{:style => "height: 150px;"}
+    %p
+      - if session[:id].nil? || session[:id] == 0
+        = link_to 'Get hatching', {:controller => 'campaigns', :action => "guide_step", :login => 0},
+                      :class => "custom-button", :remote => true, :id => "start-new-idea"
+      - else
+        = link_to 'Get hatching', {:controller => 'campaigns', :action => "guide_step"}, :class => "custom-button"
+
 
   %h2{:style => "font-weight: lighter;margin-top:-30px"} Hatching now:
 

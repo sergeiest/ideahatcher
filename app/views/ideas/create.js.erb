@@ -19,6 +19,13 @@ ideaDiv.insertBefore(newAuthor, formNode);
 
 hrNode = document.createElement("hr");
 hrNode.setAttribute("class", "middle-hr");
+
+
+notes = ideaDiv.getElementsByClassName("empty-comment");
+for (var i = 0; i < notes.length; i++) {
+    notes[i].hidden = true;
+}
+
 ideaDiv.insertBefore(hrNode, formNode);
 
 <% end %>
