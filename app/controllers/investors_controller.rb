@@ -3,7 +3,7 @@ class InvestorsController < ApplicationController
   # GET /investors.json
 
 
-  layout "hatcher"
+  layout "general"
 
   before_filter do
     wrong_link = 0
@@ -275,6 +275,10 @@ class InvestorsController < ApplicationController
 
     @follower = User.find(params[:id])
     @startups = @follower.Owner_startups
+
+    respond_to do |format|
+      format.js
+    end
 
   end
 

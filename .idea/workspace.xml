@@ -28,19 +28,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="investors_controller.rb" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="investors_controller.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/controllers/investors_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="273" column="0" selection-start="7153" selection-end="7153" vertical-scroll-proportion="-13.692307">
+            <state line="5" column="17" selection-start="112" selection-end="112" vertical-scroll-proportion="0.12274959">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="follower_info.js.erb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="follower_info.js.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/investors/follower_info.js.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="28" column="75" selection-start="1102" selection-end="1102" vertical-scroll-proportion="-0.27243066">
+            <state line="28" column="75" selection-start="1102" selection-end="1102" vertical-scroll-proportion="6.9583335">
               <folding />
             </state>
           </provider>
@@ -59,7 +59,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/views/startups/show.html.haml" />
         <option value="$PROJECT_DIR$/app/views/startups/team.html.haml" />
         <option value="$PROJECT_DIR$/app/views/authentications/remote_login.js.erb" />
         <option value="$PROJECT_DIR$/app/views/investors/_people.html.erb" />
@@ -75,6 +74,7 @@
         <option value="$PROJECT_DIR$/app/views/users/edit.html.haml" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/application.scss" />
         <option value="$PROJECT_DIR$/app/views/investors/follower_info.js.erb" />
+        <option value="$PROJECT_DIR$/app/controllers/investors_controller.rb" />
       </list>
     </option>
   </component>
@@ -933,16 +933,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/investors_controller.rb">
+    <entry file="file://$PROJECT_DIR$/app/views/investors/follower_info.js.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="273" column="0" selection-start="7153" selection-end="7153" vertical-scroll-proportion="-13.692307">
+        <state line="28" column="75" selection-start="1102" selection-end="1102" vertical-scroll-proportion="6.9583335">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/investors/follower_info.js.erb">
+    <entry file="file://$PROJECT_DIR$/app/controllers/investors_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="75" selection-start="1102" selection-end="1102" vertical-scroll-proportion="-0.27243066">
+        <state line="5" column="17" selection-start="112" selection-end="112" vertical-scroll-proportion="0.12274959">
           <folding />
         </state>
       </provider>
