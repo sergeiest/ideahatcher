@@ -15,7 +15,7 @@
           - if person.avatar?
             = image_tag person.avatar.url(:square)
           - else
-            = image_tag "/images/profile/Nophoto.png"
+            = image_tag "/images/no_profile_picture_" + (person.id % 4 + 1).to_s + ".png"
           %h5= person.firstname + " " + person.lastname
           %p Founder
   %hr

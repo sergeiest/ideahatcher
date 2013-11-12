@@ -14,7 +14,7 @@
             - if @startup.avatar?
               = image_tag @startup.avatar.url(:large), :style=>"margin-bottom:20px "
             - else
-              %img{ :src => '/images/profile/Nologo.png', :class => "main-logo" }
+              %img{ :src => '/images/no_logo.png', :class => "main-logo" }
         %li
           %h4= @descriptions[0].field_status
           = hidden_field :companydescriptions1, :field_status, :value => @descriptions[0].field_status

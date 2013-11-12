@@ -4,7 +4,7 @@
     - if @user.avatar?
       = image_tag @user.avatar.url(:square), :class => "img-rounded-teaser"
     - else
-      %img{:src => '/images/profile/Nophoto.png', :class => "img-rounded-teaser"}
+      %img{:src => '/images/no_profile_picture_' + (@user.id % 4 + 1).to_s + '.png', :class => "img-rounded-teaser"}
     = image_tag '/images/pen.png', :class => "edit-pen",:href => "#uploadPhoto", :'data-toggle' => "modal", :style => "height:25px; width:25px;"
 
   .profile-info

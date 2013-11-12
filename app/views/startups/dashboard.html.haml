@@ -14,7 +14,7 @@
       - if @startup.avatar?
         = image_tag @startup.avatar.url(:large), :class => "main-logo"
       - else
-        = image_tag '/images/profile/Nologo.png', :class => "main-logo"
+        = image_tag '/images/no_logo.png', :class => "main-logo"
       = image_tag '/images/pen.png', :class => "edit-pen-large", :onclick => "$('#uploadPhoto').modal(open)"
 
       .clear-both
@@ -48,7 +48,7 @@
           - if person.avatar?
             = image_tag person.avatar.url(:square)
           - else
-            = image_tag "/images/profile/Nophoto.png"
+            = image_tag "/images/no_profile_picture_" + (person.id % 4 + 1).to_s + ".png"
           %p
             %span{:style => "font-weight:bold"}= person.firstname + " " + person.lastname
             %br
@@ -74,7 +74,7 @@
       - if person.avatar?
         = image_tag person.avatar.url(:square), :class => "hatchers"
       - else
-        = image_tag "/images/profile/Nophoto.png", :class => "hatchers"
+        = image_tag "/images/no_profile_picture_" + (person.id % 4 + 1).to_s + ".png", :class => "hatchers"
 
   .clear-both
 

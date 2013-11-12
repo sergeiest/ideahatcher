@@ -24,7 +24,7 @@ mainDiv.innerHTML = "";
     <% if startup.avatar? %>
         htmlText = htmlText + '<%= image_tag startup.avatar.url(:large), :class => "main-logo" %>';
     <% else %>
-        htmlText = htmlText + '<img src="/images/profile/Nologo.png"  class="main-logo">';
+        htmlText = htmlText + '<img src="/images/no_logo.png"  class="main-logo">';
     <% end %>
 
 

@@ -116,7 +116,7 @@
             <% if user.avatar? %>
                 <%= image_tag user.avatar.url(:square) %>
             <% else %>
-                <%= image_tag "/images/profile/Nophoto.png" %>
+                <%= image_tag "/images/no_profile_picture_" + (user.id % 4 + 1).to_s + ".png" %>
             <% end %>
             <b class="caret"></b>
             <% if user.notification_num and user.notification_num >0 %>

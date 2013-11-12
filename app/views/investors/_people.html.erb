@@ -7,7 +7,7 @@
         <% if  people.avatar? %>
             <img src='<%= people.avatar.url(:square) %>' >
         <% else %>
-            <img src='/images/profile/Nophoto.png'>
+            <img src='/images/no_profile_picture_<%= (people.id % 4 + 1).to_s %>.png'>
         <% end %>
         <h5><%= people.firstname %>  <%= people.lastname %></h5>
         <div class="clear-both"></div>

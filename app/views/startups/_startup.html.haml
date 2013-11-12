@@ -10,7 +10,7 @@
     - if startup.avatar?
       = image_tag startup.avatar.url(:large), :class => "main-logo"
     - else
-      = image_tag '/images/profile/Nologo.png', :class => "main-logo"
+      = image_tag '/images/no_logo.png', :class => "main-logo"
     = simple_format startup.pitch.firstletters(120)
     - tags = startup.Tags
     - tag_string = ""
