@@ -1,0 +1,65 @@
+.main-field{:style => "margin:80px auto 0 auto; min-height:100%; width:70%; min-width700px;"}
+  %h2 Last 10 signups
+  %table
+    %tr
+      %th{:style => "width:10%;text-align:left"} Name
+      %th{:style => "width:10%;text-align:left"} Date of signup
+      %th{:style => "width:10%;text-align:left"} Last login
+    -@users.sort{|y, x| x["created_at"] <=> y["created_at"]}[0..10].each do |user|
+      %tr
+        %td #{user.lastname}, #{user.firstname}
+        %td #{user.created_at}
+        %td #{user.updated_at}
+
+  %hr
+  %h2 Last 10 logins
+  %table
+    %tr
+      %th{:style => "width:10%;text-align:left"} Name
+      %th{:style => "width:10%;text-align:left"} Date of signup
+      %th{:style => "width:10%;text-align:left"} Last login
+    -@users.sort{|y, x| x["updated_at"] <=> y["updated_at"]}[0..10].each do |user|
+      %tr
+        %td #{user.lastname}, #{user.firstname}
+        %td #{user.created_at}
+        %td #{user.updated_at}
+
+  %hr
+  %h2 Last 10 created startups
+  %table
+    %tr
+      %th{:style => "width:10%;text-align:left"} Name
+      %th{:style => "width:10%;text-align:left"} Date of creation
+      %th{:style => "width:10%;text-align:left"} Last update
+    -@startups.sort{|y, x| x["created_at"] <=> y["created_at"]}[0..10].each do |startup|
+      %tr
+        %td #{startup.name}
+        %td #{startup.created_at}
+        %td #{startup.updated_at}
+
+  %hr
+  %h2 Last 10 updated startups
+  %table
+    %tr
+      %th{:style => "width:10%;text-align:left"} Name
+      %th{:style => "width:10%;text-align:left"} Date of creation
+      %th{:style => "width:10%;text-align:left"} Last update
+    -@startups.sort{|y, x| x["updated_at"] <=> y["updated_at"]}[0..10].each do |startup|
+      %tr
+        %td #{startup.name}
+        %td #{startup.created_at}
+        %td #{startup.updated_at}
+
+
+  %hr
+  %h2 Last 20 comments
+  %table
+    %tr
+      %th{:style => "width:10%;text-align:left"} Author
+      %th{:style => "width:10%;text-align:left"} Idea name
+      %th{:style => "width:10%;text-align:left"} Date of creation
+    -@ideas.sort{|y, x| x["created_at"] <=> y["created_at"]}[0..20].each do |idea|
+      %tr
+        %td #{idea.last_name}, #{idea.first_name}
+        %td #{@startups.select{|x| x.id == idea.startup_id}[0].name}
+        %td #{idea.created_at}

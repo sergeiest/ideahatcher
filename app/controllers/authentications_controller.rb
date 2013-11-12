@@ -114,7 +114,9 @@ class AuthenticationsController < ApplicationController
 
       respond_to do |format|
         if @authentication.save
-          session[:id]=@user.id
+          session[:id] = @user.id
+
+          UserMailer.send_welcome(params[:authentication][:username], @user.firstname).deliver
 
           if params[:gotoaction]!= nil and params[:gotocontroller] != nil
             format.html { redirect_to controller: params[:gotocontroller], action: params[:gotoaction]}
@@ -178,11 +180,11 @@ class AuthenticationsController < ApplicationController
 
   def remote_login
     if authentication = Authentication.authenticate(params[:authentication])
-      session[:id]=authentication.User.id
+      session[:id] = authentication.User.id
       @user = User.find(session[:id])
 
       @notifications = @user.Notifications.where("status = 1")
-      @user.update_attribute(:notification_num, @notifications.length) if @notifications.length != @user.notification_num
+      @user.update_attributes(:notification_num => @notifications.length, :updated_at => Time.now)
 
       respond_to do |format|
         format.js

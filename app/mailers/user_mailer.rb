@@ -13,4 +13,9 @@ class UserMailer < ActionMailer::Base
     mail(:to => email, :subject => "ideaHatcher - New message on Workspace")
   end
 
+  def send_welcome (email, name)
+    @name = name
+    mail(:to => email, :subject => "Welcome to ideaHatcher")
+  end
+
 end

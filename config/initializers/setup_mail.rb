@@ -6,6 +6,6 @@ ActionMailer::Base.smtp_settings = {
     :domain => "ideahatcher.co",
     :authentication => :plain,
     :user_name => "team@ideahatcher.co",
-    :password => ENV['EMAIL_PASSWORD']
+    :password => "Yd3c5QXu" #ENV['EMAIL_PASSWORD']
 
 }

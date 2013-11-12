@@ -74,6 +74,7 @@ Webapp::Application.routes.draw do
   post "investors/remove_founder"
   get "investors/confirm_founder"
   get "investors/follower_info"
+  get "investors/last_activities"
   resources :investors
 
   get "users/update"

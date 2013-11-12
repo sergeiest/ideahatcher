@@ -3,7 +3,7 @@ class InvestorsController < ApplicationController
   # GET /investors.json
 
 
-  layout "general"
+  layout 'general'
 
   before_filter do
     wrong_link = 0
@@ -14,6 +14,8 @@ class InvestorsController < ApplicationController
         if params[:id].nil? || session[:id].nil? || session[:id] == 0 || Startup.find(params[:id]).nil?
           wrong_link = 1
         end
+      when "last_activities"
+        wrong_link = 1 if session[:id] != 1
     end
 
     case wrong_link
@@ -30,6 +32,14 @@ class InvestorsController < ApplicationController
 
 
   def index
+
+  end
+
+  def last_activities
+
+    @users = User.all
+    @startups = Startup.all
+    @ideas = Idea.all
 
   end
 
