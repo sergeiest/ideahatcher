@@ -225,6 +225,12 @@ a.help-hatch {
 
 .dashboard-view {
 
+  margin:0%;
+  padding:80px 80px 60px 80px;
+  width: -webkit-calc(100% - 160px);
+  min-width: 880px;
+
+
   p {
     font-size:14px;
     line-height:24px;
@@ -235,10 +241,6 @@ a.help-hatch {
   input {-webkit-border-radius: 0px;}
   textarea {-webkit-border-radius: 0px;}
 
-  margin:0%;
-  padding:80px 80px 60px 80px;
-  width: -webkit-calc(100% - 160px);
-  min-width: 880px;
 
   .custom-nav {
     width: 100%;

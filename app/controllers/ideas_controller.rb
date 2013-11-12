@@ -1,6 +1,6 @@
 class IdeasController < ApplicationController
 
-  layout "hatcher"
+  layout "general"
 
   before_filter do
     wrong_link = 0

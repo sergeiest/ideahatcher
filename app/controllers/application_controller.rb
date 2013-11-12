@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   #  end
   #end
 
-  layout "hatcher"
+  layout "general"
 end
 
 

@@ -5,8 +5,6 @@
   margin:0px auto 0px auto;
   padding:50px 20px 0 20px;
   width: 65%;
-  background-color: white;
-  box-shadow: 0px 0px 10px #888, 0px 0px 10px #888;
 }
 
 .campaign-box {
@@ -16,7 +14,7 @@
     line-height:24px;
   }
   h5 {
-    color: #07b5b5;
+    color: #fbb03b;
     font-size: 18px;
   }
   .check-box {
@@ -112,4 +110,41 @@
     }
   }
 
+}
+
+
+.custom-nav {
+
+  margin:80px 80px 0px 80px;
+  width: -webkit-calc(100% - 160px);
+  min-width: 880px;
+  border-bottom: 3px solid #3d505a;
+
+  .main-tab{
+    border-bottom: 30px solid #8a969a;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    height: 0;
+    width: 130px;
+    margin:0px -20px 0 0;
+    color:white;
+    a{color:white}
+    font-size:14px;
+    position: relative;
+    float: left;
+    text-align: center;
+  }
+  .shadow-tab {
+    border-bottom: 32px solid white;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    height: 0;
+    width: 130px;
+    margin:-2px -20px 0 -148px;
+    color:white;
+    a{color:white}
+    font-size:14px;
+    position: relative;
+    float: left;
+  }
 }

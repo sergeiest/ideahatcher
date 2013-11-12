@@ -26,7 +26,7 @@ modalNode.innerHTML = '<div class="modal-header">' +
 <% if   @follower.avatar? %>
     modalBodyString =  "<img src='<%=  @follower.avatar.url(:square) %>' >";
 <% else %>
-    modalBodyString =  "<img src='/images/no_profile_picture_<%= (@follower.id % 4 + 1).to_s %>.png'>";
+    modalBodyString =  "<img src='/images/no_profile_picture_<%= (@follower.id % 4 + 1).to_s %>.png' style='width:200px' >";
 <% end %>
 
 <% if @follower.description.nil? || @follower.description.length < 1 %>

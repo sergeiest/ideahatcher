@@ -1,25 +1,43 @@
 .custom-nav
-  =link_to :action => "guide_step", :controller => "campaigns" do
-    .main-tab{:style => "z-index: 2; border-bottom: 30px solid #3d505a"}
-      ADD NEW IDEA
-  .shadow-tab{:style => "z-index: 1;"}
-    %a{:href => "#"}
-  .main-tab{:style => "z-index: 10; border-bottom: 30px solid #fbb03b"}
-    = @startup.name.upcase[0..10]
-  .shadow-tab{:style => "z-index: 9;"}
-    %a{:href => "#"}
+  -case params[:controller]
+    -when 'startups'
+      =link_to :action => "guide_step", :controller => "campaigns" do
+        .main-tab{:style => "z-index: 2; border-bottom: 30px solid #3d505a"}
+          ADD NEW IDEA
+      .shadow-tab{:style => "z-index: 1;"}
+        %a{:href => "#"}
+      .main-tab{:style => "z-index: 10; border-bottom: 30px solid #fbb03b"}
+        = @startup.name.upcase[0..10]
+      .shadow-tab{:style => "z-index: 9;"}
+        %a{:href => "#"}
+    -when 'campaigns'
+      -if @startup != nil and @startup.name != nil
+        =link_to :action => "guide_step", :controller => "campaigns" do
+          .main-tab{:style => "z-index: 2; border-bottom: 30px solid #3d505a"}
+            ADD NEW IDEA
+          .shadow-tab{:style => "z-index: 1;"}
+            %a{:href => "#"}
+        .main-tab{:style => "z-index: 10; border-bottom: 30px solid #fbb03b"}
+          = @startup.name.upcase[0..10]
+        .shadow-tab{:style => "z-index: 9;"}
+          %a{:href => "#"}
+      -else
+        .main-tab{:style => "z-index: 10; border-bottom: 30px solid #fbb03b"}
+          ADD NEW IDEA
+        .shadow-tab{:style => "z-index: 9;"}
+          %a{:href => "#"}
   - i = 8
   - startups = @user.Owner_startups
   - startups[0..2].each do |startup|
-    - if startup.id != @startup.id and i > 4
-      =link_to :action => "show", :id => startup.id do
+    - if (@startup.nil?  || startup.id != @startup.id) and i > 4
+      =link_to :controller => "startups", :action => "show", :id => startup.id do
         .main-tab{:style => "z-index: #{i};"}
           #{startup.name.upcase[0..10]}
       .shadow-tab{:style => "z-index: #{i-1};"}
         %a{:href => "#"}
       - i -= 2
   - if startups.length > 3
-    =link_to :action => "my_ideas" do
+    =link_to :controller => "startups", :action => "my_ideas" do
       .main-tab{:style => "z-index: #{i};"}
         other...
     .shadow-tab{:style => "z-index: #{i-1};"}

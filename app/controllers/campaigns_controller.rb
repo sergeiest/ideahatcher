@@ -43,7 +43,7 @@ class CampaignsController < ApplicationController
   end
 
   def guide_step
-
+    @user = User.find(session[:id])
   end
 
   def next_step
@@ -52,6 +52,7 @@ class CampaignsController < ApplicationController
 
   def basic_step
      @startup = Startup.new
+     @user = User.find(session[:id])
   end
 
   def create_step
@@ -101,6 +102,7 @@ class CampaignsController < ApplicationController
   def about_step
 
     @startup = Startup.find(params[:id])
+    @user = User.find(session[:id])
     all_descriptions = @startup.Companydescriptions.where("status = 1")
     @descriptions = Array.new
 
@@ -185,6 +187,7 @@ class CampaignsController < ApplicationController
   end
 
   def circles_step
+    @user = User.find(session[:id])
     @startup = Startup.find(params[:id])
     @tags = @startup.Tags
     @people = User.all[0..5]
