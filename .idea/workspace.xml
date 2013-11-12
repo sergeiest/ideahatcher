@@ -19,10 +19,28 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="application.scss" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/application.scss">
+      <file leaf-file-name="team.html.haml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/startups/team.html.haml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="58" column="98" selection-start="1738" selection-end="1738" vertical-scroll-proportion="0.85384613">
+            <state line="46" column="90" selection-start="1992" selection-end="1992" vertical-scroll-proportion="-20.541666">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="investors_controller.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/controllers/investors_controller.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="273" column="0" selection-start="7153" selection-end="7153" vertical-scroll-proportion="-13.692307">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="follower_info.js.erb" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/views/investors/follower_info.js.erb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="28" column="75" selection-start="1102" selection-end="1102" vertical-scroll-proportion="-0.27243066">
               <folding />
             </state>
           </provider>
@@ -47,7 +65,6 @@
         <option value="$PROJECT_DIR$/app/views/investors/_people.html.erb" />
         <option value="$PROJECT_DIR$/app/views/investors/_person.html.erb" />
         <option value="$PROJECT_DIR$/app/views/investors/add_founder.js.erb" />
-        <option value="$PROJECT_DIR$/app/views/investors/follower_info.js.erb" />
         <option value="$PROJECT_DIR$/app/views/investors/search_people.js.erb" />
         <option value="$PROJECT_DIR$/app/views/layouts/application.html.erb" />
         <option value="$PROJECT_DIR$/app/views/layouts/campaigns.html.erb" />
@@ -57,6 +74,7 @@
         <option value="$PROJECT_DIR$/app/views/users/change_password.html.haml" />
         <option value="$PROJECT_DIR$/app/views/users/edit.html.haml" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/application.scss" />
+        <option value="$PROJECT_DIR$/app/views/investors/follower_info.js.erb" />
       </list>
     </option>
   </component>
@@ -205,6 +223,28 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="layouts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="beta" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="prototype_0.3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ideas" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -820,13 +860,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/startups/team.html.haml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="46" column="90" selection-start="1992" selection-end="1992" vertical-scroll-proportion="-5.75">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/authentications/remote_login.js.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="27" column="134" selection-start="1394" selection-end="1452" vertical-scroll-proportion="0.35384616">
@@ -851,13 +884,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/investors/follower_info.js.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="77" selection-start="1138" selection-end="1138" vertical-scroll-proportion="0.43076923">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/investors/search_people.js.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="19" column="87" selection-start="874" selection-end="874" vertical-scroll-proportion="0.52307695">
@@ -865,37 +891,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/layouts/campaigns.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="180" column="31" selection-start="7518" selection-end="7518" vertical-scroll-proportion="0.14102565">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="59" column="43" selection-start="2139" selection-end="2139" vertical-scroll-proportion="0.31538463">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/investors/_person.html.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="5" column="31" selection-start="296" selection-end="351" vertical-scroll-proportion="-3.125">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/layouts/startups.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="118" column="51" selection-start="4676" selection-end="4676" vertical-scroll-proportion="4.5384617">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/layouts/hatcher.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="117" column="67" selection-start="4663" selection-end="4663" vertical-scroll-proportion="0.35384616">
           <folding />
         </state>
       </provider>
@@ -923,7 +921,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/application.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="58" column="98" selection-start="1738" selection-end="1738" vertical-scroll-proportion="0.85384613">
+        <state line="58" column="98" selection-start="1738" selection-end="1738" vertical-scroll-proportion="1.3384615">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/startups/team.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="46" column="90" selection-start="1992" selection-end="1992" vertical-scroll-proportion="-20.541666">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/investors_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="273" column="0" selection-start="7153" selection-end="7153" vertical-scroll-proportion="-13.692307">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/investors/follower_info.js.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="28" column="75" selection-start="1102" selection-end="1102" vertical-scroll-proportion="-0.27243066">
           <folding />
         </state>
       </provider>
