@@ -104,6 +104,7 @@ body {
   height: 50px;
   background-color: #3d505a;
   min-width: 880px;
+  position:fixed;
   z-index: 100;
   top:0;
   width:100%;
@@ -319,6 +320,7 @@ body {
   min-width: 700px;
   max-width: 70%;
   min-height: -webkit-calc(100% - 101px);
+  min-height: calc(100% - 101px);
 }
 
 
@@ -386,6 +388,7 @@ body {
   min-width: 880px;
   width: 60%;
   min-height: -webkit-calc(100% - 80px);
+  min-height: calc(100% - 80px);
   margin:0px auto 0px auto;
   padding:0px 40px;
   z-index: 2;
@@ -433,6 +436,7 @@ body {
 
   .content-grey {
     width: -webkit-calc(100% - 80px);
+    width: calc(100% - 80px);
     border-top:1px #c8c8c8 solid;
     height: 230px;
     margin: 0px;
@@ -445,6 +449,7 @@ body {
       text-align: center;
       display: inline;
       margin-left: -webkit-calc(33% - 150px);
+      margin-left: calc(33% - 150px);
       cursor:pointer;
       -webkit-border-radius: 30px;
     }
@@ -482,7 +487,9 @@ body {
     margin:0 20px 20px 20px;
     padding:10px 0px;
     width: -webkit-calc((100% - 120px) / 3);
+    width: calc((100% - 120px) / 3);
     min-height: -webkit-calc(260px);
+    min-height: calc(260px);
     background-color: inherit;
     border-top:3px black solid;
     float:left;
@@ -508,7 +515,7 @@ body {
       font-weight: lighter;
     }
     .hashtags {
-      color:#94d500;
+      color:#8a969a;
       height: 10px;
       font-weight: bold;
     }
@@ -533,12 +540,14 @@ body {
   min-width: 880px;
   width: 60%;
   min-height: -webkit-calc(100% - 120px);
+  min-height: calc(100% - 120px);
   margin: 0 auto;
 
   .about-div{
     float:left;
     margin:10px 0;
     margin-right: -webkit-calc(33% - 178px);
+    margin-right: calc(33% - 178px);
     height: 135px;
     img {
       width:135px;

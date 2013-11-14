@@ -35,7 +35,7 @@
         .idea-statement{:onclick => "voteThis(this)"}
           - old_description = Companydescription.find(description.companydescription_id)
           = simple_format old_description.content.firstletters(500)
-        %img{:src => "../images/vs.png"}
+        %img{:src => "../images/versus-green.png"}
         .idea-statement{:onclick => "voteThis(this)"}
           = simple_format description.content.firstletters(500), :class => "p_new"
           -if session[:connection_type] == 2
@@ -45,7 +45,7 @@
           = simple_format description.content.firstletters(500), :class => "p_new"
           -if session[:connection_type] == 2
             %i.icon-pencil.glyphw{:onclick => "editStep1(this.parentNode.parentNode)"}
-        %img{:src => "../images/vs.png"}
+        %img{:src => "../images/versus-green.png"}
         .idea-statement.empty-statement
           %p No other versions available. Suggest a new one below.
       .clear-both

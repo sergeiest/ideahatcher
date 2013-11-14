@@ -10,7 +10,7 @@
         - case notification.event_type
           - when 1
             .notification-line{:onMouseMove => "customHighlightIn(this,'yellow')", :onMouseOut => "customHighlightOut(this,'yellow')"}
-              =image_tag '/images/comment.png', :class => "edit-pen"
+              =image_tag '/images/notification_follower.png'
               %span.just-text You were added to the team of
               %span.author #{Startup.find(notification.event_id).name}
               %span.just-text
@@ -24,7 +24,7 @@
 
           - when 2
             .notification-line{:onMouseMove => "customHighlightIn(this,'yellow')", :onMouseOut => "customHighlightOut(this,'yellow')"}
-              =image_tag '/images/comment.png', :class => "edit-pen"
+              =image_tag '/images/notification_follower.png'
               %span.just-text You were removed from the team of
               %span.author #{Startup.find(notification.event_id).name}
               %span.just-text
@@ -63,7 +63,7 @@
 
       = link_to({:controller => "startups", :action => 'show', :id => idea.startup_id}) do
         .notification-line{:onMouseMove => "customHighlightIn(this,'yellow')", :onMouseOut => "customHighlightOut(this,'yellow')"}
-          =image_tag '/images/comment.png', :class => "edit-pen"
+          =image_tag '/images/notification_comment.png'
           %span.author #{idea.first_name} #{idea.last_name}
           %span.just-text commented on the
           %span.name #{Startup.find(idea.startup_id).name}'s

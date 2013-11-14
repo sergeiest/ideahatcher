@@ -24,42 +24,6 @@ class NotificationsController < ApplicationController
   end
 
 
-  def index
-    @notifications = Notification.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @notifications }
-    end
-  end
-
-  # GET /notifications/1
-  # GET /notifications/1.json
-  def show
-    @notification = Notification.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @notification }
-    end
-  end
-
-  # GET /notifications/new
-  # GET /notifications/new.json
-  def new
-    @notification = Notification.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @notification }
-    end
-  end
-
-  # GET /notifications/1/edit
-  def edit
-    @notification = Notification.find(params[:id])
-  end
-
   # POST /notifications
   # POST /notifications.json
   def create

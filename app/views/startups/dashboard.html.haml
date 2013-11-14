@@ -60,13 +60,13 @@
       =link_to :action => "circles", :id => @startup.id do
         = image_tag '/images/pen.png', :class => "edit-pen", :style => "float:right;width:20px"
       %p{:style => "font-weight:bold;margin-top:20px"}
-        = image_tag '/images/share_invite.png', :style => "width:30px"
+        = image_tag '/images/sharesettings_choose.png', :style => "width:30px"
         INVITE ONLY
       %p{:style => "font-weight:bold"}
-        = image_tag '/images/share_random.png', :style => "width:30px"
+        = image_tag '/images/sharesettings_random.png', :style => "width:30px"
         RANDOM USERS TEST
       %p{:style => "font-weight:bold"}
-        = image_tag '/images/share_public.png', :style => "width:30px"
+        = image_tag '/images/sharesettings_public.png', :style => "width:30px"
         PUBLIC
     %h5{:style => "font-weight:lighter"}
       Your Hatchers
@@ -188,10 +188,10 @@
   }
 
   function openThis(description_id){
-    notes = document.getElementsByClassName("collapse");
-    for (var i = 0; i < notes.length; i++) {
-      $('#' + notes[i].id).collapse('hide');
-    }
+    //notes = document.getElementsByClassName("collapse");
+    //for (var i = 0; i < notes.length; i++) {
+    //  $('#' + notes[i].id).collapse('hide');
+    //}
     $('#ideahatching_' + description_id).collapse('toggle');
   }
 
