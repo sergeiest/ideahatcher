@@ -3,13 +3,11 @@ var mainDiv = document.getElementById("startup-results");
 mainDiv.innerHTML = "";
 
 <% @startups.each do |startup| %>
-    <% div_name = 'project' + startup.id.to_s() %>
 
     var startupDiv = document.createElement("div");
-    startupDiv.onmousemove = function() { MM_changeProp('<%= div_name %>','','backgroundColor','#ecf8ff','DIV'); };
-    startupDiv.onmouseout = function() { MM_changeProp('<%= div_name %>','','backgroundColor','white','DIV'); };
+    startupDiv.onmousemove = function() {customHighlightIn(this,'green')};
+    startupDiv.onmouseout = function() { customHighlightOut(this) };
 
-    startupDiv.setAttribute("id", "project<%= startup.id %>");
     startupDiv.setAttribute("class", "new-view-startup");
 
     startupDiv.innerHTML = "<a href='<%= startup.id %>'></a>";

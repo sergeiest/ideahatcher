@@ -5,8 +5,6 @@ var moreLink = mainDiv.getElementsByClassName("show-more")[0];
 
 <% @startups.each do |startup| %>
 
-    <% div_name = 'project' + startup.id.to_s() %>
-
     var startupDiv = document.createElement("div");
     startupDiv.onmousemove = function() {customHighlightIn(this,'green')};
     startupDiv.onmouseout = function() { customHighlightOut(this) };
