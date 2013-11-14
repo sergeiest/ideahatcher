@@ -1,6 +1,12 @@
-- div_name = 'project' + startup.id.to_s()
-.new-view-startup{ :id => "#{div_name}", :onMouseMove => "MM_changeProp('#{div_name}','','backgroundColor','#ecf8ff','DIV')",
-          :onMouseOut => "MM_changeProp('#{div_name}','','backgroundColor','inherit','DIV')" }
+- case params[:action]
+  - when "my_ideas"
+    - style_str = "orange"
+  - when "following_ideas"
+    - style_str = "aqua"
+  - else
+    - style_str = "green"
+
+.new-view-startup{:onMouseMove => "customHighlightIn(this,'#{style_str}')", :onMouseOut => "customHighlightOut(this)"}
   = link_to (startup) do
     %h5
       - if startup.name.length > 20
@@ -23,11 +29,5 @@
         -tag_string = tag_string[0..-3]
       - else
         - tag_string = "#new"
-    - case params[:action]
-      - when "my_ideas"
-        - style_str = "color:#fbb03b"
-      - when "following_ideas"
-        - style_str = "color:#0fdbc7"
-      - else
-        - style_str = ";"
-    %p.hashtags{:style => "#{style_str}"}= tag_string
+    %p.hashtags{:style => "color:#8a969a"}= tag_string
+

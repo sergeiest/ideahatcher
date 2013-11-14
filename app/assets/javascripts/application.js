@@ -222,7 +222,11 @@ function customClickUp(elementNode){
 function customHighlightIn(elementNode, colorName){
     if (colorName == null) {elementNode.style.backgroundColor = '#94d500'}
     if (colorName == 'yellow') {elementNode.style.backgroundColor = '#fee946'}
+    if (colorName == 'green') {elementNode.style.backgroundColor = '#94d500'}
+    if (colorName == 'orange') {elementNode.style.backgroundColor = '#fbb03b'}
+    if (colorName == 'aqua') {elementNode.style.backgroundColor = '#0fdbc7'}
 }
 function customHighlightOut(elementNode){
     elementNode.style.backgroundColor = 'inherit'
 }
+

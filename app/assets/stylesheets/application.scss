@@ -39,7 +39,7 @@ html{ height:100%;}
 
 body {
   height:100%;
-  min-width: 600px;
+  min-width: 880px;
   font-family: 'Open Sans', sans-serif;
   background-image: url('../images/sandy_tile.png');
 }
@@ -104,7 +104,6 @@ body {
   height: 50px;
   background-color: #3d505a;
   min-width: 880px;
-  position:fixed;
   z-index: 100;
   top:0;
   width:100%;
@@ -384,7 +383,7 @@ body {
 }
 
 .how-it-works {
-  min-width: 700px;
+  min-width: 880px;
   width: 60%;
   min-height: -webkit-calc(100% - 80px);
   margin:0px auto 0px auto;
@@ -531,7 +530,7 @@ body {
 }
 
 .content-about {
-  min-width: 700px;
+  min-width: 880px;
   width: 60%;
   min-height: -webkit-calc(100% - 120px);
   margin: 0 auto;
