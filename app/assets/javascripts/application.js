@@ -221,10 +221,10 @@ function customClickUp(elementNode){
 
 function customHighlightIn(elementNode, colorName){
     if (colorName == null) {elementNode.style.backgroundColor = '#94d500'}
-    if (colorName == 'yellow') {elementNode.style.backgroundColor = '#fee946'}
-    if (colorName == 'green') {elementNode.style.backgroundColor = '#94d500'}
-    if (colorName == 'orange') {elementNode.style.backgroundColor = '#fbb03b'}
-    if (colorName == 'aqua') {elementNode.style.backgroundColor = '#0fdbc7'}
+    if (colorName == 'yellow') {elementNode.style.backgroundColor = 'rgba(254, 233, 70, 0.41)'}
+    if (colorName == 'green') {elementNode.style.backgroundColor = 'rgba(148, 213, 0, 0.41)'}
+    if (colorName == 'orange') {elementNode.style.backgroundColor = 'rgba(251, 176, 59, 0.41)'}
+    if (colorName == 'aqua') {elementNode.style.backgroundColor = 'rgba(15, 219, 199, 0.41)'}
 }
 function customHighlightOut(elementNode){
     elementNode.style.backgroundColor = 'inherit'

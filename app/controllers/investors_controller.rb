@@ -15,7 +15,7 @@ class InvestorsController < ApplicationController
           wrong_link = 1
         end
       when "last_activities"
-        wrong_link = 1 if session[:id] != 1
+        wrong_link = 1 if session[:id] != 1 || session[:id] != 61 || session[:id] != 62 || session[:id] != 50
     end
 
     case wrong_link

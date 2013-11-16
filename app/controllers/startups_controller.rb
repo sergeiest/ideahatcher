@@ -71,11 +71,11 @@ class StartupsController < ApplicationController
     @startups = @startups.sample(15)
     @startups_shown = 15
 
-    tags = Tag.all
+    @tags = Tag.all
 
     @categories = Hash.new(0)
 
-    tags.each do |tag|
+    @tags.each do |tag|
       @categories[tag.name] += 1
     end
 
@@ -128,11 +128,11 @@ class StartupsController < ApplicationController
 
     @startups = @user.Owner_startups
 
-    tags = Tag.all
+    @tags = Tag.all
 
     @categories = Hash.new(0)
 
-    tags.each do |tag|
+    @tags.each do |tag|
       @categories[tag.name] += 1
     end
 
@@ -154,11 +154,11 @@ class StartupsController < ApplicationController
 
     @startups = @user.Follower_startups
 
-    tags = Tag.all
+    @tags = Tag.all
 
     @categories = Hash.new(0)
 
-    tags.each do |tag|
+    @tags.each do |tag|
       @categories[tag.name] += 1
     end
 
