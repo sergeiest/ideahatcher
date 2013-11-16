@@ -66,3 +66,4 @@ Compiled bootstrap.css  (1ms)  (pid 39285)
 Compiled campaigns.css  (27ms)  (pid 39285)
 Compiled startups.css  (87ms)  (pid 39285)
 Compiled users.css  (19ms)  (pid 39285)
+Connecting to database specified by database.yml
