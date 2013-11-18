@@ -1,0 +1,59 @@
+= image_tag "/images/signup.jpg", :style => "width:1900px; height:300px; opacity: 0.6"
+
+
+.demo
+  %a{:name => "how-it-works"}
+  .tagline
+    = image_tag "/images/big_icon.png"
+    %h1{:style => "font-weight:lighter"}
+      How do you
+      %br
+      %span{:style => "color:orange; font-weight:bold"}hatch
+      an idea?
+
+
+.how-it-works
+  .content-white
+    .left-side
+      %p
+        Share your ideas with a community of entrepreneurs and get valuable feedback.
+    .right-side= image_tag "/images/how_it_works_1.png"
+    .clear-both
+  .content-white
+    .left-side= image_tag "/images/how_it_works_2.png"
+    .right-side
+      %p
+        Tell us about your idea's problem, solution, and business plan, then choose who to share it with.
+    .clear-both
+  .content-white
+    .left-side
+      %p
+        Other entrepreneurs rate and give feedback on your idea's problem, solution and business plan.
+        Improve your idea and repost to get feedback again.
+    .right-side= image_tag "/images/how_it_works_3.png"
+    .clear-both
+  .content-white
+    .left-side= image_tag "/images/how_it_works_4.png"
+    .right-side
+      %p
+        A large community of entrepreneurs from many different sectors ensures you’ll get lots of valuable
+        feedback to hatch your idea.
+    .clear-both
+  .content-white{:style => "height: 150px;"}
+    %p
+      - if session[:id].nil? || session[:id] == 0
+        = link_to 'Get hatching', {:controller => 'campaigns', :action => "guide_step", :login => 0},
+                      :class => "custom-button", :remote => true, :id => "start-new-idea"
+      - else
+        = link_to 'Get hatching', {:controller => 'campaigns', :action => "guide_step"}, :class => "custom-button"
+
+
+  %h2{:style => "font-weight: lighter;margin-top:-30px"} Hatching now:
+
+.featured-ideas
+  - @startups.select{|x| x.status > 1}.sample(3).each do |startup|
+    = render :partial =>  "startups/startup", :locals => {:startup => startup}
+  %p= link_to 'See all ideas', {:controller => 'startups', :action => "index"}, :class => "custom-button"
+  .clear-both
+
+

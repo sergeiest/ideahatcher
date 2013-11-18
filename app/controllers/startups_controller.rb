@@ -176,6 +176,7 @@ class StartupsController < ApplicationController
     @startup_owners = @startup.Owner_users.all.uniq
     @startup_updates = @startup.Companyupdates
     @companyupdate = Companyupdate.new
+    @tags = Tag.all
 
     @company_descriptions_all = @startup.Companydescriptions
     @company_descriptions = @company_descriptions_all.select{|x| x.status == 1}.sort!{|x, y| x["allfield_id"] <=> y["allfield_id"]}

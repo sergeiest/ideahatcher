@@ -9442,3 +9442,583 @@ Served asset /bootstrap.css - 304 Not Modified (0ms)
 
 Started GET "/assets/glyphicons-halflings.png" for 127.0.0.1 at 2013-11-15 16:50:57 -0800
 Served asset /glyphicons-halflings.png - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-11-16 17:02:25 -0800
+Connecting to database specified by database.yml
+Processing by HomeController#index as HTML
+  [1m[36mStartup Load (0.5ms)[0m  [1mSELECT `startups`.* FROM `startups` WHERE (status >2)[0m
+  Rendered startups/_startup.html.haml (52.7ms)
+  Rendered home/index.html.haml within layouts/general (88.3ms)
+Completed 500 Internal Server Error in 264.5ms
+
+ActionView::Template::Error (private method `select' called for nil:NilClass):
+    18:     - else
+    19:       = image_tag '/images/no_logo.png', :class => "main-logo"
+    20:     = simple_format startup.pitch.firstletters(120)
+    21:     - tags = @tags.select {|x| x.startup_id = startup.id}
+    22:     - tag_string = ""
+    23:     - tags.each do |tag|
+    24:       - tag_string += "#" + tag.name + ", "
+  app/views/startups/_startup.html.haml:21:in `block in _app_views_startups__startup_html_haml__2222883314751204090_70333482961540'
+  app/views/startups/_startup.html.haml:10:in `_app_views_startups__startup_html_haml__2222883314751204090_70333482961540'
+  app/views/home/index.html.haml:52:in `block in _app_views_home_index_html_haml__2165985767845023222_70333456657460'
+  app/views/home/index.html.haml:51:in `each'
+  app/views/home/index.html.haml:51:in `_app_views_home_index_html_haml__2165985767845023222_70333456657460'
+
+
+  Rendered /Users/sergeyastretsov/.rvm/gems/ruby-2.0.0-p195/gems/actionpack-3.2.15/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.3ms)
+  Rendered /Users/sergeyastretsov/.rvm/gems/ruby-2.0.0-p195/gems/actionpack-3.2.15/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (3.2ms)
+  Rendered /Users/sergeyastretsov/.rvm/gems/ruby-2.0.0-p195/gems/actionpack-3.2.15/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (73.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-11-16 17:08:33 -0800
+Processing by HomeController#index as HTML
+  [1m[35mStartup Load (0.4ms)[0m  SELECT `startups`.* FROM `startups` WHERE (status >2)
+  [1m[36mTag Load (0.3ms)[0m  [1mSELECT `tags`.* FROM `tags` [0m
+  Rendered startups/_startup.html.haml (5.1ms)
+  Rendered startups/_startup.html.haml (4.5ms)
+  Rendered startups/_startup.html.haml (2.5ms)
+  Rendered home/index.html.haml within layouts/general (18.1ms)
+  [1m[35mUser Load (0.5ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM `owners` WHERE `owners`.`user_id` = 1[0m
+Completed 200 OK in 566.0ms (Views: 335.7ms | ActiveRecord: 20.9ms)
+
+
+Started GET "/startups/index" for 127.0.0.1 at 2013-11-16 17:10:31 -0800
+Processing by StartupsController#index as HTML
+  [1m[35mUser Load (0.6ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+  [1m[36mStartup Load (0.6ms)[0m  [1mSELECT `startups`.* FROM `startups` WHERE (status > 1)[0m
+  [1m[35mTag Load (0.4ms)[0m  SELECT `tags`.* FROM `tags` 
+  Rendered startups/_startup.html.haml (2.6ms)
+  Rendered startups/_startup.html.haml (2.4ms)
+  Rendered startups/_startup.html.haml (2.5ms)
+  Rendered startups/_startup.html.haml (1.9ms)
+  Rendered startups/_startup.html.haml (2.1ms)
+  Rendered startups/_startup.html.haml (2.0ms)
+  Rendered startups/_startup.html.haml (1.6ms)
+  Rendered startups/_startup.html.haml (2.4ms)
+  Rendered startups/_startup.html.haml (1.9ms)
+  Rendered startups/_startup.html.haml (1.7ms)
+  Rendered startups/_startup.html.haml (3.3ms)
+  Rendered startups/_startup.html.haml (2.2ms)
+  Rendered startups/_startup.html.haml (1.8ms)
+  Rendered startups/_startup.html.haml (2.3ms)
+  Rendered startups/_startup.html.haml (2.3ms)
+  Rendered startups/index.html.haml within layouts/general (56.0ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35m (0.5ms)[0m  SELECT COUNT(*) FROM `owners` WHERE `owners`.`user_id` = 1
+Completed 200 OK in 130.9ms (Views: 119.8ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/startups/11" for 127.0.0.1 at 2013-11-16 17:10:33 -0800
+Processing by StartupsController#show as HTML
+  Parameters: {"id"=>"11"}
+  [1m[36mStartup Load (0.5ms)[0m  [1mSELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 11 LIMIT 1[0m
+  [1m[35mOwner Load (55.4ms)[0m  SELECT `owners`.* FROM `owners` WHERE (startup_id = '11' AND user_id = 1)
+  [1m[36mFollower Load (0.3ms)[0m  [1mSELECT `followers`.* FROM `followers` WHERE (startup_id = '11' AND user_id = 1)[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 11 LIMIT 1[0m
+  [1m[35mUser Load (0.6ms)[0m  SELECT `users`.* FROM `users` INNER JOIN `followers` ON `users`.`id` = `followers`.`user_id` WHERE `followers`.`startup_id` = 11
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT `users`.* FROM `users` INNER JOIN `owners` ON `users`.`id` = `owners`.`user_id` WHERE `owners`.`startup_id` = 11[0m
+  [1m[35mTag Load (0.5ms)[0m  SELECT `tags`.* FROM `tags` 
+  [1m[36mCompanydescription Load (0.6ms)[0m  [1mSELECT `companydescriptions`.* FROM `companydescriptions` WHERE `companydescriptions`.`startup_id` = 11[0m
+  [1m[35mIdea Load (0.4ms)[0m  SELECT `ideas`.* FROM `ideas` WHERE (companydescription_id = 82)
+  Rendered startups/_description.html.haml (117.3ms)
+  [1m[36mIdea Load (0.6ms)[0m  [1mSELECT `ideas`.* FROM `ideas` WHERE (companydescription_id = 83)[0m
+  Rendered startups/_description.html.haml (5.7ms)
+  [1m[35mIdea Load (0.5ms)[0m  SELECT `ideas`.* FROM `ideas` WHERE (companydescription_id = 84)
+  Rendered startups/_description.html.haml (4.7ms)
+  [1m[36mStartup Load (0.9ms)[0m  [1mSELECT `startups`.* FROM `startups` WHERE (status > 1)[0m
+  Rendered startups/_startup.html.haml (2.0ms)
+  Rendered startups/_startup.html.haml (2.5ms)
+  Rendered startups/_startup.html.haml (1.9ms)
+  Rendered startups/show.html.haml within layouts/general (232.5ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+  [1m[36m (0.5ms)[0m  [1mSELECT COUNT(*) FROM `owners` WHERE `owners`.`user_id` = 1[0m
+Completed 200 OK in 470.5ms (Views: 270.9ms | ActiveRecord: 76.1ms)
+
+
+Started GET "/home" for 127.0.0.1 at 2013-11-16 17:11:07 -0800
+Processing by HomeController#index as HTML
+  [1m[35mStartup Load (0.5ms)[0m  SELECT `startups`.* FROM `startups` WHERE (status >2)
+  [1m[36mTag Load (0.3ms)[0m  [1mSELECT `tags`.* FROM `tags` [0m
+  Rendered startups/_startup.html.haml (3.1ms)
+  Rendered startups/_startup.html.haml (2.9ms)
+  Rendered startups/_startup.html.haml (2.4ms)
+  Rendered home/index.html.haml within layouts/general (13.0ms)
+  [1m[35mUser Load (0.5ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM `owners` WHERE `owners`.`user_id` = 1[0m
+Completed 200 OK in 32.9ms (Views: 27.3ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/home" for 127.0.0.1 at 2013-11-16 17:22:37 -0800
+Processing by HomeController#index as HTML
+  [1m[35mStartup Load (0.8ms)[0m  SELECT `startups`.* FROM `startups` WHERE (status >2)
+  [1m[36mTag Load (0.4ms)[0m  [1mSELECT `tags`.* FROM `tags` [0m
+  Rendered startups/_startup.html.haml (18.1ms)
+  Rendered startups/_startup.html.haml (2.5ms)
+  Rendered startups/_startup.html.haml (1.8ms)
+  Rendered home/index.html.haml within layouts/general (32.2ms)
+  [1m[35mUser Load (0.4ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM `owners` WHERE `owners`.`user_id` = 1[0m
+Completed 200 OK in 272.6ms (Views: 174.1ms | ActiveRecord: 17.4ms)
+
+
+Started GET "/home" for 127.0.0.1 at 2013-11-16 17:25:29 -0800
+Processing by HomeController#index as HTML
+  [1m[35mStartup Load (0.4ms)[0m  SELECT `startups`.* FROM `startups` WHERE (status >2)
+  [1m[36mTag Load (0.3ms)[0m  [1mSELECT `tags`.* FROM `tags` [0m
+  Rendered startups/_startup.html.haml (3.3ms)
+  Rendered startups/_startup.html.haml (2.5ms)
+  Rendered startups/_startup.html.haml (2.8ms)
+  Rendered home/index.html.haml within layouts/general (13.1ms)
+  [1m[35mUser Load (0.4ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM `owners` WHERE `owners`.`user_id` = 1[0m
+Completed 200 OK in 310.4ms (Views: 154.3ms | ActiveRecord: 16.8ms)
+
+
+Started GET "/assets/bootstrap-collapse.js" for 127.0.0.1 at 2013-11-16 17:25:29 -0800
+Compiled bootstrap-collapse.js  (0ms)  (pid 15924)
+Served asset /bootstrap-collapse.js - 200 OK (86ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2013-11-16 17:25:29 -0800
+Compiled application.css  (165ms)  (pid 15924)
+Served asset /application.css - 200 OK (219ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2013-11-16 17:25:30 -0800
+Compiled jquery.js  (5ms)  (pid 15924)
+Compiled jquery_ujs.js  (0ms)  (pid 15924)
+Compiled bootstrap-carousel.js  (0ms)  (pid 15924)
+Compiled bootstrap-dropdown.js  (0ms)  (pid 15924)
+Compiled bootstrap-modal.js  (0ms)  (pid 15924)
+Compiled bootstrap-transitions.js  (0ms)  (pid 15924)
+Compiled jquery-1.9.1.min.js  (2ms)  (pid 15924)
+Compiled likes.js  (235ms)  (pid 15924)
+Compiled application.js  (564ms)  (pid 15924)
+Served asset /application.js - 304 Not Modified (624ms)
+
+
+Started GET "/assets/bootstrap-modal.js" for 127.0.0.1 at 2013-11-16 17:25:30 -0800
+Served asset /bootstrap-modal.js - 200 OK (36ms)
+
+
+Started GET "/assets/bootstrap-transitions.js" for 127.0.0.1 at 2013-11-16 17:25:30 -0800
+Served asset /bootstrap-transitions.js - 200 OK (48ms)
+
+
+Started GET "/assets/bootstrap.css" for 127.0.0.1 at 2013-11-16 17:25:30 -0800
+Compiled bootstrap.css  (1ms)  (pid 15924)
+Served asset /bootstrap.css - 304 Not Modified (108ms)
+
+
+Started GET "/home" for 127.0.0.1 at 2013-11-16 17:25:44 -0800
+Processing by HomeController#index as HTML
+  [1m[35mStartup Load (0.5ms)[0m  SELECT `startups`.* FROM `startups` WHERE (status >2)
+  [1m[36mTag Load (0.8ms)[0m  [1mSELECT `tags`.* FROM `tags` [0m
+  Rendered startups/_startup.html.haml (3.6ms)
+  Rendered startups/_startup.html.haml (3.0ms)
+  Rendered startups/_startup.html.haml (3.3ms)
+  Rendered home/index.html.haml within layouts/general (15.9ms)
+  [1m[35mUser Load (0.4ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM `owners` WHERE `owners`.`user_id` = 1[0m
+Completed 200 OK in 37.3ms (Views: 30.4ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2013-11-16 17:25:44 -0800
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-modal.js" for 127.0.0.1 at 2013-11-16 17:25:44 -0800
+Served asset /bootstrap-modal.js - 200 OK (0ms)
+
+
+Started GET "/assets/bootstrap-collapse.js" for 127.0.0.1 at 2013-11-16 17:25:44 -0800
+Served asset /bootstrap-collapse.js - 200 OK (0ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2013-11-16 17:25:44 -0800
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-transitions.js" for 127.0.0.1 at 2013-11-16 17:25:44 -0800
+Served asset /bootstrap-transitions.js - 200 OK (0ms)
+
+
+Started GET "/assets/bootstrap.css" for 127.0.0.1 at 2013-11-16 17:25:44 -0800
+Served asset /bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/home/signup" for 127.0.0.1 at 2013-11-16 17:26:18 -0800
+Processing by HomeController#signup as HTML
+  [1m[35mStartup Load (0.5ms)[0m  SELECT `startups`.* FROM `startups` WHERE (status >2)
+  [1m[36mTag Load (0.3ms)[0m  [1mSELECT `tags`.* FROM `tags` [0m
+  Rendered startups/_startup.html.haml (3.1ms)
+  Rendered startups/_startup.html.haml (2.8ms)
+  Rendered startups/_startup.html.haml (2.4ms)
+  Rendered home/signup.html.haml within layouts/general (21.8ms)
+  [1m[35mUser Load (0.4ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM `owners` WHERE `owners`.`user_id` = 1[0m
+Completed 200 OK in 42.1ms (Views: 35.6ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/home/signup" for 127.0.0.1 at 2013-11-16 17:26:38 -0800
+Processing by HomeController#signup as HTML
+  [1m[35mStartup Load (0.8ms)[0m  SELECT `startups`.* FROM `startups` WHERE (status >2)
+  [1m[36mTag Load (0.6ms)[0m  [1mSELECT `tags`.* FROM `tags` [0m
+  Rendered startups/_startup.html.haml (2.8ms)
+  Rendered startups/_startup.html.haml (2.0ms)
+  Rendered startups/_startup.html.haml (2.7ms)
+  Rendered home/signup.html.haml within layouts/general (14.0ms)
+  [1m[35mUser Load (0.5ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM `owners` WHERE `owners`.`user_id` = 1[0m
+Completed 200 OK in 33.4ms (Views: 26.7ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2013-11-16 17:26:38 -0800
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-modal.js" for 127.0.0.1 at 2013-11-16 17:26:38 -0800
+Served asset /bootstrap-modal.js - 200 OK (0ms)
+
+
+Started GET "/assets/bootstrap-transitions.js" for 127.0.0.1 at 2013-11-16 17:26:38 -0800
+Served asset /bootstrap-transitions.js - 200 OK (0ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2013-11-16 17:26:38 -0800
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-collapse.js" for 127.0.0.1 at 2013-11-16 17:26:38 -0800
+Served asset /bootstrap-collapse.js - 200 OK (0ms)
+
+
+Started GET "/assets/bootstrap.css" for 127.0.0.1 at 2013-11-16 17:26:38 -0800
+Served asset /bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/home/signup" for 127.0.0.1 at 2013-11-16 17:26:48 -0800
+Processing by HomeController#signup as HTML
+  [1m[35mStartup Load (0.6ms)[0m  SELECT `startups`.* FROM `startups` WHERE (status >2)
+  [1m[36mTag Load (0.4ms)[0m  [1mSELECT `tags`.* FROM `tags` [0m
+  Rendered startups/_startup.html.haml (3.2ms)
+  Rendered startups/_startup.html.haml (5.0ms)
+  Rendered startups/_startup.html.haml (2.0ms)
+  Rendered home/signup.html.haml within layouts/general (22.5ms)
+  [1m[35mUser Load (0.8ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM `owners` WHERE `owners`.`user_id` = 1[0m
+Completed 200 OK in 42.6ms (Views: 36.1ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2013-11-16 17:26:48 -0800
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2013-11-16 17:26:48 -0800
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-modal.js" for 127.0.0.1 at 2013-11-16 17:26:48 -0800
+Served asset /bootstrap-modal.js - 200 OK (0ms)
+
+
+Started GET "/assets/bootstrap-collapse.js" for 127.0.0.1 at 2013-11-16 17:26:48 -0800
+Served asset /bootstrap-collapse.js - 200 OK (0ms)
+
+
+Started GET "/assets/bootstrap-transitions.js" for 127.0.0.1 at 2013-11-16 17:26:48 -0800
+Served asset /bootstrap-transitions.js - 200 OK (0ms)
+
+
+Started GET "/assets/bootstrap.css" for 127.0.0.1 at 2013-11-16 17:26:48 -0800
+Served asset /bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/home/signup" for 127.0.0.1 at 2013-11-16 17:26:57 -0800
+Processing by HomeController#signup as HTML
+  [1m[35mStartup Load (0.6ms)[0m  SELECT `startups`.* FROM `startups` WHERE (status >2)
+  [1m[36mTag Load (0.5ms)[0m  [1mSELECT `tags`.* FROM `tags` [0m
+  Rendered startups/_startup.html.haml (3.2ms)
+  Rendered startups/_startup.html.haml (2.8ms)
+  Rendered startups/_startup.html.haml (2.8ms)
+  Rendered home/signup.html.haml within layouts/general (23.9ms)
+  [1m[35mUser Load (0.5ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+  [1m[36m (0.5ms)[0m  [1mSELECT COUNT(*) FROM `owners` WHERE `owners`.`user_id` = 1[0m
+Completed 200 OK in 44.8ms (Views: 38.4ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2013-11-16 17:26:58 -0800
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-transitions.js" for 127.0.0.1 at 2013-11-16 17:26:58 -0800
+Served asset /bootstrap-transitions.js - 200 OK (0ms)
+
+
+Started GET "/assets/bootstrap-modal.js" for 127.0.0.1 at 2013-11-16 17:26:58 -0800
+Served asset /bootstrap-modal.js - 200 OK (0ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2013-11-16 17:26:58 -0800
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-collapse.js" for 127.0.0.1 at 2013-11-16 17:26:58 -0800
+Served asset /bootstrap-collapse.js - 200 OK (0ms)
+
+
+Started GET "/assets/bootstrap.css" for 127.0.0.1 at 2013-11-16 17:26:58 -0800
+Served asset /bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/home/signup" for 127.0.0.1 at 2013-11-16 17:27:11 -0800
+Processing by HomeController#signup as HTML
+  [1m[35mStartup Load (0.8ms)[0m  SELECT `startups`.* FROM `startups` WHERE (status >2)
+  [1m[36mTag Load (0.5ms)[0m  [1mSELECT `tags`.* FROM `tags` [0m
+  Rendered startups/_startup.html.haml (2.9ms)
+  Rendered startups/_startup.html.haml (2.9ms)
+  Rendered startups/_startup.html.haml (2.8ms)
+  Rendered home/signup.html.haml within layouts/general (22.8ms)
+  [1m[35mUser Load (1.0ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM `owners` WHERE `owners`.`user_id` = 1[0m
+Completed 200 OK in 42.5ms (Views: 35.4ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/assets/bootstrap-modal.js" for 127.0.0.1 at 2013-11-16 17:27:11 -0800
+Served asset /bootstrap-modal.js - 200 OK (0ms)
+
+
+Started GET "/assets/bootstrap-collapse.js" for 127.0.0.1 at 2013-11-16 17:27:11 -0800
+Served asset /bootstrap-collapse.js - 200 OK (0ms)
+
+
+Started GET "/assets/bootstrap-transitions.js" for 127.0.0.1 at 2013-11-16 17:27:11 -0800
+Served asset /bootstrap-transitions.js - 200 OK (0ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2013-11-16 17:27:11 -0800
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2013-11-16 17:27:11 -0800
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap.css" for 127.0.0.1 at 2013-11-16 17:27:11 -0800
+Served asset /bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/home/signup" for 127.0.0.1 at 2013-11-16 17:27:48 -0800
+Processing by HomeController#signup as HTML
+  [1m[35mStartup Load (0.6ms)[0m  SELECT `startups`.* FROM `startups` WHERE (status >2)
+  [1m[36mTag Load (0.4ms)[0m  [1mSELECT `tags`.* FROM `tags` [0m
+  Rendered startups/_startup.html.haml (3.0ms)
+  Rendered startups/_startup.html.haml (2.3ms)
+  Rendered startups/_startup.html.haml (2.4ms)
+  Rendered home/signup.html.haml within layouts/general (20.6ms)
+  [1m[35mUser Load (0.5ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM `owners` WHERE `owners`.`user_id` = 1[0m
+Completed 200 OK in 38.9ms (Views: 32.6ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2013-11-16 17:27:48 -0800
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-modal.js" for 127.0.0.1 at 2013-11-16 17:27:48 -0800
+Served asset /bootstrap-modal.js - 200 OK (0ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2013-11-16 17:27:48 -0800
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-transitions.js" for 127.0.0.1 at 2013-11-16 17:27:48 -0800
+Served asset /bootstrap-transitions.js - 200 OK (0ms)
+
+
+Started GET "/assets/bootstrap-collapse.js" for 127.0.0.1 at 2013-11-16 17:27:48 -0800
+Served asset /bootstrap-collapse.js - 200 OK (0ms)
+
+
+Started GET "/assets/bootstrap.css" for 127.0.0.1 at 2013-11-16 17:27:48 -0800
+Served asset /bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/home/signup" for 127.0.0.1 at 2013-11-16 17:28:35 -0800
+Processing by HomeController#signup as HTML
+  [1m[35mStartup Load (0.6ms)[0m  SELECT `startups`.* FROM `startups` WHERE (status >2)
+  [1m[36mTag Load (0.4ms)[0m  [1mSELECT `tags`.* FROM `tags` [0m
+  Rendered startups/_startup.html.haml (2.8ms)
+  Rendered startups/_startup.html.haml (2.5ms)
+  Rendered startups/_startup.html.haml (1.9ms)
+  Rendered home/signup.html.haml within layouts/general (21.9ms)
+  [1m[35mUser Load (0.5ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM `owners` WHERE `owners`.`user_id` = 1[0m
+Completed 200 OK in 40.8ms (Views: 34.6ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2013-11-16 17:28:35 -0800
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2013-11-16 17:28:35 -0800
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-transitions.js" for 127.0.0.1 at 2013-11-16 17:28:35 -0800
+Served asset /bootstrap-transitions.js - 200 OK (0ms)
+
+
+Started GET "/assets/bootstrap-collapse.js" for 127.0.0.1 at 2013-11-16 17:28:35 -0800
+Served asset /bootstrap-collapse.js - 200 OK (0ms)
+
+
+Started GET "/assets/bootstrap-modal.js" for 127.0.0.1 at 2013-11-16 17:28:35 -0800
+Served asset /bootstrap-modal.js - 200 OK (0ms)
+
+
+Started GET "/assets/bootstrap.css" for 127.0.0.1 at 2013-11-16 17:28:36 -0800
+Served asset /bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/authentications/logout" for 127.0.0.1 at 2013-11-16 17:39:52 -0800
+Processing by AuthenticationsController#logout as HTML
+Redirected to http://localhost:3000/home
+Completed 302 Found in 1.8ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/home" for 127.0.0.1 at 2013-11-16 17:39:52 -0800
+Processing by HomeController#index as HTML
+  [1m[35mStartup Load (0.5ms)[0m  SELECT `startups`.* FROM `startups` WHERE (status >2)
+  [1m[36mTag Load (0.4ms)[0m  [1mSELECT `tags`.* FROM `tags` [0m
+  Rendered startups/_startup.html.haml (2.9ms)
+  Rendered startups/_startup.html.haml (2.4ms)
+  Rendered startups/_startup.html.haml (2.4ms)
+  Rendered home/index.html.haml within layouts/general (12.4ms)
+  Rendered authentications/_clean_login_form.html.erb (4.2ms)
+  Rendered authentications/_clean_join_form.html.erb (2.6ms)
+Completed 200 OK in 104.9ms (Views: 99.5ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2013-11-16 17:39:52 -0800
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-transitions.js" for 127.0.0.1 at 2013-11-16 17:39:52 -0800
+Served asset /bootstrap-transitions.js - 200 OK (0ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2013-11-16 17:39:52 -0800
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap.css" for 127.0.0.1 at 2013-11-16 17:39:52 -0800
+Served asset /bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-modal.js" for 127.0.0.1 at 2013-11-16 17:39:52 -0800
+Served asset /bootstrap-modal.js - 200 OK (0ms)
+
+
+Started GET "/assets/bootstrap-collapse.js" for 127.0.0.1 at 2013-11-16 17:39:52 -0800
+Served asset /bootstrap-collapse.js - 200 OK (0ms)
+
+
+Started GET "/startups/index" for 127.0.0.1 at 2013-11-16 17:41:22 -0800
+Processing by StartupsController#index as HTML
+  [1m[35mStartup Load (0.6ms)[0m  SELECT `startups`.* FROM `startups` WHERE (status > 1)
+  [1m[36mTag Load (0.3ms)[0m  [1mSELECT `tags`.* FROM `tags` [0m
+  Rendered startups/_startup.html.haml (2.7ms)
+  Rendered startups/_startup.html.haml (3.5ms)
+  Rendered startups/_startup.html.haml (2.4ms)
+  Rendered startups/_startup.html.haml (2.5ms)
+  Rendered startups/_startup.html.haml (2.4ms)
+  Rendered startups/_startup.html.haml (2.4ms)
+  Rendered startups/_startup.html.haml (2.0ms)
+  Rendered startups/_startup.html.haml (1.7ms)
+  Rendered startups/_startup.html.haml (1.6ms)
+  Rendered startups/_startup.html.haml (1.7ms)
+  Rendered startups/_startup.html.haml (2.6ms)
+  Rendered startups/_startup.html.haml (2.8ms)
+  Rendered startups/_startup.html.haml (2.3ms)
+  Rendered startups/_startup.html.haml (2.3ms)
+  Rendered startups/_startup.html.haml (2.3ms)
+  Rendered startups/index.html.haml within layouts/general (51.6ms)
+  Rendered authentications/_clean_login_form.html.erb (1.3ms)
+  Rendered authentications/_clean_join_form.html.erb (1.1ms)
+Completed 200 OK in 70.9ms (Views: 64.2ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/assets/bootstrap.css" for 127.0.0.1 at 2013-11-16 17:41:23 -0800
+Served asset /bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2013-11-16 17:41:23 -0800
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/startups.css" for 127.0.0.1 at 2013-11-16 17:41:23 -0800
+Compiled startups.css  (67ms)  (pid 15924)
+Served asset /startups.css - 304 Not Modified (94ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2013-11-16 17:41:23 -0800
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-collapse.js" for 127.0.0.1 at 2013-11-16 17:41:23 -0800
+Served asset /bootstrap-collapse.js - 200 OK (0ms)
+
+
+Started GET "/assets/bootstrap-modal.js" for 127.0.0.1 at 2013-11-16 17:41:23 -0800
+Served asset /bootstrap-modal.js - 200 OK (0ms)
+
+
+Started GET "/assets/bootstrap-transitions.js" for 127.0.0.1 at 2013-11-16 17:41:23 -0800
+Served asset /bootstrap-transitions.js - 200 OK (0ms)
+
+
+Started GET "/assets/glyphicons-halflings.png" for 127.0.0.1 at 2013-11-16 17:41:23 -0800
+Served asset /glyphicons-halflings.png - 304 Not Modified (23ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-11-17 10:01:22 -0800
+Processing by HomeController#index as HTML
+  [1m[35mStartup Load (0.5ms)[0m  SELECT `startups`.* FROM `startups` WHERE (status >2)
+  [1m[36mTag Load (0.3ms)[0m  [1mSELECT `tags`.* FROM `tags` [0m
+  Rendered startups/_startup.html.haml (5.3ms)
+  Rendered startups/_startup.html.haml (24.8ms)
+  Rendered startups/_startup.html.haml (19.0ms)
+  Rendered home/index.html.haml within layouts/general (116.7ms)
+  Rendered authentications/_clean_login_form.html.erb (85.9ms)
+  Rendered authentications/_clean_join_form.html.erb (2.7ms)
+Completed 200 OK in 459.4ms (Views: 454.2ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2013-11-17 10:01:22 -0800
+Served asset /application.js - 200 OK (0ms)
+
+
+Started GET "/assets/bootstrap-modal.js" for 127.0.0.1 at 2013-11-17 10:01:22 -0800
+Served asset /bootstrap-modal.js - 200 OK (0ms)
+
+
+Started GET "/assets/bootstrap-collapse.js" for 127.0.0.1 at 2013-11-17 10:01:22 -0800
+Served asset /bootstrap-collapse.js - 200 OK (0ms)
+
+
+Started GET "/assets/bootstrap-transitions.js" for 127.0.0.1 at 2013-11-17 10:01:22 -0800
+Served asset /bootstrap-transitions.js - 200 OK (0ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2013-11-17 10:01:22 -0800
+Served asset /application.css - 200 OK (0ms)
+
+
+Started GET "/assets/bootstrap.css" for 127.0.0.1 at 2013-11-17 10:01:22 -0800
+Served asset /bootstrap.css - 200 OK (0ms)
