@@ -9,8 +9,8 @@
 .new-view-startup{:onMouseMove => "customHighlightIn(this,'#{style_str}')", :onMouseOut => "customHighlightOut(this)"}
   = link_to (startup) do
     %h5
-      - if startup.name.length > 20
-        #{startup.name[0..20]}..
+      - if startup.name.length > 18
+        #{startup.name[0..18]}..
       - else
         #{startup.name}
     - if startup.avatar?
@@ -22,8 +22,8 @@
     - tag_string = ""
     - tags.each do |tag|
       - tag_string += "#" + tag.name + ", "
-    - if tag_string.length > 30
-      - tag_string = tag_string[0..28] + ".."
+    - if tag_string.length > 38
+      - tag_string = tag_string[0..36] + ".."
     - else
       - if tag_string.length > 0
         -tag_string = tag_string[0..-3]
