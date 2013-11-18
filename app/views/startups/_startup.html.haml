@@ -18,7 +18,7 @@
     - else
       = image_tag '/images/no_logo.png', :class => "main-logo"
     = simple_format startup.pitch.firstletters(110)
-    - tags = @tags.select {|x| x.startup_id = startup.id}
+    - tags = @tags.select {|x| x.startup_id == startup.id}
     - tag_string = ""
     - tags.each do |tag|
       - tag_string += "#" + tag.name + ", "
