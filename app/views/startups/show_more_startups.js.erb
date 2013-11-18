@@ -14,7 +14,7 @@ var moreLink = mainDiv.getElementsByClassName("show-more")[0];
     startupDiv.innerHTML = "<a href='<%= startup.id %>'></a>";
     <%
     if startup.name.length > 20
-        startup_name = startup.name[0..20] + ".."
+        startup_name = startup.name[0..18] + ".."
     else
         startup_name = startup.name
     end
@@ -33,7 +33,7 @@ var moreLink = mainDiv.getElementsByClassName("show-more")[0];
     content_string = content_string[0..-2]
     %>
 
-    htmlText = htmlText + '<p><%= content_string.firstletters(120) %></p>';
+    htmlText = htmlText + '<p><%= content_string.firstletters(110) %></p>';
 
 
     <% tags = startup.Tags
@@ -41,8 +41,8 @@ var moreLink = mainDiv.getElementsByClassName("show-more")[0];
     tags.each do |tag|
         tag_string += '#' + tag.name + ', '
     end
-    if tag_string.length > 30
-      tag_string = tag_string[0..28] + '..'
+    if tag_string.length > 38
+      tag_string = tag_string[0..36] + '..'
     else
       if tag_string.length > 0
         tag_string = tag_string[0..-3]
