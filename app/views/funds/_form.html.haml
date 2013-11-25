@@ -1,0 +1,16 @@
+= form_for(@fund) do |f|
+  - if @fund.errors.any?
+    .error_explanation
+      %h2 #{pluralize(@fund.errors.count, "error")} prohibited this fund from being saved:
+      %ul
+      -@fund.errors.full_messages.each do |msg|
+        %li= msg
+
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :hashtag
+    = f.text_field :hashtag
+  .actions
+    = f.submit

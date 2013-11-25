@@ -193,10 +193,13 @@ class StartupsController < ApplicationController
     @user = User.find(session[:id])
     @startup = Startup.find(params[:id])
     @tags = @startup.Tags
-    @people = User.all[0..5]
     @circles = @startup.Circle_users[0..39]
-    @startup_owners = @startup.Owner_users.all.uniq
-    @startup_followers = @startup.Follower_users.all.uniq
+    @funds = @startup.Investor_funds
+
+    @circle_type = 0
+    @circle_type = 3 if @startup.Circles.any?{|x| x.user_id == 0}
+    @circle_type = 1 if @circle_type == 0 and @circles.length > 0
+
   end
 
 
@@ -206,7 +209,6 @@ class StartupsController < ApplicationController
     @descriptions = @startup.Companydescriptions.where("status = ?",1)
     @startup_followers = @startup.Follower_users.all.uniq
     @startup_owners = @startup.Owner_users.all.uniq
-    @companyupdate = Companyupdate.new
     @company_descriptions_all = @startup.Companydescriptions
     @company_descriptions = @company_descriptions_all.select{|x| x.status == 1}.sort!{|x, y| x["allfield_id"] <=> y["allfield_id"]}
   end
@@ -246,12 +248,18 @@ class StartupsController < ApplicationController
       @startups = Startup.all.sample(9)
     else
       s_name = params[:string]
-      @startups = Startup.where("UPPER(name) LIKE UPPER(?)", "%" + s_name + "%")
-      #startups_by_hashtag = Tag.where("UPPER(name) LIKE UPPER(?)", "%" + s_name + "%").sample(9)
-      #startups_by_hashtag.each do |hashtag|
-      #  @startups << Startup.find(hashtag.startup_id)
-      #end
-      @startups = @startups.uniq.sample(9)
+      query_str = "UPPER(name) LIKE UPPER('%" + s_name + "%')"
+
+      @tags = Tag.all
+
+
+      hashtags = @tags.select {|x| x.name.downcase.include? s_name.downcase}.sample(9)
+      hashtags.each do |hashtag|
+        query_str = query_str + " OR id = " + hashtag.startup_id.to_s()
+      end
+
+      @startups = Startup.where(query_str).sample(9)
+
     end
 
     @startups_shown = 0
@@ -271,6 +279,7 @@ class StartupsController < ApplicationController
     @startups = Startup.where("status > 1").select {|x| !startup_list.include?(x.id.to_s()) }
     @startups_shown = 0 if @startups.length <= add_startups
     @startups = @startups.sample(add_startups)
+    @tags = Tag.all
 
     respond_to do |format|
       format.js

@@ -1,13 +1,22 @@
 class ApplicationController < ActionController::Base
-  protect_from_forgery
-  
+
   #before_filter do
   #  if session[:id] == nil and (params[:controller]+params[:action] != 'homedemo' and params[:controller]+params[:action] != 'authenticationsdemo_login')
   #      redirect_to :controller => 'home', :action => 'demo'
   #  end
   #end
 
+  rescue_from ActionController::RoutingError, :with => :render_not_found
+
+  def render_not_found
+    render "authentications/wrong_link"
+  end
+
+  protect_from_forgery
+
+
   layout "general"
+
 end
 
 

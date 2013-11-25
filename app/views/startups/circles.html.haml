@@ -25,36 +25,31 @@
             = "#" + tag.name
             %span.delete-tag{:onclick => "deleteTag(#{tag.id}, this)"} x
 
-    .manage-view
+    .manage-view{:style => "border-bottom:1px #fbb03b solid;"}
       %h5 Choose who to share with:
       %p Select people you want to share your idea with to receive feedback and advice.
-      :ruby
-        circle_type = 0
-        circle_type = 3 if @circles.any?{|x| x.id == 0}
-        circle_type = 1 if circle_type == 0 and @circles.length > 0
       = form_tag({:action => "add_circle", :controller => "circles"},
                              :remote => 'true',
                              :onclick => 'submitForm(this)') do
         %p
-          = radio_button_tag :circle_status, 0, 1 if circle_type == 0
-          = radio_button_tag :circle_status, 0 if circle_type != 0
+          = radio_button_tag :circle_status, 0, 1 if @circle_type == 0
+          = radio_button_tag :circle_status, 0 if @circle_type != 0
           Do not share yet (you can share it later)
         %p
-          = radio_button_tag :circle_status, 1, 1 if circle_type == 1
-          = radio_button_tag :circle_status, 1 if circle_type != 1
+          = radio_button_tag :circle_status, 1, 1 if @circle_type == 1
+          = radio_button_tag :circle_status, 1 if @circle_type != 1
           Select people yourself
         %p
-          = radio_button_tag :circle_status, 2, 1 if circle_type == 2
-          = radio_button_tag :circle_status, 2 if circle_type != 2
+          = radio_button_tag :circle_status, 2, 1 if @circle_type == 2
+          = radio_button_tag :circle_status, 2 if @circle_type != 2
           Invite 20 random people
         %p
-          = radio_button_tag :circle_status, 3, 1 if circle_type == 3
-          = radio_button_tag :circle_status, 3 if circle_type != 3
+          = radio_button_tag :circle_status, 3, 1 if @circle_type == 3
+          = radio_button_tag :circle_status, 3 if @circle_type != 3
           Share the idea with everyone
         = hidden_field_tag :startup_id, @startup.id
         = submit_tag "submit", :hidden => "true"
-      #manual-selection
-        -#{:hidden => "#{'true' if [0, 3].include?circle_type}#{'false' if ![0, 3].include?circle_type}"}
+      #manual-selection{:hidden =>  "#{'false' if [0, 3].include?(@circle_type)}"}
         %hr
         #current-circle
           %h4 People you have added:
@@ -84,15 +79,32 @@
           = submit_tag "submit", :hidden => "true"
         #search-results
       .clear-both
-  .clear-both
+
+    .manage-view
+      %h5 Choose a community to share with:
+      = form_tag({:controller => "investors", :action => "share_with_fund"}, :remote => true, :class => "hashtag_form") do
+        = hidden_field_tag :startup_id, @startup.id
+        = select_tag :fund_id, options_from_collection_for_select(Fund.all, "id", "name"), {:include_blank => true}
+        = submit_tag "Add", :class => "btn btn-small"
+      = form_tag({ :controller => "investors", :action => "unshare_with_fund"}, :remote => true, :hidden => "true",
+            :id => "delete_fund_form") do
+        = hidden_field_tag :fund_id, ""
+        = hidden_field_tag :startup_id, @startup.id
+        = submit_tag "delete", :id => "delete_this_fund"
+      %hr
+        #funds
+          - @funds.each do |tag|
+            %span.hashtags
+              = "#" + tag.hashtag
+              %span.delete-tag{:onclick => "deleteFund(#{tag.id}, this)"} x
 
 
 :javascript
   function deleteTag(id, element){
-          document.getElementById("tag_id").value = id;
-          element.hidden = true;
-          document.getElementById("delete_this_tag").click();
-      }
+      document.getElementById("tag_id").value = id;
+      element.hidden = true;
+      document.getElementById("delete_this_tag").click();
+  }
 
 
   function addPerson (elementNode, id) {
@@ -117,4 +129,15 @@
       }
       submitForm(formElement);
       $('#info_modal').modal('hide');
+  }
+
+  function deleteFund(id, element){
+      notes = document.getElementById("delete_fund_form").children
+      for (var i = 0; i < notes.length; i++) {
+          if (notes[i].getAttribute('name') == 'fund_id') {
+              notes[i].value = id;
+          }
+      }
+      element.hidden = true;
+      document.getElementById("delete_this_fund").click();
   }

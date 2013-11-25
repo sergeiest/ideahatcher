@@ -1,0 +1,17 @@
+.new-view-content
+  %p#notice= notice
+
+  %p
+    %b Name:
+    = @fund.name
+
+  %p
+    %b Hashtag:
+    = '#' + @fund.hashtag
+
+  %p
+    %b Status:
+    = @fund.status
+
+  = link_to 'Edit', edit_fund_path(@fund)
+  = link_to 'Back', funds_path

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130707212853) do
+ActiveRecord::Schema.define(:version => 20131122202536) do
 
   create_table "allfields", :force => true do |t|
     t.string   "field_name"
@@ -92,10 +92,11 @@ ActiveRecord::Schema.define(:version => 20130707212853) do
   end
 
   create_table "funds", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "fund_id"
+    t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "status"
+    t.string   "hashtag"
   end
 
   create_table "ideas", :force => true do |t|
@@ -113,11 +114,13 @@ ActiveRecord::Schema.define(:version => 20130707212853) do
   end
 
   create_table "investors", :force => true do |t|
-    t.integer  "startup_id"
+    t.integer  "fund_id"
     t.integer  "user_id"
-    t.integer  "sum"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer  "startup_id"
+    t.integer  "status"
+    t.integer  "connection_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "likes", :force => true do |t|
@@ -158,7 +161,6 @@ ActiveRecord::Schema.define(:version => 20130707212853) do
     t.string   "name"
     t.text     "pitch"
     t.integer  "status"
-    t.integer  "votes"
     t.string   "avatar"
     t.datetime "created_at",          :null => false
     t.datetime "updated_at",          :null => false
@@ -166,6 +168,7 @@ ActiveRecord::Schema.define(:version => 20130707212853) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.integer  "votes"
   end
 
   create_table "tags", :force => true do |t|
@@ -199,10 +202,10 @@ ActiveRecord::Schema.define(:version => 20130707212853) do
   create_table "votes", :force => true do |t|
     t.integer  "companydescription_id"
     t.integer  "user_id"
-    t.integer  "startup_id"
     t.integer  "score"
     t.datetime "created_at",            :null => false
     t.datetime "updated_at",            :null => false
+    t.integer  "startup_id"
   end
 
 end

@@ -11,19 +11,30 @@
           = submit_tag 'submit', :id => "button_"+ description.id.to_s(), :hidden => true
 
         .scale-to-rate
+          :ruby
+            if session[:id] != nil
+              vote = Vote.where("user_id = ? and companydescription_id = ?", session[:id], description.id)
+              current_vote = 0
+              current_vote = vote[0].score if vote.length > 0
+            end
+
           %span{:onMouseMove => "customHighlightIn(this)", :onMouseOut => "customHighlightOut(this)", :onclick => "rateThis(this, 1, #{description.id})",
-                  :style => "border-left:1px grey solid;"} 1
-          %span{:onMouseMove => "customHighlightIn(this)", :onMouseOut => "customHighlightOut(this)", :onclick => "rateThis(this, 2, #{description.id})"} 2
-          %span{:onMouseMove => "customHighlightIn(this)", :onMouseOut => "customHighlightOut(this)", :onclick => "rateThis(this, 3, #{description.id})"} 3
-          %span{:onMouseMove => "customHighlightIn(this)", :onMouseOut => "customHighlightOut(this)", :onclick => "rateThis(this, 4, #{description.id})"} 4
-          %span{:onMouseMove => "customHighlightIn(this)", :onMouseOut => "customHighlightOut(this)", :onclick => "rateThis(this, 5, #{description.id})"} 5
+                  :style => "border-left:1px grey solid; #{'background-color:#94d500' if current_vote == 1}"} 1
+          %span{:onMouseMove => "customHighlightIn(this)", :onMouseOut => "customHighlightOut(this)", :onclick => "rateThis(this, 2, #{description.id})",
+                  :style => "#{'background-color:#94d500' if current_vote == 2}"} 2
+          %span{:onMouseMove => "customHighlightIn(this)", :onMouseOut => "customHighlightOut(this)", :onclick => "rateThis(this, 3, #{description.id})",
+                  :style => "#{'background-color:#94d500' if current_vote == 3}"} 3
+          %span{:onMouseMove => "customHighlightIn(this)", :onMouseOut => "customHighlightOut(this)", :onclick => "rateThis(this, 4, #{description.id})",
+                  :style => "#{'background-color:#94d500' if current_vote == 4}"} 4
+          %span{:onMouseMove => "customHighlightIn(this)", :onMouseOut => "customHighlightOut(this)", :onclick => "rateThis(this, 5, #{description.id})",
+                  :style => "#{'background-color:#94d500' if current_vote == 5}"} 5
 
 
   .description-statement
     %h5{:style => "font-weight:lighter"}= description.field_status
     %p= description.content
   .clear-both
-  %a.help-hatch.custom-button{:onclick => "$('#ideahatching_#{description.id}').collapse('toggle')"}
+  %a.help-hatch.custom-button{:onclick => "$('#ideahatching_#{description.id}').collapse('toggle');"}
     Help hatch it!
 
   .ideahatching.collapse{:id => "ideahatching_#{description.id}"}

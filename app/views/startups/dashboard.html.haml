@@ -70,11 +70,13 @@
         PUBLIC
     %h5{:style => "font-weight:lighter"}
       Your Hatchers
-    - User.all.sample(8).each do |person|
-      - if person.avatar?
-        = image_tag person.avatar.url(:square), :class => "hatchers"
-      - else
-        = image_tag "/images/no_profile_picture_" + (person.id % 4 + 1).to_s + ".png", :class => "hatchers"
+    - @startup_followers.sample(@startup_followers.length).each do |person|
+      = link_to({:controller => "investors", :action => "follower_info", :id => person.id,
+                      :action_type => 1}, :remote => true) do
+        - if person.avatar?
+          = image_tag person.avatar.url(:square), :class => "hatchers"
+        - else
+          = image_tag "/images/no_profile_picture_" + (person.id % 4 + 1).to_s + ".png", :class => "hatchers"
 
   .clear-both
 

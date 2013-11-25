@@ -1,0 +1,16 @@
+var mainDiv = document.getElementById("funds");
+mainDiv.innerHTML = "";
+
+<% @funds.each do |fund| %>
+    var tagDiv = document.createElement("span");
+    tagDiv.className = "hashtags";
+    tagDiv.innerHTML = '#<%= fund.hashtag %> <span class="delete-tag" onclick="deleteFund(<%= fund.id %>, this)">x</span>';
+    mainDiv.appendChild(tagDiv);
+<% end %>
+
+<% if @funds.length > 0 %>
+    extraSpan = document.createElement("p");
+    extraSpan.innerHTML = 'Changes are subject to approval by the communities.';
+    mainDiv.appendChild(extraSpan);
+<% end %>
+

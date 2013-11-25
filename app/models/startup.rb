@@ -18,6 +18,7 @@ class Startup < ActiveRecord::Base
   has_many :Owner_users, :through => :Owners, :source => :user
   has_many :Follower_users, :through => :Followers, :source => :user
   has_many :Circle_users, :through => :Circles, :source => :user
+  has_many :Investor_funds, :through => :Investors, :source => :fund
 
   has_one :Campaign
 

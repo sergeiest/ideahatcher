@@ -36,7 +36,7 @@ var moreLink = mainDiv.getElementsByClassName("show-more")[0];
     htmlText = htmlText + '<p><%= content_string.firstletters(110) %></p>';
 
 
-    <% tags = startup.Tags
+    <% tags = @tags.select {|x| x.startup_id == startup.id}
     tag_string = ''
     tags.each do |tag|
         tag_string += '#' + tag.name + ', '

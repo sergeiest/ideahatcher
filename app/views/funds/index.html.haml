@@ -1,0 +1,24 @@
+.new-view-content
+  %h1 Listing funds
+
+  %table
+    %tr
+      %th Name
+      %th Hashtag
+      %th Status
+      %th
+      %th
+      %th
+
+    - @funds.each do |fund|
+      %tr
+        %td= fund.name
+        %td # #{fund.hashtag}
+        %td= fund.status
+        %td= link_to 'Show', fund
+        %td= link_to 'Edit', edit_fund_path(fund)
+        %td= link_to 'Destroy', fund, method: :delete, data: { confirm: 'Are you sure?' }
+
+  %br
+
+  = link_to 'New Fund', new_fund_path

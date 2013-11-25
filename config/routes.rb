@@ -1,5 +1,10 @@
 Webapp::Application.routes.draw do
 
+
+
+  resources :funds
+
+
   post "likes/vote"
   resources :likes
 
@@ -75,6 +80,8 @@ Webapp::Application.routes.draw do
   get "investors/confirm_founder"
   get "investors/follower_info"
   get "investors/last_activities"
+  post "investors/share_with_fund"
+  post "investors/unshare_with_fund"
   resources :investors
 
   get "users/update"

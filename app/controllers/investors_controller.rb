@@ -14,6 +14,12 @@ class InvestorsController < ApplicationController
         if params[:id].nil? || session[:id].nil? || session[:id] == 0 || Startup.find(params[:id]).nil?
           wrong_link = 1
         end
+      when "share_with_fund"
+        if session[:id] == nil || session[:id] == 0 || params[:startup_id] == nil
+          wrong_link = 1
+        else
+          wrong_link = 1 if Owner.where("startup_id = ? AND user_id = ?", params[:startup_id], session[:id]).length == 0
+        end
       when "last_activities"
         wrong_link = 1 if (session[:id] != 1 and session[:id] != 61 and session[:id] != 62 and session[:id] != 50)
     end
@@ -288,6 +294,45 @@ class InvestorsController < ApplicationController
 
     respond_to do |format|
       format.js
+    end
+
+  end
+
+
+  def share_with_fund
+    if params[:fund_id] and params[:fund_id] != "" and Fund.find(params[:fund_id]) and
+            Investor.where("fund_id = ? AND startup_id =? AND connection_type = 1 AND status > 0",
+                           params[:fund_id], params[:startup_id]).length == 0
+      investor = Investor.new
+
+      investor.fund_id = params[:fund_id]
+      investor.startup_id = params[:startup_id]
+      investor.user_id = nil
+      investor.connection_type = 1
+      investor.status = 1
+
+      investor.save
+    end
+
+    respond_to do |format|
+      @funds = Startup.find(params[:startup_id]).Investor_funds.all
+      format.js
+    end
+
+  end
+
+  def unshare_with_fund
+    if params[:fund_id] and params[:fund_id] != "" and Fund.find(params[:fund_id])
+      investors = Investor.where("fund_id = ? AND startup_id =? AND connection_type = 1 AND status > 0",
+                       params[:fund_id], params[:startup_id])
+      if investors
+        investors.destroy_all
+      end
+    end
+
+    respond_to do |format|
+      @funds = Startup.find(params[:startup_id]).Investor_funds.all
+      format.js {render "share_with_fund"}
     end
 
   end
