@@ -72,8 +72,8 @@
         current_description = description
         ideas.concat(@ideas.select {|x| x.companydescription_id == current_description.id})
         while current_description.companydescription_id != nil do
-          ideas.concat(@ideas.select {|x| x.companydescription_id == current_description.id})
           current_description = @company_descriptions_all.select{|x| x.id == current_description.companydescription_id}.first
+          ideas.concat(@ideas.select {|x| x.companydescription_id == current_description.id})
         end
         ideas.uniq!
       %hr
