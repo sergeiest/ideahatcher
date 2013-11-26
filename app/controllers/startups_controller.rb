@@ -211,6 +211,7 @@ class StartupsController < ApplicationController
     @startup_owners = @startup.Owner_users.all.uniq
     @company_descriptions_all = @startup.Companydescriptions
     @company_descriptions = @company_descriptions_all.select{|x| x.status == 1}.sort!{|x, y| x["allfield_id"] <=> y["allfield_id"]}
+    @ideas = @startup.Ideas
   end
   
   def team

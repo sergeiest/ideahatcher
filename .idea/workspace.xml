@@ -19,10 +19,46 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="_description.html.haml" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="_description.html.haml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/startups/_description.html.haml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="76" column="0" selection-start="4609" selection-end="4609" vertical-scroll-proportion="0.86786294">
+            <state line="101" column="27" selection-start="4157" selection-end="6119" vertical-scroll-proportion="-22.791666">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="_dashboard_description.html.haml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/startups/_dashboard_description.html.haml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="93" column="10" selection-start="5218" selection-end="5218" vertical-scroll-proportion="-4.9166665">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="startups_controller.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/controllers/startups_controller.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="208" column="27" selection-start="5576" selection-end="5576" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="dashboard.html.haml" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/views/startups/dashboard.html.haml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="108" column="60" selection-start="5132" selection-end="5132" vertical-scroll-proportion="0.9492386">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="show.html.haml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/startups/show.html.haml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="59" column="63" selection-start="2244" selection-end="2724" vertical-scroll-proportion="-20.541666">
               <folding />
             </state>
           </provider>
@@ -41,13 +77,10 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/views/startups/circles.html.haml" />
-        <option value="$PROJECT_DIR$/app/controllers/investors_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/investors/share_with_fund.js.erb" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/application.js" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/application.scss" />
         <option value="$PROJECT_DIR$/config/application.rb" />
-        <option value="$PROJECT_DIR$/app/controllers/startups_controller.rb" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/startups.css.scss" />
         <option value="$PROJECT_DIR$/config/routes.rb" />
         <option value="$PROJECT_DIR$/app/views/layouts/general.html.haml" />
@@ -57,6 +90,9 @@
         <option value="$PROJECT_DIR$/app/views/ideas/create.js.erb" />
         <option value="$PROJECT_DIR$/app/views/ideas/add_comment.js.erb" />
         <option value="$PROJECT_DIR$/app/views/startups/_description.html.haml" />
+        <option value="$PROJECT_DIR$/app/views/startups/_dashboard_description.html.haml" />
+        <option value="$PROJECT_DIR$/app/controllers/startups_controller.rb" />
+        <option value="$PROJECT_DIR$/app/views/startups/dashboard.html.haml" />
       </list>
     </option>
   </component>
@@ -875,34 +911,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/controllers/votes_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.16153847">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/application.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="41" selection-start="715" selection-end="715" vertical-scroll-proportion="0.42993632">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/startups_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="177" column="27" selection-start="4779" selection-end="4779" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/routes.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="25" selection-start="498" selection-end="498" vertical-scroll-proportion="0.33222592">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/investors/follower_info.js.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="71" column="0" selection-start="2912" selection-end="3016" vertical-scroll-proportion="-19.0">
@@ -922,13 +930,6 @@
     <entry file="file://$PROJECT_DIR$/app/views/layouts/general.html.haml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="171" column="63" selection-start="7598" selection-end="7598" vertical-scroll-proportion="0.5939086">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/startups/show.html.haml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="58" column="99" selection-start="2663" selection-end="2663" vertical-scroll-proportion="-7.2">
           <folding />
         </state>
       </provider>
@@ -984,7 +985,42 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/startups/_description.html.haml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="76" column="0" selection-start="4609" selection-end="4609" vertical-scroll-proportion="0.86786294">
+        <state line="101" column="27" selection-start="4157" selection-end="6119" vertical-scroll-proportion="-22.791666">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/startups/_dashboard_description.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="93" column="10" selection-start="5218" selection-end="5218" vertical-scroll-proportion="-4.9166665">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/startups_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="208" column="27" selection-start="5576" selection-end="5576" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/funds/show.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/startups/show.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="59" column="63" selection-start="2244" selection-end="2724" vertical-scroll-proportion="-20.541666">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/startups/dashboard.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="108" column="60" selection-start="5132" selection-end="5132" vertical-scroll-proportion="0.9492386">
           <folding />
         </state>
       </provider>
