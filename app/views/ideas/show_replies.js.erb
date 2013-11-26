@@ -1,0 +1,51 @@
+notes = document.getElementsByName('show-replies-modal');
+
+if (notes[0] == null) {
+    var modalNode = document.createElement('div');
+    modalNode.setAttribute('name', 'show-replies-modal');
+    document.getElementsByTagName("body")[0].appendChild(modalNode);
+} else {
+    var modalNode = notes[0];
+}
+
+modalNode.setAttribute('class', 'modal hide fade modal-info');
+modalNode.setAttribute('tabindex', '-1');
+modalNode.setAttribute('role', 'dialog');
+modalNode.setAttribute('aria-labelledby', 'info_modalLabel');
+modalNode.setAttribute('aria-hidden', 'true');
+modalNode.setAttribute('id', 'show-replies-modal');
+
+modalNode.innerHTML = '<div class="modal-header">' +
+            '<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>' +
+            '<h3 id="info_modalLabel" style="margin-bottom:20px"><%= @idea.title %></h3>' +
+            '<p id="info_modalLabel"><%= @idea.content %></p>' +
+            '<p class=author> by <%= @idea.first_name + ' ' + @idea.last_name %> on <%= @idea.created_at.strftime('%m/%d/%Y') %> </p>' +
+        '</div>';
+
+modalBodyString = "";
+<% @all_ideas.select{|x| x.id != @idea.id}.each do |idea| %>
+    modalBodyString += '<p id="info_modalLabel"><%= idea.content %></p>' +
+            '<p class=author> by <%= idea.first_name + ' ' + idea.last_name %> on <%= idea.created_at.strftime('%m/%d/%Y') %> </p>';
+<% end %>
+
+
+ideaForm = document.getElementById('show-replies-form');
+modalNode.innerHTML = modalNode.innerHTML + "<div class='modal-body'>" + modalBodyString + ideaForm.innerHTML + "</div>";
+
+modalFooterString = '<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>';
+
+modalNode.innerHTML = modalNode.innerHTML + '<div class="modal-footer">' + modalFooterString + "</div>";
+
+ideaForm  = modalNode.getElementsByTagName('form')[0];
+notes = ideaForm.children;
+for (var i = 0; i < notes.length; i++) {
+    if (notes[i].getAttribute('name') == 'idea[title]'){notes[i].value = '<%= @idea.title %>'}
+    if (notes[i].getAttribute('name') == 'idea[is_protected]'){notes[i].value = 0}
+    if (notes[i].getAttribute('name') == 'idea[idea_id]'){notes[i].value = <%= @idea.id %>}
+    if (notes[i].getAttribute('name') == 'idea[companydescription_id]'){notes[i].value = <%= @idea.companydescription_id %>}
+    if (notes[i].getAttribute('name') == 'idea[startup_id]'){notes[i].value = <%= @idea.startup_id %>}
+    if (notes[i].getAttribute('name') == 'idea[content]'){notes[i].value = "Add your suggestion here."}
+}
+ideaForm.hidden = false;
+
+$('#show-replies-modal').modal('show');

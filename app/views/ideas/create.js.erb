@@ -4,9 +4,8 @@ var formNode = ideaDiv.getElementsByTagName("form")[0];
 formNode.getElementsByTagName("textarea")[0].value="Add another suggestion..";
 formNode.hidden = true;
 
-<% @idea.content.gsub(/\r\n?/, '\n').split("\n").each do |text_string| %>
 var newP = document.createElement("div");
-newP.innerHTML = '<%= simple_format h @idea.content.gsub(/\r\n?/, '\n') %>';
+newP.innerHTML = '<h2><%= simple_format @idea.title %></h2><%= simple_format h @idea.content.gsub(/\r\n?/, '\n') %>';
 ideaDiv.insertBefore(newP, formNode);
 
 
@@ -27,6 +26,3 @@ for (var i = 0; i < notes.length; i++) {
 }
 
 ideaDiv.insertBefore(hrNode, formNode);
-
-<% end %>
-

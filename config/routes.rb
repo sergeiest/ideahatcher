@@ -28,6 +28,7 @@ Webapp::Application.routes.draw do
   resources :votes
 
   get "ideas/show_idea"
+  get "ideas/show_replies"
   resources :ideas
 
   resources :documents

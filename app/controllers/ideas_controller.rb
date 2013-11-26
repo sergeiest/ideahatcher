@@ -21,8 +21,6 @@ class IdeasController < ApplicationController
 
   def create
 
-    @idea = Idea.new(params[:idea])
-
     if params[:idea].nil? || params[:idea][:content].nil? ||
             ["", "Add your suggestion here...", "Add another suggestion.."].include?(params[:idea][:content])
       flash[:error] = "No message"
@@ -30,9 +28,15 @@ class IdeasController < ApplicationController
     end
 
     if !session[:id] or session[:id] == 0
-      flash[:error] = "PLease login first"
+      flash[:error] = "Please login first"
       return
     end
+
+    if params[:idea][:title] == 'Topic'
+      params[:idea][:title] = 'No topic'
+    end
+
+    @idea = Idea.new(params[:idea])
 
     user = User.find(session[:id])
     return if !user
@@ -43,17 +47,17 @@ class IdeasController < ApplicationController
 
     respond_to do |format|
       if @idea.save
-        if !@idea.idea_id
+        if @idea.idea_id.nil?
           @idea.idea_id = @idea.id
           @idea.update_attributes :idea_id => @idea.id
+          format.js
+        else
+          format.js {render "add_comment"}
         end
         #Do not sent an email!!!
         #email_idea(idea)
-        format.html { redirect_to action: "index", id: @idea.startup_id}
-        format.js
       else
-        format.html { render action: "index", id: @idea.startup_id }
-        format.json { render json: idea.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end
@@ -97,6 +101,11 @@ class IdeasController < ApplicationController
 
   def hide_idea
 
+  end
+
+  def show_replies
+    @all_ideas = Idea.where(:idea_id => params[:idea_id]).all
+    @idea = Idea.find(params[:idea_id])
   end
 
 

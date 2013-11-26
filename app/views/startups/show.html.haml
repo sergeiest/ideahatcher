@@ -48,6 +48,17 @@
   %p= link_to 'See all ideas', {:controller => 'startups', :action => "index"}, :class => "custom-button"
   .clear-both
 
+#show-replies-form
+  = form_tag({:controller => "ideas", :action => "create"}, :remote => true, :hidden => true) do
+    %hr
+    = hidden_field :idea, :title
+    = hidden_field :idea, :is_protected
+    = hidden_field :idea, :idea_id
+    = hidden_field :idea, :startup_id
+    = hidden_field :idea, :companydescription_id
+    = text_area :idea, :content, :style => "width:98%;height:100px", :onclick => "clearInput(this)"
+    = submit_tag 'SUBMIT', :class => "startup-button-yellow"
+
 :javascript
   function voteThis(elementNode){
     notes = elementNode.parentNode.getElementsByClassName("idea-statement");

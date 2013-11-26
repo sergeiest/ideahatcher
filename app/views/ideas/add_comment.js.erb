@@ -1,0 +1,22 @@
+ideaDiv = document.getElementsByName('show-replies-modal')[0];
+formNode = ideaDiv.getElementsByTagName("form")[0];
+
+formNode.getElementsByTagName("textarea")[0].value = "";
+
+newP = document.createElement("p");
+newP.innerHTML = '<%= @idea.content.gsub(/\r\n?/, '\n') %>';
+
+newAuthor = document.createElement("p");
+newAuthor.className = "author";
+newAuthor.innerHTML = "by <%= @idea.first_name %> <%= @idea.last_name %> on <%= @idea.created_at.strftime('%m/%d/%Y') %>";
+
+ideaDiv.insertBefore(newP, formNode);
+ideaDiv.insertBefore(newAuthor, formNode);
+
+notes = ideaDiv.getElementsByClassName("empty-comment");
+for (var i = 0; i < notes.length; i++) {
+    notes[i].hidden = true;
+}
+
+//temporary
+$('#show-replies-modal').modal('hide');

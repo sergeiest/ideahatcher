@@ -174,9 +174,9 @@ class StartupsController < ApplicationController
     @startup = Startup.find(params[:id])
     @startup_followers = @startup.Follower_users.all.uniq
     @startup_owners = @startup.Owner_users.all.uniq
-    @startup_updates = @startup.Companyupdates
-    @companyupdate = Companyupdate.new
     @tags = Tag.all
+    @ideas = @startup.Ideas
+
 
     @company_descriptions_all = @startup.Companydescriptions
     @company_descriptions = @company_descriptions_all.select{|x| x.status == 1}.sort!{|x, y| x["allfield_id"] <=> y["allfield_id"]}

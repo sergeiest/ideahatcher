@@ -565,9 +565,14 @@ a.help-hatch {
 
       .discussion{
         padding:20px;
+
+        h2 {
+          font-weight: bold;
+        }
+
         p {
           padding:0px;
-          margin-bottom:0px;
+          margin-bottom:5px;
         }
         hr{margin-top:10px}
         hr.middle-hr {
