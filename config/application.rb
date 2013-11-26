@@ -16,6 +16,7 @@ module Webapp
     config.assets.precompile += %w( campaigns.css )
     config.assets.precompile += %w( users.css )
     config.assets.precompile += %w( authentications.css )
+    config.assets.precompile += %w( funds.css )
     config.assets.precompile += %w( bootstrap-modal.js )
     config.assets.precompile += %w( bootstrap-collapse.js )
     config.assets.precompile += %w( bootstrap-transitions.js )

@@ -43,6 +43,8 @@ bootstrap.css: bootstrap-9be8e490a6c5942298ec25b4a8230452.css
 bootstrap/index.css: bootstrap-9be8e490a6c5942298ec25b4a8230452.css
 campaigns.css: campaigns-fd125f1667478a96f1b31456adea6f97.css
 campaigns/index.css: campaigns-fd125f1667478a96f1b31456adea6f97.css
+funds.css: funds-ae2a9edbf5158e27b39756189ded2967.css
+funds/index.css: funds-ae2a9edbf5158e27b39756189ded2967.css
 startups.css: startups-cdad575ef70a04a645e0e53313fe0d69.css
 startups/index.css: startups-cdad575ef70a04a645e0e53313fe0d69.css
 users.css: users-590b8f98e15e60df839870741fa83fbf.css
