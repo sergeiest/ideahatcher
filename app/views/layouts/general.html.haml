@@ -63,6 +63,7 @@
       .logo-img
         = link_to(:controller => "home") do
           %img{:src => "/images/ideahatcher_logo.png"}
+          %span{:style => "color:#FfFfFf; font-weight: lighter; font-style: italic; left:5px; top:10px;position:relative"}beta
 
       - if session[:id] != nil and session[:id] != 0
         - user = User.find(session[:id])

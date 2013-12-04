@@ -34,6 +34,34 @@
                                   :id => notification.id},
                                   :remote => true,
                                   :id => "notification" + notification.id.to_s()
+          - when 3
+            .notification-line{:onMouseMove => "customHighlightIn(this,'yellow')", :onMouseOut => "customHighlightOut(this,'yellow')"}
+              =image_tag '/images/notification_request.png'
+              %span.author #{User.find(notification.event_id/10000).firstname} #{User.find(notification.event_id/1000).lastname}
+              %span.just-text requested an access to
+              %span.name #{Startup.find(notification.event_id.to_i % 10000).name}
+              %span.just-text
+                |
+                = link_to "Confirm", {:action => "confirm_request",
+                                  :controller => "circles",
+                                  :startup_id => notification.event_id.to_i % 10000,
+                                  :user_id => notification.event_id.to_i / 10000,
+                                  :notification_id => notification.id},
+                                  :remote => true,
+                                  :id => "notification" + notification.id.to_s()
+          - when 4
+            .notification-line{:onMouseMove => "customHighlightIn(this,'yellow')", :onMouseOut => "customHighlightOut(this,'yellow')"}
+              =image_tag '/images/notification_request_accepted.png'
+              %span.just-text We request to access
+              %span.name #{Startup.find(notification.event_id).name}
+              %span.just-text
+                has been accepted
+                |
+                = link_to "Ok", {:action => "check_notification",
+                                  :controller => "notifications",
+                                  :id => notification.id},
+                                  :remote => true,
+                                  :id => "notification" + notification.id.to_s()
 
 
   .notification-box
@@ -66,5 +94,5 @@
           =image_tag '/images/notification_comment.png'
           %span.author #{idea.first_name} #{idea.last_name}
           %span.just-text commented on the
-          %span.name #{Startup.find(idea.startup_id).name}'s
-          %span.just-text #{idea.title}
+          %span.name #{Startup.find(idea.startup_id).name}:
+          %span.just-text #{idea.title.firstletters(30)}

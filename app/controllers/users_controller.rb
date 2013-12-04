@@ -58,7 +58,7 @@ class UsersController < ApplicationController
       if query_str == ""
         query_str = "startup_id = " + startup_id.to_s
       else
-        query_str += " OR startup_id = " + startup_id.to_s
+        query_str += " OR startup_id = " + startup_id.to_s if startup_id
       end
     end
 

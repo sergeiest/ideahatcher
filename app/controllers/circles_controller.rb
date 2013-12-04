@@ -15,6 +15,9 @@ class CirclesController < ApplicationController
           if user.nil? || params[:startup_id].nil? || Owner.where("startup_id = ? AND user_id = ?", params[:startup_id], session[:id]).length == 0
             wrong_link = 1
           end
+        when "send_access_request", "confirm_request"
+          user = User.find(session[:id])
+          wrong_link = 1 if user.nil?
         else
           wrong_link = 1
       end
@@ -74,9 +77,7 @@ class CirclesController < ApplicationController
 
   def add_person
     startup = Startup.find(params[:startup_id])
-    if !params[:user_id]
-      return
-    end
+    return if !params[:user_id]
 
     if User.find(params[:user_id]) and circle = startup.Circles.where("user_id = ?",params[:user_id]).length == 0
       circle = Circle.new
@@ -107,5 +108,66 @@ class CirclesController < ApplicationController
 
   end
 
+
+  def send_access_request
+
+    return if params[:startup_id].nil?
+    startup = Startup.find(params[:startup_id])
+    return if startup.nil?
+
+    if startup.Circles.where("user_id = ?", session[:id]).length == 0
+      circle = Circle.new
+      circle.startup_id = params[:startup_id]
+      circle.user_id = session[:id]
+      circle.status = 3 # 3 - request
+      circle.save
+
+      if Notification.where("event_type = 3 AND user_id = ? AND event_id = ? AND status = 1", session[:id], (params[:startup_id].to_i + 10000 * session[:id])).length == 0
+        notification  = Notification.new
+        notification.event_id = (params[:startup_id].to_i + 10000 * session[:id])
+        notification.user_id = Owner.where("startup_id = ? AND status = 1", params[:startup_id])[0].user_id
+        notification.status = 1
+        notification.event_type = 3
+        notification.save
+      end
+
+    end
+
+    respond_to do |format|
+      format.js
+    end
+
+  end
+
+  def confirm_request
+
+    circles = Circle.where("user_id = ? AND startup_id = ? AND status = 3", params[:user_id], params[:startup_id])
+
+    return if circles.length == 0
+
+    circles.each do |circle|
+      circle.update_attribute(:status, 4)
+    end
+
+    notifications = Notification.where("event_type = 3 AND user_id = ? AND event_id = ? AND status = 1", session[:id], (params[:startup_id].to_i + 10000 * params[:user_id].to_i))
+    notifications.each do |notification|
+      notification.update_attribute(:status, 0)
+    end
+
+    if Notification.where("event_type = 4 AND user_id = ? AND event_id = ? AND status = 1", params[:user_id], params[:startup_id]).length == 0
+      notification  = Notification.new
+      notification.event_id = params[:startup_id]
+      notification.user_id = params[:user_id]
+      notification.status = 1
+      notification.event_type = 4
+      notification.save
+    end
+
+
+    respond_to do |format|
+        format.js
+    end
+
+  end
 
 end

@@ -14,6 +14,8 @@ Webapp::Application.routes.draw do
   post "circles/add_circle"
   post "circles/add_person"
   post "circles/remove_person"
+  get "circles/send_access_request"
+  get "circles/confirm_request"
   resources :circles
 
   post "tags/add_tag"
@@ -103,6 +105,7 @@ Webapp::Application.routes.draw do
   get "startups/my_ideas"
   get "startups/following_ideas"
   get "startups/show_more_startups"
+  get "startups/request_access"
   resources :startups
   
   resources :peoples

@@ -1,0 +1,25 @@
+.new-view-content
+  .new-view-company
+    .pitch-box{:style => "border-bottom:0px;"}
+      - if @startup.avatar?
+        = image_tag @startup.avatar.url(:large), :class => "main-logo"
+      - else
+        = image_tag '/images/no_logo.png', :class => "main-logo"
+      = link_to 'REQUEST ACCESS', {:controller => 'circles', :action => 'send_access_request', :startup_id => @startup.id},
+                                :class => 'startup-button custom-button',
+                                :id => 'follow_btn',
+                                :remote => true,
+                                :style => "float:right"
+
+      %h2.main-name{:style => "font-weight: lighter;"}
+        = @startup.name
+        = image_tag '/images/private_idea.png', :style => "width:40px; height:40px;"
+        %p{:style => "font-style:italic;font-weight: lighter;color:orange;font-size:16px"} To get access to this idea you must be approved by the idea owner
+      = simple_format h @startup.pitch.firstletters(500)
+    .clear-both
+
+.featured-ideas
+  - Startup.where("status > 1").sample(3).each do |startup|
+    = render :partial =>  "startups/startup", :locals => {:startup => startup}
+  %p= link_to 'See all ideas', {:controller => 'startups', :action => "index"}, :class => "custom-button"
+  .clear-both

@@ -32,25 +32,32 @@ class StartupsController < ApplicationController
             redirect_to :controller => 'campaigns', :action => 'guide_step' and return
           end
         end
+
       when "show"
-        if params[:id] and Startup.find(params[:id])
+        if params[:id]
+          startup = Startup.find(params[:id])
+          connection_type=0
           if session[:id] != 0 and session[:id] != nil
-            connection_type=0
             if Owner.where("startup_id = ? AND user_id = ?", params[:id], session[:id]).length > 0
               connection_type = 2
               redirect_to :controller => 'startups', :action => 'dashboard', :id => params[:id] and return
             else
-              if Follower.where("startup_id = ? AND user_id = ?", params[:id], session[:id]).length > 0
-                connection_type = 1
-              end
+              connection_type = 1 if Follower.where("startup_id = ? AND user_id = ?", params[:id], session[:id]).length > 0
             end
-            session[:connection_type] = connection_type
           else
-            session[:connection_type] = 0
           end
+          session[:connection_type] = connection_type
+
+          circles = startup.Circles
+          if circles.select{|x| x.user_id == 0}.length == 0 and
+               (session[:id].nil? || circles.select{|x| (x.status != 3 and x.user_id == session[:id])}.length == 0)
+            redirect_to :controller => 'startups', :action => 'request_access', :id => params[:id] and return
+          end
+
         else
           wrong_link = 2
         end
+
       when "index", "hashtag", "my_ideas", "following_ideas"
         session[:connection_type] = nil
       else
@@ -186,6 +193,12 @@ class StartupsController < ApplicationController
       format.html # show.html.erb
     end
 
+  end
+
+  def request_access
+    @user = User.find(session[:id]) if session[:id] and session[:id] != 0
+    @startup = Startup.find(params[:id])
+    @tags = Tag.all
   end
 
 
