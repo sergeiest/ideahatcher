@@ -19,19 +19,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="circles_controller.rb" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="circles_controller.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/controllers/circles_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="157" column="42" selection-start="4589" selection-end="4589" vertical-scroll-proportion="0.0">
+            <state line="23" column="7" selection-start="708" selection-end="708" vertical-scroll-proportion="0.5817875">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="confirm_request.js.erb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/circles/confirm_request.js.erb">
+      <file leaf-file-name="request_access.html.haml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/startups/request_access.html.haml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="46" selection-start="172" selection-end="172" vertical-scroll-proportion="-1.25">
+            <state line="7" column="104" selection-start="366" selection-end="366" vertical-scroll-proportion="-4.375">
               <folding />
             </state>
           </provider>
@@ -40,7 +40,7 @@
       <file leaf-file-name="investors_controller.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/investors_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="264" column="0" selection-start="7078" selection-end="7078" vertical-scroll-proportion="0.0">
+            <state line="29" column="6" selection-start="1009" selection-end="1075" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -73,10 +73,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="about.html.haml" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="about.html.haml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/home/about.html.haml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="31" selection-start="337" selection-end="337" vertical-scroll-proportion="0.27422303">
+            <state line="10" column="31" selection-start="337" selection-end="337" vertical-scroll-proportion="-6.25">
               <folding />
             </state>
           </provider>
@@ -131,13 +131,13 @@
         <option value="$PROJECT_DIR$/app/models/notification.rb" />
         <option value="$PROJECT_DIR$/app/views/circles/confirm_request.js.erb" />
         <option value="$PROJECT_DIR$/config/routes.rb" />
-        <option value="$PROJECT_DIR$/app/controllers/circles_controller.rb" />
         <option value="$PROJECT_DIR$/app/controllers/users_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/users/notifications.html.haml" />
         <option value="$PROJECT_DIR$/app/controllers/startups_controller.rb" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/application.scss" />
         <option value="$PROJECT_DIR$/app/views/layouts/general.html.haml" />
         <option value="$PROJECT_DIR$/app/views/home/about.html.haml" />
+        <option value="$PROJECT_DIR$/app/controllers/circles_controller.rb" />
       </list>
     </option>
   </component>
@@ -1000,13 +1000,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/views/startups/request_access.html.haml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="104" selection-start="366" selection-end="366" vertical-scroll-proportion="-4.375">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/notifications_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="26" column="16" selection-start="650" selection-end="656" vertical-scroll-proportion="0.5846154">
@@ -1049,13 +1042,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/circles_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="157" column="42" selection-start="4589" selection-end="4589" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/models/circle.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="11" column="22" selection-start="276" selection-end="276" vertical-scroll-proportion="0.0">
@@ -1091,13 +1077,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/investors_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="264" column="0" selection-start="7078" selection-end="7078" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/layouts/general.html.haml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="65" column="84" selection-start="2732" selection-end="2732" vertical-scroll-proportion="-22.458334">
@@ -1107,7 +1086,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/home/about.html.haml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="31" selection-start="337" selection-end="337" vertical-scroll-proportion="0.27422303">
+        <state line="10" column="31" selection-start="337" selection-end="337" vertical-scroll-proportion="-6.25">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/investors_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="29" column="6" selection-start="1009" selection-end="1075" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/startups/request_access.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="104" selection-start="366" selection-end="366" vertical-scroll-proportion="-4.375">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/circles_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="7" selection-start="708" selection-end="708" vertical-scroll-proportion="0.5817875">
           <folding />
         </state>
       </provider>

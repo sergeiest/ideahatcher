@@ -5,26 +5,30 @@ class CirclesController < ApplicationController
 
   before_filter do
     wrong_link = 0
-    if session[:id] == nil || session[:id] == 0
-      wrong_link = 1
-    else
-      case params[:action]
+    case params[:action]
 
-        when "add_circle", "add_person", "remove_person"
+      when "add_circle", "add_person", "remove_person"
+        if session[:id] == nil || session[:id] == 0
+          wrong_link = 1
+        else
           user = User.find(session[:id])
           if user.nil? || params[:startup_id].nil? || Owner.where("startup_id = ? AND user_id = ?", params[:startup_id], session[:id]).length == 0
             wrong_link = 1
           end
-        when "send_access_request", "confirm_request"
-          user = User.find(session[:id])
-          wrong_link = 1 if user.nil?
-        else
-          wrong_link = 1
-      end
+        end
 
+      when "send_access_request", "confirm_request"
+        wrong_link = 2 if session[:id].nil? || session[:id] == 0 || User.find(session[:id]).nil?
+
+      else
+        wrong_link = 1
     end
+
     if wrong_link == 1
       #redirect_to :controller => 'authentications', :action => 'wrong_link'
+    end
+    if wrong_link == 2
+      render "authentications/join_login_form" and return
     end
   end
 

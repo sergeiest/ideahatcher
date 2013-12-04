@@ -47271,3 +47271,203 @@ Served asset /bootstrap-transitions.js - 200 OK (0ms)
 
 Started GET "/assets/application.css" for 127.0.0.1 at 2013-12-04 09:12:08 -0800
 Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/authentications/logout" for 127.0.0.1 at 2013-12-04 09:34:57 -0800
+Connecting to database specified by database.yml
+Processing by AuthenticationsController#logout as HTML
+Redirected to http://localhost:3000/home
+Completed 302 Found in 4.0ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/home" for 127.0.0.1 at 2013-12-04 09:34:57 -0800
+Processing by HomeController#index as HTML
+  [1m[36mStartup Load (1.4ms)[0m  [1mSELECT `startups`.* FROM `startups` WHERE (status >2)[0m
+  [1m[35mTag Load (0.3ms)[0m  SELECT `tags`.* FROM `tags` 
+  Rendered startups/_startup.html.haml (12.9ms)
+  Rendered startups/_startup.html.haml (2.0ms)
+  Rendered startups/_startup.html.haml (1.9ms)
+  Rendered home/index.html.haml within layouts/general (35.5ms)
+  Rendered authentications/_clean_login_form.html.erb (2.6ms)
+  Rendered authentications/_clean_join_form.html.erb (2.8ms)
+Completed 200 OK in 226.8ms (Views: 130.6ms | ActiveRecord: 8.5ms)
+
+
+Started GET "/startups/index" for 127.0.0.1 at 2013-12-04 09:35:00 -0800
+Processing by StartupsController#index as HTML
+  [1m[36mStartup Load (0.5ms)[0m  [1mSELECT `startups`.* FROM `startups` WHERE (status > 1)[0m
+  [1m[35mTag Load (0.9ms)[0m  SELECT `tags`.* FROM `tags` 
+  Rendered startups/_startup.html.haml (2.1ms)
+  Rendered startups/_startup.html.haml (1.8ms)
+  Rendered startups/_startup.html.haml (1.7ms)
+  Rendered startups/_startup.html.haml (1.5ms)
+  Rendered startups/_startup.html.haml (1.4ms)
+  Rendered startups/_startup.html.haml (1.4ms)
+  Rendered startups/_startup.html.haml (1.9ms)
+  Rendered startups/_startup.html.haml (2.1ms)
+  Rendered startups/_startup.html.haml (2.3ms)
+  Rendered startups/_startup.html.haml (1.5ms)
+  Rendered startups/_startup.html.haml (2.1ms)
+  Rendered startups/_startup.html.haml (2.5ms)
+  Rendered startups/_startup.html.haml (2.4ms)
+  Rendered startups/_startup.html.haml (1.7ms)
+  Rendered startups/_startup.html.haml (3.1ms)
+  Rendered startups/index.html.haml within layouts/general (51.7ms)
+  Rendered authentications/_clean_login_form.html.erb (1.4ms)
+  Rendered authentications/_clean_join_form.html.erb (1.2ms)
+Completed 200 OK in 71.9ms (Views: 64.5ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/startups/31" for 127.0.0.1 at 2013-12-04 09:35:02 -0800
+Processing by StartupsController#show as HTML
+  Parameters: {"id"=>"31"}
+  [1m[36mStartup Load (0.5ms)[0m  [1mSELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 31 LIMIT 1[0m
+  [1m[35mCircle Load (0.4ms)[0m  SELECT `circles`.* FROM `circles` WHERE `circles`.`startup_id` = 31
+Redirected to http://localhost:3000/startups/request_access?id=31
+Filter chain halted as #<Proc:0x007fb5bac05e50@/Users/sergeyastretsov/Learn/heroku/prototype_0.3/app/controllers/startups_controller.rb:5> rendered or redirected
+Completed 302 Found in 67.5ms (ActiveRecord: 4.6ms)
+
+
+Started GET "/startups/request_access?id=31" for 127.0.0.1 at 2013-12-04 09:35:02 -0800
+Processing by StartupsController#request_access as HTML
+  Parameters: {"id"=>"31"}
+  [1m[36mStartup Load (0.5ms)[0m  [1mSELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 31 LIMIT 1[0m
+  [1m[35mTag Load (0.3ms)[0m  SELECT `tags`.* FROM `tags` 
+  [1m[36mStartup Load (0.6ms)[0m  [1mSELECT `startups`.* FROM `startups` WHERE (status > 1)[0m
+  Rendered startups/_startup.html.haml (1.5ms)
+  Rendered startups/_startup.html.haml (2.0ms)
+  Rendered startups/_startup.html.haml (1.4ms)
+  Rendered startups/request_access.html.haml within layouts/general (17.7ms)
+  Rendered authentications/_clean_login_form.html.erb (57.7ms)
+  Rendered authentications/_clean_join_form.html.erb (1.5ms)
+Completed 200 OK in 91.8ms (Views: 86.7ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/circles/send_access_request?startup_id=31" for 127.0.0.1 at 2013-12-04 09:35:04 -0800
+Processing by CirclesController#send_access_request as JS
+  Parameters: {"startup_id"=>"31"}
+  [1m[35mStartup Load (0.4ms)[0m  SELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 31 LIMIT 1
+  [1m[36mCircle Load (0.4ms)[0m  [1mSELECT `circles`.* FROM `circles` WHERE `circles`.`startup_id` = 31 AND (user_id = 0)[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO `circles` (`created_at`, `startup_id`, `status`, `updated_at`, `user_id`) VALUES ('2013-12-04 17:35:04', 31, 3, '2013-12-04 17:35:04', 0)[0m
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36mNotification Load (0.3ms)[0m  [1mSELECT `notifications`.* FROM `notifications` WHERE (event_type = 3 AND user_id = 0 AND event_id = 31 AND status = 1)[0m
+  [1m[35mOwner Load (0.3ms)[0m  SELECT `owners`.* FROM `owners` WHERE (startup_id = '31' AND status = 1)
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO `notifications` (`created_at`, `event_id`, `event_type`, `status`, `updated_at`, `user_id`) VALUES ('2013-12-04 17:35:04', 31, 3, 1, '2013-12-04 17:35:04', 1)
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  Rendered circles/send_access_request.js.erb (0.4ms)
+Completed 200 OK in 141.2ms (Views: 31.3ms | ActiveRecord: 9.5ms)
+
+
+Started GET "/startups/request_access?id=31" for 127.0.0.1 at 2013-12-04 09:35:55 -0800
+Processing by StartupsController#request_access as HTML
+  Parameters: {"id"=>"31"}
+  [1m[35mStartup Load (0.4ms)[0m  SELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 31 LIMIT 1
+  [1m[36mTag Load (0.3ms)[0m  [1mSELECT `tags`.* FROM `tags` [0m
+  [1m[35mStartup Load (0.5ms)[0m  SELECT `startups`.* FROM `startups` WHERE (status > 1)
+  Rendered startups/_startup.html.haml (2.2ms)
+  Rendered startups/_startup.html.haml (1.9ms)
+  Rendered startups/_startup.html.haml (1.8ms)
+  Rendered startups/request_access.html.haml within layouts/general (13.5ms)
+  Rendered authentications/_clean_login_form.html.erb (2.7ms)
+  Rendered authentications/_clean_join_form.html.erb (1.2ms)
+Completed 200 OK in 72.5ms (Views: 27.4ms | ActiveRecord: 8.8ms)
+
+
+Started GET "/circles/send_access_request?startup_id=31" for 127.0.0.1 at 2013-12-04 09:35:57 -0800
+Processing by CirclesController#send_access_request as JS
+  Parameters: {"startup_id"=>"31"}
+  [1m[36mStartup Load (0.5ms)[0m  [1mSELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 31 LIMIT 1[0m
+  [1m[35mCircle Load (0.3ms)[0m  SELECT `circles`.* FROM `circles` WHERE `circles`.`startup_id` = 31 AND (user_id = 0)
+  Rendered circles/send_access_request.js.erb (0.1ms)
+Completed 200 OK in 24.8ms (Views: 5.2ms | ActiveRecord: 4.2ms)
+
+
+Started GET "/startups/31" for 127.0.0.1 at 2013-12-04 09:42:35 -0800
+Processing by StartupsController#show as HTML
+  Parameters: {"id"=>"31"}
+  [1m[36mStartup Load (0.4ms)[0m  [1mSELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 31 LIMIT 1[0m
+  [1m[35mCircle Load (0.3ms)[0m  SELECT `circles`.* FROM `circles` WHERE `circles`.`startup_id` = 31
+Redirected to http://localhost:3000/startups/request_access?id=31
+Filter chain halted as #<Proc:0x007fb5bda47a20@/Users/sergeyastretsov/Learn/heroku/prototype_0.3/app/controllers/startups_controller.rb:5> rendered or redirected
+Completed 302 Found in 92.0ms (ActiveRecord: 7.9ms)
+
+
+Started GET "/startups/request_access?id=31" for 127.0.0.1 at 2013-12-04 09:42:36 -0800
+Processing by StartupsController#request_access as HTML
+  Parameters: {"id"=>"31"}
+  [1m[36mStartup Load (0.5ms)[0m  [1mSELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 31 LIMIT 1[0m
+  [1m[35mTag Load (0.3ms)[0m  SELECT `tags`.* FROM `tags` 
+  [1m[36mStartup Load (0.6ms)[0m  [1mSELECT `startups`.* FROM `startups` WHERE (status > 1)[0m
+  Rendered startups/_startup.html.haml (2.9ms)
+  Rendered startups/_startup.html.haml (2.0ms)
+  Rendered startups/_startup.html.haml (1.7ms)
+  Rendered startups/request_access.html.haml within layouts/general (15.4ms)
+  Rendered authentications/_clean_login_form.html.erb (1.2ms)
+  Rendered authentications/_clean_join_form.html.erb (1.2ms)
+Completed 200 OK in 49.9ms (Views: 27.2ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/circles/send_access_request?startup_id=31" for 127.0.0.1 at 2013-12-04 09:42:38 -0800
+Processing by CirclesController#send_access_request as JS
+  Parameters: {"startup_id"=>"31"}
+  [1m[35mStartup Load (0.4ms)[0m  SELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 31 LIMIT 1
+  [1m[36mCircle Load (0.4ms)[0m  [1mSELECT `circles`.* FROM `circles` WHERE `circles`.`startup_id` = 31 AND (user_id = 0)[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO `circles` (`created_at`, `startup_id`, `status`, `updated_at`, `user_id`) VALUES ('2013-12-04 17:42:38', 31, 3, '2013-12-04 17:42:38', 0)[0m
+  [1m[35m (1.3ms)[0m  COMMIT
+  [1m[36mNotification Load (0.3ms)[0m  [1mSELECT `notifications`.* FROM `notifications` WHERE (event_type = 3 AND user_id = 0 AND event_id = 31 AND status = 1)[0m
+  [1m[35mOwner Load (0.3ms)[0m  SELECT `owners`.* FROM `owners` WHERE (startup_id = '31' AND status = 1)
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO `notifications` (`created_at`, `event_id`, `event_type`, `status`, `updated_at`, `user_id`) VALUES ('2013-12-04 17:42:38', 31, 3, 1, '2013-12-04 17:42:38', 1)
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  Rendered circles/send_access_request.js.erb (0.1ms)
+Completed 200 OK in 60.2ms (Views: 5.0ms | ActiveRecord: 10.2ms)
+
+
+Started GET "/startups/request_access?id=31" for 127.0.0.1 at 2013-12-04 09:43:41 -0800
+Processing by StartupsController#request_access as HTML
+  Parameters: {"id"=>"31"}
+  [1m[35mStartup Load (0.4ms)[0m  SELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 31 LIMIT 1
+  [1m[36mTag Load (0.5ms)[0m  [1mSELECT `tags`.* FROM `tags` [0m
+  [1m[35mStartup Load (1.4ms)[0m  SELECT `startups`.* FROM `startups` WHERE (status > 1)
+  Rendered startups/_startup.html.haml (3.0ms)
+  Rendered startups/_startup.html.haml (1.8ms)
+  Rendered startups/_startup.html.haml (2.3ms)
+  Rendered startups/request_access.html.haml within layouts/general (15.8ms)
+  Rendered authentications/_clean_login_form.html.erb (1.2ms)
+  Rendered authentications/_clean_join_form.html.erb (1.1ms)
+Completed 200 OK in 73.6ms (Views: 26.1ms | ActiveRecord: 9.5ms)
+
+
+Started GET "/circles/send_access_request?startup_id=31" for 127.0.0.1 at 2013-12-04 09:43:44 -0800
+Processing by CirclesController#send_access_request as JS
+  Parameters: {"startup_id"=>"31"}
+  [1m[36mStartup Load (0.4ms)[0m  [1mSELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 31 LIMIT 1[0m
+  [1m[35mCircle Load (0.3ms)[0m  SELECT `circles`.* FROM `circles` WHERE `circles`.`startup_id` = 31 AND (user_id = 0)
+  Rendered circles/send_access_request.js.erb (0.1ms)
+Completed 200 OK in 25.9ms (Views: 5.7ms | ActiveRecord: 5.6ms)
+
+
+Started GET "/startups/request_access?id=31" for 127.0.0.1 at 2013-12-04 09:46:21 -0800
+Processing by StartupsController#request_access as HTML
+  Parameters: {"id"=>"31"}
+  [1m[36mStartup Load (0.3ms)[0m  [1mSELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 31 LIMIT 1[0m
+  [1m[35mTag Load (0.3ms)[0m  SELECT `tags`.* FROM `tags` 
+  [1m[36mStartup Load (0.6ms)[0m  [1mSELECT `startups`.* FROM `startups` WHERE (status > 1)[0m
+  Rendered startups/_startup.html.haml (2.9ms)
+  Rendered startups/_startup.html.haml (2.2ms)
+  Rendered startups/_startup.html.haml (1.8ms)
+  Rendered startups/request_access.html.haml within layouts/general (15.0ms)
+  Rendered authentications/_clean_login_form.html.erb (1.5ms)
+  Rendered authentications/_clean_join_form.html.erb (1.4ms)
+Completed 200 OK in 74.7ms (Views: 27.6ms | ActiveRecord: 9.3ms)
+
+
+Started GET "/circles/send_access_request?startup_id=31" for 127.0.0.1 at 2013-12-04 09:46:23 -0800
+Processing by CirclesController#send_access_request as JS
+  Parameters: {"startup_id"=>"31"}
+  Rendered authentications/join_login_form.js.erb (0.5ms)
+Filter chain halted as #<Proc:0x007fb5bcc72800@/Users/sergeyastretsov/Learn/heroku/prototype_0.3/app/controllers/circles_controller.rb:6> rendered or redirected
+Completed 200 OK in 34.2ms (Views: 33.6ms | ActiveRecord: 0.0ms)
