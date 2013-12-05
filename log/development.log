@@ -47471,3 +47471,183 @@ Processing by CirclesController#send_access_request as JS
   Rendered authentications/join_login_form.js.erb (0.5ms)
 Filter chain halted as #<Proc:0x007fb5bcc72800@/Users/sergeyastretsov/Learn/heroku/prototype_0.3/app/controllers/circles_controller.rb:6> rendered or redirected
 Completed 200 OK in 34.2ms (Views: 33.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-12-04 17:28:01 -0800
+Processing by HomeController#index as HTML
+  [1m[35mStartup Load (21.4ms)[0m  SELECT `startups`.* FROM `startups` WHERE (status >2)
+  [1m[36mTag Load (0.6ms)[0m  [1mSELECT `tags`.* FROM `tags` [0m
+  Rendered startups/_startup.html.haml (2.5ms)
+  Rendered startups/_startup.html.haml (2.0ms)
+  Rendered startups/_startup.html.haml (2.5ms)
+  Rendered home/index.html.haml within layouts/general (32.8ms)
+  Rendered authentications/_clean_login_form.html.erb (1.9ms)
+  Rendered authentications/_clean_join_form.html.erb (1.3ms)
+Completed 200 OK in 142.1ms (Views: 115.2ms | ActiveRecord: 22.0ms)
+
+
+Started GET "/startups/index" for 127.0.0.1 at 2013-12-04 17:28:04 -0800
+Processing by StartupsController#index as HTML
+  [1m[35mStartup Load (0.7ms)[0m  SELECT `startups`.* FROM `startups` WHERE (status > 1)
+  [1m[36mTag Load (0.4ms)[0m  [1mSELECT `tags`.* FROM `tags` [0m
+  Rendered startups/_startup.html.haml (2.8ms)
+  Rendered startups/_startup.html.haml (2.1ms)
+  Rendered startups/_startup.html.haml (2.0ms)
+  Rendered startups/_startup.html.haml (2.1ms)
+  Rendered startups/_startup.html.haml (1.6ms)
+  Rendered startups/_startup.html.haml (1.3ms)
+  Rendered startups/_startup.html.haml (1.9ms)
+  Rendered startups/_startup.html.haml (1.8ms)
+  Rendered startups/_startup.html.haml (1.5ms)
+  Rendered startups/_startup.html.haml (1.5ms)
+  Rendered startups/_startup.html.haml (2.2ms)
+  Rendered startups/_startup.html.haml (1.4ms)
+  Rendered startups/_startup.html.haml (1.2ms)
+  Rendered startups/_startup.html.haml (2.2ms)
+  Rendered startups/_startup.html.haml (2.6ms)
+  Rendered startups/index.html.haml within layouts/general (44.9ms)
+  Rendered authentications/_clean_login_form.html.erb (1.2ms)
+  Rendered authentications/_clean_join_form.html.erb (1.1ms)
+Completed 200 OK in 91.7ms (Views: 84.9ms | ActiveRecord: 1.0ms)
+
+
+Started POST "/authentications/remote_login" for 127.0.0.1 at 2013-12-04 17:28:16 -0800
+Processing by AuthenticationsController#remote_login as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"+PnSwJ+vhMbZV6QSJzXF1p1IQUzxe+5HSJHJY8FnJ48=", "authentication"=>{"username"=>"sergey.astretsov@gmail.com", "password"=>"[FILTERED]"}, "commit"=>"Login"}
+  [1m[35mAuthentication Load (0.4ms)[0m  SELECT `authentications`.* FROM `authentications` WHERE (username = 'sergey.astretsov@gmail.com') LIMIT 1
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`authentication_id` = 1 LIMIT 1[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+  [1m[36mNotification Load (0.4ms)[0m  [1mSELECT `notifications`.* FROM `notifications` WHERE `notifications`.`user_id` = 1 AND (status = 1)[0m
+  [1m[35m (0.9ms)[0m  BEGIN
+  [1m[36m (0.5ms)[0m  [1mUPDATE `users` SET `notification_num` = 2, `updated_at` = '2013-12-05 01:28:16' WHERE `users`.`id` = 1[0m
+[paperclip] Saving attachments.
+  [1m[35m (10.2ms)[0m  COMMIT
+  Rendered authentications/remote_login.js.erb (4.8ms)
+Completed 200 OK in 384.2ms (Views: 45.3ms | ActiveRecord: 22.8ms)
+
+
+Started GET "/startups/dashboard" for 127.0.0.1 at 2013-12-04 17:28:19 -0800
+Processing by StartupsController#dashboard as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35mStartup Load (0.6ms)[0m  SELECT `startups`.* FROM `startups` INNER JOIN `owners` ON `startups`.`id` = `owners`.`startup_id` WHERE `owners`.`user_id` = 1
+  [1m[36mStartup Load (0.6ms)[0m  [1mSELECT `startups`.* FROM `startups` INNER JOIN `owners` ON `startups`.`id` = `owners`.`startup_id` WHERE `owners`.`user_id` = 1 AND (startup_id = 7)[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+  [1m[36mStartup Load (0.4ms)[0m  [1mSELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 7 LIMIT 1[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT `users`.* FROM `users` INNER JOIN `followers` ON `users`.`id` = `followers`.`user_id` WHERE `followers`.`startup_id` = 7
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT `users`.* FROM `users` INNER JOIN `owners` ON `users`.`id` = `owners`.`user_id` WHERE `owners`.`startup_id` = 7[0m
+  [1m[35mCompanydescription Load (0.9ms)[0m  SELECT `companydescriptions`.* FROM `companydescriptions` WHERE `companydescriptions`.`startup_id` = 7
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `startups`.* FROM `startups` INNER JOIN `owners` ON `startups`.`id` = `owners`.`startup_id` WHERE `owners`.`user_id` = 1[0m
+  Rendered startups/_dashboard_nav.html.haml (19.9ms)
+  [1m[35mCompanydescription Load (0.5ms)[0m  SELECT `companydescriptions`.* FROM `companydescriptions` WHERE `companydescriptions`.`id` = 150 LIMIT 1
+  [1m[36mIdea Load (0.6ms)[0m  [1mSELECT `ideas`.* FROM `ideas` WHERE `ideas`.`startup_id` = 7[0m
+  Rendered startups/_dashboard_description.html.haml (87.5ms)
+  [1m[35mCompanydescription Load (0.5ms)[0m  SELECT `companydescriptions`.* FROM `companydescriptions` WHERE `companydescriptions`.`id` = 251 LIMIT 1
+  Rendered startups/_dashboard_description.html.haml (11.9ms)
+  [1m[36mCompanydescription Load (0.4ms)[0m  [1mSELECT `companydescriptions`.* FROM `companydescriptions` WHERE `companydescriptions`.`id` = 219 LIMIT 1[0m
+  Rendered startups/_dashboard_description.html.haml (73.9ms)
+  Rendered startups/dashboard.html.haml within layouts/general (285.0ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM `owners` WHERE `owners`.`user_id` = 1[0m
+Completed 200 OK in 618.0ms (Views: 330.0ms | ActiveRecord: 20.8ms)
+
+
+Started POST "/companydescriptions/new_suggestion" for 127.0.0.1 at 2013-12-04 17:28:44 -0800
+Processing by CompanydescriptionsController#new_suggestion as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"+PnSwJ+vhMbZV6QSJzXF1p1IQUzxe+5HSJHJY8FnJ48=", "companydescription"=>{"companydescription_id"=>"250", "content"=>"hi there"}, "change_type"=>"1", "commit"=>"Save"}
+  [1m[35mCompanydescription Load (0.5ms)[0m  SELECT `companydescriptions`.* FROM `companydescriptions` WHERE `companydescriptions`.`id` = 250 LIMIT 1
+  [1m[36m (0.8ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO `companydescriptions` (`allfield_id`, `approval_status`, `companydescription_id`, `content`, `created_at`, `field_status`, `startup_id`, `status`, `updated_at`) VALUES (2, NULL, 250, 'hi there', '2013-12-05 01:28:44', 'Problem', 7, 1, '2013-12-05 01:28:44')
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (1.1ms)[0m  [1mUPDATE `companydescriptions` SET `status` = 0, `updated_at` = '2013-12-05 01:28:44' WHERE `companydescriptions`.`id` = 250[0m
+  [1m[35m (0.6ms)[0m  COMMIT
+  Rendered companydescriptions/new_suggestion.js.erb (0.6ms)
+Completed 200 OK in 58.0ms (Views: 43.2ms | ActiveRecord: 4.5ms)
+
+
+Started GET "/startups/dashboard" for 127.0.0.1 at 2013-12-04 17:28:44 -0800
+Processing by StartupsController#dashboard as HTML
+  [1m[36mUser Load (1.7ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35mStartup Load (0.6ms)[0m  SELECT `startups`.* FROM `startups` INNER JOIN `owners` ON `startups`.`id` = `owners`.`startup_id` WHERE `owners`.`user_id` = 1
+  [1m[36mStartup Load (0.6ms)[0m  [1mSELECT `startups`.* FROM `startups` INNER JOIN `owners` ON `startups`.`id` = `owners`.`startup_id` WHERE `owners`.`user_id` = 1 AND (startup_id = 7)[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+  [1m[36mStartup Load (0.4ms)[0m  [1mSELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 7 LIMIT 1[0m
+  [1m[35mUser Load (0.6ms)[0m  SELECT `users`.* FROM `users` INNER JOIN `followers` ON `users`.`id` = `followers`.`user_id` WHERE `followers`.`startup_id` = 7
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT `users`.* FROM `users` INNER JOIN `owners` ON `users`.`id` = `owners`.`user_id` WHERE `owners`.`startup_id` = 7[0m
+  [1m[35mCompanydescription Load (0.8ms)[0m  SELECT `companydescriptions`.* FROM `companydescriptions` WHERE `companydescriptions`.`startup_id` = 7
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `startups`.* FROM `startups` INNER JOIN `owners` ON `startups`.`id` = `owners`.`startup_id` WHERE `owners`.`user_id` = 1[0m
+  Rendered startups/_dashboard_nav.html.haml (5.8ms)
+  [1m[35mCompanydescription Load (0.7ms)[0m  SELECT `companydescriptions`.* FROM `companydescriptions` WHERE `companydescriptions`.`id` = 250 LIMIT 1
+  [1m[36mIdea Load (0.7ms)[0m  [1mSELECT `ideas`.* FROM `ideas` WHERE `ideas`.`startup_id` = 7[0m
+  Rendered startups/_dashboard_description.html.haml (14.3ms)
+  [1m[35mCompanydescription Load (0.4ms)[0m  SELECT `companydescriptions`.* FROM `companydescriptions` WHERE `companydescriptions`.`id` = 251 LIMIT 1
+  Rendered startups/_dashboard_description.html.haml (9.9ms)
+  [1m[36mCompanydescription Load (0.4ms)[0m  [1mSELECT `companydescriptions`.* FROM `companydescriptions` WHERE `companydescriptions`.`id` = 219 LIMIT 1[0m
+  Rendered startups/_dashboard_description.html.haml (7.4ms)
+  Rendered startups/dashboard.html.haml within layouts/general (61.8ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM `owners` WHERE `owners`.`user_id` = 1[0m
+Completed 200 OK in 104.6ms (Views: 80.9ms | ActiveRecord: 7.8ms)
+
+
+Started GET "/users/notifications?id=1" for 127.0.0.1 at 2013-12-04 17:34:30 -0800
+Processing by UsersController#notifications as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (0.5ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+  [1m[36mNotification Load (0.4ms)[0m  [1mSELECT `notifications`.* FROM `notifications` WHERE `notifications`.`user_id` = 1 AND (status = 1)[0m
+  [1m[35mStartup Load (0.6ms)[0m  SELECT `startups`.* FROM `startups` INNER JOIN `owners` ON `startups`.`id` = `owners`.`startup_id` WHERE `owners`.`user_id` = 1
+  [1m[36mStartup Load (0.4ms)[0m  [1mSELECT `startups`.* FROM `startups` INNER JOIN `followers` ON `startups`.`id` = `followers`.`startup_id` WHERE `followers`.`user_id` = 1[0m
+  [1m[35mIdea Load (0.6ms)[0m  SELECT `ideas`.* FROM `ideas` WHERE (user_id = 1)
+  [1m[36mIdea Load (1.4ms)[0m  [1mSELECT `ideas`.* FROM `ideas` WHERE (startup_id = 7 OR startup_id = 12 OR startup_id = 13 OR startup_id = 14 OR startup_id = 15 OR startup_id = 16 OR startup_id = 17 OR startup_id = 18 OR startup_id = 19 OR startup_id = 21 OR startup_id = 22 OR startup_id = 23 OR startup_id = 24 OR startup_id = 25 OR startup_id = 26 OR startup_id = 27 OR startup_id = 28 OR startup_id = 29 OR startup_id = 30 OR startup_id = 31 OR startup_id = 10 OR startup_id = 8 OR startup_id = 11 OR startup_id = 33)[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 0 LIMIT 1
+  Rendered users/notifications.html.haml within layouts/general (14.2ms)
+Completed 500 Internal Server Error in 45.2ms
+
+ActiveRecord::RecordNotFound (Couldn't find User with id=0):
+  app/views/users/notifications.html.haml:40:in `block in _app_views_users_notifications_html_haml__1508096595091170097_70209266246120'
+  app/views/users/notifications.html.haml:9:in `_app_views_users_notifications_html_haml__1508096595091170097_70209266246120'
+
+
+  Rendered /Users/sergeyastretsov/.rvm/gems/ruby-2.0.0-p195/gems/actionpack-3.2.15/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.9ms)
+  Rendered /Users/sergeyastretsov/.rvm/gems/ruby-2.0.0-p195/gems/actionpack-3.2.15/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.6ms)
+  Rendered /Users/sergeyastretsov/.rvm/gems/ruby-2.0.0-p195/gems/actionpack-3.2.15/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (27.6ms)
+
+
+Started GET "/users/notifications?id=1" for 127.0.0.1 at 2013-12-04 18:29:33 -0800
+Processing by UsersController#notifications as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35mNotification Load (0.3ms)[0m  SELECT `notifications`.* FROM `notifications` WHERE `notifications`.`user_id` = 1 AND (status = 1)
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.4ms)[0m  UPDATE `users` SET `notification_num` = 0, `updated_at` = '2013-12-05 02:29:33' WHERE `users`.`id` = 1
+[paperclip] Saving attachments.
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35mStartup Load (0.6ms)[0m  SELECT `startups`.* FROM `startups` INNER JOIN `owners` ON `startups`.`id` = `owners`.`startup_id` WHERE `owners`.`user_id` = 1
+  [1m[36mStartup Load (0.4ms)[0m  [1mSELECT `startups`.* FROM `startups` INNER JOIN `followers` ON `startups`.`id` = `followers`.`startup_id` WHERE `followers`.`user_id` = 1[0m
+  [1m[35mIdea Load (0.8ms)[0m  SELECT `ideas`.* FROM `ideas` WHERE (user_id = 1)
+  [1m[36mIdea Load (1.5ms)[0m  [1mSELECT `ideas`.* FROM `ideas` WHERE (startup_id = 7 OR startup_id = 12 OR startup_id = 13 OR startup_id = 14 OR startup_id = 15 OR startup_id = 16 OR startup_id = 17 OR startup_id = 18 OR startup_id = 19 OR startup_id = 21 OR startup_id = 22 OR startup_id = 23 OR startup_id = 24 OR startup_id = 25 OR startup_id = 26 OR startup_id = 27 OR startup_id = 28 OR startup_id = 29 OR startup_id = 30 OR startup_id = 31 OR startup_id = 10 OR startup_id = 8 OR startup_id = 11 OR startup_id = 33)[0m
+  [1m[35mStartup Load (0.6ms)[0m  SELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 33 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 33 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 33 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 33 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 33 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 33 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 33 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 33 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 33 LIMIT 1
+  [1m[36mStartup Load (0.6ms)[0m  [1mSELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 7 LIMIT 1[0m
+  [1m[35mStartup Load (0.4ms)[0m  SELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 8 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 8 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 8 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 8 LIMIT 1[0m
+  [1m[35mStartup Load (0.4ms)[0m  SELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 30 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 30 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 30 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 30 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 30 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 30 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 30 LIMIT 1
+  Rendered users/notifications.html.haml within layouts/general (41.2ms)
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM `owners` WHERE `owners`.`user_id` = 1
+Completed 200 OK in 332.2ms (Views: 52.3ms | ActiveRecord: 28.2ms)

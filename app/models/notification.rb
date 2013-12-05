@@ -3,7 +3,7 @@ class Notification < ActiveRecord::Base
 
   belongs_to :User
 
-  # event_id
+  # event_type
   # 1 - add to the team
   # 2 - remove from the team
   # 3 - add access to idea

@@ -52,7 +52,7 @@
           - when 4
             .notification-line{:onMouseMove => "customHighlightIn(this,'yellow')", :onMouseOut => "customHighlightOut(this,'yellow')"}
               =image_tag '/images/notification_request_accepted.png'
-              %span.just-text We request to access
+              %span.just-text Your request to access
               %span.name #{Startup.find(notification.event_id).name}
               %span.just-text
                 has been accepted
