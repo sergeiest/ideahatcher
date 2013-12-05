@@ -37,7 +37,7 @@
           - when 3
             .notification-line{:onMouseMove => "customHighlightIn(this,'yellow')", :onMouseOut => "customHighlightOut(this,'yellow')"}
               =image_tag '/images/notification_request.png'
-              %span.author #{User.find(notification.event_id/10000).firstname} #{User.find(notification.event_id/1000).lastname}
+              %span.author #{User.find(notification.event_id/10000).firstname} #{User.find(notification.event_id/10000).lastname}
               %span.just-text requested an access to
               %span.name #{Startup.find(notification.event_id.to_i % 10000).name}
               %span.just-text

@@ -19,10 +19,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="circles_controller.rb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="circles_controller.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/circles_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="23" column="7" selection-start="708" selection-end="708" vertical-scroll-proportion="0.5817875">
+            <state line="23" column="7" selection-start="708" selection-end="708" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -46,10 +46,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="notifications.html.haml" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="notifications.html.haml" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/users/notifications.html.haml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="96" column="59" selection-start="5216" selection-end="5216" vertical-scroll-proportion="-19.333334">
+            <state line="39" column="117" selection-start="2201" selection-end="2201" vertical-scroll-proportion="0.5518454">
               <folding />
             </state>
           </provider>
@@ -132,12 +132,12 @@
         <option value="$PROJECT_DIR$/app/views/circles/confirm_request.js.erb" />
         <option value="$PROJECT_DIR$/config/routes.rb" />
         <option value="$PROJECT_DIR$/app/controllers/users_controller.rb" />
-        <option value="$PROJECT_DIR$/app/views/users/notifications.html.haml" />
         <option value="$PROJECT_DIR$/app/controllers/startups_controller.rb" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/application.scss" />
         <option value="$PROJECT_DIR$/app/views/layouts/general.html.haml" />
         <option value="$PROJECT_DIR$/app/views/home/about.html.haml" />
         <option value="$PROJECT_DIR$/app/controllers/circles_controller.rb" />
+        <option value="$PROJECT_DIR$/app/views/users/notifications.html.haml" />
       </list>
     </option>
   </component>
@@ -1056,13 +1056,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/users/notifications.html.haml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="96" column="59" selection-start="5216" selection-end="5216" vertical-scroll-proportion="-19.333334">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/startups_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="52" column="84" selection-start="2081" selection-end="2081" vertical-scroll-proportion="-12.153846">
@@ -1107,7 +1100,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/circles_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="7" selection-start="708" selection-end="708" vertical-scroll-proportion="0.5817875">
+        <state line="23" column="7" selection-start="708" selection-end="708" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/users/notifications.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="39" column="117" selection-start="2201" selection-end="2201" vertical-scroll-proportion="0.5518454">
           <folding />
         </state>
       </provider>
