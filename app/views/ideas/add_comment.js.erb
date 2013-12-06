@@ -1,4 +1,5 @@
-ideaDiv = document.getElementsByName('show-replies-modal')[0];
+mainDiv = document.getElementsByName('show-replies-modal')[0];
+ideaDiv = mainDiv.getElementsByClassName('modal-body')[0];
 formNode = ideaDiv.getElementsByTagName("form")[0];
 
 formNode.getElementsByTagName("textarea")[0].value = "";
@@ -19,4 +20,4 @@ for (var i = 0; i < notes.length; i++) {
 }
 
 //temporary
-$('#show-replies-modal').modal('hide');
+//$('#show-replies-modal').modal('hide');
