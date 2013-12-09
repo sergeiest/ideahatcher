@@ -14,6 +14,20 @@
 //= require jquery_ujs
 //= require_tree .
 
+$(document).ready(function() {
+    $('#login_modal').on('hidden', function() {
+        if(replies_shown == true){
+            $('#show-replies-modal').modal('show');
+        }
+    })
+    window.showLoginModal = function(){
+        replies_shown = $('#show-replies-modal').data('modal').isShown;
+        if (replies_shown == true){
+            $('#show-replies-modal').modal('hide');
+        }
+        $('#login_modal').modal('show');
+    }
+})
 
 
 function showHiddenIdeas(elementName) {

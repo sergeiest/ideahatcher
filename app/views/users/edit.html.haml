@@ -28,6 +28,26 @@
 
       = link_to do
         %button.custom-button{:style => "float:right"} Save
+    %br
+    .manage-view
+      %h5#community_header
+        Choose a community to join:
+      = form_tag({:controller => "colleagues", :action => "join_fund"}, :remote => true, :class => "hashtag_form") do
+        = hidden_field_tag :user_id, @user.id
+        = select_tag :fund_id, options_from_collection_for_select(Fund.all, "id", "name"), {:include_blank => true}
+        = submit_tag "Add", :class => "btn btn-small", :id => "add_fund_button"
+      = form_tag({ :controller => "colleagues", :action => "unjoin_fund"}, :remote => true, :hidden => "true",
+            :id => "delete_fund_form") do
+        = hidden_field_tag :fund_id, ""
+        = hidden_field_tag :user_id, @user.id
+        = submit_tag "delete", :id => "delete_this_fund"
+      %hr#join_header
+        #funds
+          - @funds.each do |tag|
+            %span.hashtags
+              = "#" + tag.hashtag
+              %span.delete-tag{:onclick => "deleteFund(#{tag.id}, this)"} x
+
 
 #uploadPhoto.modal.hide.fade{:tabindex => "-1", :role => "dialog", :'aria-labelledby' => "myModalLabel", :'aria-hidden' => "true"}
   .modal-header
@@ -57,4 +77,14 @@
       document.getElementById('photo_upload').disabled = true;
       fup.focus();
     }
+  }
+  function deleteFund(id, element){
+      notes = document.getElementById("delete_fund_form").children
+      for (var i = 0; i < notes.length; i++) {
+          if (notes[i].getAttribute('name') == 'fund_id') {
+              notes[i].value = id;
+          }
+      }
+      element.hidden = true;
+      document.getElementById("delete_this_fund").click();
   }
