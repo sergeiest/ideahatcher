@@ -63,6 +63,7 @@
 
   .profile-info{
     margin-top: 20px;
+    line-height: 60px;
     p{
       font-size:14px;
     }
@@ -80,6 +81,11 @@
       width:calc(100% - 13px);
       resize: none;
     }
+  }
+
+  #btn_submit_fund_users{
+    display: block;
+    width: 80px;
   }
 
 }
@@ -102,4 +108,46 @@
   cursor:pointer;
 
 
+}
+
+.manage-view{
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  .hashtags{
+    border:1px #888 solid;
+    padding:5px 5px 5px 10px;
+    margin-right:10px;
+    span {
+      background-color: #d4d4d4;
+      padding:0px 5px 2px 5px;
+      color:white;
+      cursor: pointer;
+      -webkit-border-radius: 3px;
+    }
+  }
+  #add_fund_button {
+    margin-top: -10px;
+    margin-bottom: auto;
+    width: inherit;
+  }
+  #community_header{
+    font-size: 26px;
+    margin-bottom: 10px;
+  }
+  #current-circle {
+    border-left:2px #c8c8c8 solid;
+    float:right;
+    padding-left: 10px;
+    width: 55%;
+    div{
+      padding:0;
+      margin:0 10px;
+      width:40%;
+      float:left;
+      a {
+        line-height: 20px;
+        font-size:12px;
+      }
+    }
+  }
 }

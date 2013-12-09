@@ -4,7 +4,8 @@ class User < ActiveRecord::Base
 
   validates_presence_of :firstname, :lastname,  :message => "Incomplete fields"
 
-
+  has_many :colleagues, dependent: :destroy
+  has_many :funds, :through => :colleagues
   has_many :Investors
   has_many :Owners
   has_many :Followers

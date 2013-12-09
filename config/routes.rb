@@ -93,6 +93,9 @@ Webapp::Application.routes.draw do
   get "users/change_password"
   get "users/notifications"
 
+  post "colleagues/join_fund"
+  post "colleagues/unjoin_fund"
+
   resources :users 
 
   get "startups/index"

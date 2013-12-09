@@ -71,6 +71,8 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(session[:id])
+    @funds = @user.funds
+    @allfunds = Fund.all
   end
 
   def update
