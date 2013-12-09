@@ -112,7 +112,7 @@ Webapp::Application.routes.draw do
   
 
 
-  get "home/index" => 'home#colorful'
+  #get "home/index" => 'home#colorful'
   get "home/about"
   get "home/signup"
   get "home" => 'home#index'

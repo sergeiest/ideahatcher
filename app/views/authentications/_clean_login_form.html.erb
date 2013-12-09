@@ -1,7 +1,7 @@
 <%= form_tag({:controller => 'authentications', :action => 'remote_login'},
              :multipart => true,
              :remote => true) do %>
-    <h4>Login:</h4>
+    <h4 style="font-weight: lighter;">Login:</h4>
 
     <p>Email:<br />
       <%= text_field "authentication", "username" %></p>

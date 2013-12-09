@@ -1,15 +1,39 @@
-= image_tag "/images/signup.jpg", :style => "width:1900px; height:300px; opacity: 0.6"
+.new-home-signup
+  .signup-cover
+    .message-box
+      %p{:style => "font-size:48pt; line-height: 64pt; font-weight: lighter"}
+        How do you
+        %span{:style => "font-weight: normal"} validate
+        %br
+        an idea?
+      %p{:style => "margin-top:10%; font-size:24pt; line-height: 30pt; font-weight: lighter"}
+        Use ideaHatcher to share your product or business with our community of users, investors, and fellow
+        entrepreneurs and get feedback.
+    .login-box
+      = render 'authentications/clean_join_form'
+    %a.see-how-it-works{:href => "#how-it-works"}
+      %p See how it works
+      %i.icon-arrow-down.glyphw-white
 
+.new-how-it-works
+  .main-description
+    %a{:name => "how-it-works"}
+    .tagline{:style => "padding-top:20px;"}
+      %h1
+        How does ideaHatcher
+        %br
+        %span{:style => "color:orange; font-weight:bold"} help
+        you?
+    %step-line
+      = image_tag "/images/how_it_works_1.png"
+      %p Share your ideas with a community of entrepreneurs and get valuable feedback.
+    %step-line
+      = image_tag "/images/how_it_works_1.png"
+      %p Share your ideas with a community of entrepreneurs and get valuable feedback.
+    %step-line
+      = image_tag "/images/how_it_works_1.png"
+      %p Share your ideas with a community of entrepreneurs and get valuable feedback.
 
-.demo
-  %a{:name => "how-it-works"}
-  .tagline
-    = image_tag "/images/big_icon.png"
-    %h1{:style => "font-weight:lighter"}
-      How do you
-      %br
-      %span{:style => "color:orange; font-weight:bold"}hatch
-      an idea?
 
 
 .how-it-works
@@ -48,7 +72,7 @@
         = link_to 'Get hatching', {:controller => 'campaigns', :action => "guide_step"}, :class => "custom-button"
 
 
-  %h2{:style => "font-weight: lighter;margin-top:-30px"} Hatching now:
+  %h2{:style => "font-weight: lighter;margin-top:-30px; font-size:32pt"} Hatching now:
 
 .featured-ideas
   - @startups.select{|x| x.status > 1}.sample(3).each do |startup|

@@ -23,6 +23,13 @@
 
 // ----------------------- General ---------------------
 
+
+h1 { font-size:32pt }
+h2 { font-size:24pt }
+h3 { font-size:18pt }
+h4 { font-size:16pt }
+p { font-size:14pt }
+
 .clear-both {
   clear:both;
 }
@@ -574,6 +581,112 @@ body {
     line-height: 22px;
   }
 }
+
+// ------------------------------- New Home Page (temp) ------------------------------
+
+.new-home-signup {
+  background-image:url('/images/home_backgound.png');
+  width:100%;
+  height:100%;
+  background-position:top center;
+
+  .signup-cover {
+    background-color:rgba(15, 219, 199, 0.30);
+    width:100%;
+    height:100%;
+  }
+
+  .message-box{
+    position:absolute;
+    top: 20%;
+    left:10%;
+    color:white;
+    width:50%;
+  }
+
+  .login-box{
+    background-color:rgba(255, 255, 255, 0.80);
+    position:absolute;
+    top: 15%;
+    right:5%;
+    width:30%;
+
+    form {
+      padding:30px 40px 80px 40px;
+      width:100%;
+
+      h4 {
+        font-weight: lighter;
+        font-size:32pt;
+        margin-bottom: 40px;
+        color:#7f7f7f;
+      }
+
+      p {
+        font-size: 14pt;
+        font-weight: lighter;
+        line-height: 20pt;
+        margin:0 0 0 0px;
+      }
+
+      input {
+        maring:0;
+        -webkit-border-radius: 0px;
+        border:1px #7f7f7f solid;
+        font-size: 14pt;
+        height: 20pt;
+        width: -webkit-calc(100% - 95px);
+        width: calc(100% - 95px);
+      }
+
+      .btn-simple {
+        margin:10px 40px 10px 0;
+        padding:10px 10px;
+        position: absolute;
+        right:0;
+
+        font-size:14pt;
+        height: 30pt;
+        width:200px;
+        font-weight: lighter;
+
+        border:0px #fee946 solid;
+        background-color: #fee946;
+        color:black;
+        text-decoration: none;
+      }
+
+      input.btn-simple:focus {outline: none; }
+    }
+
+  }
+
+  .see-how-it-works {
+    position:absolute;
+    bottom: 5%;
+    left:40%;
+    color:white;
+    width:20%;
+    text-align: center;
+  }
+}
+
+.new-how-it-works {
+  .main-description {
+    min-width: 880px;
+    width: 60%;
+    margin:0px auto 0px auto;
+
+    h1 {
+      font-weight:lighter;
+      font-size:32pt;
+      line-height: 40pt;
+
+    }
+
+  }
+}
+
 
 // -----------------------------------Ideas Page--------------------------------------
 
