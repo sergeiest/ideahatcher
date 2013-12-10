@@ -21,9 +21,11 @@ $(document).ready(function() {
         }
     })
     window.showLoginModal = function(){
-        replies_shown = $('#show-replies-modal').data('modal').isShown;
-        if (replies_shown == true){
-            $('#show-replies-modal').modal('hide');
+        if ($('#show-replies-modal').length != 0){
+            replies_shown = $('#show-replies-modal').data('modal').isShown;
+            if (replies_shown == true){
+                $('#show-replies-modal').modal('hide');
+            }
         }
         $('#login_modal').modal('show');
     }
