@@ -62,6 +62,7 @@ Webapp::Application.routes.draw do
   post "authentications/update_password"
   resources :authentications
 
+  post "pictures/upload_picture"
   resources :pictures
 
   post "companydescriptions/new_suggestion"
