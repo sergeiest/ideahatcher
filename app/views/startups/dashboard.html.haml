@@ -78,6 +78,15 @@
         - else
           = image_tag "/images/no_profile_picture_" + (person.id % 4 + 1).to_s + ".png", :class => "hatchers"
 
+    %h5 Prototype
+    %button{:onclick => "$('#uploadPicture').modal(open)"} Upload prototype pictures
+    - @pictures.each do |picture|
+      %p= picture.title
+      = image_tag picture.avatar(:square), :class => "hatchers"
+
+
+
+
   .clear-both
 
 
@@ -95,6 +104,21 @@
     .modal-footer
       %button{:class => "btn", :'data-dismiss' => "modal", :'aria-hidden' => "true"} Close
       %button{:class => "btn btn-primary", :id => "photo_upload", :disabled => "true"} Upload photo
+
+
+#uploadPicture.modal.hide.fade{:tabindex => "-1", :role => "dialog", :'aria-labelledby' => "myModalLabel", :'aria-hidden' => "true"}
+  .modal-header
+    %button.close{ :type => "button", :'data-dismiss' => "modal", :'aria-hidden' => "true"} ×
+    %h3{ :id => "myModalLabel"} Upload pictures of your prototype
+  = form_tag({:controller => "pictures", :action => "upload_picture"}, :multipart => true) do
+    .modal-body
+      %p Upload photo or graphic that best represents your idea. Aspect ratio of the picture should be 2:1.
+      = file_field_tag :avatar, :onchange => "checkFile(this)"
+      = hidden_field_tag :startup_id, @startup.id
+      %p#photo_error{ :style => "color:red"}
+    .modal-footer
+      %button{:class => "btn", :'data-dismiss' => "modal", :'aria-hidden' => "true"} Close
+      =submit_tag "Upload photo", :class => "btn btn-primary", :id => "photo_upload"
 
 
 #show-replies-form

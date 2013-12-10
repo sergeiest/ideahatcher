@@ -1,9 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
+  startup_id: 1
+  description: MyText
   title: MyString
-  picturepath: MyString
+  status: 1
 
 two:
+  startup_id: 1
+  description: MyText
   title: MyString
-  picturepath: MyString
+  status: 1

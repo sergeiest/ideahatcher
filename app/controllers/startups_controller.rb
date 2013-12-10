@@ -219,12 +219,14 @@ class StartupsController < ApplicationController
   def dashboard
     @user = User.find(session[:id])   if session[:id] and session[:id] != 0
     @startup = Startup.find(params[:id])
-    @descriptions = @startup.Companydescriptions.where("status = ?",1)
-    @startup_followers = @startup.Follower_users.all.uniq
-    @startup_owners = @startup.Owner_users.all.uniq
-    @company_descriptions_all = @startup.Companydescriptions
+    @descriptions = @startup.companydescriptions.where("status = ?",1)
+    @startup_followers = @startup.follower_users.all.uniq
+    @startup_owners = @startup.owner_users.all.uniq
+    @company_descriptions_all = @startup.companydescriptions
     @company_descriptions = @company_descriptions_all.select{|x| x.status == 1}.sort!{|x, y| x["allfield_id"] <=> y["allfield_id"]}
-    @ideas = @startup.Ideas
+    @ideas = @startup.ideas
+    @pictures = @startup.pictures
+
   end
   
   def team

@@ -4,23 +4,23 @@ class Startup < ActiveRecord::Base
   validates_length_of :name, :within => 3..40
   #validates_format_of :link, :with => /(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+(?:[A-Z]2}|com|org|net|edu|gov|mil|biz|info|mobi|name|aero|asia|jobs|museum|li|ru|io|co)/i, :message => "Invalid email"
 
-  has_many :Companyupdates
-  has_many :Companydescriptions
-  has_many :Ideas
-  has_many :Tags
+  has_many :companyupdates
+  has_many :companydescriptions
+  has_many :ideas
+  has_many :tags
 
-  has_many :Investors
-  has_many :Owners
-  has_many :Followers
-  has_many :Circles
+  has_many :investors
+  has_many :owners
+  has_many :followers
+  has_many :circles
 
-  has_many :Investor_users, :through => :Investors, :source => :user
-  has_many :Owner_users, :through => :Owners, :source => :user
-  has_many :Follower_users, :through => :Followers, :source => :user
-  has_many :Circle_users, :through => :Circles, :source => :user
-  has_many :Investor_funds, :through => :Investors, :source => :fund
+  has_many :pictures, :dependent => :destroy
 
-  has_one :Campaign
+  has_many :investor_users, :through => :investors, :source => :user
+  has_many :owner_users, :through => :owners, :source => :user
+  has_many :follower_users, :through => :followers, :source => :user
+  has_many :circle_users, :through => :circles, :source => :user
+  has_many :investor_funds, :through => :investors, :source => :fund
 
   has_attached_file :avatar, styles: {
       large: '600x300#',
