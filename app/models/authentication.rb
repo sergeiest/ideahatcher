@@ -11,7 +11,7 @@ class Authentication < ActiveRecord::Base
   validates_format_of :username, :with => /[a-z0-9!\#$%&'*+\/=?^_`{|}~-]+(?:\.[a-z0-9!\#$%\&'\*+\/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+(?:[A-Z]2}|com|org|net|edu|gov|mil|biz|info|mobi|name|aero|asia|jobs|museum|li|ru|io|co)/i, :message => "Invalid email"
 
   attr_accessible :password, :status, :username, :salt
-  has_one :User
+  has_one :user
   attr_protected :salt
 
   def make_username(username)

@@ -21,7 +21,7 @@ class UsersController < ApplicationController
   def notifications
 
     @user = User.find(params[:id])
-    @notifications = @user.Notifications.where("status = 1")
+    @notifications = @user.notifications.where("status = 1")
     #@notifications.uniq! {|a| a.event_type and a.event_id}
     @notifications.sort! {|y, x| x["created_at"] <=> y["created_at"]}
 
@@ -39,11 +39,11 @@ class UsersController < ApplicationController
 
     startups_id = Array.new
 
-    @user.Owner_startups.each do |startup|
+    @user.owner_startups.each do |startup|
       startups_id << startup.id
     end
 
-    @user.Follower_startups.each do |startup|
+    @user.follower_startups.each do |startup|
       startups_id << startup.id
     end
 

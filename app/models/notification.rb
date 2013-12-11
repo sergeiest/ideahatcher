@@ -1,7 +1,7 @@
 class Notification < ActiveRecord::Base
   attr_accessible :event_id, :event_type, :status, :user_id
 
-  belongs_to :User
+  belongs_to :user
 
   # event_type
   # 1 - add to the team

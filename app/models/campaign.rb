@@ -5,7 +5,7 @@ class Campaign < ActiveRecord::Base
   validate :validates_share_and_goal_sum
   #validate :test
 
-  belongs_to :Startup
+  belongs_to :startup
 
   def validates_share_and_goal_sum
 

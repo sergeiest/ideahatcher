@@ -180,10 +180,10 @@ class AuthenticationsController < ApplicationController
 
   def remote_login
     if authentication = Authentication.authenticate(params[:authentication])
-      session[:id] = authentication.User.id
+      session[:id] = authentication.user.id
       @user = User.find(session[:id])
 
-      @notifications = @user.Notifications.where("status = 1")
+      @notifications = @user.notifications.where("status = 1")
       @user.update_attributes(:notification_num => @notifications.length, :updated_at => Time.now)
 
       respond_to do |format|
