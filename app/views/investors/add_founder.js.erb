@@ -1,24 +1,20 @@
+console.log("going ehre");
+
 var mainDiv = document.getElementById("team-list");
-mainDiv.innerHTML = "";
 
-<% if !@people || @people.length == 0 %>
-  mainDiv.innerHTML ="<p>No team specified</p>";
+var newA = document.createElement('a');
+newA.setAttribute("href", "/investors/follower_info?action_type=remove_team&id=<%= @person.id %>");
+newA.setAttribute("data-remote", "true");
+<% if @person.avatar? %>
+    newA.innerHTML = '<div class="person-info">'+
+        '<%= image_tag @person.avatar.url(:square) %>'+
+        '<p><span style="font-weight:bold"><%= @person.firstname%> <%=@person.lastname%></span><br>            Founder</p>'+
+        '<div class="clear-both"></div></div>';
+<% else %>
+    newA.innerHTML = '<div class="person-info">'+
+        '<%= image_tag "/images/no_profile_picture_" + (@person.id % 4 + 1).to_s + ".png" %>'+
+        '<p><span style="font-weight:bold"><%= @person.firstname%> <%=@person.lastname%></span><br>            Founder</p>'+
+        '<div class="clear-both"></div></div>';
 <% end %>
 
-<% @people.each do |person| %>
-    var newA = document.createElement("a");
-    newA.setAttribute("href", "/investors/follower_info?id=<%= person.id %>&action_type=remove_team");
-    newA.setAttribute("data-remote", "true");
-    <% if person.avatar? %>
-        newA.innerHTML = '<div class="person-info-manage">'+
-            '<%= image_tag person.avatar.url(:square) %>'+
-            '<h5><%= person.firstname%> <%=person.lastname%></h5>'</div>';
-    <% else %>
-        newA.innerHTML = '<div class="person-info">'+
-            '<%= image_tag "/images/no_profile_picture_" + (person.id % 4 + 1).to_s + ".png" %>'+
-            '<h5><%= person.firstname%> <%=person.lastname%></h5>'</div>';
-    <% end %>
-
-    mainDiv.appendChild(newA);
-
-<% end %>
+mainDiv.appendChild(newA);

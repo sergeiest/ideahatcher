@@ -6,22 +6,22 @@ class User < ActiveRecord::Base
 
   has_many :colleagues, dependent: :destroy
   has_many :funds, :through => :colleagues
-  has_many :Investors
-  has_many :Owners
-  has_many :Followers
-  has_many :Circles
-  has_many :Notifications
+  has_many :investors
+  has_many :owners
+  has_many :followers
+  has_many :circles
+  has_many :notifications
   
-  has_many :Investor_startups, :through => :Investors, :source => :startup
-  has_many :Owner_startups, :through => :Owners, :source => :startup
-  has_many :Follower_startups, :through => :Followers, :source => :startup
-  has_many :Circle_startups, :through => :Circles, :source => :startup
+  has_many :investor_startups, :through => :investors, :source => :startup
+  has_many :owner_startups, :through => :owners, :source => :startup
+  has_many :follower_startups, :through => :followers, :source => :startup
+  has_many :circle_startups, :through => :circles, :source => :startup
 
-  has_many :Funds
-  has_many :Ideas
+  has_many :funds
+  has_many :ideas
 
   attr_protected :authentication_id
-  belongs_to :Authentication
+  belongs_to :authentication
 
   has_attached_file :avatar, styles: {
       thumb: '100x100>',

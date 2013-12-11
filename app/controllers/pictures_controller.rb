@@ -8,9 +8,10 @@ class PicturesController < ApplicationController
     picture.title = 'new'
     picture.description = "no description"
 
-    if picture.save
+    if picture.save!
       redirect_to :controller => "startups", :action => "dashboard", :id => picture.startup_id
     end
+
   end
 
 end

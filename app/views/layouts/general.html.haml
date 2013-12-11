@@ -67,7 +67,7 @@
 
       - if session[:id] != nil and session[:id] != 0
         - user = User.find(session[:id])
-        - owner_number = user.Owners.count
+        - owner_number = user.owners.count
         %ul.user-nav.nav.nav-pills
           :ruby
             if (params[:controller] == 'startups' and ['index', 'hashtag'].include?(params[:action])) ||

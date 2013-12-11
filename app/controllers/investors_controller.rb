@@ -124,7 +124,7 @@ class InvestorsController < ApplicationController
   	if session[:id]==nil || session[:id]==0 
   	  redirect_to :controller => 'users', :action => 'login'
   	else
-      @follower = @startup.Followers.find_by_user_id(session[:id])
+      @follower = @startup.followers.find_by_user_id(session[:id])
       @follower.destroy
       redirect_to :controller => 'startups', :action =>'show', :id => session[:startup_id], :shortnotice => 'You were successfully removed from the list of Followers for '+@startup.name
   	end  	
@@ -133,8 +133,8 @@ class InvestorsController < ApplicationController
 
   def add_mentor
     @user = User.find(session[:id])
-    @startup = @user.Owner_startups.first
-    @follower = Follower.find_by_startup_id_and_user_id(@startup.id,params[:mentor_id])
+    @startup = @user.owner_startups.first
+    @follower = follower.find_by_startup_id_and_user_id(@startup.id,params[:mentor_id])
 
     if @startup == nil  || @follower == nil
       redirect_to :controller => 'authentications', :action => 'wrong_link'
@@ -152,8 +152,8 @@ class InvestorsController < ApplicationController
 
   def delete_mentor
     @user = User.find(session[:id])
-    @startup = @user.Owner_startups.first
-    @follower = Follower.find_by_startup_id_and_user_id(@startup.id,params[:mentor_id])
+    @startup = @user.owner_startups.first
+    @follower = follower.find_by_startup_id_and_user_id(@startup.id,params[:mentor_id])
 
     if @startup == nil  || @follower == nil
       redirect_to :controller => 'authentications', :action => 'wrong_link'
@@ -219,7 +219,10 @@ class InvestorsController < ApplicationController
 
     respond_to do |format|
         startup = Startup.find(params[:id])
-        @people = startup.Owner_users
+        @people = startup.owner_users
+        @person = User.find(params[:founder_id])
+        puts @person
+        puts "djlfjadlfjld"
         format.js
     end
 
@@ -290,7 +293,7 @@ class InvestorsController < ApplicationController
   def follower_info
 
     @follower = User.find(params[:id])
-    @startups = @follower.Owner_startups
+    @startups = @follower.owner_startups
 
     respond_to do |format|
       format.js

@@ -10,7 +10,7 @@ class StartupsController < ApplicationController
           wrong_link = 1
         else
           user = User.find(session[:id])
-          startups = user.Owner_startups
+          startups = user.owner_startups
           if params[:id] == nil
             if startups.length == 0
               redirect_to :controller => 'campaigns', :action => 'guide_step' and return
@@ -18,7 +18,7 @@ class StartupsController < ApplicationController
               params[:id] = startups[0].id
             end
           end
-          startup_with_id = user.Owner_startups.where("startup_id = ?", params[:id])
+          startup_with_id = user.owner_startups.where("startup_id = ?", params[:id])
           if startup_with_id.length != 0
             session[:connection_type] = 2
             startup = startup_with_id[0]
@@ -179,8 +179,8 @@ class StartupsController < ApplicationController
   def show
     @user = User.find(session[:id]) if session[:id] and session[:id] != 0
     @startup = Startup.find(params[:id])
-    @startup_followers = @startup.Follower_users.all.uniq
-    @startup_owners = @startup.Owner_users.all.uniq
+    @startup_followers = @startup.follower_users.all.uniq
+    @startup_owners = @startup.owner_users.all.uniq
     @tags = Tag.all
     @ideas = @startup.Ideas
 
@@ -206,7 +206,7 @@ class StartupsController < ApplicationController
     @user = User.find(session[:id])
     @startup = Startup.find(params[:id])
     @tags = @startup.Tags
-    @circles = @startup.Circle_users[0..39]
+    @circles = @startup.circle_users[0..39]
     @funds = @startup.Investor_funds
 
     @circle_type = 0
@@ -232,15 +232,15 @@ class StartupsController < ApplicationController
   def team
     @user = User.find(session[:id])   if session[:id] and session[:id] != 0
     @startup = Startup.find(params[:id])
-    @startup_owners = @startup.Owner_users.all.uniq
-    @startup_followers = @startup.Follower_users.all.uniq
+    @startup_owners = @startup.owner_users.all.uniq
+    @startup_followers = @startup.follower_users.all.uniq
     #@people = User.all[0..20]
   end
 
   def followers
     @startup = Startup.find(params[:id])
-    @people = @startup.Follower_users.all[0..20]
-    @startup_owners = @startup.Owner_users.all.uniq
+    @people = @startup.follower_users.all[0..20]
+    @startup_owners = @startup.owner_users.all.uniq
   end
 
   def idea_hatching
@@ -248,7 +248,7 @@ class StartupsController < ApplicationController
     @startup = Startup.find(params[:id])
 
     i=0
-    @company_descriptions = @startup.Companydescriptions.where("status =?", 1).sort!{|x, y| x["allfield_id"] <=> y["allfield_id"]}
+    @company_descriptions = @startup.companydescriptions.where("status =?", 1).sort!{|x, y| x["allfield_id"] <=> y["allfield_id"]}
 
     @ideas = @startup.Ideas
 

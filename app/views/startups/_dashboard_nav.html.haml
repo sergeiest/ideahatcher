@@ -27,7 +27,7 @@
         .shadow-tab{:style => "z-index: 9;"}
           %a{:href => "#"}
   - i = 8
-  - startups = @user.Owner_startups
+  - startups = @user.owner_startups
   - startups[0..2].each do |startup|
     - if (@startup.nil?  || startup.id != @startup.id) and i > 4
       =link_to :controller => "startups", :action => "show", :id => startup.id do
