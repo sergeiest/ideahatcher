@@ -231,6 +231,7 @@ class InvestorsController < ApplicationController
   def remove_founder
 
     owner = Owner.find_by_user_id_and_startup_id(params[:founder_id], params[:id])
+    @status = owner.status
 
     if !owner
       return
@@ -258,8 +259,8 @@ class InvestorsController < ApplicationController
 
         owner.destroy
         startup = Startup.find(params[:id])
-        @people = startup.Owner_users
-        format.js {render "add_founder"}
+        @people = startup.owner_users
+        format.js {render "remove_founder"}
       end
     end
 
