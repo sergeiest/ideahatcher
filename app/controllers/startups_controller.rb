@@ -48,7 +48,7 @@ class StartupsController < ApplicationController
           end
           session[:connection_type] = connection_type
 
-          circles = startup.Circles
+          circles = startup.circles
           if circles.select{|x| x.user_id == 0}.length == 0 and
                (session[:id].nil? || circles.select{|x| (x.status != 3 and x.user_id == session[:id])}.length == 0)
             redirect_to :controller => 'startups', :action => 'request_access', :id => params[:id] and return
@@ -182,10 +182,10 @@ class StartupsController < ApplicationController
     @startup_followers = @startup.follower_users.all.uniq
     @startup_owners = @startup.owner_users.all.uniq
     @tags = Tag.all
-    @ideas = @startup.Ideas
+    @ideas = @startup.ideas
 
 
-    @company_descriptions_all = @startup.Companydescriptions
+    @company_descriptions_all = @startup.companydescriptions
     @company_descriptions = @company_descriptions_all.select{|x| x.status == 1}.sort!{|x, y| x["allfield_id"] <=> y["allfield_id"]}
 
 

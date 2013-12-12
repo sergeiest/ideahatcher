@@ -42,6 +42,10 @@
     - @company_descriptions.each do |description|
       = render :partial => 'description', :locals => {:description => description}
 
+    #this-carousel-id.carousel.slide
+      .carousel-inner
+        = render :partial => 'picture', :collection => @startup.pictures 
+
 .featured-ideas
   - Startup.where("status > 1").sample(3).each do |startup|
     = render :partial =>  "startups/startup", :locals => {:startup => startup}
