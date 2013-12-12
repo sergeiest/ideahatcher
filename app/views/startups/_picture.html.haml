@@ -1,7 +1,12 @@
--if picture_counter == 1
+-if picture_counter == 0
 	.item.active
+		= image_tag picture.avatar, :class => 'proto_pic'
+		.carousel-caption
+			%h5.picture_title #{picture.title}
+			%p.picture_desc #{picture.description}
 -else 
 	.item
-		= image_tag 'http://blacksportsonline.com/home/wp-content/uploads/2013/08/Tampa_Bay_Buccaneers.jpg'
+		= image_tag picture.avatar, :class => 'proto_pic'
 		.carousel-caption
-			%p #{picture.description}
+			%h5.picture_title #{picture.title}
+			%p.picture_desc #{picture.description}

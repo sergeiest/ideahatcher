@@ -629,4 +629,23 @@ a.help-hatch {
   }
 }
 
+.carousel-inner{
+  .proto_pic {
+    width: auto;
+    height: 320px;
+    max-height: 320px;
+    margin: 0 auto;
+  }
+  .picture_title{
+    padding-top: 0px;
+    margin: 0px;
+    color: #fff;
+    font-size: 20px;
+  }
+  .carousel-caption{
+    bottom: 0px !important; 
+    padding: 10px;
+  }
+}
+
 

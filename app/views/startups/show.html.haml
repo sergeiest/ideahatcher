@@ -42,9 +42,15 @@
     - @company_descriptions.each do |description|
       = render :partial => 'description', :locals => {:description => description}
 
-    #this-carousel-id.carousel.slide
-      .carousel-inner
-        = render :partial => 'picture', :collection => @startup.pictures 
+    -if @startup.pictures.length > 0
+      .description-box
+        %h5{:style => "font-weight:lighter"} Prototype Pictures
+        #this-carousel-id.carousel.slide
+          .carousel-inner
+            = render :partial => 'picture', :collection => @startup.pictures, :as => :picture
+          %a.carousel-control.left{"data-slide" => "prev", href: "#this-carousel-id"} ‹
+          %a.carousel-control.right{"data-slide" => "next", href: "#this-carousel-id"} ›
+        
 
 .featured-ideas
   - Startup.where("status > 1").sample(3).each do |startup|
