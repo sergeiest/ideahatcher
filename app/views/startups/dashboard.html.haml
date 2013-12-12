@@ -44,11 +44,12 @@
             = render :partial => 'picture', :collection => @startup.pictures, :as => :picture
           %a.carousel-control.left{"data-slide" => "prev", href: "#this-carousel-id"} ‹
           %a.carousel-control.right{"data-slide" => "next", href: "#this-carousel-id"} ›
-        %button{:onclick => "$('#uploadPicture').modal(open)"} Upload prototype pictures
+        %button.custom-button{:onclick => "$('#uploadPicture').modal(open)"} Add pictures
     -else 
       .description-box
         %h5{:style => "font-weight:lighter"} Prototype Pictures
-        %button{:onclick => "$('#uploadPicture').modal(open)"} Upload prototype pictures
+        %p Upload pictures of your mockups, prototypes and product to collect the feedback about them
+        %button.custom-button{:onclick => "$('#uploadPicture').modal(open)"} Add pictures
 
   .dashboard-info
     %h5{:style => "font-weight:lighter"}
@@ -118,16 +119,20 @@
     %h3{ :id => "myModalLabel"} Upload pictures of your prototype
   = form_tag({:controller => "pictures", :action => "upload_picture"}, :multipart => true) do
     .modal-body
-      %p Upload photo or graphic that best represents your idea. Aspect ratio of the picture should be 2:1.
+      %p
+        Upload photo or screenshots of your mockups, prototypes or products. Show your progress and collect the feedback.
+        %br
+        Preferable aspect ratio of the picture is 2:1.
       = file_field_tag :avatar, :onchange => "checkFile(this)"
-      %br
-      Enter a title:    
-      %br
-      = text_field_tag :pic_title
-      %br
-      Enter a description:
-      %br
-      = text_area_tag :pic_description
+      %hr
+      %p
+        Title of the picture (e.g. 'mockup of the idea profile page'):
+        %br
+        = text_field_tag :pic_title
+      %p
+        Description (e.g. 'on this page users are able to provide feedback to entrepreneurs by voting and participating in discussion'):
+        %br
+        = text_area_tag :pic_description
       = hidden_field_tag :startup_id, @startup.id
       %p#photo_error{ :style => "color:red"}
     .modal-footer
