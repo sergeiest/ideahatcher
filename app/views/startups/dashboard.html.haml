@@ -36,6 +36,20 @@
     - @company_descriptions.each do |description|
       = render :partial => 'dashboard_description', :locals => {:description => description}
 
+    -if @startup.pictures.length > 0
+      .description-box
+        %h5{:style => "font-weight:lighter"} Prototype Pictures
+        #this-carousel-id.carousel.slide
+          .carousel-inner
+            = render :partial => 'picture', :collection => @startup.pictures, :as => :picture
+          %a.carousel-control.left{"data-slide" => "prev", href: "#this-carousel-id"} ‹
+          %a.carousel-control.right{"data-slide" => "next", href: "#this-carousel-id"} ›
+        %button{:onclick => "$('#uploadPicture').modal(open)"} Upload prototype pictures
+    -else
+      .description-box
+        %h5{:style => "font-weight:lighter"} Prototype Pictures
+        %button{:onclick => "$('#uploadPicture').modal(open)"} Upload prototype pictures
+
   .dashboard-info
     %h5{:style => "font-weight:lighter"}
       The Team
@@ -78,14 +92,6 @@
         - else
           = image_tag "/images/no_profile_picture_" + (person.id % 4 + 1).to_s + ".png", :class => "hatchers"
 
-    %h5 Prototype
-    %button{:onclick => "$('#uploadPicture').modal(open)"} Upload prototype pictures
-    - @pictures.each do |picture|
-      %p= picture.title
-      = image_tag picture.avatar(:square), :class => "hatchers"
-
-
-
 
   .clear-both
 
@@ -114,6 +120,14 @@
     .modal-body
       %p Upload photo or graphic that best represents your idea. Aspect ratio of the picture should be 2:1.
       = file_field_tag :avatar, :onchange => "checkFile(this)"
+      %br
+      Enter a title:    
+      %br
+      = text_field_tag :pic_title
+      %br
+      Enter a description:
+      %br
+      = text_area_tag :pic_description
       = hidden_field_tag :startup_id, @startup.id
       %p#photo_error{ :style => "color:red"}
     .modal-footer
