@@ -103,7 +103,7 @@ class CampaignsController < ApplicationController
 
     @startup = Startup.find(params[:id])
     @user = User.find(session[:id])
-    all_descriptions = @startup.Companydescriptions.where("status = 1")
+    all_descriptions = @startup.companydescriptions.where("status = 1")
     @descriptions = Array.new
 
     Allfield.where("view_flag = 3").each do |all_field|
@@ -126,7 +126,7 @@ class CampaignsController < ApplicationController
     #Works only for 3 fields!
 
     startup = Startup.find(params[:id])
-    all_descriptions = startup.Companydescriptions.where("status = 1")
+    all_descriptions = startup.companydescriptions.where("status = 1")
     no_errors = 1
 
     params_descriptions = Array.new
@@ -189,7 +189,7 @@ class CampaignsController < ApplicationController
   def circles_step
     @user = User.find(session[:id])
     @startup = Startup.find(params[:id])
-    @tags = @startup.Tags
+    @tags = @startup.tags
     @people = User.all[0..5]
     @circles = User.all[0..9]
   end
