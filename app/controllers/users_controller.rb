@@ -29,7 +29,7 @@ class UsersController < ApplicationController
 
     #@user_updates = Array.new
     #@user_startups.each do |startup|
-    #  @user_updates << startup.Companyupdates
+    #  @user_updates << startup.companyupdates
     #end
     #if @user_updates != nil
     #  @user_updates.sort! { |y, x| x["newsdate"] <=> y["newsdate"] }

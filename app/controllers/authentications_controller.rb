@@ -11,7 +11,7 @@ class AuthenticationsController < ApplicationController
   def process_login
     if authentication = Authentication.authenticate(params[:authentication])
       params.delete :authentication
-      session[:id]=authentication.User.id
+      session[:id]=authentication.user.id
       if params[:gotoaction]!= nil and params[:gotocontroller] != nil
         go_to_controller = params[:gotocontroller]
         go_to_action = params[:gotoaction]

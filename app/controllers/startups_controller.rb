@@ -133,7 +133,7 @@ class StartupsController < ApplicationController
 
     @user = User.find(session[:id])
 
-    @startups = @user.Owner_startups
+    @startups = @user.owner_startups
 
     @tags = Tag.all
 
@@ -159,7 +159,7 @@ class StartupsController < ApplicationController
 
     @user = User.find(session[:id])
 
-    @startups = @user.Follower_startups
+    @startups = @user.follower_startups
 
     @tags = Tag.all
 
@@ -205,12 +205,12 @@ class StartupsController < ApplicationController
   def circles
     @user = User.find(session[:id])
     @startup = Startup.find(params[:id])
-    @tags = @startup.Tags
+    @tags = @startup.tags
     @circles = @startup.circle_users[0..39]
-    @funds = @startup.Investor_funds
+    @funds = @startup.investor_funds
 
     @circle_type = 0
-    @circle_type = 3 if @startup.Circles.any?{|x| x.user_id == 0}
+    @circle_type = 3 if @startup.circles.any?{|x| x.user_id == 0}
     @circle_type = 1 if @circle_type == 0 and @circles.length > 0
 
   end
@@ -250,7 +250,7 @@ class StartupsController < ApplicationController
     i=0
     @company_descriptions = @startup.companydescriptions.where("status =?", 1).sort!{|x, y| x["allfield_id"] <=> y["allfield_id"]}
 
-    @ideas = @startup.Ideas
+    @ideas = @startup.ideas
 
     respond_to do |format|
       format.html # show.html.erb

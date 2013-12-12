@@ -319,7 +319,7 @@ class InvestorsController < ApplicationController
     end
 
     respond_to do |format|
-      @funds = Startup.find(params[:startup_id]).Investor_funds.all
+      @funds = Startup.find(params[:startup_id]).investor_funds.all
       format.js
     end
 
@@ -335,7 +335,7 @@ class InvestorsController < ApplicationController
     end
 
     respond_to do |format|
-      @funds = Startup.find(params[:startup_id]).Investor_funds.all
+      @funds = Startup.find(params[:startup_id]).investor_funds.all
       format.js {render "share_with_fund"}
     end
 

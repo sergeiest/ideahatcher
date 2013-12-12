@@ -34,7 +34,7 @@ class TagsController < ApplicationController
     if params[:tag_name] and params[:tag_name].length.between?(1, 40)
       text = params[:tag_name].downcase.split.join('')
       text = text[1..-1] if text[0] == "#"
-      tag = startup.Tags.find_by_name(text)
+      tag = startup.tags.find_by_name(text)
       if !tag
         tag = Tag.new
         tag.name = text
@@ -42,7 +42,7 @@ class TagsController < ApplicationController
         tag.save
       end
     end
-    @tags = startup.Tags
+    @tags = startup.tags
     respond_to do |format|
       format.js
     end
@@ -51,10 +51,10 @@ class TagsController < ApplicationController
   def delete_tag
     startup = Startup.find(session[:startup_id])
     if params[:tag_id]
-      tag = startup.Tags.find(params[:tag_id])
+      tag = startup.tags.find(params[:tag_id])
       tag.destroy
     end
-    @tags = startup.Tags
+    @tags = startup.tags
     respond_to do |format|
       format.js { render "add_tag" }
     end
