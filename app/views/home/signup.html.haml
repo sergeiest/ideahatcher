@@ -9,8 +9,9 @@
       %p{:style => "margin-top:10%; font-size:24pt; line-height: 30pt; font-weight: lighter"}
         Use ideaHatcher to share your product or business with our community of users, investors, and fellow
         entrepreneurs and get feedback.
-    .login-box
-      = render 'authentications/clean_join_form'
+    - if session[:id].nil? || session[:id] == 0
+      .login-box
+        = render 'authentications/clean_join_form'
     %a.see-how-it-works{:href => "#how-it-works"}
       %p See how it works
       %i.icon-arrow-down.glyphw-white
@@ -18,63 +19,105 @@
 .new-how-it-works
   .main-description
     %a{:name => "how-it-works"}
-    .tagline{:style => "padding-top:20px;"}
+    .tagline{:style => "padding-top:20px; height:auto;"}
       %h1
         How does ideaHatcher
         %br
         %span{:style => "color:orange; font-weight:bold"} help
         you?
-    %step-line
+    .step-line
       = image_tag "/images/how_it_works_1.png"
       %p Share your ideas with a community of entrepreneurs and get valuable feedback.
-    %step-line
-      = image_tag "/images/how_it_works_1.png"
-      %p Share your ideas with a community of entrepreneurs and get valuable feedback.
-    %step-line
-      = image_tag "/images/how_it_works_1.png"
-      %p Share your ideas with a community of entrepreneurs and get valuable feedback.
-
-
-
-.how-it-works
-  .content-white
-    .left-side
+    .step-line
+      = image_tag "/images/how_it_works_2.png"
       %p
-        Share your ideas with a community of entrepreneurs and get valuable feedback.
-    .right-side= image_tag "/images/how_it_works_1.png"
-    .clear-both
-  .content-white
-    .left-side= image_tag "/images/how_it_works_2.png"
-    .right-side
+        A large community of fellow entrepreneurs and investors to provide rich feedback to
+        improve the success of your iteration process.
+    .step-line{:style => "margin-right:0"}
+      = image_tag "/images/how_it_works_3.png"
       %p
-        Tell us about your idea's problem, solution, and business plan, then choose who to share it with.
+        An easy way to connect with like-minded people that supplements events, meetups, and coffee chats.
     .clear-both
-  .content-white
-    .left-side
-      %p
-        Other entrepreneurs rate and give feedback on your idea's problem, solution and business plan.
-        Improve your idea and repost to get feedback again.
-    .right-side= image_tag "/images/how_it_works_3.png"
-    .clear-both
-  .content-white
-    .left-side= image_tag "/images/how_it_works_4.png"
-    .right-side
-      %p
-        A large community of entrepreneurs from many different sectors ensures you’ll get lots of valuable
-        feedback to hatch your idea.
-    .clear-both
-  .content-white{:style => "height: 150px;"}
-    %p
-      - if session[:id].nil? || session[:id] == 0
-        = link_to 'Get hatching', {:controller => 'campaigns', :action => "guide_step", :login => 0},
-                      :class => "custom-button", :remote => true, :id => "start-new-idea"
-      - else
-        = link_to 'Get hatching', {:controller => 'campaigns', :action => "guide_step"}, :class => "custom-button"
+  .detailed_description.aqua-background
+    .description-content
+      %a{:name => "how-do-you-hatch-an-idea"}
+        .tagline{:style => "padding-top:20px; height:auto;"}
+          %h1
+            How do you
+            %b hatch
+            %br
+            an idea?
+        = image_tag "/images/landing_page/how_it_works_dashboard.png"
+        .right-box{:style => "top:180px"}
+          %p Get notified when other ideaHatchers have voted and commented on your idea
+        .right-box{:style => "top:480px"}
+          %p
+            Decide who you’d like to share your idea with. You can keep it private, share with a
+            select group, or share it with the whole community
+        .right-box{:style => "top:600px"}
+          %p
+            See who’s helping hatch your idea, learn what they’re doing and check out their ideas
+        .right-box{:style => "top:960px"}
+          %p
+            See how Hatchers are rating your idea to see if you’re on the right track
+        .right-box{:style => "top:1160px"}
+          %p
+            Respond to comments and ask questions of your Hatchers
+
+        .left-box{:style => "top:200px"}
+          %p Add a new idea on the “Dashboard” page
+        .left-box{:style => "top:320px"}
+          %p
+            Select a representative image or logo for your idea
+        .left-box{:style => "top:530px"}
+          %p
+            Describe your most current problem statement, solution, and business model
+        .left-box{:style => "top:1060px"}
+          %p
+            Read the discussions your Hatchers have started to help you improve your idea
+
+  .detailed_description.green-background
+    .description-content
+      %a{:name => "how-do-you-hatch-an-idea"}
+        .tagline{:style => "padding-top:20px; height:auto;"}
+          %h1
+            How do you
+            %b help
+            %br
+            %b hatch
+            an idea?
+        = image_tag "/images/landing_page/how_it_works_ideapage.png"
+        .right-box{:style => "top:670px"}
+          %p
+            Rate the quality, style, and effectiveness of the problem statement on a scale of one
+            to five
+        .right-box{:style => "top:760px"}
+          %p
+            To give deeper feedback, click the “Help Hatch It” button. In this section you can compare
+            different versions and vote for the one you think is stronger
+        .right-box{:style => "top:1120px"}
+          %p
+            In addition to voting, you can join an existing discussion or start a new one to help the
+            idea develop and improve
+        .right-box{:style => "top:1500px"}
+          %p
+            Complete the feedback loop with the business model
+
+        .left-box{:style => "top:400px"}
+          %p Review an idea’s image, description, and team
+        .left-box{:style => "top:660px"}
+          %p
+            Read the current version of the problem statement
+        .left-box{:style => "top:1360px"}
+          %p
+            Complete the feedback loop with the solution statement
+        .left-box{:style => "top:1660px"}
+          %p
+            Check out more ideas to help them keep growing
 
 
-  %h2{:style => "font-weight: lighter;margin-top:-30px; font-size:32pt"} Hatching now:
-
-.featured-ideas
+.featured-ideas{:style => "margin-top:40px;"}
+  %h2{:style => "font-weight: lighter;margin-bottom:40px; font-size:32pt"} Hatching now:
   - @startups.select{|x| x.status > 1}.sample(3).each do |startup|
     = render :partial =>  "startups/startup", :locals => {:startup => startup}
   %p= link_to 'See all ideas', {:controller => 'startups', :action => "index"}, :class => "custom-button"
