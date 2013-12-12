@@ -12,19 +12,6 @@ end
 module Webapp
   class Application < Rails::Application
 
-    # 'Rake asstes:precompile' running on Heroku without starting the app (?)
-    config.assets.initialize_on_precompile = false
-
-    config.assets.precompile += %w( bootstrap.css )
-    config.assets.precompile += %w( startups.css )
-    config.assets.precompile += %w( campaigns.css )
-    config.assets.precompile += %w( users.css )
-    config.assets.precompile += %w( authentications.css )
-    config.assets.precompile += %w( funds.css )
-    config.assets.precompile += %w( bootstrap-modal.js )
-    config.assets.precompile += %w( bootstrap-collapse.js )
-    config.assets.precompile += %w( bootstrap-transitions.js )
-
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
@@ -73,9 +60,23 @@ module Webapp
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
     # Enable the asset pipeline
     config.assets.enabled = true
     config.assets.paths << "#{Rails.root}/app/assets/fonts"
+
+    # 'Rake asstes:precompile' running on Heroku without starting the app (?)
+    config.assets.initialize_on_precompile = false
+
+    config.assets.precompile += %w( bootstrap.css )
+    config.assets.precompile += %w( startups.css )
+    config.assets.precompile += %w( campaigns.css )
+    config.assets.precompile += %w( users.css )
+    config.assets.precompile += %w( authentications.css )
+    config.assets.precompile += %w( funds.css )
+    config.assets.precompile += %w( bootstrap-modal.js )
+    config.assets.precompile += %w( bootstrap-collapse.js )
+    config.assets.precompile += %w( bootstrap-transitions.js )
 
   end
 end
