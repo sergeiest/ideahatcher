@@ -45,7 +45,7 @@
     -if @startup.pictures.length > 0
       .description-box
         %h5{:style => "font-weight:lighter"} Prototype Pictures
-        #this-carousel-id.carousel.slide
+        #this-carousel-id.carousel.slide{"data-interval" => "false"}
           .carousel-inner
             = render :partial => 'picture', :collection => @startup.pictures, :as => :picture
           %a.carousel-control.left{"data-slide" => "prev", href: "#this-carousel-id"} ‹
