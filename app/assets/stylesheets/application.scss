@@ -675,7 +675,7 @@ body {
   .main-description {
     min-width: 880px;
     width: 60%;
-    margin:0px auto 0px auto;
+    margin:0px auto 20px auto;
 
     h1 {
       font-weight:lighter;
@@ -684,6 +684,115 @@ body {
 
     }
 
+  }
+
+  .detailed_description {
+    position: relative;
+
+    .description-content {
+      min-width: 880px;
+      width: 60%;
+      margin:0px auto 0px auto;
+
+
+      h1 {
+        font-weight:lighter;
+        font-size:32pt;
+        line-height: 40pt;
+        color:white;
+      }
+
+      img {
+        width: 650px;
+        margin:40px auto;
+        margin-left:120px;
+      }
+
+      .right-box {
+        background-color: #3d505a;
+        position: absolute;
+        right:40px;
+
+        width: 20%;
+        padding:10px 20px 0 20px;
+
+        p {
+          color:white;
+          line-height: 16pt;
+          font-size:12pt;
+          font-weight:lighter;
+        }
+      }
+
+      .right-box:before {
+        content: '';
+        height:0;
+        position:absolute;
+        width:0px;
+        left:-40px;
+        top:10px;
+
+        border:20px solid transparent;
+        border-right-color: #3d505a;
+      }
+
+      .left-box {
+        background-color: #3d505a;
+        position: absolute;
+        left:40px;
+
+        width: 20%;
+        padding:10px 20px 0 20px;
+
+        p {
+          color:white;
+          line-height: 16pt;
+          font-size:12pt;
+          font-weight:lighter;
+        }
+      }
+
+      .left-box:after {
+        content: '';
+        height:0;
+        position:absolute;
+        width:0px;
+        right:-40px;
+        top:10px;
+
+        border:20px solid transparent;
+        border-left-color: #3d505a;
+      }
+
+
+    }
+
+  }
+
+  .aqua-background {
+    background-color: #87cdc4;
+  }
+
+  .green-background {
+    background-color: #a5d066;
+  }
+
+  .step-line {
+    width: -webkit-calc(100% / 3 - 7px);
+    width: calc(100% / 3 - 7px);
+    float:left;
+    margin:20px 10px 20px 0;
+    text-align: center;
+    img {
+      //width:135px;
+      height:135px;
+    }
+    p {
+      font-size:14pt;
+      font-weight: lighter;
+      line-height: 20pt;
+      margin:0 0 0 0px;
+    }
   }
 }
 
