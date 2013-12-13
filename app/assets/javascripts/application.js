@@ -29,6 +29,28 @@ $(document).ready(function() {
         }
         $('#login_modal').modal('show');
     }
+    $('.help-hatch').on('click', function(){
+        var panel_open = this.getAttribute("data-openpanel");
+        if ($(panel_open).is('.in')){
+            this.innerText = '';
+            this.innerText = 'Help hatch it!';
+            $(panel_open).collapse('hide');
+        }
+        else{
+            this.innerText = '';
+            this.innerText = 'Close detailed view';
+            $(panel_open).collapse('show');
+            var actual_panel = document.getElementById(panel_open.substring(1));
+            console.log(actual_panel);
+            actual_panel.scrollIntoView();
+            var scrolledY = window.scrollY;
+            console.log(scrolledY);
+            if (scrolledY){
+                window.scroll(0, scrolledY-234);
+            }
+
+        }
+    })
 })
 
 

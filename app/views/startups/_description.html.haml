@@ -34,7 +34,7 @@
     %h5{:style => "font-weight:lighter"}= description.field_status
     %p= description.content
   .clear-both
-  %a.help-hatch.custom-button{:onclick => "$('#ideahatching_#{description.id}').collapse('toggle');"}
+  %a.help-hatch.custom-button{"data-openpanel" => "#ideahatching_#{description.id}"}
     Help hatch it!
 
   .ideahatching.collapse{:id => "ideahatching_#{description.id}"}
