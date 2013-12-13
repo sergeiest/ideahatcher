@@ -87,7 +87,7 @@ class AuthenticationsController < ApplicationController
   def new
 
     @authentication = Authentication.new
-    @user = @authentication.build_User
+    @user = @authentication.build_user
 
     respond_to do |format|
       format.html # new.html.erb
@@ -106,7 +106,7 @@ class AuthenticationsController < ApplicationController
     if user_errors == nil and authentication_errors == nil and @authentication.password == params[:ll][:password_confirmation]
 
       @authentication.make_hash(params[:authentication][:password])
-      @user = @authentication.create_User(params[:user])
+      @user = @authentication.create_user(params[:user])
 
       startup_id = session[:startup_id]
       reset_session
