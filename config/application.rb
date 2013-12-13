@@ -66,7 +66,7 @@ module Webapp
     config.assets.paths << "#{Rails.root}/app/assets/fonts"
 
     # 'Rake asstes:precompile' running on Heroku without starting the app (?)
-    config.assets.initialize_on_precompile = false
+    #config.assets.initialize_on_precompile = false
 
     config.assets.precompile += %w( bootstrap.css )
     config.assets.precompile += %w( startups.css )
