@@ -17,7 +17,6 @@ class User < ActiveRecord::Base
   has_many :follower_startups, :through => :followers, :source => :startup
   has_many :circle_startups, :through => :circles, :source => :startup
 
-  has_many :funds
   has_many :ideas
 
   attr_protected :authentication_id

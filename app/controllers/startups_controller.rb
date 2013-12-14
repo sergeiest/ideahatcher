@@ -243,21 +243,21 @@ class StartupsController < ApplicationController
     @startup_owners = @startup.owner_users.all.uniq
   end
 
-  def idea_hatching
-    @user = User.find(session[:id]) if session[:id] and session[:id] != 0
-    @startup = Startup.find(params[:id])
-
-    i=0
-    @company_descriptions = @startup.companydescriptions.where("status =?", 1).sort!{|x, y| x["allfield_id"] <=> y["allfield_id"]}
-
-    @ideas = @startup.ideas
-
-    respond_to do |format|
-      format.html # show.html.erb
-    end
-
-
-  end
+  #def idea_hatching
+  #  @user = User.find(session[:id]) if session[:id] and session[:id] != 0
+  #  @startup = Startup.find(params[:id])
+  #
+  #  i=0
+  #  @company_descriptions = @startup.companydescriptions.where("status =?", 1).sort!{|x, y| x["allfield_id"] <=> y["allfield_id"]}
+  #
+  #  @ideas = @startup.ideas
+  #
+  #  respond_to do |format|
+  #    format.html # show.html.erb
+  #  end
+  #
+  #
+  #end
 
   def search_startups
     if !params[:string] || params[:string] == ""
