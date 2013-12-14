@@ -1,0 +1,30 @@
+= form_tag({:action => 'create', :controller => 'authentications'}, :multipart => true) do
+  %h4{:style => "font-weight: lighter;"} Sign Up Now!
+
+  %p
+    Email:
+    %br
+    = text_field :authentication, :username
+
+  %p
+    Password:
+    %br
+    = password_field :authentication, :password
+
+  %p
+    Confirm password:
+    %br
+    = password_field :ll, :password_confirmation
+
+  %p
+    First name:
+    %br
+    = text_field :user, :firstname
+
+  %p
+    Last name:
+    %br
+    = text_field :user, :lastname
+
+  = submit_tag 'Create account', :class => "btn-simple custom-button"
+
