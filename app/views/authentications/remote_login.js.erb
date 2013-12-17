@@ -33,7 +33,8 @@ newLi.className = "dropdown custom-dropdown custom-dropdown-yellow"
 
 var newMenu = document.createElement("ul");
 newMenu.className = "dropdown-menu";
-newMenu.innerHTML = '<li role="presentation"><%= link_to 'Notifications', :controller => "users", :action => "notifications", :id => @user.id %></li>' +
+newMenu.innerHTML = '<li role="presentation"><%= link_to(:controller => "users", :action => "notifications", :id => @user.id) do %>' +
+        'Notifications <span class="notifications" id="notifications_num"><%= @user.notification_num %></span><% end %></li>' +
         '<li role="presentation"><%= link_to 'Update profile', :controller => 'users', :action => 'edit',
                                                 :id => @user.id %></li>' +
         '<li role="presentation"><%= link_to 'Change password', :controller => 'users', :action => 'change_password',

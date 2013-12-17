@@ -1,12 +1,5 @@
--if picture_counter == 0
-	.item.active
-		= image_tag picture.avatar, :class => 'proto_pic'
-		.carousel-caption
-			%h5.picture_title #{picture.title}
-			%p.picture_desc #{picture.description}
--else 
-	.item
-		= image_tag picture.avatar, :class => 'proto_pic'
-		.carousel-caption
-			%h5.picture_title #{picture.title}
-			%p.picture_desc #{picture.description}
+.item{:class => "#{'active' if picture_counter == 0}"}
+	= image_tag picture.avatar, :class => 'proto_pic'
+	.carousel-caption
+		%h5.picture_title #{picture.title}
+		%p.picture_desc #{picture.description}
