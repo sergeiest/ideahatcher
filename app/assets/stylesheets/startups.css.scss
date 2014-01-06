@@ -669,6 +669,16 @@ a.help-hatch {
   }
 }
 
+.carousel-control{
+  color: #3d505a;
+  background: #fff;
+  border: 0;
+  background-color:transparent;
+  opacity: 1;
+  &:hover{
+    color: #000;
+  }
+}
 
 #uploadPicture {
   textarea{
