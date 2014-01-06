@@ -110,6 +110,7 @@ Webapp::Application.routes.draw do
   get "startups/following_ideas"
   get "startups/show_more_startups"
   get "startups/request_access"
+  post "startups/upload_link"
   resources :startups
   
   resources :peoples

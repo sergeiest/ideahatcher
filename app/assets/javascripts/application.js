@@ -51,6 +51,9 @@ $(document).ready(function() {
 
         }
     })
+    $('.add-proto-link').on('click', function(){
+        $('#uploadLink').modal(open);
+    })
 })
 
 

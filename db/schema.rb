@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131210031634) do
+ActiveRecord::Schema.define(:version => 20140106031344) do
 
   create_table "allfields", :force => true do |t|
     t.string   "field_name"
@@ -190,6 +190,7 @@ ActiveRecord::Schema.define(:version => 20131210031634) do
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
     t.integer  "votes"
+    t.string   "prototype_link"
   end
 
   create_table "tags", :force => true do |t|

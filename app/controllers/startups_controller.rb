@@ -243,6 +243,14 @@ class StartupsController < ApplicationController
     @startup_owners = @startup.owner_users.all.uniq
   end
 
+  def upload_link
+    @startup = Startup.find(params[:id])
+    @startup.prototype_link = params[:link_url]
+    if @startup.save!
+      redirect_to :controller => "startups", :action => "dashboard", :id => @startup.id
+    end
+  end
+
   #def idea_hatching
   #  @user = User.find(session[:id]) if session[:id] and session[:id] != 0
   #  @startup = Startup.find(params[:id])

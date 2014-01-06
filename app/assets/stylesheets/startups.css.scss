@@ -458,6 +458,11 @@ a.help-hatch {
     margin: 0 30px 0 0;
   }
 
+  #add-pictures-button{
+    margin-left:40px;
+    margin-bottom:10px;
+  }
+
   .action-box {
     float:right;
     width:190px;
@@ -629,7 +634,12 @@ a.help-hatch {
   }
 }
 
+.carousel{
+  margin-bottom: 0px;
+}
+
 .carousel-inner{
+  height:auto;
   .proto_pic {
     width: auto;
     height: 320px;
@@ -645,6 +655,17 @@ a.help-hatch {
   .carousel-caption{
     bottom: 0px !important; 
     padding: 10px;
+    position: relative;
+    background-color:transparent;
+    color: #3d505a;
+
+    .picture_title{
+    color: inherit;
+    font-weight: bold;
+    }
+    .picture_desc{
+    color: inherit;
+    }
   }
 }
 
@@ -656,3 +677,20 @@ a.help-hatch {
   }
 }
 
+.startup-prototype-link{
+  color: white;
+  background-color: #3d505a;
+  opacity: .7;
+  margin-left:40px;
+  margin-right: 40px;
+  padding: 10px;
+  display:inline;
+}
+
+.add-proto-link{
+  vertical-align:top;
+  display:inline;
+  &:hover{
+    cursor: pointer;
+  }
+}

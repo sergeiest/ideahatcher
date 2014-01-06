@@ -38,18 +38,36 @@
 
     -if @startup.pictures.length > 0
       .description-box
-        %h5{:style => "font-weight:lighter"} Prototype Pictures
+        %h5{:style => "font-weight:lighter"} Prototypes
         #this-carousel-id.carousel.slide{"data-interval" => "false"}
           .carousel-inner
             = render :partial => 'picture', :collection => @startup.pictures, :as => :picture
           %a.carousel-control.left{"data-slide" => "prev", href: "#this-carousel-id"} ‹
           %a.carousel-control.right{"data-slide" => "next", href: "#this-carousel-id"} ›
-        %button.custom-button{:onclick => "$('#uploadPicture').modal(open)"} Add pictures
+        %button.custom-button#add-pictures-button{:onclick => "$('#uploadPicture').modal(open)"} Add pictures 
+        %br
+        %br
+        -if not @startup.prototype_link.nil? and not @startup.prototype_link.blank?
+          = link_to @startup.prototype_link, ("http://" + @startup.prototype_link), :class => "startup-prototype-link"
+          = image_tag '/images/pen.png', :class => "edit-pen add-proto-link", :style => "float:right;width:30px"
+        -else
+          .startup-prototype-link 
+            No link specified
+          = image_tag '/images/pen.png', :class => "edit-pen add-proto-link", :style => "float:right;width:30px"
+
     -else 
       .description-box
-        %h5{:style => "font-weight:lighter"} Prototype Pictures
+        %h5{:style => "font-weight:lighter"} Prototypes
         %p Upload pictures of your mockups, prototypes and product to collect the feedback about them
         %button.custom-button{:onclick => "$('#uploadPicture').modal(open)"} Add pictures
+        -if not @startup.prototype_link.nil? and not @startup.prototype_link.blank?
+          = link_to @startup.prototype_link, ("http://" + @startup.prototype_link), :class => "startup-prototype-link"
+          = image_tag '/images/pen.png', :class => "edit-pen add-proto-link", :style => "float:right;width:30px"
+        -else
+          .startup-prototype-link 
+            No link specified
+          = image_tag '/images/pen.png', :class => "edit-pen add-proto-link", :style => "float:right;width:30px"
+
 
   .dashboard-info
     %h5{:style => "font-weight:lighter"}
@@ -138,6 +156,25 @@
     .modal-footer
       %button{:class => "btn", :'data-dismiss' => "modal", :'aria-hidden' => "true"} Close
       =submit_tag "Upload photo", :class => "btn btn-primary", :id => "photo_upload"
+
+#uploadLink.modal.hide.fade{:tabindex => "-1", :role => "dialog", :'aria-labelledby' => "myModalLabel", :'aria-hidden' => "true"}
+  .modal-header
+    %button.close{ :type => "button", :'data-dismiss' => "modal", :'aria-hidden' => "true"} ×
+    %h3{ :id => "myModalLabel"} Upload/Change your prototype link
+  = form_tag :action => 'upload_link' do
+    .modal-body
+      %p
+        Url: (in 'www.example.com' form)
+        %br
+      -if not @startup.prototype_link.nil? and not @startup.prototype_link.blank?
+        =text_field_tag :link_url, @startup.prototype_link
+      -else
+        =text_field_tag :link_url
+      =hidden_field_tag :id, @startup.id
+      %p#photo_error{ :style => "color:red"}
+    .modal-footer
+      %button{:class => "btn", :'data-dismiss' => "modal", :'aria-hidden' => "true"} Close
+      =submit_tag "Upload link", :class => "btn btn-primary", :id => "link_upload"
 
 
 #show-replies-form
