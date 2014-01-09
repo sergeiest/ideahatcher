@@ -1,4 +1,4 @@
-class CreateUserInfos < ActiveRecord::Migration
+class CreateUserinfos < ActiveRecord::Migration
   def change
     create_table :userinfos do |t|
       t.integer :user_id
