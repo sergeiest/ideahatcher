@@ -8,6 +8,8 @@
   .profile-info
     %h5 #{@user.firstname} #{@user.lastname}
 
+    %p= @user.description
+
     %b Experience/expertise
 
     - @user_infos.select{|x| x.status == 1}.each do |user_info|
