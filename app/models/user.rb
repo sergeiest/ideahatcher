@@ -18,6 +18,7 @@ class User < ActiveRecord::Base
   has_many :circle_startups, :through => :circles, :source => :startup
 
   has_many :ideas
+  has_many :userinfos
 
   attr_protected :authentication_id
   belongs_to :authentication

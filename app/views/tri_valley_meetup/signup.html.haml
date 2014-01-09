@@ -1,0 +1,43 @@
+.new-home-signup
+  .signup-cover
+    .message-box
+      %p{:style => "font-size:48pt; line-height: 64pt; font-weight: lighter"}
+        About yourself:
+      %p{:style => "margin-top:10%; font-size:24pt; line-height: 30pt; font-weight: lighter"}
+        Please share your experience/expertise and needs/asks with
+        the Startup Tri-Valley Community.
+    - if session[:id].nil? || session[:id] == 0
+      .login-box
+        = form_tag({:action => 'create', :controller => 'authentications'}, :multipart => true) do
+          %h4{:style => "font-weight: lighter;"} Set up account:
+
+          %p
+            Email:
+            %br
+            = text_field :authentication, :username
+
+          %p
+            Password:
+            %br
+            = password_field :authentication, :password
+
+          %p
+            Confirm password:
+            %br
+            = password_field :ll, :password_confirmation
+
+          %p
+            First name:
+            %br
+            = text_field :user, :firstname
+
+          %p
+            Last name:
+            %br
+            = text_field :user, :lastname
+
+          = hidden_field_tag :gotocontroller, "tri_valley_meetup"
+          = hidden_field_tag :gotoaction, "show"
+
+          = submit_tag 'Create profile', :class => "btn-simple custom-button", :style => "background-color:#C73237; color:white"
+

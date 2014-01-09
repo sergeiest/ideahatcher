@@ -1,0 +1,34 @@
+.user-content
+  .notification-box
+    %h5{:style => "font-weight: lighter;"} Community:
+
+    %table{:style => "border-bottom: 1px black solid"}
+      %tr
+        %th{:style => "width:250px;text-align:left; padding-left:20px;"} Name
+        %th{:style => "width:400px;text-align:left"} Experience/expertise
+        %th{:style => "width:400px;text-align:left"} Needs/asks
+      - @people.each do |user|
+        %tr{:onMouseMove => "customHighlightIn(this,'yellow')", :onMouseOut => "customHighlightOut(this,'yellow')",
+                  :style => "border-top: 1px black solid; cursor:pointer", :onclick => "window.location.href = '../tri_valley_meetup/profile?id=#{user.id}';"}
+          %td{:style => "height:50px;padding-left:20px; text-align:left"}
+            - if user.avatar?
+              = image_tag user.avatar.url(:square), :class => "img-rounded-teaser", :style => "width:30px;height:30px"
+            - else
+              %img{:src => '/images/no_profile_picture_' + (user.id % 4 + 1).to_s + '.png', :style => "width:30px;height:30px"}
+            #{user.firstname} #{user.lastname}
+          - infos = user.userinfos
+
+          %td
+            - if infos.length > 0 and infos.select{|x| x.status ==1}.length > 0
+              %span.hashtags1= infos.select{|x| x.status ==1}[0].category_type
+              = infos.select{|x| x.status ==1}[0].content
+            - else
+              %i= " - not specified -"
+          %td
+            - if infos.length > 0 and infos.select{|x| x.status ==1}.length > 0
+              %span.hashtags1= infos.select{|x| x.status == 2}[0].category_type
+              = infos.select{|x| x.status == 2}[0].content
+            - else
+              %i= " - not specified -"
+
+
