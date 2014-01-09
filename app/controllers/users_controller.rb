@@ -79,7 +79,8 @@ class UsersController < ApplicationController
     @user = User.find(session[:id])
     if @user.update_attributes(params[:user])
       flash[:success] = "Profile updated successfully"
-      redirect_to :action =>'notifications', :id => params[:id]
+      redirect_to :back
+      #redirect_to :action =>'notifications', :id => params[:id]
     else
       render 'edit'
     end
