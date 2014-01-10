@@ -19,13 +19,13 @@
           - infos = user.userinfos
 
           %td
-            - if infos.length > 0 and infos.select{|x| x.status ==1}.length > 0
+            - if infos.length > 0 and infos.select{|x| x.status == 1}.length > 0
               %span.hashtags1= infos.select{|x| x.status ==1}[0].category_type
               = infos.select{|x| x.status ==1}[0].content
             - else
               %i= " - not specified -"
           %td
-            - if infos.length > 0 and infos.select{|x| x.status ==1}.length > 0
+            - if infos.length > 0 and infos.select{|x| x.status == 2}.length > 0
               %span.hashtags1= infos.select{|x| x.status == 2}[0].category_type
               = infos.select{|x| x.status == 2}[0].content
             - else

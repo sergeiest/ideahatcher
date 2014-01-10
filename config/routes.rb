@@ -123,6 +123,7 @@ Webapp::Application.routes.draw do
   get "home" => 'home#index'
   resources :home
 
+  get "tri_valley_meetup" => 'tri_valley_meetup#signup'
   get "tri_valley_meetup/show"
   get "tri_valley_meetup/update_profile"
   get "tri_valley_meetup/profile"

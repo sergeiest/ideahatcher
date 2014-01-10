@@ -30,52 +30,57 @@
         %button.custom-button{:style => "float:right"} Save
 
     %br
-      .manage-view
-        %h5#community_header
-          Describe your experience/expertise:
-        = form_tag({:controller => "userinfos", :action => "add_experience"}, :remote => true, :class => "hashtag_form") do
-          %i Add one or several one-sentence descriptions about your experience:
-          = hidden_field_tag :user_id, @user.id
-          = text_field_tag :content, "", :style => "width:300px;margin-top:10px"
-          :ruby
-            list_of_skills = ""
-            list_of_skills += "<option>Tech</option>"
-            list_of_skills += "<option>Business</option>"
-            list_of_skills += "<option>Design</option>"
-            list_of_skills += "<option>Education</option>"
-          = select_tag :category_type,  list_of_skills, {:include_blank => true, :style => "width:100px"}
-          = submit_tag "Add", :class => "btn btn-small", :id => "add_fund_button"
-        %hr#join_header
-          #funds
-            - @user_infos.select{|x| x.status == 1}.each do |user_info|
-              %span.hashtags1 #{user_info.category_type}
-              #{user_info.content}
-              %br
-              -#%span.delete-tag{:onclick => "deleteFund(#{tag.id}, this)"} x
+    .manage-view
+      %h5#community_header
+        Describe your experience/expertise:
+      = form_tag({:controller => "userinfos", :action => "add_experience"}, :remote => true, :class => "hashtag_form") do
+        %i Add one or several one-sentence descriptions about your experience:
+        = hidden_field_tag :user_id, @user.id
+        = text_field_tag :content, "", :style => "width:300px;margin-top:10px"
+        :ruby
+          list_of_skills = ""
+          list_of_skills += "<option>Tech</option>"
+          list_of_skills += "<option>Business</option>"
+          list_of_skills += "<option>Design</option>"
+          list_of_skills += "<option>Education</option>"
+        = select_tag :category_type,  list_of_skills, {:include_blank => true, :style => "width:100px"}
+        = submit_tag "Add", :class => "btn btn-small", :id => "add_fund_button"
+      %hr#join_header
+        #info_1
+          - @user_infos.select{|x| x.status == 1}.each do |user_info|
+            %span.hashtags1 #{user_info.category_type}
+            #{user_info.content}
+            = image_tag '/images/pen.png', :style => "width:20px; height:20px; float:right; cursor:pointer; margin-top:20px;margin-right:5px"
+            = image_tag '/images/pen.png', :style => "width:20px; height:20px; float:right; cursor:pointer; margin-top:20px;margin-right:5px"
+            .clean-both
+            %hr
 
-    %br
-      .manage-view
-        %h5#community_header
-          Describe your needs/asks:
-        = form_tag({:controller => "userinfos", :action => "add_ask"}, :remote => true, :class => "hashtag_form") do
-          %i Add one or several one-sentence descriptions of your needs/asks:
-          = hidden_field_tag :user_id, @user.id
-          = text_field_tag :content, "", :style => "width:300px;margin-top:10px"
-          :ruby
-            list_of_skills = ""
-            list_of_skills += "<option>Tech</option>"
-            list_of_skills += "<option>Business</option>"
-            list_of_skills += "<option>Design</option>"
-            list_of_skills += "<option>Education</option>"
-          = select_tag :category_type,  list_of_skills, {:include_blank => true, :style => "width:100px"}
-          = submit_tag "Add", :class => "btn btn-small", :id => "add_fund_button"
-        %hr#join_header
-          #funds
-            - @user_infos.select{|x| x.status == 2}.each do |user_info|
-              %span.hashtags1 #{user_info.category_type}
-              #{user_info.content}
-              %br
-              -#%span.delete-tag{:onclick => "deleteFund(#{tag.id}, this)"} x
+
+
+    .manage-view
+      %h5#community_header
+        Describe your needs/asks:
+      = form_tag({:controller => "userinfos", :action => "add_ask"}, :remote => true, :class => "hashtag_form") do
+        %i Add one or several one-sentence descriptions of your needs/asks:
+        = hidden_field_tag :user_id, @user.id
+        = text_field_tag :content, "", :style => "width:300px;margin-top:10px"
+        :ruby
+          list_of_skills = ""
+          list_of_skills += "<option>Tech</option>"
+          list_of_skills += "<option>Business</option>"
+          list_of_skills += "<option>Design</option>"
+          list_of_skills += "<option>Education</option>"
+        = select_tag :category_type,  list_of_skills, {:include_blank => true, :style => "width:100px"}
+        = submit_tag "Add", :class => "btn btn-small", :id => "add_fund_button"
+      %hr#join_header
+        #info_2
+          - @user_infos.select{|x| x.status == 2}.each do |user_info|
+            %span.hashtags1 #{user_info.category_type}
+            #{user_info.content}
+            = image_tag '/images/pen.png', :style => "width:20px; height:20px; float:right; cursor:pointer; margin-top:20px;margin-right:5px"
+            = image_tag '/images/pen.png', :style => "width:20px; height:20px; float:right; cursor:pointer; margin-top:20px;margin-right:5px"
+            .clean-both
+            %hr
 
 
 
