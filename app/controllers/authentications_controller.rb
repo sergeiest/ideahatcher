@@ -116,14 +116,14 @@ class AuthenticationsController < ApplicationController
         if @authentication.save
           session[:id] = @user.id
 
-          UserMailer.send_welcome(params[:authentication][:username], @user.firstname).deliver
-
           if params[:gotocontroller] == 'tri_valley_meetup'
             colleague = Colleague.new
             colleague.user_id = session[:id]
             colleague.fund_id = Fund.find_by_hashtag('trivalley').id
             colleague.status = 1
             colleague.save
+          else
+            UserMailer.send_welcome(params[:authentication][:username], @user.firstname).deliver
           end
 
           if params[:gotoaction]!= nil and params[:gotocontroller] != nil
