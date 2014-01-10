@@ -105,7 +105,7 @@
           %button{:type => "button", :class => "close", :'data-dismiss' => "modal", :'aria-hidden' => "true"} ×
           %h3#myModalLabel{:style => "font-weight: lighter;"} Welcome back!
         .modal-body
-          .modal-left
+          .modal-left#trivalley_login
             = form_tag({:action => 'login'}, :multipart => true, :remote => true) do
               %h4{:style => "font-weight: lighter;"} Login:
               %p

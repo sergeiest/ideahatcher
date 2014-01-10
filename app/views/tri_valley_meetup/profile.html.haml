@@ -7,8 +7,20 @@
 
   .profile-info
     %h5 #{@user.firstname} #{@user.lastname}
+    -if not @occupation.nil? and not @occupation.content.blank?
+      %p 
+        <b>Occupation:</b> 
+        =@occupation.content
 
-    %p= @user.description
+    -if not @project.nil? and not @project.content.blank?
+      %p
+        <b>Current Project/Startup:</b> 
+        =@project.content
+
+    %p 
+      <b>About me:</b>
+      %br
+      =@user.description
 
     %b Experience/expertise
 
@@ -30,5 +42,5 @@
 
     %b Contact info
 
-    %p email
+    %p= "Email: #{@email}"
     %br

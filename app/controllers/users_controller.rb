@@ -78,6 +78,26 @@ class UsersController < ApplicationController
   def update
     @user = User.find(session[:id])
     if @user.update_attributes(params[:user])
+      if not params[:occupation].nil?
+        set_occu = @user.userinfos.find_by_status(3)
+        if not set_occu.nil?
+          set_occu.update_attributes(:content => params[:occupation])
+        else
+          occu = Userinfo.create(:user_id => @user.id, :status => 3, :content => params[:occupation])
+          occu.save
+        end
+      end
+
+      if not params[:project].nil?
+        set_proj = @user.userinfos.find_by_status(4)
+        if not set_proj.nil?
+          set_proj.update_attributes(:content => params[:project])
+        else
+          proj = Userinfo.create(:user_id => @user.id, :status => 4, :content => params[:project])
+          proj.save
+        end
+      end
+
       flash[:success] = "Profile updated successfully"
       redirect_to :back
       #redirect_to :action =>'notifications', :id => params[:id]

@@ -11,11 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(:version => 20140106071853) do
-=======
 ActiveRecord::Schema.define(:version => 20140108224655) do
->>>>>>> 0e8c7f201c9544b89b6e9751f0e000f88c696422
 
   create_table "allfields", :force => true do |t|
     t.string   "field_name"
