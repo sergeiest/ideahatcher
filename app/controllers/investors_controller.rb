@@ -221,8 +221,6 @@ class InvestorsController < ApplicationController
         startup = Startup.find(params[:id])
         @people = startup.owner_users
         @person = User.find(params[:founder_id])
-        puts @person
-        puts "djlfjadlfjld"
         format.js
     end
 

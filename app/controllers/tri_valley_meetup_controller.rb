@@ -76,9 +76,7 @@ class TriValleyMeetupController < ApplicationController
   end
 
   def login
-    puts "login"
     if authentication = Authentication.authenticate(params[:authentication])
-      puts "what about here"
       session[:id] = authentication.user.id
       @user = User.find(session[:id])
 
@@ -89,7 +87,6 @@ class TriValleyMeetupController < ApplicationController
         format.js
       end
     else
-      puts "going here"
       flash[:error] = 'Invalid email/password combination'
       respond_to do |format|
         format.js { render "wrong_login" }
