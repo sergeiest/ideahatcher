@@ -335,6 +335,14 @@ a.help-hatch {
 
 }
 
+.edit-pen{
+  opacity: .7;
+  &:hover {
+    opacity: 1;
+    cursor:pointer;
+  }
+}
+
 
 .pitch-box {
   border-bottom:5px black solid;
@@ -691,16 +699,94 @@ a.help-hatch {
   color: white;
   background-color: #3d505a;
   opacity: .7;
-  margin-left:40px;
+  margin-left:50px;
   margin-right: 40px;
   padding: 10px;
   display:inline;
+  
+  &:hover{
+    color:white;
+    background-color: #94d500;
+  }
 }
 
-.add-proto-link{
-  vertical-align:top;
-  display:inline;
+
+.proto-link-dash-div{
+  margin-top:15px;
+
+  .add-proto-link{
+    vertical-align:top;
+    display:inline;
+    &:hover{
+      cursor: pointer;
+    }
+  }
+  .startup-prototype-link{
+    color: white;
+    background-color: #3d505a;
+    opacity: .7;
+    margin-left:40px;
+    margin-right: 40px;
+    padding: 10px;
+    display:inline;
+  
+    &:hover{
+      color:white;
+      background-color: #94d500;
+      cursor: pointer;
+    }
+  }
+}
+
+.del_pic{
+  margin-top:2px;
+  font-size:60px;
+}
+
+#deletePicture{
+  width: 300px;
+}
+
+
+#del_picture_button{
+  margin-left: 155px;
+}
+
+.active{
+  .picture_control{
+    visibility: hidden;
+  }
   &:hover{
-    cursor: pointer;
+    .picture_control{
+      visibility: visible;
+    }
+  }
+}
+
+
+.proto-link-div{
+  margin-top:15px;
+
+  .add-proto-link{
+    vertical-align:top;
+    display:inline;
+    &:hover{
+      cursor: pointer;
+    }
+  }
+  .startup-prototype-link{
+    color: white;
+    background-color: #3d505a;
+    opacity: .7;
+    margin-left:50px;
+    margin-right: 40px;
+    padding: 10px;
+    display:inline;
+  
+    &:hover{
+      color:white;
+      background-color: #94d500;
+      cursor: pointer;
+    }
   }
 }

@@ -2,6 +2,9 @@ Webapp::Application.routes.draw do
 
 
 
+  resources :blogposts
+
+
   resources :funds
 
 
@@ -63,6 +66,8 @@ Webapp::Application.routes.draw do
   resources :authentications
 
   post "pictures/upload_picture"
+  post "pictures/edit_picture"
+  post "pictures/delete_picture"
   resources :pictures
 
   post "companydescriptions/new_suggestion"

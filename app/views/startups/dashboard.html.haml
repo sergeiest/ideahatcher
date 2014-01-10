@@ -39,34 +39,34 @@
     -if @startup.pictures.length > 0
       .description-box
         %h5{:style => "font-weight:lighter"} Prototypes
-        #this-carousel-id.carousel.slide{"data-interval" => "false"}
+        #dash-carousel.carousel.slide{"data-interval" => "false"}
           .carousel-inner
             = render :partial => 'picture', :collection => @startup.pictures, :as => :picture
-          %a.carousel-control.left{"data-slide" => "prev", href: "#this-carousel-id"} ‹
-          %a.carousel-control.right{"data-slide" => "next", href: "#this-carousel-id"} ›
+          %a.carousel-control.left{"data-slide" => "prev", href: "#dash-carousel"} ‹
+          %a.carousel-control.right{"data-slide" => "next", href: "#dash-carousel"} ›
         %button.custom-button#add-pictures-button{:onclick => "$('#uploadPicture').modal(open)"} Add pictures 
-        %br
-        %br
-        -if not @startup.prototype_link.nil? and not @startup.prototype_link.blank?
-          = link_to @startup.prototype_link, ("http://" + @startup.prototype_link), :class => "startup-prototype-link"
-          = image_tag '/images/pen.png', :class => "edit-pen add-proto-link", :style => "float:right;width:30px"
-        -else
-          .startup-prototype-link 
-            No link specified
-          = image_tag '/images/pen.png', :class => "edit-pen add-proto-link", :style => "float:right;width:30px"
+        .proto-link-dash-div
+          -if not @startup.prototype_link.nil? and not @startup.prototype_link.blank?
+            = link_to @startup.prototype_link, ("http://" + @startup.prototype_link), :class => "startup-prototype-link"
+            = image_tag '/images/pen.png', :class => "edit-pen add-proto-link", :style => "float:right;width:30px"
+          -else
+            .startup-prototype-link 
+              No link specified
+            = image_tag '/images/pen.png', :class => "edit-pen add-proto-link", :style => "float:top;width:30px"
 
     -else 
       .description-box
         %h5{:style => "font-weight:lighter"} Prototypes
         %p Upload pictures of your mockups, prototypes and product to collect the feedback about them
-        %button.custom-button{:onclick => "$('#uploadPicture').modal(open)"} Add pictures
-        -if not @startup.prototype_link.nil? and not @startup.prototype_link.blank?
-          = link_to @startup.prototype_link, ("http://" + @startup.prototype_link), :class => "startup-prototype-link"
-          = image_tag '/images/pen.png', :class => "edit-pen add-proto-link", :style => "float:right;width:30px"
-        -else
-          .startup-prototype-link 
-            No link specified
-          = image_tag '/images/pen.png', :class => "edit-pen add-proto-link", :style => "float:right;width:30px"
+        %button.custom-button#add-pictures-button{:onclick => "$('#uploadPicture').modal(open)"} Add pictures
+        .proto-link-dash-div
+          -if not @startup.prototype_link.nil? and not @startup.prototype_link.blank?
+            = link_to @startup.prototype_link, ("http://" + @startup.prototype_link), :class => "startup-prototype-link"
+            = image_tag '/images/pen.png', :class => "edit-pen add-proto-link", :style => "float:right;width:30px"
+          -else
+            .startup-prototype-link 
+              No link specified
+            = image_tag '/images/pen.png', :class => "edit-pen add-proto-link", :style => "float:right;width:30px"
 
 
   .dashboard-info
@@ -156,6 +156,47 @@
     .modal-footer
       %button{:class => "btn", :'data-dismiss' => "modal", :'aria-hidden' => "true"} Close
       =submit_tag "Upload photo", :class => "btn btn-primary", :id => "photo_upload"
+
+#editPicture.modal.hide.fade{:tabindex => "-1", :role => "dialog", :'aria-labelledby' => "myModalLabel", :'aria-hidden' => "true"}
+  .modal-header
+    %button.close{ :type => "button", :'data-dismiss' => "modal", :'aria-hidden' => "true"} ×
+    %h3{ :id => "myModalLabel"} Edit picture
+  = form_tag({:controller => "pictures", :action => "edit_picture"}, :multipart => true) do
+    .modal-body
+      %p
+        Upload a new photo or screenshots of your mockups, prototypes or products. Show your progress and collect the feedback.
+        %br
+        Preferable aspect ratio of the picture is 2:1.
+      = file_field_tag :avatar, :onchange => "checkFile(this)"
+      %hr
+      %p
+        Title of the picture (e.g. 'mockup of the idea profile page'):
+        %br
+        = text_field_tag :pic_title
+      %p
+        Description (e.g. 'on this page users are able to provide feedback to entrepreneurs by voting and participating in discussion'):
+        %br
+        = text_area_tag :pic_description
+      = hidden_field_tag :startup_id, @startup.id
+      = hidden_field_tag :picture_status
+      %p#photo_error{ :style => "color:red"}
+    .modal-footer
+      %button{:class => "btn", :'data-dismiss' => "modal", :'aria-hidden' => "true"} Close
+      =submit_tag "Upload photo", :class => "btn btn-primary", :id => "photo_upload"
+
+#deletePicture.modal.hide.fade{:tabindex => "-1", :role => "dialog", :'aria-labelledby' => "myModalLabel", :'aria-hidden' => "true"}
+  .modal-header
+    %button.close{ :type => "button", :'data-dismiss' => "modal", :'aria-hidden' => "true"} ×
+    %h3{ :id => "myModalLabel"} Delete picture
+  = form_tag({:controller => "pictures", :action => "delete_picture"}, :multipart => true) do
+    .modal-body
+      %p 
+        Are you sure you want to delete this picture?
+        = hidden_field_tag :startup_id, @startup.id
+        = hidden_field_tag :picture_status
+      %p
+        =submit_tag "Yes", :class => "btn btn-primary", :id => "del_picture_button"
+        %button{:class => "btn", :'data-dismiss' => "modal", :'aria-hidden' => "true"} No
 
 #uploadLink.modal.hide.fade{:tabindex => "-1", :role => "dialog", :'aria-labelledby' => "myModalLabel", :'aria-hidden' => "true"}
   .modal-header

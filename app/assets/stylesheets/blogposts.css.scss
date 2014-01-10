@@ -1,0 +1,95 @@
+// Place all the styles related to the Blogposts controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.new-view-content {
+  min-width:880px;
+  min-height: -webkit-calc(100% - 60px);
+  min-height: calc(100% - 60px);
+  width:70%;
+  margin:0px auto;
+  margin-top: 0px;
+  padding-top:00px;
+}
+
+.new-view-company {
+  margin:0%;
+  padding:80px 80px 60px 80px;
+  width: -webkit-calc(100% - 160px);
+  width: calc(100% - 160px);
+  min-height: 550px;
+  //border:1px #07b5b5 solid;
+  //box-shadow: 0px 0px 10px #888, 0px 0px 10px #888;
+  //float:left;
+
+  p {
+    font-size:14px;
+    line-height:24px;
+  }
+
+  h5 {
+    color: #fbb03b;
+    font-size: 18px;
+    margin-top: 0px;
+  }
+
+  h2 {font-weight: lighter;}
+  input {-webkit-border-radius: 0px;}
+  textarea {-webkit-border-radius: 0px;}
+
+  .description-statement {
+    width: 65%;
+  }
+
+  .manage-view{
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    .hashtags{
+      border:1px #888 solid;
+      padding:5px 5px 5px 10px;
+      margin-right:10px;
+      span {
+        background-color: #d4d4d4;
+        padding:0px 5px 2px 5px;
+        color:white;
+        cursor: pointer;
+        -webkit-border-radius: 3px;
+      }
+    }
+    .btn {margin-top: -10px;}
+    #current-circle {
+      border-left:2px #c8c8c8 solid;
+      float:right;
+      padding-left: 10px;
+      width: 55%;
+      div{
+        padding:0;
+        margin:0 10px;
+        width:40%;
+        float:left;
+        a {
+          line-height: 20px;
+          font-size:12px;
+        }
+      }
+    }
+  }
+
+  #search-results{
+    width:100%;
+    .person-info{
+      margin:30px 0 10px 10px;
+      h5 {
+        font-size:14px;
+        font-weight: normal;
+        margin-top:-10px;
+      }
+      img {
+        width:30px;
+        height:30px;
+        float:left;
+      }
+    }
+  }
+}
