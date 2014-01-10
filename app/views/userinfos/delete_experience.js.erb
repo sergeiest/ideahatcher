@@ -3,7 +3,7 @@ mainDiv = document.getElementById("info_1");
 divString = "";
 
 <% @user_infos.each do |user_info| %>
-    divString = divString + "<span class='hashtags1'> <%= user_info.category_type %></span>  <%= user_info.content %><br>";
+    divString = divString + '<span class="hashtags1"> <%= user_info.category_type %></span>  <%= user_info.content %> <button aria-hidden="true" class="close del_info picture_control" id="user_id-<%= user_info.id %>" style="float:right" type="button">×</button> <br>';
 <% end %>
 
 mainDiv.innerHTML = divString;
