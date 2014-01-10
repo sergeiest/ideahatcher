@@ -1,0 +1,10 @@
+mainDiv = document.getElementById("info_2");
+
+divString = "";
+
+<% @user_infos.each do |user_info| %>
+    divString = divString +
+            '<span class="hashtags1"> <%= user_info.category_type %> </span> <%= user_info.content %> <img alt="Pen" src="/images/pen.png" style="width:20px; height:20px; cursor:pointer; margin-top:20px;margin-right:5px;float:right"><img alt="Pen" src="/images/pen.png" style="width:20px; height:20px; cursor:pointer; margin-top:20px;margin-right:5px;float:right"><hr>';
+<% end %>
+
+mainDiv.innerHTML = divString;

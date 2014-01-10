@@ -50,4 +50,27 @@ class UserinfosController < ApplicationController
 
   end
 
+  def delete_info
+    @info = Userinfo.find_by_id(params[:info_id])
+    if not @info.nil?
+      @user = User.find_by_id(params[:user_id])
+      @status = @info.status
+      @info.destroy
+      @user_infos = @user.userinfos.select{|x| x.status == @status}
+
+      if @status == 1
+        respond_to do |format|
+            format.js { render :action => "delete_experience"}
+        end
+      else 
+         respond_to do |format|
+            format.js { render :action => "delete_ask"}
+        end
+      end
+    end
+
+  end
+
+
+
 end
