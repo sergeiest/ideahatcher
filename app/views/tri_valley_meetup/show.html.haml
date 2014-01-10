@@ -5,9 +5,9 @@
     %table{:style => "border-bottom: 1px black solid"}
       %tr
         %th{:style => "width:300px;text-align:left; padding-left:20px;"} Name
-        %th{:style => "width:400px;text-align:left"} Experience/expertise
-        %th{:style => "width:400px;text-align:left"} Needs/asks
-        %th{:style => "width:400px;text-align:left"} Occupation
+        %th{:style => "width:500px;text-align:left"} Experience/expertise
+        %th{:style => "width:500px;text-align:left"} Needs/asks
+        %th{:style => "width:200px;text-align:left"} Occupation
       - if not @people.nil? and @people.length > 0
         - @people.each do |user|
           %tr{:onMouseMove => "customHighlightIn(this,'yellow')", :onMouseOut => "customHighlightOut(this,'yellow')",
@@ -23,19 +23,29 @@
             %td
               - if not infos.nil? and infos.length > 0 and infos.select{|x| x.status == 1}.length > 0
                 %span.hashtags1= infos.select{|x| x.status ==1}[0].category_type
-                = infos.select{|x| x.status ==1}[0].content
+                - if infos.select{|x| x.status ==1}[0].content.length > 20
+                  = infos.select{|x| x.status ==1}[0].content[0..18] + ".."
+                - else
+                  = infos.select{|x| x.status ==1}[0].content
+
               - else
                 %i= " - not specified -"
             %td
               - if not infos.nil? and infos.length > 0 and infos.select{|x| x.status == 2}.length > 0
                 %span.hashtags1= infos.select{|x| x.status == 2}[0].category_type
-                = infos.select{|x| x.status == 2}[0].content
+                - if infos.select{|x| x.status ==2}[0].content.length > 20
+                  = infos.select{|x| x.status ==2}[0].content[0..18] + ".."
+                - else
+                  = infos.select{|x| x.status ==2}[0].content
               - else
                 %i= " - not specified -"
             %td
               - if not infos.nil? and infos.length > 0 and infos.select{|x| x.status == 3}.length > 0
                 - if not infos.select{|x| x.status == 3}[0].content.blank?
-                  = infos.select{|x| x.status == 3}[0].content
+                  - if infos.select{|x| x.status == 3}[0].content.length > 15
+                    = infos.select{|x| x.status == 3}[0].content[0..12] + ".."
+                  - else
+                    = infos.select{|x| x.status == 3}[0].content
                 -else
                   %i= " - not specified -"
               - else

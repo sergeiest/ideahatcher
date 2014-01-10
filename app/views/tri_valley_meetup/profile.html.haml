@@ -9,16 +9,16 @@
     %h5 #{@user.firstname} #{@user.lastname}
     -if not @occupation.nil? and not @occupation.content.blank?
       %p 
-        <b>Occupation:</b> 
+        %b Occupation:
         =@occupation.content
 
     -if not @project.nil? and not @project.content.blank?
       %p
-        <b>Current Project/Startup:</b> 
+        %b Current Project/Startup:
         =@project.content
 
     %p 
-      <b>About me:</b>
+      %b About me:
       %br
       =@user.description
 
