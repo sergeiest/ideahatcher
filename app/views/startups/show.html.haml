@@ -51,7 +51,8 @@
           %a.carousel-control.left{"data-slide" => "prev", href: "#this-carousel-id"} ‹
           %a.carousel-control.right{"data-slide" => "next", href: "#this-carousel-id"} ›
         -if not @startup.prototype_link.nil? and not @startup.prototype_link.blank?
-          = link_to @startup.prototype_link, ("http://" + @startup.prototype_link), :class => "startup-prototype-link"
+          .proto-link-div
+            = link_to @startup.prototype_link, ("http://" + @startup.prototype_link), :class => "startup-prototype-link"
 
         
 

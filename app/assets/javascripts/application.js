@@ -54,6 +54,23 @@ $(document).ready(function() {
     $('.add-proto-link').on('click', function(){
         $('#uploadLink').modal(open);
     })
+
+    $('.edit-proto-pic').on('click', function(){
+        var picture_id = $(this).attr('id').split('-')[1];
+        var pict_title = $('#title_'+picture_id).text();
+        var pict_desc = $('#desc_'+picture_id).text();
+
+        $('#editPicture .modal-body #picture_status').val(picture_id);
+        $('#editPicture .modal-body #pic_description').val(pict_desc);
+        $('#editPicture .modal-body #pic_title').val(pict_title);
+        $('#editPicture').modal(open);
+    })
+
+    $('.del_pic').on('click', function(){
+        var picture_id = $(this).attr('id').split('-')[1];
+        $('#deletePicture .modal-body #picture_status').val(picture_id)
+        $('#deletePicture').modal(open);
+    })
 })
 
 
