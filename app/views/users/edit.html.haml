@@ -43,10 +43,11 @@
         = submit_tag "delete", :id => "delete_this_fund"
       %hr#join_header
         #funds
-          - @funds.each do |tag|
-            %span.hashtags
-              = "#" + tag.hashtag
-              %span.delete-tag{:onclick => "deleteFund(#{tag.id}, this)"} x
+          -if not @funds.nil?
+            - @funds.each do |tag|
+              %span.hashtags
+                = "#" + tag.hashtag
+                %span.delete-tag{:onclick => "deleteFund(#{tag.id}, this)"} x
 
 
 #uploadPhoto.modal.hide.fade{:tabindex => "-1", :role => "dialog", :'aria-labelledby' => "myModalLabel", :'aria-hidden' => "true"}

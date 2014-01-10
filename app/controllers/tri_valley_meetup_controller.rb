@@ -40,12 +40,18 @@ class TriValleyMeetupController < ApplicationController
     @user = User.find(session[:id])
 
     @user_infos = @user.userinfos
+    @occupation = @user.userinfos.find_by_status(3)
+    @project = @user.userinfos.find_by_status(4)
 
   end
 
   def profile
     @user = User.find(params[:id])
     @user_infos = @user.userinfos
+    @occupation = @user_infos.find_by_status(3)
+    @project = @user_infos.find_by_status(4)
+    @auth = Authentication.find_by_id(@user.authentication_id)
+    @email = @auth.username
   end
 
   def logout
@@ -54,7 +60,9 @@ class TriValleyMeetupController < ApplicationController
   end
 
   def login
+    puts "login"
     if authentication = Authentication.authenticate(params[:authentication])
+      puts "what about here"
       session[:id] = authentication.user.id
       @user = User.find(session[:id])
 
@@ -65,6 +73,7 @@ class TriValleyMeetupController < ApplicationController
         format.js
       end
     else
+      puts "going here"
       flash[:error] = 'Invalid email/password combination'
       respond_to do |format|
         format.js { render "wrong_login" }

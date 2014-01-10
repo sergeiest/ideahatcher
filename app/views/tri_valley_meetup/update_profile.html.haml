@@ -8,6 +8,12 @@
     = image_tag '/images/pen.png', :class => "edit-pen",:href => "#uploadPhoto", :'data-toggle' => "modal", :style => "height:25px; width:25px;"
 
   .profile-info
+    - if not flash[:success].nil?
+      #flash_success
+        = flash[:success]
+    - if not flash[:error].nil?
+      #flash_error
+        = flash[:error]
     = form_for(@user) do |f|
       -if @user.errors.any?
         %p{:style => "color=red;"} Please correct the following errors in your form
@@ -23,8 +29,13 @@
       - else
         %p Last name:
         = f.text_field :lastname
+      %p Occupation:
+      = text_field_tag :occupation, (@occupation.content if not @occupation.nil?)
+      %p Project you are currently working on:
+      = text_field_tag :project, (@project.content if not @project.nil?)
       %p About me:
       = f.text_area :description
+
 
       = link_to do
         %button.custom-button{:style => "float:right"} Save

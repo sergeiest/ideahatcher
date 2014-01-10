@@ -1,0 +1,9 @@
+if(document.getElementById('error_message') == null){
+	var login_div = document.getElementById("trivalley_login");
+
+	var error_div = document.createElement('div');
+	error_div.innerHTML = "Invalid username or password";
+	error_div.id = "error_message";
+
+	login_div.insertBefore(error_div, login_div.firstChild);
+}

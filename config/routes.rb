@@ -134,6 +134,7 @@ Webapp::Application.routes.draw do
   get "tri_valley_meetup/profile"
   get "tri_valley_meetup/signup"
   get "tri_valley_meetup/logout"
+  get "tri_vallye_meetup/wrong_login"
   post "tri_valley_meetup/login"
 
   post "userinfos/add_experience"

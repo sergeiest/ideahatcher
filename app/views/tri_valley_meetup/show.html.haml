@@ -4,31 +4,45 @@
 
     %table{:style => "border-bottom: 1px black solid"}
       %tr
-        %th{:style => "width:250px;text-align:left; padding-left:20px;"} Name
+        %th{:style => "width:300px;text-align:left; padding-left:20px;"} Name
         %th{:style => "width:400px;text-align:left"} Experience/expertise
         %th{:style => "width:400px;text-align:left"} Needs/asks
-      - @people.each do |user|
-        %tr{:onMouseMove => "customHighlightIn(this,'yellow')", :onMouseOut => "customHighlightOut(this,'yellow')",
-                  :style => "border-top: 1px black solid; cursor:pointer", :onclick => "window.location.href = '../tri_valley_meetup/profile?id=#{user.id}';"}
-          %td{:style => "height:50px;padding-left:20px; text-align:left"}
-            - if user.avatar?
-              = image_tag user.avatar.url(:square), :class => "img-rounded-teaser", :style => "width:30px;height:30px"
-            - else
-              %img{:src => '/images/no_profile_picture_' + (user.id % 4 + 1).to_s + '.png', :style => "width:30px;height:30px"}
-            #{user.firstname} #{user.lastname}
-          - infos = user.userinfos
+        %th{:style => "width:400px;text-align:left"} Occupation
+      - if not @people.nil? and @people.length > 0
+        - @people.each do |user|
+          %tr{:onMouseMove => "customHighlightIn(this,'yellow')", :onMouseOut => "customHighlightOut(this,'yellow')",
+                    :style => "border-top: 1px black solid; cursor:pointer", :onclick => "window.location.href = '../tri_valley_meetup/profile?id=#{user.id}';"}
+            %td{:style => "height:50px;padding-left:5px; text-align:left"}
+              - if user.avatar?
+                = image_tag user.avatar.url(:square), :class => "img-rounded-teaser", :style => "width:30px;height:30px"
+              - else
+                %img{:src => '/images/no_profile_picture_' + (user.id % 4 + 1).to_s + '.png', :style => "width:30px;height:30px"}
+              #{user.firstname} #{user.lastname}
+            - infos = user.userinfos
 
+            %td
+              - if not infos.nil? and infos.length > 0 and infos.select{|x| x.status == 1}.length > 0
+                %span.hashtags1= infos.select{|x| x.status ==1}[0].category_type
+                = infos.select{|x| x.status ==1}[0].content
+              - else
+                %i= " - not specified -"
+            %td
+              - if not infos.nil? and infos.length > 0 and infos.select{|x| x.status == 2}.length > 0
+                %span.hashtags1= infos.select{|x| x.status == 2}[0].category_type
+                = infos.select{|x| x.status == 2}[0].content
+              - else
+                %i= " - not specified -"
+            %td
+              - if not infos.nil? and infos.length > 0 and infos.select{|x| x.status == 3}.length > 0
+                - if not infos.select{|x| x.status == 3}[0].content.blank?
+                  = infos.select{|x| x.status == 3}[0].content
+                -else
+                  %i= " - not specified -"
+              - else
+                %i= " - not specified -"
+      - else 
+        %tr
           %td
-            - if infos.length > 0 and infos.select{|x| x.status == 1}.length > 0
-              %span.hashtags1= infos.select{|x| x.status ==1}[0].category_type
-              = infos.select{|x| x.status ==1}[0].content
-            - else
-              %i= " - not specified -"
-          %td
-            - if infos.length > 0 and infos.select{|x| x.status == 2}.length > 0
-              %span.hashtags1= infos.select{|x| x.status == 2}[0].category_type
-              = infos.select{|x| x.status == 2}[0].content
-            - else
-              %i= " - not specified -"
+            No Users have joined yet.       
 
 
