@@ -39,6 +39,9 @@ class TriValleyMeetupController < ApplicationController
 
   def signup
 
+    @authentication = nil
+    @user = nil
+
   end
 
   def show
@@ -86,6 +89,56 @@ class TriValleyMeetupController < ApplicationController
         format.js { render "wrong_login" }
       end
     end
+
+  end
+
+  def create_account
+
+    @authentication = Authentication.new(params[:authentication])
+    @authentication.make_username(params[:authentication][:username])
+
+    user_errors = User.check_errors(params[:user])
+    authentication_errors = Authentication.check_errors(params[:authentication])
+
+    if user_errors == nil and authentication_errors == nil and @authentication.password == params[:ll][:password_confirmation]
+
+      @authentication.make_hash(params[:authentication][:password])
+      @user = @authentication.create_user(params[:user])
+
+      reset_session
+
+      respond_to do |format|
+        if @authentication.save
+          session[:id] = @user.id
+
+          colleague = Colleague.new
+          colleague.user_id = session[:id]
+          colleague.fund_id = Fund.find_by_hashtag('trivalley').id
+          colleague.status = 1
+          colleague.save
+
+          #UserMailer.send_welcome(params[:authentication][:username], @user.firstname).deliver
+
+          format.html { redirect_to :action => "update_profile"}
+        else
+          format.html { redirect_to :action => "signup"}
+        end
+      end
+
+    else
+      respond_to do |format|
+        @user = User.new(params[:user])
+        @user.errors.add user_errors.partition("/")[0]  , user_errors.partition("/")[2] if user_errors != nil
+        if authentication_errors != nil
+          @authentication.errors.add authentication_errors.partition("/")[0]  , authentication_errors.partition("/")[2]
+        end
+        if @authentication.password != params[:ll][:password_confirmation]
+          @authentication.errors.add :password, "Passwords do not match"
+        end
+        format.html { redirect_to :action => "signup"}
+      end
+    end
+
 
   end
 

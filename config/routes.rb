@@ -133,9 +133,10 @@ Webapp::Application.routes.draw do
   get "tri_valley_meetup/update_profile"
   get "tri_valley_meetup/profile"
   get "tri_valley_meetup/signup"
+  get "tri_valley_meetup/add_to_fund"
   get "tri_valley_meetup/logout"
   post "tri_valley_meetup/login"
-  get "tri_valley_meetup/add_to_fund"
+  post "tri_valley_meetup/create_account"
 
   post "userinfos/add_experience"
   post "userinfos/add_ask"
