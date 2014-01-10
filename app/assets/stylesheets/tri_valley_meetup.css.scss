@@ -1,0 +1,170 @@
+// From users.css.scss
+
+.user-content {
+  min-width:880px;
+  min-height: -webkit-calc(100% - 195px);
+  min-height: calc(100% - 195px);
+  width:70%;
+  margin:0px auto 0px auto;
+  padding:70px 20px 0 20px;
+  width: 65%;
+  //background-color: white;
+  //box-shadow: 0px 0px 10px #888, 0px 0px 10px #888;
+
+  h5 {
+    font-size:36px;
+    font-weight: lighter;
+    margin-bottom: 40px;
+  }
+  input, textarea{ -webkit-border-radius: 0px; }
+
+  .notification-box {
+    margin-bottom: 80px;
+    .topic-line {
+      margin:15px 40px 0px 40px;
+      padding:0;
+      font-size: 16px;
+      border-bottom: 1px #0fdbc7 solid;
+      color: #0fdbc7;
+      font-weight: bold;
+    }
+
+    .notification-line {
+      height: 40px;
+      margin:0px 40px;
+      padding:10px 10px;
+      border-bottom: 1px #d8d8d8 solid;
+
+      a {text-decoration: none; color:black; line-height: 20px;}
+      img {padding:0; margin:0; height: 40px; margin-right: 10px;}
+      .author {color:orange; font-weight: bold; font-style: normal;}
+      .just-text {color:black; font-weight: ligher; font-style: normal;}
+      .name {color:black; font-weight: bold; font-style: normal;}
+
+    }
+
+  }
+
+  .profile-photo{
+    margin-top: 20px;
+    float:left;
+    width:20%;
+    img{
+      width:120px;
+      height:120px;
+    }
+    .edit-pen{
+      margin-top:-30px;
+      margin-right:50px;
+      float:right;
+      cursor:pointer;
+      z-index: 3;
+      position: relative;
+    }
+  }
+
+  .profile-info{
+    margin-top: 20px;
+    line-height: 60px;
+    p{
+      font-size:14px;
+    }
+    float:right;
+    width:65%;
+    border-left:1px #888 solid;
+    padding:0 5%;
+    input {
+      width:50%;
+      margin-bottom: 25px;
+    }
+    textarea{
+      height: 120px;
+      width:-webkit-calc(100% - 13px);
+      width:calc(100% - 13px);
+      resize: none;
+    }
+  }
+
+  #btn_submit_fund_users{
+    display: block;
+    width: 80px;
+  }
+
+}
+
+.custom-button {
+  margin-top:5px;
+  padding:2px 10px;
+
+  width:100px;
+  height: 40px;
+
+  border:0px black solid;
+  color:black;
+  background-color: #fee946;
+
+  font-size:14px;
+  font-weight: lighter;
+  text-align: center;
+
+  cursor:pointer;
+
+
+}
+
+.manage-view{
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  .hashtags{
+    border:1px #888 solid;
+    padding:5px 5px 5px 10px;
+    margin-right:10px;
+    span {
+      background-color: #d4d4d4;
+      padding:0px 5px 2px 5px;
+      color:white;
+      cursor: pointer;
+      -webkit-border-radius: 3px;
+    }
+  }
+  #add_fund_button {
+    margin-top: -10px;
+    margin-bottom: auto;
+    width: inherit;
+  }
+  #community_header{
+    font-size: 26px;
+    margin-bottom: 10px;
+  }
+  #current-circle {
+    border-left:2px #c8c8c8 solid;
+    float:right;
+    padding-left: 10px;
+    width: 55%;
+    div{
+      padding:0;
+      margin:0 10px;
+      width:40%;
+      float:left;
+      a {
+        line-height: 20px;
+        font-size:12px;
+      }
+    }
+  }
+}
+
+
+
+.hashtags1{
+  border:1px #888 solid;
+  padding:5px 7px 5px 10px;
+  margin-right:10px;
+  span {
+    background-color: #d4d4d4;
+    padding:0px 5px 2px 5px;
+    color:white;
+    cursor: pointer;
+    -webkit-border-radius: 3px;
+  }
+}

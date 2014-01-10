@@ -1,0 +1,32 @@
+.user-content
+  .profile-photo
+    - if @user.avatar?
+      = image_tag @user.avatar.url(:square), :class => "img-rounded-teaser"
+    - else
+      %img{:src => '/images/no_profile_picture_' + (@user.id % 4 + 1).to_s + '.png', :class => "img-rounded-teaser"}
+
+  .profile-info
+    %h5 #{@user.firstname} #{@user.lastname}
+
+    %b Experience/expertise
+
+    - @user_infos.select{|x| x.status == 1}.each do |user_info|
+      %p{:style => "line-height:26px"}
+        %span.hashtags1 #{user_info.category_type}
+        #{user_info.content}
+    - if @user_infos.select{|x| x.status == 1}.length == 0
+      %p{:style => "font-style: italic"} #{"- not specified -"}
+
+    %b Needs/asks
+
+    - @user_infos.select{|x| x.status == 2}.each do |user_info|
+      %p{:style => "line-height:26px"}
+        %span.hashtags1 #{user_info.category_type}
+        #{user_info.content}
+    - if @user_infos.select{|x| x.status == 2}.length == 0
+      %p{:style => "font-style: italic"} #{"- not specified -"}
+
+    %b Contact info
+
+    %p email
+    %br

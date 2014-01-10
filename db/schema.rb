@@ -11,7 +11,11 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(:version => 20140106071853) do
+=======
+ActiveRecord::Schema.define(:version => 20140108224655) do
+>>>>>>> 0e8c7f201c9544b89b6e9751f0e000f88c696422
 
   create_table "allfields", :force => true do |t|
     t.string   "field_name"
@@ -211,6 +215,16 @@ ActiveRecord::Schema.define(:version => 20140106071853) do
     t.string   "title_name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "userinfos", :force => true do |t|
+    t.integer  "user_id"
+    t.text     "content"
+    t.integer  "is_main"
+    t.integer  "status"
+    t.string   "category_type"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
   create_table "users", :force => true do |t|

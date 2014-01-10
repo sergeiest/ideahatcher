@@ -128,6 +128,16 @@ Webapp::Application.routes.draw do
   get "home" => 'home#index'
   resources :home
 
+  get "tri_valley_meetup/show"
+  get "tri_valley_meetup/update_profile"
+  get "tri_valley_meetup/profile"
+  get "tri_valley_meetup/signup"
+  get "tri_valley_meetup/logout"
+  post "tri_valley_meetup/login"
+
+  post "userinfos/add_experience"
+  post "userinfos/add_ask"
+
 
   root :to => 'home#index'
 

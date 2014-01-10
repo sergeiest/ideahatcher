@@ -1,0 +1,120 @@
+.user-content
+  %h5{:style => "font-weight: lighter;"} My profile
+  .profile-photo
+    - if @user.avatar?
+      = image_tag @user.avatar.url(:square), :class => "img-rounded-teaser"
+    - else
+      %img{:src => '/images/no_profile_picture_' + (@user.id % 4 + 1).to_s + '.png', :class => "img-rounded-teaser"}
+    = image_tag '/images/pen.png', :class => "edit-pen",:href => "#uploadPhoto", :'data-toggle' => "modal", :style => "height:25px; width:25px;"
+
+  .profile-info
+    = form_for(@user) do |f|
+      -if @user.errors.any?
+        %p{:style => "color=red;"} Please correct the following errors in your form
+      - if @user.errors[:firstname].length > 0
+        %p{:style => "color=red;"} First name:
+        = f.text_field :firstname, :style => "border-color:red"
+      - else
+        %p First name:
+        = f.text_field :firstname
+      - if @user.errors[:lastname].length > 0
+        %p{:style => "color=red;"} Last name:
+        = f.text_field :lastname, :style => "border-color:red"
+      - else
+        %p Last name:
+        = f.text_field :lastname
+      %p About me:
+      = f.text_area :description
+
+      = link_to do
+        %button.custom-button{:style => "float:right"} Save
+
+    %br
+      .manage-view
+        %h5#community_header
+          Describe your experience/expertise:
+        = form_tag({:controller => "userinfos", :action => "add_experience"}, :remote => true, :class => "hashtag_form") do
+          %i Add one or several one-sentence descriptions about your experience:
+          = hidden_field_tag :user_id, @user.id
+          = text_field_tag :content, "", :style => "width:300px;margin-top:10px"
+          :ruby
+            list_of_skills = ""
+            list_of_skills += "<option>Tech</option>"
+            list_of_skills += "<option>Business</option>"
+            list_of_skills += "<option>Design</option>"
+            list_of_skills += "<option>Education</option>"
+          = select_tag :category_type,  list_of_skills, {:include_blank => true, :style => "width:100px"}
+          = submit_tag "Add", :class => "btn btn-small", :id => "add_fund_button"
+        %hr#join_header
+          #funds
+            - @user_infos.select{|x| x.status == 1}.each do |user_info|
+              %span.hashtags1 #{user_info.category_type}
+              #{user_info.content}
+              %br
+              -#%span.delete-tag{:onclick => "deleteFund(#{tag.id}, this)"} x
+
+    %br
+      .manage-view
+        %h5#community_header
+          Describe your needs/asks:
+        = form_tag({:controller => "userinfos", :action => "add_ask"}, :remote => true, :class => "hashtag_form") do
+          %i Add one or several one-sentence descriptions of your needs/asks:
+          = hidden_field_tag :user_id, @user.id
+          = text_field_tag :content, "", :style => "width:300px;margin-top:10px"
+          :ruby
+            list_of_skills = ""
+            list_of_skills += "<option>Tech</option>"
+            list_of_skills += "<option>Business</option>"
+            list_of_skills += "<option>Design</option>"
+            list_of_skills += "<option>Education</option>"
+          = select_tag :category_type,  list_of_skills, {:include_blank => true, :style => "width:100px"}
+          = submit_tag "Add", :class => "btn btn-small", :id => "add_fund_button"
+        %hr#join_header
+          #funds
+            - @user_infos.select{|x| x.status == 2}.each do |user_info|
+              %span.hashtags1 #{user_info.category_type}
+              #{user_info.content}
+              %br
+              -#%span.delete-tag{:onclick => "deleteFund(#{tag.id}, this)"} x
+
+
+
+#uploadPhoto.modal.hide.fade{:tabindex => "-1", :role => "dialog", :'aria-labelledby' => "myModalLabel", :'aria-hidden' => "true"}
+  .modal-header
+    %button.close{ :type => "button", :'data-dismiss' => "modal", :'aria-hidden' => "true"} ×
+    %h3{ :id => "myModalLabel"} Upload your new photo
+  = form_for(@user) do |f|
+    .modal-body
+      %p Upload your photo (aspect ratio is 1:1).
+      = f.file_field :avatar, :onchange => "checkFile(this)"
+      %p#photo_error{ :style => "color:red"}
+    .modal-footer
+      %button{:class => "btn", :'data-dismiss' => "modal", :'aria-hidden' => "true"} Close
+      =submit_tag 'Upload photo', :class => "btn btn-primary", :id => "photo_upload", :disabled => "true"
+
+:javascript
+  function checkFile(elementNode){
+    var fileInput = elementNode;
+    var fileName = fileInput.value;
+    var ext = fileName.substring(fileName.lastIndexOf('.') + 1);
+    if(ext == "gif" || ext == "GIF" || ext == "JPEG" || ext == "jpeg" || ext == "jpg" || ext == "JPG" || ext == "png" || ext == "PNG") {
+      document.getElementById('photo_error').innerText = "";
+      document.getElementById('photo_upload').disabled = false;
+    }
+    else
+    {
+      document.getElementById('photo_error').innerText = "Upload Gif or Jpg images only";
+      document.getElementById('photo_upload').disabled = true;
+      fup.focus();
+    }
+  }
+  function deleteFund(id, element){
+      notes = document.getElementById("delete_fund_form").children
+      for (var i = 0; i < notes.length; i++) {
+          if (notes[i].getAttribute('name') == 'fund_id') {
+              notes[i].value = id;
+          }
+      }
+      element.hidden = true;
+      document.getElementById("delete_this_fund").click();
+  }
