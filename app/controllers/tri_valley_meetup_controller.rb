@@ -8,19 +8,31 @@ class TriValleyMeetupController < ApplicationController
         if session[:id].nil? || session[:id] == 0
           redirect_to :action => 'signup' and return
         end
+
+        user = User.find(session[:id])
+        if user.nil? || Colleague.where("user_id = ? and fund_id =?", session[:id], Fund.find_by_hashtag('trivalley').id).length == 0
+          redirect_to :action => 'add_to_fund' and return
+        end
+
       when "profile"
         if session[:id].nil? || session[:id] == 0 || params[:id].nil?
           redirect_to :action => 'signup' and return
+        end
+
+        user = User.find(params[:id])
+        if user.nil? || Colleague.where("user_id = ? and fund_id =?", params[:id], Fund.find_by_hashtag('trivalley').id).length == 0
+          redirect_to :action => 'add_to_fund' and return
         end
 
         if session[:id].to_s == params[:id]
           redirect_to :action => 'update_profile' and return
         end
 
-        user = User.find(params[:id])
-        if user.nil? || Colleague.where("user_id = ? and fund_id =?", params[:id], Fund.find_by_hashtag('trivalley').id).length == 0
+      when "update_profile"
+        if session[:id].nil? || session[:id] == 0
           redirect_to :action => 'signup' and return
         end
+
     end
   end
 
@@ -34,6 +46,10 @@ class TriValleyMeetupController < ApplicationController
     @people = fund.users
     @people.sort! {|x, y| x["firstname"] <=> y["firstname"]}
 
+  end
+
+  def add_to_fund
+    @user = User.find(session[:id])
   end
 
   def update_profile

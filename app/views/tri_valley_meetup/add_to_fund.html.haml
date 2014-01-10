@@ -1,0 +1,18 @@
+.user-content
+  .profile-photo
+    - if @user.avatar?
+      = image_tag @user.avatar.url(:square), :class => "img-rounded-teaser"
+    - else
+      %img{:src => '/images/no_profile_picture_' + (@user.id % 4 + 1).to_s + '.png', :class => "img-rounded-teaser"}
+
+  .profile-info
+    %h5{:style => "line-height:40px"}
+      #{@user.firstname}, are you part of
+      %br
+      Startup Tri-Valley meetup community?
+
+
+    %p
+      Looks like you want to access the Startup Tri-Valley meetup community page, but did not specify on your
+      ideaHatcher profile that you are a part of it. Please do it
+      =link_to "here.", :controller => "users", :action => 'edit', :id => session[:id]
