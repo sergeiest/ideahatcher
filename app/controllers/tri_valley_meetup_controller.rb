@@ -128,21 +128,29 @@ class TriValleyMeetupController < ApplicationController
 
           format.html { redirect_to :action => "update_profile"}
         else
+          flash[:error] = "Something went wrong. If you see this message again, please contact us"
           format.html { redirect_to :action => "signup"}
         end
       end
 
     else
       respond_to do |format|
+
         @user = User.new(params[:user])
-        @user.errors.add user_errors.partition("/")[0]  , user_errors.partition("/")[2] if user_errors != nil
+        #@user.errors.add user_errors.partition("/")[0]  , user_errors.partition("/")[2] if user_errors != nil
+        flash[:error] = user_errors.partition("/")[2] if user_errors != nil
+
         if authentication_errors != nil
-          @authentication.errors.add authentication_errors.partition("/")[0]  , authentication_errors.partition("/")[2]
+          #@authentication.errors.add authentication_errors.partition("/")[0]  , authentication_errors.partition("/")[2]
+          flash[:error] = authentication_errors.partition("/")[2]
         end
+
         if @authentication.password != params[:ll][:password_confirmation]
-          @authentication.errors.add :password, "Passwords do not match"
+          #@authentication.errors.add :password, "Passwords do not match"
+          flash[:error] = "Passwords do not match"
         end
-        format.html { redirect_to :action => "signup"}
+
+        format.html { render :action => "signup"}
       end
     end
 

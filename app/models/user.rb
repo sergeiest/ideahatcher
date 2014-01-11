@@ -33,10 +33,10 @@ class User < ActiveRecord::Base
   def self.check_errors(user_info)
 
     if user_info[:firstname] == nil || user_info[:firstname] == ""
-      return "firstname/Invalid First Name"
+      return "firstname/Please add you first name"
     end
     if user_info[:lastname] == nil || user_info[:lastname] == ""
-      return "lastname/Invalid Last Name"
+      return "lastname/Please add you last name"
     end
     nil
   end

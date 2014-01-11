@@ -35,7 +35,7 @@ class Authentication < ActiveRecord::Base
     end
 
     if authentication_info[:username] !~ /\b[A-Z0-9._%a-z\-]+@(?:[A-Z0-9a-z\-]+\.)+[A-Za-z]{2,4}\z/i
-      return "username/Invalid Email Address"
+      return "username/Incorrect email address"
     end
 
     if !authentication_info[:password].length.between?(3, 20)
