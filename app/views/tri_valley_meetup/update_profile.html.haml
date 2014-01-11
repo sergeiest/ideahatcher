@@ -61,8 +61,7 @@
           - @user_infos.select{|x| x.status == 1}.each do |user_info|
             %span.hashtags1 #{user_info.category_type}
             #{user_info.content}
-            = image_tag '/images/pen.png', :style => "width:20px; height:20px; float:right; cursor:pointer; margin-top:20px;margin-right:5px"
-            = image_tag '/images/pen.png', :style => "width:20px; height:20px; float:right; cursor:pointer; margin-top:20px;margin-right:5px"
+            %button.close.del_info.picture_control{ :type => "button", :id => "user_id-#{user_info.id}", :'aria-hidden' => "true", :style => "float:right"} ×
             .clean-both
             %hr
 
@@ -88,8 +87,7 @@
           - @user_infos.select{|x| x.status == 2}.each do |user_info|
             %span.hashtags1 #{user_info.category_type}
             #{user_info.content}
-            = image_tag '/images/pen.png', :style => "width:20px; height:20px; float:right; cursor:pointer; margin-top:20px;margin-right:5px"
-            = image_tag '/images/pen.png', :style => "width:20px; height:20px; float:right; cursor:pointer; margin-top:20px;margin-right:5px"
+            %button.close.del_info.picture_control{ :type => "button", :id => "user_id-#{user_info.id}", :'aria-hidden' => "true", :style => "float:right"} ×
             .clean-both
             %hr
 
@@ -107,6 +105,20 @@
     .modal-footer
       %button{:class => "btn", :'data-dismiss' => "modal", :'aria-hidden' => "true"} Close
       =submit_tag 'Upload photo', :class => "btn btn-primary", :id => "photo_upload", :disabled => "true"
+
+#deleteInfo.modal.hide.fade{:tabindex => "-1", :role => "dialog", :'aria-labelledby' => "myModalLabel", :'aria-hidden' => "true"}
+  .modal-header
+    %button.close{ :type => "button", :'data-dismiss' => "modal", :'aria-hidden' => "true"} ×
+    %h3{ :id => "myModalLabel"} Delete info
+  = form_tag({:controller => "userinfos", :action => "delete_info"}, :remote => true, :multipart => true) do
+    .modal-body
+      %p 
+        Are you sure you want to delete this info?
+        = hidden_field_tag :user_id, @user.id
+        = hidden_field_tag :info_id
+      %p
+        =submit_tag "Yes", :class => "btn btn-primary", :id => "del_info_button"
+        %button{:class => "btn", :'data-dismiss' => "modal", :'aria-hidden' => "true"} No
 
 :javascript
   function checkFile(elementNode){

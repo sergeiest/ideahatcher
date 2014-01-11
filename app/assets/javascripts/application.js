@@ -68,8 +68,19 @@ $(document).ready(function() {
 
     $('.del_pic').on('click', function(){
         var picture_id = $(this).attr('id').split('-')[1];
-        $('#deletePicture .modal-body #picture_status').val(picture_id)
+        $('#deletePicture .modal-body #picture_status').val(picture_id);
         $('#deletePicture').modal(open);
+    })
+
+    $('.del_info').on('click', function() {
+        var info_id = $(this).attr('id').split('-')[1];
+        console.log(info_id)
+        $('#deleteInfo .modal-body #info_id').val(info_id);
+        $('#deleteInfo').modal(open);
+    })
+
+    $('#del_info_button').on('click', function(){
+        $('#deleteInfo').modal('hide');
     })
 })
 

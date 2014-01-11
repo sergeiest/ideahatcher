@@ -135,12 +135,17 @@ Webapp::Application.routes.draw do
   get "tri_valley_meetup/signup"
   get "tri_valley_meetup/add_to_fund"
   get "tri_valley_meetup/logout"
-  get "tri_vallye_meetup/wrong_login"
+  post "tri_valley_meetup/wrong_login"
+  post "tri_valley_meetup/delete_info"
   post "tri_valley_meetup/login"
   post "tri_valley_meetup/create_account"
 
+
   post "userinfos/add_experience"
   post "userinfos/add_ask"
+  post "userinfos/delete_info"
+  post "userinfos/delete_experience"
+  post "userinfos/delete_ask"
 
 
   root :to => 'home#index'
