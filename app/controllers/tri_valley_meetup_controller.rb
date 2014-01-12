@@ -157,4 +157,24 @@ class TriValleyMeetupController < ApplicationController
 
   end
 
+  def forgot_password
+    if params[:email] != nil
+      email = params[:email][:address]
+      if params[:email][:address] =~ /\b[A-Z0-9._%a-z\-]+@(?:[A-Z0-9a-z\-]+\.)+[A-Za-z]{2,4}\z/i
+        authentication = Authentication.find_by_username(email)
+        if authentication != nil
+          password = Authentication.random_string(10)
+          authentication.make_hash(password)
+          authentication.update_attributes! :password => authentication.password
+          UserMailer.send_password(authentication, password).deliver
+        end
+      end
+
+    end
+  end
+
+  def change_password
+    @user = User.find(session[:id])
+  end
+
 end

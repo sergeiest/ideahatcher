@@ -59,10 +59,9 @@
               - if user.notification_num and user.notification_num >0
                 .notifications= user.notification_num
             %ul.dropdown-menu.custom-dropdown-menu
-              %li{:role => "presentation"}= link_to 'Community', :controller => 'tri_valley_meetup', :action => 'show'
-              %li{:role => "presentation"}= link_to 'My profile', :controller => 'tri_valley_meetup', :action => 'update_profile',:id => user.id
-              %li{:role => "presentation"}= link_to 'Change password', :controller => 'users', :action => 'change_password',
-                                                  :id => user.id
+              %li{:role => "presentation"}= link_to 'Community', :action => 'show'
+              %li{:role => "presentation"}= link_to 'My profile', :action => 'update_profile'
+              %li{:role => "presentation"}= link_to 'Change password', :action => 'change_password'
               %hr
               %li{:role => "presentation"}= link_to 'Logout', :action => 'logout'
 
@@ -118,7 +117,7 @@
                 %br
                 = password_field "authentication", "password"
 
-              %p= link_to "Forgot password?", :action => "forgot_password", :controller => 'authentications'
+              %p= link_to "Forgot password?", :action => "forgot_password"
 
               = submit_tag 'Login', :class => "btn-simple custom-button"
           .modal-right{:style => "padding-top:100px;text-align:center"}
