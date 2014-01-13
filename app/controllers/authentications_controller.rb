@@ -159,8 +159,15 @@ class AuthenticationsController < ApplicationController
 
   def update_password
     if params[:new][:password] != params[:new][:confirm_password] || !params[:new][:password].length.between?(3, 60)
-      flash[:error] = 'Passwords do not match'
-      redirect_to :controller => 'users', :action => 'change_password'
+      if !params[:new][:password].length.between?(3, 60)
+        flash[:error] = 'Password should have between 3 and 60 symbols'
+      else
+        flash[:error] = 'Passwords do not match'
+      end
+      respond_to do |format|
+        format.html {redirect_to :controller => 'users', :action => 'change_password'}
+        format.js
+      end
       return
     end
 
@@ -171,16 +178,24 @@ class AuthenticationsController < ApplicationController
 
     if !authentication = Authentication.authenticate(new_authentication)
       flash[:error] = 'Wrong old password'
-      redirect_to :controller => 'users', :action => 'change_password'
+      respond_to do |format|
+        format.html {redirect_to :controller => 'users', :action => 'change_password'}
+        format.js
+      end
       return
     end
 
     authentication.make_hash(params[:new][:password])
-    if authentication.update_attributes :password => authentication.password
-        redirect_to :controller => 'users', :action => 'index', :id => session[:id]
-    else
-        flash[:error] = 'Could not update password'
-        redirect_to :controller => 'users', :action => 'change_password'
+    respond_to do |format|
+      if authentication.update_attributes :password => authentication.password
+          flash[:success] = 'Your password was updated'
+          format.html {redirect_to :controller => 'users', :action => 'index', :id => session[:id]}
+          format.js
+      else
+          flash[:error] = 'Could not update password'
+          format.html {redirect_to :controller => 'users', :action => 'change_password'}
+          format.js
+      end
     end
 
   end

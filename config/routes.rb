@@ -139,6 +139,11 @@ Webapp::Application.routes.draw do
   post "tri_valley_meetup/delete_info"
   post "tri_valley_meetup/login"
   post "tri_valley_meetup/create_account"
+  get "tri_valley_meetup/change_password"
+  get "tri_valley_meetup/forgot_password"
+  post "tri_valley_meetup/forgot_password"
+  get "tri_valley_meetup/admin_view"
+  post "tri_valley_meetup/send_email"
 
 
   post "userinfos/add_experience"

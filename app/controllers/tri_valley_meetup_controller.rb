@@ -33,6 +33,11 @@ class TriValleyMeetupController < ApplicationController
           redirect_to :action => 'signup' and return
         end
 
+      when "admin_view", "send_email"
+        if session[:id] != 1
+          redirect_to :action => 'signup' and return
+        end
+
     end
   end
 
@@ -57,6 +62,15 @@ class TriValleyMeetupController < ApplicationController
 
   def update_profile
     @user = User.find(session[:id])
+
+    @list_of_skills = ""
+    @list_of_skills += "<option>Business</option>"
+    @list_of_skills += "<option>Design</option>"
+    @list_of_skills += "<option>Education</option>"
+    @list_of_skills += "<option>Marketing</option>"
+    @list_of_skills += "<option>Network</option>"
+    @list_of_skills += "<option>Sales</option>"
+    @list_of_skills += "<option>Tech</option>"
 
     @user_infos = @user.userinfos
     @experiences = @user_infos.select{|x| x.status == 1}
@@ -130,25 +144,63 @@ class TriValleyMeetupController < ApplicationController
 
           format.html { redirect_to :action => "update_profile"}
         else
+          flash[:error] = "Something went wrong. If you see this message again, please contact us"
           format.html { redirect_to :action => "signup"}
         end
       end
 
     else
       respond_to do |format|
+
         @user = User.new(params[:user])
-        @user.errors.add user_errors.partition("/")[0]  , user_errors.partition("/")[2] if user_errors != nil
+        #@user.errors.add user_errors.partition("/")[0]  , user_errors.partition("/")[2] if user_errors != nil
+        flash[:error] = user_errors.partition("/")[2] if user_errors != nil
+
         if authentication_errors != nil
-          @authentication.errors.add authentication_errors.partition("/")[0]  , authentication_errors.partition("/")[2]
+          #@authentication.errors.add authentication_errors.partition("/")[0]  , authentication_errors.partition("/")[2]
+          flash[:error] = authentication_errors.partition("/")[2]
         end
+
         if @authentication.password != params[:ll][:password_confirmation]
-          @authentication.errors.add :password, "Passwords do not match"
+          #@authentication.errors.add :password, "Passwords do not match"
+          flash[:error] = "Passwords do not match"
         end
-        format.html { redirect_to :action => "signup"}
+
+        format.html { render :action => "signup"}
       end
     end
 
 
+  end
+
+  def forgot_password
+    if params[:email] != nil
+      email = params[:email][:address]
+      if params[:email][:address] =~ /\b[A-Z0-9._%a-z\-]+@(?:[A-Z0-9a-z\-]+\.)+[A-Za-z]{2,4}\z/i
+        authentication = Authentication.find_by_username(email)
+        if authentication != nil
+          password = Authentication.random_string(10)
+          authentication.make_hash(password)
+          authentication.update_attributes! :password => authentication.password
+          UserMailer.send_password(authentication, password).deliver
+        end
+      end
+
+    end
+  end
+
+  def change_password
+    @user = User.find(session[:id])
+  end
+
+  def admin_view
+
+  end
+
+  def send_email
+    UserMailer.send_welcome_tri_valley(params[:email], params[:name], params[:password]).deliver
+
+    render "admin_view"
   end
 
 end

@@ -4,17 +4,32 @@
       %p{:style => "font-size:48pt; line-height: 64pt; font-weight: lighter"}
         About yourself:
       %p{:style => "margin-top:10%; font-size:24pt; line-height: 30pt; font-weight: lighter"}
-        Please share your experience/expertise and needs/asks with
+        Share your experience/expertise and needs/asks with
         the Startup Tri-Valley Community.
+      - if session[:id].nil? || session[:id] == 0
+        %br
+        %a.custom-button{:href => "#", :onclick => "$('#login_modal').modal('show');", :style => "padding:10px 20px"} Login
+        %span{:style => "padding: 0 20px;font-size:20px; font-weight:lighter"}
+          , or set up new account
+          = image_tag "/images/right_arrow.png", :style => "width:50px;height:12px;margin-left:20px"
+      - else
+        %br
+        =link_to 'Go to the community', {:action => "show"}, :class => "custom-button", :style => "padding:10px 20px"
+
     - if session[:id].nil? || session[:id] == 0
       .login-box
         = form_tag({:action => 'create_account'}, :multipart => true) do
           %h4{:style => "font-weight: lighter;"} Set up account:
-
+          - if not flash[:error].nil?
+            #flash_error
+              = flash[:error]
           %p
             Email:
             %br
-            = text_field :authentication, :username
+            - if @authentication.nil?
+              = text_field :authentication, :username
+            - else
+              = text_field :authentication, :username, :value => @authentication.username
 
           %p
             Password:
@@ -29,15 +44,21 @@
           %p
             First name:
             %br
-            = text_field :user, :firstname
+            - if @user.nil?
+              = text_field :user, :firstname
+            - else
+              = text_field :user, :firstname, :value => @user.firstname
 
           %p
             Last name:
             %br
-            = text_field :user, :lastname
+            - if @user.nil?
+              = text_field :user, :lastname
+            - else
+              = text_field :user, :lastname, :value => @user.lastname
 
           = hidden_field_tag :gotocontroller, "tri_valley_meetup"
           = hidden_field_tag :gotoaction, "show"
 
-          = submit_tag 'Create profile', :class => "btn-simple custom-button", :style => "background-color:#C73237; color:white"
+          = submit_tag 'Create account', :class => "btn-simple custom-button", :style => "background-color:#C73237; color:white"
 

@@ -59,10 +59,9 @@
               - if user.notification_num and user.notification_num >0
                 .notifications= user.notification_num
             %ul.dropdown-menu.custom-dropdown-menu
-              %li{:role => "presentation"}= link_to 'Community', :controller => 'tri_valley_meetup', :action => 'show'
-              %li{:role => "presentation"}= link_to 'My profile', :controller => 'tri_valley_meetup', :action => 'update_profile',:id => user.id
-              %li{:role => "presentation"}= link_to 'Change password', :controller => 'users', :action => 'change_password',
-                                                  :id => user.id
+              %li{:role => "presentation"}= link_to 'Community', :action => 'show'
+              %li{:role => "presentation"}= link_to 'My profile', :action => 'update_profile'
+              %li{:role => "presentation"}= link_to 'Change password', :action => 'change_password'
               %hr
               %li{:role => "presentation"}= link_to 'Logout', :action => 'logout'
 
@@ -82,14 +81,14 @@
         %hr
         %img{:src => "/images/ideahatcher_icon.png"}
       .left-text
-        = link_to 'See Startup Tri-Valley community', :controller => 'tri_valley_meetup', :action => "show"
+        = link_to '> See Startup Tri-Valley community', :controller => 'tri_valley_meetup', :action => "show"
         %br
         %br
         Contact meetup organizers:
         %br
-        %a{:href => 'mailto:admin@meetuptrivalley.com'} admin@meetuptrivalley.com (temp)
+        %a{:href => 'mailto:drewjfelker@gmail.com'} drewjfelker@gmail.com
       .right-text
-        = link_to 'Learn about ideaHatcher', :controller => 'home'
+        = link_to '> Learn about ideaHatcher', :controller => 'home'
         %br
         %br
         Contact ideaHatcher team:
@@ -118,7 +117,7 @@
                 %br
                 = password_field "authentication", "password"
 
-              %p= link_to "Forgot password?", :action => "forgot_password", :controller => 'authentications'
+              %p= link_to "Forgot password?", :action => "forgot_password"
 
               = submit_tag 'Login', :class => "btn-simple custom-button"
           .modal-right{:style => "padding-top:100px;text-align:center"}

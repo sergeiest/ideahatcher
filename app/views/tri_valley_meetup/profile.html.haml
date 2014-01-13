@@ -44,5 +44,7 @@
 
     %b{:style => "border-bottom: 1px black solid"}  Contact info
 
-    %p= "Email: #{@email}"
+    %p
+      Email:
+      %a{:href => "mailto:#{@email}"} #{@email}
     %br
