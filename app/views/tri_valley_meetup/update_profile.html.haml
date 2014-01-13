@@ -58,12 +58,8 @@
         = submit_tag "Add", :class => "btn btn-small", :id => "add_fund_button"
       %hr#join_header
         #info_1
-          - @user_infos.select{|x| x.status == 1}.each do |user_info|
-            %span.hashtags1 #{user_info.category_type}
-            #{user_info.content}
-            %button.close.del_info.picture_control{ :type => "button", :id => "user_id-#{user_info.id}", :'aria-hidden' => "true", :style => "float:right"} ×
-            .clean-both
-            %hr
+          = render :partial => 'userinfos', :as => :user_info, :collection => @experiences
+
 
 
 
@@ -84,12 +80,7 @@
         = submit_tag "Add", :class => "btn btn-small", :id => "add_fund_button"
       %hr#join_header
         #info_2
-          - @user_infos.select{|x| x.status == 2}.each do |user_info|
-            %span.hashtags1 #{user_info.category_type}
-            #{user_info.content}
-            %button.close.del_info.picture_control{ :type => "button", :id => "user_id-#{user_info.id}", :'aria-hidden' => "true", :style => "float:right"} ×
-            .clean-both
-            %hr
+          = render :partial => 'userinfos', :as => :user_info, :collection => @asks
 
 
 

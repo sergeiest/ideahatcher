@@ -194,11 +194,16 @@
 }
 
 .del_info{
-  margin-top:18px;
+  margin-top: 10px;
   font-size:40px;
   &:hover{
     opacity: .6;
   }
+}
+
+.content{
+  line-height: 40px;
+  display: block;
 }
 
 

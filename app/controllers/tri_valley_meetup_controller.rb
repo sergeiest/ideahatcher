@@ -59,6 +59,8 @@ class TriValleyMeetupController < ApplicationController
     @user = User.find(session[:id])
 
     @user_infos = @user.userinfos
+    @experiences = @user_infos.select{|x| x.status == 1}
+    @asks = @user_infos.select{|x| x.status == 2}
     @occupation = @user.userinfos.find_by_status(3)
     @project = @user.userinfos.find_by_status(4)
 
