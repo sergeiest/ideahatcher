@@ -1,0 +1,35 @@
+%html
+  %head
+
+  %body{:style => 'width:680px'}
+    = image_tag 'https://s3.amazonaws.com/CAPITALROUNDBETA/global_images/tri_valley_email_logo.png', :style => "width:680px"
+
+    %h2{:style => 'text-align:center;'} #{@name}, welcome to the Startup Tri-Valley community
+
+    %p{:style => "margin:20px 0"}
+      At the last Startup Tri-Valley meetup at i-GATE, we shared stories about our projects, our areas of
+      experience and expertise, and what we need help with. All this information is now available on the Start Tri-Valley
+      community page.
+      %br
+      To access the community page, please login to your account (we created one for you) using the following information:
+    %b
+      Email:
+      = @email
+    %br
+    %b
+      Password:
+      = @password
+    %br
+    %br
+    %b
+      Go to the community now:
+      %a{:href => "http://www.ideahatcher.co/tri_valley_meetup"} http://www.ideahatcher.co/tri_valley_meetup
+    %br
+    %p
+      On the Startup Tri-Valley community page, you can see other community member's experience/expertise, learn what
+      they are working on, and what they need help with. We are excited to get started!
+    %hr{:style => "margin-top:20px"}
+
+    %p{:style => 'text-align:left'}
+      Should you have any questions, please let us know at
+      %a{:href => "mailto:team@ideahatcher.co"} team@ideahatcher.co

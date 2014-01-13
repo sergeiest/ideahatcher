@@ -1,0 +1,13 @@
+.user-content
+
+  %h5 Send welcome email
+  %b{:style => "color:red"} Check if you have sent an email to this person before!
+  = form_tag({:action => "send_email"}) do
+    %p Name:
+    = text_field_tag :name
+    %p Email:
+    = text_field_tag :email
+    %p Password:
+    = text_field_tag :password
+    %br
+    = submit_tag 'Send', :class => "btn btn-primary"

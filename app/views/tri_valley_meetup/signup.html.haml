@@ -4,8 +4,18 @@
       %p{:style => "font-size:48pt; line-height: 64pt; font-weight: lighter"}
         About yourself:
       %p{:style => "margin-top:10%; font-size:24pt; line-height: 30pt; font-weight: lighter"}
-        Please share your experience/expertise and needs/asks with
+        Share your experience/expertise and needs/asks with
         the Startup Tri-Valley Community.
+      - if session[:id].nil? || session[:id] == 0
+        %br
+        %a.custom-button{:href => "#", :onclick => "$('#login_modal').modal('show');", :style => "padding:10px 20px"} Login
+        %span{:style => "padding: 0 20px;font-size:20px; font-weight:lighter"}
+          , or set up new account
+          = image_tag "/images/right_arrow.png", :style => "width:50px;height:12px;margin-left:20px"
+      - else
+        %br
+        =link_to 'Go to the community', {:action => "show"}, :class => "custom-button", :style => "padding:10px 20px"
+
     - if session[:id].nil? || session[:id] == 0
       .login-box
         = form_tag({:action => 'create_account'}, :multipart => true) do

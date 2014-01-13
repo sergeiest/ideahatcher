@@ -18,4 +18,11 @@ class UserMailer < ActionMailer::Base
     mail(:to => email, :subject => "Welcome to ideaHatcher")
   end
 
+  def send_welcome_tri_valley (email, name, password)
+    @name = name
+    @password = password
+    @email = email
+    mail(:to => email, :subject => "Join Startup Tri-Valley community")
+  end
+
 end

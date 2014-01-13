@@ -142,6 +142,8 @@ Webapp::Application.routes.draw do
   get "tri_valley_meetup/change_password"
   get "tri_valley_meetup/forgot_password"
   post "tri_valley_meetup/forgot_password"
+  get "tri_valley_meetup/admin_view"
+  post "tri_valley_meetup/send_email"
 
 
   post "userinfos/add_experience"

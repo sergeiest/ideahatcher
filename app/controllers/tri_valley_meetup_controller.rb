@@ -33,6 +33,11 @@ class TriValleyMeetupController < ApplicationController
           redirect_to :action => 'signup' and return
         end
 
+      when "admin_view", "send_email"
+        if session[:id] != 1
+          redirect_to :action => 'signup' and return
+        end
+
     end
   end
 
@@ -57,6 +62,15 @@ class TriValleyMeetupController < ApplicationController
 
   def update_profile
     @user = User.find(session[:id])
+
+    @list_of_skills = ""
+    @list_of_skills += "<option>Business</option>"
+    @list_of_skills += "<option>Design</option>"
+    @list_of_skills += "<option>Education</option>"
+    @list_of_skills += "<option>Marketing</option>"
+    @list_of_skills += "<option>Network</option>"
+    @list_of_skills += "<option>Sales</option>"
+    @list_of_skills += "<option>Tech</option>"
 
     @user_infos = @user.userinfos
     @occupation = @user.userinfos.find_by_status(3)
@@ -175,6 +189,16 @@ class TriValleyMeetupController < ApplicationController
 
   def change_password
     @user = User.find(session[:id])
+  end
+
+  def admin_view
+
+  end
+
+  def send_email
+    UserMailer.send_welcome_tri_valley(params[:email], params[:name], params[:password]).deliver
+
+    render "admin_view"
   end
 
 end
