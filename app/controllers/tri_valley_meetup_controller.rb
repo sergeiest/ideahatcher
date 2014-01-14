@@ -72,11 +72,17 @@ class TriValleyMeetupController < ApplicationController
     @list_of_skills += "<option>Sales</option>"
     @list_of_skills += "<option>Tech</option>"
 
+    @list_of_projects = @user.owner_startups
+
     @user_infos = @user.userinfos
     @experiences = @user_infos.select{|x| x.status == 1}
     @asks = @user_infos.select{|x| x.status == 2}
     @occupation = @user.userinfos.find_by_status(3)
     @project = @user.userinfos.find_by_status(4)
+    if not @project.idea_id.nil?
+      puts @project.idea_id
+      @chosen_project = @project.idea_id
+    end
 
   end
 
@@ -85,6 +91,10 @@ class TriValleyMeetupController < ApplicationController
     @user_infos = @user.userinfos
     @occupation = @user_infos.find_by_status(3)
     @project = @user_infos.find_by_status(4)
+    if not @project.idea_id.nil?
+      chosen_project = @project.idea_id
+      @startup_link = @user.owner_startups.find(chosen_project)
+    end
     @auth = Authentication.find_by_id(@user.authentication_id)
     @email = @auth.username
   end

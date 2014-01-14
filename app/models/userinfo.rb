@@ -1,5 +1,5 @@
 class Userinfo < ActiveRecord::Base
-  attr_accessible :category_type, :content, :is_main, :status, :user_id
+  attr_accessible :category_type, :content, :is_main, :status, :user_id, :idea_id
 
   belongs_to :user
 

@@ -74,8 +74,12 @@
     border-left:1px #888 solid;
     padding:0 5%;
     input {
-      width:50%;
+      width:47%;
       margin-bottom: 25px;
+    }
+    #add_startup_link{
+      margin-bottom: 25px;
+      margin-left: 5px;
     }
     textarea{
       height: 120px;
@@ -206,6 +210,9 @@
   display: block;
 }
 
+#startup_id{
+  margin-bottom: 25px;
+}
 
 
 .hashtags1{

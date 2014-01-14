@@ -31,8 +31,12 @@
         = f.text_field :lastname
       %p Occupation:
       = text_field_tag :occupation, (@occupation.content if not @occupation.nil?)
-      %p Project you are currently working on:
+      %p Project you are currently working on: 
       = text_field_tag :project, (@project.content if not @project.nil?)
+      -if not @chosen_project.nil?
+        = select_tag :startup_id, options_from_collection_for_select(@list_of_projects, "id", "name", @chosen_project), :prompt => 'Select link'
+      -else
+        = select_tag :startup_id, options_from_collection_for_select(@list_of_projects, "id", "name"), :prompt => "Select link", :style => "width: 165px"
       %p About me:
       = f.text_area :description
 
@@ -48,10 +52,10 @@
         %i Add one or several one-sentence descriptions about your experience:
         = hidden_field_tag :user_id, @user.id
         = text_field_tag :content, "", :style => "width:300px;margin-top:10px"
-        = select_tag :category_type,  @list_of_skills, {:include_blank => true, :style => "width:100px"}
+        = select_tag :category_type,  @list_of_skills, :prompt => "Please select", :style => "width:150px"  
         = submit_tag "Add", :class => "btn btn-small", :id => "add_fund_button"
       %hr#join_header
-        #info_1
+        #info_1 
           = render :partial => 'userinfos', :as => :user_info, :collection => @experiences
 
 
@@ -64,7 +68,7 @@
         %i Add one or several one-sentence descriptions of your needs/asks:
         = hidden_field_tag :user_id, @user.id
         = text_field_tag :content, "", :style => "width:300px;margin-top:10px"
-        = select_tag :category_type,  @list_of_skills, {:include_blank => true, :style => "width:100px"}
+        = select_tag :category_type,  @list_of_skills, :prompt => "Please select", :style => "width:150px"
         = submit_tag "Add", :class => "btn btn-small", :id => "add_fund_button"
       %hr#join_header
         #info_2
