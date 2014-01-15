@@ -10,13 +10,28 @@
 
     = stylesheet_link_tag    "bootstrap", :media => "all"
     = stylesheet_link_tag    "application", :media => "all"
-    = stylesheet_link_tag    "tri_valley_meetup", :media => "all"
 
     = javascript_include_tag "application"
     = javascript_include_tag "bootstrap-modal"
     = javascript_include_tag "bootstrap-collapse"
     = javascript_include_tag "bootstrap-transitions"
     = javascript_include_tag "bootstrap-carousel"
+
+    - case params[:controller]
+      - when "startups"
+        = stylesheet_link_tag    "startups", :media => "all"
+      - when "campaigns"
+        = stylesheet_link_tag    "campaigns", :media => "all"
+      - when "users"
+        = stylesheet_link_tag    "users", :media => "all"
+      - when "funds"
+        = stylesheet_link_tag    "funds", :media => "all"
+      - when "blogposts"
+        = stylesheet_link_tag    "blogposts", :media => "all"
+      - when "authentications"
+        = stylesheet_link_tag    "authentications", :media => "all"
+      - when "tri_valley_meetup"
+        = stylesheet_link_tag    "tri_valley_meetup", :media => "all"
 
     = csrf_meta_tags
 
@@ -59,11 +74,11 @@
               - if user.notification_num and user.notification_num >0
                 .notifications= user.notification_num
             %ul.dropdown-menu.custom-dropdown-menu
-              %li{:role => "presentation"}= link_to 'Community', :action => 'show'
-              %li{:role => "presentation"}= link_to 'My profile', :action => 'update_profile'
-              %li{:role => "presentation"}= link_to 'Change password', :action => 'change_password'
+              %li{:role => "presentation"}= link_to 'Community', :controller => "tri_valley_meetup", :action => 'show'
+              %li{:role => "presentation"}= link_to 'My profile', :controller => "tri_valley_meetup", :action => 'update_profile'
+              %li{:role => "presentation"}= link_to 'Change password', :controller => "tri_valley_meetup", :action => 'change_password'
               %hr
-              %li{:role => "presentation"}= link_to 'Logout', :action => 'logout'
+              %li{:role => "presentation"}= link_to 'Logout', :controller => "tri_valley_meetup", :action => 'logout'
 
       - else
         %ul.user-nav.nav.nav-pills{:id => "login-nav"}
@@ -105,7 +120,7 @@
           %h3#myModalLabel{:style => "font-weight: lighter;"} Welcome back!
         .modal-body
           .modal-left#trivalley_login
-            = form_tag({:action => 'login'}, :multipart => true, :remote => true) do
+            = form_tag({:action => 'login', :controller => "tri_valley_meetup"}, :multipart => true, :remote => true) do
               %h4{:style => "font-weight: lighter;"} Login:
               %p
                 Email:
@@ -117,7 +132,7 @@
                 %br
                 = password_field "authentication", "password"
 
-              %p= link_to "Forgot password?", :action => "forgot_password"
+              %p= link_to "Forgot password?", :controller => "tri_valley_meetup", :action => "forgot_password"
 
               = submit_tag 'Login', :class => "btn-simple custom-button"
           .modal-right{:style => "padding-top:100px;text-align:center"}
