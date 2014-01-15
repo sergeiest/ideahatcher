@@ -46,6 +46,17 @@
     - if @user_infos.select{|x| x.status == 2}.length == 0
       %p{:style => "font-style: italic"} #{"- not specified -"}
 
+    -if @user.comments.length > 0
+      #comments_list
+        %b{:style => "border-bottom: 1px black solid"}  Activity
+
+        %h2 #{@comment.title}
+        %p
+          = @comment.content
+          = link_to "See the discussion...", "/startups/#{@comment.startup_id}?comment_id=#{@comment.id}&tri_valley=1"
+          
+        %br
+
     %b{:style => "border-bottom: 1px black solid"}  Contact info
 
     %p

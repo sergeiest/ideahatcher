@@ -73,7 +73,9 @@
     = text_area :idea, :content, :style => "width:98%;height:100px", :onclick => "clearInput(this)"
     = submit_tag 'SUBMIT', :class => "startup-button-yellow"
 
+
 :javascript
+
   function voteThis(elementNode){
     notes = elementNode.parentNode.getElementsByClassName("idea-statement");
         for (var i = 0; i < notes.length; i++) {
@@ -99,3 +101,15 @@
     $('#button_'+ formId).click()
 
   }
+
+-if not @comment_id.nil?
+  :javascript
+    window.onload=function(){
+      var matches = document.querySelectorAll("[data-openpanel='#ideahatching_#{@comp_desc}']")
+      matches[0].click();
+      window.setTimeout(scrolldown, 200);
+    }
+
+    function scrolldown(){
+      document.location.hash="#comment_#{@comment_id}";
+    }

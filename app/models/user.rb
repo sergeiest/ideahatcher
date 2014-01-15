@@ -19,6 +19,7 @@ class User < ActiveRecord::Base
 
   has_many :ideas
   has_many :userinfos
+  has_many :comments
 
   attr_protected :authentication_id
   belongs_to :authentication

@@ -91,6 +91,9 @@ class TriValleyMeetupController < ApplicationController
     @user_infos = @user.userinfos
     @occupation = @user_infos.find_by_status(3)
     @project = @user_infos.find_by_status(4)
+    if @user.comments.length > 0
+      @comment = @user.ideas.find_by_id(@user.comments.first.idea_id)
+    end
     if not @project.idea_id.nil?
       chosen_project = @project.idea_id
       @startup_link = @user.owner_startups.find(chosen_project)

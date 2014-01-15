@@ -184,13 +184,24 @@ class StartupsController < ApplicationController
     @tags = Tag.all
     @ideas = @startup.ideas
 
+    if not params[:comment_id].nil?
+      @comment = @ideas.find_by_id(params[:comment_id])
+      @comment_id = @comment.id
+      @comp_desc = @comment.companydescription_id
+
+    end
+
 
     @company_descriptions_all = @startup.companydescriptions
     @company_descriptions = @company_descriptions_all.select{|x| x.status == 1}.sort!{|x, y| x["allfield_id"] <=> y["allfield_id"]}
 
 
     respond_to do |format|
-        format.html
+        if not params[:tri_valley].nil?
+          format.html { render :layout => "tri_valley"}
+        else
+          format.html
+        end
     end
 
   end
