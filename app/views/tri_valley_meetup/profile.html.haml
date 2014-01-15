@@ -17,8 +17,12 @@
 
     -if not @project.nil? and not @project.content.blank?
       %p
-        %b Current Project/Startup:
-        =@project.content
+        -if not @startup_link.nil?
+          %b Current Project/Startup:
+          = link_to @project.content, "/startups/#{@startup_link.id}"
+        -else
+          %b Current Project/Startup:
+          =@project.content
 
     %p 
       %b About me:

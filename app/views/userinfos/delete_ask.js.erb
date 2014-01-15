@@ -1,10 +1,4 @@
 mainDiv = document.getElementById("info_2");
-
-divString = "";
-
-<% @user_infos.each do |user_info| %>
-    divString = divString +
-            '<span class="hashtags1"> <%= user_info.category_type %> </span> <%= user_info.content %> <button aria-hidden="true" class="close del_info picture_control" id="user_id-<%= user_info.id %>" style="float:right" type="button">×</button> <hr>';
-<% end %>
-
-mainDiv.innerHTML = divString;
+mainDiv.innerHTML = "";
+mainDiv.innerHTML = "<%= escape_javascript(render :partial => 'tri_valley_meetup/userinfos', :collection => @user_in, :as => :user_info) %>";
+bindinfo($('#info_2'));

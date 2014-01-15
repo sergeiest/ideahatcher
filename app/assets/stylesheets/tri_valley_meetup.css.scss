@@ -74,8 +74,12 @@
     border-left:1px #888 solid;
     padding:0 5%;
     input {
-      width:50%;
+      width:47%;
       margin-bottom: 25px;
+    }
+    #add_startup_link{
+      margin-bottom: 25px;
+      margin-left: 5px;
     }
     textarea{
       height: 120px;
@@ -194,13 +198,21 @@
 }
 
 .del_info{
-  margin-top:18px;
+  margin-top: 10px;
   font-size:40px;
   &:hover{
     opacity: .6;
   }
 }
 
+.content{
+  line-height: 40px;
+  display: block;
+}
+
+#startup_id{
+  margin-bottom: 25px;
+}
 
 
 .hashtags1{

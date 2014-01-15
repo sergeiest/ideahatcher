@@ -91,9 +91,15 @@ class UsersController < ApplicationController
       if not params[:project].nil?
         set_proj = @user.userinfos.find_by_status(4)
         if not set_proj.nil?
+          if not params[:startup_id].nil?
+            set_proj.update_attributes(:idea_id => params[:startup_id])
+          end
           set_proj.update_attributes(:content => params[:project])
         else
           proj = Userinfo.create(:user_id => @user.id, :status => 4, :content => params[:project])
+          if not params[:startup_id].nil?
+            proj.idea_id = params[:startup_id]
+          end
           proj.save
         end
       end

@@ -84,6 +84,14 @@ $(document).ready(function() {
     })
 })
 
+bindinfo = function(parent){  
+        parent.find('.del_info').on('click', function(){
+        var info_id = $(this).attr('id').split('-')[1];
+        console.log(info_id)
+        $('#deleteInfo .modal-body #info_id').val(info_id);
+        $('#deleteInfo').modal(open);
+    })
+}
 
 function showHiddenIdeas(elementName) {
 
