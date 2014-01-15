@@ -33,10 +33,11 @@
       = text_field_tag :occupation, (@occupation.content if not @occupation.nil?)
       %p Project you are currently working on: 
       = text_field_tag :project, (@project.content if not @project.nil?)
-      -if not @chosen_project.nil?
-        = select_tag :startup_id, options_from_collection_for_select(@list_of_projects, "id", "name", @chosen_project), :prompt => 'Select link'
-      -else
-        = select_tag :startup_id, options_from_collection_for_select(@list_of_projects, "id", "name"), :prompt => "Select link", :style => "width: 165px"
+      -if @list_of_projects.length > 0
+        -if not @chosen_project.nil?
+          = select_tag :startup_id, options_from_collection_for_select(@list_of_projects, "id", "name", @chosen_project), :prompt => 'Select link'
+        -else
+          = select_tag :startup_id, options_from_collection_for_select(@list_of_projects, "id", "name"), :prompt => "Select link", :style => "width: 165px"
       %p About me:
       = f.text_area :description
 

@@ -1,6 +1,6 @@
 .item{:class => "#{'active' if picture_counter == 0}"}
-	%button.close.del_pic.picture_control{ :type => "button", :id => "del_picture-#{picture.status}", :'aria-hidden' => "true", :style => "float:right"} ×
-	= image_tag '/images/pen.png', :class => "edit-pen edit-proto-pic picture_control", :id => "picture-#{picture.status}", :style => "float:right;width:30px"
+	%button.close.del_pic.picture_control{ :type => "button", :id => "del_picture-#{picture.status}", :'aria-hidden' => "true", :style => "float:right;font-size:35px; margin-top:0px; margin-bottom: 3px"} ×
+	= image_tag '/images/pen.png', :class => "edit-pen edit-proto-pic picture_control", :id => "picture-#{picture.status}", :style => "float:right;width:20px;margin-bottom:3px"
 	= image_tag picture.avatar, :class => 'proto_pic'
 	.carousel-caption
 		%h5.picture_title{:id => "title_#{picture.status}"} #{picture.title}

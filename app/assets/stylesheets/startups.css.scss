@@ -752,7 +752,13 @@ a.help-hatch {
   margin-left: 155px;
 }
 
-.active{
+#this-carousel-id{
+  .picture_control{
+    visibility: hidden;
+  }
+}
+
+#dash-carousel{
   .picture_control{
     visibility: hidden;
   }
