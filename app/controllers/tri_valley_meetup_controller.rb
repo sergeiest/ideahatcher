@@ -79,8 +79,7 @@ class TriValleyMeetupController < ApplicationController
     @asks = @user_infos.select{|x| x.status == 2}
     @occupation = @user.userinfos.find_by_status(3)
     @project = @user.userinfos.find_by_status(4)
-    if not @project.idea_id.nil?
-      puts @project.idea_id
+    if !@project.nil? and !@project.idea_id.nil?
       @chosen_project = @project.idea_id
     end
 
