@@ -1,0 +1,92 @@
+.dashboard-view
+  = render :partial => 'dashboard_nav'
+
+  .new-view-company{:style => "padding-top:0;"}
+    %h2 #{@startup.name} / Progress
+    = link_to 'BACK TO DASHBOARD', {:action => 'dashboard', :id => @startup.id},
+                                    :class => 'custom-button',
+                                    :style => "float:right;width:200px;padding-top:6px;padding-bottom:0px"
+
+    .manage-view{:style => "border-bottom:1px #fbb03b solid;"}
+      %h5 Track your progress
+      %p Compare your progress to other companies and standards
+      %button{:onclick => "drawChart(document.getElementById('chart'), this)"} Load chart
+      #chart{:style => "width:800px"}
+
+    .manage-view{:style => "border-bottom:1px #fbb03b solid;"}
+      %h5 What's next?
+      %p
+        Check what you have done and what needs to be done. Once you've completed one full cycle of building business
+        model, you'll do it again with higher detailization.
+      -#= image_tag '/images/bmodel_chart.png', :style => "width:600px"
+      = render :partial => "business_model"
+
+    .manage-view
+      %h5 Today's to do list:
+      .to_do_table
+        %table
+          %tr
+            %th For today
+          %tr
+            %td 1. Stakeholder map
+            %td 3 hrs
+          %tr
+            %td 2. List of competitors
+            %td 4 hrs
+          %tr
+            %td 3. Interviews
+            %td 2 hrs
+          %tr{:style => 'font-style:italic'}
+            %td{:style => 'padding-left:40px;'} schedule 3 interviews
+            %td 1 hr
+          %tr{:style => 'font-style:italic'}
+            %td{:style => 'padding-left:40px;'} conduct 1 interview
+            %td 1 hr
+
+
+%script{ :type => "text/javascript", :src => "http://www.google.com/jsapi"}
+
+:javascript
+  google.load('visualization', '1', {packages: ['corechart']});
+  function drawChart(elementNode, buttonNode) {
+    var data = google.visualization.arrayToDataTable([
+        ['Day','Ideation', 'Research', 'Build', 'Sell' ],
+        ['1', 7, 7, 7, 7],
+        ['', 4, 7, 7, 7],
+        ['3', 3, 6, 7, 7],
+        ['', 1, 5, 7, 7],
+        ['5', 1, 6, 7, 7],
+        ['', 1, 5, 7, 7],
+        ['7', 1, 4, 7, 7],
+        ['', 1, 3, 9, 7],
+        ['9', 0, 2, 9, 7],
+        ['', 0, 1, 8, 7],
+        ['11', 0, 0, 7, 7],
+        ['', 0, 0, 0, 0],
+        ['13',0, 0, 0, 0],
+        ['', 0, 0, 0, 0],
+        ['15', 0, 0, 0, 0],
+        ['', 0, 0, 0, 0],
+        ['17', 0, 0, 0, 0],
+        ['', 0, 0, 0, 0],
+        ['19', 0, 0, 0, 0],
+        ['', 0, 0, 0, 0],
+        ['21', 0, 0, 0, 0],
+      ]);
+
+      var options = {
+        width: 800,
+        height: 400,
+        legend: { position: 'top', maxLines: 3 },
+        bar: { groupWidth: '75%' },
+        isStacked: true,
+        hAxis: {title: 'Date'},
+        vAxis: {title: 'Days left'},
+        backgroundColor: "transparent"
+      };
+
+    var chart = new google.visualization.ColumnChart(elementNode);
+    chart.draw(data, options);
+    buttonNode.hidden = "true";
+
+  }

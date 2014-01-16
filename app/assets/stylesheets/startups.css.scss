@@ -796,3 +796,44 @@ a.help-hatch {
     }
   }
 }
+
+.business_model_table {
+  margin:40px auto;
+  line-height: 16px;
+  font-size: 12px;
+  table-layout: fixed;
+  td{
+    position: relative;
+  }
+  tr{height: 20%;}
+  th {width:11%; padding:10px}
+  .back {
+    background-color: white; position: absolute; z-index: 1;
+    top: 1px; left: 1px;
+    width:-webkit-calc(100% - 2px);
+    width:calc(100% - 2px);
+    height:-webkit-calc(100% - 2px);
+    height:calc(100% - 2px);
+  }
+  .text {
+    border: 1px #d8d8d8 solid;
+    position: relative; z-index: 2;
+    padding:10px;
+    text-align: center;
+
+  }
+}
+
+.to_do_table {
+  margin:auto;
+  width:270px;
+  background-color:white;
+  padding:20px 40px 40px 40px;
+  td {
+    border-bottom:1px #999999 solid;
+    padding:10px 20px 10px 10px;
+  }
+  th {
+    border-bottom:2px black solid;text-align:left
+  }
+}

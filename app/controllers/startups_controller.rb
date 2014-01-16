@@ -5,7 +5,7 @@ class StartupsController < ApplicationController
   before_filter do
     wrong_link = 0
     case params[:action]
-      when "team", "dashboard", "circles"
+      when "team", "dashboard", "circles", "track_progress"
         if session[:id] == nil || session[:id] == 0
           wrong_link = 1
         else
@@ -254,6 +254,16 @@ class StartupsController < ApplicationController
     @startup_owners = @startup.owner_users.all.uniq
   end
 
+  def track_progress
+    if ![1,61,62,87].include?(session[:id])
+      redirect_to :controller => 'campaigns', :action => 'guide_step' and return
+    end
+
+    @startup = Startup.find(params[:id])
+    @user = User.find(session[:id])
+
+  end
+
   def upload_link
     @startup = Startup.find(params[:id])
     @startup.prototype_link = params[:link_url]
@@ -280,7 +290,7 @@ class StartupsController < ApplicationController
 
   def search_startups
     if !params[:string] || params[:string] == ""
-      @startups = Startup.all.sample(9)
+      @startups = Startup.where('status > 1').sample(9)
     else
       s_name = params[:string]
       query_str = "UPPER(name) LIKE UPPER('%" + s_name + "%')"
@@ -293,7 +303,7 @@ class StartupsController < ApplicationController
         query_str = query_str + " OR id = " + hashtag.startup_id.to_s()
       end
 
-      @startups = Startup.where(query_str).sample(9)
+      @startups = Startup.where(query_str).select{|x| x.status > 1 }.sample(9)
 
     end
 

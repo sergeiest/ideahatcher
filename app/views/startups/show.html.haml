@@ -48,8 +48,8 @@
         #this-carousel-id.carousel.slide{"data-interval" => "false"}
           .carousel-inner
             = render :partial => 'picture', :collection => @startup.pictures, :as => :picture
-          %a.carousel-control.left{"data-slide" => "prev", href: "#this-carousel-id"} ‹
-          %a.carousel-control.right{"data-slide" => "next", href: "#this-carousel-id"} ›
+          %a.carousel-control.left{"data-slide" => "prev", :href => "#this-carousel-id"} ‹
+          %a.carousel-control.right{"data-slide" => "next", :href => "#this-carousel-id"} ›
         -if not @startup.prototype_link.nil? and not @startup.prototype_link.blank?
           .proto-link-div
             = link_to @startup.prototype_link, ("http://" + @startup.prototype_link), :class => "startup-prototype-link"

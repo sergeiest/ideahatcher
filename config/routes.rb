@@ -116,6 +116,8 @@ Webapp::Application.routes.draw do
   get "startups/show_more_startups"
   get "startups/request_access"
   post "startups/upload_link"
+  get "startups/track_progress"
+
   resources :startups
   
   resources :peoples
