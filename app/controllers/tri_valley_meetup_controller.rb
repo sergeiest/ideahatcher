@@ -93,7 +93,7 @@ class TriValleyMeetupController < ApplicationController
     if @user.comments.length > 0
       @comment = @user.ideas.find_by_id(@user.comments.first.idea_id)
     end
-    if not @project.idea_id.nil?
+    if !@project.nil? and !@project.idea_id.nil?
       chosen_project = @project.idea_id
       @startup_link = @user.owner_startups.find(chosen_project)
     end
